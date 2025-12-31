@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MeshVault - 3D Model Organizer</title>
+    <style>
+        :root {
+            --primary: #6D3BFF; /* Purple accent matching modern Android themes */
+            --bg-dark: #121212;
+            --bg-card: #1E1E1E;
+            --text-main: #FFFFFF;
+            --text-secondary: #AAAAAA;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-main);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin-left: 20px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 4rem 1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .tagline {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(109, 59, 255, 0.4);
+        }
+
+        /* Features Grid */
+        .features {
+            padding: 4rem 5%;
+            background-color: var(--bg-dark);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background-color: var(--bg-card);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid #333;
+        }
+
+        .card h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        /* How it Works */
+        .how-it-works {
+            background-color: var(--bg-card);
+            padding: 4rem 5%;
+        }
+
+        .steps {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .step {
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+        }
+
+        .step-number {
+            background-color: var(--primary);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem auto;
+            font-weight: bold;
+        }
+
+        /* Supported Sites */
+        .supported-sites {
+            padding: 4rem 5%;
+            text-align: center;
+        }
+
+        .site-tags {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .site-tag {
+            background-color: #2A2A2A;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            border: 1px solid #444;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-secondary);
+            border-top: 1px solid #333;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            .nav-links { display: none; } /* Simplified for mobile */
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="logo">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="#6D3BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M2 17L12 22L22 17" stroke="#6D3BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M2 12L12 17L22 12" stroke="#6D3BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            MeshVault
+        </a>
+        <div class="nav-links">
+            <a href="#features">Features</a>
+            <a href="#how-it-works">How it Works</a>
+            <a href="#download">Download</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>Your Personal Organizer for 3D Printing Models</h1>
+        <p class="tagline">Browse repositories, download files, and keep everything organized in one secure vault. Sync effortlessly with your desktop.</p>
+        <a href="https://github.com/yourusername/meshvault/releases" class="cta-button">Download for Android</a>
+    </section>
+
+    <section id="features" class="features">
+        <h2 class="section-title">Why MeshVault?</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Unified Browser</h3>
+                <p>Browse Cults3D, Thangs, Printables, Thingiverse, and MakerWorld all in one place. No more tab switching.</p>
+            </div>
+            <div class="card">
+                <h3>Auto-Sync</h3>
+                <p>Downloads are automatically organized. Metadata is tracked so you never lose the source URL or author details.</p>
+            </div>
+            <div class="card">
+                <h3>MeshVault Hub</h3>
+                <p>Wireless sync to your PC. Send files directly from your phone to your desktop slicer with a single tap (Pro).</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="how-it-works" class="how-it-works">
+        <h2 class="section-title">How It Works</h2>
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Browse</h3>
+                <p>Use the built-in browser to find models on your favorite repositories.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>Download</h3>
+                <p>Hit download. MeshVault auto-organizes the files and grabs metadata.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Manage</h3>
+                <p>View your collection in the Vault. Export wirelessly to your PC or Slicer.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="supported-sites">
+        <h2 class="section-title">Supported Repositories</h2>
+        <p style="color: var(--text-secondary);">Seamlessly integrated with the platforms you love.</p>
+        <div class="site-tags">
+            <div class="site-tag">Printables</div>
+            <div class="site-tag">Thingiverse</div>
+            <div class="site-tag">MakerWorld</div>
+            <div class="site-tag">Thangs</div>
+            <div class="site-tag">Cults3D</div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 MeshVault. All rights reserved.</p>
+        <p style="margin-top: 10px; opacity: 0.5;">Not affiliated with the 3D repositories listed above.</p>
+    </footer>
+
+</body>
+</html>
