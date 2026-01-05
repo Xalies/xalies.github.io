@@ -10,6 +10,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
+    <script src="https://app.lemonsqueezy.com/js/lemon.js" defer></script>
+
     <style>
         :root {
             /* Exact Colors from MeshVaultTheme.kt (MeshVaultDarkColors) 
@@ -26,7 +28,13 @@
             
             --border: #2F2C33;
         }
-
+		/* Add to your existing <style> block in head */
+		.lemonsqueezy-loader {
+		visibility: hidden !important;
+        display: none !important;
+        opacity: 0 !important;
+        pointer-events: none !important; 
+		}
         * {
             margin: 0;
             padding: 0;
@@ -59,6 +67,7 @@
             font-weight: 600;
             transition: all 0.3s ease;
             gap: 10px;
+            cursor: pointer; /* Ensure pointer for buttons */
         }
 
         .btn-primary {
@@ -337,7 +346,7 @@
     <section class="hero">
         <div class="container">
             <h1>Your Private Sanctuary for<br>3D Models</h1>
-            <p>A "Walled Garden" browser and asset manager designed for privacy, offline capability, and seamless syncing between your phone and slicer.</p>
+            <p>A "Walled Garden" browser that organizes the chaos. <br>Find models on your phone, then beam them instantly to your PC slicer.</p>
             <div style="display: flex; gap: 15px; justify-content: center;">
                 <a href="https://play.google.com/store/apps/details?id=com.xalies.meshvault" class="btn btn-primary">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 8px;"><path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.39L14.54,12.88L16.81,15.12M20.3,12.5L17.38,15.69L15.29,13.6L20.3,11.5C20.93,11.75 20.93,12.25 20.3,12.5M13.69,12L3.84,2.15L16.81,8.88L14.54,11.12L13.69,12M17.38,8.31L20.3,11.5L15.29,10.4L17.38,8.31Z"/></svg>
@@ -386,24 +395,24 @@
 
     <section id="features" class="features">
         <div class="container">
-            <h2 class="section-title">Built for Makers</h2>
-            <p class="section-subtitle">Focus on your prints, not on managing files. MeshVault handles the chaos.</p>
+            <h2 class="section-title">One App, Two Roles</h2>
+            <p class="section-subtitle">Use your phone to find the treasure. Use your PC to build it.</p>
             
             <div class="feature-grid">
                 <div class="feature-card">
                     <div class="feature-icon">🔍</div>
-                    <h3>Unified Browser</h3>
-                    <p>Browse your favorite model sites in one focused interface. No distraction, just models.</p>
+                    <h3>The Mobile Browser</h3>
+                    <p>Blocks ads and attaches smart metadata to every download. It doesn't just grab files; it grabs the context.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">📂</div>
-                    <h3>Auto-Organization</h3>
-                    <p>MeshVault detects downloads automatically, capturing metadata like titles, authors, and tags.</p>
+                    <div class="feature-icon">🏗️</div>
+                    <h3>The PC Organiser</h3>
+                    <p>Sits quietly on your network, ready to receive files and launch your slicer the moment your phone commands it.</p>
                 </div>
-				<div class="feature-card">
+                <div class="feature-card">
                     <div class="feature-icon">🛡️</div>
-                    <h3>Buy one, get two</h3>
-                    <p>Your purchase will also unlock its counterpart. Simply connect from the mobile to unlock</p>
+                    <h3>Lifetime Cross-Buy</h3>
+                    <p>Buy the Android or Windows app, and the other unlocks for free. Your license syncs automatically when you connect.</p>
                 </div>
             </div>
         </div>
@@ -412,18 +421,16 @@
     <section class="split-section">
         <div class="container split-container">
             <div class="split-content">
-                <h2>MeshVault on your Android: Your Pocket 3D Broswer</h2>
-                <p>Download, manage, organise, and view your 3D assets on the go. Whether it's a ZIP file or a raw STL, MeshVault keeps it tidy.</p>
+                <h2>MeshVault Mobile: Your Pocket Scout</h2>
+                <p>MeshVault strips away the clutter of browsing on a small screen. It grabs the files you want and organizes them so you don't have to.</p>
                 <ul>
-                    <li>Create folders and custom collections: So put your Ironman hemet in Cosplay/Helmets folder and add it, with other peices to the Mk 46 collection</li>
-					<li>Supports: 3DM, 3DS, AMF, DAE, FBX, GLB, GLTF, IGES, PLY, SCAD, SLDASM, SLDPRT, X3D and ZIP (ZIP files are scanned for a model file)</li>
-					<li>Put your randomly obtained model into the MeshVault folder and they will be added to your library, ready for you to edit</li> 
-                    <li>Preview 3MF and ZIP contents without extracting</li>
-                    <li>View 3D models (STL, OBJ, STEP, 3MF) and G-Code natively including inside 3MF and ZIP archives</li>
-                    <li>Edit metadata and tags for easy searching</li>
-					<li>Send your models to the PC Individualy, in bulk or send as you download automaticly</li>
+                    <li><strong>Smart Metadata:</strong> Forget "File_123.zip". MeshVault attaches the correct Title, Author, and Source URL to the file, so you always know what it is.</li>
+                    <li><strong>Intelligent Zip Handling:</strong> Downloads the zip but lets you peek inside and use the contents immediately without creating a mess of extracted folders.</li>
+                    <li><strong>Direct-to-Slicer:</strong> Found a model? Tap "Send to Slicer" and it opens instantly in Cura, PrusaSlicer, or Bambu Studio on your PC.</li>
+                    <li><strong>Native Viewer:</strong> Preview your assets in 3D: STL, OBJ, STEP, 3MF, and G-Code.</li>
+                    <li><strong>Folders vs. Collections:</strong> Store parts in folders (e.g. "Helmets"), then group them into a "Ironman: Mark 85 Armour" Collection that spans multiple folder accross your library.</li>
                 </ul>
-				<a href="https://play.google.com/store/apps/details?id=com.xalies.meshvault" class="btn btn-secondary" style="margin-top: 10px;">Buy MeshVault for Android</a>
+                <a href="https://play.google.com/store/apps/details?id=com.xalies.meshvault" class="btn btn-secondary" style="margin-top: 10px;">Get MeshVault for Android</a>
             </div>
             <div class="split-image">
                 <img src="images/meshvaultlibrary.png?text=Library+View" alt="Library View">
@@ -434,31 +441,31 @@
     <section id="desktop" class="split-section">
         <div class="container split-container reverse">
             <div class="split-content">
-                <h2>MeshVault Hub (PC)</h2>
-                <p>The perfect companion for your desktop slicer workflow. The phone automatically discovers your hub on the local network.</p>
+                <h2>MeshVault Hub (PC): The Receiver</h2>
+                <p>Your PC is the workhorse. MeshVault Hub ensures it's always ready to catch what you send.</p>
                 <ul>
-                    <li>MeshVault Hub has all the same support file support, including model viewing</li>
-                    <li>Configure your slicer for mobile integration</li>
-					</ul>
-                <a href="https://meshvault.lemonsqueezy.com/checkout/buy/5a5b5e0a-ec8f-471a-8d51-6b43654d67ee" class="btn btn-secondary" style="margin-top: 10px;">Buy MeshVault Hub</a>
+                    <li><strong>Silent Partner:</strong> Runs in the background, waiting for files from your phone.</li>
+                    <li><strong>Desktop Organization:</strong> Manage your massive library with the comfort of a mouse and keyboard.</li>
+                    <li><strong>Fully Offline:</strong> No cloud accounts, no subscriptions. Your files stay on your hard drive.</li>
+                </ul>
+                <a href="https://meshvault.lemonsqueezy.com/checkout/buy/5a5b5e0a-ec8f-471a-8d51-6b43654d67ee?embed=1" class="btn btn-secondary lemonsqueezy-button" style="margin-top: 10px;">Get MeshVault Hub</a>
             </div>
             <div class="split-image">
                 <img src="images/meshvaulthublibrary.png?text=MeshVault+Hub" alt="MeshVault Hub">
             </div>
         </div>
     </section>
-	
-	<section id="desktop" class="split-section">
-        <div class="container split-container reverse">
+    
+    <section id="web" class="split-section">
+        <div class="container split-container">
             <div class="split-content">
-                <h2>MeshVault Web</h2>
-                <p>Don't own a Windows PC?, maybe you need access aon another computer... No Problem. Turn your phone into a network sever.</p>
+                <h2>MeshVault Web: Access Anywhere</h2>
+                <p>Need a file on a friend's computer or a Mac? Turn your phone into a portable server.</p>
                 <ul>
-                    <li>Use the MeshVault Android app to turn your phone into a file sharing server</li>
-                    <li>Mirrors your mobile library structure</li>
-                    <li>Basic editing/delete fuctions</li>
-                    <li>Download files singly or multiple </li>
-                    <li>Optionlly pack your files with their fold structure and metadata in tact</li>
+                    <li><strong>Phone-as-Server:</strong> Activate "Web Mode" to browse your phone's library from any browser on your local network.</li>
+                    <li><strong>Bulk Download:</strong> Grab entire folders or project collections as a single ZIP.</li>
+                    <li><strong>Metadata Intact:</strong> Files are packed with their folder structure and info preserved.</li>
+                    <li><strong>Zero Setup:</strong> No software installation required on the receiving computer.</li>
                 </ul>
             </div>
             <div class="split-image">
@@ -469,11 +476,11 @@
 
     <footer id="download">
         <div class="container">
-            <h2>Ready to organize your workflow?</h2>
+            <h2>Ready to upgrade your workflow?</h2>
             <div class="footer-links">
                 <a href="https://play.google.com/store/apps/details?id=com.xalies.meshvault" class="btn btn-primary">Get it on Google Play</a>
             </div>
-            <p style="font-size: 0.9rem; opacity: 0.6; margin-top: 40px;">&copy; 2026 MeshVault. Not affiliated with any of the listed Repositories.</p>
+            <p style="font-size: 0.9rem; opacity: 0.6; margin-top: 40px;">&copy; 2026 MeshVault. Not affiliated with any of the listed repositories.</p>
             <div style="margin-top: 10px; font-size: 0.85rem;">
                 <a href="#" style="margin: 0 10px;">Privacy Policy</a> • 
                 <a href="#" style="margin: 0 10px;">GitHub</a> • 
@@ -481,6 +488,5 @@
             </div>
         </div>
     </footer>
-
 </body>
 </html>
