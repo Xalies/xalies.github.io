@@ -4,31 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MeshVault - The Ultimate 3D Asset Manager</title>
-    <meta name="description" content="Organize your 3D printing models, browse repositories, and sync wirelessly to your desktop with MeshVault.">
+    <meta name="description" content="Organize your 3D printing models, browse repositories, and sync wirelessly to your desktop.">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-    <script src="https://gumroad.com/js/gumroad.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            /* Exact Colors from MeshVaultTheme.kt (MeshVaultDarkColors) 
-            */
-            --primary: #9A7CFF;          /* Primary */
-            --primary-hover: #7E57C2;    /* Secondary (used for hover) */
-            
-            --bg-dark: #121212;          /* Background */
-            --bg-card: #1E1B1F;          /* Surface */
-            --bg-variant: #2F2C33;       /* Surface Variant */
-            
-            --text-main: #F2E7FE;        /* OnSurface */
-            --text-muted: #CAC4D0;       /* OnSurfaceVariant */
+            /* MeshVaultDarkColors from MeshVaultTheme.kt */
+            --primary: #9A7CFF;
+            --on-primary: #000000;
+            --secondary: #B39DDB;
+            --surface: #1E1B1F;
+            --surface-variant: #2F2C33;
+            --on-surface: #F2E7FE;
+            --on-surface-variant: #CAC4D0;
+            --background: #121212;
+            --error: #CF6679;
             
             --border: #2F2C33;
+            --glass: rgba(30, 27, 31, 0.8);
         }
-		{
+
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -36,286 +35,218 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-main);
+            background-color: var(--background);
+            color: var(--on-surface);
             line-height: 1.6;
             overflow-x: hidden;
         }
 
-        /* Utilities */
+        /* --- Typography --- */
+        h1, h2, h3 { font-weight: 800; letter-spacing: -0.02em; }
+        h1 { font-size: 3.5rem; line-height: 1.1; margin-bottom: 1.5rem; background: linear-gradient(to right, #fff, var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        h2 { font-size: 2.25rem; margin-bottom: 1rem; color: var(--on-surface); }
+        h3 { font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--on-surface); }
+        p { color: var(--on-surface-variant); font-size: 1.1rem; margin-bottom: 1.5rem; }
+        
+        .text-center { text-align: center; }
+        .text-small { font-size: 0.9rem; }
+
+        /* --- Layout --- */
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 24px;
         }
 
-        a { text-decoration: none; color: inherit; }
+        section { padding: 100px 0; }
+        
+        /* --- Buttons --- */
+        .btn-group { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
         
         .btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 12px 28px;
-            border-radius: 50px;
+            padding: 14px 32px;
+            border-radius: 12px;
             font-weight: 600;
-            transition: all 0.3s ease;
-            gap: 10px;
-            cursor: pointer; /* Ensure pointer for buttons */
+            text-decoration: none;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: 1px solid transparent;
         }
 
         .btn-primary {
             background-color: var(--primary);
-            color: #000000; /* onPrimary from theme is Black */
-            box-shadow: 0 4px 20px rgba(154, 124, 255, 0.25);
+            color: var(--on-primary);
         }
-
         .btn-primary:hover {
-            background-color: #B39DDB; /* Lighter purple on hover */
+            background-color: var(--secondary);
             transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(154, 124, 255, 0.3);
         }
 
-        .btn-secondary {
+        .btn-outline {
             background-color: transparent;
-            border: 1px solid var(--border);
-            color: var(--text-main);
+            border-color: var(--surface-variant);
+            color: var(--on-surface);
         }
-
-        .btn-secondary:hover {
+        .btn-outline:hover {
             border-color: var(--primary);
             color: var(--primary);
         }
 
-        .section-title {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 1rem;
-            color: var(--text-main);
-        }
-
-        .section-subtitle {
-            text-align: center;
-            color: var(--text-muted);
-            max-width: 600px;
-            margin: 0 auto 4rem auto;
-            font-size: 1.1rem;
-        }
-
-        /* Navigation */
+        /* --- Navbar --- */
         nav {
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(18, 18, 18, 0.95); /* Matches bg-dark */
-            backdrop-filter: blur(10px);
-            z-index: 1000;
+            height: 80px;
+            background: var(--glass);
+            backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
         }
-
+        
         .nav-inner {
+            width: 100%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 70px;
         }
 
         .logo {
-            font-size: 1.25rem;
-            font-weight: 700;
             display: flex;
             align-items: center;
             gap: 12px;
-            color: var(--text-main);
+            font-weight: 800;
+            font-size: 1.25rem;
+            color: var(--on-surface);
+            text-decoration: none;
         }
+        .logo img { height: 36px; width: 36px; border-radius: 8px; }
 
-        /* Using your app icon */
-        .logo img { 
-            height: 32px; 
-            width: 32px; 
-            border-radius: 8px;
-        }
-
-        .nav-links { display: flex; gap: 30px; }
-        .nav-links a { font-size: 0.95rem; color: var(--text-muted); transition: color 0.2s; }
+        .nav-links { display: flex; gap: 32px; }
+        .nav-links a { color: var(--on-surface-variant); text-decoration: none; font-size: 0.95rem; font-weight: 500; transition: color 0.2s; }
         .nav-links a:hover { color: var(--primary); }
 
-        /* Hero Section */
+        /* --- Hero --- */
         .hero {
-            padding: 160px 0 80px 0;
-            text-align: center;
-            /* Subtle radial gradient using theme colors */
-            background: radial-gradient(circle at top center, rgba(154, 124, 255, 0.1) 0%, transparent 70%);
+            padding-top: 180px;
+            padding-bottom: 100px;
+            background: radial-gradient(circle at 50% 0%, rgba(154, 124, 255, 0.08) 0%, transparent 60%);
+        }
+        
+        .hero-content { max-width: 800px; margin: 0 auto; text-align: center; }
+        
+        .hero-image-wrapper {
+            margin-top: 60px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 40px 80px rgba(0,0,0,0.5);
+        }
+        .hero-image-wrapper img { width: 100%; display: block; }
+
+        /* --- Bento Grid / Features --- */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 24px;
+        }
+        
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 40px;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+        .card:hover { transform: translateY(-5px); border-color: var(--surface-variant); }
+        .card-icon { font-size: 2.5rem; margin-bottom: 20px; display: block; }
+        
+        /* --- Alternating Sections --- */
+        .feature-block {
+            display: flex;
+            align-items: center;
+            gap: 80px;
+            margin-bottom: 120px;
+        }
+        .feature-block.reverse { flex-direction: row-reverse; }
+        .feature-text { flex: 1; }
+        .feature-media { flex: 1; }
+        
+        .feature-media img {
+            width: 100%;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            background: var(--surface);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
         }
 
-        .hero h1 {
-            font-size: 3.5rem;
-            line-height: 1.2;
-            margin-bottom: 1.5rem;
+        .check-list { list-style: none; margin: 24px 0; }
+        .check-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 12px;
+            color: var(--on-surface-variant);
+        }
+        .check-list li::before {
+            content: "✓";
+            color: var(--primary);
             font-weight: 800;
         }
 
-        .hero p {
-            font-size: 1.25rem;
-            color: var(--text-muted);
-            margin-bottom: 2.5rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .hero-image-container {
-            margin-top: 4rem;
-            position: relative;
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.6);
-            border: 1px solid var(--border);
-            background-color: var(--bg-card);
-        }
+        /* --- Tech Specs / Repos --- */
+        .specs-section { background: var(--surface-variant); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
         
-        .hero-image-container img {
-            width: 100%;
-            display: block;
-        }
-
-        /* Features Grid */
-        .features { padding: 80px 0; }
-
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .feature-card {
-            background: var(--bg-card); /* Theme Surface */
-            padding: 2rem;
-            border-radius: 16px;
-            border: 1px solid var(--border);
-            transition: transform 0.3s, border-color 0.3s;
-        }
-
-        .feature-card:hover { 
-            transform: translateY(-5px); 
-            border-color: var(--primary); 
-        }
-
-        .feature-icon {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            color: var(--primary);
-        }
-
-        .feature-card h3 { margin-bottom: 0.5rem; font-size: 1.25rem; color: var(--text-main); }
-        .feature-card p { color: var(--text-muted); font-size: 0.95rem; }
-
-        /* Split Sections (Alternating) */
-        .split-section { padding: 80px 0; border-top: 1px solid var(--border); }
-        
-        .split-container {
-            display: flex;
-            align-items: center;
-            gap: 4rem;
-        }
-
-        .split-content { flex: 1; }
-        .split-image { flex: 1; }
-
-        .split-image img {
-            width: 100%;
-            border-radius: 12px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.4);
-            border: 1px solid var(--border);
-            background: var(--bg-card);
-        }
-
-        .split-content h2 { font-size: 2rem; margin-bottom: 1rem; color: var(--text-main); }
-        .split-content p { color: var(--text-muted); margin-bottom: 1.5rem; font-size: 1.1rem; }
-        .split-content ul { list-style: none; margin-bottom: 2rem; }
-        .split-content li {
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: var(--text-muted);
-        }
-        .split-content li::before {
-            content: "✓";
-            color: var(--primary);
-            font-weight: bold;
-        }
-
-        .reverse { flex-direction: row-reverse; }
-
-        /* Repository Logos Bar */
-        .repo-support {
-            padding: 60px 0;
-            background: var(--bg-variant); /* Theme Surface Variant */
-            text-align: center;
-        }
-        
-        .repo-logos {
+        .logos-grid {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            align-items: center;
             gap: 40px;
-            margin-top: 30px;
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .repo-logo-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .repo-logo-item img {
-            height: 48px;
-            width: auto;
-            object-fit: contain;
-            filter: grayscale(100%) brightness(1.2); /* Make them fit the theme */
-            transition: filter 0.3s;
+            margin: 40px 0 60px 0;
             opacity: 0.7;
         }
+        .logos-grid img { height: 40px; width: auto; filter: grayscale(100%); transition: filter 0.3s; }
+        .logos-grid img:hover { filter: grayscale(0%); }
 
-        .repo-logo-item:hover img {
-            filter: grayscale(0%) brightness(1); /* Color on hover */
-            opacity: 1;
-        }
-        
-        .repo-logo-item span {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-        }
-
-        /* Footer */
-        footer {
-            padding: 60px 0;
-            border-top: 1px solid var(--border);
-            text-align: center;
-            color: var(--text-muted);
-            background-color: var(--bg-dark);
-        }
-
-        .footer-links {
-            margin: 20px 0;
+        .file-types-grid {
             display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
             justify-content: center;
-            gap: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .badge {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 6px 14px;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            color: var(--on-surface-variant);
+            font-family: monospace;
         }
 
+        /* --- Footer --- */
+        footer { padding: 60px 0; text-align: center; border-top: 1px solid var(--border); font-size: 0.9rem; color: var(--on-surface-variant); }
+        .footer-links { margin-top: 20px; display: flex; justify-content: center; gap: 24px; }
+        .footer-links a { color: var(--on-surface-variant); text-decoration: none; }
+        .footer-links a:hover { color: var(--primary); }
+
+        /* --- Mobile --- */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .nav-links { display: none; }
-            .split-container { flex-direction: column; text-align: center; }
-            .reverse { flex-direction: column; }
-            .split-content li { justify-content: center; }
+            h1 { font-size: 2.5rem; }
+            .nav-links { display: none; } /* Could add hamburger menu here */
+            .feature-block, .feature-block.reverse { flex-direction: column; gap: 40px; }
+            .hero-content { padding: 0 20px; }
+            .btn-group { flex-direction: column; width: 100%; }
+            .btn { width: 100%; }
         }
     </style>
 </head>
@@ -328,162 +259,182 @@
                 MeshVault
             </a>
             <div class="nav-links">
-                <a href="#features">Features</a>
+                <a href="#android">Android</a>
                 <a href="#desktop">Desktop Hub</a>
-                <a href="#download">Download</a>
+                <a href="#server">Web Server</a>
+                <a href="#specs">Specs</a>
             </div>
-            <a href="https://play.google.com/store/apps/details?id=com.xalies.meshvault" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.9rem;">Get App</a>
+            <a href="https://play.google.com/store/apps/details?id=com.xalies.meshvault" class="btn btn-primary" style="padding: 10px 24px;">Get App</a>
         </div>
     </nav>
 
     <section class="hero">
         <div class="container">
-            <h1>Your Private Sanctuary for<br>3D Models</h1>
-            <p>A "Walled Garden" browser that organizes the chaos. <br>Find models on your phone, then beam them instantly to your PC slicer.</p>
-            <div style="display: flex; gap: 15px; justify-content: center;">
-                <a href="https://play.google.com/store/apps/details?id=com.xalies.meshvault" class="btn btn-primary">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 8px;"><path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.39L14.54,12.88L16.81,15.12M20.3,12.5L17.38,15.69L15.29,13.6L20.3,11.5C20.93,11.75 20.93,12.25 20.3,12.5M13.69,12L3.84,2.15L16.81,8.88L14.54,11.12L13.69,12M17.38,8.31L20.3,11.5L15.29,10.4L17.38,8.31Z"/></svg>
-                    Download for Android
-                </a>
-                <a href="#desktop" class="btn btn-secondary">Download Desktop Hub</a>
+            <div class="hero-content">
+                <h1>Organise the Chaos of<br>3D Printing</h1>
+                <p>The specialized browser and asset manager for 3D printing enthusiasts. <br>Find models on mobile, sync them locally, and send directly to your slicer.</p>
+                
+                <div class="btn-group">
+                    <a href="https://play.google.com/store/apps/details?id=com.xalies.meshvault" class="btn btn-primary">
+                        Download for Android
+                    </a>
+                    <a href="https://xalies.gumroad.com/l/meshvault-hub" class="btn btn-outline">
+                        Get MeshVault Hub (PC)
+                    </a>
+                </div>
             </div>
 
-            <div class="hero-image-container">
-                <img src="images/cover.png?text=MeshVault+Dashboard" alt="MeshVault Dashboard">
+            <div class="hero-image-wrapper container">
+                <img src="images/cover.png?text=MeshVault+Hero" alt="MeshVault Dashboard Interface">
             </div>
         </div>
     </section>
 
-    <section class="repo-support">
+    <section>
         <div class="container">
-            <h3>Integrated Repositories</h3>
-            <div class="repo-logos">
-                <div class="repo-logo-item">
-                    <img src="images/logo_printables.png" alt="Printables">
-                    <span>Printables</span>
+            <h2 class="text-center">One License, Two Roles</h2>
+            <p class="text-center" style="max-width: 600px; margin: 0 auto 60px auto;">
+                Buy once and get access to both apps. Your license syncs automatically when your devices connect.
+            </p>
+            <div class="bento-grid">
+                <div class="card">
+                    <span class="card-icon">🔍</span>
+                    <h3>The Mobile Scout</h3>
+                    <p>Browse Printables, MakerWorld, and more. MeshVault automatically detects downloads and grabs the metadata (Title, Author, Image) so you don't have to.</p>
                 </div>
-                <div class="repo-logo-item">
-                    <img src="images/logo_makerworld.png" alt="MakerWorld">
-                    <span>MakerWorld</span>
+                <div class="card">
+                    <span class="card-icon">🗄️</span>
+                    <h3>The Desktop Vault</h3>
+                    <p>A "Walled Garden" for your assets. It mirrors your mobile library, organizes folders, and acts as a bridge to your Slicer.</p>
                 </div>
-                <div class="repo-logo-item">
-                    <img src="images/logo_thingiverse.png" alt="Thingiverse">
-                    <span>Thingiverse</span>
-                </div>
-                <div class="repo-logo-item">
-                    <img src="images/logo_cults3d.png" alt="Cults3D">
-                    <span>Cults3D</span>
-                </div>
-                <div class="repo-logo-item">
-                    <img src="images/logo_thangs.png" alt="Thangs">
-                    <span>Thangs</span>
-                 </div>
-                 <div class="repo-logo-item">
-                    <img src="images/logo_grabcad.png" alt="GrabCAD">
-                    <span>GrabCAD</span>
-                </div>
-			    <div class="repo-logo-item">
-                    <img src="images/logo_myminifactory.png" alt="MyMiniFactory">
-                    <span>MyMiniFactory</span>
+                <div class="card">
+                    <span class="card-icon">☁️</span>
+                    <h3>Cloud Optional</h3>
+                    <p>Keep your files 100% offline on your own network, or enable Google Drive backup to sync your library across devices.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="features" class="features">
+    <section id="android">
         <div class="container">
-            <h2 class="section-title">One App, Two Roles</h2>
-            <p class="section-subtitle">Use your phone to find the treasure. Use your PC to build it.</p>
+            <div class="feature-block">
+                <div class="feature-text">
+                    <span style="color: var(--primary); font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Android App</span>
+                    <h2>Browsing, Evolved.</h2>
+                    <p>Stop downloading "File_123.zip". MeshVault captures the context of every file you save.</p>
+                    <ul class="check-list">
+                        <li><strong>Smart Metadata:</strong> Automatically fetches Title, Author, and Descriptions.</li>
+                        <li><strong>Intelligent Zip Handling:</strong> Peek inside Zips and preview 3MF contents without extracting.</li>
+                        <li><strong>Direct-to-Desktop:</strong> Tap "Download to PC" to skip your phone storage entirely.</li>
+                        <li><strong>Import & Edit:</strong> Organize existing files into Collections like "Ironman Suit".</li>
+                    </ul>
+                    <a href="https://play.google.com/store/apps/details?id=com.xalies.meshvault" class="btn btn-primary">Get it on Google Play</a>
+                </div>
+                <div class="feature-media">
+                    <img src="images/meshvaultlibrary.png" alt="MeshVault Android Library">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="desktop">
+        <div class="container">
+            <div class="feature-block reverse">
+                <div class="feature-text">
+                    <span style="color: var(--primary); font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Desktop Hub</span>
+                    <h2>Your Local Command Center</h2>
+                    <p>Built for larger screens and faster workflows. The Hub sits quietly on your network, ready to receive commands.</p>
+                    <ul class="check-list">
+                        <li><strong>Seamless Sync:</strong> Mirrors your phone's library with folder structures preserved.</li>
+                        <li><strong>Send to Slicer:</strong> Open models instantly in Cura, PrusaSlicer, or Bambu Studio.</li>
+                        <li><strong>Chrome Extension:</strong> Browsing on PC? Use the extension to grab downloads and send them straight to the Vault.</li>
+                        <li><strong>Native Previews:</strong> View STL, OBJ, STEP, and G-Code files natively.</li>
+                    </ul>
+                    <div class="btn-group" style="justify-content: flex-start;">
+                        <a href="https://xalies.gumroad.com/l/meshvault-hub" class="btn btn-outline">Download for Windows</a>
+                        <a href="#" class="btn btn-outline">Get Chrome Extension</a>
+                    </div>
+                </div>
+                <div class="feature-media">
+                    <img src="images/meshvaulthublibrary.png" alt="MeshVault Desktop Hub">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="server">
+        <div class="container">
+            <div class="feature-block">
+                <div class="feature-text">
+                    <span style="color: var(--primary); font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Integrated Web Server</span>
+                    <h2>Share Without Cables</h2>
+                    <p>Turn your phone into a local server. Access your entire library from any web browser on your network.</p>
+                    <ul class="check-list">
+                        <li><strong>Universal Access:</strong> Works on Mac, Linux, or a friend's PC. No app required.</li>
+                        <li><strong>Bulk Export:</strong> Download entire collections as a single ZIP.</li>
+                        <li><strong>Metadata Intact:</strong> Exports maintain folder structures and info files.</li>
+                    </ul>
+                </div>
+                <div class="feature-media">
+                    <img src="images/meshvaultweblibrary.png" alt="MeshVault Web Interface">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="specs" class="specs-section">
+        <div class="container text-center">
+            <h2>Supported Ecosystems</h2>
+            <p>MeshVault plays nice with the biggest names in 3D printing.</p>
             
-            <div class="feature-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">🔍</div>
-                    <h3>The Mobile Browser</h3>
-                    <p>Blocks ads and attaches smart metadata to every download. It doesn't just grab files; it grabs the context.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🏗️</div>
-                    <h3>The PC Organiser</h3>
-                    <p>Sits quietly on your network, ready to receive files and launch your slicer the moment your phone commands it.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🛡️</div>
-                    <h3>Lifetime Cross-Buy</h3>
-                    <p>Buy the Android or Windows app, and the other unlocks for free. Your license syncs automatically when you connect.</p>
-                </div>
+            <div class="logos-grid">
+                <img src="images/logo_printables.png" alt="Printables">
+                <img src="images/logo_makerworld.png" alt="MakerWorld">
+                <img src="images/logo_thingiverse.png" alt="Thingiverse">
+                <img src="images/logo_cults3d.png" alt="Cults3D">
+                <img src="images/logo_thangs.png" alt="Thangs">
+                <img src="images/logo_grabcad.png" alt="GrabCAD">
+                <img src="images/logo_myminifactory.png" alt="MyMiniFactory">
+            </div>
+
+            <h3 style="margin-top: 60px;">Indexable File Types</h3>
+            <p class="text-small" style="margin-bottom: 20px;">We scan ZIPs automatically for these formats:</p>
+            <div class="file-types-grid">
+                <span class="badge">stl</span>
+                <span class="badge">obj</span>
+                <span class="badge">3mf</span>
+                <span class="badge">step</span>
+                <span class="badge">stp</span>
+                <span class="badge">gcode</span>
+                <span class="badge">f3d</span>
+                <span class="badge">lys</span>
+                <span class="badge">ctb</span>
+                <span class="badge">glb</span>
+                <span class="badge">gltf</span>
+                <span class="badge">off</span>
+                <span class="badge">ply</span>
+                <span class="badge">scad</span>
+                <span class="badge">fbx</span>
+                <span class="badge">blend</span>
+                <span class="badge">skp</span>
+                <span class="badge">zip</span>
             </div>
         </div>
     </section>
 
-    <section class="split-section">
-        <div class="container split-container">
-            <div class="split-content">
-                <h2>MeshVault Mobile: Your Pocket Scout</h2>
-                <p>MeshVault strips away the clutter of browsing on a small screen. It grabs the files you want and organizes them so you don't have to.</p>
-                <ul>
-                    <li><strong>Smart Metadata:</strong> Forget "File_123.zip". MeshVault attaches the correct Title, Author, and Source URL to the file, so you always know what it is.</li>
-                    <li><strong>Intelligent Zip Handling:</strong> Downloads the zip but lets you peek inside and use the contents immediately without creating a mess of extracted folders.</li>
-                    <li><strong>Direct-to-Slicer:</strong> Found a model? Tap "Send to Slicer" and it opens instantly in Cura, PrusaSlicer, or Bambu Studio on your PC.</li>
-                    <li><strong>Native Viewer:</strong> Preview your assets in 3D: STL, OBJ, STEP, 3MF, and G-Code.</li>
-                    <li><strong>Folders vs. Collections:</strong> Store parts in folders (e.g. "Helmets"), then group them into a "Ironman: Mark 85 Armour" Collection that spans multiple folder accross your library.</li>
-                </ul>
-                <a href="https://play.google.com/store/apps/details?id=com.xalies.meshvault" class="btn btn-secondary" style="margin-top: 10px;">Get MeshVault for Android</a>
-            </div>
-            <div class="split-image">
-                <img src="images/meshvaultlibrary.png?text=Library+View" alt="Library View">
-            </div>
-        </div>
-    </section>
-
-    <section id="desktop" class="split-section">
-        <div class="container split-container reverse">
-            <div class="split-content">
-                <h2>MeshVault Hub (PC): The Receiver</h2>
-                <p>Your PC is the workhorse. MeshVault Hub ensures it's always ready to catch what you send.</p>
-                <ul>
-                    <li><strong>Silent Partner:</strong> Runs in the background, waiting for files from your phone.</li>
-                    <li><strong>Desktop Organization:</strong> Manage your massive library with the comfort of a mouse and keyboard.</li>
-                    <li><strong>Fully Offline:</strong> No cloud accounts, no subscriptions. Your files stay on your hard drive.</li>
-                </ul>
-                <a href="https://xalies.gumroad.com/l/meshvault-hub" class="btn btn-secondary" data-gumroad-single-product="true" style="margin-top: 10px;">Get MeshVault Hub</a>
-            </div>
-            <div class="split-image">
-                <img src="images/meshvaulthublibrary.png?text=MeshVault+Hub" alt="MeshVault Hub">
-            </div>
-        </div>
-    </section>
-    
-    <section id="web" class="split-section">
-        <div class="container split-container">
-            <div class="split-content">
-                <h2>MeshVault Web: Access Anywhere</h2>
-                <p>Need a file on a friend's computer or a Mac? Turn your phone into a portable server.</p>
-                <ul>
-                    <li><strong>Phone-as-Server:</strong> Activate "Web Mode" to browse your phone's library from any browser on your local network.</li>
-                    <li><strong>Bulk Download:</strong> Grab entire folders or project collections as a single ZIP.</li>
-                    <li><strong>Metadata Intact:</strong> Files are packed with their folder structure and info preserved.</li>
-                    <li><strong>Zero Setup:</strong> No software installation required on the receiving computer.</li>
-                </ul>
-            </div>
-            <div class="split-image">
-                <img src="images/meshvaultweblibrary.png?text=MeshVault+Web" alt="MeshVault Web">
-            </div>
-        </div>
-    </section>
-
-    <footer id="download">
+    <footer>
         <div class="container">
-            <h2>Ready to upgrade your workflow?</h2>
+            <h2>Upgrade your workflow.</h2>
             <div class="footer-links">
-                <a href="https://play.google.com/store/apps/details?id=com.xalies.meshvault" class="btn btn-primary">Get it on Google Play</a>
+                <a href="https://play.google.com/store/apps/details?id=com.xalies.meshvault">Android App</a>
+                <a href="https://xalies.gumroad.com/l/meshvault-hub">Windows Hub</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Contact</a>
             </div>
-            <p style="font-size: 0.9rem; opacity: 0.6; margin-top: 40px;">&copy; 2026 MeshVault. Not affiliated with any of the listed repositories.</p>
-            <div style="margin-top: 10px; font-size: 0.85rem;">
-                <a href="#" style="margin: 0 10px;">Privacy Policy</a> • 
-                <a href="#" style="margin: 0 10px;">GitHub</a> • 
-                <a href="#" style="margin: 0 10px;">Contact</a>
-            </div>
+            <p style="margin-top: 30px; opacity: 0.5;">&copy; 2026 MeshVault. Not affiliated with the listed repositories.</p>
         </div>
     </footer>
+
 </body>
 </html>
