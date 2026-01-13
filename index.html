@@ -3,12 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MeshVault - The Ultimate 3D Asset Manager</title>
+	<title>MeshVault - STL Organizer & 3D Asset Manager</title>
     <meta name="description" content="Organize your 3D printing models, browse repositories, and sync wirelessly to your desktop.">
-    
+	
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://www.meshvault.app/" />
+	<meta property="og:title" content="MeshVault - The Ultimate 3D Asset Manager & STL Organizer" />
+	<meta property="og:description" content="Stop losing your 3D models. Organize STLs, sync wirelessly to your slicer, and manage your 3D printing library across Android and Windows." />
+	<meta property="og:image" content="https://www.meshvault.app/images/cover.png" />
+
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:url" content="https://www.meshvault.app/" />
+	<meta name="twitter:title" content="MeshVault - 3D Printing Asset Manager" />
+	<meta name="twitter:description" content="Organize your 3D printing models, browse repositories like Printables/MakerWorld, and sync wirelessly to your desktop." />
+	<meta name="twitter:image" content="https://www.meshvault.app/images/cover.png" />
+	
+	<link rel="icon" type="image/png" href="images/meshvault_512x512.png">
+	<link rel="canonical" href="https://www.meshvault.app/" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+	<script type="application/ld+json">
+	{
+	"@context": "https://schema.org",
+	"@graph": [
+		{
+		"@type": "SoftwareApplication",
+		"name": "MeshVault Android",
+		"operatingSystem": "Android",
+		"applicationCategory": "ProductivityApplication",
+		"offers": {
+			"@type": "Offer",
+			"price": "25",
+			"priceCurrency": "AUD"
+		},
+		"aggregateRating": {
+			"@type": "AggregateRating",
+			"ratingValue": "4.8", 
+			"ratingCount": "50"
+		},
+		"downloadUrl": "https://play.google.com/store/apps/details?id=com.xalies.meshvault"
+		},
+		{
+		"@type": "SoftwareApplication",
+		"name": "MeshVault Hub",
+		"operatingSystem": "Windows 10, Windows 11",
+		"applicationCategory": "UtilitiesApplication",
+		"description": "Desktop hub for syncing 3D models and managing local asset libraries.",
+		"downloadUrl": "https://xalies.gumroad.com/l/meshvault-hub"
+		},
+		{
+		"@type": "WebSite",
+		"name": "MeshVault",
+		"url": "https://www.meshvault.app/",
+		"potentialAction": {
+			"@type": "SearchAction",
+			"target": "https://www.meshvault.app/?q={search_term_string}",
+			"query-input": "required name=search_term_string"
+		}
+		}
+	]
+	}
+	</script>
 
     <style>
         :root {
@@ -270,7 +326,7 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1>Organise the Chaos of<br>3D Printing</h1>
+                <h1>Organise your STL Library and<br>3D Printing Workflow</h1>
                 <p>The specialized browser and asset manager for 3D printing enthusiasts. <br>Find models on mobile, sync them locally, and send directly to your slicer.</p>
                 
                 <div class="btn-group">
