@@ -1,0 +1,26 @@
+Privacy Policy – MeshVault Connector
+The MeshVault Connector extension collects only the minimum data needed to capture supported 3D model downloads and send them to the MeshVault desktop app running on the user’s computer.
+
+What we access
+
+Website content on supported sites (page titles, author names, tags, and thumbnail URLs) to build metadata for saved models.
+Download events and URLs to capture files.
+The active tab URL to detect supported sites.
+Local extension settings (default save folder and prompt‑per‑download).
+What we do NOT collect
+
+No keystrokes, mouse position, or form data.
+No browsing history beyond the current supported page.
+No data is sold or shared with third parties.
+
+Where data goes
+
+Captured files and metadata are sent only to the MeshVault desktop app on the same machine (localhost).
+No data is sent to external servers.
+
+Data retention
+
+Settings are stored locally in the browser.
+Files and metadata are stored in the user’s MeshVault library on their device.
+Contact
+If you have questions, contact: xalies1983@gmail.com
