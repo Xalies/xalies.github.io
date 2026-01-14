@@ -1,3 +1,4 @@
 User-agent: *
+Disallow: /key.txt
 Allow: /
 Sitemap: https://www.meshvault.app/sitemap.xml
