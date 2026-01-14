@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>MeshVault - STL Organizer & 3D Asset Manager</title>
-    <meta name="description" content="Organize your 3D printing models, browse repositories, and sync wirelessly to your desktop.">
+	<title>MeshVault - The 3D Asset Manager for Desktop & Mobile</title>
+    <meta name="description" content="The ultimate STL organizer for Windows. Manage your 3D printing library, preview files locally, and sync wirelessly with the Android companion app.">
 	
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="https://www.meshvault.app/" />
-	<meta property="og:title" content="MeshVault - The Ultimate 3D Asset Manager & STL Organizer" />
-	<meta property="og:description" content="Stop losing your 3D models. Organize STLs and other model files, sync wirelessly to your slicer, and manage your 3D printing library across Android and Windows." />
-	<meta property="og:image" content="https://www.meshvault.app/images/cover.png" />
+	<meta property="og:title" content="MeshVault - 3D Asset Manager for Windows & Android" />
+	<meta property="og:description" content="Organize your STLs on your desktop. Sync wirelessly with your phone. One license covers both devices." />
+	<meta property="og:image" content="https://www.meshvault.app/images/meshvaulthublibrary.png" />
 
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:url" content="https://www.meshvault.app/" />
-	<meta name="twitter:title" content="MeshVault - 3D Printing Asset Manager" />
-	<meta name="twitter:description" content="Organize your 3D printing models, browse repositories like Printables/MakerWorld, and sync wirelessly to your desktop." />
-	<meta name="twitter:image" content="https://www.meshvault.app/images/cover.png" />
+	<meta name="twitter:title" content="MeshVault - 3D Asset Manager" />
+	<meta name="twitter:description" content="Organize your STLs on your desktop. Sync wirelessly with your phone. One license covers both devices." />
+	<meta name="twitter:image" content="https://www.meshvault.app/images/meshvaulthublibrary.png" />
 	
 	<link rel="icon" type="image/png" href="images/meshvault_512x512.png">
 	<link rel="canonical" href="https://www.meshvault.app/" />
@@ -27,24 +27,6 @@
 	{
 	"@context": "https://schema.org",
 	"@graph": [
-		{
-		"@type": "SoftwareApplication",
-		"name": "MeshVault Android",
-		"operatingSystem": "Android",
-		"applicationCategory": "ProductivityApplication",
-		"offers": {
-			"@type": "Offer",
-			"price": "25",
-			"priceCurrency": "AUD"
-		},
-		"aggregateRating": {
-			"@type": "AggregateRating",
-			"ratingValue": "4.8", 
-			"ratingCount": "50"
-		},
-		"description": "Android application for syncing 3D models and managing local asset libraries.",
-		"downloadUrl": "https://play.google.com/store/apps/details?id=com.xalies.meshvault"
-		},
 		{
 		"@type": "SoftwareApplication",
 		"name": "MeshVault Hub",
@@ -63,6 +45,24 @@
 		"description": "Windows application for syncing 3D models and managing local asset libraries.",
 		"downloadUrl": "https://xalies.gumroad.com/l/meshvault-hub"
 		},
+				{
+		"@type": "SoftwareApplication",
+		"name": "MeshVault Android",
+		"operatingSystem": "Android",
+		"applicationCategory": "ProductivityApplication",
+		"offers": {
+			"@type": "Offer",
+			"price": "25",
+			"priceCurrency": "AUD"
+		},
+		"aggregateRating": {
+			"@type": "AggregateRating",
+			"ratingValue": "4.8", 
+			"ratingCount": "50"
+		},
+		"description": "Android application for syncing 3D models and managing local asset libraries.",
+		"downloadUrl": "https://play.google.com/store/apps/details?id=com.xalies.meshvault"
+		}
 		{
 		"@type": "WebSite",
 		"name": "MeshVault",
@@ -72,6 +72,14 @@
 			"target": "https://www.meshvault.app/?q={search_term_string}",
 			"query-input": "required name=search_term_string"
 		}
+	]},
+		{
+		"@type": "SoftwareApplication",
+		"name": "MeshVault Android",
+		"operatingSystem": "Android",
+		"applicationCategory": "UtilitiesApplication",
+		"description": "Mobile companion app for MeshVault.",
+		"downloadUrl": "https://play.google.com/store/apps/details?id=com.xalies.meshvault"
 		}
 	]
 	}
@@ -117,6 +125,7 @@
         
         .text-center { text-align: center; }
         .text-small { font-size: 0.9rem; }
+        .text-accent { color: var(--primary); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 8px; }
 
         /* --- Layout --- */
         .container {
@@ -161,6 +170,14 @@
         .btn-outline:hover {
             border-color: var(--primary);
             color: var(--primary);
+        }
+        
+        .btn-disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            background: var(--surface-variant);
+            border-color: transparent;
+            color: var(--on-surface-variant);
         }
 
         /* --- Navbar --- */
@@ -326,10 +343,9 @@
                 MeshVault
             </a>
             <div class="nav-links">
-                <a href="#android">Android</a>
                 <a href="#desktop">Desktop Hub</a>
+                <a href="#android">Android Companion</a>
                 <a href="#server">Web Server</a>
-                <a href="#specs">Specs</a>
             </div>
         </div>
     </nav>
@@ -337,68 +353,46 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1>Organise your STL Library and<br>3D Printing Workflow</h1>
-                <p>The specialized browser and asset manager for 3D printing enthusiasts. <br>Find models on mobile, sync them locally, and send directly to your slicer.</p>
+                <h1>The 3D Asset Manager<br>for your Desktop.</h1>
+                <p>Organize, preview, and slice your STLs instantly.<br>Control it all wirelessly from your phone.</p>
                 
                 <div class="btn-group">
-                    <a href="https://play.google.com/store/apps/details?id=com.xalies.meshvault" class="btn btn-primary">
-                        Download for Android
+                    <a href="https://xalies.gumroad.com/l/meshvault-hub" class="btn btn-primary">
+                        Download for Windows
                     </a>
-                    <a href="https://xalies.gumroad.com/l/meshvault-hub" class="btn btn-outline">
-                        Get MeshVault Hub (PC)
+                    <a href="https://play.google.com/store/apps/details?id=com.xalies.meshvault" class="btn btn-outline">
+                        Get Android Companion
                     </a>
                 </div>
             </div>
 
             <div class="hero-image-wrapper container">
-                <img src="images/cover.png?text=MeshVault+Hero" alt="MeshVault Dashboard Interface">
+                <img src="images/meshvaulthublibrary.png" alt="MeshVault Desktop Dashboard">
             </div>
         </div>
     </section>
 
     <section>
         <div class="container">
-            <h2 class="text-center">One License, Two Roles</h2>
+            <h2 class="text-center">One License, Two Devices</h2>
             <p class="text-center" style="max-width: 600px; margin: 0 auto 60px auto;">
-                Buy once and get access to both apps. Your license syncs automatically when your devices connect.
+                Buy MeshVault on your preferred platform. Connect your devices to unlock the full ecosystem automatically.
             </p>
             <div class="bento-grid">
                 <div class="card">
-                    <span class="card-icon">🔍</span>
-                    <h3>The Mobile Scout</h3>
-                    <p>Browse Printables, MakerWorld, and more. MeshVault automatically detects downloads and grabs the metadata (Title, Author, Image) so you don't have to.</p>
-                </div>
-                <div class="card">
                     <span class="card-icon">🗄️</span>
                     <h3>The Desktop Vault</h3>
-                    <p>A "Walled Garden" for your assets. Browse using our chrome extension to download directlt to your library, organises folders, and acts as a bridge to your Slicer for the Android app.</p>
+                    <p>A specialized "Walled Garden" for your assets. Organize folders, preview 3D files natively (STL, OBJ, STEP), and send them directly to your Slicer.</p>
                 </div>
                 <div class="card">
-                    <span class="card-icon">☁️</span>
-                    <h3>Cloud Optional</h3>
-                    <p>Keep your files 100% offline on your own network, or enable Google Drive backup to sync your library across devices.</p>
+                    <span class="card-icon">📲</span>
+                    <h3>The Mobile Remote</h3>
+                    <p>Browse Printables & MakerWorld on your phone. MeshVault grabs the files and metadata, then sends them wirelessly to your PC.</p>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="android">
-        <div class="container">
-            <div class="feature-block">
-                <div class="feature-text">
-                    <span style="color: var(--primary); font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Android App</span>
-                    <h2>Browsing, Evolved.</h2>
-                    <p>Stop downloading "File_123.zip". MeshVault captures the context of every file you save.</p>
-                    <ul class="check-list">
-                        <li><strong>Smart Metadata:</strong> Automatically fetches Title, Author, and Descriptions.</li>
-                        <li><strong>Intelligent Zip Handling:</strong> Peek inside Zips and preview 3MF contents without extracting.</li>
-                        <li><strong>Direct-to-Desktop:</strong> Tap "Download to PC" to skip your phone storage entirely.</li>
-                        <li><strong>Import & Edit:</strong> Organize existing files into Collections like "Ironman Suit".</li>
-                    </ul>
-                    <a href="https://play.google.com/store/apps/details?id=com.xalies.meshvault" class="btn btn-primary">Get it on Google Play</a>
-                </div>
-                <div class="feature-media">
-                    <img src="images/meshvaultlibrary.png" alt="MeshVault Android Library">
+                <div class="card">
+                    <span class="card-icon">🔓</span>
+                    <h3>Cross-Platform Unlock</h3>
+                    <p>Purchased on Windows? Connect your phone to unlock Android Pro features. Purchased on Mobile? Connect to your PC to unlock the Desktop Hub.</p>
                 </div>
             </div>
         </div>
@@ -406,24 +400,46 @@
 
     <section id="desktop">
         <div class="container">
-            <div class="feature-block reverse">
+            <div class="feature-block">
                 <div class="feature-text">
-                    <span style="color: var(--primary); font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Desktop Hub</span>
+                    <span class="text-accent">Desktop Hub</span>
                     <h2>Your Local Command Center</h2>
-                    <p>Built for larger screens and faster workflows. The Hub sits quietly on your network, ready to receive commands.</p>
+                    <p>Built for large libraries and fast workflows. The Hub sits quietly on your network, organizing your files and ready to receive commands from your phone.</p>
                     <ul class="check-list">
+                        <li><strong>Native Previews:</strong> View STL, OBJ, STEP, and G-Code files instantly without opening heavy CAD software.</li>
                         <li><strong>Seamless Sync:</strong> Mirrors your phone's library with folder structures preserved.</li>
                         <li><strong>Send to Slicer:</strong> Open models instantly in Cura, PrusaSlicer, or Bambu Studio.</li>
-                        <li><strong>Chrome Extension:</strong> Browsing on PC? Use the extension to grab downloads and send them straight to the Vault.</li>
-                        <li><strong>Native Previews:</strong> View STL, OBJ, STEP, and G-Code files natively.</li>
+                        <li><strong>Chrome Extension:</strong> Browsing on PC? Use the extension to download files directly into your Vault.</li>
                     </ul>
-                    <div class="btn-group" style="justify-content: flex-start;">
-                        <a href="https://xalies.gumroad.com/l/meshvault-hub" class="btn btn-outline">Download for Windows</a>
-                        <a href="#" class="btn btn-outline">Get Chrome Extension</a>
+                    <div class="btn-group" style="justify-content: flex-start; margin-top: 30px;">
+                        <a href="https://xalies.gumroad.com/l/meshvault-hub" class="btn btn-primary">Download for Windows</a>
+                        <a href="#" class="btn btn-outline" title="Pending Store Approval">Chrome Extension (Soon)</a>
                     </div>
                 </div>
                 <div class="feature-media">
-                    <img src="images/meshvaulthublibrary.png" alt="MeshVault Desktop Hub">
+                    <img src="images/meshvaulthublibrary.png" alt="MeshVault Desktop Hub Interface">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="android">
+        <div class="container">
+            <div class="feature-block reverse">
+                <div class="feature-text">
+                    <span class="text-accent">Android Companion</span>
+                    <h2>Browsing, Evolved.</h2>
+                    <p>Stop downloading "File_123.zip". MeshVault captures the context of every file you save from the web.</p>
+                    <ul class="check-list">
+                        <li><strong>Smart Metadata:</strong> Automatically fetches Title, Author, and Images from repositories.</li>
+                        <li><strong>Intelligent Zip Handling:</strong> Peek inside Zips and preview 3MF contents without extracting.</li>
+                        <li><strong>Direct-to-Desktop:</strong> Tap "Download to PC" to skip your phone storage entirely.</li>
+                        <li><strong>Local Organization:</strong> Manage your collections on the go.</li>
+                    </ul>
+                    <a href="https://play.google.com/store/apps/details?id=com.xalies.meshvault" class="btn btn-outline">Get it on Google Play</a>
+                </div>
+                <div class="feature-media">
+                    <img src="images/meshvaultlibrary.png" alt="MeshVault Android Library">
                 </div>
             </div>
         </div>
@@ -433,13 +449,13 @@
         <div class="container">
             <div class="feature-block">
                 <div class="feature-text">
-                    <span style="color: var(--primary); font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Integrated Web Server</span>
+                    <span class="text-accent">Integrated Web Server</span>
                     <h2>Share Without Cables</h2>
-                    <p>Turn your phone into a local server. Access your entire library from any web browser on your network.</p>
+                    <p>Turn your phone into a local server. Access your entire library from any web browser on your network to download files or manage metadata.</p>
                     <ul class="check-list">
                         <li><strong>Universal Access:</strong> Works on Mac, Linux, or a friend's PC. No app required.</li>
                         <li><strong>Bulk Export:</strong> Download entire collections as a single ZIP.</li>
-                        <li><strong>Metadata Intact:</strong> Exports maintain folder structures and info files.</li>
+                        <li><strong>Metadata Intact:</strong> Exports maintain folder structures and JSON info files.</li>
                     </ul>
                 </div>
                 <div class="feature-media">
@@ -493,10 +509,9 @@
         <div class="container">
             <h2>Upgrade your workflow.</h2>
             <div class="footer-links">
-                <a href="https://play.google.com/store/apps/details?id=com.xalies.meshvault">Android App</a>
                 <a href="https://xalies.gumroad.com/l/meshvault-hub">Windows Hub</a>
+                <a href="https://play.google.com/store/apps/details?id=com.xalies.meshvault">Android App</a>
                 <a href="#">Privacy Policy</a>
-                <a href="#">Contact</a>
             </div>
             <p style="margin-top: 30px; opacity: 0.5;">&copy; 2026 MeshVault.</p>
         </div>
