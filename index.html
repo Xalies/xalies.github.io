@@ -332,10 +332,84 @@
             .btn-group { flex-direction: column; width: 100%; }
             .btn { width: 100%; }
         }
+		/* --- Install Success Modal --- */
+		.modal-overlay {
+			display: none; /* Hidden by default */
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: rgba(0, 0, 0, 0.8);
+			backdrop-filter: blur(5px);
+			z-index: 2000;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.modal-content {
+			background: var(--surface);
+			border: 1px solid var(--primary);
+			padding: 40px;
+			border-radius: 24px;
+			max-width: 500px;
+			text-align: center;
+			box-shadow: 0 0 50px rgba(154, 124, 255, 0.2);
+			position: relative;
+		}
+
+		.close-modal {
+			position: absolute;
+			top: 15px;
+			right: 20px;
+			background: none;
+			border: none;
+			color: var(--on-surface-variant);
+			font-size: 1.5rem;
+			cursor: pointer;
+		}
     </style>
 </head>
 <body>
+	<div id="installModal" class="modal-overlay">
+		<div class="modal-content">
+			<button class="close-modal" onclick="closeModal()">×</button>
+			<span style="font-size: 3rem;">🎉</span>
+			<h2 style="margin-top: 20px;">Extension Installed!</h2>	
+			<p>Your browser is now ready to send models to MeshVault.</p>
+			<p>Make sure you have <strong>MeshVault Hub</strong> running to receive files.</p>
+            <br>
+			<p style="font-size: 0.85rem; font-style: italic; opacity: 0.8; margin-top: 10px;">You can still use this extension without MeshVault Hub for an ad free experience on supported sites. You should disable the MeshVault check in the options menu in this extension.</p>
+			<a href="https://meshvault.lemonsqueezy.com/checkout/buy/55a16f70-5c0a-4fd8-a808-5b0108fd6d71?embed=1&media=0&logo=0&desc=0&discount=0"  class="btn btn-primary lemonsqueezy-button">Download for Windows</a><script src="https://assets.lemonsqueezy.com/lemon.js" defer></script>
+		</div>
+	</div>
 
+	<script>
+		// 1. Check if the user came from the extension installation
+		const urlParams = new URLSearchParams(window.location.search);
+		
+		if (urlParams.get('source') === 'extension_install') {
+			// Show the modal
+			document.getElementById('installModal').style.display = 'flex';
+			
+			// Optional: Remove the ugly query param from the address bar so the URL looks clean
+			const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
+			window.history.pushState({path: newUrl}, '', newUrl);
+		}
+	
+		// Function to close modal
+		function closeModal() {
+			document.getElementById('installModal').style.display = 'none';
+		}
+    
+	// Close if clicking outside the box
+		window.onclick = function(event) {
+			const modal = document.getElementById('installModal');
+			if (event.target === modal) {
+				modal.style.display = "none";
+			}
+		}
+	</script>
     <nav>
         <div class="container nav-inner">
             <a href="#" class="logo">
