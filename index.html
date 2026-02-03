@@ -1,601 +1,557 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>MeshVault - The 3D Asset Manager for Desktop & Mobile</title>
-    <meta name="description" content="The ultimate STL organizer for Windows. Manage your 3D printing library, preview files locally, and sync wirelessly with the Android companion app.">
-	
-	<meta property="og:type" content="website" />
-	<meta property="og:url" content="https://www.meshvault.app/" />
-	<meta property="og:title" content="MeshVault - 3D Asset Manager for Windows & Android" />
-	<meta property="og:description" content="Organize your STLs on your desktop. Sync wirelessly with your phone. One license covers both devices." />
-	<meta property="og:image" content="https://www.meshvault.app/images/meshvaulthublibrary.png" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MeshVault: STL and 3D Model Library Manager for Windows & Android</title>
+  <meta name="description" content="Organize STL files and more: 3MF, OBJ, STEP, G-code, ZIP, and dozens of 3D formats. Capture downloads with metadata on Windows & Android.">
 
-	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:url" content="https://www.meshvault.app/" />
-	<meta name="twitter:title" content="MeshVault - 3D Asset Manager" />
-	<meta name="twitter:description" content="Organize your STLs on your desktop. Sync wirelessly with your phone. One license covers both devices." />
-	<meta name="twitter:image" content="https://www.meshvault.app/images/meshvaulthublibrary.png" />
-	
-	<link rel="icon" type="image/png" href="images/meshvault_512x512.png">
-	<link rel="canonical" href="https://www.meshvault.app/" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.meshvault.app/">
+  <meta property="og:title" content="MeshVault: STL and 3D Model Library Manager for Windows & Android">
+  <meta property="og:description" content="Organize STL files and more: 3MF, OBJ, STEP, G-code, ZIP, and dozens of 3D formats. Capture downloads with metadata on Windows & Android.">
+  <meta property="og:image" content="https://www.meshvault.app/images/meshvaulthublibrary.png">
 
-    <script type="application/ld+json">
-	{
-	"@context": "https://schema.org",
-	"@graph": [
-		{
-		"@type": "SoftwareApplication",
-		"name": "MeshVault Hub",
-		"operatingSystem": "Windows 10, Windows 11",
-		"applicationCategory": "UtilitiesApplication",
-		"offers": {
-			"@type": "Offer",
-			"price": "25",
-			"priceCurrency": "AUD"
-		},
-		"aggregateRating": {
-			"@type": "AggregateRating",
-			"ratingValue": "4.8", 
-			"ratingCount": "50"
-		},
-		"description": "Windows application for syncing 3D models and managing local asset libraries.",
-		"downloadUrl": "https://xalies.gumroad.com/l/meshvault-hub"
-		},
-		{
-		"@type": "SoftwareApplication",
-		"name": "MeshVault Android",
-		"operatingSystem": "Android",
-		"applicationCategory": "ProductivityApplication",
-		"offers": {
-			"@type": "Offer",
-			"price": "25",
-			"priceCurrency": "AUD"
-		},
-		"aggregateRating": {
-			"@type": "AggregateRating",
-			"ratingValue": "4.8", 
-			"ratingCount": "50"
-		},
-		"description": "Android application for syncing 3D models and managing local asset libraries.",
-		"downloadUrl": "https://play.google.com/store/apps/details?id=com.xalies.meshvault"
-		},
-		{
-		"@type": "WebSite",
-		"name": "MeshVault",
-		"url": "https://www.meshvault.app/",
-		"potentialAction": {
-			"@type": "SearchAction",
-			"target": "https://www.meshvault.app/?q={search_term_string}",
-			"query-input": "required name=search_term_string"
-		}
-		},
-		{
-		"@type": "SoftwareApplication",
-		"name": "MeshVault Android",
-		"operatingSystem": "Android",
-		"applicationCategory": "UtilitiesApplication",
-		"description": "Mobile companion app for MeshVault.",
-		"downloadUrl": "https://play.google.com/store/apps/details?id=com.xalies.meshvault"
-		}
-	]
-	}
-	</script>
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://www.meshvault.app/">
+  <meta name="twitter:title" content="MeshVault: STL and 3D Model Library Manager for Windows & Android">
+  <meta name="twitter:description" content="Organize STL files and more: 3MF, OBJ, STEP, G-code, ZIP, and dozens of 3D formats. Capture downloads with metadata on Windows & Android.">
+  <meta name="twitter:image" content="https://www.meshvault.app/images/meshvaulthublibrary.png">
 
-    <style>
-        :root {
-            /* MeshVaultDarkColors from MeshVaultTheme.kt */
-            --primary: #9A7CFF;
-            --on-primary: #000000;
-            --secondary: #B39DDB;
-            --surface: #1E1B1F;
-            --surface-variant: #2F2C33;
-            --on-surface: #F2E7FE;
-            --on-surface-variant: #CAC4D0;
-            --background: #121212;
-            --error: #CF6679;
-            
-            --border: #2F2C33;
-            --glass: rgba(30, 27, 31, 0.8);
-        }
+  <link rel="icon" type="image/png" href="images/meshvault_512x512.png">
+  <link rel="canonical" href="https://www.meshvault.app/">
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--background);
-            color: var(--on-surface);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "MeshVault",
+    "operatingSystem": "Windows, Android",
+    "applicationCategory": "DesignApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "20",
+      "priceCurrency": "AUD"
+    },
+    "description": "Organize STL files and more: 3MF, OBJ, STEP, G-code, ZIP, and dozens of 3D formats. Capture downloads with metadata on Windows & Android.",
+    "softwareRequirements": "Windows 10, Android 10+",
+    "image": "https://www.meshvault.app/images/meshvaulthublibrary.png",
+    "downloadUrl": "https://meshvault.lemonsqueezy.com/checkout/buy/55a16f70-5c0a-4fd8-a808-5b0108fd6d71"
+  }
+  </script>
 
-        /* --- Typography --- */
-        h1, h2, h3 { font-weight: 800; letter-spacing: -0.02em; }
-        h1 { font-size: 3.5rem; line-height: 1.1; margin-bottom: 1.5rem; background: linear-gradient(to right, #fff, var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        h2 { font-size: 2.25rem; margin-bottom: 1rem; color: var(--on-surface); }
-        h3 { font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--on-surface); }
-        p { color: var(--on-surface-variant); font-size: 1.1rem; margin-bottom: 1.5rem; }
-        
-        .text-center { text-align: center; }
-        .text-small { font-size: 0.9rem; }
-        .text-accent { color: var(--primary); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 8px; }
+  <style>
+    :root {
+      --primary: #9A7CFF;
+      --secondary: #B39DDB;
+      --surface: #1E1B1F;
+      --surface-variant: #2F2C33;
+      --on-surface: #F2E7FE;
+      --on-surface-variant: #CAC4D0;
+      --background: #121212;
+      --border: #2F2C33;
+      --shadow: rgba(0, 0, 0, 0.35);
+      --shadow-strong: rgba(0, 0, 0, 0.55);
+      --radius-lg: 28px;
+      --radius-md: 18px;
+      --radius-sm: 12px;
+      --max: 1200px;
+    }
 
-        /* --- Layout --- */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        section { padding: 100px 0; }
-        
-        /* --- Buttons --- */
-        .btn-group { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
-        
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 14px 32px;
-            border-radius: 12px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.2s ease;
-            cursor: pointer;
-            border: 1px solid transparent;
-        }
+    body {
+      font-family: "Space Grotesk", system-ui, -apple-system, sans-serif;
+      background: radial-gradient(circle at 20% 0%, rgba(154, 124, 255, 0.12) 0%, transparent 45%), var(--background);
+      color: var(--on-surface);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
 
-        .btn-primary {
-            background-color: var(--primary);
-            color: var(--on-primary);
-        }
-        .btn-primary:hover {
-            background-color: var(--secondary);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 20px rgba(154, 124, 255, 0.3);
-        }
+    a { color: inherit; }
 
-        .btn-outline {
-            background-color: transparent;
-            border-color: var(--surface-variant);
-            color: var(--on-surface);
-        }
-        .btn-outline:hover {
-            border-color: var(--primary);
-            color: var(--primary);
-        }
-        
-        .btn-disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            background: var(--surface-variant);
-            border-color: transparent;
-            color: var(--on-surface-variant);
-        }
+    .container {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
 
-        /* --- Navbar --- */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            height: 80px;
-            background: var(--glass);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border);
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-        }
-        
-        .nav-inner {
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(30, 27, 31, 0.75);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(10px);
+    }
 
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-weight: 800;
-            font-size: 1.25rem;
-            color: var(--on-surface);
-            text-decoration: none;
-        }
-        .logo img { height: 36px; width: 36px; border-radius: 8px; }
+    .nav {
+      height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
 
-        .nav-links { display: flex; gap: 32px; }
-        .nav-links a { color: var(--on-surface-variant); text-decoration: none; font-size: 0.95rem; font-weight: 500; transition: color 0.2s; }
-        .nav-links a:hover { color: var(--primary); }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 1.15rem;
+      letter-spacing: -0.01em;
+    }
 
-        /* --- Hero --- */
-        .hero {
-            padding-top: 180px;
-            padding-bottom: 100px;
-            background: radial-gradient(circle at 50% 0%, rgba(154, 124, 255, 0.08) 0%, transparent 60%);
-        }
-        
-        .hero-content { max-width: 800px; margin: 0 auto; text-align: center; }
-        
-        .hero-image-wrapper {
-            margin-top: 60px;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 40px 80px rgba(0,0,0,0.5);
-        }
-        .hero-image-wrapper img { width: 100%; display: block; }
+    .logo img {
+      height: 36px;
+      width: 36px;
+      border-radius: 10px;
+      box-shadow: 0 6px 16px var(--shadow);
+    }
 
-        /* --- Bento Grid / Features --- */
-        .bento-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 24px;
-        }
-        
-        .card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 24px;
-            padding: 40px;
-            transition: transform 0.3s ease, border-color 0.3s ease;
-        }
-        .card:hover { transform: translateY(-5px); border-color: var(--surface-variant); }
-        .card-icon { font-size: 2.5rem; margin-bottom: 20px; display: block; }
-        
-        /* --- Alternating Sections --- */
-        .feature-block {
-            display: flex;
-            align-items: center;
-            gap: 80px;
-            margin-bottom: 120px;
-        }
-        .feature-block.reverse { flex-direction: row-reverse; }
-        .feature-text { flex: 1; }
-        .feature-media { flex: 1; }
-        
-        .feature-media img {
-            width: 100%;
-            border-radius: 16px;
-            border: 1px solid var(--border);
-            background: var(--surface);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-        }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      font-size: 0.95rem;
+    }
 
-        .check-list { list-style: none; margin: 24px 0; }
-        .check-list li {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            margin-bottom: 12px;
-            color: var(--on-surface-variant);
-        }
-        .check-list li::before {
-            content: "✓";
-            color: var(--primary);
-            font-weight: 800;
-        }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--on-surface-variant);
+      font-weight: 600;
+    }
 
-        /* --- Tech Specs / Repos --- */
-        .specs-section { background: var(--surface-variant); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-        
-        .logos-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 40px;
-            margin: 40px 0 60px 0;
-            opacity: 0.7;
-        }
-        .logos-grid img { height: 40px; width: auto; filter: grayscale(100%); transition: filter 0.3s; }
-        .logos-grid img:hover { filter: grayscale(0%); }
+    .nav-cta {
+      display: flex;
+      gap: 12px;
+    }
 
-        .file-types-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            justify-content: center;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        .badge {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            padding: 6px 14px;
-            border-radius: 100px;
-            font-size: 0.85rem;
-            color: var(--on-surface-variant);
-            font-family: monospace;
-        }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 22px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+      cursor: pointer;
+    }
 
-        /* --- Footer --- */
-        footer { padding: 60px 0; text-align: center; border-top: 1px solid var(--border); font-size: 0.9rem; color: var(--on-surface-variant); }
-        .footer-links { margin-top: 20px; display: flex; justify-content: center; gap: 24px; }
-        .footer-links a { color: var(--on-surface-variant); text-decoration: none; }
-        .footer-links a:hover { color: var(--primary); }
+    .btn-primary {
+      background: var(--primary);
+      color: #000;
+      box-shadow: 0 16px 30px rgba(154, 124, 255, 0.25);
+    }
 
-        /* --- Mobile --- */
-        @media (max-width: 768px) {
-            h1 { font-size: 2.5rem; }
-            .nav-links { display: none; } /* Could add hamburger menu here */
-            .feature-block, .feature-block.reverse { flex-direction: column; gap: 40px; }
-            .hero-content { padding: 0 20px; }
-            .btn-group { flex-direction: column; width: 100%; }
-            .btn { width: 100%; }
-        }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 20px 36px rgba(154, 124, 255, 0.3);
+    }
 
-        /* --- ADDED: Install Success Modal CSS --- */
-        .modal-overlay {
-            display: none; /* Hidden by default */
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(5px);
-            z-index: 2000;
-            align-items: center;
-            justify-content: center;
-        }
+    .btn-outline {
+      background: transparent;
+      border-color: var(--border);
+      color: var(--on-surface);
+    }
 
-        .modal-content {
-            background: var(--surface);
-            border: 1px solid var(--primary);
-            padding: 40px;
-            border-radius: 24px;
-            max-width: 500px;
-            text-align: center;
-            box-shadow: 0 0 50px rgba(154, 124, 255, 0.2);
-            position: relative;
-        }
+    .btn-outline:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
 
-        .close-modal {
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            background: none;
-            border: none;
-            color: var(--on-surface-variant);
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-    </style>
+    section {
+      padding: 80px 0;
+    }
+
+    .hero {
+      padding: 90px 0 50px 0;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 40px;
+      align-items: center;
+    }
+
+    .kicker {
+      font-family: "Space Mono", monospace;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      color: var(--secondary);
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-size: clamp(2.6rem, 4vw, 4rem);
+      line-height: 1.05;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      margin-bottom: 16px;
+    }
+
+    p {
+      color: var(--on-surface-variant);
+      margin-bottom: 18px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    .hero-card {
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: 0 26px 60px var(--shadow-strong);
+      border: 1px solid var(--border);
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+      font-size: 0.95rem;
+      color: var(--on-surface-variant);
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 22px;
+    }
+
+    .panel {
+      background: var(--surface);
+      border-radius: var(--radius-md);
+      padding: 28px;
+      border: 1px solid var(--border);
+      box-shadow: 0 20px 45px var(--shadow);
+    }
+
+    .panel h3 {
+      margin-bottom: 10px;
+      font-size: 1.3rem;
+    }
+
+    .panel p {
+      color: var(--on-surface-variant);
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+      align-items: center;
+    }
+
+    .list {
+      list-style: none;
+      display: grid;
+      gap: 12px;
+      color: var(--on-surface-variant);
+    }
+
+    .list li::before {
+      content: "•";
+      color: var(--primary);
+      font-weight: 700;
+      margin-right: 8px;
+    }
+
+    .support-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+    }
+
+    .tag {
+      font-family: "Space Mono", monospace;
+      font-size: 0.85rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 6px 12px;
+      border-radius: 999px;
+      color: var(--on-surface-variant);
+    }
+
+    .cta-band {
+      background: linear-gradient(120deg, #1e1b1f, #3b2f52);
+      color: var(--on-surface);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      display: grid;
+      gap: 16px;
+      align-items: center;
+    }
+
+    footer {
+      padding: 60px 0 40px;
+      color: var(--on-surface-variant);
+      font-size: 0.9rem;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin-top: 12px;
+    }
+
+    .media-placeholder {
+      border: 1px dashed var(--border);
+      background: rgba(46, 43, 51, 0.6);
+      border-radius: var(--radius-md);
+      padding: 26px;
+      min-height: 240px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 12px;
+      color: var(--on-surface-variant);
+      box-shadow: 0 20px 45px var(--shadow);
+    }
+
+    .media-placeholder strong {
+      color: var(--on-surface);
+      font-size: 1.1rem;
+    }
+
+    .media-image {
+      width: 100%;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+      box-shadow: 0 20px 45px var(--shadow);
+      display: block;
+      object-fit: cover;
+    }
+
+    .file-types {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .file-types span {
+      font-family: "Space Mono", monospace;
+      font-size: 0.75rem;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--on-surface-variant);
+    }
+
+    @media (max-width: 820px) {
+      .nav-links { display: none; }
+      .nav-cta { display: none; }
+      .hero { padding-top: 60px; }
+      .cta-band { padding: 28px; }
+    }
+  </style>
 </head>
 <body>
-    <div id="installModal" class="modal-overlay">
-		<div class="modal-content">
-			<button class="close-modal" onclick="closeModal()">×</button>
-			<span style="font-size: 3rem;">🎉</span>
-			<h2 style="margin-top: 20px;">Extension Installed!</h2>	
-			<p>Your browser is now ready to send models to MeshVault.</p>
-			<p>Make sure you have <strong>MeshVault Hub</strong> running to receive files.</p>
-            <br>
-			<p style="font-size: 0.85rem; font-style: italic; opacity: 0.8; margin-top: 10px;">
-                You can still use this extension without MeshVault Hub for an ad free experience on supported sites. You should disable the MeshVault check in the options menu in this extension.
-            </p>
-			<a href="https://meshvault.lemonsqueezy.com/checkout/buy/55a16f70-5c0a-4fd8-a808-5b0108fd6d71?embed=1&media=0&logo=0&desc=0&discount=0" class="btn btn-primary lemonsqueezy-button">Download for Windows</a>
-            <script src="https://assets.lemonsqueezy.com/lemon.js" defer></script>
-		</div>
-	</div>
+  <header>
+    <div class="container nav">
+      <a class="logo" href="#">
+        <img src="images/meshvault_512x512.png" alt="MeshVault">
+        MeshVault
+      </a>
+      <nav class="nav-links">
+        <a href="#desktop">Desktop</a>
+        <a href="#android">Android</a>
+        <a href="#extension">Extension</a>
+        <a href="#shared">Shared</a>
+      </nav>
+      <div class="nav-cta">
+        <a class="btn btn-outline" href="https://chromewebstore.google.com/detail/meshvault-connector/dpicfjjiflfkbekmgbmfplhhicllpjih">Chrome Extension</a>
+        <a class="btn btn-primary lemonsqueezy-button" href="https://meshvault.lemonsqueezy.com/checkout/buy/55a16f70-5c0a-4fd8-a808-5b0108fd6d71?embed=1&media=0&logo=0&desc=0&discount=0">Download for Windows</a>
+      </div>
+    </div>
+  </header>
 
-	<script>
-		// 1. Check if the user came from the extension installation
-		const urlParams = new URLSearchParams(window.location.search);
-		
-		if (urlParams.get('source') === 'extension_install') {
-			// Show the modal
-			document.getElementById('installModal').style.display = 'flex';
-			
-			// Optional: Remove the ugly query param from the address bar so the URL looks clean
-			const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
-			window.history.pushState({path: newUrl}, '', newUrl);
-		}
-	
-		// Function to close modal
-		function closeModal() {
-			document.getElementById('installModal').style.display = 'none';
-		}
-    
-	    // Close if clicking outside the box
-		window.onclick = function(event) {
-			const modal = document.getElementById('installModal');
-			if (event.target === modal) {
-				modal.style.display = "none";
-			}
-		}
-	</script>
-    <nav>
-        <div class="container nav-inner">
-            <a href="#" class="logo">
-                <img src="images/meshvault_512x512.png" alt="MeshVault Logo">
-                MeshVault
-            </a>
-            <div class="nav-links">
-                <a href="#desktop">Desktop Hub</a>
-                <a href="#android">Android Companion</a>
-                <a href="#server">Web Server</a>
-            </div>
-        </div>
-    </nav>
-
+  <main>
     <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1>The 3D Asset Manager<br>for your Desktop.</h1>
-                <p>Organize, preview, and slice your STLs instantly.<br>Browse from Chrome or your Android and send the models staight to your library.</p>
-                
-                <div class="btn-group">
-                    <a href="https://meshvault.lemonsqueezy.com/checkout/buy/55a16f70-5c0a-4fd8-a808-5b0108fd6d71?embed=1&media=0&logo=0&desc=0&discount=0"  class="btn btn-primary lemonsqueezy-button">Download for Windows</a><script src="https://assets.lemonsqueezy.com/lemon.js" defer></script>
-					<a href="https://chromewebstore.google.com/detail/meshvault-connector/dpicfjjiflfkbekmgbmfplhhicllpjih" class="btn btn-outline" title="MeshVault Connector">Chrome Extension</a>
-                    <a href="https://play.google.com/store/apps/details?id=com.xalies.meshvault" class="btn btn-outline">
-                        Get Android Companion
-                    </a>
-                </div>
-            </div>
-
-            <div class="hero-image-wrapper container">
-                <img src="images/meshvaulthublibrary.png" alt="MeshVault Desktop Dashboard">
-            </div>
+      <div class="container hero-grid">
+        <div>
+          <div class="kicker">Windows + Android</div>
+          <h1>MeshVault: STL and 3D model library manager for Windows & Android.</h1>
+          <p>Organize STL files and more: 3MF, OBJ, STEP, G-code, ZIP, and dozens of 3D formats. Capture downloads with metadata and keep your library clean.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary lemonsqueezy-button" href="https://meshvault.lemonsqueezy.com/checkout/buy/55a16f70-5c0a-4fd8-a808-5b0108fd6d71?embed=1&media=0&logo=0&desc=0&discount=0">Download for Windows</a>
+            <a class="btn btn-outline" href="https://chromewebstore.google.com/detail/meshvault-connector/dpicfjjiflfkbekmgbmfplhhicllpjih">Get the Chrome Extension</a>
+            <a class="btn btn-outline" href="https://play.google.com/store/apps/details?id=com.xalies.meshvault">Android Companion</a>
+          </div>
+          <div class="hero-meta">
+            <span>Instant previews</span>
+            <span>Metadata + tags</span>
+            <span>Send to slicer</span>
+            <span>Web server sharing</span>
+          </div>
         </div>
-    </section>
-
-    <section>
-        <div class="container">
-            <h2 class="text-center">One License, Two Devices</h2>
-            <p class="text-center" style="max-width: 600px; margin: 0 auto 60px auto;">
-                Buy MeshVault on your preferred platform. Connect your devices to unlock the full ecosystem automatically.
-            </p>
-            <div class="bento-grid">
-                <div class="card">
-                    <span class="card-icon">🗄️</span>
-                    <h3>The Desktop Vault</h3>
-                    <p>A specialized "Walled Garden" for your assets. Organise folders, preview 3D files natively (STL, OBJ, STEP), and send them directly to your Slicer.</p>
-                </div>
-                <div class="card">
-                    <span class="card-icon">📲</span>
-                    <h3>The Mobile Remote</h3>
-                    <p>Browse Printables, Thingiverse, MakerWorld and more... on your phone. MeshVault grabs the files and metadata, then Organises them so they can be easily transfered wirelessly to your PC.</p>
-                </div>
-                <div class="card">
-                    <span class="card-icon">🔓</span>
-                    <h3>Cross-Platform Unlock</h3>
-                    <p>Purchased on Windows? Connect your phone to unlock Android Pro features. Purchased on Mobile? Connect to your PC to unlock the Desktop Hub.</p>
-                </div>
-            </div>
+        <div class="hero-card">
+          <img class="media-image" src="images/meshvaulthublibrary.webp" alt="MeshVault desktop library overview">
         </div>
+      </div>
     </section>
 
     <section id="desktop">
-        <div class="container">
-            <div class="feature-block">
-                <div class="feature-text">
-                    <span class="text-accent">Desktop Hub</span>
-                    <h2>Your Local Command Center</h2>
-                    <p>Built for large libraries and fast workflows. The Hub sits quietly on your network, organising your files and ready to receive models from either the Chrome extension or your phone.</p>
-                    <ul class="check-list">
-					    <li><strong>Sorting options:</strong> Keep your library organised in folders, with collections (virtual folders) and support for file tags</li>
-                        <li><strong>Native Previews:</strong> View STL, OBJ, STEP, and G-Code files instantly without opening heavy CAD software.</li>
-                        <li><strong>Seamless Sync:</strong> Mirrors your phone's library with folder structures preserved.</li>
-                        <li><strong>Send to Slicer:</strong> Open models instantly in Cura, PrusaSlicer, or Bambu Studio.</li>
-                        <li><strong>Chrome Extension:</strong> Browsing on PC? Use the extension to download files directly into your Vault.</li>
-                    </ul>
-                    <div class="btn-group" style="justify-content: flex-start; margin-top: 30px;">
-                    <a href="https://meshvault.lemonsqueezy.com/checkout/buy/55a16f70-5c0a-4fd8-a808-5b0108fd6d71?embed=1&media=0&logo=0&desc=0&discount=0"  class="btn btn-primary lemonsqueezy-button">Download for Windows</a><script src="https://assets.lemonsqueezy.com/lemon.js" defer></script>
-                        <a href="https://chromewebstore.google.com/detail/meshvault-connector/dpicfjjiflfkbekmgbmfplhhicllpjih" class="btn btn-outline" title="MeshVault Connector">Chrome Extension</a>
-                    </div>
-                </div>
-                <div class="feature-media">
-                    <img src="images/meshvaulthublibrary.png" alt="MeshVault Desktop Hub Interface">
-                </div>
-            </div>
+      <div class="container split">
+        <div>
+          <div class="kicker">MeshVault Hub (Desktop)</div>
+          <h2>Built for large libraries and fast workflows.</h2>
+          <p>The desktop hub manages your vault, handles previews locally, and receives downloads from the extension or your phone.</p>
+          <ul class="list">
+            <li>Local asset manager with folders, subfolders, and collections</li>
+            <li>Preview STL, OBJ, STEP, G-code, ZIP and 3MF contents</li>
+            <li>Send models directly to slicers (Cura, PrusaSlicer, Bambu Studio)</li>
+            <li>Mirrors your mobile library with folder structure preserved</li>
+            <li>Works with the browser extension to capture downloads with metadata</li>
+          </ul>
         </div>
+        <img class="media-image" src="images/modeldeails.webp" alt="MeshVault desktop model details">
+      </div>
     </section>
 
     <section id="android">
-        <div class="container">
-            <div class="feature-block reverse">
-                <div class="feature-text">
-                    <span class="text-accent">Android Companion</span>
-                    <h2>Browsing, Evolved.</h2>
-                    <p>Stop downloading "File_123.zip". MeshVault captures the context of every file you save from the web.</p>
-                    <ul class="check-list">
-                        <li><strong>Smart Metadata:</strong> Automatically fetches Title, Author, and Images from repositories.</li>
-                        <li><strong>Intelligent Zip Handling:</strong> Peek inside Zips and preview 3MF contents without extracting.</li>
-                        <li><strong>Direct-to-Desktop:</strong> Tap "Download to PC" to skip your phone storage entirely.</li>
-                        <li><strong>Local Organization:</strong> Manage your collections on the go.</li>
-                    </ul>
-                    <a href="https://play.google.com/store/apps/details?id=com.xalies.meshvault" class="btn btn-outline">Get it on Google Play</a>
-                </div>
-                <div class="feature-media">
-                    <img src="images/meshvaultlibrary.png" alt="MeshVault Android Library">
-                </div>
-            </div>
+      <div class="container split">
+        <img class="media-image" src="images/meshvaultmobile.webp" alt="MeshVault Android app">
+        <div>
+          <div class="kicker">MeshVault Android</div>
+          <h2>Browse, capture, and send to desktop.</h2>
+          <p>Use your phone as a focused browser for 3D repositories and send files directly to your PC.</p>
+          <ul class="list">
+            <li>Browse supported sites inside the app</li>
+            <li>Auto-detect downloads and capture metadata</li>
+            <li>Import existing files and edit metadata</li>
+            <li>Download straight to desktop</li>
+            <li>Optional Google Drive backup for cloud sync</li>
+          </ul>
+          <div class="hero-actions">
+            <a class="btn btn-outline" href="https://play.google.com/store/apps/details?id=com.xalies.meshvault">Get it on Google Play</a>
+          </div>
         </div>
+      </div>
     </section>
 
-    <section id="server">
-        <div class="container">
-            <div class="feature-block">
-                <div class="feature-text">
-                    <span class="text-accent">Integrated Web Server</span>
-                    <h2>Share Without Cables</h2>
-                    <p>Turn your phone into a local server. Access your entire library from any web browser on your network to download files or manage metadata.</p>
-                    <ul class="check-list">
-                        <li><strong>Universal Access:</strong> Works on Mac, Linux, or a friend's PC. No app required.</li>
-                        <li><strong>Bulk Export:</strong> Download entire collections as a single ZIP.</li>
-                        <li><strong>Metadata Intact:</strong> Exports maintain folder structures and JSON info files.</li>
-                    </ul>
-                </div>
-                <div class="feature-media">
-                    <img src="images/meshvaultweblibrary.png" alt="MeshVault Web Interface">
-                </div>
-            </div>
+    <section id="extension">
+      <div class="container split">
+        <div>
+          <div class="kicker">MeshVault Connector (Browser Extension)</div>
+          <h2>Browser Extension to Organize Downloads Automatically.</h2>
+          <p>The extension captures files and metadata as you download so you always remember what you saved.</p>
+          <ul class="list">
+            <li>Send files directly to your MeshVault library (not Downloads)</li>
+            <li>Scrapes title, author, tags, description, and images</li>
+            <li>Create new folders or choose existing ones</li>
+            <li>Optional ad/AI content blocking on supported sites</li>
+          </ul>
+          <div class="hero-actions">
+            <a class="btn btn-outline" href="https://chromewebstore.google.com/detail/meshvault-connector/dpicfjjiflfkbekmgbmfplhhicllpjih">Get the Chrome Extension</a>
+          </div>
         </div>
+        <img class="media-image" src="images/extensionui.webp" alt="MeshVault browser extension">
+      </div>
     </section>
 
-    <section id="specs" class="specs-section">
-        <div class="container text-center">
-            <h2>Supported Ecosystems</h2>
-            <p>MeshVault plays nice with the biggest names in 3D printing.</p>
-            
-            <div class="logos-grid">
-                <img src="images/logo_printables.png" alt="Printables">
-                <img src="images/logo_makerworld.png" alt="MakerWorld">
-                <img src="images/logo_thingiverse.png" alt="Thingiverse">
-                <img src="images/logo_cults3d.png" alt="Cults3D">
-                <img src="images/logo_thangs.png" alt="Thangs">
-                <img src="images/logo_grabcad.png" alt="GrabCAD">
-                <img src="images/logo_myminifactory.png" alt="MyMiniFactory">
-            </div>
-
-            <h3 style="margin-top: 60px;">Indexable File Types</h3>
-            <p class="text-small" style="margin-bottom: 20px;">We scan ZIPs automatically for these formats:</p>
-            <div class="file-types-grid">
-                <span class="badge">stl</span>
-                <span class="badge">obj</span>
-                <span class="badge">3mf</span>
-                <span class="badge">step</span>
-                <span class="badge">stp</span>
-                <span class="badge">gcode</span>
-                <span class="badge">f3d</span>
-                <span class="badge">lys</span>
-                <span class="badge">ctb</span>
-                <span class="badge">glb</span>
-                <span class="badge">gltf</span>
-                <span class="badge">off</span>
-                <span class="badge">ply</span>
-                <span class="badge">scad</span>
-                <span class="badge">fbx</span>
-                <span class="badge">blend</span>
-                <span class="badge">skp</span>
-                <span class="badge">zip</span>
-            </div>
+    <section>
+      <div class="container split">
+        <img class="media-image" src="images/meshvaultweb.webp" alt="MeshVault web server view">
+        <div>
+          <div class="kicker">Integrated web server</div>
+          <h2>Local Web Server for Wireless 3D Sharing.</h2>
+          <p>Run a local web server from your phone to browse and download your library from any device on the same network.</p>
+          <ul class="list">
+            <li>Export a single file or multiple files</li>
+            <li>Preserve folder structures and metadata</li>
+            <li>No external services required</li>
+          </ul>
         </div>
+      </div>
     </section>
 
-    <footer>
-        <div class="container">
-            <h2>Upgrade your workflow.</h2>
-            <div class="footer-links">
-                <a href="https://xalies.gumroad.com/l/meshvault-hub">Windows Hub</a>
-				<a href="https://chromewebstore.google.com/detail/meshvault-connector/dpicfjjiflfkbekmgbmfplhhicllpjih" class="btn btn-outline" title="MeshVault Connector">Chrome Extension</a>
-				<a href="https://play.google.com/store/apps/details?id=com.xalies.meshvault">Android App</a>
-                <a href="#">Privacy Policy</a>
-            </div>
-            <p style="margin-top: 30px; opacity: 0.5;">&copy; 2026 MeshVault.</p>
+    <section id="shared">
+      <div class="container">
+        <div class="cta-band">
+          <div>
+            <div class="kicker" style="color: var(--on-surface-variant);">Shared features</div>
+            <h2>Same core features on desktop and Android.</h2>
+            <p>Everything stays organized and searchable across devices.</p>
+          </div>
+          <div class="support-grid">
+            <span class="tag">Folders + subfolders</span>
+            <span class="tag">Collections</span>
+            <span class="tag">Tags</span>
+            <span class="tag">Search + sorting</span>
+            <span class="tag">Light/Dark modes</span>
+            <span class="tag">ZIP scanning</span>
+          </div>
         </div>
-    </footer>
+      </div>
+    </section>
 
+    <section>
+      <div class="container">
+        <h2>Supported repositories</h2>
+        <p>MeshVault supports the major 3D model sites on desktop, Android, and the browser extension.</p>
+        <div class="support-grid" style="margin-top: 16px;">
+          <span class="tag">Printables</span>
+          <span class="tag">Thingiverse</span>
+          <span class="tag">MakerWorld</span>
+          <span class="tag">Cults3D</span>
+          <span class="tag">Thangs</span>
+          <span class="tag">GrabCAD</span>
+          <span class="tag">MyMiniFactory</span>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2>File type support</h2>
+        <p>MeshVault indexes and previews the formats below. ZIPs are scanned for supported types.</p>
+        <div class="file-types">
+          <span>3dm</span><span>3ds</span><span>3mf</span><span>amf</span><span>catpart</span><span>catproduct</span><span>dae</span><span>dwfx</span><span>dwg</span><span>f3d</span><span>fbx</span><span>fcstd</span><span>glb</span><span>gltf</span><span>gcode</span><span>gco</span><span>iges</span><span>igs</span><span>obj</span><span>off</span><span>ply</span><span>scad</span><span>sldasm</span><span>sldprt</span><span>step</span><span>stl</span><span>stp</span><span>x3d</span><span>zip</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <strong>MeshVault</strong>
+      <div class="footer-links">
+        <a href="https://meshvault.lemonsqueezy.com/checkout/buy/55a16f70-5c0a-4fd8-a808-5b0108fd6d71?embed=1&media=0&logo=0&desc=0&discount=0">Download for Windows</a>
+        <a href="https://chromewebstore.google.com/detail/meshvault-connector/dpicfjjiflfkbekmgbmfplhhicllpjih">Chrome Extension</a>
+        <a href="https://play.google.com/store/apps/details?id=com.xalies.meshvault">Android Companion</a>
+        <a href="privacy/indedx.html">Privacy Policy</a>
+      </div>
+      <div style="margin-top: 16px;">© 2026 MeshVault</div>
+    </div>
+  </footer>
+
+  <script src="https://assets.lemonsqueezy.com/lemon.js" defer></script>
 </body>
 </html>
