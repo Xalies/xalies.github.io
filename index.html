@@ -387,8 +387,8 @@
         <a href="#shared">Shared</a>
       </nav>
       <div class="nav-cta">
-        <a class="btn btn-outline" href="https://chromewebstore.google.com/detail/meshvault-connector/dpicfjjiflfkbekmgbmfplhhicllpjih">Chrome Extension</a>
-        <a class="btn btn-primary" href="https://apps.microsoft.com/detail/9pnr2sp2br02">Download for Windows</a>
+        <a class="btn btn-outline" data-extension-link href="https://chromewebstore.google.com/detail/meshvault-connector/dpicfjjiflfkbekmgbmfplhhicllpjih">Browser Extension</a>
+        <a class="btn btn-primary" href="ms-windows-store://pdp/?productid=9PNR2SP2BR02">Download for Windows</a>
       </div>
     </div>
   </header>
@@ -401,8 +401,8 @@
           <h1>MeshVault: STL and 3D model library manager for Windows & Android.</h1>
           <p>Organize STL files and more: 3MF, OBJ, STEP, G-code, ZIP, and dozens of 3D formats. Capture downloads with metadata and keep your library clean.</p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="https://apps.microsoft.com/detail/9pnr2sp2br02">Download for Windows</a>
-            <a class="btn btn-outline" href="https://chromewebstore.google.com/detail/meshvault-connector/dpicfjjiflfkbekmgbmfplhhicllpjih">Get the Chrome Extension</a>
+            <a class="btn btn-primary" href="ms-windows-store://pdp/?productid=9PNR2SP2BR02">Download for Windows</a>
+            <a class="btn btn-outline" data-extension-link href="https://chromewebstore.google.com/detail/meshvault-connector/dpicfjjiflfkbekmgbmfplhhicllpjih">Get Browser Extension</a>
             <a class="btn btn-outline" href="https://play.google.com/store/apps/details?id=com.xalies.meshvault">Android Companion</a>
           </div>
           <div class="hero-meta">
@@ -470,7 +470,7 @@
             <li>Optional ad/AI content blocking on supported sites</li>
           </ul>
           <div class="hero-actions">
-            <a class="btn btn-outline" href="https://chromewebstore.google.com/detail/meshvault-connector/dpicfjjiflfkbekmgbmfplhhicllpjih">Get the Chrome Extension</a>
+            <a class="btn btn-outline" data-extension-link href="https://chromewebstore.google.com/detail/meshvault-connector/dpicfjjiflfkbekmgbmfplhhicllpjih">Get the Chrome Extension</a>
           </div>
         </div>
         <img class="media-image" src="images/extensionui.webp" alt="MeshVault Connector browser extension download dialog">
@@ -544,14 +544,25 @@
     <div class="container">
       <strong>MeshVault</strong>
       <div class="footer-links">
-        <a href="https://apps.microsoft.com/detail/9pnr2sp2br02">Download for Windows</a>
-        <a href="https://chromewebstore.google.com/detail/meshvault-connector/dpicfjjiflfkbekmgbmfplhhicllpjih">Chrome Extension</a>
+        <a href="ms-windows-store://pdp/?productid=9PNR2SP2BR02">Download for Windows</a>
+        <a data-extension-link href="https://chromewebstore.google.com/detail/meshvault-connector/dpicfjjiflfkbekmgbmfplhhicllpjih">Browser Extension</a>
         <a href="https://play.google.com/store/apps/details?id=com.xalies.meshvault">Android Companion</a>
         <a href="privacy/index.html">Privacy Policy</a>
       </div>
       <div style="margin-top: 16px;">© 2026 MeshVault</div>
     </div>
   </footer>
-
+  <script>
+    (function () {
+      var chromeExtensionUrl = "https://chromewebstore.google.com/detail/meshvault-connector/dpicfjjiflfkbekmgbmfplhhicllpjih";
+      var edgeExtensionUrl = "https://microsoftedge.microsoft.com/addons/detail/fekbjmalnodmgoocjjjcfgcobccnhnag";
+      var isEdge = /Edg\//.test(navigator.userAgent || "");
+      var targetUrl = isEdge ? edgeExtensionUrl : chromeExtensionUrl;
+      var links = document.querySelectorAll("[data-extension-link]");
+      links.forEach(function (link) {
+        link.setAttribute("href", targetUrl);
+      });
+    })();
+  </script>
 </body>
 </html>
