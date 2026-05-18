@@ -1,0 +1,54 @@
+Privacy Policy for Simple Gallery
+
+Effective date: 19 May 2026
+
+Simple Gallery is a free Android gallery app made for viewing and managing photos and videos on your device. The app has no ads. An optional Google Play in-app purchase may be offered as a donation, but donating does not unlock, change, limit, or affect any app features.
+
+Information the app accesses
+
+Simple Gallery asks for access to photos and videos so it can show your gallery, albums, screenshots, videos, favourites, hidden items, and recycle bin. This access is used to display and manage media files on your device.
+
+Depending on the action you choose, the app may also request Android system permission to edit, move, delete, restore, or update media files. These permissions are used only for the action you requested.
+
+Simple Gallery does not upload your photos or videos to a server.
+
+Feedback
+
+If you choose to send feedback from inside the app, the app sends your feedback to Firebase Firestore. Feedback may include:
+
+- the feedback type, such as bug, suggestion, or general feedback
+- the title and message you enter
+- optional contact details you choose to provide
+- optional diagnostic information, if enabled, such as app version, device model, Android version, and similar device details
+
+Feedback is used only to understand issues, improve the app, and follow up if you provide contact details.
+
+Optional donation
+
+Simple Gallery may include an optional donation through Google Play Billing. Donation payments are processed by Google Play. The app does not receive or store your full payment details.
+
+Data sharing
+
+Simple Gallery does not sell personal information.
+
+The app may use Google services, including Firebase and Google Play Billing, for feedback and optional donations. These services process information according to their own privacy policies and terms.
+
+Data storage and deletion
+
+Media files remain on your device unless you choose to move, edit, hide, delete, restore, or otherwise manage them through the app.
+
+Feedback submitted through the app may be stored in Firebase so it can be reviewed by the developer. If you want feedback you submitted to be removed, contact the developer with enough detail to identify the submission.
+
+Children's privacy
+
+Simple Gallery is not designed to collect personal information from children. The app does not include ads or tracking for advertising.
+
+Changes to this policy
+
+This privacy policy may be updated if the app's features or data handling changes. The updated policy will include a new effective date.
+
+Contact
+
+For privacy questions or requests, contact:
+
+Xalies
