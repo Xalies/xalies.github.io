@@ -1,16 +1,16 @@
-Privacy Policy for Simple Gallery
+Privacy Policy for Aura Gallery
 
 Effective date: 19 May 2026
 
-Simple Gallery is a free Android gallery app made for viewing and managing photos and videos on your device. The app has no ads. An optional Google Play in-app purchase may be offered as a donation, but donating does not unlock, change, limit, or affect any app features.
+Aura Gallery is an Android gallery app made for viewing and managing photos and videos on your device. The app has no ads. An optional Google Play in-app purchase may be offered as a donation, but donating does not unlock, change, limit, or affect any app features.
 
 Information the app accesses
 
-Simple Gallery asks for access to photos and videos so it can show your gallery, albums, screenshots, videos, favourites, hidden items, and recycle bin. This access is used to display and manage media files on your device.
+Aura Gallery asks for access to photos and videos so it can show your gallery, albums, screenshots, videos, favourites, hidden items, and recycle bin. This access is used to display and manage media files on your device.
 
 Depending on the action you choose, the app may also request Android system permission to edit, move, delete, restore, or update media files. These permissions are used only for the action you requested.
 
-Simple Gallery does not upload your photos or videos to a server.
+Aura Gallery does not upload your photos or videos to a server.
 
 Feedback
 
@@ -25,11 +25,11 @@ Feedback is used only to understand issues, improve the app, and follow up if yo
 
 Optional donation
 
-Simple Gallery may include an optional donation through Google Play Billing. Donation payments are processed by Google Play. The app does not receive or store your full payment details.
+Aura Gallery may include an optional donation through Google Play Billing. Donation payments are processed by Google Play. The app does not receive or store your full payment details.
 
 Data sharing
 
-Simple Gallery does not sell personal information.
+Aura Gallery does not sell personal information.
 
 The app may use Google services, including Firebase and Google Play Billing, for feedback and optional donations. These services process information according to their own privacy policies and terms.
 
@@ -41,7 +41,7 @@ Feedback submitted through the app may be stored in Firebase so it can be review
 
 Children's privacy
 
-Simple Gallery is not designed to collect personal information from children. The app does not include ads or tracking for advertising.
+Aura Gallery is not designed to collect personal information from children. The app does not include ads or tracking for advertising.
 
 Changes to this policy
 
@@ -51,4 +51,5 @@ Contact
 
 For privacy questions or requests, contact:
 
-Xalies
+Sonny Gilbert
+xalies1983@gmail.com
