@@ -254,54 +254,6 @@
       font-size: 20px;
     }
 
-    .action-panel {
-      width: min(690px, 100%);
-      display: grid;
-      gap: 10px;
-      margin-top: 28px;
-      padding: 14px;
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      background: rgba(37, 33, 44, .58);
-      box-shadow: 0 18px 42px rgba(0, 0, 0, .2);
-    }
-
-    .action-row {
-      display: grid;
-      grid-template-columns: minmax(150px, 190px) 1fr;
-      gap: 12px;
-      align-items: center;
-      padding: 10px;
-      border: 1px solid rgba(255,255,255,.06);
-      border-radius: 12px;
-      background: rgba(21, 17, 25, .36);
-    }
-
-    .action-copy strong {
-      display: block;
-      color: var(--text);
-      font-size: 14px;
-    }
-
-    .action-copy span {
-      display: block;
-      margin-top: 2px;
-      color: var(--faint);
-      font-size: 12px;
-    }
-
-    .action-buttons {
-      display: flex;
-      justify-content: flex-end;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .action-buttons .button {
-      min-height: 38px;
-      padding: 8px 13px;
-    }
-
     .license-card .actions {
       align-items: stretch;
     }
@@ -732,14 +684,6 @@
         grid-template-columns: repeat(3, 1fr);
       }
 
-      .action-row {
-        grid-template-columns: 1fr;
-      }
-
-      .action-buttons {
-        justify-content: flex-start;
-      }
-
       .hero {
         min-height: auto;
       }
@@ -773,12 +717,6 @@
 
       .hero-downloads,
       .hero-downloads .button {
-        width: 100%;
-      }
-
-      .action-panel,
-      .action-buttons,
-      .action-buttons .button {
         width: 100%;
       }
 
@@ -819,8 +757,8 @@
         <a href="#apps">App Set</a>
         <a href="#workflow">Spotlight</a>
         <a href="#trial">Trial & Unlock</a>
-        <a href="#features">Features</a>
-        <a href="#media">Media Plan</a>
+        <a href="#features">Details</a>
+        <a href="#formats">Formats</a>
       </nav>
       <div class="nav-actions">
         <a class="button primary" href="#trial">Get MeshVault</a>
@@ -1050,82 +988,39 @@
       </div>
     </section>
 
-    <section>
-      <div class="container split">
-        <div>
-          <p class="eyebrow">From download to useful library</p>
-          <h2>MeshVault keeps the context, not just the file.</h2>
-          <p>Most 3D model downloads arrive as ZIPs full of parts, images, notes, and slicer-specific files. MeshVault indexes the package, shows what is inside, and lets you preview or open supported files without making a mess of your folder structure.</p>
-          <ul>
-            <li>ZIP and 3MF archive inspection</li>
-            <li>Automatic cleanup of missing file records</li>
-            <li>Duplicate detection by file hash</li>
-            <li>Drag tiles into folders to move models physically</li>
-            <li>Virtual collections for projects, queues, and favourites</li>
-          </ul>
-        </div>
-        <div class="product-shot">
-          <img src="images/modeldeails.webp" alt="MeshVault details panel">
-          <div class="caption">Replace with current right-panel screenshot: carousel images, source links, slicer/preview/PCBWay buttons, tags, and summary.</div>
-        </div>
-      </div>
-    </section>
-
     <section id="features">
       <div class="container">
         <div class="section-head">
-          <p class="eyebrow">Current rebuilt features</p>
-          <h2>Built for real 3D printing libraries, not tidy demo folders.</h2>
+          <p class="eyebrow">Useful details</p>
+          <h2>The quieter tools that make a big library manageable.</h2>
+          <p>After the main Windows workflow, these are the practical things that keep MeshVault useful day to day without needing cloud accounts or a locked-in folder structure.</p>
         </div>
 
         <div class="cards">
           <article class="card">
-            <h3>Preview and measure models</h3>
-            <p>Use the previewer for STL, OBJ, 3MF, STEP/STP, GLB/GLTF, PLY, and G-code. Orbit, pan, zoom, measure with Ctrl+click, inspect the build plate, and capture renders back into the model gallery.</p>
+            <h3>Preview, measure, and capture</h3>
+            <p>Orbit supported models, inspect the build plate, measure with Ctrl+click, and save preview captures back into the model gallery.</p>
           </article>
           <article class="card">
-            <h3>Generate missing model images</h3>
-            <p>Imported models without images can get generated thumbnails where MeshVault can render or read the format. STL and STEP/STP are rendered from geometry, 3MF can use embedded package images, and archives can use a supported model inside. Other imported formats still stay organised in the library.</p>
+            <h3>Fill in missing images</h3>
+            <p>When an imported model has no useful thumbnail, MeshVault can generate images for supported geometry or use images already embedded in supported packages.</p>
           </article>
           <article class="card">
-            <h3>G-code layer preview</h3>
-            <p>Inspect G-code and GCO files with layer controls, progress controls, camera movement, and a hotend indicator for toolpath context.</p>
+            <h3>Archive-aware library</h3>
+            <p>Keep downloaded packages intact while still seeing supported contents, previewing single-model archives, and opening other files with their default apps.</p>
           </article>
           <article class="card">
-            <h3>PCBWay preparation</h3>
-            <p>MeshVault can prepare supported geometry files in a desktop temp folder for PCBWay upload. 3MF is converted to STL where practical so the upload set matches supported file requirements.</p>
+            <h3>Duplicate and cleanup help</h3>
+            <p>Hash checks help catch duplicate imports, missing files are cleaned from the database, and empty folders can be tidied as the library changes.</p>
           </article>
           <article class="card">
-            <h3>Portable database</h3>
-            <p>The library database lives with the library folder, so backups, migrations, and future companion workflows keep the model metadata beside the files.</p>
+            <h3>Collections and folders</h3>
+            <p>Use real folders for the filesystem and virtual collections for project groups, print queues, favourites, or anything that crosses folder boundaries.</p>
           </article>
           <article class="card">
-            <h3>Local feedback and updates</h3>
-            <p>The direct build can check GitHub releases for updates, and the app includes feedback reporting so real user issues can be captured while the rebuilt ecosystem settles.</p>
+            <h3>PCBWay and slicer prep</h3>
+            <p>Send files to your slicer, prepare supported files for PCBWay upload, and keep notes and print settings next to the model they belong to.</p>
           </article>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="container split">
-        <div>
-          <p class="eyebrow">Android Companion</p>
-          <h2>A clean phone-side model folder with local Wi-Fi access.</h2>
-          <p>The Companion app is completely free with no ads, and it is useful even without full PC sync. It gives users a structured MeshVault folder on Android and can serve the library from the phone over local Wi-Fi.</p>
-          <ul>
-            <li>User-selected MeshVault folder for scoped storage</li>
-            <li>Built-in local web server for browsing or downloading files</li>
-            <li>Useful for moving files from phone downloads to a PC later</li>
-            <li>No cloud account, ads, or Android payment tier</li>
-          </ul>
-          <div class="actions" style="margin-top:22px">
-            <a class="button" href="https://play.google.com/store/apps/details?id=com.xalies.meshvault">Get Android Companion</a>
-          </div>
-        </div>
-        <div class="product-shot">
-          <img src="images/meshvaultmobile.webp" alt="MeshVault Companion for Android">
-          <div class="caption">Replace with current Android onboarding and local web server screenshots.</div>
         </div>
       </div>
     </section>
@@ -1145,109 +1040,15 @@
 
     <section>
       <div class="container">
-        <div class="section-head">
-          <p class="eyebrow">Supported model sites</p>
-          <h2>Built around the places makers browse.</h2>
-          <p>MeshVault Connect is intended for common model sharing sites and keeps improving as site layouts change.</p>
-        </div>
-        <div class="site-logos">
-          <div class="site-logo"><img src="images/logo_printables.png" alt="Printables"></div>
-          <div class="site-logo"><img src="images/logo_thingiverse.png" alt="Thingiverse"></div>
-          <div class="site-logo"><img src="images/logo_makerworld.png" alt="MakerWorld"></div>
-          <div class="site-logo"><img src="images/logo_cults3d.png" alt="Cults3D"></div>
-          <div class="site-logo"><img src="images/logo_thangs.png" alt="Thangs"></div>
-          <div class="site-logo"><img src="images/logo_grabcad.png" alt="GrabCAD"></div>
-          <div class="site-logo"><img src="images/logo_myminifactory.png" alt="MyMiniFactory"></div>
-        </div>
-      </div>
-    </section>
-
-    <section id="media">
-      <div class="container">
-        <div class="section-head">
-          <p class="eyebrow">Videos and screenshots to capture</p>
-          <h2>Lead with short demos, then back them up with screenshots.</h2>
-          <p>A few 10-15 second clips will explain MeshVault faster than paragraphs: import from the browser, preview a model, inspect an archive, and show the phone workflow. Screenshots can fill in the quieter details.</p>
-        </div>
-
-        <div class="media-grid">
-          <article class="media-card video-first">
-            <h3>Browser-to-vault video</h3>
-            <p>Added: downloading a model from Printables into MeshVault with the browser connector.</p>
-            <div class="placeholder"><div><strong>YouTube embed added</strong> https://www.youtube.com/watch?v=WzFNcYvH6jk</div></div>
-          </article>
-          <article class="media-card video-first">
-            <h3>Import and thumbnail video</h3>
-            <p>Added: importing model files into MeshVault and generating thumbnails automatically.</p>
-            <div class="placeholder"><div><strong>YouTube embed added</strong> https://www.youtube.com/watch?v=vkVvQQTVUQc</div></div>
-          </article>
-          <article class="media-card">
-            <h3>Hero screenshot</h3>
-            <p>Capture the Windows app at 1658 x 1070 or similar 16:9-ish size, showing folder tree, Vault grid, selected model details, trial banner, and the search bar.</p>
-            <div class="placeholder"><div><strong>Replace hero image</strong> File suggestion: images/windows-vault-hero.webp</div></div>
-          </article>
-          <article class="media-card">
-            <h3>Preview, measure, capture video</h3>
-            <p>Added: previewing a model in MeshVault and capturing the render as an extra image.</p>
-            <div class="placeholder"><div><strong>YouTube embed added</strong> https://www.youtube.com/watch?v=8k7WZp4Mjgk</div></div>
-          </article>
-          <article class="media-card">
-            <h3>Android browsing video</h3>
-            <p>Added: browsing and downloading model files with MeshVault Companion on Android.</p>
-            <div class="placeholder"><div><strong>YouTube embed added</strong> https://youtube.com/shorts/sf4OVzmCuJs</div></div>
-          </article>
-          <article class="media-card">
-            <h3>Companion local server video</h3>
-            <p>Added: browsing the MeshVault Companion phone web server from another device.</p>
-            <div class="placeholder"><div><strong>YouTube embed added</strong> https://www.youtube.com/watch?v=96bbrrh-t0U</div></div>
-          </article>
-          <article class="media-card">
-            <h3>Trial and unlock screenshot</h3>
-            <p>Show the green/yellow/red trial banner and the unlock dialog with direct license key and Store placeholder options visible.</p>
-            <div class="placeholder"><div><strong>Replace licensing image</strong> File suggestion: images/trial-unlock.webp</div></div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="container">
         <div class="cta">
           <div>
             <p class="eyebrow">Ready to rebuild your model library?</p>
             <h2>Start with Windows, then add Connect and Companion when you need them.</h2>
             <p>Install the Windows app first. The direct installer includes a 7-day trial, and you can add the browser connector and Android companion if they fit how you collect and browse models.</p>
           </div>
-          <div class="action-panel">
-            <div class="action-row">
-              <div class="action-copy">
-                <strong>Windows app</strong>
-                <span>Install the main vault</span>
-              </div>
-              <div class="action-buttons">
-                <a class="button primary" href="https://github.com/Xalies/xalies.github.io/releases/latest/download/MeshVaultSetup-win-x64.exe">Download Installer</a>
-                <a class="button store" href="ms-windows-store://pdp/?productid=9PNR2SP2BR02">Microsoft Store</a>
-              </div>
-            </div>
-            <div class="action-row">
-              <div class="action-copy">
-                <strong>Browser connector</strong>
-                <span>Add browser imports</span>
-              </div>
-              <div class="action-buttons">
-                <a class="button ghost" href="https://chromewebstore.google.com/detail/meshvault-connector/dpicfjjiflfkbekmgbmfplhhicllpjih">Chrome</a>
-                <a class="button ghost" href="https://microsoftedge.microsoft.com/addons/detail/fekbjmalnodmgoocjjjcfgcobccnhnag">Edge</a>
-              </div>
-            </div>
-            <div class="action-row">
-              <div class="action-copy">
-                <strong>Android companion</strong>
-                <span>Browse and share from your phone</span>
-              </div>
-              <div class="action-buttons">
-                <a class="button ghost" href="https://play.google.com/store/apps/details?id=com.xalies.meshvault">Google Play</a>
-              </div>
-            </div>
+          <div class="hero-downloads" aria-label="Download links">
+            <a class="button primary" href="#trial">Download for Windows</a>
+            <a class="button ghost" href="https://play.google.com/store/apps/details?id=com.xalies.meshvault">Download for Android</a>
           </div>
         </div>
       </div>
