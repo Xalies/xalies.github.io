@@ -530,6 +530,17 @@
       padding-top: 18px;
     }
 
+    .transition-note {
+      margin-top: 18px;
+      padding: 16px 18px;
+      border: 1px solid rgba(125, 183, 255, .34);
+      border-radius: var(--radius);
+      background: rgba(125, 183, 255, .08);
+      color: #d6eaff;
+      font-size: 13px;
+      font-style: italic;
+    }
+
     .status {
       display: inline-flex;
       margin-bottom: 12px;
@@ -956,7 +967,7 @@
 
         <div class="license-grid">
           <article class="license-card green">
-            <span class="status green">Direct download</span>
+            <span class="status green">Download Directly</span>
             <h3>Download installer</h3>
             <p>Best for users who prefer a normal Windows installer or do not want to sign into the Microsoft Store for licensing and don't mind manually entering their key.</p>
             <div class="actions" style="margin-top:18px">
@@ -985,6 +996,7 @@
             </div>
           </article>
         </div>
+        <p class="transition-note">Developer note: The Microsoft Store version is temporarily free while Store licensing is being finalized. This will be updated and the 7 day trial will start and the intended purchase option all be added but I cannot give an extact timeline.</p>
       </div>
     </section>
 
@@ -997,6 +1009,10 @@
         </div>
 
         <div class="cards">
+          <article class="card">
+            <h3>Portable</h3>
+            <p>The database is kept in the library folder so you can use it accross multiple installs and still keep all you library intact.</p>
+          </article>
           <article class="card">
             <h3>Preview, measure, and capture</h3>
             <p>Orbit supported models, inspect the build plate, measure with Ctrl+click, and save preview captures back into the model gallery.</p>
@@ -1018,8 +1034,8 @@
             <p>Use real folders for the filesystem and virtual collections for project groups, print queues, favourites, or anything that crosses folder boundaries.</p>
           </article>
           <article class="card">
-            <h3>PCBWay and slicer prep</h3>
-            <p>Send files to your slicer, prepare supported files for PCBWay upload, and keep notes and print settings next to the model they belong to.</p>
+            <h3>PCBWay prep</h3>
+            <p>Prepare supported files for PCBWay upload. Creates a temp folder on your desktop, extracts the zip files if needed. Temp folders are deleted next time the app is launched</p>
           </article>
         </div>
       </div>
@@ -1029,8 +1045,8 @@
       <div class="container">
         <div class="section-head">
           <p class="eyebrow">File support</p>
-          <h2>Indexes the formats makers actually collect.</h2>
-          <p>MeshVault indexes common mesh, CAD, slicer, and archive formats. Import/index support is broader than preview and automatic image generation support: STL, OBJ, 3MF, STEP/STP, GLB/GLTF, PLY, and G-code/GCO have the strongest preview support, while other supported files can still be stored, searched, organised, and opened externally.</p>
+          <h2>Indexes the over 25 formats.</h2>
+          <p>MeshVault indexes common mesh, CAD, slicer, and archive formats. With optional automatic image generation support for STL, OBJ, 3MF, STEP/STP, GLB/GLTF, PLY, and G-code/GCO</p>
         </div>
         <div class="format-cloud" aria-label="Supported 3D and CAD file formats">
           <span>3dm</span><span>3ds</span><span>3mf</span><span>amf</span><span>catpart</span><span>catproduct</span><span>dae</span><span>dwfx</span><span>dwg</span><span>f3d</span><span>fbx</span><span>fcstd</span><span>glb</span><span>gltf</span><span>gcode</span><span>gco</span><span>iges</span><span>igs</span><span>obj</span><span>off</span><span>ply</span><span>scad</span><span>sldasm</span><span>sldprt</span><span>step</span><span>stl</span><span>stp</span><span>x3d</span><span>zip</span><span>rar</span><span>7z</span><span>tar</span><span>tgz</span>
@@ -1044,7 +1060,7 @@
           <div>
             <p class="eyebrow">Ready to rebuild your model library?</p>
             <h2>Start with Windows, then add Connect and Companion when you need them.</h2>
-            <p>Install the Windows app first. The direct installer includes a 7-day trial, and you can add the browser connector and Android companion if they fit how you collect and browse models.</p>
+            <p>Install the Windows app first. Start with a 7-day trial, add the browser connector and download the optional Android companion if they fit how you collect and browse models.</p>
           </div>
           <div class="hero-downloads" aria-label="Download links">
             <a class="button primary" href="#trial">Download for Windows</a>
