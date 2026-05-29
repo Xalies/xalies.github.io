@@ -36,7 +36,7 @@
       "@type": "Offer",
       "priceCurrency": "AUD",
       "price": "0",
-      "description": "Free trial and unlock options are available in the app."
+      "description": "The direct installer includes a 7-day trial."
     }
   }
   </script>
@@ -177,6 +177,10 @@
       color: #d7ffe5;
     }
 
+    .button.ghost {
+      background: rgba(45, 38, 55, .62);
+    }
+
     .button:hover { transform: translateY(-1px); }
 
     section {
@@ -250,36 +254,72 @@
       font-size: 20px;
     }
 
-    .hero .actions { margin-top: 28px; }
+    .action-panel {
+      width: min(690px, 100%);
+      display: grid;
+      gap: 10px;
+      margin-top: 28px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(37, 33, 44, .58);
+      box-shadow: 0 18px 42px rgba(0, 0, 0, .2);
+    }
 
-    .download-groups {
+    .action-row {
+      display: grid;
+      grid-template-columns: minmax(150px, 190px) 1fr;
+      gap: 12px;
+      align-items: center;
+      padding: 10px;
+      border: 1px solid rgba(255,255,255,.06);
+      border-radius: 12px;
+      background: rgba(21, 17, 25, .36);
+    }
+
+    .action-copy strong {
+      display: block;
+      color: var(--text);
+      font-size: 14px;
+    }
+
+    .action-copy span {
+      display: block;
+      margin-top: 2px;
+      color: var(--faint);
+      font-size: 12px;
+    }
+
+    .action-buttons {
+      display: flex;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .action-buttons .button {
+      min-height: 38px;
+      padding: 8px 13px;
+    }
+
+    .license-card .actions {
+      align-items: stretch;
+    }
+
+    .license-card .actions .button {
+      flex: 1 1 170px;
+    }
+
+    .hero-downloads {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px 28px;
+      gap: 12px;
       align-items: center;
       margin-top: 28px;
     }
 
-    .download-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      align-items: center;
-    }
-
-    .download-group.android {
-      padding-left: 28px;
-      border-left: 1px solid var(--line);
-    }
-
-    .notice {
-      margin-top: 22px;
-      padding: 14px 16px;
-      border: 1px solid rgba(245, 197, 66, .5);
-      border-radius: var(--radius);
-      background: rgba(245, 197, 66, .1);
-      color: #ffe8a3;
-      font-size: 15px;
+    .hero-downloads .button {
+      min-width: 210px;
     }
 
     .hero-badge {
@@ -528,6 +568,16 @@
     .license-card.blue { border-color: rgba(125, 183, 255, .55); }
     .license-card.yellow { border-color: rgba(245, 197, 66, .55); }
 
+    .license-card {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .license-card .actions {
+      margin-top: auto !important;
+      padding-top: 18px;
+    }
+
     .status {
       display: inline-flex;
       margin-bottom: 12px;
@@ -682,12 +732,12 @@
         grid-template-columns: repeat(3, 1fr);
       }
 
-      .download-group.android {
-        width: 100%;
-        padding-left: 0;
-        padding-top: 12px;
-        border-left: 0;
-        border-top: 1px solid var(--line);
+      .action-row {
+        grid-template-columns: 1fr;
+      }
+
+      .action-buttons {
+        justify-content: flex-start;
       }
 
       .hero {
@@ -721,22 +771,15 @@
         width: 100%;
       }
 
-      .download-groups,
-      .download-group,
-      .download-groups .button {
+      .hero-downloads,
+      .hero-downloads .button {
         width: 100%;
       }
 
-      body.device-android .hero .actions [data-cta="android"],
-      body.device-ios .hero .actions [data-cta="android"],
-      body.device-other-mobile .hero .actions [data-cta="android"] {
-        order: -2;
-      }
-
-      body.device-android .hero .actions [data-cta="windows"],
-      body.device-ios .hero .actions [data-cta="windows"],
-      body.device-other-mobile .hero .actions [data-cta="windows"] {
-        order: 2;
+      .action-panel,
+      .action-buttons,
+      .action-buttons .button {
+        width: 100%;
       }
 
       .product-shot img {
@@ -780,8 +823,7 @@
         <a href="#media">Media Plan</a>
       </nav>
       <div class="nav-actions">
-        <a class="button store" href="ms-windows-store://pdp/?productid=9PNR2SP2BR02">Microsoft Store</a>
-        <a class="button primary" href="https://github.com/Xalies/xalies.github.io/releases/latest/download/MeshVaultSetup-win-x64.exe">Download</a>
+        <a class="button primary" href="#trial">Get MeshVault</a>
       </div>
     </div>
   </header>
@@ -794,27 +836,13 @@
           <p class="eyebrow">3D model library for makers</p>
           <h1>Keep every model, archive, image, and print note in one searchable vault.</h1>
           <p class="lead">MeshVault is a local-first Windows app for organizing 3D model collections, with an Android companion and browser connector for capturing downloads before they become mystery files.</p>
-          <div class="download-groups" aria-label="Download links">
-            <div class="download-group">
-              <a class="button store" data-cta="windows" href="ms-windows-store://pdp/?productid=9PNR2SP2BR02">Download for Microsoft Store</a>
-              <a class="button primary" data-cta="windows" href="https://github.com/Xalies/xalies.github.io/releases/latest/download/MeshVaultSetup-win-x64.exe">Download</a>
-              <a class="button" data-cta="connector" href="https://chromewebstore.google.com/detail/meshvault-connector/dpicfjjiflfkbekmgbmfplhhicllpjih">Chrome Extension</a>
-              <a class="button" data-cta="connector" href="https://microsoftedge.microsoft.com/addons/detail/fekbjmalnodmgoocjjjcfgcobccnhnag">Edge Add-on</a>
-            </div>
-            <div class="download-group android">
-              <a class="button" data-cta="android" href="https://play.google.com/store/apps/details?id=com.xalies.meshvault">Android Companion</a>
-            </div>
+          <div class="hero-downloads" aria-label="Primary download links">
+            <a class="button primary" data-cta="windows" href="#trial">Download for Windows</a>
+            <a class="button ghost" data-cta="android" href="https://play.google.com/store/apps/details?id=com.xalies.meshvault">Download for Android</a>
           </div>
-          <div class="notice">The rebuilt Windows app includes a free trial for direct installs. Unlock options are available inside MeshVault, with Microsoft Store licensing planned for the Store build.</div>
           <div class="device-note windows"><strong>On Windows?</strong> Start with the desktop vault, then install the browser connector to import model pages directly.</div>
-          <div class="device-note android"><strong>On Android?</strong> The Companion app is free, has no ads, and keeps a clean MeshVault folder on your phone.</div>
+          <div class="device-note android"><strong>On Android?</strong> The Companion app is free, has no ads, and keeps a clean MeshVault folder on your phone with built in webserver</div>
           <div class="device-note mobile"><strong>On your phone?</strong> MeshVault is PC-first, but the free, ad-free Companion is designed for mobile library browsing and local sharing.</div>
-          <div class="trust-row" aria-label="Feature highlights">
-            <span class="pill"><span class="dot"></span> Portable SQLite vault</span>
-            <span class="pill"><span class="dot"></span> STL, 3MF, STEP, G-code previews</span>
-            <span class="pill"><span class="dot"></span> Browser metadata capture</span>
-            <span class="pill"><span class="dot"></span> Slicer and PCBWay prep</span>
-          </div>
         </div>
         <div class="product-shot hero-shot">
           <img src="images/meshvaulthublibrary.webp" alt="MeshVault Windows library showing model tiles and metadata">
@@ -835,10 +863,10 @@
           <article class="card">
             <div class="icon">W</div>
             <h3>MeshVault for Windows</h3>
-            <p>Your main 3D model library, built as a native WinUI app.</p>
+            <p>Your main 3D model library.</p>
             <ul>
-              <li>Folder-based model browser with collections</li>
-              <li>Resizable details panel with thumbnails, images, metadata, tags, and source links</li>
+              <li>Folder based model browser with support for virtual collections</li>
+              <li>Details panel with thumbnails, images, description, tags, and source links</li>
               <li>Preview STL, OBJ, 3MF, STEP/STP, GLB/GLTF, PLY, and G-code</li>
               <li>Measure models, capture preview renders, and generate missing thumbnails</li>
               <li>Send files to your slicer or prepare supported files for PCBWay upload</li>
@@ -848,11 +876,12 @@
           <article class="card">
             <div class="icon">C</div>
             <h3>MeshVault Connect</h3>
-            <p>The browser connector imports model pages with their context intact.</p>
+            <p>The browser connector imports model pages with their metadata intact.</p>
             <ul>
               <li>Chrome and Edge extension links are available below</li>
-              <li>Captures title, author, source URL, tags, descriptions, and images where supported</li>
-              <li>Works best when MeshVault is open or running in the tray</li>
+              <li>Captures title, author, source URL, tags, descriptions, images and more where supported</li>
+              <li>Limited AI and ad blocking features</li>
+              <li>Works when MeshVault is open or running in the tray</li>
               <li>Designed for Printables, Thingiverse, MakerWorld, Cults3D, Thangs, GrabCAD, and similar sites</li>
             </ul>
           </article>
@@ -860,13 +889,14 @@
           <article class="card">
             <div class="icon">A</div>
             <h3>MeshVault Companion</h3>
-            <p>The Android app is a free, ad-free companion for keeping a clean local MeshVault folder and exposing it over Wi-Fi.</p>
+            <p>The Android app is a free companion for keeping a clean local collection on the go.</p>
             <ul>
-              <li>Scoped-storage friendly library folder setup</li>
-              <li>Browse phone-stored models without needing cloud sync</li>
+              <li>Browse repository sites and download directly in app </li>
+              <li>Browse models sored on your phone with options to send to PC library or slicer directly</li>
               <li>Built-in local web server for downloading files from other devices</li>
               <li>Free to use with no ads</li>
-              <li>Compatible metadata direction for the rebuilt MeshVault system</li>
+              <li>Inspect ZIP/3MF contents</li>
+              <li>Preview STL, OBJ, 3MF, STEP/STP, and G-code files directly on your phone.</li>
             </ul>
           </article>
         </div>
@@ -904,7 +934,7 @@
           <div>
             <p class="eyebrow">Import and image generation</p>
             <h2>Drop in old files and make them look like a library.</h2>
-            <p>Manual imports still matter. MeshVault can index loose files and folders, detect duplicates, and generate model images when downloads do not include useful thumbnails.</p>
+            <p>Manual imports still matter. MeshVault can index loose files, folders, and archive packages across the supported library formats, even when a specific format cannot be previewed or used for automatic image generation.</p>
             <ul>
               <li>Import single files or folders</li>
               <li>Generate thumbnails and extra model views for supported files</li>
@@ -988,9 +1018,9 @@
 
         <div class="license-grid">
           <article class="license-card green">
-            <span class="status green">Direct build</span>
-            <h3>Free trial, then unlock</h3>
-            <p>Best for users who prefer a normal Windows installer or do not want to rely on the Microsoft Store.</p>
+            <span class="status green">Direct download</span>
+            <h3>Download installer</h3>
+            <p>Best for users who prefer a normal Windows installer or do not want to sign into the Microsoft Store for licensing and don't mind manually entering their key.</p>
             <div class="actions" style="margin-top:18px">
               <a class="button direct" href="https://github.com/Xalies/xalies.github.io/releases/latest/download/MeshVaultSetup-win-x64.exe">Download Installer</a>
               <a class="button" href="https://meshvault.lemonsqueezy.com/checkout/buy/55a16f70-5c0a-4fd8-a808-5b0108fd6d71?media=0&logo=0&discount=0">Buy Direct License</a>
@@ -1000,7 +1030,7 @@
           <article class="license-card blue">
             <span class="status blue">Microsoft Store</span>
             <h3>Store-managed install</h3>
-            <p>Best for users who want Microsoft Store install, uninstall, and future Store licensing when available.</p>
+            <p>Best for users who use a Microsoft account, the Microsoft Store install will handle the licensing... no need for keys.</p>
             <div class="actions" style="margin-top:18px">
               <a class="button store" href="ms-windows-store://pdp/?productid=9PNR2SP2BR02">Open Store App</a>
               <a class="button" href="https://apps.microsoft.com/detail/9PNR2SP2BR02">Store Web Listing</a>
@@ -1055,7 +1085,7 @@
           </article>
           <article class="card">
             <h3>Generate missing model images</h3>
-            <p>Imported models without images can get generated thumbnails. STL and STEP previews are rendered from geometry, while 3MF files can use images embedded inside the package where available.</p>
+            <p>Imported models without images can get generated thumbnails where MeshVault can render or read the format. STL and STEP/STP are rendered from geometry, 3MF can use embedded package images, and archives can use a supported model inside. Other imported formats still stay organised in the library.</p>
           </article>
           <article class="card">
             <h3>G-code layer preview</h3>
@@ -1105,10 +1135,10 @@
         <div class="section-head">
           <p class="eyebrow">File support</p>
           <h2>Indexes the formats makers actually collect.</h2>
-          <p>MeshVault indexes common mesh, CAD, slicer, and archive formats. Preview support is strongest for STL, OBJ, 3MF, STEP/STP, GLB/GLTF, PLY, and G-code/GCO.</p>
+          <p>MeshVault indexes common mesh, CAD, slicer, and archive formats. Import/index support is broader than preview and automatic image generation support: STL, OBJ, 3MF, STEP/STP, GLB/GLTF, PLY, and G-code/GCO have the strongest preview support, while other supported files can still be stored, searched, organised, and opened externally.</p>
         </div>
         <div class="format-cloud" aria-label="Supported 3D and CAD file formats">
-          <span>3dm</span><span>3ds</span><span>3mf</span><span>amf</span><span>catpart</span><span>catproduct</span><span>dae</span><span>dwfx</span><span>dwg</span><span>f3d</span><span>fbx</span><span>fcstd</span><span>glb</span><span>gltf</span><span>gcode</span><span>gco</span><span>iges</span><span>igs</span><span>obj</span><span>off</span><span>ply</span><span>scad</span><span>sldasm</span><span>sldprt</span><span>step</span><span>stl</span><span>stp</span><span>x3d</span><span>zip</span>
+          <span>3dm</span><span>3ds</span><span>3mf</span><span>amf</span><span>catpart</span><span>catproduct</span><span>dae</span><span>dwfx</span><span>dwg</span><span>f3d</span><span>fbx</span><span>fcstd</span><span>glb</span><span>gltf</span><span>gcode</span><span>gco</span><span>iges</span><span>igs</span><span>obj</span><span>off</span><span>ply</span><span>scad</span><span>sldasm</span><span>sldprt</span><span>step</span><span>stl</span><span>stp</span><span>x3d</span><span>zip</span><span>rar</span><span>7z</span><span>tar</span><span>tgz</span>
         </div>
       </div>
     </section>
@@ -1186,17 +1216,37 @@
           <div>
             <p class="eyebrow">Ready to rebuild your model library?</p>
             <h2>Start with Windows, then add Connect and Companion when you need them.</h2>
-            <p>The direct Windows build includes a free trial. Store users can install through Microsoft Store, and browser users can install the connector for Chrome or Edge.</p>
+            <p>Install the Windows app first. The direct installer includes a 7-day trial, and you can add the browser connector and Android companion if they fit how you collect and browse models.</p>
           </div>
-          <div class="download-groups">
-            <div class="download-group">
-              <a class="button store" href="ms-windows-store://pdp/?productid=9PNR2SP2BR02">Download for Microsoft Store</a>
-              <a class="button primary" href="https://github.com/Xalies/xalies.github.io/releases/latest/download/MeshVaultSetup-win-x64.exe">Download</a>
-              <a class="button" href="https://chromewebstore.google.com/detail/meshvault-connector/dpicfjjiflfkbekmgbmfplhhicllpjih">Chrome Extension</a>
-              <a class="button" href="https://microsoftedge.microsoft.com/addons/detail/fekbjmalnodmgoocjjjcfgcobccnhnag">Edge Add-on</a>
+          <div class="action-panel">
+            <div class="action-row">
+              <div class="action-copy">
+                <strong>Windows app</strong>
+                <span>Install the main vault</span>
+              </div>
+              <div class="action-buttons">
+                <a class="button primary" href="https://github.com/Xalies/xalies.github.io/releases/latest/download/MeshVaultSetup-win-x64.exe">Download Installer</a>
+                <a class="button store" href="ms-windows-store://pdp/?productid=9PNR2SP2BR02">Microsoft Store</a>
+              </div>
             </div>
-            <div class="download-group android">
-              <a class="button" href="https://play.google.com/store/apps/details?id=com.xalies.meshvault">Android Companion</a>
+            <div class="action-row">
+              <div class="action-copy">
+                <strong>Browser connector</strong>
+                <span>Add browser imports</span>
+              </div>
+              <div class="action-buttons">
+                <a class="button ghost" href="https://chromewebstore.google.com/detail/meshvault-connector/dpicfjjiflfkbekmgbmfplhhicllpjih">Chrome</a>
+                <a class="button ghost" href="https://microsoftedge.microsoft.com/addons/detail/fekbjmalnodmgoocjjjcfgcobccnhnag">Edge</a>
+              </div>
+            </div>
+            <div class="action-row">
+              <div class="action-copy">
+                <strong>Android companion</strong>
+                <span>Browse and share from your phone</span>
+              </div>
+              <div class="action-buttons">
+                <a class="button ghost" href="https://play.google.com/store/apps/details?id=com.xalies.meshvault">Google Play</a>
+              </div>
             </div>
           </div>
         </div>
