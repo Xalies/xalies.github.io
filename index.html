@@ -1030,12 +1030,12 @@
         <div class="server-panel">
           <div>
             <p class="eyebrow">MeshVault Server</p>
-            <h2>Host a shared vault on your own machine.</h2>
-            <p>MeshVault Server is for users who want a library available from another PC, a Linux box, or a small always-on machine on the local network. It keeps the same local-first idea, but gives the browser connector and future clients somewhere central to send models.</p>
+            <h2>Host a shared library on your network.</h2>
+            <p>Designed for users who want a library available from another machine on the local network. It keeps the same local-first idea, but gives the browser connector and any client on the network can manage the library or you can even restrict them to read only access.</p>
             <ul>
               <li>Runs as a lightweight server with a web interface</li>
               <li>Useful for shared workshop, NAS-style, or always-on library setups</li>
-              <li>Supports browser imports when connected with the server token</li>
+              <li>Supports browser and direct import with the server token</li>
             </ul>
           </div>
 
@@ -1043,19 +1043,19 @@
             <article class="server-download-card">
               <span class="status blue">Windows Server</span>
               <h3>Windows x64 package</h3>
-              <p>Download the Windows server build as a zip package. Extract it, run the included start script, then open the local server page to configure the library.</p>
+              <p>Download the Windows server build as a zip package. Extract it, right click start-server.ps1 and run with Powershell or start it in the terminal, The server token is what give other clients write access.</p>
               <a class="button store" href="https://github.com/Xalies/xalies.github.io/releases/latest/download/MeshVault-winserver-x64-setup.zip">Download Windows Server</a>
             </article>
 
             <article class="server-download-card">
               <span class="status green">Linux Server</span>
               <h3>Linux x64 package</h3>
-              <p>Download the Linux server build as a tar.gz package. It is intended for local-network hosting on Linux desktops, mini PCs, and future headless setups.</p>
+              <p>Download the Linux server build as a tar.gz package. Extract it on the linux machine and to start just run start-server.sh in a terminal.</p>
               <a class="button direct" href="https://github.com/Xalies/xalies.github.io/releases/latest/download/MeshVault-linuxserver-x64-setup.tar.gz">Download Linux Server</a>
             </article>
           </div>
         </div>
-        <p class="transition-note">Server builds are an advanced option. For most users, the Windows app is still the easiest place to start.</p>
+        <p class="transition-note">Server builds can been unlocked via the client apps or directly with a license key.</p>
       </div>
     </section>
 
