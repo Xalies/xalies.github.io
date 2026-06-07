@@ -530,6 +530,8 @@
 
     .server-download-card {
       min-height: 100%;
+      display: flex;
+      flex-direction: column;
       padding: 22px;
       border: 1px solid var(--line);
       border-radius: var(--radius);
@@ -538,7 +540,7 @@
 
     .server-download-card .button {
       width: 100%;
-      margin-top: 18px;
+      margin-top: auto;
     }
 
     .license-card {
@@ -812,7 +814,7 @@
           <p class="lead">MeshVault is a local-first Windows app for organizing 3D model collections, with an Android companion and browser extension for capturing downloads before they become mystery files.</p>
           <div class="hero-downloads" aria-label="Primary download links">
             <a class="button primary" data-cta="windows" href="#trial">Download for Windows</a>
-            <a class="button ghost" data-cta="android" href="https://play.google.com/store/apps/details?id=com.xalies.meshvault">Download for Android</a>
+            <a class="button ghost" data-cta="server" href="#server">Download Servers</a>
           </div>
           <div class="device-note windows"><strong>On Windows?</strong> Start with the desktop vault, then install the browser extension to import model pages directly.</div>
           <div class="device-note android"><strong>On Android?</strong> The Companion app is free, has no ads, and keeps a clean MeshVault folder on your phone with built in webserver</div>
