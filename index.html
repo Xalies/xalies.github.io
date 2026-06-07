@@ -508,6 +508,39 @@
     .license-card.blue { border-color: rgba(125, 183, 255, .55); }
     .license-card.yellow { border-color: rgba(245, 197, 66, .55); }
 
+    .server-panel {
+      display: grid;
+      grid-template-columns: minmax(360px, .9fr) minmax(520px, 1.1fr);
+      gap: clamp(24px, 4vw, 54px);
+      align-items: stretch;
+      padding: 28px;
+      border: 1px solid rgba(125, 183, 255, .36);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(135deg, rgba(125, 183, 255, .14), transparent 48%),
+        rgba(37, 33, 44, .72);
+      box-shadow: 0 18px 46px rgba(0, 0, 0, .18);
+    }
+
+    .server-downloads {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .server-download-card {
+      min-height: 100%;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(29, 24, 36, .78);
+    }
+
+    .server-download-card .button {
+      width: 100%;
+      margin-top: 18px;
+    }
+
     .license-card {
       display: flex;
       flex-direction: column;
@@ -675,7 +708,12 @@
       .three,
       .cards,
       .license-grid,
+      .server-panel,
       .media-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .server-downloads {
         grid-template-columns: 1fr;
       }
 
@@ -756,6 +794,7 @@
         <a href="#apps">App Set</a>
         <a href="#workflow">Spotlight</a>
         <a href="#trial">Trial & Unlock</a>
+        <a href="#server">Server</a>
         <a href="#features">Details</a>
         <a href="#formats">Formats</a>
       </nav>
@@ -986,6 +1025,40 @@
       </div>
     </section>
 
+    <section id="server">
+      <div class="container">
+        <div class="server-panel">
+          <div>
+            <p class="eyebrow">MeshVault Server</p>
+            <h2>Host a shared vault on your own machine.</h2>
+            <p>MeshVault Server is for users who want a library available from another PC, a Linux box, or a small always-on machine on the local network. It keeps the same local-first idea, but gives the browser connector and future clients somewhere central to send models.</p>
+            <ul>
+              <li>Runs as a lightweight server with a web interface</li>
+              <li>Useful for shared workshop, NAS-style, or always-on library setups</li>
+              <li>Supports browser imports when connected with the server token</li>
+            </ul>
+          </div>
+
+          <div class="server-downloads">
+            <article class="server-download-card">
+              <span class="status blue">Windows Server</span>
+              <h3>Windows x64 package</h3>
+              <p>Download the Windows server build as a zip package. Extract it, run the included start script, then open the local server page to configure the library.</p>
+              <a class="button store" href="https://github.com/Xalies/xalies.github.io/releases/latest/download/MeshVault-winserver-x64-setup.zip">Download Windows Server</a>
+            </article>
+
+            <article class="server-download-card">
+              <span class="status green">Linux Server</span>
+              <h3>Linux x64 package</h3>
+              <p>Download the Linux server build as a tar.gz package. It is intended for local-network hosting on Linux desktops, mini PCs, and future headless setups.</p>
+              <a class="button direct" href="https://github.com/Xalies/xalies.github.io/releases/latest/download/MeshVault-linuxserver-x64-setup.tar.gz">Download Linux Server</a>
+            </article>
+          </div>
+        </div>
+        <p class="transition-note">Server builds are an advanced option. For most users, the Windows app is still the easiest place to start.</p>
+      </div>
+    </section>
+
     <section id="features">
       <div class="container">
         <div class="section-head">
@@ -1065,6 +1138,8 @@
       </div>
       <nav class="footer-links" aria-label="Footer navigation">
         <a href="https://github.com/Xalies/xalies.github.io/releases/latest/download/MeshVault-win-x64-setup.exe">Direct Windows Download</a>
+        <a href="https://github.com/Xalies/xalies.github.io/releases/latest/download/MeshVault-winserver-x64-setup.zip">Windows Server</a>
+        <a href="https://github.com/Xalies/xalies.github.io/releases/latest/download/MeshVault-linuxserver-x64-setup.tar.gz">Linux Server</a>
         <a href="https://apps.microsoft.com/detail/9PNR2SP2BR02">Microsoft Store</a>
         <a href="https://chromewebstore.google.com/detail/meshvault-connector/dpicfjjiflfkbekmgbmfplhhicllpjih">Chrome Extension</a>
         <a href="https://microsoftedge.microsoft.com/addons/detail/fekbjmalnodmgoocjjjcfgcobccnhnag">Edge Add-on</a>
