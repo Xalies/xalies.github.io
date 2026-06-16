@@ -75,9 +75,9 @@
     body {
       margin: 0;
       background:
-        radial-gradient(circle at 76% 0%, rgba(154, 124, 255, .2), transparent 40vw),
-        radial-gradient(circle at 18% 26%, rgba(125, 183, 255, .1), transparent 30vw),
-        linear-gradient(135deg, #17131c 0%, #111016 52%, #15171d 100%);
+        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px) 0 0 / 72px 72px,
+        linear-gradient(0deg, rgba(255,255,255,.018) 1px, transparent 1px) 0 0 / 72px 72px,
+        linear-gradient(135deg, #17131c 0%, #111016 58%, #15171d 100%);
       color: var(--text);
       font-family: "Bahnschrift", "Segoe UI", system-ui, -apple-system, sans-serif;
       line-height: 1.55;
@@ -975,6 +975,323 @@
       text-decoration: none;
     }
 
+    /* Editorial/product-pass overrides: less template-card, more real app surface. */
+    .hero {
+      padding-bottom: clamp(46px, 7vh, 86px);
+    }
+
+    .hero-badge {
+      display: none;
+    }
+
+    .hero-shot {
+      transform: none;
+      border-color: rgba(154, 124, 255, .32);
+    }
+
+    .hero-shot:hover {
+      transform: none;
+      border-color: rgba(154, 124, 255, .58);
+    }
+
+    .button {
+      border-radius: 18px;
+      transition: background .16s ease, border-color .16s ease, color .16s ease;
+    }
+
+    .button:hover {
+      transform: none;
+      border-color: var(--accent);
+      background: #322f34;
+      box-shadow: none;
+    }
+
+    .three,
+    .cards,
+    .license-grid {
+      grid-template-columns: 1fr;
+      gap: 0;
+      border-top: 1px solid var(--soft-line);
+    }
+
+    .card,
+    .media-card,
+    .license-card {
+      border: 0;
+      border-bottom: 1px solid var(--soft-line);
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
+      backdrop-filter: none;
+      transition: none;
+    }
+
+    .card:hover,
+    .license-card:hover {
+      transform: none !important;
+      box-shadow: none !important;
+      border-color: var(--soft-line) !important;
+    }
+
+    .three .card {
+      display: grid;
+      grid-template-columns: 64px minmax(210px, 310px) 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .three .card .icon {
+      margin: 0;
+      background: #2b2733;
+      border-color: var(--line);
+      grid-row: 1 / span 2;
+    }
+
+    .three .card h3 {
+      margin-top: 4px;
+      grid-column: 2;
+    }
+
+    .three .card p {
+      margin-top: 8px;
+      grid-column: 2;
+    }
+
+    .three .card ul {
+      margin-top: 0;
+      columns: 2;
+      column-gap: 28px;
+      grid-column: 3;
+      grid-row: 1 / span 2;
+    }
+
+    .cards .card {
+      display: grid;
+      grid-template-columns: minmax(190px, 280px) 1fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .cards .card p {
+      margin-top: 2px;
+    }
+
+    .license-card {
+      display: grid;
+      grid-template-columns: 150px minmax(230px, .8fr) 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .license-card .actions {
+      margin-top: 0 !important;
+      padding-top: 0;
+    }
+
+    .license-card .status {
+      grid-row: 1 / span 4;
+      align-self: start;
+      width: max-content;
+    }
+
+    .license-card h3,
+    .license-card p,
+    .license-card .download-group,
+    .license-card > .actions {
+      grid-column: 2 / -1;
+    }
+
+    .download-group {
+      margin-top: 0;
+      padding-top: 0;
+      border-top: 0;
+    }
+
+    .download-group + .download-group {
+      margin-top: 20px;
+    }
+
+    .unlock-note,
+    .cta {
+      background: #1b1721;
+      box-shadow: none;
+      backdrop-filter: none;
+    }
+
+    .site-logo-item,
+    .format-card,
+    .faq-item {
+      border-radius: 3px;
+      background: #17131c;
+      backdrop-filter: none;
+    }
+
+    .site-logo-item:hover,
+    .format-card:hover,
+    .faq-item:hover {
+      transform: none;
+      background: #201c27;
+    }
+
+    .format-card:hover {
+      border-color: var(--line);
+    }
+
+    .app-frame {
+      border: 0;
+      border-radius: 0;
+      overflow: visible;
+      background: transparent;
+      box-shadow: none;
+    }
+
+    .app-frame-header {
+      display: none;
+    }
+
+    .app-frame-content {
+      background: transparent;
+      border: 0;
+      border-radius: 0;
+      overflow: hidden;
+      box-shadow: none;
+    }
+
+    .hero-shot,
+    .hero-shot:hover {
+      border-color: transparent;
+    }
+
+    .caption {
+      margin-top: 10px;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: var(--faint);
+      font-size: 13px;
+    }
+
+    .video-frame {
+      background: transparent;
+    }
+
+    #formats .format-explorer {
+      border-top: 1px solid var(--soft-line);
+    }
+
+    #formats .format-tabs {
+      gap: 24px;
+      margin: 0;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--soft-line);
+    }
+
+    #formats .format-tab {
+      padding: 0;
+      border-radius: 0;
+      background: transparent;
+      border: 0;
+      color: var(--faint);
+    }
+
+    #formats .format-tab:hover {
+      background: transparent;
+      color: var(--text);
+    }
+
+    #formats .format-tab.active {
+      background: transparent;
+      border: 0;
+      color: var(--accent-hover);
+      box-shadow: inset 0 -2px 0 var(--accent);
+    }
+
+    #formats .format-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0 34px;
+      padding-top: 8px;
+    }
+
+    #formats .format-card {
+      display: grid;
+      grid-template-columns: 108px 1fr;
+      align-items: baseline;
+      gap: 12px;
+      padding: 11px 0;
+      border: 0;
+      border-bottom: 1px solid rgba(184, 175, 197, .13);
+      border-radius: 0;
+      background: transparent;
+    }
+
+    #formats .format-card:hover {
+      background: transparent;
+      border-color: rgba(154, 124, 255, .32);
+    }
+
+    #formats .format-ext {
+      color: var(--text);
+      font-size: 15px;
+    }
+
+    #formats .format-badges {
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    #formats .format-badge {
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      font-size: 11px;
+      letter-spacing: .06em;
+    }
+
+    #formats .format-badge.preview {
+      background: transparent;
+      color: var(--blue);
+    }
+
+    #formats .format-badge.thumb {
+      background: transparent;
+      color: var(--green);
+    }
+
+    #formats .format-badge.index {
+      background: transparent;
+      color: var(--muted);
+    }
+
+    @media (max-width: 1020px) {
+      #formats .format-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 760px) {
+      .three .card,
+      .cards .card,
+      .license-card {
+        display: block;
+      }
+
+      .three .card ul {
+        columns: 1;
+        margin-top: 16px;
+      }
+
+      .license-card .download-group {
+        margin-top: 18px;
+      }
+
+      #formats .format-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
     @media (max-width: 1020px) {
       .hero-grid,
       .split,
@@ -1446,8 +1763,8 @@
 
           <article class="license-card purple">
             <span class="status purple">macOS</span>
-            <h3>Comming soon</h3>
-            <p>macOS is not available yet, Both a .dmg and app store version is planned.</p>
+            <h3>Coming soon</h3>
+            <p>macOS is not available yet. Both a .dmg and App Store version are planned.</p>
             <div class="actions" style="margin-top:18px">
               <span class="button disabled" aria-disabled="true">Coming later</span>
             </div>
@@ -1470,7 +1787,7 @@
           <div>
             <span class="status purple">License Key • $19.99 One-Time</span>
             <h3>One key unlocks MeshVault across supported desktop builds.</h3>
-            <p>A single direct license key unlocks the Windows desktop app, dedicated servers (Windows & Linux), and the upcoming Linux and macOS desktop releases. <em>Note: Direct license keys will not be to activate the future Apple App Store version, due to Apple's store licensing restrictions.</em></p>
+            <p>A single direct license key unlocks the Windows desktop app, dedicated servers (Windows & Linux), and the upcoming Linux and macOS desktop releases. <em>Note: Direct license keys will not activate a future Apple App Store version, due to Apple's store licensing restrictions.</em></p>
           </div>
           <a class="button lemonsqueezy-button" href="https://meshvault.lemonsqueezy.com/checkout/buy/55a16f70-5c0a-4fd8-a808-5b0108fd6d71?media=0&logo=0&discount=0&dark=1">Buy License Key</a>
         </div>
