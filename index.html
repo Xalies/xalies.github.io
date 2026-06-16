@@ -75,9 +75,8 @@
     body {
       margin: 0;
       background:
-        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px) 0 0 / 72px 72px,
-        linear-gradient(0deg, rgba(255,255,255,.018) 1px, transparent 1px) 0 0 / 72px 72px,
-        linear-gradient(135deg, #17131c 0%, #111016 58%, #15171d 100%);
+        linear-gradient(180deg, #17131c 0%, #111016 46%, #15131a 100%),
+        #111016;
       color: var(--text);
       font-family: "Bahnschrift", "Segoe UI", system-ui, -apple-system, sans-serif;
       line-height: 1.55;
@@ -219,13 +218,9 @@
       content: "";
       position: absolute;
       inset: auto -10vw 0 -10vw;
-      height: 42%;
+      height: 1px;
       pointer-events: none;
-      background:
-        linear-gradient(90deg, transparent, rgba(154, 124, 255, .12), transparent),
-        repeating-linear-gradient(90deg, rgba(255,255,255,.03) 0 1px, transparent 1px 92px);
-      mask-image: linear-gradient(transparent, #000);
-      opacity: .8;
+      background: linear-gradient(90deg, transparent, rgba(154, 124, 255, .22), transparent);
     }
 
     .hero-grid,
