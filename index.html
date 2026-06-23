@@ -1630,7 +1630,7 @@
           <p class="lead">MeshVault is a local-first 3D model library for organizing model collections, with desktop apps, dedicated servers, an Android companion, and browser extensions for capturing downloads before they become mystery files.</p>
           <div class="hero-downloads" aria-label="Primary download links">
             <a class="button primary" data-cta="windows" href="#trial">Download Windows</a>
-            <span class="button ghost disabled" data-cta="linux" aria-disabled="true">Linux paused</span>
+            <a class="button ghost" data-cta="linux" href="https://github.com/Xalies/xalies.github.io/releases/latest/download/MeshVault-linux-x64-setup.deb">Linux .deb</a>
             <a class="button ghost" data-cta="android" href="#trial">Android</a>
           </div>
           <div class="device-note android"><strong>On Android?</strong> The Companion app is free, has no ads, and keeps a clean MeshVault folder on your phone with a built-in web server.</div>
@@ -1906,14 +1906,14 @@
         <div class="section-head reveal">
           <p class="eyebrow">Downloads and platforms</p>
           <h2>Choose what you need, then pick the platform.</h2>
-          <p>MeshVault includes a Windows desktop app, dedicated server builds, browser extensions for Chrome, Edge, and Firefox, plus a free Android companion. Linux downloads are paused while the client is being finished.</p>
+          <p>MeshVault includes Windows and Linux desktop apps, dedicated server builds, browser extensions for Chrome, Edge, and Firefox, plus a free Android companion.</p>
         </div>
 
         <div class="unlock-note reveal">
           <div class="download-os">License</div>
           <div>
             <h3>Get a MeshVault license key first.</h3>
-            <p>A single direct license key unlocks the Windows desktop app and dedicated server builds. The Android companion is free, with an optional unlock purchase that can act as an unlock source for connected MeshVault apps and servers.</p>
+            <p>A direct license key unlocks the desktop app and dedicated server builds. The Windows app can also be unlocked through the Microsoft Store, and the Android companion can act as an unlock source for connected MeshVault apps and servers.</p>
           </div>
           <a class="button lemonsqueezy-button" href="https://meshvault.lemonsqueezy.com/checkout/buy/55a16f70-5c0a-4fd8-a808-5b0108fd6d71?media=0&logo=0&discount=0&dark=1">Buy License Key</a>
         </div>
@@ -1923,25 +1923,26 @@
             <div class="download-os">Desktop apps</div>
             <div>
               <h3>Manage a local MeshVault library.</h3>
-              <p>Use the desktop app when the library lives on the machine you are working from. Linux desktop downloads are paused while the client is being finished.</p>
+              <p>Use the desktop app when the library lives on the machine you are working from. Windows is the main release today, with a Linux desktop build available for testing.</p>
             </div>
             <div class="download-options compact">
               <div class="download-option">
                 <div>
                   <strong>Windows</strong>
-                  <span>Direct installer.</span>
+                  <span>Microsoft Store or direct installer.</span>
                 </div>
                 <div class="actions">
-                  <a class="button primary" href="https://github.com/Xalies/xalies.github.io/releases/latest/download/MeshVault-win-x64-setup.exe">Windows installer</a>
+                  <a class="button store" href="https://apps.microsoft.com/detail/9pnr2sp2br02">Microsoft Store</a>
+                  <a class="button primary" href="https://github.com/Xalies/xalies.github.io/releases/latest/download/MeshVault-win-x64-setup.exe">Direct installer</a>
                 </div>
               </div>
               <div class="download-option">
                 <div>
                   <strong>Linux</strong>
-                  <span>Paused while the client is being finished.</span>
+                  <span>Debian package for Linux desktop testing.</span>
                 </div>
                 <div class="actions">
-                  <span class="button disabled" aria-disabled="true">Linux paused</span>
+                  <a class="button ghost" href="https://github.com/Xalies/xalies.github.io/releases/latest/download/MeshVault-linux-x64-setup.deb">Linux .deb</a>
                 </div>
               </div>
             </div>
@@ -1957,19 +1958,21 @@
               <div class="download-option">
                 <div>
                   <strong>Windows server</strong>
-                  <span>Zip package with the server UI and start scripts.</span>
+                  <span>Installer or zip package with the server UI and start scripts.</span>
                 </div>
                 <div class="actions">
+                  <a class="button primary" href="https://github.com/Xalies/xalies.github.io/releases/latest/download/MeshVault-winserver-x64-setup.exe">Windows Server installer</a>
                   <a class="button store" href="https://github.com/Xalies/xalies.github.io/releases/latest/download/MeshVault-winserver-x64-setup.zip">Windows Server zip</a>
                 </div>
               </div>
               <div class="download-option">
                 <div>
                   <strong>Linux server</strong>
-                  <span>Paused while the Linux builds are being sorted.</span>
+                  <span>Debian package for installing the server UI, or tar package for manual/server use.</span>
                 </div>
                 <div class="actions">
-                  <span class="button disabled" aria-disabled="true">Linux server paused</span>
+                  <a class="button ghost" href="https://github.com/Xalies/xalies.github.io/releases/latest/download/MeshVault-linuxserver-x64-setup.deb">Linux Server .deb</a>
+                  <a class="button store" href="https://github.com/Xalies/xalies.github.io/releases/latest/download/MeshVault-linuxserver-x64-setup.tar.gz">Linux Server tar.gz</a>
                 </div>
               </div>
             </div>
@@ -2380,7 +2383,7 @@
           <div class="hero-downloads" aria-label="Download links">
             <a class="button primary" href="/index.html#trial">Download Windows</a>
             <a class="button ghost" href="/index.html#trial">Download for Android</a>
-            <span class="button ghost disabled" aria-disabled="true">Linux paused</span>
+            <a class="button ghost" href="https://github.com/Xalies/xalies.github.io/releases/latest/download/MeshVault-linux-x64-setup.deb">Download Linux .deb</a>
           </div>
         </div>
       </div>
@@ -2394,8 +2397,12 @@
         <div style="margin-top: 6px; font-size: 13px; color: var(--faint)">Copyright 2026 MeshVault</div>
       </div>
       <nav class="footer-links" aria-label="Footer navigation">
+        <a href="https://apps.microsoft.com/detail/9pnr2sp2br02">Microsoft Store</a>
         <a href="https://github.com/Xalies/xalies.github.io/releases/latest/download/MeshVault-win-x64-setup.exe">Direct Windows Download</a>
+        <a href="https://github.com/Xalies/xalies.github.io/releases/latest/download/MeshVault-linux-x64-setup.deb">Linux Desktop</a>
+        <a href="https://github.com/Xalies/xalies.github.io/releases/latest/download/MeshVault-winserver-x64-setup.exe">Windows Server Installer</a>
         <a href="https://github.com/Xalies/xalies.github.io/releases/latest/download/MeshVault-winserver-x64-setup.zip">Windows Server</a>
+        <a href="https://github.com/Xalies/xalies.github.io/releases/latest/download/MeshVault-linuxserver-x64-setup.deb">Linux Server</a>
         <a href="https://chromewebstore.google.com/detail/meshvault-connector/dpicfjjiflfkbekmgbmfplhhicllpjih">Chrome Extension</a>
         <a href="https://microsoftedge.microsoft.com/addons/detail/fekbjmalnodmgoocjjjcfgcobccnhnag">Edge Add-on</a>
         <a href="https://addons.mozilla.org/en-US/firefox/addon/meshvault-connect/">Firefox Add-on</a>
