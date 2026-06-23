@@ -563,15 +563,16 @@
     }
 
     .download-matrix {
+      margin-top: 18px;
       border-top: 1px solid var(--soft-line);
     }
 
     .download-platform {
       display: grid;
-      grid-template-columns: 230px minmax(320px, .82fr) minmax(460px, 1.18fr);
-      gap: 28px;
-      align-items: start;
-      padding: 28px 0;
+      grid-template-columns: 190px minmax(280px, .82fr) minmax(440px, 1.18fr);
+      gap: 24px;
+      align-items: stretch;
+      padding: 26px 0;
       border-bottom: 1px solid var(--soft-line);
     }
 
@@ -593,7 +594,11 @@
 
     .download-options {
       display: grid;
-      gap: 14px;
+      gap: 0;
+      border: 1px solid rgba(184, 175, 197, .12);
+      border-radius: 10px;
+      overflow: hidden;
+      background: rgba(24, 21, 30, .42);
     }
 
     .download-options.compact {
@@ -602,10 +607,10 @@
 
     .download-option {
       display: grid;
-      grid-template-columns: minmax(150px, 190px) 1fr;
+      grid-template-columns: minmax(170px, 220px) 1fr;
       gap: 14px;
       align-items: center;
-      padding-bottom: 14px;
+      padding: 14px;
       border-bottom: 1px solid rgba(184, 175, 197, .13);
     }
 
@@ -624,6 +629,33 @@
       color: var(--faint);
       font-size: 13px;
       line-height: 1.4;
+    }
+
+    #trial .download-options .actions {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+      gap: 8px;
+      width: 100%;
+    }
+
+    #trial .download-options .button,
+    #trial .unlock-note .button {
+      width: 100%;
+      min-height: 40px;
+      padding: 8px 12px;
+      border: 1px solid rgba(154, 124, 255, .32);
+      border-radius: 10px;
+      background: #2b2733;
+      color: var(--text);
+      font-size: 13px;
+      box-shadow: none;
+    }
+
+    #trial .download-options .button:hover,
+    #trial .unlock-note .button:hover {
+      border-color: rgba(154, 124, 255, .62);
+      background: #322f34;
+      color: #fff;
     }
 
     .ecosystem-map {
