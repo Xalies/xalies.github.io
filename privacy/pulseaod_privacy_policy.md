@@ -1,18 +1,18 @@
-# Privacy Policy for Simple Notify LED
+# Privacy Policy for PulseAOD
 
 Effective date: May 14, 2026
 
-Simple Notify LED is designed to respect your privacy. The app does not collect, sell, rent, or upload your personal data to our own servers.
+PulseAOD is designed to respect your privacy. The app does not collect, sell, rent, or upload your personal data to our own servers.
 
 ## Data Collection
 
-Simple Notify LED does not operate its own analytics, tracking, advertising profile system, or user database.
+PulseAOD does not operate its own analytics, tracking, advertising profile system, or user database.
 
 We do not sell personal data.
 
 ## Local Notification Processing
 
-Simple Notify LED uses Android notification access only to detect notifications that may need an on-screen LED alert.
+PulseAOD uses Android notification access only to detect notifications that may need an on-screen LED alert.
 
 Notification information is processed locally on your device. The app may check details such as the notifying app, notification state, and Android notification events so it can decide whether to show the LED effect you configured.
 
@@ -26,7 +26,7 @@ These settings are not uploaded to our servers.
 
 ## Permissions
 
-Simple Notify LED may request permissions needed for its features, including:
+PulseAOD may request permissions needed for its features, including:
 
 * Notification access, to detect notifications from selected apps.
 * Notification permission, to post preview and full-screen LED alert notifications.
@@ -38,7 +38,7 @@ Permissions are used only for the app's notification LED features.
 
 ## Donations via In-App Purchase
 
-Simple Notify LED may offer optional donations through Google Play Billing. Donations may unlock optional supporter features, such as the Star effect. Unlocked of the same effect is also enabled after 90 days of installation for any user.
+PulseAOD may offer optional donations through Google Play Billing. Donations may unlock optional supporter features, such as the Star effect. Unlocked of the same effect is also enabled after 90 days of installation for any user.
 
 Purchases are handled by Google Play. We do not receive or store payment card details. The app may receive purchase status from Google Play only to unlock supporter features.
 
@@ -46,17 +46,17 @@ Google Play may process purchase, account, device, diagnostics, fraud prevention
 
 ## Ads
 
-Simple Notify LED does not include ads.
+PulseAOD does not include ads.
 
 ## Internet and Servers
 
-Simple Notify LED does not use our own servers to collect or store user data.
+PulseAOD does not use our own servers to collect or store user data.
 
 Any communication related to purchases is handled by Google Play Billing.
 
 ## Children’s Privacy
 
-Simple Notify LED is not designed to knowingly collect personal information from children.
+PulseAOD is not designed to knowingly collect personal information from children.
 
 ## Changes
 

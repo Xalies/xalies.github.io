@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MeshVault Connect | Browser Extension for 3D Model Downloads</title>
+  <meta name="description" content="MeshVault Connect sends supported 3D model downloads from Chrome, Edge, and Firefox into MeshVault with source links, titles, authors, descriptions, tags, thumbnails, and gallery images.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.meshvault.app/extension/connect.html">
+  <meta property="og:title" content="MeshVault Connect">
+  <meta property="og:description" content="Capture 3D model downloads and metadata from supported model websites into MeshVault.">
+  <meta property="og:image" content="https://www.meshvault.app/images/cover.png">
+  <link rel="icon" type="image/png" href="../images/meshvault_512x512.png">
+  <link rel="canonical" href="https://www.meshvault.app/extension/connect.html">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #111016;
+      --bg-2: #17131c;
+      --panel: #201c27;
+      --panel-2: #26212c;
+      --line: #3a3344;
+      --soft-line: #2b2733;
+      --text: #f4f1fa;
+      --muted: #b8afc5;
+      --faint: #827791;
+      --accent: #9a7cff;
+      --accent-hover: #cdbdff;
+      --green: #55d987;
+      --blue: #7db7ff;
+      --max: 1460px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: linear-gradient(180deg, #17131c 0%, #111016 48%, #15131a 100%);
+      color: var(--text);
+      font-family: "Bahnschrift", "Segoe UI", system-ui, -apple-system, sans-serif;
+      line-height: 1.55;
+    }
+
+    a { color: inherit; }
+    img { display: block; max-width: 100%; }
+
+    .container {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 clamp(26px, 3vw, 56px);
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(23, 19, 28, .88);
+      border-bottom: 1px solid var(--soft-line);
+      backdrop-filter: blur(16px);
+    }
+
+    .nav {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      font-size: 20px;
+      font-weight: 800;
+    }
+
+    .brand img {
+      width: 38px;
+      height: 38px;
+      border-radius: 8px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+    }
+
+    .nav-links a:hover { color: var(--accent-hover); }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .button {
+      min-height: 42px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 9px 16px;
+      border: 1px solid rgba(154, 124, 255, .34);
+      border-radius: 10px;
+      background: #2b2733;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 800;
+      white-space: nowrap;
+      transition: background .16s ease, border-color .16s ease;
+    }
+
+    .button:hover {
+      border-color: rgba(154, 124, 255, .68);
+      background: #322f34;
+    }
+
+    .button.primary {
+      border-color: var(--accent);
+      background: var(--accent);
+      color: #100d16;
+    }
+
+    section {
+      padding: clamp(54px, 6vh, 76px) 0;
+      border-bottom: 1px solid var(--soft-line);
+    }
+
+    h1, h2, h3 {
+      margin: 0;
+      line-height: 1.12;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+    }
+
+    h1 {
+      max-width: 860px;
+      font-size: clamp(34px, 3.3vw, 54px);
+    }
+
+    h2 { font-size: clamp(28px, 2.4vw, 42px); }
+    h3 { font-size: 21px; }
+
+    p {
+      margin: 14px 0 0;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .lead {
+      max-width: 760px;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    .eyebrow {
+      margin: 0 0 12px;
+      color: var(--accent-hover);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .11em;
+      text-transform: uppercase;
+    }
+
+    .hero {
+      display: grid;
+      align-items: center;
+      padding-top: 34px;
+      padding-bottom: 34px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(420px, .95fr) minmax(500px, 1.05fr);
+      gap: clamp(30px, 4vw, 68px);
+      align-items: center;
+    }
+
+    .media-frame {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      background: #15121b;
+    }
+
+    .media-header {
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 0 12px;
+      border-bottom: 1px solid var(--soft-line);
+      background: var(--bg-2);
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .media-body {
+      background: #0c0b10;
+    }
+
+    .media-body img {
+      width: 100%;
+      height: auto;
+    }
+
+    .video {
+      aspect-ratio: 16 / 9;
+      width: 100%;
+      border: 0;
+      display: block;
+    }
+
+    .caption {
+      padding: 12px 14px;
+      border-top: 1px solid var(--soft-line);
+      color: var(--faint);
+      font-size: 13px;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(260px, 420px) minmax(420px, 1fr);
+      gap: 42px;
+      align-items: start;
+      margin-bottom: 30px;
+    }
+
+    .feature-row {
+      display: grid;
+      grid-template-columns: minmax(300px, .82fr) minmax(460px, 1.18fr);
+      gap: clamp(34px, 5vw, 76px);
+      align-items: center;
+      padding: 34px 0;
+      border-top: 1px solid var(--soft-line);
+    }
+
+    .feature-row:first-of-type {
+      border-top: 0;
+      padding-top: 0;
+    }
+
+    .feature-row ul,
+    .plain-list {
+      margin: 18px 0 0;
+      padding: 0;
+      list-style: none;
+      color: var(--muted);
+    }
+
+    .feature-row li,
+    .plain-list li {
+      position: relative;
+      padding-left: 18px;
+      margin: 9px 0;
+    }
+
+    .feature-row li::before,
+    .plain-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: .72em;
+      width: 6px;
+      height: 6px;
+      border-radius: 99px;
+      background: var(--accent);
+    }
+
+    .steps {
+      counter-reset: step;
+      display: grid;
+      gap: 0;
+      border-top: 1px solid var(--soft-line);
+    }
+
+    .step {
+      counter-increment: step;
+      display: grid;
+      grid-template-columns: 80px minmax(240px, 380px) 1fr;
+      gap: 24px;
+      align-items: start;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--soft-line);
+    }
+
+    .step::before {
+      content: counter(step, decimal-leading-zero);
+      color: var(--accent-hover);
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: .12em;
+    }
+
+    .data-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0;
+      border: 1px solid var(--soft-line);
+      border-bottom: 0;
+    }
+
+    .data-item {
+      padding: 18px;
+      border-right: 1px solid var(--soft-line);
+      border-bottom: 1px solid var(--soft-line);
+      background: rgba(24, 21, 30, .34);
+    }
+
+    .data-item:nth-child(2n) { border-right: 0; }
+    .data-item strong {
+      display: block;
+      color: var(--text);
+      font-size: 14px;
+    }
+    .data-item span {
+      display: block;
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .site-strip {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 0;
+      border-top: 1px solid var(--soft-line);
+      border-left: 1px solid var(--soft-line);
+    }
+
+    .site-logo {
+      min-height: 82px;
+      display: grid;
+      place-items: center;
+      padding: 18px;
+      border-right: 1px solid var(--soft-line);
+      border-bottom: 1px solid var(--soft-line);
+      background: rgba(24, 21, 30, .32);
+    }
+
+    .site-logo img {
+      max-height: 34px;
+      object-fit: contain;
+    }
+
+    .placeholder {
+      min-height: 280px;
+      display: grid;
+      place-items: center;
+      padding: 34px;
+      border: 1px dashed rgba(154, 124, 255, .42);
+      border-radius: 8px;
+      background: rgba(24, 21, 30, .42);
+      color: var(--faint);
+      text-align: center;
+      font-size: 14px;
+    }
+
+    footer {
+      padding: 34px 0;
+      color: var(--faint);
+      font-size: 13px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .footer-links a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    @media (max-width: 1060px) {
+      .hero-grid,
+      .section-head,
+      .feature-row,
+      .step {
+        grid-template-columns: 1fr;
+      }
+
+      .site-strip {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 680px) {
+      .nav-links { display: none; }
+      .actions .button { width: 100%; }
+      .data-grid,
+      .site-strip {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="/index.html">
+        <img src="../images/meshvault_512x512.png" alt="MeshVault logo">
+        <span>MeshVault</span>
+      </a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="/index.html">Overview</a>
+        <a href="/index.html#trial">Downloads</a>
+        <a href="/index.html#faq">FAQ</a>
+      </nav>
+      <div class="actions">
+        <a class="button primary" data-extension-link href="https://chromewebstore.google.com/detail/meshvault-connector/dpicfjjiflfkbekmgbmfplhhicllpjih">Get Extension</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow">MeshVault Connect</p>
+          <h1>Save model downloads with the page data attached.</h1>
+          <p class="lead">MeshVault Connect links your browser to MeshVault so supported model downloads can arrive with the title, author, source page, description, tags, thumbnails, and gallery images already captured.</p>
+          <div class="actions" style="margin-top: 28px;">
+            <a class="button primary" href="https://chromewebstore.google.com/detail/meshvault-connector/dpicfjjiflfkbekmgbmfplhhicllpjih">Chrome Web Store</a>
+            <a class="button" href="https://microsoftedge.microsoft.com/addons/detail/fekbjmalnodmgoocjjjcfgcobccnhnag">Edge Add-on</a>
+            <a class="button" href="https://addons.mozilla.org/en-US/firefox/addon/meshvault-connect/">Firefox Add-on</a>
+          </div>
+        </div>
+
+        <div class="media-frame">
+          <div class="media-header">
+            <span>Extension Popup</span>
+            <span>Screenshot</span>
+          </div>
+          <div class="media-body">
+            <img src="../images/extensionui.webp" alt="MeshVault Connect browser extension popup">
+          </div>
+          <div class="caption">The extension can target a local desktop app or a MeshVault Server on your network.</div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">What it does</p>
+            <h2>Cleaner downloads from model sites.</h2>
+          </div>
+          <p>Without the extension, a downloaded archive is often just a filename in a folder. MeshVault Connect keeps the context around the model so the library remains searchable and useful later.</p>
+        </div>
+
+        <div class="data-grid">
+          <div class="data-item">
+            <strong>Captures model metadata</strong>
+            <span>Title, creator, source URL, tags, description, thumbnails, and gallery images where the site exposes them.</span>
+          </div>
+          <div class="data-item">
+            <strong>Sends files to MeshVault</strong>
+            <span>Downloads can be imported into the desktop app or directed to a MeshVault Server on your LAN.</span>
+          </div>
+          <div class="data-item">
+            <strong>Lets normal downloads continue</strong>
+            <span>If MeshVault is not running or the server is locked, downloads can fall back to the browser's normal download flow.</span>
+          </div>
+          <div class="data-item">
+            <strong>Keeps data local</strong>
+            <span>Files and metadata are sent to your own MeshVault app or server. MeshVault does not collect your model library.</span>
+          </div>
+          <div class="data-item">
+            <strong>Distraction-free browsing</strong>
+            <span>Optional page cleanup helps supported model repositories stay focused on the models, download choices, and details you actually need.</span>
+          </div>
+          <div class="data-item">
+            <strong>Handles owned and purchased models</strong>
+            <span>For sites with separate purchase/download pages, MeshVault Connect can use the model page details when the download is started later from your account library.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Workflow</p>
+            <h2>How the extension import works.</h2>
+          </div>
+          <p>The extension watches supported model pages, prepares the page metadata, then attaches that metadata when a supported model file is downloaded.</p>
+        </div>
+
+        <div class="steps">
+          <div class="step">
+            <h3>Open a supported model page</h3>
+            <p>MeshVault Connect reads useful page details in the browser, such as the model name, author, description, tags, thumbnails, and source URL.</p>
+          </div>
+          <div class="step">
+            <h3>Download the model file</h3>
+            <p>When a supported file or archive is downloaded, the extension routes the file and metadata to the selected MeshVault target.</p>
+          </div>
+          <div class="step">
+            <h3>Choose the destination</h3>
+            <p>The file can go to the local desktop app or to a connected MeshVault Server. The desktop app can also import into the currently selected folder when that option is enabled.</p>
+          </div>
+          <div class="step">
+            <h3>Find it later in MeshVault</h3>
+            <p>The imported model appears with searchable metadata, source links, images, and description content instead of becoming another anonymous download.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Owned and purchased models</p>
+            <h2>Some sites split the model page from the download page.</h2>
+          </div>
+          <p>Sites such as Cults3D and CGTrader can show the model details on one page, then provide the actual files from a separate purchases or downloads area. The extension is built around that flow.</p>
+        </div>
+
+        <div class="steps">
+          <div class="step">
+            <h3>Open the original model page first</h3>
+            <p>Visit the public or owned model page so MeshVault Connect can read the title, author, source URL, description, tags, and images.</p>
+          </div>
+          <div class="step">
+            <h3>Then open your purchases or account downloads</h3>
+            <p>Use the site's normal owned-model download page. The extension keeps the recent model-page context ready for the file download.</p>
+          </div>
+          <div class="step">
+            <h3>Download the correct file</h3>
+            <p>When the downloaded archive or model file is captured, MeshVault imports it with the saved page details instead of naming it from the account-download page.</p>
+          </div>
+          <div class="step">
+            <h3>Check the imported source</h3>
+            <p>If a site offers multiple files or model variants, confirm the imported model matches the page details. Some private or account-only pages expose less metadata than public pages.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Guide video</p>
+            <h2>Downloading from a model repository.</h2>
+          </div>
+          <p>This short guide shows the browser-to-library path: opening a model page, downloading through MeshVault Connect, then seeing the imported metadata inside MeshVault.</p>
+        </div>
+
+        <div class="media-frame">
+          <div class="media-header">
+            <span>Browser Import Demo</span>
+            <span>YouTube</span>
+          </div>
+          <iframe class="video" src="https://www.youtube.com/embed/WzFNcYvH6jk?mute=1" title="Downloading a model into MeshVault with MeshVault Connect" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          <div class="caption">Replace or supplement this with a newer walkthrough if you want a more complete extension setup guide.</div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Supported sites</p>
+            <h2>Built around common 3D model repositories.</h2>
+          </div>
+          <p>Site support depends on each repository's page structure and download flow. Public model pages usually expose the most complete metadata; private or account-only pages may expose less.</p>
+        </div>
+
+        <div class="site-strip" aria-label="Supported sites">
+          <div class="site-logo"><img src="../images/logo_printables.png" alt="Printables"></div>
+          <div class="site-logo"><img src="../images/logo_makerworld.png" alt="MakerWorld"></div>
+          <div class="site-logo"><img src="../images/logo_thingiverse.png" alt="Thingiverse"></div>
+          <div class="site-logo"><img src="../images/logo_thangs.png" alt="Thangs"></div>
+          <div class="site-logo"><img src="../images/logo_myminifactory.png" alt="MyMiniFactory"></div>
+          <div class="site-logo"><img src="../images/logo_cults3d.png" alt="Cults3D"></div>
+          <div class="site-logo"><img src="../images/logo_grabcad.png" alt="GrabCAD"></div>
+          <div class="site-logo"><img src="../images/logo_cgtrader.png" alt="CGTrader"></div>
+          <div class="site-logo"><img src="../images/logo_crealitycloud.png" alt="Creality Cloud"></div>
+          <div class="site-logo"><img src="../images/logo_tinkercad.png" alt="Tinkercad"></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="feature-row">
+          <div>
+            <p class="eyebrow">Controls</p>
+            <h2>Capture what you want, pause what you do not.</h2>
+            <p>MeshVault Connect is meant to help with model downloads, not take over every browser download.</p>
+            <ul>
+              <li>Enable or disable MeshVault capture from the extension popup.</li>
+              <li>Pause capture for individual supported sites.</li>
+              <li>Show progress while downloads are sent to MeshVault.</li>
+              <li>Detect when the local desktop app is not running.</li>
+              <li>Use normal browser downloads when MeshVault is unavailable.</li>
+              <li>Reduce visual clutter on supported model pages so browsing stays focused.</li>
+            </ul>
+          </div>
+          <div class="placeholder">
+            Placeholder screenshot: extension settings popup showing enable/disable, target selection, site pause controls, and connection status.
+          </div>
+        </div>
+
+        <div class="feature-row">
+          <div>
+            <p class="eyebrow">App and server targets</p>
+            <h2>Send downloads to the machine that owns the library.</h2>
+            <p>The extension can work with the desktop app on the same computer or a MeshVault Server on the local network.</p>
+            <ul>
+              <li>Local desktop app target for normal single-PC workflows.</li>
+              <li>LAN server target for shared workshop or home-server libraries.</li>
+              <li>Server writes require the server to be unlocked.</li>
+              <li>Remote targets stay local to your network; no MeshVault cloud account is required.</li>
+            </ul>
+          </div>
+          <div class="placeholder">
+            Placeholder screenshot: choosing between local MeshVault and a discovered MeshVault Server target.
+          </div>
+        </div>
+
+        <div class="feature-row">
+          <div>
+            <p class="eyebrow">Privacy</p>
+            <h2>Your downloads go to your MeshVault library.</h2>
+            <p>MeshVault Connect exists to preserve useful download context locally. It does not upload your model files to MeshVault servers because there are no MeshVault cloud servers in this workflow.</p>
+            <ul>
+              <li>Model files are sent to your app or local server.</li>
+              <li>Captured metadata is stored in your MeshVault library database.</li>
+              <li>Source URLs are kept so you can find the original page again later.</li>
+            </ul>
+          </div>
+          <div class="media-frame">
+            <div class="media-header">
+              <span>Imported Model Details</span>
+              <span>Screenshot</span>
+            </div>
+            <div class="media-body">
+              <img src="../images/modeldeails.webp" alt="MeshVault model details showing imported metadata">
+            </div>
+            <div class="caption">Metadata captured by the extension becomes searchable library data.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Requirements</p>
+            <h2>What you need installed.</h2>
+          </div>
+          <div>
+            <ul class="plain-list">
+              <li>MeshVault desktop app or MeshVault Server installed and running.</li>
+              <li>Chrome, Edge, or Firefox with MeshVault Connect installed.</li>
+              <li>A supported model site and a supported model/archive download.</li>
+              <li>For server imports, the server must be reachable on the same local network and unlocked for writes.</li>
+            </ul>
+            <div class="actions" style="margin-top: 24px;">
+              <a class="button primary" href="/index.html#trial">Get MeshVault</a>
+              <a class="button" data-extension-link href="https://chromewebstore.google.com/detail/meshvault-connector/dpicfjjiflfkbekmgbmfplhhicllpjih">Get MeshVault Connect</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <strong>MeshVault</strong>
+      <div class="footer-links">
+        <a href="/index.html">Overview</a>
+        <a href="/index.html#trial">Downloads</a>
+        <a href="https://chromewebstore.google.com/detail/meshvault-connector/dpicfjjiflfkbekmgbmfplhhicllpjih">Chrome Extension</a>
+        <a href="https://microsoftedge.microsoft.com/addons/detail/fekbjmalnodmgoocjjjcfgcobccnhnag">Edge Add-on</a>
+        <a href="https://addons.mozilla.org/en-US/firefox/addon/meshvault-connect/">Firefox Add-on</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var chromeExtensionUrl = "https://chromewebstore.google.com/detail/meshvault-connector/dpicfjjiflfkbekmgbmfplhhicllpjih";
+      var edgeExtensionUrl = "https://microsoftedge.microsoft.com/addons/detail/fekbjmalnodmgoocjjjcfgcobccnhnag";
+      var firefoxExtensionUrl = "https://addons.mozilla.org/en-US/firefox/addon/meshvault-connect/";
+      var ua = navigator.userAgent || "";
+      var targetUrl = /Firefox\//.test(ua)
+        ? firefoxExtensionUrl
+        : /Edg\//.test(ua)
+          ? edgeExtensionUrl
+          : chromeExtensionUrl;
+      document.querySelectorAll("[data-extension-link]").forEach(function (link) {
+        link.href = targetUrl;
+      });
+    })();
+  </script>
+</body>
+</html>
