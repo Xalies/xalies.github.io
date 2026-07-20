@@ -1,8 +1,8 @@
-MeshVault Hub Privacy Policy
+MeshVault Privacy Policy
 
-Last updated: 15-01-2026
+Last updated: 15-07-2026
 
-MeshVault Hub is a desktop application that manages 3D model files on your computer.
+MeshVault is a desktop application that manages 3D model files on your computer.
 
 What data we collect
 
