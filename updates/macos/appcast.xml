@@ -1,11 +1,19 @@
-<?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"
-    xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle"
-    xmlns:dc="http://purl.org/dc/elements/1.1/">
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
     <channel>
         <title>MeshVault Direct for macOS</title>
         <link>https://www.meshvault.app</link>
         <description>MeshVault Direct updates for macOS.</description>
         <language>en-au</language>
+        <item>
+            <title>1.2.1</title>
+            <pubDate>Fri, 31 Jul 2026 01:07:15 +1000</pubDate>
+            <link>https://www.meshvault.app</link>
+            <sparkle:version>5</sparkle:version>
+            <sparkle:shortVersionString>1.2.1</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <enclosure url="https://github.com/Xalies/xalies.github.io/releases/download/v1.2.1.5/MeshVault-macOS-1.2.1.5.dmg" length="43390359" type="application/octet-stream" sparkle:edSignature="0Us3AlvCXKbI1dnzgSqXnRe5jPrCcwj3Cwg6q/0u4OaiUYPJU3tLkfnGwE31qba9JeTd4t/5X4rZZDatlEXPDA=="/>
+        </item>
     </channel>
 </rss>
