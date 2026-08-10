@@ -4,11 +4,11 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>MeshVault Connect | Import 3D Models from the Web</title>
-        <meta name="description" content="MeshVault Connect sends supported 3D model downloads and Google Drive creator packs into MeshVault from Chrome, Edge, and Firefox.">
+        <meta name="description" content="MeshVault Connect sends supported 3D model downloads and creator packs from Google Drive or Dropbox into MeshVault from Chrome, Edge, Firefox, and Safari on macOS.">
         <meta property="og:type" content="website">
         <meta property="og:url" content="https://www.meshvault.app/extension/connect.html">
         <meta property="og:title" content="MeshVault Connect">
-        <meta property="og:description" content="Capture model downloads with their metadata or import creator packs from Google Drive into MeshVault.">
+        <meta property="og:description" content="Capture model downloads with their metadata or import creator packs from Google Drive and Dropbox into MeshVault.">
         <meta property="og:image" content="https://www.meshvault.app/images/cover.png">
         <link rel="icon" type="image/png" href="../images/meshvault_512x512.png">
         <link rel="canonical" href="https://www.meshvault.app/extension/connect.html">
@@ -28,7 +28,9 @@
                 <nav class="nav-links" aria-label="Main navigation">
                     <a href="/index.html">Overview</a>
                     <a href="/index.html#trial">Downloads</a>
+                    <a href="/features/">Features</a>
                     <a href="/index.html#faq">FAQ</a>
+                    <a href="/compare/">Compare</a>
                 </nav>
                 <div class="actions">
                     <a class="button primary" data-extension-link href="https://chromewebstore.google.com/detail/meshvault-connector/dpicfjjiflfkbekmgbmfplhhicllpjih">Get Extension</a>
@@ -41,11 +43,12 @@
                     <div>
                         <p class="eyebrow">MeshVault Connect</p>
                         <h1>Send model downloads and creator packs straight into MeshVault.</h1>
-                        <p class="lead">MeshVault Connect links your browser to MeshVault. Save supported repository downloads with their page details attached, or bring creator packs in directly from Google Drive.</p>
+                        <p class="lead">MeshVault Connect links your browser to MeshVault. Save supported repository downloads with their page details attached, or bring creator packs in directly from Google Drive and Dropbox.</p>
                         <div class="actions" style="margin-top: 28px;">
                             <a class="button primary" href="https://chromewebstore.google.com/detail/meshvault-connector/dpicfjjiflfkbekmgbmfplhhicllpjih">Chrome Web Store</a>
                             <a class="button" href="https://microsoftedge.microsoft.com/addons/detail/fekbjmalnodmgoocjjjcfgcobccnhnag">Edge Add-on</a>
                             <a class="button" href="https://addons.mozilla.org/en-US/firefox/addon/meshvault-connect/">Firefox Add-on</a>
+                            <a class="button" href="https://www.meshvault.app/downloads/MeshVault-macOS.dmg">Safari for macOS</a>
                         </div>
                     </div>
                     <div class="media-frame">
@@ -76,19 +79,27 @@
                         </div>
                         <div class="data-item">
                             <strong>Lets normal downloads continue</strong>
-                            <span>If MeshVault is not running or is in read-only, downloads are still handled normally by the browser.</span>
+                            <span>If MeshVault is not running or is in read-only mode, downloads are still handled normally by the browser.</span>
                         </div>
                         <div class="data-item">
                             <strong>Keeps data local</strong>
                             <span>Files and metadata are sent to your own MeshVault app or server. MeshVault does not collect your model library.</span>
                         </div>
                         <div class="data-item">
-                            <strong>Imports packs from Google Drive</strong>
+                            <strong>Imports packs from Google Drive and Dropbox</strong>
                             <span>Bring creator packs into the MeshVault folder you choose without first reorganising them in a local downloads folder.</span>
                         </div>
                         <div class="data-item">
                             <strong>Handles owned and purchased models</strong>
                             <span>For sites with separate purchase/download pages, MeshVault Connect can use the model page details when the download is started later from your account library.&nbsp;</span>
+                        </div>
+                        <div class="data-item">
+                            <strong>Lets you choose the destination workflow</strong>
+                            <span>Ask for a folder, save to a default folder, create a new folder, or send imports to MeshVault for review later.</span>
+                        </div>
+                        <div class="data-item">
+                            <strong>Cleans up selected repository pages</strong>
+                            <span>Hide known advertising elements on selected sites and optionally filter models marked as AI-generated where the site exposes that information.</span>
                         </div>
                     </div>
                 </div>
@@ -212,9 +223,9 @@
                     <div class="section-head">
                         <div>
                             <p class="eyebrow">Supported sources</p>
-                            <h2>Built around common model repositories and Google Drive.</h2>
+                            <h2>Built around common model repositories and creator-pack services.</h2>
                         </div>
-                        <p>Repository support depends on each site's page structure and download flow. Public model pages usually expose the most complete metadata, while Google Drive support provides a direct path for creator packs you already own or have access to.</p>
+                        <p>Repository support depends on each site's page structure and download flow. Public model pages usually expose the most complete metadata, while Google Drive and Dropbox provide a direct path for creator packs you already own or have access to.</p>
                     </div>
                     <div class="site-strip" aria-label="Supported model sources">
                         <div class="site-logo">
@@ -253,6 +264,9 @@
                         <div class="site-logo" aria-label="Google Drive">
                             <strong>Google Drive</strong>
                         </div>
+                        <div class="site-logo" aria-label="Dropbox">
+                            <strong>Dropbox</strong>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -283,9 +297,9 @@
                             <p>The extension can work with the desktop app on the same computer or a MeshVault Server on the local network.</p>
                             <ul>
                                 <li>Local desktop app target for normal single PC.</li>
-                                <li>LAN server target for a dedicated server on another PC or even opt out of a desktop app and self host.</li>
+                                <li>LAN server target for a dedicated server on another computer, including a self-hosted setup without a desktop client.</li>
                                 <li>Server writes require the server to be unlocked.</li>
-                                <li>Remote targets stay local to your network, theres is no cloud.</li>
+                                <li>Remote targets stay local to your network; there is no MeshVault cloud in this workflow.</li>
                             </ul>
                         </div>
                         <div class="placeholder">
@@ -326,8 +340,8 @@
                         <div>
                             <ul class="plain-list">
                                 <li>MeshVault desktop app or MeshVault Server installed and running.</li>
-                                <li>Chrome, Edge, or Firefox with MeshVault Connect installed.</li>
-                                <li>A supported model site and download, or a creator pack available in Google Drive.</li>
+                                <li>Chrome, Edge, or Firefox with MeshVault Connect installed, or the Safari extension bundled with MeshVault for macOS.</li>
+                                <li>A supported model site and download, or a creator pack available in Google Drive or Dropbox.</li>
                                 <li>For server imports, the server must be reachable on the same local network and unlocked for writes.</li>
                             </ul>
                             <div class="actions" style="margin-top: 24px;">
@@ -345,9 +359,12 @@
                 <div class="footer-links">
                     <a href="/index.html">Overview</a>
                     <a href="/index.html#trial">Downloads</a>
+                    <a href="/features/">Features</a>
+                    <a href="/compare/">Compare</a>
                     <a href="https://chromewebstore.google.com/detail/meshvault-connector/dpicfjjiflfkbekmgbmfplhhicllpjih">Chrome Extension</a>
                     <a href="https://microsoftedge.microsoft.com/addons/detail/fekbjmalnodmgoocjjjcfgcobccnhnag">Edge Add-on</a>
                     <a href="https://addons.mozilla.org/en-US/firefox/addon/meshvault-connect/">Firefox Add-on</a>
+                    <a href="https://www.meshvault.app/downloads/MeshVault-macOS.dmg">Safari for macOS</a>
                 </div>
             </div>
         </footer>

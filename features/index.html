@@ -1,0 +1,468 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Complete MeshVault Feature List</title>
+  <meta name="description" content="The complete, versioned MeshVault feature reference for the desktop apps, MeshVault Connect, MeshVault Server, Android Companion, previews, formats, imports, metadata, and slicer workflows.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.meshvault.app/features/">
+  <meta property="og:title" content="Everything MeshVault does">
+  <meta property="og:description" content="A complete capability reference for MeshVault Desktop, Connect, Server, and Companion.">
+  <meta property="og:image" content="https://www.meshvault.app/images/cover.png">
+  <link rel="canonical" href="https://www.meshvault.app/features/">
+  <link rel="icon" type="image/png" href="../images/meshvault_512x512.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #111016;
+      --bg-2: #17131c;
+      --panel: #201c27;
+      --line: #403847;
+      --soft-line: #2b2733;
+      --control-line: #564d63;
+      --text: #f4f1fa;
+      --muted: #b8afc5;
+      --faint: #887f94;
+      --accent: #9a7cff;
+      --accent-hover: #cdbdff;
+      --max: 1460px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--bg); color: var(--text); font-family: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif; line-height: 1.58; }
+    a { color: inherit; }
+    img { display: block; max-width: 100%; }
+    .container { width: min(var(--max), 100%); margin: 0 auto; padding-inline: clamp(22px, 4vw, 62px); }
+
+    header { position: sticky; top: 0; z-index: 20; border-bottom: 1px solid var(--soft-line); background: rgba(17, 16, 22, .92); backdrop-filter: blur(16px); }
+    .nav { min-height: 72px; display: flex; align-items: center; gap: 25px; }
+    .brand { display: inline-flex; align-items: center; gap: 11px; margin-right: auto; text-decoration: none; font-weight: 700; }
+    .brand img { width: 38px; height: 38px; border-radius: 6px; }
+    .nav-links { display: flex; align-items: center; gap: 21px; color: var(--muted); font-size: 14px; font-weight: 600; }
+    .nav-links a { text-decoration: none; }
+    .nav-links a:hover, .nav-links a[aria-current="page"] { color: var(--text); }
+
+    .button { min-height: 38px; display: inline-flex; align-items: center; justify-content: center; padding: 7px 14px; border: 1px solid var(--control-line); border-radius: 6px; background: #2b2733; color: var(--text); text-decoration: none; font-size: 13px; font-weight: 600; white-space: nowrap; }
+    .button:hover { border-color: var(--accent); background: #322f34; }
+    .button.primary { border-color: var(--accent); background: var(--accent); color: #100d16; }
+    .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+
+    main > section { padding: clamp(66px, 7.5vw, 112px) 0; border-bottom: 1px solid var(--soft-line); scroll-margin-top: 72px; }
+    .hero { background: linear-gradient(180deg, var(--bg-2), var(--bg)); }
+    .hero-grid { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(290px, .65fr); gap: clamp(48px, 9vw, 140px); align-items: end; }
+    .eyebrow, .scope, .section-number, .checked { font-family: "IBM Plex Mono", Consolas, monospace; }
+    .eyebrow { margin: 0 0 16px; color: var(--accent-hover); font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { max-width: 920px; margin-bottom: 24px; font-size: clamp(49px, 6.3vw, 100px); line-height: .96; letter-spacing: -.055em; }
+    h2 { margin-bottom: 0; font-size: clamp(34px, 4vw, 64px); line-height: 1.02; letter-spacing: -.035em; }
+    h3 { margin-bottom: 0; font-size: 18px; line-height: 1.25; }
+    p { color: var(--muted); }
+    .lead { max-width: 850px; margin-bottom: 0; font-size: clamp(18px, 1.6vw, 23px); line-height: 1.55; }
+    .hero-facts { border-top: 2px solid var(--text); }
+    .hero-fact { padding: 18px 0; border-bottom: 1px solid var(--line); }
+    .hero-fact strong { display: block; font-size: 17px; }
+    .hero-fact span { display: block; margin-top: 4px; color: var(--muted); font-size: 13px; }
+
+    .contents { padding-block: 0 !important; background: var(--bg-2); }
+    .contents-list { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); border-left: 1px solid var(--line); }
+    .contents-list a { min-height: 72px; display: flex; align-items: center; padding: 14px 18px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); color: var(--muted); text-decoration: none; font-size: 13px; font-weight: 600; }
+    .contents-list a:hover { color: var(--text); background: var(--panel); }
+
+    .section-head { display: grid; grid-template-columns: minmax(250px, .65fr) minmax(420px, 1.35fr); gap: clamp(45px, 8vw, 130px); align-items: start; margin-bottom: 45px; }
+    .section-head p { max-width: 800px; margin-bottom: 0; font-size: 17px; }
+    .section-number { display: block; margin-bottom: 15px; color: var(--accent-hover); font-size: 11px; letter-spacing: .12em; }
+
+    .guide-grid { display: grid; grid-template-columns: minmax(320px, .68fr) minmax(520px, 1.32fr); gap: clamp(42px, 7vw, 105px); align-items: center; }
+    .media-frame { border: 1px solid var(--line); background: #0c0b10; }
+    .media-header { min-height: 38px; display: flex; justify-content: space-between; align-items: center; padding: 9px 13px; border-bottom: 1px solid var(--soft-line); background: var(--bg-2); color: var(--muted); font-family: "IBM Plex Mono", Consolas, monospace; font-size: 11px; }
+    .video { width: 100%; aspect-ratio: 16 / 9; display: block; border: 0; }
+    .caption { padding: 12px 14px; border-top: 1px solid var(--soft-line); color: var(--faint); font-size: 13px; }
+
+    .feature-table { border-top: 2px solid var(--text); }
+    .feature-row { display: grid; grid-template-columns: 125px minmax(190px, .62fr) minmax(400px, 1.38fr); gap: 28px; padding: 22px 0; border-bottom: 1px solid var(--line); align-items: start; }
+    .scope { color: var(--accent-hover); font-size: 11px; letter-spacing: .07em; text-transform: uppercase; }
+    .feature-row p { margin: 0; font-size: 15px; }
+    .feature-row code { color: var(--accent-hover); font-family: "IBM Plex Mono", Consolas, monospace; font-size: .9em; }
+    .note { margin-top: 34px; padding: 22px 0; border-top: 1px solid var(--accent); border-bottom: 1px solid var(--accent); color: var(--muted); }
+    .note strong { color: var(--text); }
+
+    .format-groups { border-top: 2px solid var(--text); }
+    .format-group { display: grid; grid-template-columns: minmax(210px, .55fr) minmax(420px, 1.45fr); gap: clamp(35px, 6vw, 95px); padding: 25px 0; border-bottom: 1px solid var(--line); }
+    .format-group p { margin: 0; }
+    .format-list { color: var(--muted); font-family: "IBM Plex Mono", Consolas, monospace; font-size: 13px; line-height: 1.8; }
+
+    .availability { background: var(--bg-2); }
+    .availability-grid { display: grid; grid-template-columns: minmax(250px, .7fr) minmax(420px, 1.3fr); gap: clamp(45px, 8vw, 130px); }
+    .availability-copy { border-top: 2px solid var(--text); }
+    .availability-copy p { padding: 17px 0; margin: 0; border-bottom: 1px solid var(--line); }
+    .checked { color: var(--faint); font-size: 12px; }
+
+    .cta { background: var(--accent); color: #100d16; }
+    .cta-grid { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(260px, .7fr); gap: 48px; align-items: end; }
+    .cta p { max-width: 760px; margin: 18px 0 0; color: #2b2038; font-size: 18px; }
+    .cta .button { border-color: #100d16; background: #100d16; color: var(--text); }
+
+    footer { padding: 38px 0; background: #0c0a0f; }
+    .footer-grid { display: flex; justify-content: space-between; gap: 30px; }
+    .footer-links { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 15px; }
+    .footer-links a { color: var(--muted); font-size: 13px; text-decoration: none; }
+
+    @media (max-width: 1050px) {
+      .nav-links { display: none; }
+      .hero-grid, .section-head, .guide-grid, .availability-grid, .cta-grid { grid-template-columns: 1fr; }
+      .contents-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .feature-row { grid-template-columns: 100px minmax(170px, .6fr) minmax(300px, 1.4fr); }
+    }
+    @media (max-width: 700px) {
+      .container { padding-inline: 20px; }
+      .nav .button { display: none; }
+      h1 { font-size: clamp(45px, 14vw, 70px); }
+      .contents-list { grid-template-columns: 1fr; }
+      .feature-row, .format-group { grid-template-columns: 1fr; gap: 9px; }
+      .feature-row { padding: 21px 0 24px; }
+      .footer-grid { display: block; }
+      .footer-links { justify-content: flex-start; margin-top: 18px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="/index.html" aria-label="MeshVault home">
+        <img src="../images/meshvault_512x512.png" alt="MeshVault logo">
+        <span>MeshVault</span>
+      </a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#quick-start">Quick start</a>
+        <a href="#desktop">Desktop</a>
+        <a href="#connect">Connect</a>
+        <a href="#server">Server</a>
+        <a href="#formats">Formats</a>
+        <a href="/features/" aria-current="page">Features</a>
+        <a href="/compare/">Compare</a>
+      </nav>
+      <a class="button primary" href="/index.html#trial">Get MeshVault</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow">Complete capability reference</p>
+          <h1>Everything MeshVault does.</h1>
+          <p class="lead">A public, versioned list of the features across MeshVault Desktop, Connect, Server, and the Android Companion—not just the highlights that fit on the homepage.</p>
+          <div class="actions">
+            <a class="button primary" href="#quick-start">Start with the guide</a>
+            <a class="button" href="#desktop">Browse every feature</a>
+          </div>
+        </div>
+        <div class="hero-facts" aria-label="Feature reference summary">
+          <div class="hero-fact"><strong>Desktop 2.0.14.0</strong><span>Released desktop behaviour used for this reference.</span></div>
+          <div class="hero-fact"><strong>Connect 2.0.6.6</strong><span>Repository, Google Drive, and Dropbox capture.</span></div>
+          <div class="hero-fact"><strong>57 indexed extensions</strong><span>49 model, CAD, project, and G-code types plus eight archive variants.</span></div>
+          <div class="hero-fact"><strong>$19.99 once</strong><span>Direct licence; no subscription required.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contents" aria-label="Feature categories">
+      <div class="container contents-list">
+        <a href="#desktop">Library and importing</a>
+        <a href="#organise">Browse and organise</a>
+        <a href="#metadata">Metadata and images</a>
+        <a href="#preview">Preview and archives</a>
+        <a href="#making">Slicers and making</a>
+        <a href="#connect">MeshVault Connect</a>
+        <a href="#server">MeshVault Server</a>
+        <a href="#companion">Android Companion</a>
+        <a href="#platforms">Platforms and settings</a>
+        <a href="#formats">All file formats</a>
+      </div>
+    </section>
+
+    <section id="quick-start">
+      <div class="container guide-grid">
+        <div>
+          <p class="eyebrow">Quick-start guide</p>
+          <h2>From install to an organised first model.</h2>
+          <p class="lead">This walkthrough covers installing MeshVault, adding MeshVault Connect, importing from MakerWorld and Dropbox, and bringing files in manually.</p>
+          <div class="actions">
+            <a class="button primary" href="/index.html#trial">Choose a download</a>
+            <a class="button" href="https://youtu.be/6gSfJRYSl8g">Open on YouTube</a>
+          </div>
+        </div>
+        <div class="media-frame">
+          <div class="media-header"><span>MeshVault quick-start guide</span><span>YouTube</span></div>
+          <iframe class="video" src="https://www.youtube.com/embed/6gSfJRYSl8g" title="MeshVault quick-start guide covering installation, MeshVault Connect, MakerWorld, Dropbox, and manual imports" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          <div class="caption">Install the app and extension, then try a repository download, a Dropbox creator pack, and a manual import.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="desktop">
+      <div class="container">
+        <div class="section-head">
+          <div><span class="section-number">01 / Collect</span><h2>Library and importing</h2></div>
+          <p>MeshVault works with normal files and folders. It adds a portable database beside them, then gives you several ways to bring an existing collection, creator pack, or new download into the same library.</p>
+        </div>
+        <div class="feature-table">
+          <div class="feature-row"><span class="scope">Desktop</span><h3>Portable library</h3><p>Stores models in a normal folder tree and keeps metadata in <code>.meshvault/meshvault.db</code> inside that library, so the files and database can move together between supported desktop clients.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>Main and watched folders</h3><p>Uses one portable main library and can index additional local, external, or network folders in place without moving their files into the main library.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>Files, folders, and drag-and-drop</h3><p>Imports one or many files, complete folder trees, or dragged content. Folder structure is retained and loose files can go to Unsorted or the selected destination.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>Batch-safe importing</h3><p>Skips duplicate files without interrupting every item, continues past unsupported files, and reports importing, scanning, duplicate names, and thumbnail work separately.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>Archive preview before import</h3><p>Shows archive names and contained paths before you decide how a ZIP, RAR, 7Z, TAR, or supported TAR variant should appear in the library.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>Keep a pack intact</h3><p>Keeps the original archive as one library model when a creator pack belongs together.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>Virtual archive models</h3><p>Keeps the source archive intact while indexing supported contents as individual models with their own metadata, thumbnails, and real nested paths.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>Split or extract packs</h3><p>Extracts supported contents as separate models into the current folder, an archive-named folder, or the preserved archive hierarchy, with an option to ignore the first wrapper folder.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>Reusable archive decisions</h3><p>Applies one archive choice to the rest of the current batch and remembers the last choice as the next default.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>Imports to review</h3><p>Finds undecided archives placed directly in the library and Connect imports deliberately saved for review, without stopping startup with repeated modal prompts.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>Scan and watch</h3><p>Avoids unnecessary full startup scans, watches configured locations, detects new, changed, and missing files, and can generate missing supported thumbnails during a manual scan.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>Hidden folders and cleanup</h3><p>Excludes the recycle bin and configured hidden folders, removes missing records when files disappear, and keeps hidden folders on disk until you choose to index them again.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="organise">
+      <div class="container">
+        <div class="section-head">
+          <div><span class="section-number">02 / Find</span><h2>Browse and organise</h2></div>
+          <p>The library browser is designed to work at both a quick visual level and a detailed folder level, without hiding the real source location of a model.</p>
+        </div>
+        <div class="feature-table">
+          <div class="feature-row"><span class="scope">Desktop</span><h3>Three library views</h3><p>Switches between large visual tiles, compact tiles, and a list view while preserving the selected model and its source-folder context.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>Search</h3><p>Searches useful indexed information including titles, authors, tags, descriptions, folders, filenames, and source details.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>Filters</h3><p>Filters by file type, source, duplicates, and optional printed status, with remote models clearly marked when a server is connected.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>Sort modes</h3><p>Sorts by title, recently added, file size, or grouped folder order. Grouped sorting keeps each folder and its nested content together.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>All, Recent, Unsorted, Favourites</h3><p>Provides quick views for the whole library, recent additions, loose imports, and models marked as favourites—including compatible remote models.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>Real folder management</h3><p>Creates folders and subfolders, renames, hides, or deletes them, shows nested folder counts, and opens the real containing folder when appropriate.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>Virtual collections</h3><p>Creates, renames, deletes, and changes collection thumbnails without moving files. Collections can hold individual models or folder-backed groups including nested and future models.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>Folder-aware collections</h3><p>Offers both flat and navigable folder-aware collection views, with folders shown before models at each level.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>Printed status</h3><p>Marks models as Unknown, To print, or Printed for simple manual library tracking.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>Duplicate detection</h3><p>Uses file-content hashes during scanning and import rather than relying only on names, and exposes a duplicate filter for review and cleanup.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>Batch Select</h3><p>Provides an explicit multi-select mode with visible checkmarks, selected counts, favourites, collections, metadata, and other appropriate batch actions.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>Related files</h3><p>Finds files related to the selected model and keeps supporting project content reachable alongside the primary printable file.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="metadata">
+      <div class="container">
+        <div class="section-head">
+          <div><span class="section-number">03 / Describe</span><h2>Metadata and images</h2></div>
+          <p>Metadata is stored with the library and can come from repository pages, package contents, generated previews, or your own edits.</p>
+        </div>
+        <div class="feature-table">
+          <div class="feature-row"><span class="scope">Desktop</span><h3>Complete model record</h3><p>Stores title, author, author profile, source URL, tags, summary, rich description, print settings, project type, package information, printed status, and slicer results.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>FDM, resin, and CNC types</h3><p>Assigns a making workflow to individual models or folders, with a configurable FDM or resin default for unassigned files.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>Rich description editor</h3><p>Uses a WYSIWYG editor with headings, emphasis, lists, links, tables, YouTube embeds, undo, and redo while preserving compatible HTML captured from the web.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>Main and extra images</h3><p>Stores a main thumbnail and gallery images, supports manual additions, and displays extra images in a selectable strip.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>Image ordering</h3><p>Reorders and removes images; promoting any image to the first position makes it the model thumbnail.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>Batch metadata</h3><p>Applies selected metadata values to multiple models or every model below a folder, including nested folders.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>Future-folder rules</h3><p>Optionally keeps folder-level metadata rules active so chosen values are applied to models discovered there later.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>Automatic geometry thumbnails</h3><p>Generates centred renders for STL, OBJ, PLY, GLTF, GLB, DAE, FBX, STEP, and STP in the background.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>Embedded and derived thumbnails</h3><p>Uses 3MF plate images, FreeCAD FCSTD thumbnails, G-code/GCO slicer images or a toolpath fallback, and supported models inside archives.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>Thumbnail controls</h3><p>Configures render quality and colour, generates images during import or scan, and regenerates thumbnails for a model, folder, or the library with up-axis and image-preservation choices.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>Preview captures</h3><p>Saves the current viewer render as the main thumbnail or as an extra model image without breaking the inspection workflow.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="preview">
+      <div class="container">
+        <div class="section-head">
+          <div><span class="section-number">04 / Inspect</span><h2>Preview and archives</h2></div>
+          <p>MeshVault can catalogue far more formats than it renders. Previewable files get native inspection tools; indexed-only files remain searchable and can still open in their normal application.</p>
+        </div>
+        <div class="feature-table">
+          <div class="feature-row"><span class="scope">Desktop</span><h3>13 preview extensions</h3><p>Previews STL, OBJ, 3MF, STEP, STP, G-code, GCO, GLB, GLTF, PLY, DAE, FBX, and supported <code>.model</code> archive entries.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>Model navigation</h3><p>Rotates, pans, zooms, and fits the complete model in frame with matching interaction directions across the desktop clients.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>Visual controls</h3><p>Configures viewer background and model colour, optionally gives separate bodies random colours, and preserves multi-body 3MF colour/material information where available.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>Bed reference</h3><p>Displays a build-bed reference for scale and allows measurement points on either the model or the bed.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>Measurements</h3><p>Keeps up to three measurements visible at once with distinct colours and selectable metric or imperial units.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>Multi-plate projects</h3><p>Switches between plates in supported 3MF and G-code projects instead of flattening a multi-plate job into one view.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>G-code inspection</h3><p>Displays toolpaths and layers so generated print files can be inspected from the same library record.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>Archive browser</h3><p>Lists supported contents without extracting the whole archive and provides preview, slicer, default-app, and extraction actions where appropriate.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>Archive preview picker</h3><p>Opens the only previewable archive entry directly or presents a picker when several models are available.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>Managed temporary extraction</h3><p>Extracts only the virtual entry required for preview, export, slicer, or default-app actions, then cleans temporary content after use and on the next launch.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="making">
+      <div class="container">
+        <div class="section-head">
+          <div><span class="section-number">05 / Make</span><h2>Slicers and manufacturing</h2></div>
+          <p>MeshVault is not only a catalogue: it hands files to the applications you already use and can associate useful slicer output back with the source model.</p>
+        </div>
+        <div class="feature-table">
+          <div class="feature-row"><span class="scope">Desktop</span><h3>Separate making applications</h3><p>Configures different FDM, resin, and CNC applications and uses the model or folder project type to choose the correct one.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>Program detection</h3><p>Detects compatible installed manufacturing programs and lets you review or override the applications used for each workflow.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>Slicer hand-off</h3><p>Sends supported local, archive-contained, or remote files to the configured slicer; remote files use a managed temporary working copy.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>ZIP to OrcaSlicer</h3><p>Optionally sends ZIP files directly to OrcaSlicer; otherwise MeshVault uses its normal archive entry selection and extraction workflow.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>Slicer result association</h3><p>Watches supported slicer output after a hand-off and connects the resulting metrics to the original model.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>Print metrics</h3><p>Captures print time, filament length, weight, volume and cost, layers, maximum Z, layer height, nozzle size, printer, material, material changes, and multi-object counts when supplied.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>Tested slicers</h3><p>Tracks supported output from OrcaSlicer, Bambu Studio, PrusaSlicer, SuperSlicer, Cura, and Creality Print.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>PCBWay preparation</h3><p>Prepares STL, OBJ, STEP, STP, and 3MF files for supported PCBWay upload workflows, including temporary conversion or packaging where required.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="connect">
+      <div class="container">
+        <div class="section-head">
+          <div><span class="section-number">06 / Capture</span><h2>MeshVault Connect</h2></div>
+          <p>The browser extension preserves the context that usually disappears after a download. It can target a running desktop app or an unlocked MeshVault Server on the local network.</p>
+        </div>
+        <div class="feature-table">
+          <div class="feature-row"><span class="scope">Connect</span><h3>Repository capture</h3><p>Captures supported downloads from Printables, MakerWorld, Thingiverse, Thangs, MyMiniFactory, CGTrader, GrabCAD, Creality Cloud, Cults3D, Makerables, and Tinkercad.</p></div>
+          <div class="feature-row"><span class="scope">Connect</span><h3>Google Drive and Dropbox</h3><p>Brings accessible creator packs from Google Drive or Dropbox into the chosen MeshVault folder without first reorganising them in a downloads folder.</p></div>
+          <div class="feature-row"><span class="scope">Connect</span><h3>Captured context</h3><p>Sends available title, author, author profile, source page, summary, rich description, tags, thumbnail, gallery images, project/print information, and downloaded files.</p></div>
+          <div class="feature-row"><span class="scope">Connect</span><h3>Destination modes</h3><p>Asks for a folder on each download, saves directly to a default folder, or sends models to Imports to review. The save prompt can also create a new folder at the root or inside the selected folder.</p></div>
+          <div class="feature-row"><span class="scope">Connect</span><h3>MakerWorld filename cleanup</h3><p>Optionally replaces opaque MakerWorld download names with useful model-title-based filenames.</p></div>
+          <div class="feature-row"><span class="scope">Connect</span><h3>Owned and purchased flows</h3><p>Handles repositories where the model page and later account-library download are separate, including the distinct Cults3D owned and purchased model flows.</p></div>
+          <div class="feature-row"><span class="scope">Connect</span><h3>Import review</h3><p>Can save captured imports for review so their metadata is already attached while you place them into the right library folder.</p></div>
+          <div class="feature-row"><span class="scope">Connect</span><h3>Re-import choices</h3><p>When a captured download already exists, MeshVault can update the existing record, keep a new copy, or ask each time.</p></div>
+          <div class="feature-row"><span class="scope">Connect</span><h3>Local or server target</h3><p>Sends to the local desktop connector or a selected LAN server, tests the connection, and refreshes the available destination folders. Server writes remain protected by the server PIN and licence/write state.</p></div>
+          <div class="feature-row"><span class="scope">Connect</span><h3>Normal-download fallback</h3><p>Allows the browser download to continue normally when MeshVault is unavailable or rejects the import.</p></div>
+          <div class="feature-row"><span class="scope">Connect</span><h3>Capture controls</h3><p>Turns capture on or off, pauses individual supported sites, shows and cancels active transfers, clears stored page metadata, and reports when the selected MeshVault target is not running.</p></div>
+          <div class="feature-row"><span class="scope">Connect</span><h3>AI-model filter</h3><p>Optionally hides model cards marked as AI-generated on supported sites that expose a usable AI label.</p></div>
+          <div class="feature-row"><span class="scope">Connect</span><h3>Selected-site page cleanup</h3><p>Hides known advertising elements and obstructive overlays on selected supported repositories for a cleaner browsing and download flow.</p></div>
+          <div class="feature-row"><span class="scope">Connect</span><h3>Metadata validation</h3><p>Tests the current supported model page without downloading a file and reports the scraper, source URL, captured fields, and normalised metadata that would be sent.</p></div>
+          <div class="feature-row"><span class="scope">Connect</span><h3>Browser support</h3><p>Available for Chrome, Microsoft Edge, and Firefox, with a native Safari extension included in the Apple-silicon macOS client.</p></div>
+          <div class="feature-row"><span class="scope">Connect</span><h3>Local-first privacy</h3><p>Sends files and captured metadata to your own app or server rather than uploading the library to a MeshVault cloud service.</p></div>
+        </div>
+        <div class="actions"><a class="button" href="/extension/connect.html">Open the Connect guide</a></div>
+      </div>
+    </section>
+
+    <section id="server">
+      <div class="container">
+        <div class="section-head">
+          <div><span class="section-number">07 / Share locally</span><h2>MeshVault Server</h2></div>
+          <p>The optional server hosts a library on an always-on workshop PC, home server, or Docker-capable machine while keeping access on your local network.</p>
+        </div>
+        <div class="feature-table">
+          <div class="feature-row"><span class="scope">Server</span><h3>Windows, Linux, and Docker</h3><p>Runs as a dedicated Windows or Linux server build, with a Docker image for compatible self-hosted setups.</p></div>
+          <div class="feature-row"><span class="scope">Server</span><h3>Browser library</h3><p>Provides a local web interface for folder navigation, visual browsing, search, sorting, model details, downloads, metadata changes, and permitted library actions.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>LAN discovery or manual address</h3><p>Finds servers on the local network or connects with a manually entered address and PIN, then remembers the connection details in app settings.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>Local and remote together</h3><p>Shows remote models alongside the current local library with clear remote markers rather than hiding them under an artificial server folder.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>Remote library actions</h3><p>Browses, searches, filters, previews, edits metadata, deletes, creates collections, and generates or uploads missing thumbnails when the connection permits it.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>Remote importing</h3><p>Imports files, folders, drag-and-drop content, and Connect downloads to the server when Server import is enabled.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>Local slicer for remote files</h3><p>Downloads a managed temporary copy of a remote model and opens it in the slicer installed on the desktop computer.</p></div>
+          <div class="feature-row"><span class="scope">Licence</span><h3>Compatible unlock sharing</h3><p>A desktop client unlocked with a direct key can unlock a compatible server while keeping PIN authentication and write permission as separate checks.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="companion">
+      <div class="container">
+        <div class="section-head">
+          <div><span class="section-number">08 / Mobile</span><h2>Android Companion</h2></div>
+          <p>The Companion is a phone-side library and transfer tool for models discovered away from the desktop. Some connected transfer and ecosystem features require MeshVault Pro.</p>
+        </div>
+        <div class="feature-table">
+          <div class="feature-row"><span class="scope">Android</span><h3>Phone-side vault</h3><p>Stores a structured model folder on Android and provides visual folders, model tiles, search, sorting, collections, details, sharing, and duplicate cleanup.</p></div>
+          <div class="feature-row"><span class="scope">Android</span><h3>Repository browser</h3><p>Browses supported model repositories in-app and saves downloads with available title, source, creator information, and images.</p></div>
+          <div class="feature-row"><span class="scope">Android</span><h3>Mobile preview</h3><p>Previews supported STL, OBJ, 3MF, STEP/STP, and G-code files with configurable limits, colours, grid, multi-part colours, and G-code layer selection; availability varies by tier.</p></div>
+          <div class="feature-row"><span class="scope">Android</span><h3>Archive inspection</h3><p>Opens ZIP and 3MF packages and lets you inspect or preview supported parts inside.</p></div>
+          <div class="feature-row"><span class="scope">Android</span><h3>Metadata and images</h3><p>Edits model details, tags, descriptions, source links, main thumbnails, extra images, and folder placement.</p></div>
+          <div class="feature-row"><span class="scope">Android</span><h3>Local Wi-Fi server</h3><p>Serves the phone library to a browser on the same network for browsing, details, downloads, selected-model ZIPs, metadata export, and permitted management actions.</p></div>
+          <div class="feature-row"><span class="scope">Android Pro</span><h3>Desktop discovery and transfer</h3><p>Discovers compatible MeshVault apps on the LAN, sends individual models or the phone library to the desktop, and supports automatic backup/sync workflows.</p></div>
+          <div class="feature-row"><span class="scope">Android Pro</span><h3>Direct slicer hand-off</h3><p>Sends a selected phone model through a connected desktop app to its configured slicer.</p></div>
+          <div class="feature-row"><span class="scope">Android Pro</span><h3>Ecosystem unlock</h3><p>Can synchronise a compatible Google Play Pro entitlement to connected desktop and server apps.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="platforms">
+      <div class="container">
+        <div class="section-head">
+          <div><span class="section-number">09 / System</span><h2>Platforms, options, and support</h2></div>
+          <p>Core library outcomes are shared across the desktop clients, while installation, stores, security, startup, tray behaviour, and native pickers follow each operating system.</p>
+        </div>
+        <div class="feature-table">
+          <div class="feature-row"><span class="scope">Windows</span><h3>WinUI desktop client</h3><p>Available as a direct installer and Microsoft Store package, with direct-key or Store licensing, startup registration, tray support, and distribution-appropriate updates.</p></div>
+          <div class="feature-row"><span class="scope">macOS</span><h3>Native Apple-silicon client</h3><p>Uses SwiftUI, native menus and lifecycle, security-scoped access for libraries and slicers, Safari Connect, and native Apple-silicon builds. The current beta is free.</p></div>
+          <div class="feature-row"><span class="scope">Linux</span><h3>Avalonia desktop client</h3><p>Uses Linux-native file launching, pickers, desktop/menu integration, DEB packaging, and desktop-environment-dependent tray and startup support.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>Onboarding</h3><p>Chooses a language, local library or server, FDM/resin/CNC apps, a default making mode, ZIP-to-Orca behaviour, and an available trial or unlock route.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>Grouped options</h3><p>Separates app, library, actions, viewer, connections, and licensing settings rather than presenting one undifferentiated settings page.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>Cache and database recovery</h3><p>Opens the settings folder, rebuilds the image cache, and provides a deliberate library-database reset route when local index recovery is required.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>Layout and onboarding recovery</h3><p>Resets an off-screen or broken window layout and can rerun onboarding without deleting the library or licence state.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>Localisation</h3><p>Supports system-default selection and 13 language families with regional variants, including English, Czech, Danish, German, Spanish, Finnish, French, Hebrew, Norwegian, Dutch, Brazilian Portuguese, Russian, and Swedish.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>Feedback</h3><p>Sends optional feedback with app version, platform, and distribution context, with a contact address optional unless an email workflow requires it.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>Diagnostics</h3><p>Provides focused logs for startup, scan, import, thumbnails, preview, remote connections, updates, licensing, and Connect, with automatic cleanup of old logs.</p></div>
+          <div class="feature-row"><span class="scope">Licence</span><h3>Trial and unlocks</h3><p>Includes a seven-day desktop/server trial, a $19.99 direct licence key, Microsoft Store licensing on Windows, Android Pro ecosystem activation, and a free Apple-silicon macOS beta.</p></div>
+          <div class="feature-row"><span class="scope">Privacy</span><h3>No required account or vendor cloud</h3><p>The core library stays in your folders and database. An account is not required to catalogue models, and local server access remains under your control.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="formats">
+      <div class="container">
+        <div class="section-head">
+          <div><span class="section-number">10 / File support</span><h2>Every indexed format</h2></div>
+          <p>Indexing, thumbnail generation, preview, slicer hand-off, and archive inspection are different capabilities. This list separates them so a searchable library entry is not mistaken for a native preview claim.</p>
+        </div>
+        <div class="format-groups">
+          <div class="format-group"><h3>49 indexed model, CAD, project, and G-code extensions</h3><p class="format-list">3DM, 3DS, 3MF, ABC, AMF, BGCODE, BLEND, BLEND1, CATPART, CATPRODUCT, DAE, DWFX, DWG, DXF, F3D, FBX, FCSTD, GLB, GLTF, GCODE, GCO, IAM, IFC, IGES, IGS, IPT, JT, NC, OBJ, OFF, PLY, SAT, SAB, SCAD, SKP, SLDASM, SLDPRT, STEP, STL, STP, USD, USDA, USDC, USDZ, VRML, WRL, X_B, X_T, X3D</p></div>
+          <div class="format-group"><h3>Eight indexed archive variants</h3><p class="format-list">ZIP, RAR, 7Z, TAR, TAR.GZ, TGZ, TAR.BZ2, TBZ2</p></div>
+          <div class="format-group"><h3>Native preview</h3><p class="format-list">STL, OBJ, 3MF, STEP, STP, GCODE, GCO, GLB, GLTF, PLY, DAE, FBX, and supported .MODEL archive entries</p></div>
+          <div class="format-group"><h3>Generated or extracted thumbnails</h3><p class="format-list">Geometry: STL, OBJ, PLY, GLTF, GLB, DAE, FBX, STEP, STP. Embedded or derived: 3MF, FCSTD, GCODE, GCO. Supported entries can also be processed inside the eight archive variants.</p></div>
+          <div class="format-group"><h3>Slicer hand-off</h3><p class="format-list">STL, 3MF, OBJ, AMF, STEP, STP, GCODE, GCO, BGCODE</p></div>
+          <div class="format-group"><h3>PCBWay preparation</h3><p class="format-list">STL, OBJ, STEP, STP, 3MF</p></div>
+        </div>
+        <p class="note"><strong>Why some formats are index-only:</strong> a CAD or project file can still be titled, tagged, searched, grouped, collected, opened in its normal application, and kept with related files even when MeshVault cannot render it itself.</p>
+      </div>
+    </section>
+
+    <section class="availability">
+      <div class="container availability-grid">
+        <div>
+          <p class="eyebrow">Reference status</p>
+          <h2>Current, public, and correctable.</h2>
+        </div>
+        <div class="availability-copy">
+          <p>This reference was checked against the released MeshVault desktop behaviour, the Connect extension, and the current Companion implementation on <strong>10 August 2026</strong>.</p>
+          <p>Windows is the desktop behavioural reference. Linux and macOS target the same library outcomes while using native controls, but operating-system integration and release timing can differ.</p>
+          <p>Features still only present in an unreleased development workspace are not included here. If a released capability is missing or described incorrectly, <a href="https://github.com/Xalies/MeshVault/issues">report a correction</a>.</p>
+          <span class="checked">Desktop 2.0.14.0 · Connect 2.0.6.6 · checked 2026-08-10</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container cta-grid">
+        <div>
+          <p class="eyebrow" style="color:#100d16">Try the workflow</p>
+          <h2>Use your own folders as the test.</h2>
+          <p>Windows, Linux, and server builds include a seven-day trial. The Apple-silicon macOS beta is currently free.</p>
+        </div>
+        <div class="actions">
+          <a class="button" href="/index.html#trial">Choose a download</a>
+          <a class="button" href="https://meshvault.lemonsqueezy.com/checkout/buy/55a16f70-5c0a-4fd8-a808-5b0108fd6d71?media=0&amp;logo=0&amp;discount=0&amp;dark=1">Buy once — $19.99</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div><strong>MeshVault</strong><div style="margin-top:6px;color:var(--faint);font-size:13px">Copyright 2026 MeshVault</div></div>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="/index.html">Home</a>
+        <a href="/features/">Features</a>
+        <a href="/index.html#trial">Downloads</a>
+        <a href="/extension/connect.html">MeshVault Connect</a>
+        <a href="/compare/">Compare</a>
+        <a href="/privacy/">Privacy</a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>

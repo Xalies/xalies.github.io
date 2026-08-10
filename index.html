@@ -1732,8 +1732,16 @@
     .footer-grid { border-top-color: rgba(244,241,250,.2); }
     .footer-links a { color: var(--muted); }
 
+    .quick-start-grid {
+      display: grid;
+      grid-template-columns: minmax(310px, .68fr) minmax(520px, 1.32fr);
+      gap: clamp(42px, 7vw, 108px);
+      align-items: center;
+    }
+
     @media (max-width: 900px) {
       .section-head { grid-template-columns: 1fr; }
+      .quick-start-grid { grid-template-columns: 1fr; }
       .download-platform { grid-template-columns: 1fr; }
       .cards .card { grid-template-columns: 55px minmax(180px, 280px) 1fr; }
     }
@@ -1767,8 +1775,9 @@
       <nav class="nav-links" aria-label="Main navigation">
         <a href="#workflow">How it works</a>
         <a href="#trial">Downloads</a>
-        <a href="#features">Features</a>
+        <a href="/features/">Features</a>
         <a href="#formats">Formats</a>
+        <a href="/compare/">Compare</a>
       </nav>
       <div class="nav-actions">
         <a class="button primary" href="#trial">Get MeshVault</a>
@@ -1789,8 +1798,9 @@
     <nav class="mobile-nav-links" aria-label="Mobile navigation">
       <a href="#workflow">How it works</a>
       <a href="#trial">Downloads</a>
-      <a href="#features">Features</a>
+      <a href="/features/">Features</a>
       <a href="#formats">Formats</a>
+      <a href="/compare/">Compare</a>
       <a class="button primary" href="#trial" style="margin-top: 20px;">Get MeshVault</a>
     </nav>
   </div>
@@ -1825,6 +1835,36 @@
       </div>
     </section>
 
+    <section id="quick-start">
+      <div class="container quick-start-grid">
+        <div class="reveal">
+          <p class="eyebrow">Quick-start guide</p>
+          <h2>Install it, connect the browser, and add your first models.</h2>
+          <p>This walkthrough covers installing MeshVault, adding MeshVault Connect, importing from MakerWorld and Dropbox, and bringing an existing model in manually.</p>
+          <div class="actions" style="margin-top: 24px;">
+            <a class="button primary" href="#trial">Choose a download</a>
+            <a class="button ghost" href="/features/">See every feature</a>
+          </div>
+        </div>
+        <div class="app-frame reveal">
+          <div class="app-frame-header">
+            <div class="app-frame-dots">
+              <span class="app-frame-dot red"></span>
+              <span class="app-frame-dot yellow"></span>
+              <span class="app-frame-dot green"></span>
+            </div>
+            <span class="app-frame-title">MeshVault Quick Start</span>
+          </div>
+          <div class="app-frame-content">
+            <div class="video-frame">
+              <iframe src="https://www.youtube.com/embed/6gSfJRYSl8g" title="MeshVault quick-start guide covering installation, MeshVault Connect, MakerWorld, Dropbox, and manual imports" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+          </div>
+          <div class="caption">From a fresh install to repository, Dropbox, and manual imports.</div>
+        </div>
+      </div>
+    </section>
+
     <section id="workflow">
       <div class="container">
         <div class="section-head reveal">
@@ -1839,7 +1879,7 @@
             <h2>Save all the details with the model.</h2>
             <p>MeshVault Connect is the workflow that makes the whole system feel different. Capture the title, author, source URL, tags, description, and gallery images from supported model sites, then see the model appear in the Windows vault with context already attached.</p>
             <ul>
-              <li>Designed for model browsing sessions, not manual spreadsheet-style cataloging</li>
+              <li>Designed for model browsing sessions, not manual spreadsheet-style cataloguing</li>
               <li>Works with MeshVault open or running in the tray</li>
             </ul>
             <div class="actions" style="margin-top: 22px;">
@@ -2032,9 +2072,9 @@
           <div class="download-os">License</div>
           <div>
             <h3>Try it for seven days.</h3>
-            <p>Windows, Linux, and server builds include a seven-day trial. The Apple silicon macOS beta is currently free. One direct licence key unlocks supported builds, with Microsoft Store and Android Pro unlock options also available.</p>
+            <p>Windows, Linux, and server builds include a seven-day trial. The Apple silicon macOS beta is currently free. A $19.99 direct licence key unlocks supported builds, with Microsoft Store and Android Pro unlock options also available.</p>
           </div>
-          <a class="button lemonsqueezy-button" href="https://meshvault.lemonsqueezy.com/checkout/buy/55a16f70-5c0a-4fd8-a808-5b0108fd6d71?media=0&logo=0&discount=0&dark=1">Buy License Key</a>
+          <a class="button lemonsqueezy-button" href="https://meshvault.lemonsqueezy.com/checkout/buy/55a16f70-5c0a-4fd8-a808-5b0108fd6d71?media=0&logo=0&discount=0&dark=1">Buy License Key — $19.99</a>
         </div>
 
         <div class="download-matrix reveal">
@@ -2153,9 +2193,9 @@
     <section id="features">
       <div class="container">
         <div class="section-head reveal">
-          <p class="eyebrow">Useful details</p>
+          <p class="eyebrow">Feature highlights</p>
           <h2>Useful tools for a growing library.</h2>
-          <p>After the main Windows workflow, these are the practical things that keep MeshVault useful day-to-day without needing cloud accounts or a locked-in folder structure.</p>
+          <p>These are selected highlights for a quick overview. The complete, versioned feature reference covers the desktop apps, Connect, Server, Companion, and every supported file type.</p>
         </div>
 
         <div class="cards reveal">
@@ -2212,6 +2252,9 @@
             <p>Prepare supported files for PCBWay upload. Extracts ZIP archives to a clean temporary folder automatically, which is then safely cleaned up on the next launch.</p>
           </article>
         </div>
+        <div class="actions reveal" style="margin-top: 28px;">
+          <a class="button primary" href="/features/">See the complete feature list</a>
+        </div>
       </div>
     </section>
 
@@ -2219,13 +2262,13 @@
       <div class="container">
         <div class="section-head reveal">
           <p class="eyebrow">File support</p>
-          <h2>Supports over 30 file formats.</h2>
-          <p>MeshVault indexes common meshes, CAD projects, G-code, and archives—complete with automatic thumbnail generation for popular geometry formats.</p>
+          <h2>Indexes 57 file extensions.</h2>
+          <p>MeshVault recognises 49 mesh, CAD, project, and G-code extensions plus eight archive variants. Common preview and thumbnail formats are highlighted below.</p>
         </div>
 
         <div class="format-explorer reveal">
           <div class="format-tabs" role="tablist" aria-label="Format categories">
-            <button class="format-tab active" role="tab" aria-selected="true" data-category="all">All Formats</button>
+            <button class="format-tab active" role="tab" aria-selected="true" data-category="all">All shown</button>
             <button class="format-tab" role="tab" aria-selected="false" data-category="3d">3D Models</button>
             <button class="format-tab" role="tab" aria-selected="false" data-category="cad">CAD / Engineering</button>
             <button class="format-tab" role="tab" aria-selected="false" data-category="slicer">Slicer & G-code</button>
@@ -2478,7 +2521,7 @@
 
           <div class="faq-item">
             <button class="faq-trigger" aria-expanded="false">
-              <span>How does the license key unlock system work?</span>
+              <span>How does the licence key unlock system work?</span>
               <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
             </button>
             <div class="faq-panel">
@@ -2531,7 +2574,7 @@
             </button>
             <div class="faq-panel">
               <div class="faq-content">
-                <p>The current macOS beta is a native Apple silicon build for arm64 Macs. It is free while in beta and includes direct update support. Intel Macs are not supported by this release.</p>
+                <p>The current macOS beta is a native Apple silicon build for arm64 Macs. It is free while in beta. Intel Macs are not supported by this release.</p>
               </div>
             </div>
           </div>
@@ -2575,6 +2618,8 @@
         <a href="https://microsoftedge.microsoft.com/addons/detail/fekbjmalnodmgoocjjjcfgcobccnhnag">Edge Add-on</a>
         <a href="https://addons.mozilla.org/en-US/firefox/addon/meshvault-connect/">Firefox Add-on</a>
         <a href="/extension/connect.html">MeshVault Connect Guide</a>
+        <a href="/features/">Complete feature list</a>
+        <a href="/compare/">Compare model libraries</a>
         <a href="https://play.google.com/store/apps/details?id=com.xalies.meshvault">Android Companion</a>
         <a href="privacy/index.html">Privacy Policy</a>
       </nav>
