@@ -1,0 +1,19 @@
+services:
+  meshvault-server:
+    image: ghcr.io/xalies/meshvault-server-amd64:latest
+    container_name: meshvault-server
+    restart: unless-stopped
+    network_mode: host
+    environment:
+      MESHVAULT_LIBRARY: /library
+      MESHVAULT_SERVER_CONFIG: /data/meshvault-server.json
+      MESHVAULT_SERVER_URLS: http://0.0.0.0:5225
+      MESHVAULT_DOCKER_ADMIN_PORT: ""
+      # Optional: set this to a 6-digit PIN if you do not want the server to generate one.
+      # MESHVAULT_SERVER_PIN: "123456"
+    volumes:
+      - ./MeshVaultLibrary:/library
+      - meshvault-server-data:/data
+
+volumes:
+  meshvault-server-data:
