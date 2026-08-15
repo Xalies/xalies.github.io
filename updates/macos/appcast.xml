@@ -6,6 +6,17 @@
         <description>MeshVault Direct updates for macOS.</description>
         <language>en-au</language>
         <item>
+            <title>1.4.0</title>
+            <pubDate>Sat, 15 Aug 2026 21:39:11 +0000</pubDate>
+            <link>https://www.meshvault.app</link>
+            <sparkle:version>1014</sparkle:version>
+            <sparkle:shortVersionString>1.4.0</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <sparkle:releaseNotesLink>https://www.meshvault.app/updates/macos/MeshVault-macOS-1.0.1.md</sparkle:releaseNotesLink>
+            <enclosure url="https://github.com/Xalies/xalies.github.io/releases/download/v1.4.0.6/MeshVault-macOS-1.0.1.dmg" length="43842441" type="application/octet-stream" sparkle:edSignature="bg+j3t9afd1i5gbn6uWKsKvZY5vVZ13gx65U3rLlPrVqXdeRuwta5nkzX8ndA2EzCIPNC83c9TbFiYSif+EMBg=="/>
+        </item>
+        <item>
             <title>1.3.0</title>
             <pubDate>Sun, 02 Aug 2026 23:06:58 +0000</pubDate>
             <link>https://www.meshvault.app</link>
