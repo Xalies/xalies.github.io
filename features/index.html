@@ -163,8 +163,8 @@
           </div>
         </div>
         <div class="hero-facts" aria-label="Feature reference summary">
-          <div class="hero-fact"><strong>Desktop 2.0.14.0</strong><span>Released desktop behaviour used for this reference.</span></div>
-          <div class="hero-fact"><strong>Connect 2.0.6.6</strong><span>Repository, Google Drive, and Dropbox capture.</span></div>
+          <div class="hero-fact"><strong>Desktop 2.0.20.0</strong><span>Released desktop behaviour used for this reference.</span></div>
+          <div class="hero-fact"><strong>Connect 2.0.9.0</strong><span>Repository, Google Drive, and Dropbox capture.</span></div>
           <div class="hero-fact"><strong>57 indexed extensions</strong><span>49 model, CAD, project, and G-code types plus eight archive variants.</span></div>
           <div class="hero-fact"><strong>$19.99 once</strong><span>Direct licence; no subscription required.</span></div>
         </div>
@@ -222,6 +222,9 @@
           <div class="feature-row"><span class="scope">Desktop</span><h3>Split or extract packs</h3><p>Extracts supported contents as separate models into the current folder, an archive-named folder, or the preserved archive hierarchy, with an option to ignore the first wrapper folder.</p></div>
           <div class="feature-row"><span class="scope">Desktop</span><h3>Reusable archive decisions</h3><p>Applies one archive choice to the rest of the current batch and remembers the last choice as the next default.</p></div>
           <div class="feature-row"><span class="scope">Desktop</span><h3>Imports to review</h3><p>Finds undecided archives placed directly in the library and Connect imports deliberately saved for review, without stopping startup with repeated modal prompts.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>Large-library setup</h3><p>Counts supported files before indexing a large existing library, then lets you index everything, choose particular folders, or exclude folders you do not want catalogued.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>Staged, resumable scanning</h3><p>Discovers files first so models appear quickly, then reads hashes, archive contents, metadata, and thumbnails as resumable background work without repeating completed enrichment.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>Import controls</h3><p>Shows file-by-file progress for longer manual imports and lets you pause, resume, stop after the current file, or cancel the operation.</p></div>
           <div class="feature-row"><span class="scope">Desktop</span><h3>Scan and watch</h3><p>Avoids unnecessary full startup scans, watches configured locations, detects new, changed, and missing files, and can generate missing supported thumbnails during a manual scan.</p></div>
           <div class="feature-row"><span class="scope">Desktop</span><h3>Hidden folders and cleanup</h3><p>Excludes the recycle bin and configured hidden folders, removes missing records when files disappear, and keeps hidden folders on disk until you choose to index them again.</p></div>
         </div>
@@ -267,8 +270,9 @@
           <div class="feature-row"><span class="scope">Desktop</span><h3>Future-folder rules</h3><p>Optionally keeps folder-level metadata rules active so chosen values are applied to models discovered there later.</p></div>
           <div class="feature-row"><span class="scope">Desktop</span><h3>Automatic geometry thumbnails</h3><p>Generates centred renders for STL, OBJ, PLY, GLTF, GLB, DAE, FBX, STEP, and STP in the background.</p></div>
           <div class="feature-row"><span class="scope">Desktop</span><h3>Embedded and derived thumbnails</h3><p>Uses 3MF plate images, FreeCAD FCSTD thumbnails, G-code/GCO slicer images or a toolpath fallback, and supported models inside archives.</p></div>
-          <div class="feature-row"><span class="scope">Desktop</span><h3>Thumbnail controls</h3><p>Configures render quality and colour, generates images during import or scan, and regenerates thumbnails for a model, folder, or the library with up-axis and image-preservation choices.</p></div>
-          <div class="feature-row"><span class="scope">Desktop</span><h3>Preview captures</h3><p>Saves the current viewer render as the main thumbnail or as an extra model image without breaking the inspection workflow.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>Existing image reuse</h3><p>Prefers an unambiguous matching thumbnail, preview, export, or sole folder image already stored beside a model before spending time generating a new render.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>Thumbnail controls</h3><p>Configures render quality, colour, and parallel generation speed; generates images during import or scan; and regenerates thumbnails for a model, folder, or the library with up-axis and image-preservation choices.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>Preview captures</h3><p>Saves the current viewer render as the main thumbnail, an extra model image, or a separate screenshot without breaking the inspection workflow.</p></div>
         </div>
       </div>
     </section>
@@ -321,6 +325,8 @@
         </div>
         <div class="feature-table">
           <div class="feature-row"><span class="scope">Connect</span><h3>Repository capture</h3><p>Captures supported downloads from Printables, MakerWorld, Thingiverse, Thangs, MyMiniFactory, CGTrader, GrabCAD, Creality Cloud, Cults3D, Makerables, and Tinkercad.</p></div>
+          <div class="feature-row"><span class="scope">Connect</span><h3>Complete Printables downloads</h3><p>On Chrome, Edge, and Firefox, downloads every model file from a Printables page or only one named file group, preserves that grouping in a ZIP, and imports the result as one organised model package.</p></div>
+          <div class="feature-row"><span class="scope">Connect</span><h3>Supporting-file selection</h3><p>On Chrome, Edge, and Firefox, adds selected Printables “Other files” or MakerWorld documentation and CyberBrick files to the model package instead of leaving useful supporting material behind.</p></div>
           <div class="feature-row"><span class="scope">Connect</span><h3>Google Drive and Dropbox</h3><p>Brings accessible creator packs from Google Drive or Dropbox into the chosen MeshVault folder without first reorganising them in a downloads folder.</p></div>
           <div class="feature-row"><span class="scope">Connect</span><h3>Captured context</h3><p>Sends available title, author, author profile, source page, summary, rich description, tags, thumbnail, gallery images, project/print information, and downloaded files.</p></div>
           <div class="feature-row"><span class="scope">Connect</span><h3>Destination modes</h3><p>Asks for a folder on each download, saves directly to a default folder, or sends models to Imports to review. The save prompt can also create a new folder at the root or inside the selected folder.</p></div>
@@ -330,10 +336,13 @@
           <div class="feature-row"><span class="scope">Connect</span><h3>Re-import choices</h3><p>When a captured download already exists, MeshVault can update the existing record, keep a new copy, or ask each time.</p></div>
           <div class="feature-row"><span class="scope">Connect</span><h3>Local or server target</h3><p>Sends to the local desktop connector or a selected LAN server, tests the connection, and refreshes the available destination folders. Server writes remain protected by the server PIN and licence/write state.</p></div>
           <div class="feature-row"><span class="scope">Connect</span><h3>Normal-download fallback</h3><p>Allows the browser download to continue normally when MeshVault is unavailable or rejects the import.</p></div>
+          <div class="feature-row"><span class="scope">Connect</span><h3>Optional browser-only tools</h3><p>When MeshVault is not running, can still save generated Printables collections through Chrome, Edge, or Firefox. Chrome and Edge can also replace opaque MakerWorld filenames with useful model-title names.</p></div>
+          <div class="feature-row"><span class="scope">Connect</span><h3>Folder visibility</h3><p>Hides selected destination folders or only their subfolders from Connect’s folder picker without hiding or changing those folders inside MeshVault.</p></div>
           <div class="feature-row"><span class="scope">Connect</span><h3>Capture controls</h3><p>Turns capture on or off, pauses individual supported sites, shows and cancels active transfers, clears stored page metadata, and reports when the selected MeshVault target is not running.</p></div>
           <div class="feature-row"><span class="scope">Connect</span><h3>AI-model filter</h3><p>Optionally hides model cards marked as AI-generated on supported sites that expose a usable AI label.</p></div>
           <div class="feature-row"><span class="scope">Connect</span><h3>Selected-site page cleanup</h3><p>Hides known advertising elements and obstructive overlays on selected supported repositories for a cleaner browsing and download flow.</p></div>
           <div class="feature-row"><span class="scope">Connect</span><h3>Metadata validation</h3><p>Tests the current supported model page without downloading a file and reports the scraper, source URL, captured fields, and normalised metadata that would be sent.</p></div>
+          <div class="feature-row"><span class="scope">Connect</span><h3>Diagnostic mode</h3><p>Optionally writes detailed import and download events to the extension service-worker console for troubleshooting, with filenames and source URLs included only while the mode is enabled.</p></div>
           <div class="feature-row"><span class="scope">Connect</span><h3>Browser support</h3><p>Available for Chrome, Microsoft Edge, and Firefox, with a native Safari extension included in the Apple-silicon macOS client.</p></div>
           <div class="feature-row"><span class="scope">Connect</span><h3>Local-first privacy</h3><p>Sends files and captured metadata to your own app or server rather than uploading the library to a MeshVault cloud service.</p></div>
         </div>
@@ -349,11 +358,13 @@
         </div>
         <div class="feature-table">
           <div class="feature-row"><span class="scope">Server</span><h3>Windows, Linux, and Docker</h3><p>Runs as a dedicated Windows or Linux server build, with a Docker image for compatible self-hosted setups.</p></div>
+          <div class="feature-row"><span class="scope">Server</span><h3>NAS-friendly Docker setup</h3><p>Includes bridge-network guidance for Docker Desktop and a host-network configuration for TrueNAS, Unraid, and Linux NAS hosts where direct LAN discovery is wanted.</p></div>
           <div class="feature-row"><span class="scope">Server</span><h3>Browser library</h3><p>Provides a local web interface for folder navigation, visual browsing, search, sorting, model details, downloads, metadata changes, and permitted library actions.</p></div>
           <div class="feature-row"><span class="scope">Desktop</span><h3>LAN discovery or manual address</h3><p>Finds servers on the local network or connects with a manually entered address and PIN, then remembers the connection details in app settings.</p></div>
           <div class="feature-row"><span class="scope">Desktop</span><h3>Local and remote together</h3><p>Shows remote models alongside the current local library with clear remote markers rather than hiding them under an artificial server folder.</p></div>
           <div class="feature-row"><span class="scope">Desktop</span><h3>Remote library actions</h3><p>Browses, searches, filters, previews, edits metadata, deletes, creates collections, and generates or uploads missing thumbnails when the connection permits it.</p></div>
           <div class="feature-row"><span class="scope">Desktop</span><h3>Remote importing</h3><p>Imports files, folders, drag-and-drop content, and Connect downloads to the server when Server import is enabled.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>Client-assisted server imports</h3><p>Can use the desktop computer for archive extraction and thumbnail generation during manual server imports, which is useful when the server has limited CPU power.</p></div>
           <div class="feature-row"><span class="scope">Desktop</span><h3>Local slicer for remote files</h3><p>Downloads a managed temporary copy of a remote model and opens it in the slicer installed on the desktop computer.</p></div>
           <div class="feature-row"><span class="scope">Licence</span><h3>Compatible unlock sharing</h3><p>A desktop client unlocked with a direct key can unlock a compatible server while keeping PIN authentication and write permission as separate checks.</p></div>
         </div>
@@ -428,10 +439,10 @@
           <h2>Current, public, and correctable.</h2>
         </div>
         <div class="availability-copy">
-          <p>This reference was checked against the released MeshVault desktop behaviour, the Connect extension, and the current Companion implementation on <strong>10 August 2026</strong>.</p>
+          <p>This reference was checked against the released MeshVault desktop behaviour, the Connect extension, and the current Companion implementation on <strong>29 August 2026</strong>.</p>
           <p>Windows is the desktop behavioural reference. Linux and macOS target the same library outcomes while using native controls, but operating-system integration and release timing can differ.</p>
           <p>Features still only present in an unreleased development workspace are not included here. If a released capability is missing or described incorrectly, <a href="https://github.com/Xalies/MeshVault/issues">report a correction</a>.</p>
-          <span class="checked">Desktop 2.0.14.0 · Connect 2.0.6.6 · checked 2026-08-10</span>
+          <span class="checked">Desktop 2.0.20.0 · Connect 2.0.9.0 · checked 2026-08-29</span>
         </div>
       </div>
     </section>
