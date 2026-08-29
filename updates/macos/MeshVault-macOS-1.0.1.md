@@ -1,1 +1,1 @@
-MeshVault v1.4.0.7 for macOS.
+MeshVault v1.5.0.7 for macOS.
