@@ -1675,6 +1675,27 @@
     .unlock-note p { color: var(--muted); }
     #trial .unlock-note .button { background: var(--accent); color: #100d16; }
 
+    .download-recommendation { margin-bottom: 16px; }
+    .download-license { margin: 0 0 38px; font-size: 14px; }
+    .download-license a { color: var(--accent-hover); font-weight: 600; }
+    .download-drawer > summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 0;
+      border-top: 2px solid var(--text);
+      border-bottom: 1px solid var(--soft-line);
+      color: var(--text);
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      list-style: none;
+    }
+    .download-drawer > summary::-webkit-details-marker { display: none; }
+    .download-drawer > summary::after { content: "+"; color: var(--accent-hover); font-size: 24px; font-weight: 400; }
+    .download-drawer[open] > summary::after { content: "−"; }
+    .download-drawer .download-matrix { border-top: 0; }
+
     .download-matrix { margin-top: 0; border-top: 2px solid var(--text); }
     .download-platform {
       grid-template-columns: 160px minmax(230px, .8fr) minmax(420px, 1.2fr);
@@ -1811,11 +1832,8 @@
         <div class="reveal">
           <h1>Your 3D model library, organised.</h1>
           <p class="lead">Import creator packs and existing folders, or save models directly from repositories with their files, images, and source details kept together.</p>
-          <div class="hero-downloads" aria-label="Primary download links">
-            <a class="button primary" href="#trial">Windows downloads</a>
-            <a class="button ghost" href="#trial">macOS download</a>
-            <a class="button ghost" href="#trial">Linux downloads</a>
-            <a class="button ghost" href="#trial">Android</a>
+          <div class="hero-downloads" aria-label="Download link">
+            <a class="button primary" href="#trial">Choose a download</a>
           </div>
         </div>
         <div class="app-frame hero-shot reveal">
@@ -2066,138 +2084,143 @@
         <div class="section-head reveal">
           <p class="eyebrow">Downloads and platforms</p>
           <h2>Download MeshVault.</h2>
-          <p>Choose a desktop app for Windows, macOS, or Linux, a dedicated server, a browser extension, or the Android companion.</p>
+          <p>Start with the best current option for this device, or open the full list when you need another app, Connect, or a server.</p>
         </div>
 
-        <div class="unlock-note reveal">
-          <div class="download-os">License</div>
+        <div class="unlock-note download-recommendation reveal">
+          <div class="download-os">For your device</div>
           <div>
-            <h3>Try it for seven days.</h3>
-            <p>Windows, Linux, and server builds include a seven-day trial. The macOS beta is currently free. A $19.99 direct licence key unlocks supported builds, with Microsoft Store and Android Pro unlock options also available.</p>
+            <h3 id="download-recommendation-title">Choose a MeshVault download.</h3>
+            <p id="download-recommendation-copy">Desktop apps are available for Windows, macOS, and Linux, with MeshVault Companion on Android.</p>
           </div>
-          <a class="button lemonsqueezy-button" href="https://meshvault.lemonsqueezy.com/checkout/buy/55a16f70-5c0a-4fd8-a808-5b0108fd6d71?media=0&logo=0&discount=0&dark=1">Buy License Key — $19.99</a>
+          <a class="button primary" id="download-recommendation-link" href="#all-downloads">See all downloads</a>
         </div>
 
-        <div class="download-matrix reveal">
-          <article class="download-platform">
-            <div class="download-os">Desktop apps</div>
-            <div>
-              <h3>Manage a local MeshVault library.</h3>
-              <p>Use the desktop app when the library lives on the machine you are working from. Windows is the reference release, macOS is in free beta for Apple silicon and Intel, and Linux is available for testing.</p>
-            </div>
-            <div class="download-options compact">
-              <div class="download-option">
-                <div>
-                  <strong>Windows</strong>
-                  <span>Microsoft Store or direct installer.</span>
-                </div>
-                <div class="actions">
-                  <a class="button store" href="https://apps.microsoft.com/detail/9pnr2sp2br02">Microsoft Store</a>
-                  <a class="button primary" href="https://github.com/Xalies/xalies.github.io/releases/latest/download/MeshVault-win-x64-setup.exe">Direct installer</a>
-                </div>
-              </div>
-              <div class="download-option">
-                <div>
-                  <strong>macOS beta</strong>
-                  <span>Free during beta, with native builds for Apple silicon and Intel Macs.</span>
-                </div>
-                <div class="actions">
-                  <a class="button primary" href="https://www.meshvault.app/downloads/MeshVault-macOS.dmg">Apple silicon .dmg</a>
-                  <a class="button ghost" href="https://github.com/Xalies/xalies.github.io/releases/download/v1.6.0.2/MeshVault-macOS-Intel.dmg">Intel .dmg</a>
-                </div>
-              </div>
-              <div class="download-option">
-                <div>
-                  <strong>Linux</strong>
-                  <span>Debian package for Linux desktop testing.</span>
-                </div>
-                <div class="actions">
-                  <a class="button ghost" href="https://github.com/Xalies/xalies.github.io/releases/latest/download/MeshVault-linux-x64-setup.deb">Linux .deb</a>
-                </div>
-              </div>
-            </div>
-          </article>
+        <p class="download-license reveal">Windows, Linux, and server builds include a seven-day trial. The macOS beta is currently free. A direct licence is <a class="lemonsqueezy-button" href="https://meshvault.lemonsqueezy.com/checkout/buy/55a16f70-5c0a-4fd8-a808-5b0108fd6d71?media=0&amp;logo=0&amp;discount=0&amp;dark=1">$19.99 once</a>.</p>
 
-          <article class="download-platform">
-            <div class="download-os">Dedicated servers</div>
-            <div>
-              <h3>Host a library on another machine.</h3>
-              <p>Use a server when your library should live on a workshop PC, mini PC, home server, or another always-on machine. Writes are available during the seven-day trial and after unlock; an expired, locked server remains available for read-only browsing.</p>
-            </div>
-            <div class="download-options">
-              <div class="download-option">
-                <div>
-                  <strong>Windows server</strong>
-                  <span>Installer or zip package with the server UI and start scripts.</span>
+        <details class="download-drawer reveal" id="all-downloads" open>
+          <summary>All download options</summary>
+          <div class="download-matrix">
+            <article class="download-platform">
+              <div class="download-os">Desktop</div>
+              <div>
+                <h3>Manage a local MeshVault library.</h3>
+                <p>Choose the app for the computer where your working library lives.</p>
+              </div>
+              <div class="download-options compact">
+                <div class="download-option">
+                  <div>
+                    <strong>Windows</strong>
+                    <span>Microsoft Store or direct installer.</span>
+                  </div>
+                  <div class="actions">
+                    <a class="button store" href="https://apps.microsoft.com/detail/9pnr2sp2br02">Microsoft Store</a>
+                    <a class="button primary" href="https://github.com/Xalies/xalies.github.io/releases/latest/download/MeshVault-win-x64-setup.exe">Direct installer</a>
+                  </div>
                 </div>
-                <div class="actions">
-                  <a class="button primary" href="https://github.com/Xalies/xalies.github.io/releases/latest/download/MeshVault-winserver-x64-setup.exe">Windows Server installer</a>
-                  <a class="button store" href="https://github.com/Xalies/xalies.github.io/releases/latest/download/MeshVault-winserver-x64-setup.zip">Windows Server zip</a>
+                <div class="download-option" id="macos-downloads">
+                  <div>
+                    <strong>macOS beta</strong>
+                    <span>Free during beta. Choose the build that matches your Mac.</span>
+                  </div>
+                  <div class="actions">
+                    <a class="button primary" href="https://www.meshvault.app/downloads/MeshVault-macOS.dmg">Apple silicon .dmg</a>
+                    <a class="button ghost" href="https://github.com/Xalies/xalies.github.io/releases/download/v1.6.0.2/MeshVault-macOS-Intel.dmg">Intel .dmg</a>
+                  </div>
+                </div>
+                <div class="download-option">
+                  <div>
+                    <strong>Linux</strong>
+                    <span>Debian package for Linux desktop testing.</span>
+                  </div>
+                  <div class="actions">
+                    <a class="button ghost" href="https://github.com/Xalies/xalies.github.io/releases/latest/download/MeshVault-linux-x64-setup.deb">Linux .deb</a>
+                  </div>
                 </div>
               </div>
-              <div class="download-option">
-                <div>
-                  <strong>Linux server</strong>
-                  <span>Debian package for installing the server UI, or tar package for manual/server use.</span>
-                </div>
-                <div class="actions">
-                  <a class="button ghost" href="https://github.com/Xalies/xalies.github.io/releases/latest/download/MeshVault-linuxserver-x64-setup.deb">Linux Server .deb</a>
-                  <a class="button store" href="https://github.com/Xalies/xalies.github.io/releases/latest/download/MeshVault-linuxserver-x64-setup.tar.gz">Linux Server tar.gz</a>
-                </div>
-              </div>
-              <div class="download-option">
-                <div>
-                  <strong>Docker server</strong>
-                  <span>Official amd64 image for Docker, TrueNAS, Unraid, and Linux NAS hosts.</span>
-                </div>
-                <div class="actions">
-                  <a class="button ghost" href="https://github.com/users/Xalies/packages/container/package/meshvault-server-amd64">Docker image</a>
-                </div>
-              </div>
-            </div>
-          </article>
+            </article>
 
-          <article class="download-platform">
-            <div class="download-os">Android companion</div>
-            <div>
-              <h3>Browse and move models from your phone.</h3>
-              <p>Keep a clean MeshVault folder on your phone and browse supported models locally. MeshVault Pro adds connected transfer and ecosystem unlock workflows.</p>
-            </div>
-            <div class="download-options compact">
-              <div class="download-option">
-                <div>
-                  <strong>Android</strong>
-                  <span>Available on Google Play.</span>
-                </div>
-                <div class="actions">
-                  <a class="button direct" href="https://play.google.com/store/apps/details?id=com.xalies.meshvault">Google Play</a>
+            <article class="download-platform">
+              <div class="download-os">Mobile</div>
+              <div>
+                <h3>Browse and move models from your phone.</h3>
+                <p>MeshVault Companion keeps a local model library on Android and adds connected transfers with MeshVault Pro.</p>
+              </div>
+              <div class="download-options compact">
+                <div class="download-option">
+                  <div>
+                    <strong>Android</strong>
+                    <span>Available on Google Play.</span>
+                  </div>
+                  <div class="actions">
+                    <a class="button direct" href="https://play.google.com/store/apps/details?id=com.xalies.meshvault">Google Play</a>
+                  </div>
                 </div>
               </div>
-            </div>
-          </article>
+            </article>
 
-          <article class="download-platform">
-            <div class="download-os">Browser extensions</div>
-            <div>
-              <h3>Capture downloads and metadata from model sites.</h3>
-              <p>Install MeshVault Connect in your browser to send supported model downloads into a desktop app or server with title, author, source, description, tags, and images where available.</p>
-            </div>
-            <div class="download-options compact">
-              <div class="download-option">
-                <div>
-                  <strong>Chrome, Edge, Firefox</strong>
-                  <span>Use the extension that matches your browser.</span>
-                </div>
-                <div class="actions">
-                  <a class="button" href="https://chromewebstore.google.com/detail/meshvault-connector/dpicfjjiflfkbekmgbmfplhhicllpjih">Chrome</a>
-                  <a class="button" href="https://microsoftedge.microsoft.com/addons/detail/fekbjmalnodmgoocjjjcfgcobccnhnag">Edge</a>
-                  <a class="button" href="https://addons.mozilla.org/en-US/firefox/addon/meshvault-connect/">Firefox</a>
-                  <a class="button" href="/extension/connect.html">Guide</a>
+            <article class="download-platform">
+              <div class="download-os">MeshVault Connect</div>
+              <div>
+                <h3>Send model-site downloads into MeshVault.</h3>
+                <p>Install the extension for your browser, or open the guide for Safari and setup help.</p>
+              </div>
+              <div class="download-options compact">
+                <div class="download-option">
+                  <div>
+                    <strong>Browser extensions</strong>
+                    <span>Available for Chrome, Edge, Firefox, and Safari on macOS.</span>
+                  </div>
+                  <div class="actions">
+                    <a class="button" href="https://chromewebstore.google.com/detail/meshvault-connector/dpicfjjiflfkbekmgbmfplhhicllpjih">Chrome</a>
+                    <a class="button" href="https://microsoftedge.microsoft.com/addons/detail/fekbjmalnodmgoocjjjcfgcobccnhnag">Edge</a>
+                    <a class="button" href="https://addons.mozilla.org/en-US/firefox/addon/meshvault-connect/">Firefox</a>
+                    <a class="button" href="/extension/connect.html">Safari and guide</a>
+                  </div>
                 </div>
               </div>
-            </div>
-          </article>
-        </div>
+            </article>
+
+            <article class="download-platform">
+              <div class="download-os">Server</div>
+              <div>
+                <h3>Host a shared library.</h3>
+                <p>Run MeshVault on an always-on Windows, Linux, or Docker host for access across your local network.</p>
+              </div>
+              <div class="download-options">
+                <div class="download-option">
+                  <div>
+                    <strong>Windows server</strong>
+                    <span>Installer or portable zip.</span>
+                  </div>
+                  <div class="actions">
+                    <a class="button primary" href="https://github.com/Xalies/xalies.github.io/releases/latest/download/MeshVault-winserver-x64-setup.exe">Installer</a>
+                    <a class="button store" href="https://github.com/Xalies/xalies.github.io/releases/latest/download/MeshVault-winserver-x64-setup.zip">Portable zip</a>
+                  </div>
+                </div>
+                <div class="download-option">
+                  <div>
+                    <strong>Linux server</strong>
+                    <span>Debian package or manual tar package.</span>
+                  </div>
+                  <div class="actions">
+                    <a class="button ghost" href="https://github.com/Xalies/xalies.github.io/releases/latest/download/MeshVault-linuxserver-x64-setup.deb">Linux .deb</a>
+                    <a class="button store" href="https://github.com/Xalies/xalies.github.io/releases/latest/download/MeshVault-linuxserver-x64-setup.tar.gz">Linux tar.gz</a>
+                  </div>
+                </div>
+                <div class="download-option">
+                  <div>
+                    <strong>Docker server</strong>
+                    <span>Official amd64 image for Docker and compatible NAS hosts.</span>
+                  </div>
+                  <div class="actions">
+                    <a class="button ghost" href="https://github.com/users/Xalies/packages/container/package/meshvault-server-amd64">Docker image</a>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </details>
       </div>
     </section>
 
@@ -2601,10 +2624,8 @@
             <h2>Put your model library back in order.</h2>
             <p>Choose the build for your main device. Connect, Companion, and Server are there when your workflow grows.</p>
           </div>
-          <div class="hero-downloads" aria-label="Download links">
-            <a class="button primary" href="/index.html#trial">Download Windows</a>
-            <a class="button ghost" href="/index.html#trial">Download macOS beta</a>
-            <a class="button ghost" href="https://github.com/Xalies/xalies.github.io/releases/latest/download/MeshVault-linux-x64-setup.deb">Download Linux .deb</a>
+          <div class="hero-downloads" aria-label="Download link">
+            <a class="button primary" href="/index.html#trial">Choose a download</a>
           </div>
         </div>
       </div>
@@ -2618,20 +2639,10 @@
         <div style="margin-top: 6px; font-size: 13px; color: var(--faint)">Copyright 2026 MeshVault</div>
       </div>
       <nav class="footer-links" aria-label="Footer navigation">
-        <a href="https://apps.microsoft.com/detail/9pnr2sp2br02">Microsoft Store</a>
-        <a href="https://github.com/Xalies/xalies.github.io/releases/latest/download/MeshVault-win-x64-setup.exe">Direct Windows Download</a>
-        <a href="/index.html#trial">macOS Beta</a>
-        <a href="https://github.com/Xalies/xalies.github.io/releases/latest/download/MeshVault-linux-x64-setup.deb">Linux Desktop</a>
-        <a href="https://github.com/Xalies/xalies.github.io/releases/latest/download/MeshVault-winserver-x64-setup.exe">Windows Server Installer</a>
-        <a href="https://github.com/Xalies/xalies.github.io/releases/latest/download/MeshVault-winserver-x64-setup.zip">Windows Server</a>
-        <a href="https://github.com/Xalies/xalies.github.io/releases/latest/download/MeshVault-linuxserver-x64-setup.deb">Linux Server</a>
-        <a href="https://chromewebstore.google.com/detail/meshvault-connector/dpicfjjiflfkbekmgbmfplhhicllpjih">Chrome Extension</a>
-        <a href="https://microsoftedge.microsoft.com/addons/detail/fekbjmalnodmgoocjjjcfgcobccnhnag">Edge Add-on</a>
-        <a href="https://addons.mozilla.org/en-US/firefox/addon/meshvault-connect/">Firefox Add-on</a>
-        <a href="/extension/connect.html">MeshVault Connect Guide</a>
+        <a href="/index.html#trial">Downloads</a>
+        <a href="/extension/connect.html">MeshVault Connect</a>
         <a href="/features/">Complete feature list</a>
         <a href="/compare/">Compare model libraries</a>
-        <a href="https://play.google.com/store/apps/details?id=com.xalies.meshvault">Android Companion</a>
         <a href="privacy/index.html">Privacy Policy</a>
       </nav>
     </div>
@@ -2642,8 +2653,10 @@
       // Device detection
       var ua = navigator.userAgent || "";
       var isAndroid = /Android/i.test(ua);
-      var isIos = /iPhone|iPad|iPod/i.test(ua);
+      var isIos = /iPhone|iPad|iPod/i.test(ua) || (/Macintosh/i.test(ua) && navigator.maxTouchPoints > 1);
       var isWindows = /Windows/i.test(ua);
+      var isMac = /Macintosh|Mac OS X/i.test(ua) && !isIos;
+      var isLinux = /Linux/i.test(ua) && !isAndroid;
       var isMobile = isAndroid || isIos || /Mobile|IEMobile|Opera Mini/i.test(ua);
       var deviceClass = isAndroid
         ? "device-android"
@@ -2651,10 +2664,45 @@
           ? "device-ios"
           : isWindows
             ? "device-windows"
-            : isMobile
-              ? "device-other-mobile"
-              : "device-desktop";
+            : isMac
+              ? "device-macos"
+              : isLinux
+                ? "device-linux"
+                : isMobile
+                  ? "device-other-mobile"
+                  : "device-desktop";
       document.body.classList.add(deviceClass);
+
+      // Recommend one current download without hiding the complete list.
+      var recommendation = isWindows
+        ? ["MeshVault for Windows", "Install from the Microsoft Store, or open all downloads for the direct installer.", "Microsoft Store", "https://apps.microsoft.com/detail/9pnr2sp2br02"]
+        : isMac
+          ? ["MeshVault for macOS", "Choose the native beta for Apple silicon or Intel.", "Choose your Mac build", "#macos-downloads"]
+          : isLinux
+            ? ["MeshVault for Linux", "Download the current Debian desktop package.", "Download Linux .deb", "https://github.com/Xalies/xalies.github.io/releases/latest/download/MeshVault-linux-x64-setup.deb"]
+            : isAndroid
+              ? ["MeshVault Companion for Android", "Install the mobile companion from Google Play.", "Get it on Google Play", "https://play.google.com/store/apps/details?id=com.xalies.meshvault"]
+              : null;
+      var recommendationTitle = document.getElementById("download-recommendation-title");
+      var recommendationCopy = document.getElementById("download-recommendation-copy");
+      var recommendationLink = document.getElementById("download-recommendation-link");
+      var downloadDrawer = document.getElementById("all-downloads");
+      if (recommendation) {
+        recommendationTitle.textContent = recommendation[0];
+        recommendationCopy.textContent = recommendation[1];
+        recommendationLink.textContent = recommendation[2];
+        recommendationLink.href = recommendation[3];
+      }
+      if (downloadDrawer) {
+        if (location.hash !== "#all-downloads" && location.hash !== "#macos-downloads") {
+          downloadDrawer.removeAttribute("open");
+        }
+        document.querySelectorAll('a[href="#all-downloads"], a[href="#macos-downloads"]').forEach(function (link) {
+          link.addEventListener("click", function () {
+            downloadDrawer.open = true;
+          });
+        });
+      }
 
       // Browser extension links
       var chromeExtensionUrl = "https://chromewebstore.google.com/detail/meshvault-connector/dpicfjjiflfkbekmgbmfplhhicllpjih";
