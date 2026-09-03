@@ -4,6 +4,16 @@
         <title>MeshVault</title>
         <item>
             <title>1.6.0</title>
+            <pubDate>Thu, 03 Sep 2026 22:27:03 +0000</pubDate>
+            <link>https://www.meshvault.app</link>
+            <sparkle:version>1021</sparkle:version>
+            <sparkle:shortVersionString>1.6.0</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <sparkle:releaseNotesLink>https://www.meshvault.app/updates/macos/MeshVault-macOS-Intel-1.6.0.1021.md</sparkle:releaseNotesLink>
+            <enclosure url="https://github.com/Xalies/xalies.github.io/releases/download/v1.6.0.3/MeshVault-macOS-Intel-1.6.0.1021.dmg" length="55163278" type="application/octet-stream" sparkle:edSignature="z59N0xCLdklNuFBHGCUCQDKSGhi6L64j1V/yror2bZVcEvHjhV40aJ55QICdk8HLP4y6nqHMfTKZhHv/ewL0Aw=="/>
+        </item>
+        <item>
+            <title>1.6.0</title>
             <pubDate>Thu, 03 Sep 2026 06:16:15 +0000</pubDate>
             <link>https://www.meshvault.app</link>
             <sparkle:version>1020</sparkle:version>
