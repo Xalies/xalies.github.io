@@ -1,0 +1,16 @@
+<?xml version="1.0" standalone="yes"?>
+<rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
+    <channel>
+        <title>MeshVault</title>
+        <item>
+            <title>1.6.0</title>
+            <pubDate>Thu, 03 Sep 2026 06:16:15 +0000</pubDate>
+            <link>https://www.meshvault.app</link>
+            <sparkle:version>1020</sparkle:version>
+            <sparkle:shortVersionString>1.6.0</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <sparkle:releaseNotesLink>https://www.meshvault.app/updates/macos/MeshVault-macOS-Intel-1.6.0.1020.md</sparkle:releaseNotesLink>
+            <enclosure url="https://github.com/Xalies/xalies.github.io/releases/download/v1.6.0.2/MeshVault-macOS-Intel-1.6.0.1020.dmg" length="55165244" type="application/octet-stream" sparkle:edSignature="+oQGC5fWnvppseLv1kCK/ShjD9LQhb0+8QA0njw5Odeb+8A2FJHU7+/4pLieWNYSr8g7RR+HZR1dBFnFBwR/Cw=="/>
+        </item>
+    </channel>
+</rss>
