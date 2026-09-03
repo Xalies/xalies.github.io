@@ -1593,6 +1593,11 @@
     .hero-grid { align-items: end; }
     .hero-downloads { gap: 8px; }
     .hero-downloads .button { min-width: 0; }
+    .hero-download-prompt { margin-top: 30px; padding-top: 22px; border-top: 1px solid var(--soft-line); }
+    .hero-download-prompt h2 { margin: 0; font-size: 20px; line-height: 1.3; }
+    .hero-download-prompt .hero-downloads { margin-top: 14px; }
+    .hero-other-download { display: inline-block; margin-top: 12px; color: var(--accent-hover); font-size: 14px; font-weight: 600; }
+    .hero-downloads [hidden], .download-platform[hidden], .download-option[hidden] { display: none; }
     .hero-shot .app-frame-content img { filter: saturate(.88) contrast(1.04); }
     .caption { color: var(--faint); font-family: "IBM Plex Mono", Consolas, "Courier New", monospace; font-size: 11px; }
 
@@ -1745,13 +1750,13 @@
       </a>
       <nav class="nav-links" aria-label="Main navigation">
         <a href="#workflow">How it works</a>
-        <a href="#trial">Downloads</a>
+        <a href="#downloads">Downloads</a>
         <a href="/features/">Features</a>
         <a href="#formats">Formats</a>
         <a href="/compare/">Compare</a>
       </nav>
       <div class="nav-actions">
-        <a class="button primary" href="#trial">Get MeshVault</a>
+        <a class="button primary" href="#downloads">Get MeshVault</a>
       </div>
       <!-- Mobile hamburger menu toggle -->
       <button class="mobile-menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
@@ -1768,11 +1773,11 @@
   <div class="mobile-nav-overlay" aria-hidden="true">
     <nav class="mobile-nav-links" aria-label="Mobile navigation">
       <a href="#workflow">How it works</a>
-      <a href="#trial">Downloads</a>
+      <a href="#downloads">Downloads</a>
       <a href="/features/">Features</a>
       <a href="#formats">Formats</a>
       <a href="/compare/">Compare</a>
-      <a class="button primary" href="#trial" style="margin-top: 20px;">Get MeshVault</a>
+      <a class="button primary" href="#downloads" style="margin-top: 20px;">Get MeshVault</a>
     </nav>
   </div>
 
@@ -1782,9 +1787,13 @@
         <div class="reveal">
           <h1>Your 3D model library, organised.</h1>
           <p class="lead">Import creator packs and existing folders, or save models directly from repositories with their files, images, and source details kept together.</p>
-          <div class="hero-downloads" aria-label="Download links">
-            <a class="button primary" id="hero-download-link" href="#trial">Choose a download</a>
-            <a class="button ghost" href="#all-downloads">Other downloads</a>
+          <div class="hero-download-prompt" id="downloads">
+            <h2 id="hero-download-title">Download MeshVault</h2>
+            <div class="hero-downloads" aria-label="Downloads for your device">
+              <a class="button primary" id="hero-download-primary" href="#other-downloads">View downloads</a>
+              <a class="button ghost" id="hero-download-secondary" href="#other-downloads" hidden></a>
+            </div>
+            <a class="hero-other-download" href="#other-downloads">Other Downloads…</a>
           </div>
         </div>
         <div class="app-frame hero-shot reveal">
@@ -1811,7 +1820,7 @@
           <h2>Install it, connect the browser, and add your first models.</h2>
           <p>This walkthrough covers installing MeshVault, adding MeshVault Connect, importing from MakerWorld and Dropbox, and bringing an existing model in manually.</p>
           <div class="actions" style="margin-top: 24px;">
-            <a class="button primary" href="#trial">Choose a download</a>
+            <a class="button primary" href="#downloads">Choose a download</a>
             <a class="button ghost" href="/features/">See every feature</a>
           </div>
         </div>
@@ -2040,8 +2049,8 @@
 
         <p class="download-license reveal">Windows, Linux, and server builds include a seven-day trial. The macOS beta is currently free. A direct licence is <a class="lemonsqueezy-button" href="https://meshvault.lemonsqueezy.com/checkout/buy/55a16f70-5c0a-4fd8-a808-5b0108fd6d71?media=0&amp;logo=0&amp;discount=0&amp;dark=1">$19.99 once</a>.</p>
 
-        <details class="download-drawer reveal" id="all-downloads" open>
-          <summary>All download options</summary>
+        <details class="download-drawer reveal" id="other-downloads" open>
+          <summary>Other download options</summary>
           <div class="download-matrix">
             <article class="download-platform">
               <div class="download-os">Desktop</div>
@@ -2050,7 +2059,7 @@
                 <p>Choose the app for the computer where your working library lives.</p>
               </div>
               <div class="download-options compact">
-                <div class="download-option">
+                <div class="download-option" data-platform="windows">
                   <div>
                     <strong>Windows</strong>
                     <span>Microsoft Store or direct installer.</span>
@@ -2060,7 +2069,7 @@
                     <a class="button primary" href="https://github.com/Xalies/xalies.github.io/releases/latest/download/MeshVault-win-x64-setup.exe">Direct installer</a>
                   </div>
                 </div>
-                <div class="download-option" id="macos-downloads">
+                <div class="download-option" data-platform="macos">
                   <div>
                     <strong>macOS beta</strong>
                     <span>Free during beta. Choose the build that matches your Mac.</span>
@@ -2070,7 +2079,7 @@
                     <a class="button ghost" href="https://github.com/Xalies/xalies.github.io/releases/download/v1.6.0.2/MeshVault-macOS-Intel.dmg">Intel .dmg</a>
                   </div>
                 </div>
-                <div class="download-option">
+                <div class="download-option" data-platform="linux">
                   <div>
                     <strong>Linux</strong>
                     <span>Debian package for Linux desktop testing.</span>
@@ -2082,7 +2091,7 @@
               </div>
             </article>
 
-            <article class="download-platform">
+            <article class="download-platform" data-platform="android">
               <div class="download-os">Mobile</div>
               <div>
                 <h3>Browse and move models from your phone.</h3>
@@ -2567,7 +2576,7 @@
             <p>Choose the build for your main device. Connect, Companion, and Server are there when your workflow grows.</p>
           </div>
           <div class="hero-downloads" aria-label="Download link">
-            <a class="button primary" href="/index.html#trial">Choose a download</a>
+            <a class="button primary" href="#downloads">Choose a download</a>
           </div>
         </div>
       </div>
@@ -2581,7 +2590,7 @@
         <div style="margin-top: 6px; font-size: 13px; color: var(--faint)">Copyright 2026 MeshVault</div>
       </div>
       <nav class="footer-links" aria-label="Footer navigation">
-        <a href="/index.html#trial">Downloads</a>
+        <a href="#downloads">Downloads</a>
         <a href="/extension/connect.html">MeshVault Connect</a>
         <a href="/features/">Complete feature list</a>
         <a href="/compare/">Compare model libraries</a>
@@ -2615,27 +2624,35 @@
                   : "device-desktop";
       document.body.classList.add(deviceClass);
 
-      // Recommend one current download without hiding the complete list.
-      var recommendation = isWindows
-        ? ["Get MeshVault for Windows", "https://apps.microsoft.com/detail/9pnr2sp2br02"]
-        : isMac
-          ? ["Get MeshVault for macOS", "#macos-downloads"]
-          : isLinux
-            ? ["Download MeshVault for Linux", "https://github.com/Xalies/xalies.github.io/releases/latest/download/MeshVault-linux-x64-setup.deb"]
-            : isAndroid
-              ? ["Get MeshVault for Android", "https://play.google.com/store/apps/details?id=com.xalies.meshvault"]
-              : null;
-      var heroDownloadLink = document.getElementById("hero-download-link");
-      var downloadDrawer = document.getElementById("all-downloads");
+      var platform = isWindows ? "windows" : isMac ? "macos" : isLinux ? "linux" : isAndroid ? "android" : "";
+      var recommendation = {
+        windows: ["Download MeshVault for Windows", "Microsoft Store", "https://apps.microsoft.com/detail/9pnr2sp2br02", "Direct Installer", "https://github.com/Xalies/xalies.github.io/releases/latest/download/MeshVault-win-x64-setup.exe"],
+        macos: ["Download MeshVault for macOS", "Apple silicon", "https://www.meshvault.app/downloads/MeshVault-macOS.dmg", "Intel", "https://github.com/Xalies/xalies.github.io/releases/download/v1.6.0.2/MeshVault-macOS-Intel.dmg"],
+        linux: ["Download MeshVault for Linux", "Download .deb", "https://github.com/Xalies/xalies.github.io/releases/latest/download/MeshVault-linux-x64-setup.deb"],
+        android: ["Download MeshVault Companion for Android", "Google Play", "https://play.google.com/store/apps/details?id=com.xalies.meshvault"]
+      }[platform];
+      var heroDownloadTitle = document.getElementById("hero-download-title");
+      var heroDownloadPrimary = document.getElementById("hero-download-primary");
+      var heroDownloadSecondary = document.getElementById("hero-download-secondary");
+      var downloadDrawer = document.getElementById("other-downloads");
       if (recommendation) {
-        heroDownloadLink.textContent = recommendation[0];
-        heroDownloadLink.href = recommendation[1];
+        heroDownloadTitle.textContent = recommendation[0];
+        heroDownloadPrimary.textContent = recommendation[1];
+        heroDownloadPrimary.href = recommendation[2];
+        if (recommendation[3]) {
+          heroDownloadSecondary.textContent = recommendation[3];
+          heroDownloadSecondary.href = recommendation[4];
+          heroDownloadSecondary.hidden = false;
+        }
+        document.querySelectorAll('[data-platform="' + platform + '"]').forEach(function (item) {
+          item.hidden = true;
+        });
       }
       if (downloadDrawer) {
-        if (location.hash !== "#all-downloads" && location.hash !== "#macos-downloads") {
+        if (location.hash !== "#other-downloads") {
           downloadDrawer.removeAttribute("open");
         }
-        document.querySelectorAll('a[href="#all-downloads"], a[href="#macos-downloads"]').forEach(function (link) {
+        document.querySelectorAll('a[href="#other-downloads"]').forEach(function (link) {
           link.addEventListener("click", function () {
             downloadDrawer.open = true;
           });
