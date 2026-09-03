@@ -636,8 +636,7 @@
       width: 100%;
     }
 
-    #trial .download-options .button,
-    #trial .unlock-note .button {
+    #trial .download-options .button {
       width: 100%;
       min-height: 40px;
       padding: 8px 12px;
@@ -649,32 +648,10 @@
       box-shadow: none;
     }
 
-    #trial .download-options .button:hover,
-    #trial .unlock-note .button:hover {
+    #trial .download-options .button:hover {
       border-color: rgba(154, 124, 255, .62);
       background: #322f34;
       color: #fff;
-    }
-
-    .unlock-note {
-      display: grid;
-      grid-template-columns: 210px minmax(280px, 1fr) auto;
-      align-items: center;
-      gap: 28px;
-      margin-top: 10px;
-      padding: 24px 0;
-      border-top: 1px solid var(--soft-line);
-      border-bottom: 1px solid var(--soft-line);
-      background: transparent;
-      backdrop-filter: none;
-    }
-
-    .unlock-note p {
-      max-width: 920px;
-    }
-
-    .unlock-note .button {
-      flex: 0 0 auto;
     }
 
     .transition-note {
@@ -1208,12 +1185,6 @@
       backdrop-filter: none;
     }
 
-    .unlock-note {
-      background: transparent;
-      box-shadow: none;
-      backdrop-filter: none;
-    }
-
     .site-logo-item,
     .format-card,
     .faq-item {
@@ -1426,11 +1397,6 @@
         grid-template-columns: 1fr;
       }
 
-      .unlock-note {
-        align-items: flex-start;
-        grid-template-columns: 1fr;
-      }
-
       .download-platform {
         grid-template-columns: 1fr;
       }
@@ -1595,8 +1561,7 @@
     }
 
     .button,
-    #trial .download-options .button,
-    #trial .unlock-note .button {
+    #trial .download-options .button {
       min-height: 38px;
       padding: 7px 14px;
       border: 1px solid #564d63;
@@ -1609,8 +1574,7 @@
     }
 
     .button:hover,
-    #trial .download-options .button:hover,
-    #trial .unlock-note .button:hover {
+    #trial .download-options .button:hover {
       border-color: var(--accent);
       background: var(--accent);
       color: white;
@@ -1664,19 +1628,7 @@
     .site-logo-item:hover { background: transparent; opacity: 1; }
     .site-logo-item img { max-width: 92px; max-height: 28px; }
 
-    .unlock-note {
-      grid-template-columns: 150px minmax(280px, 1fr) auto;
-      margin: 0 0 44px;
-      padding: 30px;
-      border: 0;
-      background: var(--accent-soft);
-    }
-    .unlock-note .download-os, .unlock-note h3 { color: var(--text); }
-    .unlock-note p { color: var(--muted); }
-    #trial .unlock-note .button { background: var(--accent); color: #100d16; }
-
-    .download-recommendation { margin-bottom: 16px; }
-    .download-license { margin: 0 0 38px; font-size: 14px; }
+    .download-license { margin: 24px 0 38px; font-size: 14px; }
     .download-license a { color: var(--accent-hover); font-weight: 600; }
     .download-drawer > summary {
       display: flex;
@@ -1775,8 +1727,6 @@
       .feature-story, #workflow .feature-story:nth-of-type(even) { display: flex; flex-direction: column; }
       #workflow .feature-story:nth-of-type(even) > div:first-child,
       #workflow .feature-story:nth-of-type(even) > .app-frame { order: initial; }
-      .unlock-note { display: block; padding: 26px; }
-      .unlock-note > * + * { margin-top: 18px; }
       .download-option { display: block; }
       .download-option .actions { margin-top: 14px; }
       .cards .card { display: grid; grid-template-columns: 42px 1fr; gap: 12px; }
@@ -1832,8 +1782,9 @@
         <div class="reveal">
           <h1>Your 3D model library, organised.</h1>
           <p class="lead">Import creator packs and existing folders, or save models directly from repositories with their files, images, and source details kept together.</p>
-          <div class="hero-downloads" aria-label="Download link">
-            <a class="button primary" href="#trial">Choose a download</a>
+          <div class="hero-downloads" aria-label="Download links">
+            <a class="button primary" id="hero-download-link" href="#trial">Choose a download</a>
+            <a class="button ghost" href="#all-downloads">Other downloads</a>
           </div>
         </div>
         <div class="app-frame hero-shot reveal">
@@ -2083,17 +2034,8 @@
       <div class="container">
         <div class="section-head reveal">
           <p class="eyebrow">Downloads and platforms</p>
-          <h2>Download MeshVault.</h2>
-          <p>Start with the best current option for this device, or open the full list when you need another app, Connect, or a server.</p>
-        </div>
-
-        <div class="unlock-note download-recommendation reveal">
-          <div class="download-os">For your device</div>
-          <div>
-            <h3 id="download-recommendation-title">Choose a MeshVault download.</h3>
-            <p id="download-recommendation-copy">Desktop apps are available for Windows, macOS, and Linux, with MeshVault Companion on Android.</p>
-          </div>
-          <a class="button primary" id="download-recommendation-link" href="#all-downloads">See all downloads</a>
+          <h2>Other downloads.</h2>
+          <p>Choose another desktop or mobile platform, install Connect, or set up a shared server.</p>
         </div>
 
         <p class="download-license reveal">Windows, Linux, and server builds include a seven-day trial. The macOS beta is currently free. A direct licence is <a class="lemonsqueezy-button" href="https://meshvault.lemonsqueezy.com/checkout/buy/55a16f70-5c0a-4fd8-a808-5b0108fd6d71?media=0&amp;logo=0&amp;discount=0&amp;dark=1">$19.99 once</a>.</p>
@@ -2675,23 +2617,19 @@
 
       // Recommend one current download without hiding the complete list.
       var recommendation = isWindows
-        ? ["MeshVault for Windows", "Install from the Microsoft Store, or open all downloads for the direct installer.", "Microsoft Store", "https://apps.microsoft.com/detail/9pnr2sp2br02"]
+        ? ["Get MeshVault for Windows", "https://apps.microsoft.com/detail/9pnr2sp2br02"]
         : isMac
-          ? ["MeshVault for macOS", "Choose the native beta for Apple silicon or Intel.", "Choose your Mac build", "#macos-downloads"]
+          ? ["Get MeshVault for macOS", "#macos-downloads"]
           : isLinux
-            ? ["MeshVault for Linux", "Download the current Debian desktop package.", "Download Linux .deb", "https://github.com/Xalies/xalies.github.io/releases/latest/download/MeshVault-linux-x64-setup.deb"]
+            ? ["Download MeshVault for Linux", "https://github.com/Xalies/xalies.github.io/releases/latest/download/MeshVault-linux-x64-setup.deb"]
             : isAndroid
-              ? ["MeshVault Companion for Android", "Install the mobile companion from Google Play.", "Get it on Google Play", "https://play.google.com/store/apps/details?id=com.xalies.meshvault"]
+              ? ["Get MeshVault for Android", "https://play.google.com/store/apps/details?id=com.xalies.meshvault"]
               : null;
-      var recommendationTitle = document.getElementById("download-recommendation-title");
-      var recommendationCopy = document.getElementById("download-recommendation-copy");
-      var recommendationLink = document.getElementById("download-recommendation-link");
+      var heroDownloadLink = document.getElementById("hero-download-link");
       var downloadDrawer = document.getElementById("all-downloads");
       if (recommendation) {
-        recommendationTitle.textContent = recommendation[0];
-        recommendationCopy.textContent = recommendation[1];
-        recommendationLink.textContent = recommendation[2];
-        recommendationLink.href = recommendation[3];
+        heroDownloadLink.textContent = recommendation[0];
+        heroDownloadLink.href = recommendation[1];
       }
       if (downloadDrawer) {
         if (location.hash !== "#all-downloads" && location.hash !== "#macos-downloads") {
