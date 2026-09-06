@@ -313,12 +313,10 @@
         <div class="feature-table">
           <div class="feature-row"><span class="scope">Desktop</span><h3>Separate making applications</h3><p>Configures different FDM, resin, and CNC applications and uses the model or folder project type to choose the correct one.</p></div>
           <div class="feature-row"><span class="scope">Desktop</span><h3>Program detection</h3><p>Detects compatible installed manufacturing programs and lets you review or override the applications used for each workflow.</p></div>
-          <div class="feature-row"><span class="scope">Desktop</span><h3>Slicer hand-off</h3><p>Sends supported local, archive-contained, or remote files to the configured slicer; remote files use a managed temporary working copy.</p></div>
-          <div class="feature-row"><span class="scope">Desktop</span><h3>ZIP to OrcaSlicer</h3><p>Optionally sends ZIP files directly to OrcaSlicer; otherwise MeshVault uses its normal archive entry selection and extraction workflow.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>Slicer hand-off</h3><p>Sends supported local, archive-contained, or remote files to the configured slicer; remote files use a managed temporary working copy. FBX and PLY models are converted to STL first, so they can be sent to any configured slicer. Conversion may not reproduce every model perfectly.</p></div>
           <div class="feature-row"><span class="scope">Desktop</span><h3>Slicer result association</h3><p>Watches supported slicer output after a hand-off and connects the resulting metrics to the original model.</p></div>
           <div class="feature-row"><span class="scope">Desktop</span><h3>Print metrics</h3><p>Captures print time, filament length, weight, volume and cost, layers, maximum Z, layer height, nozzle size, printer, material, material changes, and multi-object counts when supplied.</p></div>
           <div class="feature-row"><span class="scope">Desktop</span><h3>Tested slicers</h3><p>Tracks supported output from OrcaSlicer, Bambu Studio, PrusaSlicer, SuperSlicer, Cura, and Creality Print.</p></div>
-          <div class="feature-row"><span class="scope">Desktop</span><h3>PCBWay preparation</h3><p>Prepares STL, OBJ, STEP, STP, and 3MF files for supported PCBWay upload workflows, including temporary conversion or packaging where required.</p></div>
         </div>
       </div>
     </section>
@@ -410,7 +408,7 @@
           <div class="feature-row"><span class="scope">Windows</span><h3>WinUI desktop client</h3><p>Available as a direct installer and Microsoft Store package, with direct-key or Store licensing, startup registration, tray support, and distribution-appropriate updates.</p></div>
           <div class="feature-row"><span class="scope">macOS</span><h3>Native macOS clients</h3><p>Uses SwiftUI, native menus and lifecycle, security-scoped access for libraries and slicers, and Safari Connect. Separate native Apple silicon and Intel direct builds are available alongside a universal Mac App Store beta through TestFlight. The current beta is free.</p></div>
           <div class="feature-row"><span class="scope">Linux</span><h3>Avalonia desktop client</h3><p>Uses Linux-native file launching, pickers, desktop/menu integration, DEB packaging, and desktop-environment-dependent tray and startup support.</p></div>
-          <div class="feature-row"><span class="scope">Desktop</span><h3>Onboarding</h3><p>Chooses a language, local library or server, FDM/resin/CNC apps, a default making mode, ZIP-to-Orca behaviour, and an available trial or unlock route.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>Onboarding</h3><p>Chooses a language, local library or server, FDM/resin/CNC apps, a default making mode, and an available trial or unlock route.</p></div>
           <div class="feature-row"><span class="scope">Desktop</span><h3>Grouped options</h3><p>Separates app, library, actions, viewer, connections, and licensing settings rather than presenting one undifferentiated settings page.</p></div>
           <div class="feature-row"><span class="scope">Desktop</span><h3>Cache and database recovery</h3><p>Can cache library images locally per device, clears or rebuilds the image cache, opens the settings folder, and provides a deliberate library-database reset route. Remote-server images are cached locally automatically.</p></div>
           <div class="feature-row"><span class="scope">Desktop</span><h3>Layout and onboarding recovery</h3><p>Resets an off-screen or broken window layout and can rerun onboarding without deleting the library or licence state.</p></div>
@@ -434,8 +432,7 @@
           <div class="format-group"><h3>Eight indexed archive variants</h3><p class="format-list">ZIP, RAR, 7Z, TAR, TAR.GZ, TGZ, TAR.BZ2, TBZ2</p></div>
           <div class="format-group"><h3>Native preview</h3><p class="format-list">STL, OBJ, 3MF, STEP, STP, GCODE, GCO, GLB, GLTF, PLY, DAE, FBX, and supported .MODEL archive entries</p></div>
           <div class="format-group"><h3>Generated or extracted thumbnails</h3><p class="format-list">Geometry: STL, OBJ, PLY, GLTF, GLB, DAE, FBX, STEP, STP. Embedded or derived: 3MF, FCSTD, GCODE, GCO. Supported entries can also be processed inside the eight archive variants.</p></div>
-          <div class="format-group"><h3>Slicer hand-off</h3><p class="format-list">STL, 3MF, OBJ, AMF, STEP, STP, GCODE, GCO, BGCODE</p></div>
-          <div class="format-group"><h3>PCBWay preparation</h3><p class="format-list">STL, OBJ, STEP, STP, 3MF</p></div>
+          <div class="format-group"><h3>Slicer hand-off</h3><p class="format-list">Direct: STL, 3MF, OBJ, AMF, STEP, STP, GCODE, GCO, BGCODE. Converted to STL: FBX, PLY (results can vary).</p></div>
         </div>
         <p class="note"><strong>Why some formats are index-only:</strong> a CAD or project file can still be titled, tagged, searched, grouped, collected, opened in its normal application, and kept with related files even when MeshVault cannot render it itself.</p>
       </div>
