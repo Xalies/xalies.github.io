@@ -149,11 +149,12 @@
     .source-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid var(--line); }
     .source-list a { padding: 14px 12px 14px 0; border-bottom: 1px solid var(--line); color: var(--muted); text-underline-offset: 3px; }
 
-    .cta { background: var(--accent); color: #100d16; }
-    .cta-grid { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(260px, .7fr); gap: 48px; align-items: end; }
-    .cta h2 { max-width: 900px; }
-    .cta p { color: #2b2038; font-size: 18px; }
-    .cta .button { border-color: #100d16; background: #100d16; color: var(--text); }
+    .cta { padding: 38px 0; background: var(--bg-2); }
+    .cta-grid { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(260px, .7fr); gap: 32px; align-items: center; }
+    .cta .eyebrow { margin-bottom: 8px; }
+    .cta h2 { max-width: 700px; font-size: clamp(28px, 3vw, 42px); }
+    .cta p { margin: 10px 0 0; font-size: 16px; }
+    .cta .actions { justify-content: flex-end; margin-top: 0; }
 
     footer { padding: 38px 0; background: #0c0a0f; }
     .footer-grid { display: flex; justify-content: space-between; gap: 30px; }
@@ -163,6 +164,7 @@
     @media (max-width: 980px) {
       .nav-links { display: none; }
       .hero-grid, .section-head, .product-heading, .method, .cta-grid { grid-template-columns: 1fr; }
+      .cta .actions { justify-content: flex-start; }
       .snapshot-row { grid-template-columns: 55px 1fr; }
       .snapshot-row p { grid-column: 2; }
       .table-note { margin-top: -30px; }
@@ -201,7 +203,7 @@
     <section class="hero">
       <div class="container hero-grid">
         <div>
-          <p class="eyebrow">Comparison guide · checked 10 August 2026</p>
+          <p class="eyebrow">Comparison guide · checked 6 September 2026</p>
           <h1>Choose the model library that fits how you collect.</h1>
           <p class="lead">MeshVault is not automatically the right choice for everyone. This page compares the current tools, names where each one is stronger, and explains the trade-offs without awarding a winner.</p>
           <div class="actions">
@@ -212,7 +214,7 @@
         <div class="hero-facts" aria-label="MeshVault summary">
           <div class="hero-fact"><strong>$19.99 once</strong><span>Direct licence; no subscription.</span></div>
           <div class="hero-fact"><strong>57 indexed extensions</strong><span>49 model, CAD and project types plus 8 archive variants.</span></div>
-          <div class="hero-fact"><strong>Desktop, server and mobile</strong><span>Windows, macOS beta for Apple silicon and Intel, Linux, local servers and Android.</span></div>
+          <div class="hero-fact"><strong>Desktop, server and mobile</strong><span>Windows, native and universal macOS betas, Linux, local servers and Android.</span></div>
         </div>
       </div>
     </section>
@@ -260,7 +262,7 @@
                 <th scope="col">Capability</th>
                 <th scope="col"><a href="https://www.meshvault.app/">MeshVault</a></th>
                 <th scope="col"><a href="https://meshory.com/features">Meshory</a></th>
-                <th scope="col"><a href="https://printventory.com/faq.html">Printventory</a></th>
+                <th scope="col"><a href="https://github.com/TechJeeper/Printventory">Printventory</a></th>
                 <th scope="col"><a href="https://manyfold.app/features.html">Manyfold</a></th>
                 <th scope="col"><a href="https://www.orynt3d.com/features/">Orynt3D</a></th>
                 <th scope="col"><a href="https://modelist.app/features">Modelist</a></th>
@@ -270,7 +272,7 @@
             <tbody>
               <tr>
                 <td>Platforms</td>
-                <td>Windows, macOS beta for Apple silicon and Intel, and Linux; Android companion</td>
+                <td>Windows, Apple-silicon and Intel macOS direct betas, universal macOS TestFlight beta, and Linux; Android companion</td>
                 <td>Windows, universal macOS and Linux</td>
                 <td>Windows, macOS, Linux beta and Docker/server</td>
                 <td>Self-hosted web app, normally through Docker</td>
@@ -281,21 +283,21 @@
               <tr>
                 <td>Price</td>
                 <td>$19.99 one-time; seven-day desktop/server trial; macOS beta currently free</td>
-                <td>$34.99 one-time early-access lifetime licence</td>
+                <td>$34.99 one-time early-access licence; all v1 updates included</td>
                 <td>Free and open source</td>
                 <td>Free and open source; self-hosting costs are yours</td>
                 <td>Free; donation-supported</td>
-                <td>Free to 50 files; €20 for v1 or €60 lifetime</td>
-                <td>Free public demo</td>
+                <td>Free to 50 files; €20 for v1 or €60 lifetime (€45 current offer)</td>
+                <td>Free</td>
               </tr>
               <tr>
                 <td>Indexed files</td>
                 <td>49 model, CAD, project and G-code extensions plus 8 archive variants</td>
-                <td>STL, 3MF, OBJ, STEP and FBX</td>
-                <td>STL and 3MF; ZIP search described as beta in the FAQ</td>
+                <td>STL, 3MF, OBJ, FBX and STEP/STP; ZIP, RAR and 7Z; companion images, PDF and TXT</td>
+                <td>STL and 3MF, including ZIP archives</td>
                 <td>Broad model, image, document, PCB and archive support</td>
                 <td>STL, OBJ and 3MF viewer; archive handling and import rules</td>
-                <td>STL, 3MF, OBJ and STEP plus ZIP, RAR, 7Z and TAR variants</td>
+                <td>STL, 3MF, OBJ, STEP and SCAD plus ZIP, RAR, 7Z and TAR variants</td>
                 <td>STL, 3MF and OBJ plus ZIP and RAR</td>
               </tr>
               <tr>
@@ -315,15 +317,15 @@
                 <td>Paste supported source URLs to populate designer and parent-model details</td>
                 <td>External-service integrations can import metadata and, for some services, files</td>
                 <td><span class="quiet">No browser importer documented</span></td>
-                <td>Paste supported source URLs for enrichment; optional phone-to-desktop inbox</td>
+                <td>Automatically detects or accepts source URLs, then adds images, descriptions and metadata; optional phone-to-desktop inbox</td>
                 <td>Cults3D discovery feed; <span class="quiet">no general capture importer documented</span></td>
               </tr>
               <tr>
                 <td>Creator packs and archives</td>
                 <td>Keep one pack, index contents virtually, split models, or extract while preserving folders; imports-to-review workflow</td>
-                <td>Browse and preview ZIP contents in place</td>
-                <td>ZIP search in beta</td>
-                <td>Upload archives, then extract and index their models</td>
+                <td>Browse and preview ZIP, RAR and 7Z contents in place</td>
+                <td>ZIP search plus grouped folder/ZIP bundles and combined multi-part preview</td>
+                <td>Upload or sync archives, then extract and index their models; existing archives can also be extracted in place</td>
                 <td>Archive handling shaped by custom, inheritable import rules</td>
                 <td>Browse six archive families in place as locked groups</td>
                 <td>ZIP/RAR contents searchable and extracted when previewed</td>
@@ -331,19 +333,19 @@
               <tr>
                 <td>Thumbnails</td>
                 <td>Reuses matching local images, or generates thumbnails for 13 file types, embedded images and archive entries; configurable colour, quality and parallel speed</td>
-                <td>Background rendering for STL, 3MF, OBJ and FBX, including ZIP entries</td>
-                <td>Automatic STL/3MF thumbnails and embedded 3MF images</td>
-                <td>Automatic rendered or static previews across many formats</td>
+                <td>Background rendering for STL, 3MF, OBJ, FBX and STEP/STP, including archive entries; can use supplied images</td>
+                <td>Automatic STL/3MF thumbnails, embedded 3MF images and user-supplied images</td>
+                <td>Automatic rendered or static previews across many formats, including STEP, FreeCAD, images and video</td>
                 <td>Captured manually from the model viewer</td>
-                <td>Automatic rendered previews and embedded 3MF images</td>
+                <td>Automatic rendered previews, embedded 3MF images and matching or selected user images</td>
                 <td>Captured manually from the 3D viewer</td>
               </tr>
               <tr>
                 <td>3D preview</td>
                 <td>13 preview types including STEP and G-code; multi-plate 3MF, measurements, bed reference and render capture</td>
-                <td>STL, 3MF, OBJ and FBX; multi-plate 3MF</td>
-                <td>STL and 3MF model preview</td>
-                <td>Interactive preview for many supported model formats</td>
+                <td>STL, 3MF, OBJ, FBX and STEP/STP; multi-plate 3MF</td>
+                <td>STL and 3MF, including a combined preview for folder and ZIP bundles</td>
+                <td>Interactive preview for many model formats, including G-code</td>
                 <td>STL, OBJ and 3MF</td>
                 <td>STL, 3MF and OBJ</td>
                 <td>Interactive STL viewer and thumbnail capture</td>
@@ -352,10 +354,10 @@
                 <td>Organisation</td>
                 <td>Folders, collections, favourites, tags, rich descriptions, printed status, batch editing and future-folder rules</td>
                 <td>Sources, collections, tags, notes, filters and search</td>
-                <td>Tags, designers, print status, notes and multi-edit</td>
-                <td>Tags, creators, collections, lists, likes, notes and multi-user permissions</td>
+                <td>Tags, designers, print status, licences, notes, parent/child links and multi-edit</td>
+                <td>Tags, creators, collections, private lists, likes, comments, remix/format relationships and multi-user permissions</td>
                 <td>Tags, attributes, collections, boolean search and custom import rules</td>
-                <td>Tags, nested and smart collections, groups, notes and bulk actions</td>
+                <td>Tags, nested and smart collections, groups, ratings, notes, workshop metadata, bulk actions and backup/restore</td>
                 <td>Tags, metadata, reusable path templates, favourites and a print planner</td>
               </tr>
               <tr>
@@ -372,7 +374,7 @@
                 <td>Slicer and print workflow</td>
                 <td>FDM, resin and CNC hand-off; captures print time, filament, layers, material, printer and object metrics from supported slicer output</td>
                 <td>Auto-detects 15+ slicers for one-click hand-off</td>
-                <td>Print-status tracking; <span class="quiet">slicer hand-off is not highlighted in current documentation</span></td>
+                <td>Print-status tracking plus configurable slicer hand-off for one model or a full bundle</td>
                 <td>Sends sliced files to OctoPrint, Moonraker and other printer APIs</td>
                 <td>Opens files in a configurable external application</td>
                 <td>OS Open With, custom applications and arguments, remembered per file</td>
@@ -383,7 +385,7 @@
                 <td>Windows, Linux and Docker servers; browser UI; native clients combine local and remote models; Connect can target the server</td>
                 <td>Indexes NAS/network mounts; <span class="quiet">no shared server UI documented</span></td>
                 <td>Docker/server mode with browser access</td>
-                <td>Self-hosted, multi-user, roles/OIDC, REST API and federation</td>
+                <td>Self-hosted, multi-user, roles/OIDC, REST API, federation and optional plugins</td>
                 <td>Network shares supported; server listed as coming soon</td>
                 <td>Optional user-to-user sharing; <span class="quiet">no shared library server documented</span></td>
                 <td><span class="quiet">No server documented</span></td>
@@ -405,7 +407,7 @@
                 <td>No account for the library; optional AI providers may require their own account or key</td>
                 <td>Self-managed user accounts on your own server; no required vendor cloud</td>
                 <td>Local desktop app; no remote access</td>
-                <td>No account for the core app; opt-in sharing requires login</td>
+                <td>No account for the core app; phone and user-to-user sharing are opt-in</td>
                 <td>No account for the core app; Discover and Community are optional network features</td>
               </tr>
             </tbody>
@@ -452,22 +454,22 @@
           <article class="product">
             <div class="product-heading">
               <div><span class="product-kicker">Free · open source</span><h3>Printventory</h3></div>
-              <p>A practical free desktop organiser for primarily STL and 3MF libraries, with good bulk metadata tools, content-hash deduplication, optional AI tagging and a Docker/server path.</p>
+              <p>A practical free desktop organiser for primarily STL and 3MF libraries, with bulk metadata tools, content-hash deduplication, folder/ZIP bundle previews, slicer hand-off, optional AI tagging and a Docker/server path.</p>
             </div>
             <div class="tradeoffs">
-              <div class="tradeoff"><h4>Choose Printventory when</h4><ul><li>Free and open source is a firm requirement.</li><li>Your library is mainly STL and 3MF and you value tags, designers, notes and print-status tracking.</li><li>You want optional AI tagging or an experimental Docker/server workflow.</li></ul></div>
+              <div class="tradeoff"><h4>Choose Printventory when</h4><ul><li>Free and open source is a firm requirement.</li><li>Your library is mainly STL and 3MF and you value tags, designers, notes, print-status tracking and multi-part bundle previews.</li><li>You want configurable slicer hand-off, optional AI tagging or a Docker/server workflow.</li></ul></div>
               <div class="tradeoff"><h4>Consider another tool when</h4><ul><li>You need broad CAD, project, G-code and archive support.</li><li>You want full browser capture rather than limited URL metadata enrichment.</li><li>You want archive import decisions, native remote-library integration or a portable database stored with the library.</li></ul></div>
             </div>
-            <a class="source-link" href="https://printventory.com/faq.html">Printventory FAQ and features →</a>
+            <a class="source-link" href="https://github.com/TechJeeper/Printventory">Printventory documentation and changelog →</a>
           </article>
 
           <article class="product">
             <div class="product-heading">
               <div><span class="product-kicker">Free · open source · self-hosted</span><h3>Manyfold</h3></div>
-              <p>A strong choice for a web-first, genuinely multi-user model library, with access controls, external-service integrations, APIs, social features and federation.</p>
+              <p>A strong choice for a web-first, genuinely multi-user model library, with access controls, external-service integrations, APIs, optional plugins, model relationships, social features and federation.</p>
             </div>
             <div class="tradeoffs">
-              <div class="tradeoff"><h4>Choose Manyfold when</h4><ul><li>You want a shared browser-based library hosted on your own server.</li><li>Multiple users, permissions, OIDC, public/private sharing or federation matter.</li><li>You want an open API or direct printer integrations through services such as OctoPrint and Moonraker.</li></ul></div>
+              <div class="tradeoff"><h4>Choose Manyfold when</h4><ul><li>You want a shared browser-based library hosted on your own server.</li><li>Multiple users, permissions, OIDC, public/private sharing or federation matter.</li><li>You want plugins, an open API, model/remix relationships or direct printer integrations.</li></ul></div>
               <div class="tradeoff"><h4>Consider another tool when</h4><ul><li>You prefer native desktop clients and a library that moves with its own database.</li><li>You want repository capture from the browser into the native app.</li><li>You need desktop preview measurements, slicer-result capture or more guided creator-pack imports.</li></ul></div>
             </div>
             <a class="source-link" href="https://manyfold.app/features.html">Manyfold features →</a>
@@ -487,11 +489,11 @@
 
           <article class="product">
             <div class="product-heading">
-              <div><span class="product-kicker">Free to 50 files · €20 v1 · €60 lifetime</span><h3>Modelist</h3></div>
-              <p>A polished cross-platform library with excellent nested and smart collections, three duplicate-finding methods, source enrichment, workshop metadata and an optional phone/share Inbox.</p>
+              <div><span class="product-kicker">Free to 50 files · €20 v1 · €60 lifetime (€45 current offer)</span><h3>Modelist</h3></div>
+              <p>A polished cross-platform library with nested and smart collections, three duplicate-finding methods, automatic source enrichment, workshop metadata, portable curation backups and an optional phone/share Inbox.</p>
             </div>
             <div class="tradeoffs">
-              <div class="tradeoff"><h4>Choose Modelist when</h4><ul><li>You want a permanent free tier to test every feature on a real small library.</li><li>Smart collections, fuzzy search and exact/heuristic/perceptual duplicate review are priorities.</li><li>You value printer, material and colour catalogues or opt-in phone-to-desktop sharing.</li></ul></div>
+              <div class="tradeoff"><h4>Choose Modelist when</h4><ul><li>You want a permanent free tier to test every feature on a real small library.</li><li>Smart collections, fuzzy search and exact/heuristic/perceptual duplicate review are priorities.</li><li>You value printer/material catalogues, curation backups or opt-in phone-to-desktop sharing.</li></ul></div>
               <div class="tradeoff"><h4>Consider another tool when</h4><ul><li>You need more CAD/project formats, measurements or G-code layer inspection.</li><li>You want browser downloads captured automatically with their original context.</li><li>You need archive treatment choices, a dedicated server, or local Android transfers rather than an opt-in sharing service.</li></ul></div>
             </div>
             <a class="source-link" href="https://modelist.app/features">Modelist features →</a>
@@ -499,7 +501,7 @@
 
           <article class="product">
             <div class="product-heading">
-              <div><span class="product-kicker">Free public demo · Windows</span><h3>STLOrganizer</h3></div>
+              <div><span class="product-kicker">Free · Windows</span><h3>STLOrganizer</h3></div>
               <p>A workshop-oriented Windows organiser with a visual folder-template builder, strong print planning, spool tracking, file metadata and an integrated Cults3D discovery feed.</p>
             </div>
             <div class="tradeoffs">
@@ -516,15 +518,15 @@
       <div class="container method">
         <div>
           <p class="eyebrow">Methodology and disclosure</p>
-          <h2>This comparison is written by MeshVault.</h2>
+          <h2>This comparison was created to be as unbiased as possible.</h2>
         </div>
         <div>
-          <p>That makes it interested, not neutral. To keep it useful, competitor claims come from each product’s own current website, documentation or public repository. There are no scores, no invented “winner”, and no assumption that an undocumented feature is absent.</p>
-          <p>Facts were checked on 10 August 2026. Prices are the public prices we could verify and may change or vary by currency, tax, store or region. Roadmap items are not counted as shipped features. If a fact has changed, please <a href="https://github.com/Xalies/MeshVault/issues">report a correction</a>.</p>
+          <p>This comparison was made from information from each product’s own current website. The comparison was created by an LLM using the following prompt: <q>Create a fair, up-to-date comparison page for MeshVault and competing 3D model library managers, using current official sources. Include both a feature table and balanced reasons to choose, or not choose each product, covering areas where MeshVault wins, loses or matches, without declaring an overall winner or favouring MeshVault.</q></p>
+          <p>Facts were checked on 6 September 2026. Prices are the public prices we could verify and may change or vary by currency, tax, store or region. Roadmap items are not counted as shipped features. If a fact has changed, please <a href="https://github.com/Xalies/xalies.github.io/issues">report a correction</a>.</p>
           <div class="source-list" aria-label="Comparison sources">
             <a href="/features/">MeshVault feature reference</a>
             <a href="https://meshory.com/features">Meshory features</a>
-            <a href="https://printventory.com/faq.html">Printventory FAQ</a>
+            <a href="https://github.com/TechJeeper/Printventory">Printventory documentation</a>
             <a href="https://manyfold.app/features.html">Manyfold features</a>
             <a href="https://www.orynt3d.com/features/">Orynt3D features</a>
             <a href="https://modelist.app/features">Modelist features</a>
@@ -537,12 +539,12 @@
     <section class="cta">
       <div class="container cta-grid">
         <div>
-          <p class="eyebrow" style="color:#100d16">Try it on your own collection</p>
-          <h2>The useful comparison is the one that survives your folders.</h2>
-          <p>MeshVault includes a seven-day trial for Windows, Linux and server builds. The macOS beta for Apple silicon and Intel is currently free.</p>
+          <p class="eyebrow">Try MeshVault</p>
+          <h2>See if MeshVault fits your library.</h2>
+          <p>MeshVault includes a seven-day trial for Windows, Linux and server builds. The macOS direct and universal TestFlight betas are currently free.</p>
         </div>
         <div class="actions">
-          <a class="button" href="/index.html#downloads">Choose a download</a>
+          <a class="button primary" href="/index.html#downloads">Download MeshVault</a>
           <a class="button" href="https://meshvault.lemonsqueezy.com/checkout/buy/55a16f70-5c0a-4fd8-a808-5b0108fd6d71?media=0&amp;logo=0&amp;discount=0&amp;dark=1">Buy once — $19.99</a>
         </div>
       </div>

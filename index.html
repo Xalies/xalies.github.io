@@ -1595,6 +1595,7 @@
     .hero-downloads .button { min-width: 0; }
     .hero-download-prompt { margin-top: 30px; padding-top: 22px; border-top: 1px solid var(--soft-line); }
     .hero-download-prompt h2 { margin: 0; font-size: 20px; line-height: 1.3; }
+    .hero-download-note { margin: 7px 0 0; color: var(--muted); font-size: 14px; }
     .hero-download-prompt .hero-downloads { margin-top: 14px; }
     .hero-other-download { display: inline-block; margin-top: 12px; color: var(--accent-hover); font-size: 14px; font-weight: 600; }
     .hero-downloads [hidden], .download-platform[hidden], .download-option[hidden] { display: none; }
@@ -1789,9 +1790,11 @@
           <p class="lead">Import creator packs and existing folders, or save models directly from repositories with their files, images, and source details kept together.</p>
           <div class="hero-download-prompt" id="downloads">
             <h2 id="hero-download-title">Download MeshVault</h2>
+            <p class="hero-download-note" id="hero-download-note">Windows and Linux include a 7-day free trial; macOS is currently free while in beta.</p>
             <div class="hero-downloads" aria-label="Downloads for your device">
               <a class="button primary" id="hero-download-primary" href="#other-downloads">View downloads</a>
               <a class="button ghost" id="hero-download-secondary" href="#other-downloads" hidden></a>
+              <a class="button ghost" id="hero-download-tertiary" href="#other-downloads" hidden></a>
             </div>
             <a class="hero-other-download" href="#other-downloads">Other Downloads…</a>
           </div>
@@ -2072,11 +2075,12 @@
                 <div class="download-option" data-platform="macos">
                   <div>
                     <strong>macOS beta</strong>
-                    <span>Free during beta. Choose the build that matches your Mac.</span>
+                    <span>Free during beta. Choose a native direct build, or test the universal Mac App Store build through TestFlight.</span>
                   </div>
                   <div class="actions">
                     <a class="button primary" href="https://www.meshvault.app/downloads/MeshVault-macOS.dmg">Apple silicon .dmg</a>
                     <a class="button ghost" href="https://github.com/Xalies/xalies.github.io/releases/download/v1.6.0.2/MeshVault-macOS-Intel.dmg">Intel .dmg</a>
+                    <a class="button store" href="https://testflight.apple.com/join/Ag1RmePM">Universal beta via TestFlight</a>
                   </div>
                 </div>
                 <div class="download-option" data-platform="linux">
@@ -2559,7 +2563,7 @@
             </button>
             <div class="faq-panel">
               <div class="faq-content">
-                <p>The current macOS beta has separate native downloads for Apple silicon and Intel Macs. Choose the build that matches your Mac; both are free while in beta.</p>
+                <p>The macOS beta has separate native downloads for Apple silicon and Intel Macs, plus a universal Mac App Store build available through TestFlight. All are free while in beta.</p>
               </div>
             </div>
           </div>
@@ -2626,24 +2630,23 @@
 
       var platform = isWindows ? "windows" : isMac ? "macos" : isLinux ? "linux" : isAndroid ? "android" : "";
       var recommendation = {
-        windows: ["Download MeshVault for Windows", "Microsoft Store", "https://apps.microsoft.com/detail/9pnr2sp2br02", "Direct Installer", "https://github.com/Xalies/xalies.github.io/releases/latest/download/MeshVault-win-x64-setup.exe"],
-        macos: ["Download MeshVault for macOS", "Apple silicon", "https://www.meshvault.app/downloads/MeshVault-macOS.dmg", "Intel", "https://github.com/Xalies/xalies.github.io/releases/download/v1.6.0.2/MeshVault-macOS-Intel.dmg"],
-        linux: ["Download MeshVault for Linux", "Download .deb", "https://github.com/Xalies/xalies.github.io/releases/latest/download/MeshVault-linux-x64-setup.deb"],
-        android: ["Download MeshVault Companion for Android", "Google Play", "https://play.google.com/store/apps/details?id=com.xalies.meshvault"]
+        windows: { title: "Download MeshVault for Windows", note: "Includes a 7-day free trial.", buttons: [["Microsoft Store", "https://apps.microsoft.com/detail/9pnr2sp2br02"], ["Direct Installer", "https://github.com/Xalies/xalies.github.io/releases/latest/download/MeshVault-win-x64-setup.exe"]] },
+        macos: { title: "Download MeshVault for macOS", note: "Free while in beta. Windows, Linux, and server builds include a 7-day trial.", buttons: [["Apple silicon", "https://www.meshvault.app/downloads/MeshVault-macOS.dmg"], ["Intel", "https://github.com/Xalies/xalies.github.io/releases/download/v1.6.0.2/MeshVault-macOS-Intel.dmg"], ["Universal TestFlight beta", "https://testflight.apple.com/join/Ag1RmePM"]] },
+        linux: { title: "Download MeshVault for Linux", note: "Includes a 7-day free trial.", buttons: [["Download .deb", "https://github.com/Xalies/xalies.github.io/releases/latest/download/MeshVault-linux-x64-setup.deb"]] },
+        android: { title: "Download MeshVault Companion for Android", note: "Free to install. Windows, Linux, and server builds include a 7-day trial.", buttons: [["Google Play", "https://play.google.com/store/apps/details?id=com.xalies.meshvault"]] }
       }[platform];
       var heroDownloadTitle = document.getElementById("hero-download-title");
-      var heroDownloadPrimary = document.getElementById("hero-download-primary");
-      var heroDownloadSecondary = document.getElementById("hero-download-secondary");
+      var heroDownloadNote = document.getElementById("hero-download-note");
+      var heroDownloadButtons = [document.getElementById("hero-download-primary"), document.getElementById("hero-download-secondary"), document.getElementById("hero-download-tertiary")];
       var downloadDrawer = document.getElementById("other-downloads");
       if (recommendation) {
-        heroDownloadTitle.textContent = recommendation[0];
-        heroDownloadPrimary.textContent = recommendation[1];
-        heroDownloadPrimary.href = recommendation[2];
-        if (recommendation[3]) {
-          heroDownloadSecondary.textContent = recommendation[3];
-          heroDownloadSecondary.href = recommendation[4];
-          heroDownloadSecondary.hidden = false;
-        }
+        heroDownloadTitle.textContent = recommendation.title;
+        heroDownloadNote.textContent = recommendation.note;
+        recommendation.buttons.forEach(function (button, index) {
+          heroDownloadButtons[index].textContent = button[0];
+          heroDownloadButtons[index].href = button[1];
+          heroDownloadButtons[index].hidden = false;
+        });
         document.querySelectorAll('[data-platform="' + platform + '"]').forEach(function (item) {
           item.hidden = true;
         });
