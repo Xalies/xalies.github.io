@@ -1,26 +1,42 @@
-Privacy Policy – MeshVault Connector
-The MeshVault Connector extension collects only the minimum data needed to capture supported 3D model downloads and send them to the MeshVault desktop app running on the user’s computer.
+MeshVault Connect Privacy Notice
 
-What we access
+Last updated: 10 September 2026
 
-Website content on supported sites (page titles, author names, tags, and thumbnail URLs) to build metadata for saved models.
-Download events and URLs to capture files.
-The active tab URL to detect supported sites.
-Local extension settings (default save folder and prompt‑per‑download).
-What we do NOT collect
+MeshVault Connect is the browser extension for MeshVault. The complete MeshVault Privacy Policy is available at:
+https://www.meshvault.app/privacy/
 
-No keystrokes, mouse position, or form data.
-No browsing history beyond the current supported page.
-No data is sold or shared with third parties.
+Information the extension accesses
 
-Where data goes
+- The active tab URL to recognise a supported model repository or file-hosting page.
+- Page content needed to identify a model, creator or downloadable file.
+- Available titles, authors, descriptions, tags, licence information, source links and image URLs.
+- Download events and URLs for files you choose to capture.
+- Local extension settings, including the selected MeshVault destination and download preferences.
 
-Captured files and metadata are sent only to the MeshVault desktop app on the same machine (localhost).
-No data is sent to external servers.
+How the information is used
 
-Data retention
+The extension uses this information to send a file and its associated metadata to the MeshVault application or MeshVault Server destination you choose. It does not send the information to the MeshVault developer for analytics or advertising.
 
-Settings are stored locally in the browser.
-Files and metadata are stored in the user’s MeshVault library on their device.
+Google Drive and Dropbox
+
+When you use Google Drive or Dropbox import support, the extension accesses the page and files you select through your existing browser session. Google or Dropbox processes those requests under its own privacy policy. MeshVault does not receive your Google or Dropbox password.
+
+What the extension does not collect
+
+- General browsing history.
+- Keystrokes, mouse movement or unrelated form information.
+- Website passwords or payment-card details.
+- Information for advertising, profiling or cross-site tracking.
+
+Storage and retention
+
+Extension settings remain in browser-managed storage until you clear them or remove the extension. Captured files and metadata are retained by the MeshVault destination you selected until you delete them there.
+
+Local connections
+
+Transfers normally use a local MeshVault connection and are not relayed through a developer-operated cloud service. Local HTTP connections may not use transport encryption, so use MeshVault Connect only with destinations and networks you trust.
+
 Contact
-If you have questions, contact: xalies1983@gmail.com
+
+For privacy questions or data-deletion requests, contact:
+xalies1983@gmail.com

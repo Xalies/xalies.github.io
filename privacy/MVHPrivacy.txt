@@ -1,35 +1,29 @@
-MeshVault Privacy Policy
+MeshVault Desktop and Server Privacy Notice
 
-Last updated: 15-07-2026
+Last updated: 10 September 2026
 
-MeshVault is a desktop application that manages 3D model files on your computer.
+The current, complete MeshVault Privacy Policy is available at:
+https://www.meshvault.app/privacy/
 
-What data we collect
+MeshVault is a local-first desktop application for Windows, macOS and Linux. MeshVault Server provides a compatible standalone library server. The old product name "MeshVault Hub" is no longer used.
 
-We do not collect personal information or telemetry by default.
-The app stores your library metadata and settings locally on your device.
-What data we store locally
+Local information
 
-File metadata (title, author, tags, source URL, thumbnails) for models you add.
-App settings and preferences.
-License status (if applicable).
-How data is used
+MeshVault stores model files, archives, images, thumbnails, metadata, folders, collections, settings, library configuration and applicable entitlement information on your computer or in the library or server location you select. Diagnostic logs are created locally only when diagnostic mode is enabled. This information is not automatically uploaded to the MeshVault developer.
 
-To display your library, search, and organize files.
-To show model details and thumbnails.
-To enable integrations (e.g., browser extension uploads or slicer launch).
 Network access
 
-The app may download thumbnails or fetch model resources when you provide a source URL.
-If you use the MeshVault browser extension, the app accepts local uploads from it on your machine.
-Data sharing
+MeshVault may fetch model resources or images, accept transfers from MeshVault Connect or MeshVault Mobile, connect to a MeshVault Server, and check the MeshVault website or GitHub for updates. Information sent to a server selected by you is available to that server's operator. Local HTTP connections may not use transport encryption and should be used only on trusted networks.
 
-We do not sell or share your data.
-No data is sent to third‑party analytics services.
+Optional support and feedback
+
+Nothing is submitted unless you choose to send a report. A report can contain the category, title and message you enter, an optional contact address, application and platform information, and optional sanitised diagnostics. Feedback is processed through Google Firebase and Cloud Firestore and may be retained for up to 24 months as described in the complete policy.
+
+Purchases and licensing
+
+App-store purchases are processed by the applicable store. Direct desktop and server licence purchase and activation may be processed by Lemon Squeezy. MeshVault receives only the entitlement or activation information needed to provide the licensed feature and does not receive complete payment-card details.
+
 Your control
 
-All library data is stored locally and can be deleted by removing your library folder.
-You can remove settings by deleting the app’s local settings files.
-Contact
-For questions about this policy, contact: xalies1983@gmail.com
-
+You may delete a local library, settings and logs from your computer. To request access to or deletion of an identifiable feedback report, contact:
+xalies1983@gmail.com
