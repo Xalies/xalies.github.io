@@ -1790,7 +1790,7 @@
           <p class="lead">Import creator packs and existing folders, or save models directly from repositories with their files, images, and source details kept together.</p>
           <div class="hero-download-prompt" id="downloads">
             <h2 id="hero-download-title">Download MeshVault</h2>
-            <p class="hero-download-note" id="hero-download-note">Windows and Linux include a 7-day free trial; macOS downloads and MeshVault Mobile are currently free.</p>
+            <p class="hero-download-note" id="hero-download-note">Desktop and server builds include a 7-day trial; MeshVault Mobile is free.</p>
             <div class="hero-downloads" aria-label="Downloads for your device">
               <a class="button primary" id="hero-download-primary" href="#other-downloads">View downloads</a>
               <a class="button ghost" id="hero-download-secondary" href="#other-downloads" hidden></a>
@@ -2050,7 +2050,7 @@
           <p>Choose another desktop or mobile platform, install Connect, or set up a shared server.</p>
         </div>
 
-        <p class="download-license reveal">Windows, Linux, and server builds include a seven-day trial. macOS downloads and MeshVault Mobile are currently free. A direct licence is <a class="lemonsqueezy-button" href="https://meshvault.lemonsqueezy.com/checkout/buy/55a16f70-5c0a-4fd8-a808-5b0108fd6d71?media=0&amp;logo=0&amp;discount=0&amp;dark=1">$19.99 once</a>.</p>
+        <p class="download-license reveal">Desktop and server builds include a seven-day trial. MeshVault Mobile is free. A direct licence is <a class="lemonsqueezy-button" href="https://meshvault.lemonsqueezy.com/checkout/buy/55a16f70-5c0a-4fd8-a808-5b0108fd6d71?media=0&amp;logo=0&amp;discount=0&amp;dark=1">$19.99 once</a>.</p>
 
         <details class="download-drawer reveal" id="other-downloads" open>
           <summary>Other download options</summary>
@@ -2075,7 +2075,7 @@
                 <div class="download-option" data-platform="macos">
                   <div>
                     <strong>macOS direct builds</strong>
-                    <span>Free during beta. Choose the build for your Mac.</span>
+                    <span>Seven-day trial. Choose the build for your Mac.</span>
                   </div>
                   <div class="actions">
                     <a class="button primary" href="https://github.com/Xalies/xalies.github.io/releases/download/v2.2.0.0/MeshVault-macOS.dmg">Apple silicon .dmg</a>
@@ -2085,7 +2085,7 @@
                 <div class="download-option" data-platform="macos">
                   <div>
                     <strong>Mac App Store</strong>
-                    <span>Install the universal Mac app from the App Store.</span>
+                    <span>Install the universal Mac app. Seven-day trial available in the app.</span>
                   </div>
                   <div class="actions">
                     <a class="button store" href="https://apps.apple.com/au/app/meshvault/id6787004756?mt=12">Get it on the Mac App Store</a>
@@ -2576,7 +2576,7 @@
             </button>
             <div class="faq-panel">
               <div class="faq-content">
-                <p>The Mac App Store version runs on Apple silicon and Intel Macs. Separate direct beta downloads are also available for each architecture. Both options are currently free.</p>
+                <p>The Mac App Store version runs on Apple silicon and Intel Macs. Separate direct downloads are also available for each architecture. Both options include a seven-day trial.</p>
               </div>
             </div>
           </div>
@@ -2645,7 +2645,7 @@
       var platform = isWindows ? "windows" : isMac ? "macos" : isLinux ? "linux" : isAndroid ? "android" : isIos ? "ios" : "";
       var recommendation = {
         windows: { title: "Download MeshVault for Windows", note: "Includes a 7-day free trial.", buttons: [["Microsoft Store", "https://apps.microsoft.com/detail/9pnr2sp2br02"], ["Direct Installer", "https://github.com/Xalies/xalies.github.io/releases/download/v2.2.0.0/MeshVault-win-x64-setup.exe"]] },
-        macos: { title: "Download MeshVault for macOS", note: "Currently free. Windows, Linux, and server builds include a 7-day trial.", buttons: [["Mac App Store", "https://apps.apple.com/au/app/meshvault/id6787004756?mt=12"], ["Apple silicon direct", "https://github.com/Xalies/xalies.github.io/releases/download/v2.2.0.0/MeshVault-macOS.dmg"], ["Intel direct", "https://github.com/Xalies/xalies.github.io/releases/download/v2.2.0.0/MeshVault-macOS-Intel.dmg"]] },
+        macos: { title: "Download MeshVault for macOS", note: "Includes a 7-day trial; one-time purchase to continue Pro use.", buttons: [["Mac App Store", "https://apps.apple.com/au/app/meshvault/id6787004756?mt=12"], ["Apple silicon direct", "https://github.com/Xalies/xalies.github.io/releases/download/v2.2.0.0/MeshVault-macOS.dmg"], ["Intel direct", "https://github.com/Xalies/xalies.github.io/releases/download/v2.2.0.0/MeshVault-macOS-Intel.dmg"]] },
         linux: { title: "Download MeshVault for Linux", note: "Includes a 7-day free trial.", buttons: [["Download .deb", "https://github.com/Xalies/xalies.github.io/releases/download/v2.2.0.0/MeshVault-linux-x64-setup.deb"]] },
         android: { title: "Download MeshVault Mobile for Android", note: "Free on Google Play.", buttons: [["Google Play", "https://play.google.com/store/apps/details?id=com.xalies.meshvault"]] },
         ios: { title: "Try MeshVault Mobile for iOS", note: "Free while in beta.", buttons: [["TestFlight beta", "https://testflight.apple.com/join/NAaS8nbh"]] }
