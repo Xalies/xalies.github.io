@@ -166,9 +166,9 @@
           </div>
         </div>
         <div class="hero-facts" aria-label="Feature reference summary">
-          <div class="hero-fact"><strong>Desktop 2.1.0.0</strong><span>Released desktop behaviour used for this reference.</span></div>
-          <div class="hero-fact"><strong>Connect 2.0.10.0</strong><span>Repository and cloud-drive capture, plus direct slicer hand-off.</span></div>
-          <div class="hero-fact"><strong>57 indexed extensions</strong><span>49 model, CAD, project, and G-code types plus eight archive variants.</span></div>
+          <div class="hero-fact"><strong>Desktop 2.2.0.0</strong><span>Released desktop behaviour used for this reference.</span></div>
+          <div class="hero-fact"><strong>Connect 2.1.0.0</strong><span>Repository and cloud-drive capture, plus direct slicer hand-off.</span></div>
+          <div class="hero-fact"><strong>58 indexed extensions</strong><span>50 model, CAD, project, and G-code types plus eight archive variants.</span></div>
           <div class="hero-fact"><strong>$19.99 once</strong><span>Direct licence; no subscription required.</span></div>
         </div>
       </div>
@@ -241,6 +241,8 @@
           <p>The library browser is designed to work at both a quick visual level and a detailed folder level, without hiding the real source location of a model.</p>
         </div>
         <div class="feature-table">
+          <div class="feature-row"><span class="scope">Desktop</span><h3>AI assistants (MCP)</h3><p>Connect Codex, Claude Desktop, or Cursor to search library metadata and show results in MeshVault. Give each assistant browse-only access or permission to organise metadata, collections, favourites, and print status.</p></div>
+          <div class="feature-row"><span class="scope">macOS</span><h3>Spotlight search</h3><p>Find local-library models in macOS Spotlight and open them in MeshVault.</p></div>
           <div class="feature-row"><span class="scope">Desktop</span><h3>Three library views</h3><p>Switches between large visual tiles, compact tiles, and a list view while preserving the selected model and its source-folder context.</p></div>
           <div class="feature-row"><span class="scope">Desktop</span><h3>Search</h3><p>Searches useful indexed information including titles, authors, tags, descriptions, folders, filenames, and source details.</p></div>
           <div class="feature-row"><span class="scope">Desktop</span><h3>Filters</h3><p>Filters by file type, source, duplicates, and optional printed status, with remote models clearly marked when a server is connected.</p></div>
@@ -265,6 +267,7 @@
           <p>Metadata is stored with the library and can come from repository pages, package contents, generated previews, or your own edits.</p>
         </div>
         <div class="feature-table">
+          <div class="feature-row"><span class="scope">Desktop</span><h3>Shared PDF guides</h3><p>Attach colour guides, assembly instructions, and reference PDFs to models or packs. Share one stored guide across multiple models and retain its links when an archive is reviewed or extracted.</p></div>
           <div class="feature-row"><span class="scope">Desktop</span><h3>Complete model record</h3><p>Stores title, author, author profile, source URL, tags, summary, description, print settings, project type, package information, printed status, and slicer results.</p></div>
           <div class="feature-row"><span class="scope">Desktop</span><h3>FDM, resin, and CNC types</h3><p>Assigns a making workflow to individual models or folders, with a configurable FDM or resin default for unassigned files.</p></div>
           <div class="feature-row"><span class="scope">Desktop</span><h3>Rich description editor</h3><p>Uses a WYSIWYG editor with headings, emphasis, lists, links, tables, YouTube embeds, undo, and redo while preserving compatible HTML captured from the web.</p></div>
@@ -273,8 +276,8 @@
           <div class="feature-row"><span class="scope">Desktop</span><h3>Portable image storage</h3><p>Stores full-resolution model images in the library’s <code>.meshvault/images</code> folder, deduplicates identical image data, and keeps selected database recovery copies without filling the database with every gallery image or generated thumbnail.</p></div>
           <div class="feature-row"><span class="scope">Desktop</span><h3>Batch metadata</h3><p>Applies selected metadata values to multiple models or every model below a folder, including nested folders.</p></div>
           <div class="feature-row"><span class="scope">Desktop</span><h3>Future-folder rules</h3><p>Optionally keeps folder-level metadata rules active so chosen values are applied to models discovered there later.</p></div>
-          <div class="feature-row"><span class="scope">Desktop</span><h3>Automatic geometry thumbnails</h3><p>Generates centred renders for STL, OBJ, PLY, GLTF, GLB, DAE, FBX, STEP, and STP in the background.</p></div>
-          <div class="feature-row"><span class="scope">Desktop</span><h3>Embedded and derived thumbnails</h3><p>Uses 3MF plate images, FreeCAD FCSTD thumbnails, G-code/GCO slicer images or a toolpath fallback, and supported models inside archives.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>Automatic geometry thumbnails</h3><p>Generates centred renders for STL, OBJ, OFF, AMF, X3D, DXF, PLY, GLTF, GLB, DAE, FBX, 3DM, STEP, STP, IGES, and IGS in the background.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>Embedded and derived thumbnails</h3><p>Uses 3MF plate images, FreeCAD FCSTD and Fusion 360 F3D thumbnails, G-code/GCO/NC/CNC slicer images or a toolpath fallback, and supported models inside archives.</p></div>
           <div class="feature-row"><span class="scope">Desktop</span><h3>Existing image reuse</h3><p>Prefers an unambiguous matching thumbnail, preview, export, or sole folder image already stored beside a model before spending time generating a new render.</p></div>
           <div class="feature-row"><span class="scope">Desktop</span><h3>Thumbnail controls</h3><p>Configures render quality, colour, and parallel generation speed; generates images during import or scan; and regenerates thumbnails for a model, folder, or the library with up-axis and image-preservation choices.</p></div>
           <div class="feature-row"><span class="scope">Desktop</span><h3>Preview captures</h3><p>Saves the current viewer render as the main thumbnail, an extra model image, or a separate screenshot without breaking the inspection workflow.</p></div>
@@ -289,7 +292,9 @@
           <p>MeshVault can catalogue far more formats than it renders. Previewable files get native inspection tools; indexed-only files remain searchable and can still open in their normal application.</p>
         </div>
         <div class="feature-table">
-          <div class="feature-row"><span class="scope">Desktop</span><h3>13 preview extensions</h3><p>Previews STL, OBJ, 3MF, STEP, STP, G-code, GCO, GLB, GLTF, PLY, DAE, FBX, and supported <code>.model</code> archive entries.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>Adaptive preview quality</h3><p>Keep full model detail in Automatic mode when the memory budget allows, reducing complexity only when needed. Choose Performance or High detail to suit the task.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>Display scale and orientation</h3><p>Correct preview scale or Y/Z orientation without changing the source model or its print size. Camera-relative lighting helps reveal surface detail.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>22 preview extensions</h3><p>Previews STL, OBJ, OFF, AMF, 3DM, 3MF, STEP, STP, IGES, IGS, X3D, DXF, G-code, GCO, NC, CNC, GLB, GLTF, PLY, DAE, FBX, and supported <code>.model</code> archive entries.</p></div>
           <div class="feature-row"><span class="scope">Desktop</span><h3>Model navigation</h3><p>Rotates, pans, zooms, and fits the complete model in frame with matching interaction directions across the desktop clients.</p></div>
           <div class="feature-row"><span class="scope">Desktop</span><h3>Visual controls</h3><p>Configures viewer background and model colour, optionally gives separate bodies random colours, and preserves multi-body 3MF colour/material information where available.</p></div>
           <div class="feature-row"><span class="scope">Desktop</span><h3>Bed reference</h3><p>Displays a build-bed reference for scale and allows measurement points on either the model or the bed.</p></div>
@@ -327,6 +332,7 @@
           <p>The browser extension preserves the context that usually disappears after a download. It can target a running desktop app or an unlocked MeshVault Server on the local network.</p>
         </div>
         <div class="feature-table">
+          <div class="feature-row"><span class="scope">Connect</span><h3>Dropbox reference PDFs</h3><p>Select PDF guides alongside a Dropbox model or pack import to keep reference documents linked to the imported models. Dropbox import controls show when MeshVault is offline.</p></div>
           <div class="feature-row"><span class="scope">Connect</span><h3>Repository capture</h3><p>Captures supported downloads from Printables, MakerWorld, Thingiverse, Thangs, MyMiniFactory, CGTrader, GrabCAD, Creality Cloud, Cults3D, Makerables, and Tinkercad.</p></div>
           <div class="feature-row"><span class="scope">Connect</span><h3>Complete Printables downloads</h3><p>On Chrome, Edge, and Firefox, downloads every model file from a Printables page or only one named file group, preserves that grouping in a ZIP, and imports the result as one organised model package.</p></div>
           <div class="feature-row"><span class="scope">Connect</span><h3>Supporting-file selection</h3><p>On Chrome, Edge, and Firefox, adds selected Printables “Other files” or MakerWorld documentation and CyberBrick files to the model package instead of leaving useful supporting material behind.</p></div>
@@ -339,7 +345,7 @@
           <div class="feature-row"><span class="scope">Connect</span><h3>Re-import choices and versions</h3><p>When a captured download already exists, MeshVault can skip it, replace the existing file, keep a new copy, merge it as a saved version under Related Files, or ask each time.</p></div>
           <div class="feature-row"><span class="scope">Connect</span><h3>Repository-to-slicer hand-off</h3><p>Sends supported files from Thingiverse, Printables, MakerWorld, Cults3D, and GrabCAD, plus 3MF profiles from Creality Cloud, through a running MeshVault app to its slicer without first saving them to the library.</p></div>
           <div class="feature-row"><span class="scope">Connect</span><h3>Complete Thingiverse downloads</h3><p>Captures Thingiverse’s Download All flow and merges multipart ZIP downloads into one package before importing them into MeshVault.</p></div>
-          <div class="feature-row"><span class="scope">Connect</span><h3>Image capture controls</h3><p>Chooses whether animated GIFs are included and limits the number of extra gallery images captured with each model.</p></div>
+          <div class="feature-row"><span class="scope">Connect</span><h3>Image capture controls</h3><p>Chooses whether animated GIFs are included. Set the extra gallery image limit in the import prompt, with your choice remembered for the next import.</p></div>
           <div class="feature-row"><span class="scope">Connect</span><h3>Local or server target</h3><p>Sends to the local desktop connector or a selected LAN server, tests the connection, and refreshes the available destination folders. Server writes remain protected by the server PIN and licence/write state.</p></div>
           <div class="feature-row"><span class="scope">Connect</span><h3>Normal-download fallback</h3><p>Allows the browser download to continue normally when MeshVault is unavailable or rejects the import.</p></div>
           <div class="feature-row"><span class="scope">Connect</span><h3>Optional browser-only tools</h3><p>When MeshVault is not running, can still save generated Printables collections through Chrome, Edge, or Firefox. Chrome and Edge can also replace opaque MakerWorld filenames with useful model-title names.</p></div>
@@ -363,6 +369,10 @@
           <p>The optional server hosts a library on an always-on workshop PC, home server, or Docker-capable machine while keeping access on your local network.</p>
         </div>
         <div class="feature-table">
+          <div class="feature-row"><span class="scope">Server</span><h3>Browser preview quality</h3><p>Choose Performance, Balanced, or High detail in the web viewer. Your browser remembers the preference for later previews.</p></div>
+          <div class="feature-row"><span class="scope">Server</span><h3>Background thumbnails</h3><p>Finish imports while missing thumbnails render in the background. Library tiles load images as needed, with efficient folder counts for larger libraries.</p></div>
+          <div class="feature-row"><span class="scope">Server</span><h3>PDF documents</h3><p>Add, open, and remove model reference PDFs in the web library, or receive them with MeshVault Connect imports.</p></div>
+          <div class="feature-row"><span class="scope">Server</span><h3>Image-storage maintenance</h3><p>Inspect and migrate legacy database images, check for missing or unreferenced images, and compact the database after migration from the administration page.</p></div>
           <div class="feature-row"><span class="scope">Server</span><h3>Windows, Linux, and Docker</h3><p>Runs as a dedicated Windows or Linux server build, with a Docker image for compatible self-hosted setups.</p></div>
           <div class="feature-row"><span class="scope">Server</span><h3>NAS-friendly Docker setup</h3><p>Includes bridge-network guidance for Docker Desktop and a host-network configuration for TrueNAS, Unraid, and Linux NAS hosts where direct LAN discovery is wanted.</p></div>
           <div class="feature-row"><span class="scope">Server</span><h3>Browser library</h3><p>Provides a local web interface for folder navigation, visual browsing, search, sorting, model details, downloads, metadata changes, and permitted library actions.</p></div>
@@ -384,10 +394,13 @@
           <p>MeshVault Mobile is the free phone-side library and transfer app for Android and iOS. The iOS version is currently in beta, and some advanced connected features remain Android-only.</p>
         </div>
         <div class="feature-table">
+          <div class="feature-row"><span class="scope">Android</span><h3>Duplicate download choices</h3><p>Merge a duplicate download, keep both copies, or replace the existing model. Improved thumbnail loading and hidden-folder filtering keep the vault easier to browse.</p></div>
+          <div class="feature-row"><span class="scope">Mobile</span><h3>PDF guides</h3><p>Attach and open PDF colour guides and assembly instructions from model details.</p></div>
+          <div class="feature-row"><span class="scope">iOS beta</span><h3>Files, archives, and slicers</h3><p>Access the model library through Files or Finder, inspect supported entries inside ZIP, RAR, 7Z, and TAR variants, and send supported previews to a connected desktop slicer.</p></div>
           <div class="feature-row"><span class="scope">iOS beta</span><h3>Native iPhone and iPad app</h3><p>Provides a local vault, repository downloads with captured metadata and artwork, folders, collections, search, supported native previews, connected-vault browsing and download routing, and a foreground read-only Wi-Fi library server.</p></div>
           <div class="feature-row"><span class="scope">Android</span><h3>Phone-side vault</h3><p>Stores a structured model folder on Android and provides visual folders, model tiles, search, sorting, collections, details, sharing, and duplicate cleanup.</p></div>
           <div class="feature-row"><span class="scope">Android</span><h3>Repository browser</h3><p>Browses supported model repositories in-app and saves downloads with available title, source, creator information, and images.</p></div>
-          <div class="feature-row"><span class="scope">Android</span><h3>Mobile preview</h3><p>Previews supported STL, OBJ, 3MF, STEP/STP, and G-code files with configurable limits, colours, grid, multi-part colours, and G-code layer selection; availability varies by tier.</p></div>
+          <div class="feature-row"><span class="scope">Android</span><h3>Mobile preview</h3><p>Previews supported mesh, CAD, and toolpath files, including Rhino 3DM, IGES/IGS, OFF, AMF, X3D, DXF, and NC/CNC. Memory-aware quality controls help with complex models; controls and availability vary by platform and tier.</p></div>
           <div class="feature-row"><span class="scope">Android</span><h3>Archive inspection</h3><p>Opens ZIP and 3MF packages and lets you inspect or preview supported parts inside.</p></div>
           <div class="feature-row"><span class="scope">Android</span><h3>Metadata and images</h3><p>Edits model details, tags, descriptions, source links, main thumbnails, extra images, and folder placement.</p></div>
           <div class="feature-row"><span class="scope">Android</span><h3>Local Wi-Fi server</h3><p>Serves the phone library to a browser on the same network for browsing, details, downloads, selected-model ZIPs, metadata export, and permitted management actions.</p></div>
@@ -428,10 +441,10 @@
           <p>Indexing, thumbnail generation, preview, slicer hand-off, and archive inspection are different capabilities. This list separates them so a searchable library entry is not mistaken for a native preview claim.</p>
         </div>
         <div class="format-groups">
-          <div class="format-group"><h3>49 indexed model, CAD, project, and G-code extensions</h3><p class="format-list">3DM, 3DS, 3MF, ABC, AMF, BGCODE, BLEND, BLEND1, CATPART, CATPRODUCT, DAE, DWFX, DWG, DXF, F3D, FBX, FCSTD, GLB, GLTF, GCODE, GCO, IAM, IFC, IGES, IGS, IPT, JT, NC, OBJ, OFF, PLY, SAT, SAB, SCAD, SKP, SLDASM, SLDPRT, STEP, STL, STP, USD, USDA, USDC, USDZ, VRML, WRL, X_B, X_T, X3D</p></div>
+          <div class="format-group"><h3>50 indexed model, CAD, project, and G-code extensions</h3><p class="format-list">3DM, 3DS, 3MF, ABC, AMF, BGCODE, BLEND, BLEND1, CATPART, CATPRODUCT, CNC, DAE, DWFX, DWG, DXF, F3D, FBX, FCSTD, GLB, GLTF, GCODE, GCO, IAM, IFC, IGES, IGS, IPT, JT, NC, OBJ, OFF, PLY, SAT, SAB, SCAD, SKP, SLDASM, SLDPRT, STEP, STL, STP, USD, USDA, USDC, USDZ, VRML, WRL, X_B, X_T, X3D</p></div>
           <div class="format-group"><h3>Eight indexed archive variants</h3><p class="format-list">ZIP, RAR, 7Z, TAR, TAR.GZ, TGZ, TAR.BZ2, TBZ2</p></div>
-          <div class="format-group"><h3>Native preview</h3><p class="format-list">STL, OBJ, 3MF, STEP, STP, GCODE, GCO, GLB, GLTF, PLY, DAE, FBX, and supported .MODEL archive entries</p></div>
-          <div class="format-group"><h3>Generated or extracted thumbnails</h3><p class="format-list">Geometry: STL, OBJ, PLY, GLTF, GLB, DAE, FBX, STEP, STP. Embedded or derived: 3MF, FCSTD, GCODE, GCO. Supported entries can also be processed inside the eight archive variants.</p></div>
+          <div class="format-group"><h3>Native preview</h3><p class="format-list">STL, OBJ, OFF, AMF, 3DM, 3MF, STEP, STP, IGES, IGS, X3D, DXF, GCODE, GCO, NC, CNC, GLB, GLTF, PLY, DAE, FBX, and supported .MODEL archive entries</p></div>
+          <div class="format-group"><h3>Generated or extracted thumbnails</h3><p class="format-list">Geometry: STL, OBJ, OFF, AMF, X3D, DXF, PLY, GLTF, GLB, DAE, FBX, 3DM, STEP, STP, IGES, IGS. Embedded or derived: 3MF, FCSTD, F3D, GCODE, GCO, NC, CNC. Supported entries can also be processed inside the eight archive variants.</p></div>
           <div class="format-group"><h3>Slicer hand-off</h3><p class="format-list">Direct: STL, 3MF, OBJ, AMF, STEP, STP, GCODE, GCO, BGCODE. Converted to STL: FBX, PLY (results can vary).</p></div>
         </div>
         <p class="note"><strong>Why some formats are index-only:</strong> a CAD or project file can still be titled, tagged, searched, grouped, collected, opened in its normal application, and kept with related files even when MeshVault cannot render it itself.</p>
@@ -445,10 +458,10 @@
           <h2>Current, public, and correctable.</h2>
         </div>
         <div class="availability-copy">
-          <p>This reference was checked against the released MeshVault desktop behaviour, the Connect extension, and the current Android and iOS MeshVault Mobile implementations on <strong>10 September 2026</strong>.</p>
+          <p>This reference was checked against the released MeshVault desktop behaviour, the Connect extension, and the current Android and iOS MeshVault Mobile implementations on <strong>21 September 2026</strong>.</p>
           <p>Windows is the desktop behavioural reference. Linux and macOS target the same library outcomes while using native controls, but operating-system integration and release timing can differ.</p>
           <p>Features still only present in an unreleased development workspace are not included here. If a released capability is missing or described incorrectly, <a href="https://github.com/Xalies/xalies.github.io/issues">report a correction</a>.</p>
-          <span class="checked">Desktop 2.1.0.0 · Connect 2.0.10.0 · checked 2026-09-06</span>
+          <span class="checked">Desktop 2.2.0.0 · Connect 2.1.0.0 · updated 2026-09-21</span>
         </div>
       </div>
     </section>
