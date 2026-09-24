@@ -14,6 +14,7 @@
     .intro{background:#fff;border:1px solid #d9e4dd;border-radius:16px;padding:20px 24px;margin:8px 0 34px}
     .intro h2{font-size:1.15rem;margin:0 0 8px}.intro p{margin:7px 0;color:#445953}
     .search-box{display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin:16px 0 8px}.search-box input{min-width:min(360px,100%);max-width:100%;font:inherit;padding:10px 12px;border:1px solid #9bb8aa;border-radius:9px}.search-box output{color:#536963;font-size:.9rem}
+    .search-results{display:flex;flex-wrap:wrap;gap:7px;margin:8px 0 16px}.search-results a{background:#e4efea;border-radius:7px;padding:5px 9px;text-decoration:none;font-size:.9rem}.search-results a:hover{text-decoration:underline}tr:target{outline:2px solid #087565;outline-offset:-2px;scroll-margin-top:18px}
     [hidden]{display:none!important}#more details{margin:16px 0 24px}#more summary{cursor:pointer;font-weight:750;font-size:1.1rem;background:#e4efea;padding:11px 14px;border-radius:10px;margin-bottom:9px}
     .terms{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin-top:16px}.terms div{background:#f3f7f3;border-radius:10px;padding:11px 13px;font-size:.89rem;color:#405650}.terms strong{display:block;color:#24443b}
     section{scroll-margin-top:22px;margin:42px 0}section h2{font-size:1.8rem;letter-spacing:-.025em;margin:0 0 5px}
@@ -39,7 +40,8 @@
     <aside class="intro">
       <h2>How to read this page</h2>
       <p><strong>General capabilities</strong> uses shared terms. Hover or focus on dotted terms for extra formats and tier details. <strong>Standout</strong> = a distinctive focus; <strong>Check before choosing</strong> = limits to verify.</p>
-      <div class="search-box"><input id="tool-search" type="search" aria-label="Search tools and features" placeholder="Try viewer, STEP, filament, pricing…" autocomplete="off"><output id="search-count" role="status" aria-live="polite">176 tools indexed</output></div>
+      <div class="search-box"><input id="tool-search" type="search" aria-label="Search tools, features and formats" placeholder="Search name, feature or format…" autocomplete="off"><output id="search-count" role="status" aria-live="polite">176 tools indexed</output></div>
+      <nav id="search-results" class="search-results" aria-label="Matching tools" hidden></nav>
       <div class="terms" aria-label="Comparison terms">
         <div><strong>Index in place</strong>Catalog files without moving them into an app-owned folder.</div>
         <div><strong>Viewer</strong>Rotate or inspect a model in 3D. A thumbnail or indexed filename alone is not an interactive viewer.</div>
@@ -647,16 +649,30 @@
     const rows = [...document.querySelectorAll('table tbody tr')];
     const groups = [...document.querySelectorAll('#more details')];
     const sections = [...document.querySelectorAll('main section:not(#method):not(#audit)')];
+    const results = document.querySelector('#search-results');
+    rows.forEach((row, index) => {
+      row.id = `tool-${index + 1}`;
+      row.dataset.search = `${row.textContent} ${[...row.querySelectorAll('[title]')].map(item => item.title).join(' ')}`.toLocaleLowerCase();
+    });
     search.addEventListener('input', () => {
       const query = search.value.trim().toLocaleLowerCase();
-      rows.forEach(row => { row.hidden = !!query && !row.textContent.toLocaleLowerCase().includes(query); });
+      rows.forEach(row => { row.hidden = !!query && !row.dataset.search.includes(query); });
+      const matches = rows.filter(row => !row.hidden);
       groups.forEach(group => {
         group.hidden = !!query && !group.querySelector('tbody tr:not([hidden])');
         if (query && !group.hidden) group.open = true;
       });
       sections.forEach(section => { section.hidden = !!query && !section.querySelector('tbody tr:not([hidden])'); });
       document.querySelector('.group-jump').hidden = !!query;
-      document.querySelector('#search-count').textContent = query ? `${rows.filter(row => !row.hidden).length} matches` : `${rows.length} tools indexed`;
+      results.hidden = !query;
+      results.replaceChildren(...(query ? matches.map(row => {
+        const link = document.createElement('a');
+        link.href = `#${row.id}`;
+        link.textContent = row.querySelector('.app').textContent;
+        return link;
+      }) : []));
+      if (query && !matches.length) results.textContent = 'No matching tools.';
+      document.querySelector('#search-count').textContent = query ? `${matches.length} matches` : `${rows.length} tools indexed`;
     });
   </script>
 </body>
