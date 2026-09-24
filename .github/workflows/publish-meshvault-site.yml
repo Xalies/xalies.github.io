@@ -1,0 +1,56 @@
+name: Publish MeshVault website
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "meshvault/**"
+      - ".github/workflows/publish-meshvault-site.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: publish-meshvault-site
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v6
+
+      - name: Verify site source
+        run: |
+          test -f meshvault/index.html
+          test -f meshvault/CNAME
+          grep -Fxq "www.meshvault.app" meshvault/CNAME
+
+      - name: Checkout publishing repository
+        uses: actions/checkout@v6
+        with:
+          repository: Xalies-MeshVault/xalies-meshvault.github.io
+          ssh-key: ${{ secrets.MESHVAULT_PAGES_DEPLOY_KEY }}
+          path: published
+
+      - name: Publish changed files
+        run: |
+          rsync -a --delete \
+            --exclude .git/ \
+            --exclude .DS_Store \
+            --exclude _pgbackup/ \
+            --exclude pinegrow.json \
+            meshvault/ published/
+
+          git -C published add -A
+          if git -C published diff --cached --quiet; then
+            echo "MeshVault website is already current."
+            exit 0
+          fi
+
+          git -C published config user.name "github-actions[bot]"
+          git -C published config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git -C published commit -m "Publish MeshVault website from ${GITHUB_SHA::7}"
+          git -C published push
