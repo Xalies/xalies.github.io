@@ -3,124 +3,319 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Software projects by Xalies.">
-  <title>Xalies | Projects</title>
+  <meta name="description" content="Independent software projects by Xalies.">
+  <title>Xalies — Independent software</title>
   <style>
     :root {
-      color-scheme: dark;
-      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #0b1020;
-      color: #eef2ff;
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f2efe7;
+      color: #191917;
     }
 
     * { box-sizing: border-box; }
 
     body {
       margin: 0;
-      min-height: 100vh;
-      display: grid;
-      place-items: center;
-      background:
-        radial-gradient(circle at 20% 10%, rgba(87, 107, 255, .2), transparent 35rem),
-        #0b1020;
+      background: #f2efe7;
     }
 
-    main {
-      width: min(920px, calc(100% - 2rem));
-      padding: 5rem 0;
+    a { color: inherit; }
+
+    .shell {
+      width: min(1180px, calc(100% - 48px));
+      margin: 0 auto;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px 0;
+      border-bottom: 1px solid #191917;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    header a {
+      text-underline-offset: 4px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(260px, 1fr);
+      gap: 48px;
+      padding: 92px 0 104px;
     }
 
     h1 {
+      max-width: 850px;
       margin: 0;
-      font-size: clamp(3rem, 10vw, 6.5rem);
-      letter-spacing: -.07em;
+      font-size: clamp(4rem, 10vw, 8.5rem);
+      font-weight: 800;
+      letter-spacing: -.075em;
+      line-height: .82;
     }
 
-    .intro {
-      max-width: 42rem;
-      margin: 1rem 0 3rem;
-      color: #aeb8d6;
-      font-size: 1.15rem;
-      line-height: 1.6;
+    .hero p {
+      align-self: end;
+      max-width: 30rem;
+      margin: 0 0 .5rem;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.2rem, 2vw, 1.55rem);
+      line-height: 1.45;
     }
 
-    .projects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1rem;
+    .section-heading {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      padding: 16px 0;
+      border-top: 1px solid #191917;
+      border-bottom: 1px solid #191917;
+      text-transform: uppercase;
+    }
+
+    .section-heading h2,
+    .section-heading p {
+      margin: 0;
+      font-size: .78rem;
+      letter-spacing: .12em;
     }
 
     .project {
+      display: grid;
+      grid-template-columns: minmax(320px, .9fr) minmax(0, 1.1fr);
+      gap: clamp(32px, 6vw, 84px);
+      padding: 52px 0;
+      border-bottom: 1px solid #191917;
+    }
+
+    .thumbnail {
+      position: relative;
+      min-height: 280px;
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+      border: 1px solid #191917;
+      background: #20201e;
+    }
+
+    .thumbnail img {
       display: block;
-      min-height: 220px;
-      padding: 1.5rem;
-      border: 1px solid #283253;
-      border-radius: 18px;
-      background: rgba(19, 27, 50, .78);
-      color: inherit;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+    }
+
+    .placeholder {
+      display: grid;
+      align-content: space-between;
+      padding: 24px;
+      background: #f2c84b;
+      color: #191917;
       text-decoration: none;
-      transition: transform .18s ease, border-color .18s ease;
     }
 
-    .project:hover,
-    .project:focus-visible {
-      transform: translateY(-4px);
-      border-color: #7183ff;
-      outline: none;
+    .placeholder small {
+      font: 700 .72rem/1 Arial, Helvetica, sans-serif;
+      letter-spacing: .14em;
+      text-transform: uppercase;
     }
 
-    .project img {
-      width: 64px;
-      height: 64px;
-      border-radius: 14px;
+    .placeholder strong {
+      font-size: clamp(3.2rem, 7vw, 6.8rem);
+      letter-spacing: -.08em;
+      line-height: .76;
     }
 
-    h2 { margin: 1.25rem 0 .5rem; }
+    .project-copy {
+      display: flex;
+      min-width: 0;
+      flex-direction: column;
+    }
 
-    .project p {
+    .project-number {
+      margin: 0 0 28px;
+      font: 700 .76rem/1 Arial, Helvetica, sans-serif;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .project h3 {
       margin: 0;
-      color: #aeb8d6;
-      line-height: 1.5;
+      font-size: clamp(2.4rem, 5vw, 4.8rem);
+      letter-spacing: -.06em;
+      line-height: .92;
     }
 
-    .arrow {
-      display: inline-block;
-      margin-top: 1.25rem;
-      color: #9eabff;
+    .description {
+      max-width: 42rem;
+      margin: 24px 0 32px;
+      color: #464641;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.15rem;
+      line-height: 1.55;
+    }
+
+    .facts {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin: auto 0 32px;
+      border-top: 1px solid #8d8b82;
+      border-bottom: 1px solid #8d8b82;
+    }
+
+    .fact {
+      padding: 13px 0;
+    }
+
+    .fact + .fact {
+      padding-left: 18px;
+      border-left: 1px solid #8d8b82;
+    }
+
+    .fact dt {
+      margin-bottom: 5px;
+      color: #6a6963;
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .fact dd {
+      margin: 0;
+      font-size: .95rem;
       font-weight: 700;
     }
 
-    footer {
-      margin-top: 3rem;
-      color: #7f8bad;
+    .project-link {
+      align-self: flex-start;
+      padding-bottom: 5px;
+      border-bottom: 2px solid currentColor;
+      font-size: .84rem;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-decoration: none;
+      text-transform: uppercase;
     }
 
-    footer a { color: #b5bfff; }
+    .project-link:hover,
+    .project-link:focus-visible {
+      color: #b43a18;
+    }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 30px 0 48px;
+      color: #55544f;
+      font-size: .76rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    footer p { margin: 0; }
+
+    @media (max-width: 760px) {
+      .shell { width: min(100% - 28px, 1180px); }
+
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        padding: 64px 0 72px;
+      }
+
+      h1 { font-size: clamp(3.6rem, 21vw, 6.5rem); }
+
+      .project {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 36px 0 44px;
+      }
+
+      .thumbnail { min-height: 210px; }
+
+      .project-number { margin-bottom: 18px; }
+
+      footer { flex-direction: column; }
+    }
   </style>
 </head>
 <body>
-  <main>
-    <h1>Xalies</h1>
-    <p class="intro">Independent software for useful, local-first workflows.</p>
+  <div class="shell">
+    <header>
+      <span>Xalies / Software</span>
+      <a href="https://github.com/Xalies">GitHub ↗</a>
+    </header>
 
-    <section class="projects" aria-label="Projects">
-      <a class="project" href="https://www.meshvault.app/">
-        <img src="meshvault/images/meshvault_512x512.png" alt="">
-        <h2>MeshVault</h2>
-        <p>A private, portable library for organising and previewing 3D models across desktop and mobile.</p>
-        <span class="arrow">Visit MeshVault →</span>
-      </a>
+    <main>
+      <section class="hero" aria-labelledby="page-title">
+        <h1 id="page-title">Useful software.</h1>
+        <p>Independent tools built to solve practical problems, keep data local, and stay out of the way.</p>
+      </section>
 
-      <a class="project" href="https://github.com/Xalies/HAOS-USB-Creator">
-        <h2>HAOS USB Creator</h2>
-        <p>A straightforward tool for creating Home Assistant OS installation media.</p>
-        <span class="arrow">View on GitHub →</span>
-      </a>
-    </section>
+      <section aria-labelledby="projects-title">
+        <div class="section-heading">
+          <h2 id="projects-title">Selected projects</h2>
+          <p>02 products</p>
+        </div>
+
+        <article class="project">
+          <a class="thumbnail" href="https://www.meshvault.app/" aria-label="Visit the MeshVault website">
+            <img src="meshvault/images/meshvaultweb.webp" alt="MeshVault Web showing a library of 3D models">
+          </a>
+          <div class="project-copy">
+            <p class="project-number">01 / 3D model library</p>
+            <h3>MeshVault</h3>
+            <p class="description">A private, portable library for organising, previewing, and moving 3D models across desktop and mobile.</p>
+            <dl class="facts">
+              <div class="fact">
+                <dt>Price</dt>
+                <dd>Mobile free / $19.99 once</dd>
+              </div>
+              <div class="fact">
+                <dt>Source</dt>
+                <dd>Closed source</dd>
+              </div>
+            </dl>
+            <a class="project-link" href="https://www.meshvault.app/">Visit MeshVault →</a>
+          </div>
+        </article>
+
+        <article class="project">
+          <a class="thumbnail placeholder" href="https://github.com/Xalies/HAOS-USB-Creator" aria-label="View HAOS USB Creator on GitHub">
+            <small>Thumbnail forthcoming</small>
+            <strong>HAOS<br>USB</strong>
+          </a>
+          <div class="project-copy">
+            <p class="project-number">02 / Installation utility</p>
+            <h3>HAOS USB Creator</h3>
+            <p class="description">An unofficial Windows tool for creating an all-in-one Home Assistant OS installer USB for dedicated x86-64 PCs.</p>
+            <dl class="facts">
+              <div class="fact">
+                <dt>Price</dt>
+                <dd>Free</dd>
+              </div>
+              <div class="fact">
+                <dt>Source</dt>
+                <dd>Open source / AGPL-3.0</dd>
+              </div>
+            </dl>
+            <a class="project-link" href="https://github.com/Xalies/HAOS-USB-Creator">View on GitHub →</a>
+          </div>
+        </article>
+      </section>
+    </main>
 
     <footer>
-      <a href="https://github.com/Xalies">github.com/Xalies</a>
+      <p>Independent software by Xalies</p>
+      <p>Built in Australia</p>
     </footer>
-  </main>
+  </div>
 </body>
 </html>
