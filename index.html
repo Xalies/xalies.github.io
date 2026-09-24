@@ -70,6 +70,16 @@
       object-position: top center;
     }
 
+    .mobile-thumbnail {
+      background: #514091;
+    }
+
+    .mobile-thumbnail img {
+      width: auto;
+      margin: 0 auto;
+      object-fit: contain;
+    }
+
     .placeholder {
       display: grid;
       align-content: space-between;
@@ -218,7 +228,7 @@
             <dl class="facts">
               <div class="fact">
                 <dt>Price</dt>
-                <dd>Mobile free / $19.99 once</dd>
+                <dd>7-day trial / $19.99 once</dd>
               </div>
               <div class="fact">
                 <dt>Source</dt>
@@ -230,12 +240,34 @@
         </article>
 
         <article class="project">
+          <a class="thumbnail mobile-thumbnail" href="https://www.meshvault.app/#trial" aria-label="Get MeshVault Mobile">
+            <img src="meshvault/images/meshvaultmobile.webp" alt="MeshVault Mobile showing supported 3D model websites">
+          </a>
+          <div class="project-copy">
+            <p class="project-number">02 / Mobile 3D model library</p>
+            <h2>MeshVault Mobile</h2>
+            <p class="description">A free standalone Android and iOS library for browsing, organising, previewing, and downloading 3D models—no desktop app or cloud account required.</p>
+            <dl class="facts">
+              <div class="fact">
+                <dt>Price</dt>
+                <dd>Free</dd>
+              </div>
+              <div class="fact">
+                <dt>Source</dt>
+                <dd>Closed source</dd>
+              </div>
+            </dl>
+            <a class="project-link" href="https://www.meshvault.app/#trial">Get MeshVault Mobile →</a>
+          </div>
+        </article>
+
+        <article class="project">
           <a class="thumbnail placeholder" href="https://github.com/Xalies/HAOS-USB-Creator" aria-label="View HAOS USB Creator on GitHub">
             <small>Thumbnail forthcoming</small>
             <strong>HAOS<br>USB</strong>
           </a>
           <div class="project-copy">
-            <p class="project-number">02 / Installation utility</p>
+            <p class="project-number">03 / Installation utility</p>
             <h2>HAOS USB Creator</h2>
             <p class="description">An unofficial Windows tool for creating an all-in-one Home Assistant OS installer USB for dedicated x86-64 PCs.</p>
             <dl class="facts">
