@@ -173,6 +173,12 @@
       text-transform: uppercase;
     }
 
+    .project-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+
     .project-link:hover,
     .project-link:focus-visible {
       color: #b43a18;
@@ -240,9 +246,9 @@
         </article>
 
         <article class="project">
-          <a class="thumbnail mobile-thumbnail" href="https://www.meshvault.app/#trial" aria-label="Get MeshVault Mobile">
+          <div class="thumbnail mobile-thumbnail">
             <img src="meshvault/images/meshvaultmobile.webp" alt="MeshVault Mobile showing supported 3D model websites">
-          </a>
+          </div>
           <div class="project-copy">
             <p class="project-number">02 / Mobile 3D model library</p>
             <h2>MeshVault Mobile</h2>
@@ -257,7 +263,10 @@
                 <dd>Closed source</dd>
               </div>
             </dl>
-            <a class="project-link" href="https://www.meshvault.app/#trial">Get MeshVault Mobile →</a>
+            <div class="project-links">
+              <a class="project-link" href="https://play.google.com/store/apps/details?id=com.xalies.meshvault">Google Play →</a>
+              <a class="project-link" href="https://testflight.apple.com/join/NAaS8nbh">TestFlight →</a>
+            </div>
           </div>
         </article>
 
