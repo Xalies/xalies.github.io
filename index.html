@@ -174,18 +174,19 @@
     }
 
     footer {
-      padding: 30px 0 48px;
+      padding: 16px 0 48px;
+      border-top: 1px solid #53605d;
       color: #a9b9b1;
       font-size: .76rem;
       letter-spacing: .08em;
       text-transform: uppercase;
     }
 
-    .footer-line { display: flex; justify-content: space-between; gap: 24px; }
-    footer p { margin: 0; }
-    footer a { text-underline-offset: 4px; }
-    .supporters { display: flex; align-items: center; gap: 24px; margin-top: 26px; padding-top: 16px; border-top: 1px solid #53605d; }
+    .footer-bottom { display: flex; align-items: center; gap: 24px; }
+    .supporters { display: flex; flex: 1; min-width: 0; align-items: center; gap: 24px; }
     .supporters[hidden] { display: none; }
+    .coffee-link { display: block; flex: none; width: 210px; margin-left: auto; }
+    .coffee-link img { display: block; width: 100%; height: auto; }
     .supporters-label { flex: none; color: #edf0ec; font-weight: 700; }
     .supporters-window { flex: 1; min-width: 0; overflow: hidden; }
     .supporters-track { display: flex; width: max-content; animation: supporters-scroll 22s linear infinite; }
@@ -207,7 +208,7 @@
     @media (max-width: 760px) {
       .shell { width: calc(100% - 28px); }
       .projects { grid-template-columns: 1fr; }
-      .footer-line { flex-direction: column; }
+      .footer-bottom { flex-wrap: wrap; }
     }
   </style>
 </head>
@@ -339,14 +340,14 @@
     </main>
 
     <footer>
-      <div class="footer-line">
-        <p>Independent software by Xalies</p>
-        <a href="https://buymeacoffee.com/xalies">Buy me a coffee ↗</a>
-        <p>Built in Australia</p>
-      </div>
-      <div class="supporters" id="supporters" aria-label="Buy Me a Coffee supporters" hidden>
-        <span class="supporters-label">Thanks to</span>
-        <div class="supporters-window"><div class="supporters-track" id="supporters-track"></div></div>
+      <div class="footer-bottom">
+        <div class="supporters" id="supporters" aria-label="Buy Me a Coffee supporters" hidden>
+          <span class="supporters-label">Thanks to</span>
+          <div class="supporters-window"><div class="supporters-track" id="supporters-track"></div></div>
+        </div>
+        <a class="coffee-link" href="https://buymeacoffee.com/xalies">
+          <img src="images/bmc-button.png" alt="Buy me a coffee">
+        </a>
       </div>
     </footer>
   </div>
