@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Resize an image, crop to fill, and set a maximum file size. Everything runs in your browser.">
+  <meta name="description" content="Resize an image, crop to fill, and optionally set a maximum file size. Everything runs in your browser.">
   <title>Image Resizer</title>
   <style>
-    :root { color-scheme: light; --paper: #f3f0e8; --ink: #222b27; --muted: #64706a; --line: #b9beb4; --accent: #b64d31; }
+    :root { color-scheme: dark; --paper: #141a1c; --ink: #edf0ec; --muted: #b4c3bc; --line: #53605d; --accent: #9ad9ac; }
     * { box-sizing: border-box; }
     body { margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.45 Arial, Helvetica, sans-serif; }
     button, input, select { font: inherit; }
@@ -14,81 +14,81 @@
     button, a { -webkit-tap-highlight-color: transparent; }
     :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
     .shell { width: min(1400px, 100%); margin: auto; padding: 0 clamp(18px, 3vw, 48px); }
-    header { border-bottom: 1px solid var(--ink); }
+    header { border-bottom: 1px solid var(--line); }
     .masthead { min-height: 66px; display: flex; align-items: center; justify-content: space-between; gap: 20px; font: 700 12px/1.2 Consolas, 'Courier New', monospace; letter-spacing: .08em; text-transform: uppercase; }
-    .masthead span:last-child { color: var(--muted); text-align: right; }
-    .intro { padding: clamp(46px, 7vw, 92px) 0 48px; display: grid; grid-template-columns: 1fr minmax(230px, 360px); gap: 30px; align-items: end; border-bottom: 1px solid var(--ink); }
-    .kicker, .step, .small-label, .file-meta, .result-meta, footer { font: 700 12px/1.45 Consolas, 'Courier New', monospace; letter-spacing: .04em; text-transform: uppercase; }
-    .kicker, .step { color: var(--accent); }
-    h1 { max-width: 800px; margin: 16px 0 0; font: normal clamp(64px, 8.7vw, 132px)/.87 Georgia, 'Times New Roman', serif; letter-spacing: -.065em; }
-    .intro p { max-width: 350px; margin: 0 0 7px; color: #4f5a53; font-size: 17px; line-height: 1.55; }
+    .masthead a { text-decoration: none; }
+    .masthead a:hover { color: var(--accent); }
+    .masthead h1 { margin: 0; color: var(--muted); font: inherit; text-align: right; }
+    .step, .small-label, .file-meta, .result-meta, footer { font: 700 12px/1.45 Consolas, 'Courier New', monospace; letter-spacing: .04em; text-transform: uppercase; }
+    .step { color: var(--accent); }
     main { display: grid; grid-template-columns: minmax(300px, 390px) minmax(0, 1fr); min-height: 690px; }
-    .controls { padding: 0 32px 44px 0; border-right: 1px solid var(--ink); }
+    .controls { padding: 0 32px 44px 0; border-right: 1px solid var(--line); }
     .section { padding: 30px 0 32px; border-bottom: 1px solid var(--line); }
     .section h2 { margin: 5px 0 18px; font: normal 29px/1.1 Georgia, 'Times New Roman', serif; }
-    .dropzone { display: block; padding: 29px 18px; border: 1px dashed #758179; text-align: center; cursor: pointer; background: #eeebe2; transition: background .15s, border-color .15s; }
-    .dropzone:hover, .dropzone.dragging { background: #e7e1d4; border-color: var(--accent); }
+    .dropzone { display: block; padding: 29px 18px; border: 1px dashed #7a8c84; text-align: center; cursor: pointer; background: #1e282a; transition: background .15s, border-color .15s; }
+    .dropzone:hover, .dropzone.dragging { background: #29383a; border-color: var(--accent); }
     .dropzone:focus-within { outline: 3px solid var(--accent); outline-offset: 3px; }
     .dropzone strong { display: block; font-size: 16px; }
     .dropzone span { display: block; margin-top: 5px; color: var(--muted); font-size: 13px; }
     .dropzone input { position: absolute; width: 1px; height: 1px; opacity: 0; }
     .file-meta { margin: 13px 0 0; color: var(--muted); overflow-wrap: anywhere; text-transform: none; }
-    .fields { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .fields { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 18px; }
     label.field { display: block; }
     .small-label { display: block; margin-bottom: 8px; }
-    .field input, .field select { width: 100%; height: 46px; padding: 0 11px; border: 1px solid #7d8980; background: #fbfaf5; color: var(--ink); }
-    .field input:hover, .field select:hover { border-color: var(--ink); }
+    .field input[type="number"], .field select { width: 100%; height: 46px; padding: 0 11px; border: 1px solid #7a8c84; background: #202b2e; color: var(--ink); }
+    .field input[type="number"]:hover, .field select:hover { border-color: var(--ink); }
     .hint { margin: 10px 0 0; color: var(--muted); font-size: 13px; }
+    #dimension-result { display: block; margin-top: 12px; color: var(--accent); font: 13px/1.45 Consolas, 'Courier New', monospace; }
     fieldset { margin: 20px 0 0; padding: 0; border: 0; }
     legend { margin-bottom: 8px; }
-    .modes { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid #7d8980; }
+    .modes { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid #7a8c84; }
     .modes label { position: relative; cursor: pointer; }
-    .modes label + label { border-left: 1px solid #7d8980; }
+    .modes label + label { border-left: 1px solid #7a8c84; }
     .modes input { position: absolute; opacity: 0; }
     .modes span { display: block; padding: 10px; text-align: center; font-size: 14px; }
-    .modes input:checked + span { background: var(--ink); color: var(--paper); }
+    .modes input:checked + span { background: var(--accent); color: #102118; }
     .modes input:focus-visible + span { outline: 3px solid var(--accent); outline-offset: -3px; }
-    .output-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-    .action { width: 100%; min-height: 54px; margin-top: 26px; border: 1px solid var(--ink); background: var(--ink); color: #fff; cursor: pointer; text-align: left; padding: 13px 18px; font-weight: 700; }
+    .size-control { display: flex; }
+    .size-control input[type="number"] { min-width: 0; border-right: 0; }
+    .units { width: 90px; flex: none; }
+    .units span { display: grid; min-height: 44px; place-items: center; padding: 0 6px; }
+    .limit-toggle { display: flex; align-items: center; gap: 10px; margin-top: 17px; cursor: pointer; }
+    .limit-toggle input { width: 18px; height: 18px; margin: 0; accent-color: var(--accent); }
+    .limit-fields { margin: 18px 0 0; }
+    .limit-fields:disabled { opacity: .5; }
+    .action { width: 100%; min-height: 54px; margin-top: 26px; border: 1px solid var(--accent); background: var(--accent); color: #102118; cursor: pointer; text-align: left; padding: 13px 18px; font-weight: 700; }
     .action::after { content: '→'; float: right; font-size: 20px; line-height: 1; }
-    .action:hover:not(:disabled) { background: var(--accent); border-color: var(--accent); }
+    .action:hover:not(:disabled) { background: #c5efd0; border-color: #c5efd0; }
     .action:disabled { cursor: wait; opacity: .55; }
-    .status { min-height: 45px; margin: 13px 0 0; font-size: 13px; color: var(--muted); }
-    .status.error { color: #a83225; }
     .workspace { min-width: 0; padding: 30px 0 40px 32px; }
-    .workspace-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding-bottom: 14px; border-bottom: 1px solid var(--line); }
-    .workspace-head h2 { margin: 0; font: normal 29px/1.1 Georgia, 'Times New Roman', serif; }
-    .workspace-head span { color: var(--muted); }
-    .previews { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 20px; }
-    figure { min-width: 0; margin: 0; background: var(--paper); }
-    .preview { min-height: 300px; height: min(38vw, 470px); display: grid; place-items: center; overflow: hidden; padding: 20px; background-color: #e4e3dc; background-image: linear-gradient(45deg, #d7d8d0 25%, transparent 25%), linear-gradient(-45deg, #d7d8d0 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #d7d8d0 75%), linear-gradient(-45deg, transparent 75%, #d7d8d0 75%); background-size: 28px 28px; background-position: 0 0, 0 14px, 14px -14px, -14px 0; }
-    .preview img { max-width: 100%; max-height: 100%; object-fit: contain; box-shadow: 0 7px 28px #222b2733; }
+    .output-bar { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 18px; margin-bottom: 20px; }
+    .output-bar h2 { margin: 5px 0 0; font: normal 29px/1.1 Georgia, 'Times New Roman', serif; }
+    .output-actions { display: flex; flex-wrap: wrap; align-items: end; gap: 14px; }
+    .output-actions .field { width: 150px; }
+    .output-actions .action { width: auto; min-width: 190px; margin: 0; }
+    .previews { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); }
+    .preview { min-height: 300px; height: min(38vw, 470px); display: grid; place-items: center; overflow: hidden; padding: 20px; background-color: #1d2729; background-image: linear-gradient(45deg, #2a3638 25%, transparent 25%), linear-gradient(-45deg, #2a3638 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #2a3638 75%), linear-gradient(-45deg, transparent 75%, #2a3638 75%); background-size: 28px 28px; background-position: 0 0, 0 14px, 14px -14px, -14px 0; }
+    .preview img { max-width: 100%; max-height: 100%; object-fit: contain; box-shadow: 0 7px 28px #0008; }
     .preview img[hidden] { display: none; }
     .placeholder { max-width: 200px; padding: 15px; background: var(--paper); color: var(--muted); text-align: center; font: 12px/1.5 Consolas, 'Courier New', monospace; }
-    figcaption { min-height: 76px; padding: 14px 16px; border-top: 1px solid var(--line); }
-    figcaption strong { display: block; margin-bottom: 4px; font-size: 14px; }
-    figcaption span { color: var(--muted); font-size: 13px; }
-    .result { display: flex; align-items: center; justify-content: space-between; gap: 20px; min-height: 88px; padding: 18px 0; border-bottom: 1px solid var(--ink); }
+    .result { display: flex; align-items: center; justify-content: space-between; gap: 20px; min-height: 88px; padding: 18px 0; border-bottom: 1px solid var(--line); }
     .result-meta { color: var(--muted); text-transform: none; }
-    .download { display: inline-block; padding: 12px 16px; border: 1px solid var(--accent); background: var(--accent); color: #fff; text-decoration: none; font-weight: 700; white-space: nowrap; }
-    .download:hover { background: var(--ink); border-color: var(--ink); }
+    .result-meta.error { color: #ff9887; }
+    .download { display: inline-block; padding: 12px 16px; border: 1px solid var(--accent); background: var(--accent); color: #102118; text-decoration: none; font-weight: 700; white-space: nowrap; }
+    .download:hover { background: #c5efd0; border-color: #c5efd0; }
     .download[hidden] { display: none; }
-    footer { display: flex; justify-content: space-between; gap: 20px; padding: 24px 0 36px; border-top: 1px solid var(--ink); color: var(--muted); }
+    footer { display: flex; justify-content: space-between; gap: 20px; padding: 24px 0 36px; border-top: 1px solid var(--line); color: var(--muted); }
     footer a { color: var(--ink); text-underline-offset: 3px; }
-    @media (max-width: 900px) { .intro { grid-template-columns: 1fr; } .intro p { max-width: 600px; } main { display: block; } .controls { padding-right: 0; border-right: 0; } .workspace { padding: 25px 0 40px; } }
-    @media (max-width: 600px) { .masthead span:last-child { display: none; } h1 { font-size: clamp(58px, 14vw, 85px); } .previews { grid-template-columns: 1fr; } .preview { height: 280px; min-height: 280px; } .result { align-items: start; flex-direction: column; } footer { flex-direction: column; } }
+    @media (max-width: 900px) { main { display: block; } .controls { padding-right: 0; border-right: 0; } .workspace { padding: 25px 0 40px; } }
+    @media (max-width: 600px) { .output-actions { width: 100%; } .output-actions .field { flex: 1; } .output-actions .action { width: 100%; } .previews { grid-template-columns: 1fr; } .preview { height: 280px; min-height: 280px; } .result { align-items: start; flex-direction: column; } footer { flex-direction: column; } }
   </style>
-  <script type="module" src="./resizer.mjs"></script>
+  <script defer src="./resizer.js"></script>
 </head>
 <body>
   <header>
-    <div class="shell masthead"><span>Image Resizer / Tool 01</span><span>Local image processing</span></div>
+    <div class="shell masthead"><a href="../">← Xalies / Software</a><h1>Image Resizer</h1></div>
   </header>
   <div class="shell">
-    <div class="intro">
-      <div><span class="kicker">A small, practical image tool</span><h1>Resize.<br>Save space.</h1></div>
-      <p>Set the dimensions, choose how the image fits, and give it a file size limit. The image stays in your browser.</p>
-    </div>
     <main>
       <form class="controls" id="form">
         <section class="section">
@@ -97,38 +97,40 @@
           <p class="file-meta" id="file-meta">No image selected</p>
         </section>
         <section class="section">
-          <span class="step">02 / Geometry</span><h2>Set dimensions</h2>
-          <div class="fields">
-            <label class="field"><span class="small-label">Width / px</span><input id="width" name="width" type="number" min="1" max="12000" step="1" required></label>
-            <label class="field"><span class="small-label">Height / px</span><input id="height" name="height" type="number" min="1" max="12000" step="1" required></label>
-          </div>
-          <fieldset><legend class="small-label">Aspect handling</legend><div class="modes">
+          <span class="step">02 / Dimensions</span><h2>Set the output size</h2>
+          <fieldset><legend class="small-label">How should the image fit?</legend><div class="modes">
             <label><input type="radio" name="mode" value="scale" checked><span>Scale</span></label>
             <label><input type="radio" name="mode" value="fill"><span>Fill</span></label>
           </div></fieldset>
-          <p class="hint">Scale fits inside the box. Fill crops the centre to match it exactly.</p>
+          <p class="hint" id="mode-hint">Keep the whole image. The result fits within the width and height below.</p>
+          <div class="fields">
+            <label class="field"><span class="small-label" id="width-label">Max width / px</span><input id="width" name="width" type="number" min="1" max="12000" step="1" required></label>
+            <label class="field"><span class="small-label" id="height-label">Max height / px</span><input id="height" name="height" type="number" min="1" max="12000" step="1" required></label>
+          </div>
+          <output id="dimension-result" for="width height">Choose an image to see the output size.</output>
         </section>
         <section class="section">
-          <span class="step">03 / Output</span><h2>Set the limit</h2>
-          <div class="output-fields">
-            <label class="field"><span class="small-label">Maximum / KB</span><input id="limit" name="limit" type="number" min="1" max="50000" step="1" value="500" required></label>
-            <label class="field"><span class="small-label">Format</span><select id="format" name="format"><option value="image/webp">WebP</option><option value="image/jpeg">JPEG</option></select></label>
-          </div>
-          <p class="hint">Quality is adjusted to stay under the limit. Dimensions remain as set above.</p>
-          <button class="action" id="process" type="submit">Process image</button>
-          <p class="status" id="status" role="status" aria-live="polite">Ready when you are.</p>
+          <span class="step">03 / File size</span>
+          <label class="limit-toggle"><input id="use-limit" name="useLimit" type="checkbox">Set a maximum file size</label>
+          <fieldset class="limit-fields" id="limit-fields" disabled>
+            <div class="field"><label class="small-label" for="limit">Maximum</label><div class="size-control"><input id="limit" name="limit" type="number" min="1" max="51200" step="any" value="500" required><div class="modes units" role="group" aria-label="File size unit"><label><input type="radio" name="limitUnit" value="KB" checked><span>KB</span></label><label><input type="radio" name="limitUnit" value="MB"><span>MB</span></label></div></div></div>
+            <p class="hint">WebP and JPEG adjust quality to fit. PNG stays lossless.</p>
+          </fieldset>
         </section>
       </form>
       <section class="workspace" aria-label="Image preview">
-        <div class="workspace-head"><h2>Proof sheet</h2><span class="small-label">Before / After</span></div>
+        <div class="output-bar"><div><span class="step">04 / Output</span><h2>Process image</h2></div><div class="output-actions">
+          <label class="field"><span class="small-label">Format</span><select id="format" name="format" form="form"><option value="image/webp">WebP</option><option value="image/jpeg">JPEG</option><option value="image/png">PNG</option></select></label>
+          <button class="action" id="process" type="submit" form="form">Process image</button>
+        </div></div>
         <div class="previews">
-          <figure><div class="preview"><span class="placeholder" id="before-placeholder">Original image appears here</span><img id="before" alt="Original image preview" hidden></div><figcaption><strong>01 — Original</strong><span id="before-info">Waiting for an image</span></figcaption></figure>
-          <figure><div class="preview"><span class="placeholder" id="after-placeholder">Processed image appears here</span><img id="after" alt="Processed image preview" hidden></div><figcaption><strong>02 — Output</strong><span id="after-info">Waiting to process</span></figcaption></figure>
+          <div class="preview"><span class="placeholder" id="before-placeholder">Original image appears here</span><img id="before" alt="Original image preview" hidden></div>
+          <div class="preview"><span class="placeholder" id="after-placeholder">Processed image appears here</span><img id="after" alt="Processed image preview" hidden></div>
         </div>
-        <div class="result"><span class="result-meta" id="result-meta">Your download will appear here.</span><a class="download" id="download" hidden>Download image ↓</a></div>
+        <div class="result"><span class="result-meta" id="result-meta" role="status" aria-live="polite">Your download will appear here.</span><a class="download" id="download" hidden>Download image ↓</a></div>
       </section>
     </main>
-    <footer><span>No upload. No account. No tracking.</span><a href="https://github.com/Xalies/xalies.github.io/tree/main/image-resizer">Source / MIT license ↗</a></footer>
+    <footer><a href="https://github.com/Xalies/xalies.github.io/tree/main/image-resizer">Source / MIT license ↗</a></footer>
   </div>
 </body>
 </html>

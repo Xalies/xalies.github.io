@@ -7,17 +7,17 @@
   <title>Xalies — Independent software</title>
   <style>
     :root {
-      color-scheme: light;
+      color-scheme: dark;
       font-family: Arial, Helvetica, sans-serif;
-      background: #f2efe7;
-      color: #191917;
+      background: #141a1c;
+      color: #edf0ec;
     }
 
     * { box-sizing: border-box; }
 
     body {
       margin: 0;
-      background: #f2efe7;
+      background: #141a1c;
     }
 
     a { color: inherit; }
@@ -32,7 +32,7 @@
       align-items: center;
       justify-content: space-between;
       padding: 24px 0;
-      border-bottom: 1px solid #191917;
+      border-bottom: 1px solid #53605d;
       font-size: .78rem;
       font-weight: 700;
       letter-spacing: .12em;
@@ -50,7 +50,7 @@
       grid-template-columns: minmax(320px, .9fr) minmax(0, 1.1fr);
       gap: clamp(32px, 6vw, 84px);
       padding: 52px 0;
-      border-bottom: 1px solid #191917;
+      border-bottom: 1px solid #53605d;
     }
 
     .thumbnail {
@@ -58,8 +58,8 @@
       min-height: 280px;
       aspect-ratio: 16 / 10;
       overflow: hidden;
-      border: 1px solid #191917;
-      background: #20201e;
+      border: 1px solid #53605d;
+      background: #0e1417;
     }
 
     .thumbnail img {
@@ -79,6 +79,8 @@
       margin: 0 auto;
       object-fit: contain;
     }
+
+    .pulse-thumbnail img { object-fit: contain; }
 
     .placeholder {
       display: grid;
@@ -101,7 +103,7 @@
       line-height: .76;
     }
 
-    .resizer-thumbnail { background: #dcded6; }
+    .resizer-thumbnail { background: #30443a; color: #eef4ec; }
 
     .project-copy {
       display: flex;
@@ -126,7 +128,7 @@
     .description {
       max-width: 42rem;
       margin: 24px 0 32px;
-      color: #464641;
+      color: #bdc8c2;
       font-family: Georgia, "Times New Roman", serif;
       font-size: 1.15rem;
       line-height: 1.55;
@@ -136,8 +138,8 @@
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       margin: auto 0 32px;
-      border-top: 1px solid #8d8b82;
-      border-bottom: 1px solid #8d8b82;
+      border-top: 1px solid #53605d;
+      border-bottom: 1px solid #53605d;
     }
 
     .fact {
@@ -146,12 +148,12 @@
 
     .fact + .fact {
       padding-left: 18px;
-      border-left: 1px solid #8d8b82;
+      border-left: 1px solid #53605d;
     }
 
     .fact dt {
       margin-bottom: 5px;
-      color: #6a6963;
+      color: #a9b9b1;
       font-size: .68rem;
       font-weight: 700;
       letter-spacing: .12em;
@@ -183,7 +185,7 @@
 
     .project-link:hover,
     .project-link:focus-visible {
-      color: #b43a18;
+      color: #92e4b1;
     }
 
     footer {
@@ -191,7 +193,7 @@
       justify-content: space-between;
       gap: 24px;
       padding: 30px 0 48px;
-      color: #55544f;
+      color: #a9b9b1;
       font-size: .76rem;
       letter-spacing: .08em;
       text-transform: uppercase;
@@ -273,12 +275,34 @@
         </article>
 
         <article class="project">
+          <a class="thumbnail pulse-thumbnail" href="https://play.google.com/store/apps/details?id=com.xalies.pulseaod" aria-label="Get PulseAOD on Google Play">
+            <img src="images/pulseaod-graphic.png" alt="PulseAOD notification LED and edge lighting effects on Android phones" loading="lazy">
+          </a>
+          <div class="project-copy">
+            <p class="project-number">03 / Android notification lights</p>
+            <h2>PulseAOD</h2>
+            <p class="description">Custom notification LEDs and edge lighting for Android, with individual app profiles and live previews.</p>
+            <dl class="facts">
+              <div class="fact">
+                <dt>Price</dt>
+                <dd>Free / optional purchases</dd>
+              </div>
+              <div class="fact">
+                <dt>Source</dt>
+                <dd>Closed source</dd>
+              </div>
+            </dl>
+            <a class="project-link" href="https://play.google.com/store/apps/details?id=com.xalies.pulseaod">Google Play →</a>
+          </div>
+        </article>
+
+        <article class="project">
           <a class="thumbnail placeholder" href="https://github.com/Xalies/HAOS-USB-Creator" aria-label="View HAOS USB Creator on GitHub">
             <small>Thumbnail forthcoming</small>
             <strong>HAOS<br>USB</strong>
           </a>
           <div class="project-copy">
-            <p class="project-number">03 / Installation utility</p>
+            <p class="project-number">04 / Installation utility</p>
             <h2>HAOS USB Creator</h2>
             <p class="description">An unofficial Windows tool for creating an all-in-one Home Assistant OS installer USB for dedicated x86-64 PCs.</p>
             <dl class="facts">
@@ -301,7 +325,7 @@
             <strong>SIZE<br>DOWN.</strong>
           </a>
           <div class="project-copy">
-            <p class="project-number">04 / Image utility</p>
+            <p class="project-number">05 / Image utility</p>
             <h2>Image Resizer</h2>
             <p class="description">Resize an image to fit or fill your dimensions, then export it under a chosen file size. Everything runs in your browser.</p>
             <dl class="facts">
