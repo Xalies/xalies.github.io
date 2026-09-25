@@ -23,7 +23,7 @@
     a { color: inherit; }
 
     .shell {
-      width: min(1180px, calc(100% - 48px));
+      width: min(1700px, calc(100% - 64px));
       margin: 0 auto;
     }
 
@@ -45,17 +45,24 @@
 
     header h1 { margin: 0; font: inherit; }
 
-    .project {
+    .projects {
       display: grid;
-      grid-template-columns: minmax(320px, .9fr) minmax(0, 1.1fr);
-      gap: clamp(32px, 6vw, 84px);
-      padding: 52px 0;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-auto-rows: 1fr;
+      gap: 40px 28px;
+      padding: 36px 0 48px;
+    }
+
+    .project {
+      display: flex;
+      min-width: 0;
+      flex-direction: column;
+      padding-bottom: 32px;
       border-bottom: 1px solid #53605d;
     }
 
     .thumbnail {
       position: relative;
-      min-height: 280px;
       aspect-ratio: 16 / 10;
       overflow: hidden;
       border: 1px solid #53605d;
@@ -80,39 +87,17 @@
       object-fit: contain;
     }
 
-    .pulse-thumbnail img { object-fit: contain; }
-
-    .placeholder {
-      display: grid;
-      align-content: space-between;
-      padding: 24px;
-      background: #f2c84b;
-      color: #191917;
-      text-decoration: none;
-    }
-
-    .placeholder small {
-      font: 700 .72rem/1 Arial, Helvetica, sans-serif;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-    }
-
-    .placeholder strong {
-      font-size: clamp(3.2rem, 7vw, 6.8rem);
-      letter-spacing: -.08em;
-      line-height: .76;
-    }
-
-    .resizer-thumbnail { background: #30443a; color: #eef4ec; }
+    .pulse-thumbnail img, .haos-thumbnail img, .resizer-thumbnail img { object-fit: contain; }
 
     .project-copy {
       display: flex;
+      flex: 1;
       min-width: 0;
       flex-direction: column;
     }
 
     .project-number {
-      margin: 0 0 28px;
+      margin: 24px 0 14px;
       font: 700 .76rem/1 Arial, Helvetica, sans-serif;
       letter-spacing: .12em;
       text-transform: uppercase;
@@ -120,17 +105,17 @@
 
     .project h2 {
       margin: 0;
-      font-size: clamp(2.4rem, 5vw, 4.8rem);
+      font-size: clamp(2.4rem, 3vw, 3.8rem);
       letter-spacing: -.06em;
       line-height: .92;
     }
 
     .description {
       max-width: 42rem;
-      margin: 24px 0 32px;
+      margin: 18px 0 28px;
       color: #bdc8c2;
       font-family: Georgia, "Times New Roman", serif;
-      font-size: 1.15rem;
+      font-size: 1.05rem;
       line-height: 1.55;
     }
 
@@ -201,19 +186,13 @@
 
     footer p { margin: 0; }
 
+    @media (max-width: 1000px) {
+      .projects { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
     @media (max-width: 760px) {
-      .shell { width: min(100% - 28px, 1180px); }
-
-      .project {
-        grid-template-columns: 1fr;
-        gap: 30px;
-        padding: 36px 0 44px;
-      }
-
-      .thumbnail { min-height: 210px; }
-
-      .project-number { margin-bottom: 18px; }
-
+      .shell { width: calc(100% - 28px); }
+      .projects { grid-template-columns: 1fr; }
       footer { flex-direction: column; }
     }
   </style>
@@ -226,7 +205,7 @@
     </header>
 
     <main>
-      <section aria-label="Projects">
+      <section class="projects" aria-label="Projects">
         <article class="project">
           <a class="thumbnail" href="https://www.meshvault.app/" aria-label="Visit the MeshVault website">
             <img src="meshvault/images/meshvaultweb.webp" alt="MeshVault Web showing a library of 3D models">
@@ -256,7 +235,7 @@
           <div class="project-copy">
             <p class="project-number">02 / Mobile 3D model library</p>
             <h2>MeshVault Mobile</h2>
-            <p class="description">A free standalone Android and iOS library for browsing, organising, previewing, and downloading 3D models—no desktop app or cloud account required.</p>
+            <p class="description">A free standalone version of MeshVault for Android and iOS, combining the desktop, server, and extension all into one.</p>
             <dl class="facts">
               <div class="fact">
                 <dt>Price</dt>
@@ -297,9 +276,8 @@
         </article>
 
         <article class="project">
-          <a class="thumbnail placeholder" href="https://github.com/Xalies/HAOS-USB-Creator" aria-label="View HAOS USB Creator on GitHub">
-            <small>Thumbnail forthcoming</small>
-            <strong>HAOS<br>USB</strong>
+          <a class="thumbnail haos-thumbnail" href="https://github.com/Xalies/HAOS-USB-Creator" aria-label="View HAOS USB Creator on GitHub">
+            <img src="images/haos-usb-creator.png" alt="HAOS USB Creator showing installer USB creation progress" loading="lazy">
           </a>
           <div class="project-copy">
             <p class="project-number">04 / Installation utility</p>
@@ -320,9 +298,8 @@
         </article>
 
         <article class="project">
-          <a class="thumbnail placeholder resizer-thumbnail" href="image-resizer/" aria-label="Open Image Resizer">
-            <small>Browser utility</small>
-            <strong>SIZE<br>DOWN.</strong>
+          <a class="thumbnail resizer-thumbnail" href="image-resizer/" aria-label="Open Image Resizer">
+            <img src="images/ImageResizer.png" alt="Image Resizer interface showing size controls and image previews" loading="lazy">
           </a>
           <div class="project-copy">
             <p class="project-number">05 / Image utility</p>
