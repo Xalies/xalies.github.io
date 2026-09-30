@@ -1590,7 +1590,17 @@
     #trial, #faq { background: var(--bg-2); }
     #features { background: #15121a; }
     .hero { padding-top: clamp(56px, 7vw, 104px); padding-bottom: clamp(70px, 8vw, 118px); }
-    .hero-grid { align-items: end; }
+    .hero-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); align-items: center; }
+    .hero h1 { font-size: clamp(42px, 4.5vw, 68px); line-height: 1.08; }
+    .hero-shot .app-frame-content img { min-height: 0; aspect-ratio: auto; }
+    .hero-shot a { cursor: zoom-in; }
+    .hero-download-note a, .guide-link a, .format-summary a, #features a { color: var(--accent-hover); }
+    .benefits { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 36px; }
+    .benefits article { border-top: 2px solid var(--accent); padding-top: 22px; }
+    .benefits h3 { font-size: 24px; }
+    .format-summary { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--soft-line); }
+    .guide-link { margin-top: 24px; }
+    a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid var(--accent-hover); outline-offset: 5px; }
     .hero-downloads { gap: 8px; }
     .hero-downloads .button { min-width: 0; }
     .hero-download-prompt { margin-top: 30px; padding-top: 22px; border-top: 1px solid var(--soft-line); }
@@ -1713,20 +1723,21 @@
 
     .quick-start-grid {
       display: grid;
-      grid-template-columns: minmax(310px, .68fr) minmax(520px, 1.32fr);
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
       gap: clamp(42px, 7vw, 108px);
       align-items: center;
     }
 
     @media (max-width: 900px) {
       .section-head { grid-template-columns: 1fr; }
-      .quick-start-grid { grid-template-columns: 1fr; }
+      .hero-grid, .quick-start-grid { grid-template-columns: 1fr; }
       .download-platform { grid-template-columns: 1fr; }
       .cards .card { grid-template-columns: 55px minmax(180px, 280px) 1fr; }
     }
 
     @media (max-width: 760px) {
-      h1 { font-size: clamp(46px, 14vw, 64px); }
+      .hero h1 { font-size: clamp(38px, 10vw, 54px); }
+      .benefits { grid-template-columns: 1fr; gap: 28px; }
       section { padding: 68px 0; }
       .hero { padding-top: 52px; }
       .hero-downloads { display: grid; grid-template-columns: 1fr; }
@@ -1753,7 +1764,6 @@
         <a href="#workflow">How it works</a>
         <a href="#downloads">Downloads</a>
         <a href="features/">Features</a>
-        <a href="#formats">Formats</a>
         <a href="compare/">Compare</a>
       </nav>
       <div class="nav-actions">
@@ -1776,7 +1786,6 @@
       <a href="#workflow">How it works</a>
       <a href="#downloads">Downloads</a>
       <a href="features/">Features</a>
-      <a href="#formats">Formats</a>
       <a href="compare/">Compare</a>
       <a class="button primary" href="#downloads" style="margin-top: 20px;">Get MeshVault</a>
     </nav>
@@ -1786,8 +1795,9 @@
     <section class="hero">
       <div class="container hero-grid">
         <div class="reveal">
-          <h1>Your 3D model library, organised.</h1>
-          <p class="lead">Import creator packs and existing folders, or save models directly from repositories with their files, images, and source details kept together.</p>
+          <p class="eyebrow">A local library for your 3D models</p>
+          <h1>Find the model you want to print.</h1>
+          <p class="lead">Turn folders of models and creator packs into a visual, searchable library. Keep files, previews and creator details together on your own computer.</p>
           <div class="hero-download-prompt" id="downloads">
             <h2 id="hero-download-title">Download MeshVault</h2>
             <p class="hero-download-note" id="hero-download-note">Desktop and server builds include a 7-day trial; MeshVault Mobile is free.</p>
@@ -1796,7 +1806,8 @@
               <a class="button ghost" id="hero-download-secondary" href="#other-downloads" hidden></a>
               <a class="button ghost" id="hero-download-tertiary" href="#other-downloads" hidden></a>
             </div>
-            <a class="hero-other-download" href="#other-downloads">Other Downloads…</a>
+            <p class="hero-download-note">Direct licence: <a class="lemonsqueezy-button" href="https://meshvault.lemonsqueezy.com/checkout/buy/55a16f70-5c0a-4fd8-a808-5b0108fd6d71?media=0&amp;logo=0&amp;discount=0&amp;dark=1">USD $19.99 once</a>. No subscription.</p>
+            <a class="hero-other-download" href="#other-downloads">Other platforms and downloads</a>
           </div>
         </div>
         <div class="app-frame hero-shot reveal">
@@ -1808,237 +1819,54 @@
             </div>
             <span class="app-frame-title">MeshVault</span>
           </div>
-          <div class="app-frame-content">
-            <img src="images/meshvault-windows-library.png" alt="MeshVault Windows library showing model tiles and metadata">
-          </div>
-          <div class="caption">Folder navigation, model tiles, metadata, and preview actions in one local library.</div>
-        </div>
-      </div>
-    </section>
-
-    <section id="quick-start">
-      <div class="container quick-start-grid">
-        <div class="reveal">
-          <p class="eyebrow">Quick-start guide</p>
-          <h2>Install it, connect the browser, and add your first models.</h2>
-          <p>This walkthrough covers installing MeshVault, adding MeshVault Connect, importing from MakerWorld and Dropbox, and bringing an existing model in manually.</p>
-          <div class="actions" style="margin-top: 24px;">
-            <a class="button primary" href="#downloads">Choose a download</a>
-            <a class="button ghost" href="features/">See every feature</a>
-          </div>
-        </div>
-        <div class="app-frame reveal">
-          <div class="app-frame-header">
-            <div class="app-frame-dots">
-              <span class="app-frame-dot red"></span>
-              <span class="app-frame-dot yellow"></span>
-              <span class="app-frame-dot green"></span>
-            </div>
-            <span class="app-frame-title">MeshVault Quick Start</span>
-          </div>
-          <div class="app-frame-content">
-            <div class="video-frame">
-              <iframe src="https://www.youtube.com/embed/s-StJLO6w4U" title="MeshVault quick-start guide covering installation, MeshVault Connect, MakerWorld, Dropbox, and manual imports" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-            </div>
-          </div>
-          <div class="caption">From a fresh install to repository, Dropbox, and manual imports.</div>
+          <a class="app-frame-content" href="images/meshvault-windows-library.png" target="_blank" rel="noopener" aria-label="View the MeshVault library screenshot at full size (opens in a new tab)">
+            <img src="images/meshvault-windows-library.png" alt="MeshVault Windows library showing model tiles, preview images and creator details">
+          </a>
+          <div class="caption">Your collection at a glance. Select the screenshot to see it full size.</div>
         </div>
       </div>
     </section>
 
     <section id="workflow">
-      <div class="container">
-        <div class="section-head reveal">
-          <p class="eyebrow">How it works</p>
-          <h2>Import a creator pack. Capture a repository download. Keep both organised.</h2>
-          <p>Bring existing folders and archives into MeshVault in bulk, or use MeshVault Connect to save individual models with their source links, creator details, descriptions, tags, and images attached. Both end up in the same searchable local library.</p>
+      <div class="container quick-start-grid">
+        <div>
+          <p class="eyebrow">See it in action</p>
+          <h2>Save the model.<br>Keep the details.</h2>
+          <p>Use MeshVault Connect to bring a download into your library with its images, creator and source link already attached.</p>
+          <p>Works with Printables, MakerWorld, Thingiverse and <a href="extension/connect.html">more model sites</a>.</p>
+          <p class="guide-link" id="quick-start"><a href="features/#quick-start">Ready to start? Watch the setup guide →</a></p>
         </div>
+        <div class="app-frame">
+          <div class="video-frame">
+            <iframe src="https://www.youtube.com/embed/WzFNcYvH6jk?mute=1" title="Downloading a model from Printables into MeshVault" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+          <div class="caption">A Printables download, saved to your library. <a href="https://www.youtube.com/watch?v=WzFNcYvH6jk">Watch on YouTube →</a></div>
+        </div>
+      </div>
+    </section>
 
-        <article class="feature-story reveal">
-          <div>
-            <p class="eyebrow">Browser to library</p>
-            <h2>Save all the details with the model.</h2>
-            <p>MeshVault Connect is the workflow that makes the whole system feel different. Capture the title, author, source URL, tags, description, and gallery images from supported model sites, then see the model appear in the Windows vault with context already attached.</p>
-            <ul>
-              <li>Designed for model browsing sessions, not manual spreadsheet-style cataloguing</li>
-              <li>Works with MeshVault open or running in the tray</li>
-            </ul>
-            <div class="actions" style="margin-top: 22px;">
-              <a class="button" href="extension/connect.html">See how MeshVault Connect works</a>
-            </div>
-            <div class="site-logos-container">
-              <span class="site-logos-title">Supported model sites:</span>
-              <div class="site-logos-grid">
-                <div class="site-logo-item" title="Printables">
-                  <img src="images/logo_printables.png" alt="Printables">
-                </div>
-                <div class="site-logo-item" title="Thingiverse">
-                  <img src="images/logo_thingiverse.png" alt="Thingiverse">
-                </div>
-                <div class="site-logo-item" title="MakerWorld">
-                  <img src="images/logo_makerworld.png" alt="MakerWorld">
-                </div>
-                <div class="site-logo-item" title="Creality Cloud">
-                  <img src="images/logo_crealitycloud.png" alt="Creality Cloud">
-                </div>
-                <div class="site-logo-item" title="Cults3D">
-                  <img src="images/logo_cults3d.png" alt="Cults3D">
-                </div>
-                <div class="site-logo-item" title="Thangs">
-                  <img src="images/logo_thangs.png" alt="Thangs">
-                </div>
-                <div class="site-logo-item" title="GrabCAD">
-                  <img src="images/logo_grabcad.png" alt="GrabCAD">
-                </div>
-                <div class="site-logo-item" title="CGTrader">
-                  <img src="images/logo_cgtrader.png" alt="CGTrader">
-                </div>
-                <div class="site-logo-item" title="MyMiniFactory">
-                  <img src="images/logo_myminifactory.png" alt="MyMiniFactory">
-                </div>
-                <div class="site-logo-item" title="Makerables" aria-label="Makerables">
-                  <span>Makerables</span>
-                </div>
-                <div class="site-logo-item" title="Tinkercad">
-                  <img src="images/logo_tinkercad.png" alt="Tinkercad">
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="app-frame">
-            <div class="app-frame-header">
-              <div class="app-frame-dots">
-                <span class="app-frame-dot red"></span>
-                <span class="app-frame-dot yellow"></span>
-                <span class="app-frame-dot green"></span>
-              </div>
-              <span class="app-frame-title">MeshVault Connect Demo</span>
-            </div>
-            <div class="app-frame-content">
-              <div class="video-frame">
-                <iframe src="https://www.youtube.com/embed/WzFNcYvH6jk?mute=1" title="Downloading a model from Printables into MeshVault" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-              </div>
-            </div>
-            <div class="caption">Downloading a model from Printables into MeshVault with the browser extension.</div>
-          </div>
-        </article>
-
-        <article class="feature-story reveal">
-          <div>
-            <p class="eyebrow">Import and image generation</p>
-            <h2>Drop in old files and make them look like a library.</h2>
-            <p>Manual imports still matter. MeshVault can index loose files, folders, and archive packages across the supported library formats. For a large existing collection it counts first, lets you choose or exclude folders, then gets models visible before filling in the heavier details in the background.</p>
-            <ul>
-              <li>Import single files or folders</li>
-              <li>Reuse matching images already beside a model, or generate thumbnails for supported files</li>
-              <li>Pause, resume, stop, or cancel longer imports</li>
-              <li>Use distinct model colours so generated libraries do not all look identical</li>
-            </ul>
-          </div>
-          <div class="app-frame">
-            <div class="app-frame-header">
-              <div class="app-frame-dots">
-                <span class="app-frame-dot red"></span>
-                <span class="app-frame-dot yellow"></span>
-                <span class="app-frame-dot green"></span>
-              </div>
-              <span class="app-frame-title">Importer Demo</span>
-            </div>
-            <div class="app-frame-content">
-              <div class="video-frame">
-                <iframe src="https://www.youtube.com/embed/vkVvQQTVUQc?mute=1" title="Importing models into MeshVault and generating thumbnails" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-              </div>
-            </div>
-            <div class="caption">Importing model files into MeshVault and generating thumbnails automatically.</div>
-          </div>
-        </article>
-
-        <article class="feature-story reveal">
-          <div>
-            <p class="eyebrow">Model viewer</p>
-            <h2>Preview, measure, inspect, and capture renders.</h2>
-            <p>The viewer gives users confidence before they send a file to a slicer. It supports common mesh/CAD formats, G-code layer inspection, measurement with Ctrl+click, build plate reference, and render capture back into the model gallery.</p>
-            <ul>
-              <li>Preview STL, OBJ, 3MF, STEP/STP, GLB/GLTF, PLY, and G-code</li>
-              <li>Measure in metric or imperial units</li>
-              <li>Capture preview renders as model images</li>
-            </ul>
-          </div>
-          <div class="app-frame">
-            <div class="app-frame-header">
-              <div class="app-frame-dots">
-                <span class="app-frame-dot red"></span>
-                <span class="app-frame-dot yellow"></span>
-                <span class="app-frame-dot green"></span>
-              </div>
-              <span class="app-frame-title">Model Viewer Demo</span>
-            </div>
-            <div class="app-frame-content">
-              <div class="video-frame">
-                <iframe src="https://www.youtube.com/embed/8k7WZp4Mjgk?mute=1" title="Previewing a model in MeshVault and capturing an image" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-              </div>
-            </div>
-            <div class="caption">Previewing a model in MeshVault and capturing the render as an extra image.</div>
-          </div>
-        </article>
-
-        <article class="feature-story reveal">
-          <div>
-            <p class="eyebrow">Mobile browsing and downloading</p>
-            <h2>Keep phone downloads clean instead of trapped.</h2>
-            <p>MeshVault Mobile is free on Android and iOS. It keeps a structured model folder on your phone so downloads can still be browsed, checked, and moved later without relying on cloud sync. The iOS version is currently in beta; optional MeshVault Pro features are available on Android.</p>
-            <ul>
-              <li>Browse, search, and preview supported files in the phone-side library</li>
-              <li>Transfer models to connected MeshVault apps and servers</li>
-              <li>Good for users who discover models away from the PC</li>
-            </ul>
-          </div>
-          <div class="app-frame">
-            <div class="app-frame-header">
-              <div class="app-frame-dots">
-                <span class="app-frame-dot red"></span>
-                <span class="app-frame-dot yellow"></span>
-                <span class="app-frame-dot green"></span>
-              </div>
-              <span class="app-frame-title">MeshVault Mobile — Android demo</span>
-            </div>
-            <div class="app-frame-content">
-              <div class="video-frame">
-                <iframe src="https://www.youtube.com/embed/VLGVGrQa2gY?mute=1" title="Browsing and downloading models with MeshVault Mobile on Android" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-              </div>
-            </div>
-            <div class="caption">Browsing and downloading models with MeshVault Mobile on Android.</div>
-          </div>
-        </article>
-
-        <article class="feature-story reveal">
-          <div>
-            <p class="eyebrow">Phone web server</p>
-            <h2>Serve the phone library on local Wi-Fi.</h2>
-            <p>MeshVault Mobile's local web server lets another device browse and download phone-stored files over the local network. It is a practical bridge for moving models without cloud accounts or extra desktop software.</p>
-            <ul>
-              <li>Open the phone-hosted library from a Windows browser</li>
-              <li>Download files from the MeshVault Mobile folder</li>
-              <li>Useful for quick transfers on the same network</li>
-            </ul>
-          </div>
-          <div class="app-frame">
-            <div class="app-frame-header">
-              <div class="app-frame-dots">
-                <span class="app-frame-dot red"></span>
-                <span class="app-frame-dot yellow"></span>
-                <span class="app-frame-dot green"></span>
-              </div>
-              <span class="app-frame-title">MeshVault Mobile Web Server Demo</span>
-            </div>
-            <div class="app-frame-content">
-              <div class="video-frame">
-                <iframe src="https://www.youtube.com/embed/96bbrrh-t0U?mute=1" title="Browsing the MeshVault Mobile phone web server" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-              </div>
-            </div>
-            <div class="caption">Browsing the phone-hosted MeshVault library from another device on local Wi-Fi.</div>
-          </div>
-        </article>
+    <section id="features">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Less searching. More making.</p>
+          <h2>A home for the models you collect.</h2>
+        </div>
+        <div class="benefits">
+          <article>
+            <h3>Find it by sight.</h3>
+            <p>Browse previews instead of filenames. Search your library, group models into collections and keep favourites ready for your next print.</p>
+          </article>
+          <article>
+            <h3>Bring your collection.</h3>
+            <p>Import folders and creator packs, or index existing folders in place. Generate thumbnails for supported models that are missing an image.</p>
+          </article>
+          <article>
+            <h3>Keep it yours.</h3>
+            <p>Your library stays on your computer. Its database travels with the library folder, so your organisation can move with your collection.</p>
+          </article>
+        </div>
+        <p class="format-summary" id="formats">STL, 3MF, OBJ, STEP, G-code and more. <a href="features/#formats">Check file and preview support →</a></p>
+        <p><a href="features/">Explore all features →</a></p>
       </div>
     </section>
 
@@ -2046,11 +1874,11 @@
       <div class="container">
         <div class="section-head reveal">
           <p class="eyebrow">Downloads and platforms</p>
-          <h2>Other downloads.</h2>
-          <p>Choose another desktop or mobile platform, install Connect, or set up a shared server.</p>
+          <h2>Choose your platform.</h2>
+          <p>Start with the app for your device. Add the browser extension or a shared server when you need them.</p>
         </div>
 
-        <p class="download-license reveal">Desktop and server builds include a seven-day trial. MeshVault Mobile is free. A direct licence is <a class="lemonsqueezy-button" href="https://meshvault.lemonsqueezy.com/checkout/buy/55a16f70-5c0a-4fd8-a808-5b0108fd6d71?media=0&amp;logo=0&amp;discount=0&amp;dark=1">$19.99 once</a>.</p>
+        <p class="download-license reveal">Desktop and server builds include a seven-day trial. MeshVault Mobile is free. A direct desktop and server licence is <a class="lemonsqueezy-button" href="https://meshvault.lemonsqueezy.com/checkout/buy/55a16f70-5c0a-4fd8-a808-5b0108fd6d71?media=0&amp;logo=0&amp;discount=0&amp;dark=1">USD $19.99 once</a>.</p>
 
         <details class="download-drawer reveal" id="other-downloads" open>
           <summary>Other download options</summary>
@@ -2196,324 +2024,6 @@
       </div>
     </section>
 
-    <section id="features">
-      <div class="container">
-        <div class="section-head reveal">
-          <p class="eyebrow">Feature highlights</p>
-          <h2>Useful tools for a growing library.</h2>
-          <p>These are selected highlights for a quick overview. The complete, versioned feature reference covers the desktop apps, Connect, Server, MeshVault Mobile, and every supported file type.</p>
-        </div>
-
-        <div class="cards reveal">
-          <article class="card"><h3>AI assistants for your library</h3><p>Connect Codex, Claude Desktop, or Cursor to search and organise your library, with separate permissions for each assistant.</p></article>
-          <article class="card"><h3>PDF guides with your models</h3><p>Keep colour guides and assembly instructions linked to models and packs, including models extracted from an archive.</p></article>
-          <article class="card"><h3>More formats, smarter previews</h3><p>Inspect Rhino 3DM, IGES, DXF, X3D, OFF, AMF, and CNC toolpaths. Automatic preview quality retains full detail when the memory budget allows.</p></article>
-          <article class="card"><h3>Server maintenance in your browser</h3><p>Choose preview quality, manage reference PDFs, migrate legacy images, and check image-storage health from the server web interface.</p></article>
-          <article class="card">
-            <h3>Portable</h3>
-            <p>The database is kept in the library folder so you can use it across multiple installs and still keep your entire library intact.</p>
-          </article>
-          <article class="card">
-            <h3>Preview, measure, and capture</h3>
-            <p>Use the native viewer for common mesh, CAD, and G-code formats, inspect build plates, measure models, and save preview captures back into the gallery. Multi-body 3MF colours and materials are preserved where available.</p>
-          </article>
-          <article class="card">
-            <h3>Multi-plate projects</h3>
-            <p>Move between separate plates in supported 3MF and G-code projects instead of treating a multi-plate job as one undifferentiated model.</p>
-          </article>
-          <article class="card">
-            <h3>Fill in missing images</h3>
-            <p>When an imported model has no useful thumbnail, MeshVault can generate images for supported geometry or use images already embedded in supported packages.</p>
-          </article>
-          <article class="card">
-            <h3>Archive-aware library</h3>
-            <p>Keep downloaded packages intact while still seeing supported contents, previewing single-model archives, and opening other files with their default apps.</p>
-          </article>
-          <article class="card">
-            <h3>Duplicate and cleanup help</h3>
-            <p>Hash checks help catch duplicate imports, missing files are cleaned from the database, and empty folders can be tidied as the library changes.</p>
-          </article>
-          <article class="card">
-            <h3>Collections and folders</h3>
-            <p>Use real folders for the filesystem and virtual collections for project groups, print queues, favourites, or anything that crosses folder boundaries.</p>
-          </article>
-          <article class="card">
-            <h3>Favourites</h3>
-            <p>Mark individual or selected models as favourites and open them from a dedicated quick-access view, including models from a connected server.</p>
-          </article>
-          <article class="card">
-            <h3>Additional watch folders</h3>
-            <p>Index external folders in place without moving their files into the main library. Their thumbnails and local index data stay on that computer.</p>
-          </article>
-          <article class="card">
-            <h3>Smarter browser re-imports</h3>
-            <p>When a MeshVault Connect download already exists, choose whether to update the existing model, keep a new copy, or ask each time.</p>
-          </article>
-          <article class="card">
-            <h3>Local and server libraries together</h3>
-            <p>Connect to a MeshVault Server and browse remote models alongside the local library, with clear remote markers and local slicer hand-off.</p>
-          </article>
-          <article class="card">
-            <h3>Slicer result capture</h3>
-            <p>Track useful output from supported slicers, including print time, filament use, material, layer details, printer settings, and object counts.</p>
-          </article>
-        </div>
-        <div class="actions reveal" style="margin-top: 28px;">
-          <a class="button primary" href="features/">See the complete feature list</a>
-        </div>
-      </div>
-    </section>
-
-    <section id="formats">
-      <div class="container">
-        <div class="section-head reveal">
-          <p class="eyebrow">File support</p>
-          <h2>Indexes 58 file extensions.</h2>
-          <p>MeshVault recognises 50 mesh, CAD, project, and G-code extensions plus eight archive variants. Common preview and thumbnail formats are highlighted below.</p>
-        </div>
-
-        <div class="format-explorer reveal">
-          <div class="format-tabs" role="tablist" aria-label="Format categories">
-            <button class="format-tab active" role="tab" aria-selected="true" data-category="all">All shown</button>
-            <button class="format-tab" role="tab" aria-selected="false" data-category="3d">3D Models</button>
-            <button class="format-tab" role="tab" aria-selected="false" data-category="cad">CAD / Engineering</button>
-            <button class="format-tab" role="tab" aria-selected="false" data-category="slicer">Slicer & G-code</button>
-            <button class="format-tab" role="tab" aria-selected="false" data-category="archive">Archives</button>
-          </div>
-
-          <div class="format-grid">
-            <!-- 3D Models -->
-            <div class="format-card" data-cat="3d">
-              <span class="format-ext">stl</span>
-              <div class="format-badges">
-                <span class="format-badge preview">Preview</span>
-                <span class="format-badge thumb">Thumbnail</span>
-              </div>
-            </div>
-            <div class="format-card" data-cat="3d">
-              <span class="format-ext">obj</span>
-              <div class="format-badges">
-                <span class="format-badge preview">Preview</span>
-                <span class="format-badge thumb">Thumbnail</span>
-              </div>
-            </div>
-            <div class="format-card" data-cat="3d">
-              <span class="format-ext">3mf</span>
-              <div class="format-badges">
-                <span class="format-badge preview">Preview</span>
-                <span class="format-badge thumb">Thumbnail</span>
-              </div>
-            </div>
-            <div class="format-card" data-cat="3d">
-              <span class="format-ext">glb</span>
-              <div class="format-badges">
-                <span class="format-badge preview">Preview</span>
-                <span class="format-badge thumb">Thumbnail</span>
-              </div>
-            </div>
-            <div class="format-card" data-cat="3d">
-              <span class="format-ext">gltf</span>
-              <div class="format-badges">
-                <span class="format-badge preview">Preview</span>
-                <span class="format-badge thumb">Thumbnail</span>
-              </div>
-            </div>
-            <div class="format-card" data-cat="3d">
-              <span class="format-ext">ply</span>
-              <div class="format-badges">
-                <span class="format-badge preview">Preview</span>
-                <span class="format-badge thumb">Thumbnail</span>
-              </div>
-            </div>
-            <div class="format-card" data-cat="3d">
-              <span class="format-ext">dae</span>
-              <div class="format-badges">
-                <span class="format-badge preview">Preview</span>
-                <span class="format-badge thumb">Thumbnail</span>
-              </div>
-            </div>
-            <div class="format-card" data-cat="3d">
-              <span class="format-ext">fbx</span>
-              <div class="format-badges">
-                <span class="format-badge preview">Preview</span>
-                <span class="format-badge thumb">Thumbnail</span>
-              </div>
-            </div>
-            <div class="format-card" data-cat="3d">
-              <span class="format-ext">3ds</span>
-              <div class="format-badges">
-                <span class="format-badge index">Index Only</span>
-              </div>
-            </div>
-            <div class="format-card" data-cat="3d">
-              <span class="format-ext">amf</span>
-              <div class="format-badges">
-                <span class="format-badge preview">Preview</span>
-                <span class="format-badge thumb">Thumbnail</span>
-              </div>
-            </div>
-            <div class="format-card" data-cat="3d">
-              <span class="format-ext">off</span>
-              <div class="format-badges">
-                <span class="format-badge preview">Preview</span>
-                <span class="format-badge thumb">Thumbnail</span>
-              </div>
-            </div>
-            <div class="format-card" data-cat="3d">
-              <span class="format-ext">x3d</span>
-              <div class="format-badges">
-                <span class="format-badge preview">Preview</span>
-                <span class="format-badge thumb">Thumbnail</span>
-              </div>
-            </div>
-
-            <!-- CAD / Engineering -->
-            <div class="format-card" data-cat="cad">
-              <span class="format-ext">step</span>
-              <div class="format-badges">
-                <span class="format-badge preview">Preview</span>
-                <span class="format-badge thumb">Thumbnail</span>
-              </div>
-            </div>
-            <div class="format-card" data-cat="cad">
-              <span class="format-ext">stp</span>
-              <div class="format-badges">
-                <span class="format-badge preview">Preview</span>
-                <span class="format-badge thumb">Thumbnail</span>
-              </div>
-            </div>
-            <div class="format-card" data-cat="cad">
-              <span class="format-ext">iges</span>
-              <div class="format-badges">
-                <span class="format-badge preview">Preview</span>
-                <span class="format-badge thumb">Thumbnail</span>
-              </div>
-            </div>
-            <div class="format-card" data-cat="cad">
-              <span class="format-ext">igs</span>
-              <div class="format-badges">
-                <span class="format-badge preview">Preview</span>
-                <span class="format-badge thumb">Thumbnail</span>
-              </div>
-            </div>
-            <div class="format-card" data-cat="cad">
-              <span class="format-ext">f3d</span>
-              <div class="format-badges">
-                <span class="format-badge thumb">Thumbnail</span>
-              </div>
-            </div>
-            <div class="format-card" data-cat="cad">
-              <span class="format-ext">fcstd</span>
-              <div class="format-badges">
-                <span class="format-badge thumb">Embedded thumbnail</span>
-              </div>
-            </div>
-            <div class="format-card" data-cat="cad">
-              <span class="format-ext">scad</span>
-              <div class="format-badges">
-                <span class="format-badge index">Index Only</span>
-              </div>
-            </div>
-            <div class="format-card" data-cat="cad">
-              <span class="format-ext">dwg</span>
-              <div class="format-badges">
-                <span class="format-badge index">Index Only</span>
-              </div>
-            </div>
-            <div class="format-card" data-cat="cad">
-              <span class="format-ext">dwfx</span>
-              <div class="format-badges">
-                <span class="format-badge index">Index Only</span>
-              </div>
-            </div>
-            <div class="format-card" data-cat="cad">
-              <span class="format-ext">sldprt</span>
-              <div class="format-badges">
-                <span class="format-badge index">Index Only</span>
-              </div>
-            </div>
-            <div class="format-card" data-cat="cad">
-              <span class="format-ext">sldasm</span>
-              <div class="format-badges">
-                <span class="format-badge index">Index Only</span>
-              </div>
-            </div>
-            <div class="format-card" data-cat="cad">
-              <span class="format-ext">catpart</span>
-              <div class="format-badges">
-                <span class="format-badge index">Index Only</span>
-              </div>
-            </div>
-            <div class="format-card" data-cat="cad">
-              <span class="format-ext">catproduct</span>
-              <div class="format-badges">
-                <span class="format-badge index">Index Only</span>
-              </div>
-            </div>
-            <div class="format-card" data-cat="cad">
-              <span class="format-ext">3dm</span>
-              <div class="format-badges">
-                <span class="format-badge preview">Preview</span>
-                <span class="format-badge thumb">Thumbnail</span>
-              </div>
-            </div>
-
-            <div class="format-card" data-cat="cad"><span class="format-ext">dxf</span><div class="format-badges"><span class="format-badge preview">Preview</span><span class="format-badge thumb">Thumbnail</span></div></div>
-            <!-- Slicer & G-code -->
-            <div class="format-card" data-cat="slicer">
-              <span class="format-ext">gcode</span>
-              <div class="format-badges">
-                <span class="format-badge preview">Preview</span>
-                <span class="format-badge thumb">Thumbnail</span>
-              </div>
-            </div>
-            <div class="format-card" data-cat="slicer">
-              <span class="format-ext">gco</span>
-              <div class="format-badges">
-                <span class="format-badge preview">Preview</span>
-                <span class="format-badge thumb">Thumbnail</span>
-              </div>
-            </div>
-
-            <div class="format-card" data-cat="slicer"><span class="format-ext">nc</span><div class="format-badges"><span class="format-badge preview">Preview</span><span class="format-badge thumb">Thumbnail</span></div></div>
-            <div class="format-card" data-cat="slicer"><span class="format-ext">cnc</span><div class="format-badges"><span class="format-badge preview">Preview</span><span class="format-badge thumb">Thumbnail</span></div></div>
-            <!-- Archives -->
-            <div class="format-card" data-cat="archive">
-              <span class="format-ext">zip</span>
-              <div class="format-badges">
-                <span class="format-badge index">Archive Scan</span>
-              </div>
-            </div>
-            <div class="format-card" data-cat="archive">
-              <span class="format-ext">rar</span>
-              <div class="format-badges">
-                <span class="format-badge index">Archive Scan</span>
-              </div>
-            </div>
-            <div class="format-card" data-cat="archive">
-              <span class="format-ext">7z</span>
-              <div class="format-badges">
-                <span class="format-badge index">Archive Scan</span>
-              </div>
-            </div>
-            <div class="format-card" data-cat="archive">
-              <span class="format-ext">tar</span>
-              <div class="format-badges">
-                <span class="format-badge index">Archive Scan</span>
-              </div>
-            </div>
-            <div class="format-card" data-cat="archive">
-              <span class="format-ext">tgz</span>
-              <div class="format-badges">
-                <span class="format-badge index">Archive Scan</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Interactive FAQ Section -->
     <section id="faq">
       <div class="container">
         <div class="section-head text-center reveal">
@@ -2524,19 +2034,19 @@
         <div class="faq-accordion reveal">
           <div class="faq-item">
             <button class="faq-trigger" aria-expanded="false">
-              <span>Where is my model and project metadata stored?</span>
+              <span>Where does my library live?</span>
               <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
             </button>
             <div class="faq-panel">
               <div class="faq-content">
-                <p>MeshVault is local-first by design. Your models, images, and collections are indexed into a portable SQLite library database (<code>.meshvault/meshvault.db</code>) stored directly inside your library folder. No cloud logins, no mandatory internet connections, and your library can move freely between devices and platforms without losing metadata.</p>
+                <p>Your library lives in a folder you choose, with its database stored alongside it. You can browse and organise local models without a cloud account, and move the library folder between supported desktop clients.</p>
               </div>
             </div>
           </div>
 
           <div class="faq-item">
             <button class="faq-trigger" aria-expanded="false">
-              <span>How does the licence key unlock system work?</span>
+              <span>Which apps does a direct licence cover?</span>
               <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
             </button>
             <div class="faq-panel">
@@ -2560,12 +2070,12 @@
 
           <div class="faq-item">
             <button class="faq-trigger" aria-expanded="false">
-              <span>What does MeshVault Server do?</span>
+              <span>Do I need the browser extension or a server?</span>
               <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
             </button>
             <div class="faq-panel">
               <div class="faq-content">
-                <p>MeshVault Server is an optional lightweight headless client built for Windows and Linux. It allows you to run your model vault on a dedicated local machine (like a home server, spare PC, or workshop computer). You can then browse the library locally via web browser or connect the desktop clients and browser extension over your local area network (LAN).</p>
+                <p>No. Start with the desktop app to organise files on your computer. MeshVault Connect adds downloads and source details from supported model sites. MeshVault Server is optional and lets multiple devices access a shared library on your local network.</p>
               </div>
             </div>
           </div>
@@ -2724,29 +2234,6 @@
           });
         });
       }
-
-      // Format explorer tabs filtering
-      var tabs = document.querySelectorAll('.format-tab');
-      var cards = document.querySelectorAll('.format-card');
-      tabs.forEach(function (tab) {
-        tab.addEventListener('click', function () {
-          tabs.forEach(function (t) {
-            t.classList.remove('active');
-            t.setAttribute('aria-selected', 'false');
-          });
-          tab.classList.add('active');
-          tab.setAttribute('aria-selected', 'true');
-
-          var cat = tab.getAttribute('data-category');
-          cards.forEach(function (card) {
-            if (cat === 'all' || card.getAttribute('data-cat') === cat) {
-              card.style.display = 'flex';
-            } else {
-              card.style.display = 'none';
-            }
-          });
-        });
-      });
 
       // FAQ accordion
       var triggers = document.querySelectorAll('.faq-trigger');
