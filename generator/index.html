@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Design a printable revolved vase and export it as an STL or a metadata-rich MeshVault package.">
+  <title>Vase Lab · MeshVault Generator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="../meshvault/" aria-label="MeshVault home">
+      <span class="brand-mark" aria-hidden="true">MV</span>
+      <span>MeshVault <strong>Vase Lab</strong></span>
+    </a>
+    <div class="top-actions">
+      <span class="local-note">Runs locally in your browser</span>
+      <button class="button secondary" id="downloadStl" type="button">Download STL</button>
+      <button class="button primary" id="exportPack" type="button">Export .mvpack</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="intro">
+      <div>
+        <p class="eyebrow">Profile → revolve → print</p>
+        <h1>Shape a vase,<br>save the whole story.</h1>
+      </div>
+      <p>Drag the profile points to shape the outside wall. Vase Lab revolves it through 360°, builds a printable hollow mesh, renders its thumbnail and packages everything for MeshVault.</p>
+    </section>
+
+    <div class="workspace">
+      <section class="panel profile-panel" aria-labelledby="profile-heading">
+        <div class="panel-heading">
+          <div>
+            <p class="step">01 · Profile</p>
+            <h2 id="profile-heading">Draw the silhouette</h2>
+          </div>
+          <button class="text-button" id="resetProfile" type="button">Reset</button>
+        </div>
+
+        <div class="preset-row" aria-label="Profile presets">
+          <button class="chip active" data-preset="classic" type="button">Classic</button>
+          <button class="chip" data-preset="bud" type="button">Bud</button>
+          <button class="chip" data-preset="urn" type="button">Urn</button>
+        </div>
+
+        <div class="profile-stage">
+          <canvas id="profileCanvas" aria-label="Editable side profile of the vase"></canvas>
+          <div class="profile-help">Drag points · double-click to add · right-click to remove</div>
+        </div>
+
+        <div class="point-editor">
+          <label>Point
+            <select id="pointSelect" aria-label="Selected profile point"></select>
+          </label>
+          <label>Radius
+            <span class="number-field"><input id="pointRadius" type="number" min="4" max="80" step="0.5"><span>mm</span></span>
+          </label>
+          <label>Height
+            <span class="number-field"><input id="pointHeight" type="number" min="0" max="240" step="0.5"><span>mm</span></span>
+          </label>
+          <button class="icon-button" id="removePoint" type="button" aria-label="Remove selected point">−</button>
+        </div>
+
+        <div class="control-grid">
+          <label>Wall thickness
+            <span class="number-field"><input id="wallThickness" type="number" min="0.8" max="6" step="0.1" value="1.6"><span>mm</span></span>
+          </label>
+          <label>Bottom thickness
+            <span class="number-field"><input id="bottomThickness" type="number" min="1" max="10" step="0.1" value="2.4"><span>mm</span></span>
+          </label>
+          <label>Resolution
+            <select id="segments">
+              <option value="64">Smooth · 64</option>
+              <option value="96" selected>Fine · 96</option>
+              <option value="128">Ultra · 128</option>
+            </select>
+          </label>
+        </div>
+      </section>
+
+      <section class="panel preview-panel" aria-labelledby="preview-heading">
+        <div class="panel-heading preview-heading">
+          <div>
+            <p class="step">02 · Preview</p>
+            <h2 id="preview-heading">Revolved model</h2>
+          </div>
+          <div class="model-stats" id="modelStats" aria-live="polite"></div>
+        </div>
+        <div class="preview-stage">
+          <canvas id="previewCanvas" aria-label="Rendered three-dimensional preview of the generated vase"></canvas>
+          <div class="preview-badge">360° revolve</div>
+          <div class="preview-help">Drag to rotate · scroll to zoom</div>
+        </div>
+        <div class="colour-row">
+          <label>Preview colour <input id="modelColour" type="color" value="#b483ff"></label>
+          <span>The exported STL has no colour; this render becomes the MeshVault thumbnail.</span>
+        </div>
+
+        <div class="texture-tools" aria-labelledby="texture-heading">
+          <div class="texture-title-row">
+            <div><p class="step">Surface studio</p><h3 id="texture-heading">Paint relief onto the vase</h3></div>
+            <button class="text-button" id="clearTexture" type="button">Clear paint</button>
+          </div>
+          <div class="texture-controls">
+            <label>Starting texture
+              <select id="texturePreset">
+                <option value="smooth">Smooth</option>
+                <option value="ribs">Vertical ribs</option>
+                <option value="waves">Flowing waves</option>
+                <option value="hammered">Hammered</option>
+              </select>
+            </label>
+            <label>Relief depth
+              <span class="number-field"><input id="textureDepth" type="number" min="0.2" max="4" step="0.1" value="1.2"><span>mm</span></span>
+            </label>
+            <label>Brush size
+              <span class="number-field"><input id="brushSize" type="number" min="2" max="30" step="1" value="10"><span>%</span></span>
+            </label>
+          </div>
+          <div class="brush-row" aria-label="Texture brush mode">
+            <button class="chip active" data-brush="raise" type="button">Raise</button>
+            <button class="chip" data-brush="carve" type="button">Carve</button>
+            <button class="chip" data-brush="smooth" type="button">Smooth</button>
+            <span>Paint the unwrapped surface below</span>
+          </div>
+          <div class="texture-stage">
+            <canvas id="textureCanvas" aria-label="Paintable unwrapped vase surface texture"></canvas>
+            <span class="texture-axis top">Rim</span><span class="texture-axis bottom">Base</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel metadata-panel" aria-labelledby="details-heading">
+        <div class="panel-heading">
+          <div>
+            <p class="step">03 · MeshVault details</p>
+            <h2 id="details-heading">Package the model</h2>
+          </div>
+        </div>
+
+        <div class="form-stack">
+          <label>Title
+            <input id="title" type="text" value="Ripple Vase" maxlength="120">
+          </label>
+          <label>Creator
+            <input id="author" type="text" placeholder="Your name" maxlength="120">
+          </label>
+          <label>Creator URL
+            <input id="authorUrl" type="url" placeholder="https://…">
+          </label>
+          <label>Source URL
+            <input id="sourceUrl" type="url" placeholder="https://…">
+          </label>
+          <label>Description
+            <textarea id="description" rows="4">A printable vase generated from a custom revolved profile.</textarea>
+          </label>
+          <label>Tags
+            <input id="tags" type="text" value="vase, decor, parametric" placeholder="Comma separated">
+          </label>
+          <label>MeshVault folder
+            <input id="folder" type="text" value="Generated/Vases" placeholder="Generated/Vases">
+          </label>
+          <div class="form-pair">
+            <label>Layer height
+              <span class="number-field"><input id="layerHeight" type="number" min="0.05" max="1" step="0.05" value="0.2"><span>mm</span></span>
+            </label>
+            <label>Material
+              <select id="material">
+                <option>PLA</option>
+                <option>PETG</option>
+                <option>ABS</option>
+                <option>ASA</option>
+                <option>Resin</option>
+              </select>
+            </label>
+          </div>
+        </div>
+
+        <div class="package-summary">
+          <span class="package-icon" aria-hidden="true">MV</span>
+          <div><strong id="packageName">Ripple-Vase.mvpack</strong><small>STL + details + rendered thumbnail</small></div>
+        </div>
+        <button class="button primary wide" id="exportPackBottom" type="button">Export MeshVault package</button>
+        <p class="status" id="status" role="status">Ready to generate.</p>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <span>MeshVault Vase Lab · Local, account-free model generation</span>
+    <a href="../meshvault/">Open MeshVault</a>
+  </footer>
+
+  <script type="module" src="generator.mjs"></script>
+</body>
+</html>
