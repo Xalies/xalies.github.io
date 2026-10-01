@@ -3,196 +3,205 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Design a printable revolved vase and export it as an STL or a metadata-rich MeshVault package.">
-  <title>Vase Lab · MeshVault Generator</title>
+  <meta name="description" content="A complete framework-independent guide for adding MeshVault .mvpack export to an existing model generator.">
+  <title>Add .mvpack Export · MeshVault</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header class="topbar">
     <a class="brand" href="../meshvault/" aria-label="MeshVault home">
       <span class="brand-mark" aria-hidden="true">MV</span>
-      <span>MeshVault <strong>Vase Lab</strong></span>
+      <span>MeshVault <strong>Generator Integration</strong></span>
     </a>
-    <div class="top-actions">
-      <span class="local-note">Runs locally in your browser</span>
-      <button class="button secondary" id="downloadStl" type="button">Download STL</button>
-      <button class="button primary" id="exportPack" type="button">Export .mvpack</button>
-    </div>
+    <nav class="top-actions" aria-label="Guide actions">
+      <a class="button secondary" href="mvpack-integration.md">Open Markdown</a>
+      <button class="button primary" id="copyGuide" type="button">Copy LLM instructions</button>
+    </nav>
   </header>
 
   <main>
-    <section class="intro">
-      <div>
-        <p class="eyebrow">Profile → revolve → print</p>
-        <h1>Shape a vase,<br>save the whole story.</h1>
+    <section class="hero">
+      <p class="eyebrow">Open packaging format · No API required</p>
+      <h1>Add MeshVault export<br>to any model generator.</h1>
+      <p class="lede">Keep the generator’s normal exports. Add one more action that places its existing model bytes, available details and optional images into a standard ZIP named <code>.mvpack</code>.</p>
+      <div class="hero-actions">
+        <a class="button primary" href="mvpack-integration.md" download>Download complete instructions</a>
+        <a class="text-link" href="#minimum">Read the format</a>
       </div>
-      <p>Drag the profile points to shape the outside wall. Vase Lab revolves it through 360°, builds a printable hollow mesh, renders its thumbnail and packages everything for MeshVault.</p>
+      <p class="copy-status" id="copyStatus" role="status" aria-live="polite"></p>
     </section>
 
-    <div class="workspace">
-      <section class="panel profile-panel" aria-labelledby="profile-heading">
-        <div class="panel-heading">
-          <div>
-            <p class="step">01 · Profile</p>
-            <h2 id="profile-heading">Draw the silhouette</h2>
+    <section class="principles" aria-label="Integration principles">
+      <article><span>01</span><h2>Their exporter</h2><p>The generator creates the package using its own language, framework and ZIP library.</p></article>
+      <article><span>02</span><h2>Their existing model</h2><p>Reuse the STL, 3MF or other supported bytes it already produces. Do not rewrite its geometry.</p></article>
+      <article><span>03</span><h2>Only available data</h2><p>Title, settings, thumbnail and gallery images are optional. Missing features never block export.</p></article>
+    </section>
+
+    <div class="guide-layout">
+      <aside class="contents" aria-label="On this page">
+        <strong>On this page</strong>
+        <a href="#minimum">Minimum package</a>
+        <a href="#images">Image files</a>
+        <a href="#metadata">Metadata</a>
+        <a href="#folders">Folder behaviour</a>
+        <a href="#multiple">Multiple models</a>
+        <a href="#implementation">Implementation</a>
+        <a href="#validation">Validation</a>
+        <a href="#assistant">Coding assistants</a>
+      </aside>
+
+      <div class="guide">
+        <section id="minimum">
+          <p class="step">Minimum integration</p>
+          <h2>One model and one JSON file</h2>
+          <p>An <code>.mvpack</code> is an ordinary, unencrypted ZIP. A generator with no thumbnail, settings or rich metadata can still produce a useful package.</p>
+          <div class="split">
+            <div class="code-card"><div class="code-title">Package contents</div><pre><code>Generated-Model.mvpack
+├── Generated-Model.stl
+└── meshvault.model.json</code></pre></div>
+            <div class="code-card"><div class="code-title">meshvault.model.json</div><pre><code>{
+  "schema": "meshvault.model",
+  "version": 1,
+  "title": "Generated Model"
+}</code></pre></div>
           </div>
-          <button class="text-button" id="resetProfile" type="button">Reset</button>
-        </div>
+          <div class="callout"><strong>Do not replace the normal export.</strong> Add a separate “Export to MeshVault” action and reuse the exact model bytes produced by the existing exporter.</div>
+        </section>
 
-        <div class="preset-row" aria-label="Profile presets">
-          <button class="chip active" data-preset="classic" type="button">Classic</button>
-          <button class="chip" data-preset="bud" type="button">Bud</button>
-          <button class="chip" data-preset="urn" type="button">Urn</button>
-        </div>
-
-        <div class="profile-stage">
-          <canvas id="profileCanvas" aria-label="Editable side profile of the vase"></canvas>
-          <div class="profile-help">Drag points · double-click to add · right-click to remove</div>
-        </div>
-
-        <div class="point-editor">
-          <label>Point
-            <select id="pointSelect" aria-label="Selected profile point"></select>
-          </label>
-          <label>Radius
-            <span class="number-field"><input id="pointRadius" type="number" min="4" max="80" step="0.5"><span>mm</span></span>
-          </label>
-          <label>Height
-            <span class="number-field"><input id="pointHeight" type="number" min="0" max="240" step="0.5"><span>mm</span></span>
-          </label>
-          <button class="icon-button" id="removePoint" type="button" aria-label="Remove selected point">−</button>
-        </div>
-
-        <div class="control-grid">
-          <label>Wall thickness
-            <span class="number-field"><input id="wallThickness" type="number" min="0.8" max="6" step="0.1" value="1.6"><span>mm</span></span>
-          </label>
-          <label>Bottom thickness
-            <span class="number-field"><input id="bottomThickness" type="number" min="1" max="10" step="0.1" value="2.4"><span>mm</span></span>
-          </label>
-          <label>Resolution
-            <select id="segments">
-              <option value="64">Smooth · 64</option>
-              <option value="96" selected>Fine · 96</option>
-              <option value="128">Ultra · 128</option>
-            </select>
-          </label>
-        </div>
-      </section>
-
-      <section class="panel preview-panel" aria-labelledby="preview-heading">
-        <div class="panel-heading preview-heading">
-          <div>
-            <p class="step">02 · Preview</p>
-            <h2 id="preview-heading">Revolved model</h2>
+        <section id="images">
+          <p class="step">No Base64 required</p>
+          <h2>Images can remain ordinary files</h2>
+          <p>Put image bytes into the ZIP and reference their paths. This works with browser Blobs, Canvas PNGs, uploaded files and server-rendered images.</p>
+          <div class="split">
+            <div class="code-card"><div class="code-title">Package contents</div><pre><code>Generated-Model.mvpack
+├── Generated-Model.3mf
+├── meshvault.model.json
+└── images/
+    ├── thumbnail.png
+    ├── front.jpg
+    └── detail.webp</code></pre></div>
+            <div class="code-card"><div class="code-title">Image references</div><pre><code>{
+  "schema": "meshvault.model",
+  "version": 1,
+  "title": "Generated Model",
+  "thumbnailFile": "images/thumbnail.png",
+  "extraImageFiles": [
+    "images/front.jpg",
+    "images/detail.webp"
+  ]
+}</code></pre></div>
           </div>
-          <div class="model-stats" id="modelStats" aria-live="polite"></div>
-        </div>
-        <div class="preview-stage">
-          <canvas id="previewCanvas" aria-label="Rendered three-dimensional preview of the generated vase"></canvas>
-          <div class="preview-badge">360° revolve</div>
-          <div class="preview-help">Drag to rotate · scroll to zoom</div>
-        </div>
-        <div class="colour-row">
-          <label>Preview colour <input id="modelColour" type="color" value="#b483ff"></label>
-          <span>The exported STL has no colour; this render becomes the MeshVault thumbnail.</span>
-        </div>
+          <p class="note">PNG, JPEG, BMP, GIF and WebP are accepted, up to 50 MiB per image. Existing Base64 remains supported through <code>thumbnailDataBase64</code> and <code>extraImageDataBase64</code>.</p>
+        </section>
 
-        <div class="texture-tools" aria-labelledby="texture-heading">
-          <div class="texture-title-row">
-            <div><p class="step">Surface studio</p><h3 id="texture-heading">Paint relief onto the vase</h3></div>
-            <button class="text-button" id="clearTexture" type="button">Clear paint</button>
+        <section id="metadata">
+          <p class="step">Progressive enhancement</p>
+          <h2>Include only what the generator knows</h2>
+          <div class="capabilities">
+            <article><strong>Minimum</strong><span>Model + title</span></article>
+            <article><strong>Useful</strong><span>Source, author, summary and tags</span></article>
+            <article><strong>Visual</strong><span>Thumbnail and gallery files</span></article>
+            <article><strong>Detailed</strong><span>Settings, description and hash</span></article>
           </div>
-          <div class="texture-controls">
-            <label>Starting texture
-              <select id="texturePreset">
-                <option value="smooth">Smooth</option>
-                <option value="ribs">Vertical ribs</option>
-                <option value="waves">Flowing waves</option>
-                <option value="hammered">Hammered</option>
-              </select>
-            </label>
-            <label>Relief depth
-              <span class="number-field"><input id="textureDepth" type="number" min="0.2" max="4" step="0.1" value="1.2"><span>mm</span></span>
-            </label>
-            <label>Brush size
-              <span class="number-field"><input id="brushSize" type="number" min="2" max="30" step="1" value="10"><span>%</span></span>
-            </label>
-          </div>
-          <div class="brush-row" aria-label="Texture brush mode">
-            <button class="chip active" data-brush="raise" type="button">Raise</button>
-            <button class="chip" data-brush="carve" type="button">Carve</button>
-            <button class="chip" data-brush="smooth" type="button">Smooth</button>
-            <span>Paint the unwrapped surface below</span>
-          </div>
-          <div class="texture-stage">
-            <canvas id="textureCanvas" aria-label="Paintable unwrapped vase surface texture"></canvas>
-            <span class="texture-axis top">Rim</span><span class="texture-axis bottom">Base</span>
-          </div>
-        </div>
-      </section>
+          <p>The complete field definitions, exact types, Base64 alternative, supported model formats and full JSON example are in the Markdown specification.</p>
+          <a class="button secondary inline-button" href="mvpack-integration.md#metadata-fields">View every metadata field</a>
+        </section>
 
-      <section class="panel metadata-panel" aria-labelledby="details-heading">
-        <div class="panel-heading">
-          <div>
-            <p class="step">03 · MeshVault details</p>
-            <h2 id="details-heading">Package the model</h2>
+        <section id="folders">
+          <p class="step">Portable paths</p>
+          <h2>The ZIP path controls the initial folder</h2>
+          <div class="path-grid">
+            <article><code>model.stl</code><strong>Imports to Review</strong><p>No folder was declared, so the user chooses where it belongs.</p></article>
+            <article><code>Generated/Example/model.stl</code><strong>Generated › Example</strong><p>The declared path is restored from the MeshVault library root.</p></article>
           </div>
-        </div>
+          <p class="note">Always use <code>/</code>. Never use drive letters, absolute paths, a leading slash, or <code>.</code> and <code>..</code> segments.</p>
+        </section>
 
-        <div class="form-stack">
-          <label>Title
-            <input id="title" type="text" value="Ripple Vase" maxlength="120">
-          </label>
-          <label>Creator
-            <input id="author" type="text" placeholder="Your name" maxlength="120">
-          </label>
-          <label>Creator URL
-            <input id="authorUrl" type="url" placeholder="https://…">
-          </label>
-          <label>Source URL
-            <input id="sourceUrl" type="url" placeholder="https://…">
-          </label>
-          <label>Description
-            <textarea id="description" rows="4">A printable vase generated from a custom revolved profile.</textarea>
-          </label>
-          <label>Tags
-            <input id="tags" type="text" value="vase, decor, parametric" placeholder="Comma separated">
-          </label>
-          <label>MeshVault folder
-            <input id="folder" type="text" value="Generated/Vases" placeholder="Generated/Vases">
-          </label>
-          <div class="form-pair">
-            <label>Layer height
-              <span class="number-field"><input id="layerHeight" type="number" min="0.05" max="1" step="0.05" value="0.2"><span>mm</span></span>
-            </label>
-            <label>Material
-              <select id="material">
-                <option>PLA</option>
-                <option>PETG</option>
-                <option>ABS</option>
-                <option>ASA</option>
-                <option>Resin</option>
-              </select>
-            </label>
+        <section id="multiple">
+          <p class="step">Optional multi-model form</p>
+          <h2>Several model files need a manifest</h2>
+          <p>When one export intentionally produces several independent library items, use <code>meshvault.models.json</code> with one metadata object per model. Each object identifies its <code>fileName</code> and exact portable <code>relativePath</code>.</p>
+          <div class="code-card"><div class="code-title">Multi-model outline</div><pre><code>{
+  "schema": "meshvault.models",
+  "version": 1,
+  "models": [
+    {
+      "schema": "meshvault.model",
+      "version": 1,
+      "title": "Base",
+      "fileName": "base.stl",
+      "relativePath": "Parts/base.stl"
+    },
+    {
+      "schema": "meshvault.model",
+      "version": 1,
+      "title": "Lid",
+      "fileName": "lid.stl",
+      "relativePath": "Parts/lid.stl"
+    }
+  ]
+}</code></pre></div>
+        </section>
+
+        <section id="implementation">
+          <p class="step">Framework independent</p>
+          <h2>Implement at the existing export boundary</h2>
+          <ol class="steps">
+            <li><span>1</span><div><strong>Find the current model export</strong><p>Identify the function that produces the final Blob, byte array, stream, buffer or file.</p></div></li>
+            <li><span>2</span><div><strong>Collect available information</strong><p>Use real values already held by the generator. Omit everything else.</p></div></li>
+            <li><span>3</span><div><strong>Create the standard ZIP</strong><p>Add model bytes, JSON metadata and any referenced image files.</p></div></li>
+            <li><span>4</span><div><strong>Return or download <code>.mvpack</code></strong><p>Use MIME type <code>application/vnd.meshvault.package+zip</code>.</p></div></li>
+          </ol>
+          <p>Use the project’s existing ZIP library. If it has none, choose an established library for its actual language and runtime. No MeshVault-specific package is required.</p>
+        </section>
+
+        <section id="validation">
+          <p class="step">Acceptance checks</p>
+          <h2>Know when the integration is complete</h2>
+          <ul class="checklist">
+            <li>Existing exports still work and produce the same model bytes.</li>
+            <li>An ordinary ZIP reader opens the <code>.mvpack</code>.</li>
+            <li>The model and correct metadata filename are present.</li>
+            <li>Metadata parses as UTF-8 JSON with schema version 1.</li>
+            <li>Every referenced image exists and contains a supported image.</li>
+            <li>All logical paths use <code>/</code> and contain no traversal.</li>
+            <li>Missing optional data does not block export.</li>
+            <li>Failures are shown instead of downloading a partial package.</li>
+          </ul>
+        </section>
+
+        <section id="assistant" class="assistant-card">
+          <p class="step">Built for coding assistants</p>
+          <h2>Give the full brief to an LLM</h2>
+          <p>The Markdown version includes the complete contract, field table, package examples, pseudocode, browser notes, supported extensions and a copyable implementation task.</p>
+          <div class="assistant-actions">
+            <button class="button primary" id="copyGuideBottom" type="button">Copy complete instructions</button>
+            <a class="button secondary" href="mvpack-integration.md" download>Download Markdown</a>
           </div>
-        </div>
-
-        <div class="package-summary">
-          <span class="package-icon" aria-hidden="true">MV</span>
-          <div><strong id="packageName">Ripple-Vase.mvpack</strong><small>STL + details + rendered thumbnail</small></div>
-        </div>
-        <button class="button primary wide" id="exportPackBottom" type="button">Export MeshVault package</button>
-        <p class="status" id="status" role="status">Ready to generate.</p>
-      </section>
+        </section>
+      </div>
     </div>
   </main>
 
   <footer>
-    <span>MeshVault Vase Lab · Local, account-free model generation</span>
+    <span>MeshVault `.mvpack` generator integration</span>
     <a href="../meshvault/">Open MeshVault</a>
   </footer>
 
-  <script type="module" src="generator.mjs"></script>
+  <script>
+    async function copyGuide() {
+      const status = document.querySelector('#copyStatus');
+      try {
+        const response = await fetch('mvpack-integration.md');
+        if (!response.ok) throw new Error('Could not load instructions');
+        await navigator.clipboard.writeText(await response.text());
+        status.textContent = 'Complete integration instructions copied.';
+      } catch {
+        status.textContent = 'Open or download the Markdown instructions to copy them.';
+      }
+    }
+    document.querySelector('#copyGuide').addEventListener('click', copyGuide);
+    document.querySelector('#copyGuideBottom').addEventListener('click', copyGuide);
+  </script>
 </body>
 </html>
