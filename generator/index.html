@@ -152,7 +152,7 @@
             <li><span>3</span><div><strong>Create the standard ZIP</strong><p>Add model bytes, JSON metadata and any referenced image files.</p></div></li>
             <li><span>4</span><div><strong>Return or download <code>.mvpack</code></strong><p>Use MIME type <code>application/vnd.meshvault.package+zip</code>.</p></div></li>
           </ol>
-          <p>Use the project’s existing ZIP library. If it has none, choose an established library for its actual language and runtime. No MeshVault-specific package is required.</p>
+          <p>Use the project’s existing ZIP library. Browser JavaScript or TypeScript projects without one should use <code>fflate</code> or <code>JSZip</code>, including a pinned local copy for no-build sites. Do not hand-write ZIP records. No MeshVault-specific package is required.</p>
         </section>
 
         <section id="validation">

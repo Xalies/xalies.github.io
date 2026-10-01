@@ -255,10 +255,14 @@ for additional matching.
 10. Surface packaging failures to the user. Do not silently download a partial
     or invalid package.
 
-Use the ZIP library already present in the project. If there is none, use a
-small, established ZIP implementation appropriate to the project's language and
-runtime. Do not hand-write a new ZIP format implementation unless the platform
-has no reasonable library.
+Use the ZIP library already present in the project. If there is none, use the
+runtime's standard ZIP API or add a small, established library through the
+project's normal dependency system. For browser JavaScript or TypeScript,
+`fflate` or `JSZip` are suitable choices; a no-build static site can keep a
+pinned local copy. Do not hand-write ZIP headers, CRC handling or central
+directory records in browser code. If the project forbids dependencies, package
+on its existing server or report that constraint instead of inventing a ZIP
+writer.
 
 ## Framework-neutral pseudocode
 
@@ -292,6 +296,8 @@ output zip as "<model-name>.mvpack"
 
 - Existing browser exporters commonly return a `Blob`, `ArrayBuffer`,
   `Uint8Array`, or text. Preserve those bytes.
+- Use the project's existing ZIP dependency. If it has none, use `fflate` or
+  `JSZip` rather than implementing ZIP records yourself.
 - A Canvas thumbnail can be converted to a PNG `Blob` with `canvas.toBlob()`.
 - Use a Blob URL and an `<a download>` element for the final download.
 - Revoke the Blob URL after starting the download.
@@ -352,7 +358,9 @@ from the MeshVault library root. Reject absolute and traversal paths.
 
 Download the result as <model-name>.mvpack with MIME type
 application/vnd.meshvault.package+zip. Use the project’s existing ZIP dependency
-or an established platform-appropriate ZIP library. Preserve existing exports.
+or an established platform-appropriate ZIP library. In browser JavaScript or
+TypeScript with no existing ZIP dependency, use fflate or JSZip; do not
+hand-write ZIP headers or CRC logic. Preserve existing exports.
 Add the smallest meaningful test that opens the generated ZIP and verifies the
 model entry, metadata entry, parsed schema/title and referenced image entries.
 ```
