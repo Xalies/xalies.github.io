@@ -6,7 +6,7 @@ backend, model format, or set of generator controls.
 
 ## Goal
 
-Keep every existing export option unchanged. Add a separate **Export to
+Keep every existing export option unchanged. Add a separate **Export for
 MeshVault** action that packages the model bytes the generator already produces.
 The package is created entirely by the generator website or application. It does
 not call a MeshVault API, upload the model to MeshVault, require an account, or
@@ -32,6 +32,7 @@ The generator does not need to provide every field.
 | Preview image as a file or Blob | Add it to the ZIP and use `thumbnailFile` |
 | Gallery images as files or Blobs | Add them to the ZIP and use `extraImageFiles` |
 | Images already encoded as Base64 | Use `thumbnailDataBase64` and `extraImageDataBase64` |
+| Instructions or a colour guide PDF | Add it to the ZIP and use `documentFiles` |
 | Generator settings | Serialise them into `printSettingsJson` |
 | Several independently useful model files | Use the multi-model package form |
 
@@ -73,10 +74,12 @@ Blob, a file, or a server-side image but does not already use Base64:
 Generated-Model.mvpack
 ├── Generated-Model.3mf
 ├── meshvault.model.json
-└── images/
-    ├── thumbnail.png
-    ├── front.jpg
-    └── detail.webp
+├── images/
+│   ├── thumbnail.png
+│   ├── front.jpg
+│   └── detail.webp
+└── documents/
+    └── instructions.pdf
 ```
 
 ```json
@@ -98,6 +101,9 @@ Generated-Model.mvpack
     "images/front.jpg",
     "images/detail.webp"
   ],
+  "documentFiles": [
+    "documents/instructions.pdf"
+  ],
   "fileName": "Generated-Model.3mf",
   "relativePath": "Generated-Model.3mf",
   "fileType": "3MF",
@@ -115,6 +121,16 @@ WebP. Each image must be no larger than 50 MiB.
 If both `thumbnailDataBase64` and `thumbnailFile` are supplied, Base64 is used.
 Base64 and file-based extra-image arrays can both be supplied; their images are
 combined.
+
+### Reference PDFs
+
+Instructions, colour guides and other reference PDFs can be stored as ordinary
+ZIP entries and listed in `documentFiles`. MeshVault attaches them to the model
+and exposes them through its Documents or Related files view.
+
+Each entry must have a `.pdf` filename, begin with a valid PDF signature and be
+no larger than 10 MiB. A model can reference up to ten PDFs. Apply the same safe
+portable path rules used for images.
 
 ### Package with Base64 images
 
@@ -156,6 +172,7 @@ are required by this public integration profile; every other field is optional.
 | `packageInfo` | string | Generator or package information |
 | `thumbnailFile` | string | ZIP path to the main image |
 | `extraImageFiles` | string array | ZIP paths to gallery images |
+| `documentFiles` | string array | ZIP paths to attached reference PDFs |
 | `thumbnailDataBase64` | string | Base64 main image |
 | `extraImageDataBase64` | string array | Base64 gallery images |
 | `fileName` | string | Model filename including extension |
@@ -241,11 +258,12 @@ for additional matching.
    returns or downloads the final model bytes.
 2. Do not rewrite the geometry generator and do not remove or change its normal
    export buttons.
-3. Add a separate **Export to MeshVault** action.
+3. Add a separate **Export for MeshVault** action.
 4. Reuse the exact model bytes produced by the existing exporter.
 5. Build only metadata the generator actually knows.
-6. If a preview or gallery image is available, add its bytes as an ordinary ZIP
-   entry and reference it with `thumbnailFile` or `extraImageFiles`.
+6. If preview images, gallery images or reference PDFs are available, add their
+   bytes as ordinary ZIP entries and reference them with `thumbnailFile`,
+   `extraImageFiles` or `documentFiles`.
 7. Create `meshvault.model.json` for one model or `meshvault.models.json` for
    several models.
 8. Create a standard, unencrypted ZIP containing the model, metadata and any
@@ -288,6 +306,11 @@ if extra image bytes exist:
         add image under "images/"
         append its ZIP path to metadata.extraImageFiles
 
+if reference PDF bytes exist:
+    for each PDF:
+        add PDF under "documents/"
+        append its ZIP path to metadata.documentFiles
+
 zip.add("meshvault.model.json", UTF8(JSON(metadata)))
 output zip as "<model-name>.mvpack"
 ```
@@ -319,6 +342,8 @@ An implementation is complete when all applicable checks pass:
 - The correct metadata filename exists at the ZIP root.
 - Metadata is valid UTF-8 JSON with the correct schema and version.
 - Every referenced image path exists in the ZIP and contains a supported image.
+- Every referenced document path exists in the ZIP and contains a PDF of at
+  most 10 MiB; no model references more than ten PDFs.
 - Every logical path uses `/` and contains no traversal segments.
 - A root-level model imports into `Imports to Review`.
 - A foldered model preserves its package folder from the MeshVault library root.
@@ -330,7 +355,7 @@ An implementation is complete when all applicable checks pass:
 ## Copyable coding-assistant task
 
 ```text
-Add an “Export to MeshVault” option to this existing model generator.
+Add an “Export for MeshVault” option to this existing model generator.
 
 First inspect the project and identify the existing function that produces the
 final model file. Reuse its output bytes. Do not rewrite the generator, change
@@ -352,6 +377,10 @@ them with thumbnailFile and extraImageFiles. Base64 is optional; existing Base64
 may instead use thumbnailDataBase64 and extraImageDataBase64. Do not invent
 missing images or metadata.
 
+If the generator has instruction sheets, colour guides or other reference PDFs,
+store them as normal ZIP entries and list their paths in documentFiles. Accept
+at most ten PDFs per model and 10 MiB per PDF. Do not encode them as Base64.
+
 Use / for all ZIP and relative paths. A model at the ZIP root will enter
 “Imports to Review”. A path such as Generated/Example/model.3mf will be restored
 from the MeshVault library root. Reject absolute and traversal paths.
@@ -363,6 +392,7 @@ TypeScript with no existing ZIP dependency, use fflate or JSZip; do not
 hand-write ZIP headers or CRC logic. Preserve existing exports.
 Add the smallest meaningful test that opens the generated ZIP and verifies the
 model entry, metadata entry, parsed schema/title and referenced image entries.
+Also verify every referenced PDF entry when documents are included.
 ```
 
 ## Supported model extensions

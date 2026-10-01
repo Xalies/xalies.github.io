@@ -41,6 +41,7 @@
       <aside class="contents" aria-label="On this page">
         <strong>On this page</strong>
         <a href="#minimum">Minimum package</a>
+        <a href="#documents">PDF documents</a>
         <a href="#images">Image files</a>
         <a href="#metadata">Metadata</a>
         <a href="#folders">Folder behaviour</a>
@@ -65,7 +66,29 @@
   "title": "Generated Model"
 }</code></pre></div>
           </div>
-          <div class="callout"><strong>Do not replace the normal export.</strong> Add a separate “Export to MeshVault” action and reuse the exact model bytes produced by the existing exporter.</div>
+          <div class="callout"><strong>Do not replace the normal export.</strong> Add a separate “Export for MeshVault” action and reuse the exact model bytes produced by the existing exporter.</div>
+        </section>
+
+        <section id="documents">
+          <p class="step">Optional reference files</p>
+          <h2>Instructions and colour guides can travel with the model</h2>
+          <p>Add PDF files to the ZIP and list their portable paths in <code>documentFiles</code>. MeshVault attaches them to the imported model and shows them through Documents or Related files.</p>
+          <div class="split">
+            <div class="code-card"><div class="code-title">Package contents</div><pre><code>Generated-Model.mvpack
+├── Generated-Model.3mf
+├── meshvault.model.json
+└── documents/
+    └── instructions.pdf</code></pre></div>
+            <div class="code-card"><div class="code-title">Document references</div><pre><code>{
+  "schema": "meshvault.model",
+  "version": 1,
+  "title": "Generated Model",
+  "documentFiles": [
+    "documents/instructions.pdf"
+  ]
+}</code></pre></div>
+          </div>
+          <p class="note">Each model can include up to ten PDFs, with a maximum size of 10 MiB each. Files must have a <code>.pdf</code> name and valid PDF content.</p>
         </section>
 
         <section id="images">
