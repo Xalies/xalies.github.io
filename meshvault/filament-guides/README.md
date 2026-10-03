@@ -36,3 +36,22 @@ On 3 October 2026, all 24 colours in the Nostalgic 3D August guide were matched 
 ## Buy filament carts
 
 A brand can supply `cartUrl` for a verified Shopify cart endpoint, such as `https://shop.polymaker.com/cart`. The app keeps the **Buy filament** label and constructs a cart containing one spool per unique recommended product variant. Optional and alternative colours remain individual swatch links. Cart construction requires every recommended colour to supply a numeric `variant` in its product URL on the same shop; otherwise the existing collection link is used. Brands without a configured cart endpoint also retain their normal purchase link.
+
+## Nostalgic 3D Welcome Pack
+
+`guides/nostalgic-3d-welcome-pack.json` contains all 45 palettes from pages 2–9 of **01 Welcome Pack Color Recommendations.pdf**, verified against the rendered pages. Its source SHA-256 is `067db165f987d4db4799a64fa554814a5060eb8fa25f012fc2d0933d449bc9f9`. All eight sections have aliases for the imported pack/model filenames, including spelling differences. The Young Pokémon 3MF previews were visually compared with the Back-to-School page before adding that pack alias.
+
+| Imported pack | Guide palettes |
+| --- | ---: |
+| Power Rangers x Pokemon | 6 |
+| TMNT x Pokemon | 6 |
+| Young Pokemon (Back-to-School) | 4 |
+| Kirby SuperSmash Flexi | 5 |
+| World of Warcraft Flexi | 6 |
+| Halloween Flexi | 6 |
+| Christmas Flexi | 7 |
+| Thanksgiving Flexi | 5 |
+
+**Mario Themed Clickers**, **Pooh Hunny Jar Magnet Set** and **Kirby Sonic** have no palette in this PDF and retain 3MF fallback. Extracted parts inherit the enclosing design's guide palette through the existing Core rule; Candy Cane is inside Elf and has no separate PDF palette.
+
+Product links were verified on 4 October 2026 against Polymaker's Basic, Matte and Silk PLA product data. Preserve the PDF's `Aque Blue` and `Forrest Green` spelling, mapping them explicitly to Aqua Blue and Matte Forest Green. `Dark Olive` maps to Dark Olive Drab; Wood Brown maps to Matte Wood Brown. Silk Gold and Silver point to the available new-formula spools; their current colour codes differ from the old-formula codes printed in the PDF. Keep the original guide hex values as recommendations, rather than changing them to match the shop. The combined brand map now contains 41 colour-name keys (Aqua/Aque share one variant).

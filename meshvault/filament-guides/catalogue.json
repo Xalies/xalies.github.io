@@ -755,6 +755,2066 @@
       "purchaseUrl": "https://shop.polymaker.com/collections/pla-filament",
       "purchaseLabel": "Polymaker PLA",
       "cartUrl": "https://shop.polymaker.com/cart"
+    },
+    {
+      "schemaVersion": 1,
+      "creator": "Nostalgic 3D",
+      "documentHash": "067db165f987d4db4799a64fa554814a5060eb8fa25f012fc2d0933d449bc9f9",
+      "documentName": "01 Welcome Pack Color Recommendations.pdf",
+      "release": "welcome-pack",
+      "brand": "Polymaker",
+      "extraction": {
+        "bodyTop": 80,
+        "groups": {}
+      },
+      "packs": [
+        {
+          "name": "Power Rangers x Pokémon",
+          "section": "Power Rangers x Pokémon",
+          "page": 2,
+          "aliases": [
+            "Power Rangers x Pokemon"
+          ],
+          "models": [
+            {
+              "name": "Red Ranger x Charmander",
+              "aliases": [
+                "Charmander Red Ranger",
+                "Red Ranger"
+              ],
+              "colours": [
+                {
+                  "name": "Red",
+                  "hex": "#E72F1D",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271796793"
+                },
+                {
+                  "name": "Black",
+                  "hex": "#0A0A0A",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271731257"
+                },
+                {
+                  "name": "White",
+                  "hex": "#FAFAFA",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271895097"
+                },
+                {
+                  "name": "Yellow",
+                  "hex": "#FFE800",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271567417"
+                },
+                {
+                  "name": "Orange",
+                  "hex": "#F67405",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271665721"
+                }
+              ]
+            },
+            {
+              "name": "Blue Ranger x Squirtle",
+              "aliases": [
+                "Squirtle Blue Ranger",
+                "Blue Ranger"
+              ],
+              "colours": [
+                {
+                  "name": "Azure Blue",
+                  "hex": "#0066D9",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271141433"
+                },
+                {
+                  "name": "Black",
+                  "hex": "#0A0A0A",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271731257"
+                },
+                {
+                  "name": "White",
+                  "hex": "#FAFAFA",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271895097"
+                },
+                {
+                  "name": "Wood Brown",
+                  "hex": "#AB7449",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/matte-pla?variant=43631458320441"
+                }
+              ]
+            },
+            {
+              "name": "Green Ranger x Bulbasaur",
+              "aliases": [
+                "Bulbasaur Green Ranger",
+                "Green Ranger"
+              ],
+              "colours": [
+                {
+                  "name": "Forrest Green",
+                  "hex": "#60AD70",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/matte-pla?variant=43631458680889"
+                },
+                {
+                  "name": "Silk Gold",
+                  "hex": "#C49449",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/silk-pla?variant=43637561196601"
+                },
+                {
+                  "name": "Black",
+                  "hex": "#0A0A0A",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271731257"
+                },
+                {
+                  "name": "White",
+                  "hex": "#FAFAFA",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271895097"
+                }
+              ]
+            },
+            {
+              "name": "Pink Ranger x Slowpoke",
+              "aliases": [
+                "Slowpoke Pink Ranger",
+                "Pink Ranger"
+              ],
+              "colours": [
+                {
+                  "name": "Pink",
+                  "hex": "#F1A1AF",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271632953"
+                },
+                {
+                  "name": "Cream",
+                  "hex": "#EED1A8",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271239737"
+                },
+                {
+                  "name": "Black",
+                  "hex": "#0A0A0A",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271731257"
+                },
+                {
+                  "name": "White",
+                  "hex": "#FAFAFA",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271895097"
+                }
+              ]
+            },
+            {
+              "name": "Yellow Ranger x Pikachu",
+              "aliases": [
+                "Pikachu Yellow Ranger",
+                "Yellow Ranger"
+              ],
+              "colours": [
+                {
+                  "name": "Red",
+                  "hex": "#E72F1D",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271796793"
+                },
+                {
+                  "name": "Yellow",
+                  "hex": "#FFE800",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271567417"
+                },
+                {
+                  "name": "Black",
+                  "hex": "#0A0A0A",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271731257"
+                },
+                {
+                  "name": "White",
+                  "hex": "#FAFAFA",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271895097"
+                }
+              ]
+            },
+            {
+              "name": "Black Ranger x Gengar",
+              "aliases": [
+                "Gengar Black Ranger",
+                "Black Ranger"
+              ],
+              "colours": [
+                {
+                  "name": "Purple",
+                  "hex": "#6C47B2",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271600185"
+                },
+                {
+                  "name": "Black",
+                  "hex": "#0A0A0A",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271731257"
+                },
+                {
+                  "name": "White",
+                  "hex": "#FAFAFA",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271895097"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "TMNT x Pokémon",
+          "section": "TMNT x Pokémon",
+          "page": 3,
+          "aliases": [
+            "TMNT x Pokemon"
+          ],
+          "models": [
+            {
+              "name": "Donatello x Squirtle",
+              "aliases": [
+                "Squirtle Donatello",
+                "Donatello"
+              ],
+              "colours": [
+                {
+                  "name": "Purple",
+                  "hex": "#6C47B2",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271600185"
+                },
+                {
+                  "name": "Brown",
+                  "hex": "#55331A",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271338041"
+                },
+                {
+                  "name": "Yellow",
+                  "hex": "#FFE800",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271567417"
+                },
+                {
+                  "name": "White",
+                  "hex": "#FAFAFA",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271895097"
+                },
+                {
+                  "name": "Red",
+                  "hex": "#E72F1D",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271796793"
+                },
+                {
+                  "name": "Pink",
+                  "hex": "#F1A1AF",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271632953"
+                },
+                {
+                  "name": "Black",
+                  "hex": "#0A0A0A",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271731257"
+                },
+                {
+                  "name": "Green",
+                  "hex": "#06924D",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271698489"
+                }
+              ]
+            },
+            {
+              "name": "Leonardo x Squirtle",
+              "aliases": [
+                "Squirtle Leonardo",
+                "Leonardo"
+              ],
+              "colours": [
+                {
+                  "name": "Purple",
+                  "hex": "#6C47B2",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271600185"
+                },
+                {
+                  "name": "Brown",
+                  "hex": "#55331A",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271338041"
+                },
+                {
+                  "name": "Yellow",
+                  "hex": "#FFE800",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271567417"
+                },
+                {
+                  "name": "White",
+                  "hex": "#FAFAFA",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271895097"
+                },
+                {
+                  "name": "Red",
+                  "hex": "#E72F1D",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271796793"
+                },
+                {
+                  "name": "Silk Silver",
+                  "hex": "#BCC2C8",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/silk-pla?variant=43637561458745"
+                },
+                {
+                  "name": "Black",
+                  "hex": "#0A0A0A",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271731257"
+                },
+                {
+                  "name": "Green",
+                  "hex": "#06924D",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271698489"
+                }
+              ]
+            },
+            {
+              "name": "Rafael x Squirtle",
+              "aliases": [
+                "Squirtle Raphael",
+                "Raphael"
+              ],
+              "colours": [
+                {
+                  "name": "Red",
+                  "hex": "#E72F1D",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271796793"
+                },
+                {
+                  "name": "Brown",
+                  "hex": "#55331A",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271338041"
+                },
+                {
+                  "name": "Yellow",
+                  "hex": "#FFE800",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271567417"
+                },
+                {
+                  "name": "White",
+                  "hex": "#FAFAFA",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271895097"
+                },
+                {
+                  "name": "Silk Silver",
+                  "hex": "#BCC2C8",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/silk-pla?variant=43637561458745"
+                },
+                {
+                  "name": "Black",
+                  "hex": "#0A0A0A",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271731257"
+                },
+                {
+                  "name": "Green",
+                  "hex": "#06924D",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271698489"
+                }
+              ]
+            },
+            {
+              "name": "Michelangelo x Squirtle",
+              "aliases": [
+                "Squirtle Michellangello",
+                "Michellangelo"
+              ],
+              "colours": [
+                {
+                  "name": "Orange",
+                  "hex": "#F67405",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271665721"
+                },
+                {
+                  "name": "Brown",
+                  "hex": "#55331A",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271338041"
+                },
+                {
+                  "name": "Yellow",
+                  "hex": "#FFE800",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271567417"
+                },
+                {
+                  "name": "White",
+                  "hex": "#FAFAFA",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271895097"
+                },
+                {
+                  "name": "Silk Silver",
+                  "hex": "#BCC2C8",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/silk-pla?variant=43637561458745"
+                },
+                {
+                  "name": "Black",
+                  "hex": "#0A0A0A",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271731257"
+                },
+                {
+                  "name": "Green",
+                  "hex": "#06924D",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271698489"
+                }
+              ]
+            },
+            {
+              "name": "Shredder x Syther",
+              "aliases": [
+                "Scyther Shredder"
+              ],
+              "colours": [
+                {
+                  "name": "Green",
+                  "hex": "#06924D",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271698489"
+                },
+                {
+                  "name": "Cream",
+                  "hex": "#EED1A8",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271239737"
+                },
+                {
+                  "name": "Purple",
+                  "hex": "#6C47B2",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271600185"
+                },
+                {
+                  "name": "Black",
+                  "hex": "#0A0A0A",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271731257"
+                },
+                {
+                  "name": "Steel Grey",
+                  "hex": "#616469",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271829561"
+                },
+                {
+                  "name": "Grey",
+                  "hex": "#8C9099",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271862329"
+                },
+                {
+                  "name": "Silk Silver",
+                  "hex": "#BCC2C8",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/silk-pla?variant=43637561458745"
+                },
+                {
+                  "name": "White",
+                  "hex": "#FAFAFA",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271895097"
+                }
+              ]
+            },
+            {
+              "name": "Splinter x Rattata",
+              "aliases": [
+                "Rattata Splinter"
+              ],
+              "colours": [
+                {
+                  "name": "Brown",
+                  "hex": "#55331A",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271338041"
+                },
+                {
+                  "name": "Cream",
+                  "hex": "#EED1A8",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271239737"
+                },
+                {
+                  "name": "Magenta",
+                  "hex": "#F24574",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271174201"
+                },
+                {
+                  "name": "Yellow",
+                  "hex": "#FFE800",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271567417"
+                },
+                {
+                  "name": "Pink",
+                  "hex": "#F1A1AF",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271632953"
+                },
+                {
+                  "name": "Black",
+                  "hex": "#0A0A0A",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271731257"
+                },
+                {
+                  "name": "White",
+                  "hex": "#FAFAFA",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271895097"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Back-to-School x Pokémon",
+          "section": "Back-to-School x Pokémon",
+          "page": 4,
+          "aliases": [
+            "Back-to-School x Pokemon",
+            "Young Pokemon"
+          ],
+          "models": [
+            {
+              "name": "Charmander x Charizard",
+              "aliases": [
+                "Young Charmander"
+              ],
+              "colours": [
+                {
+                  "name": "Red",
+                  "hex": "#E72F1D",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271796793"
+                },
+                {
+                  "name": "Black",
+                  "hex": "#0A0A0A",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271731257"
+                },
+                {
+                  "name": "White",
+                  "hex": "#FAFAFA",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271895097"
+                },
+                {
+                  "name": "Yellow",
+                  "hex": "#FFE800",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271567417"
+                },
+                {
+                  "name": "Orange",
+                  "hex": "#F67405",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271665721"
+                },
+                {
+                  "name": "Polymaker Teal",
+                  "hex": "#4CC0C7",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271272505"
+                },
+                {
+                  "name": "Pink",
+                  "hex": "#F1A1AF",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271632953"
+                }
+              ]
+            },
+            {
+              "name": "Squirtle x Blastoise",
+              "aliases": [
+                "Young Squirtle"
+              ],
+              "colours": [
+                {
+                  "name": "Azure Blue",
+                  "hex": "#0066D9",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271141433"
+                },
+                {
+                  "name": "Aqua Blue",
+                  "hex": "#5EBDDB",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271403577"
+                },
+                {
+                  "name": "Black",
+                  "hex": "#0A0A0A",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271731257"
+                },
+                {
+                  "name": "White",
+                  "hex": "#FAFAFA",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271895097"
+                },
+                {
+                  "name": "Wood Brown",
+                  "hex": "#AB7449",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/matte-pla?variant=43631458320441"
+                },
+                {
+                  "name": "Red",
+                  "hex": "#E72F1D",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271796793"
+                },
+                {
+                  "name": "Grey",
+                  "hex": "#8C9099",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271862329"
+                },
+                {
+                  "name": "Yellow",
+                  "hex": "#FFE800",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271567417"
+                }
+              ]
+            },
+            {
+              "name": "Bulbasaur x Venusaur",
+              "aliases": [
+                "Young Bulbasaur"
+              ],
+              "colours": [
+                {
+                  "name": "Forrest Green",
+                  "hex": "#60AD70",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/matte-pla?variant=43631458680889"
+                },
+                {
+                  "name": "Jungle Green",
+                  "hex": "#4E742D",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271501881"
+                },
+                {
+                  "name": "Red",
+                  "hex": "#E72F1D",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271796793"
+                },
+                {
+                  "name": "Magenta",
+                  "hex": "#F24574",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271174201"
+                },
+                {
+                  "name": "Yellow",
+                  "hex": "#FFE800",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271567417"
+                },
+                {
+                  "name": "Brown",
+                  "hex": "#55331A",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271338041"
+                },
+                {
+                  "name": "Black",
+                  "hex": "#0A0A0A",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271731257"
+                },
+                {
+                  "name": "White",
+                  "hex": "#FAFAFA",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271895097"
+                }
+              ]
+            },
+            {
+              "name": "Pikachu x Raichu",
+              "aliases": [
+                "Young Pikachu"
+              ],
+              "colours": [
+                {
+                  "name": "Yellow",
+                  "hex": "#FFE800",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271567417"
+                },
+                {
+                  "name": "Lemon Yellow",
+                  "hex": "#EED230",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271305273"
+                },
+                {
+                  "name": "Red",
+                  "hex": "#E72F1D",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271796793"
+                },
+                {
+                  "name": "Brown",
+                  "hex": "#55331A",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271338041"
+                },
+                {
+                  "name": "Pink",
+                  "hex": "#F1A1AF",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271632953"
+                },
+                {
+                  "name": "Black",
+                  "hex": "#0A0A0A",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271731257"
+                },
+                {
+                  "name": "White",
+                  "hex": "#FAFAFA",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271895097"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Kirby SuperSmash Flexi Set",
+          "section": "Kirby SuperSmash Flexi Set",
+          "page": 5,
+          "aliases": [
+            "Kirby SuperSmash Flexi"
+          ],
+          "models": [
+            {
+              "name": "Kirby",
+              "aliases": [
+                "Kirby OG"
+              ],
+              "colours": [
+                {
+                  "name": "Pink",
+                  "hex": "#F1A1AF",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271632953"
+                },
+                {
+                  "name": "Azure Blue",
+                  "hex": "#0066D9",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271141433"
+                },
+                {
+                  "name": "White",
+                  "hex": "#FAFAFA",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271895097"
+                },
+                {
+                  "name": "Red",
+                  "hex": "#E72F1D",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271796793"
+                },
+                {
+                  "name": "Black",
+                  "hex": "#0A0A0A",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271731257"
+                }
+              ]
+            },
+            {
+              "name": "Donkey Kong x Kirby",
+              "aliases": [
+                "Kirby DK"
+              ],
+              "colours": [
+                {
+                  "name": "Pink",
+                  "hex": "#F1A1AF",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271632953"
+                },
+                {
+                  "name": "Azure Blue",
+                  "hex": "#0066D9",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271141433"
+                },
+                {
+                  "name": "White",
+                  "hex": "#FAFAFA",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271895097"
+                },
+                {
+                  "name": "Red",
+                  "hex": "#E72F1D",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271796793"
+                },
+                {
+                  "name": "Black",
+                  "hex": "#0A0A0A",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271731257"
+                },
+                {
+                  "name": "Brown",
+                  "hex": "#55331A",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271338041"
+                },
+                {
+                  "name": "Yellow",
+                  "hex": "#FFE800",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271567417"
+                }
+              ]
+            },
+            {
+              "name": "Mario x Kirby",
+              "aliases": [
+                "Kirby Mario"
+              ],
+              "colours": [
+                {
+                  "name": "Pink",
+                  "hex": "#F1A1AF",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271632953"
+                },
+                {
+                  "name": "Azure Blue",
+                  "hex": "#0066D9",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271141433"
+                },
+                {
+                  "name": "White",
+                  "hex": "#FAFAFA",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271895097"
+                },
+                {
+                  "name": "Red",
+                  "hex": "#E72F1D",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271796793"
+                },
+                {
+                  "name": "Black",
+                  "hex": "#0A0A0A",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271731257"
+                },
+                {
+                  "name": "Yellow",
+                  "hex": "#FFE800",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271567417"
+                }
+              ]
+            },
+            {
+              "name": "Pikachu x Kirby",
+              "aliases": [
+                "Kirby Pikachu"
+              ],
+              "colours": [
+                {
+                  "name": "Pink",
+                  "hex": "#F1A1AF",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271632953"
+                },
+                {
+                  "name": "Azure Blue",
+                  "hex": "#0066D9",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271141433"
+                },
+                {
+                  "name": "White",
+                  "hex": "#FAFAFA",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271895097"
+                },
+                {
+                  "name": "Red",
+                  "hex": "#E72F1D",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271796793"
+                },
+                {
+                  "name": "Black",
+                  "hex": "#0A0A0A",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271731257"
+                },
+                {
+                  "name": "Yellow",
+                  "hex": "#FFE800",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271567417"
+                }
+              ]
+            },
+            {
+              "name": "Link x Kirby",
+              "aliases": [
+                "Kirby Link"
+              ],
+              "colours": [
+                {
+                  "name": "Pink",
+                  "hex": "#F1A1AF",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271632953"
+                },
+                {
+                  "name": "Azure Blue",
+                  "hex": "#0066D9",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271141433"
+                },
+                {
+                  "name": "White",
+                  "hex": "#FAFAFA",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271895097"
+                },
+                {
+                  "name": "Red",
+                  "hex": "#E72F1D",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271796793"
+                },
+                {
+                  "name": "Black",
+                  "hex": "#0A0A0A",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271731257"
+                },
+                {
+                  "name": "Yellow",
+                  "hex": "#FFE800",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271567417"
+                },
+                {
+                  "name": "Brown",
+                  "hex": "#55331A",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271338041"
+                },
+                {
+                  "name": "Green",
+                  "hex": "#06924D",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271698489"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "World of Warcraft Flexi Set",
+          "section": "World of Warcraft Flexi Set",
+          "page": 6,
+          "aliases": [
+            "World of Warcraft Flexi"
+          ],
+          "models": [
+            {
+              "name": "Gul’dan",
+              "aliases": [],
+              "colours": [
+                {
+                  "name": "Jungle Green",
+                  "hex": "#4E742D",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271501881"
+                },
+                {
+                  "name": "White",
+                  "hex": "#FAFAFA",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271895097"
+                },
+                {
+                  "name": "Black",
+                  "hex": "#0A0A0A",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271731257"
+                },
+                {
+                  "name": "Lime Green",
+                  "hex": "#D5D701",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271206969"
+                },
+                {
+                  "name": "Brown",
+                  "hex": "#55331A",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271338041"
+                },
+                {
+                  "name": "Grey",
+                  "hex": "#8C9099",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271862329"
+                },
+                {
+                  "name": "Steel Grey",
+                  "hex": "#616469",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271829561"
+                },
+                {
+                  "name": "Tan",
+                  "hex": "#A79E82",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271108665"
+                }
+              ]
+            },
+            {
+              "name": "Sylvanas Windrunner",
+              "aliases": [
+                "Sylvanas"
+              ],
+              "colours": [
+                {
+                  "name": "Red",
+                  "hex": "#E72F1D",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271796793"
+                },
+                {
+                  "name": "White",
+                  "hex": "#FAFAFA",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271895097"
+                },
+                {
+                  "name": "Black",
+                  "hex": "#0A0A0A",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271731257"
+                },
+                {
+                  "name": "Steel Grey",
+                  "hex": "#616469",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271829561"
+                },
+                {
+                  "name": "Purple",
+                  "hex": "#6C47B2",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271600185"
+                },
+                {
+                  "name": "Magenta",
+                  "hex": "#F24574",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271174201"
+                },
+                {
+                  "name": "Brown",
+                  "hex": "#55331A",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271338041"
+                }
+              ]
+            },
+            {
+              "name": "Arthas",
+              "aliases": [
+                "Lich King"
+              ],
+              "colours": [
+                {
+                  "name": "Cold White",
+                  "hex": "#D9DFE5",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271043129"
+                },
+                {
+                  "name": "Stone Blue",
+                  "hex": "#487BA2",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271370809"
+                },
+                {
+                  "name": "Grey",
+                  "hex": "#8C9099",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271862329"
+                },
+                {
+                  "name": "Steel Grey",
+                  "hex": "#616469",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271829561"
+                },
+                {
+                  "name": "Aque Blue",
+                  "hex": "#5EBDDB",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271403577"
+                },
+                {
+                  "name": "Azure Blue",
+                  "hex": "#0066D9",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271141433"
+                }
+              ]
+            },
+            {
+              "name": "Illidan Stormrage",
+              "aliases": [],
+              "colours": [
+                {
+                  "name": "Brown",
+                  "hex": "#55331A",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271338041"
+                },
+                {
+                  "name": "Lime Green",
+                  "hex": "#D5D701",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271206969"
+                },
+                {
+                  "name": "Purple",
+                  "hex": "#6C47B2",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271600185"
+                },
+                {
+                  "name": "Magenta",
+                  "hex": "#F24574",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271174201"
+                },
+                {
+                  "name": "Black",
+                  "hex": "#0A0A0A",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271731257"
+                },
+                {
+                  "name": "Jungle Green",
+                  "hex": "#4E742D",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271501881"
+                }
+              ]
+            },
+            {
+              "name": "Varian Wrynn",
+              "aliases": [],
+              "colours": [
+                {
+                  "name": "Aque Blue",
+                  "hex": "#5EBDDB",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271403577"
+                },
+                {
+                  "name": "Black",
+                  "hex": "#0A0A0A",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271731257"
+                },
+                {
+                  "name": "White",
+                  "hex": "#FAFAFA",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271895097"
+                },
+                {
+                  "name": "Brown",
+                  "hex": "#55331A",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271338041"
+                },
+                {
+                  "name": "Steel Grey",
+                  "hex": "#616469",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271829561"
+                },
+                {
+                  "name": "Grey",
+                  "hex": "#8C9099",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271862329"
+                },
+                {
+                  "name": "Army Beige",
+                  "hex": "#DBBAA5",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/matte-pla?variant=43631458156601"
+                }
+              ]
+            },
+            {
+              "name": "Thrall",
+              "aliases": [],
+              "colours": [
+                {
+                  "name": "Olive Green",
+                  "hex": "#948902",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271469113"
+                },
+                {
+                  "name": "White",
+                  "hex": "#FAFAFA",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271895097"
+                },
+                {
+                  "name": "Black",
+                  "hex": "#0A0A0A",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271731257"
+                },
+                {
+                  "name": "Lime Green",
+                  "hex": "#D5D701",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271206969"
+                },
+                {
+                  "name": "Brown",
+                  "hex": "#55331A",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271338041"
+                },
+                {
+                  "name": "Grey",
+                  "hex": "#8C9099",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271862329"
+                },
+                {
+                  "name": "Red",
+                  "hex": "#E72F1D",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271796793"
+                },
+                {
+                  "name": "Tan",
+                  "hex": "#A79E82",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271108665"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Halloween Flexi Set",
+          "section": "Halloween Flexi Set",
+          "page": 7,
+          "aliases": [
+            "Halloween Flexi"
+          ],
+          "models": [
+            {
+              "name": "Bugs Bunny Vampire",
+              "aliases": [
+                "Bugs Dracula"
+              ],
+              "colours": [
+                {
+                  "name": "Black",
+                  "hex": "#0A0A0A",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271731257"
+                },
+                {
+                  "name": "White",
+                  "hex": "#FAFAFA",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271895097"
+                },
+                {
+                  "name": "Grey",
+                  "hex": "#8C9099",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271862329"
+                },
+                {
+                  "name": "Pink",
+                  "hex": "#F1A1AF",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271632953"
+                }
+              ]
+            },
+            {
+              "name": "Taz Devil",
+              "aliases": [],
+              "colours": [
+                {
+                  "name": "Red",
+                  "hex": "#E72F1D",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271796793"
+                },
+                {
+                  "name": "Cream",
+                  "hex": "#EED1A8",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271239737"
+                },
+                {
+                  "name": "Black",
+                  "hex": "#0A0A0A",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271731257"
+                },
+                {
+                  "name": "White",
+                  "hex": "#FAFAFA",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271895097"
+                }
+              ]
+            },
+            {
+              "name": "Tweety Bird Frankenstein",
+              "aliases": [
+                "Tweety Frankenstien"
+              ],
+              "colours": [
+                {
+                  "name": "Yellow",
+                  "hex": "#FFE800",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271567417"
+                },
+                {
+                  "name": "Green",
+                  "hex": "#06924D",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271698489"
+                },
+                {
+                  "name": "Grey",
+                  "hex": "#8C9099",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271862329"
+                },
+                {
+                  "name": "Black",
+                  "hex": "#0A0A0A",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271731257"
+                },
+                {
+                  "name": "White",
+                  "hex": "#FAFAFA",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271895097"
+                }
+              ]
+            },
+            {
+              "name": "Porky Pig Mummy",
+              "aliases": [
+                "Porky Mummy"
+              ],
+              "colours": [
+                {
+                  "name": "Army Beige",
+                  "hex": "#DBBAA5",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/matte-pla?variant=43631458156601"
+                },
+                {
+                  "name": "Black",
+                  "hex": "#0A0A0A",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271731257"
+                },
+                {
+                  "name": "White",
+                  "hex": "#FAFAFA",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271895097"
+                },
+                {
+                  "name": "Pink",
+                  "hex": "#F1A1AF",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271632953"
+                }
+              ]
+            },
+            {
+              "name": "Sylvester Ghost",
+              "aliases": [],
+              "colours": [
+                {
+                  "name": "Black",
+                  "hex": "#0A0A0A",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271731257"
+                },
+                {
+                  "name": "White",
+                  "hex": "#FAFAFA",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271895097"
+                }
+              ]
+            },
+            {
+              "name": "Daffy Duck Skeleton",
+              "aliases": [
+                "Daffy Skeleton"
+              ],
+              "colours": [
+                {
+                  "name": "Orange",
+                  "hex": "#F67405",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271665721"
+                },
+                {
+                  "name": "Black",
+                  "hex": "#0A0A0A",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271731257"
+                },
+                {
+                  "name": "White",
+                  "hex": "#FAFAFA",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271895097"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Christmas Flexi Set",
+          "section": "Christmas Flexi Set",
+          "page": 8,
+          "aliases": [
+            "Christmas Flexi"
+          ],
+          "models": [
+            {
+              "name": "Santa Claus",
+              "aliases": [],
+              "colours": [
+                {
+                  "name": "Red",
+                  "hex": "#E72F1D",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271796793"
+                },
+                {
+                  "name": "Black",
+                  "hex": "#0A0A0A",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271731257"
+                },
+                {
+                  "name": "White",
+                  "hex": "#FAFAFA",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271895097"
+                },
+                {
+                  "name": "Yellow",
+                  "hex": "#FFE800",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271567417"
+                },
+                {
+                  "name": "Brown",
+                  "hex": "#55331A",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271338041"
+                },
+                {
+                  "name": "Pink",
+                  "hex": "#F1A1AF",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271632953"
+                },
+                {
+                  "name": "Army Beige",
+                  "hex": "#DBBAA5",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/matte-pla?variant=43631458156601"
+                }
+              ]
+            },
+            {
+              "name": "Mrs. Claus",
+              "aliases": [],
+              "colours": [
+                {
+                  "name": "Red",
+                  "hex": "#E72F1D",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271796793"
+                },
+                {
+                  "name": "Black",
+                  "hex": "#0A0A0A",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271731257"
+                },
+                {
+                  "name": "White",
+                  "hex": "#FAFAFA",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271895097"
+                },
+                {
+                  "name": "Pink",
+                  "hex": "#F1A1AF",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271632953"
+                },
+                {
+                  "name": "Army Beige",
+                  "hex": "#DBBAA5",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/matte-pla?variant=43631458156601"
+                },
+                {
+                  "name": "Green",
+                  "hex": "#06924D",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271698489"
+                }
+              ]
+            },
+            {
+              "name": "Elf",
+              "aliases": [],
+              "colours": [
+                {
+                  "name": "Green",
+                  "hex": "#06924D",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271698489"
+                },
+                {
+                  "name": "Red",
+                  "hex": "#E72F1D",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271796793"
+                },
+                {
+                  "name": "Black",
+                  "hex": "#0A0A0A",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271731257"
+                },
+                {
+                  "name": "White",
+                  "hex": "#FAFAFA",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271895097"
+                },
+                {
+                  "name": "Yellow",
+                  "hex": "#FFE800",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271567417"
+                },
+                {
+                  "name": "Brown",
+                  "hex": "#55331A",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271338041"
+                },
+                {
+                  "name": "Pink",
+                  "hex": "#F1A1AF",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271632953"
+                },
+                {
+                  "name": "Army Beige",
+                  "hex": "#DBBAA5",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/matte-pla?variant=43631458156601"
+                }
+              ]
+            },
+            {
+              "name": "Reindeer",
+              "aliases": [],
+              "colours": [
+                {
+                  "name": "Brown",
+                  "hex": "#55331A",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271338041"
+                },
+                {
+                  "name": "Red",
+                  "hex": "#E72F1D",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271796793"
+                },
+                {
+                  "name": "Yellow",
+                  "hex": "#FFE800",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271567417"
+                },
+                {
+                  "name": "Pink",
+                  "hex": "#F1A1AF",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271632953"
+                },
+                {
+                  "name": "Cream",
+                  "hex": "#EED1A8",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271239737"
+                },
+                {
+                  "name": "Black",
+                  "hex": "#0A0A0A",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271731257"
+                },
+                {
+                  "name": "White",
+                  "hex": "#FAFAFA",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271895097"
+                }
+              ]
+            },
+            {
+              "name": "Snowman",
+              "aliases": [],
+              "colours": [
+                {
+                  "name": "White",
+                  "hex": "#FAFAFA",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271895097"
+                },
+                {
+                  "name": "Orange",
+                  "hex": "#F67405",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271665721"
+                },
+                {
+                  "name": "Brown",
+                  "hex": "#55331A",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271338041"
+                },
+                {
+                  "name": "Red",
+                  "hex": "#E72F1D",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271796793"
+                },
+                {
+                  "name": "Black",
+                  "hex": "#0A0A0A",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271731257"
+                }
+              ]
+            },
+            {
+              "name": "Heat Miser",
+              "aliases": [],
+              "colours": [
+                {
+                  "name": "Red",
+                  "hex": "#E72F1D",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271796793"
+                },
+                {
+                  "name": "Black",
+                  "hex": "#0A0A0A",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271731257"
+                },
+                {
+                  "name": "White",
+                  "hex": "#FAFAFA",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271895097"
+                },
+                {
+                  "name": "Yellow",
+                  "hex": "#FFE800",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271567417"
+                },
+                {
+                  "name": "Orange",
+                  "hex": "#F67405",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271665721"
+                },
+                {
+                  "name": "Army Beige",
+                  "hex": "#DBBAA5",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/matte-pla?variant=43631458156601"
+                }
+              ]
+            },
+            {
+              "name": "Snow Miser",
+              "aliases": [],
+              "colours": [
+                {
+                  "name": "Stone Blue",
+                  "hex": "#487BA2",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271370809"
+                },
+                {
+                  "name": "Aqua Blue",
+                  "hex": "#5EBDDB",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271403577"
+                },
+                {
+                  "name": "Blue",
+                  "hex": "#003776",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271764025"
+                },
+                {
+                  "name": "Black",
+                  "hex": "#0A0A0A",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271731257"
+                },
+                {
+                  "name": "White",
+                  "hex": "#FAFAFA",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271895097"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Thanksgiving Flexi Set",
+          "section": "Thanksgiving Flexi Set",
+          "page": 9,
+          "aliases": [
+            "Thanksgiving Flexi"
+          ],
+          "models": [
+            {
+              "name": "Turkey",
+              "aliases": [],
+              "colours": [
+                {
+                  "name": "Brown",
+                  "hex": "#55331A",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271338041"
+                },
+                {
+                  "name": "Yellow",
+                  "hex": "#FFE800",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271567417"
+                },
+                {
+                  "name": "White",
+                  "hex": "#FAFAFA",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271895097"
+                },
+                {
+                  "name": "Red",
+                  "hex": "#E72F1D",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271796793"
+                },
+                {
+                  "name": "Black",
+                  "hex": "#0A0A0A",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271731257"
+                }
+              ]
+            },
+            {
+              "name": "Native American - Male",
+              "aliases": [
+                "Native American Boy"
+              ],
+              "colours": [
+                {
+                  "name": "Tan",
+                  "hex": "#A79E82",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271108665"
+                },
+                {
+                  "name": "Brown",
+                  "hex": "#55331A",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271338041"
+                },
+                {
+                  "name": "Yellow",
+                  "hex": "#FFE800",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271567417"
+                },
+                {
+                  "name": "Orange",
+                  "hex": "#F67405",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271665721"
+                },
+                {
+                  "name": "White",
+                  "hex": "#FAFAFA",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271895097"
+                },
+                {
+                  "name": "Red",
+                  "hex": "#E72F1D",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271796793"
+                },
+                {
+                  "name": "Black",
+                  "hex": "#0A0A0A",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271731257"
+                }
+              ]
+            },
+            {
+              "name": "Native American - Female",
+              "aliases": [
+                "Native American Girl"
+              ],
+              "colours": [
+                {
+                  "name": "Tan",
+                  "hex": "#A79E82",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271108665"
+                },
+                {
+                  "name": "Brown",
+                  "hex": "#55331A",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271338041"
+                },
+                {
+                  "name": "Dark Olive",
+                  "hex": "#575B54",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271075897"
+                },
+                {
+                  "name": "Yellow",
+                  "hex": "#FFE800",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271567417"
+                },
+                {
+                  "name": "Orange",
+                  "hex": "#F67405",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271665721"
+                },
+                {
+                  "name": "White",
+                  "hex": "#FAFAFA",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271895097"
+                },
+                {
+                  "name": "Red",
+                  "hex": "#E72F1D",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271796793"
+                },
+                {
+                  "name": "Black",
+                  "hex": "#0A0A0A",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271731257"
+                }
+              ]
+            },
+            {
+              "name": "Pilgrim - Male",
+              "aliases": [
+                "Pilgrim Boy"
+              ],
+              "colours": [
+                {
+                  "name": "Army Beige",
+                  "hex": "#DBBAA5",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/matte-pla?variant=43631458156601"
+                },
+                {
+                  "name": "Brown",
+                  "hex": "#55331A",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271338041"
+                },
+                {
+                  "name": "Yellow",
+                  "hex": "#FFE800",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271567417"
+                },
+                {
+                  "name": "White",
+                  "hex": "#FAFAFA",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271895097"
+                },
+                {
+                  "name": "Black",
+                  "hex": "#0A0A0A",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271731257"
+                }
+              ]
+            },
+            {
+              "name": "Pilgrim - Female",
+              "aliases": [
+                "Pilgrim Girl"
+              ],
+              "colours": [
+                {
+                  "name": "Army Beige",
+                  "hex": "#DBBAA5",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/matte-pla?variant=43631458156601"
+                },
+                {
+                  "name": "Brown",
+                  "hex": "#55331A",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271338041"
+                },
+                {
+                  "name": "Green",
+                  "hex": "#06924D",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271698489"
+                },
+                {
+                  "name": "Orange",
+                  "hex": "#F67405",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271665721"
+                },
+                {
+                  "name": "White",
+                  "hex": "#FAFAFA",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271895097"
+                },
+                {
+                  "name": "Black",
+                  "hex": "#0A0A0A",
+                  "group": "recommended",
+                  "purchaseUrl": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271731257"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "purchaseUrl": "https://shop.polymaker.com/collections/pla-filament",
+      "purchaseLabel": "Polymaker PLA",
+      "cartUrl": "https://shop.polymaker.com/cart"
     }
   ]
 }

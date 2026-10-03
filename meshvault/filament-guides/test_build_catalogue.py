@@ -43,7 +43,7 @@ class CatalogueTests(unittest.TestCase):
         root = Path(__file__).resolve().parent
         colours = [colour for guide in builder.build(root)["guides"] if guide["brand"] == "Polymaker"
                    for pack in guide["packs"] for model in pack["models"] for colour in model["colours"]]
-        self.assertEqual(len({colour["name"] for colour in colours}), 24)
+        self.assertEqual(len({colour["name"] for colour in colours}), 41)
         for colour in colours:
             with self.subTest(colour=colour["name"]):
                 self.assertRegex(colour.get("purchaseUrl", ""),
