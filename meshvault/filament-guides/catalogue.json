@@ -753,7 +753,8 @@
         }
       ],
       "purchaseUrl": "https://shop.polymaker.com/collections/pla-filament",
-      "purchaseLabel": "Polymaker PLA"
+      "purchaseLabel": "Polymaker PLA",
+      "cartUrl": "https://shop.polymaker.com/cart"
     }
   ]
 }

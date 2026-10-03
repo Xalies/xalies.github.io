@@ -23,6 +23,7 @@ def build(root):
         if brand["schemaVersion"] != 1 or not key or key in brands:
             raise ValueError("Invalid or duplicate brand: " + str(path))
         validate_url(brand.get("purchaseUrl"))
+        validate_url(brand.get("cartUrl"))
         for url in brand.get("colourPurchaseUrls", {}).values():
             validate_url(url)
         brands[key] = brand
@@ -31,7 +32,7 @@ def build(root):
     for path in sorted((root / "guides").glob("*.json")):
         guide = json.loads(path.read_text(encoding="utf-8"))
         brand = brands.get(guide["brand"].casefold(), {})
-        for field in ("purchaseUrl", "purchaseLabel"):
+        for field in ("purchaseUrl", "purchaseLabel", "cartUrl"):
             if field in brand and field not in guide:
                 guide[field] = brand[field]
         validate_url(guide.get("purchaseUrl"))

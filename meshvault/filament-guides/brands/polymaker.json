@@ -3,6 +3,7 @@
   "brand": "Polymaker",
   "purchaseUrl": "https://shop.polymaker.com/collections/pla-filament",
   "purchaseLabel": "Polymaker PLA",
+  "cartUrl": "https://shop.polymaker.com/cart",
   "colourPurchaseUrls": {
     "Army Beige": "https://shop.polymaker.com/products/matte-pla?variant=43631458156601",
     "Azure Blue": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271141433",

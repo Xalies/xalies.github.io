@@ -32,3 +32,7 @@ Commit the editable source files and generated `catalogue.json` together, then p
 ## Verified Polymaker links
 
 On 3 October 2026, all 24 colours in the Nostalgic 3D August guide were matched to current Polymaker product variants using the official `/products/panchroma-pla.js`, `/products/matte-pla.js` and `/products/metallic-pla.js` data. Links select 1 kg spools: 15 Basic PLA colours, six specifically named Matte PLA colours and three Metallic PLA colours. Orange selects Basic PLA variant `44863271665721`. Matte variants select the new packaging. These are direct product URLs; replace them with verified affiliate links when available. Variant availability can change independently of this catalogue.
+
+## Buy filament carts
+
+A brand can supply `cartUrl` for a verified Shopify cart endpoint, such as `https://shop.polymaker.com/cart`. The app keeps the **Buy filament** label and constructs a cart containing one spool per unique recommended product variant. Optional and alternative colours remain individual swatch links. Cart construction requires every recommended colour to supply a numeric `variant` in its product URL on the same shop; otherwise the existing collection link is used. Brands without a configured cart endpoint also retain their normal purchase link.

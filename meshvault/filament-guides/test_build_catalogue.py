@@ -19,6 +19,7 @@ class CatalogueTests(unittest.TestCase):
                 (root / "brands" / f"{brand}.json").write_text(json.dumps({
                     "schemaVersion": 1, "brand": brand,
                     "purchaseUrl": f"https://example.test/{brand}",
+                    "cartUrl": f"https://example.test/{brand}/cart",
                     "colourPurchaseUrls": {"White": f"https://example.test/{brand}/white"}
                 }), encoding="utf-8")
                 (root / "guides" / f"{brand}.json").write_text(json.dumps({
@@ -28,6 +29,7 @@ class CatalogueTests(unittest.TestCase):
                 }), encoding="utf-8")
             for guide in builder.build(root)["guides"]:
                 self.assertEqual(guide["purchaseUrl"], f"https://example.test/{guide['brand']}")
+                self.assertEqual(guide["cartUrl"], f"https://example.test/{guide['brand']}/cart")
                 colours = guide["packs"][0]["models"][0]["colours"]
                 self.assertEqual(colours[0]["purchaseUrl"], f"https://example.test/{guide['brand']}/white")
                 self.assertNotIn("purchaseUrl", colours[1])
