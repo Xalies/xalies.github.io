@@ -8,6 +8,8 @@
       "documentName": "August Filament Guide Nostalgic 3D Models.pdf",
       "release": "2026-08",
       "brand": "Polymaker",
+      "purchaseUrl": "https://shop.polymaker.com/collections/pla-filament",
+      "purchaseLabel": "Polymaker PLA",
       "extraction": {
         "bodyTop": 80,
         "groups": {

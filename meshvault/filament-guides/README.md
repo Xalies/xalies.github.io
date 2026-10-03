@@ -8,4 +8,6 @@ Keep this feed authoritative for deployed applications. Review each palette agai
 
 The initial feed was exported from MeshVault's reviewed `data/filament-guides` JSON using `scripts/export-filament-guide-feed.py`. Those source files support repeatable PDF extraction and first-use fallback. Do not export stale source files over subsequent reviewed changes to this public feed.
 
-Publish JSON data only. Do not add source PDFs, affiliate credentials or guessed product URLs. Affiliate product links are not yet part of this schema. The source PDF may describe recommendations differing from the slicer profiles; guide list order never assigns 3MF filament slots.
+Each guide can supply optional `purchaseUrl` and `purchaseLabel` fields. `purchaseUrl` must be an absolute HTTPS URL without embedded credentials. The initial Nostalgic 3D entry uses Polymaker's official PLA collection and the label `Polymaker PLA`; replace the URL with your approved affiliate link when available. Windows checks the feed on the first palette load each app session, so published changes can be picked up after restarting the app. Links are shown only for matched guide recommendations, never guessed from 3MF colours.
+
+Publish JSON data only. Do not add source PDFs, affiliate credentials or guessed product URLs. The source PDF may describe recommendations differing from the slicer profiles; guide list order never assigns 3MF filament slots.
