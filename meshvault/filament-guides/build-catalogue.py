@@ -1,0 +1,56 @@
+"""Combine reviewed guides and brand purchase links into catalogue.json.
+
+Run: python meshvault/filament-guides/build-catalogue.py
+"""
+import json
+from pathlib import Path
+from urllib.parse import urlsplit
+
+
+def validate_url(url):
+    if url is None:
+        return
+    parsed = urlsplit(url)
+    if parsed.scheme != "https" or not parsed.hostname or parsed.username is not None or parsed.password is not None:
+        raise ValueError("Purchase URLs must use HTTPS without credentials.")
+
+
+def build(root):
+    brands = {}
+    for path in sorted((root / "brands").glob("*.json")):
+        brand = json.loads(path.read_text(encoding="utf-8"))
+        key = brand["brand"].casefold()
+        if brand["schemaVersion"] != 1 or not key or key in brands:
+            raise ValueError("Invalid or duplicate brand: " + str(path))
+        validate_url(brand.get("purchaseUrl"))
+        for url in brand.get("colourPurchaseUrls", {}).values():
+            validate_url(url)
+        brands[key] = brand
+
+    guides = []
+    for path in sorted((root / "guides").glob("*.json")):
+        guide = json.loads(path.read_text(encoding="utf-8"))
+        brand = brands.get(guide["brand"].casefold(), {})
+        for field in ("purchaseUrl", "purchaseLabel"):
+            if field in brand and field not in guide:
+                guide[field] = brand[field]
+        validate_url(guide.get("purchaseUrl"))
+        urls = {name.casefold(): url for name, url in brand.get("colourPurchaseUrls", {}).items()}
+        for pack in guide["packs"]:
+            for model in pack["models"]:
+                for colour in model["colours"]:
+                    url = colour.get("purchaseUrl", urls.get(colour["name"].casefold()))
+                    validate_url(url)
+                    if url is not None:
+                        colour["purchaseUrl"] = url
+        guides.append(guide)
+    if not guides:
+        raise ValueError("No reviewed guides found; preserve the existing feed.")
+    return {"schemaVersion": 1, "guides": guides}
+
+
+if __name__ == "__main__":
+    root = Path(__file__).resolve().parent
+    feed = build(root)
+    (root / "catalogue.json").write_text(json.dumps(feed, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    print(f"Built catalogue.json with {len(feed['guides'])} guides.")

@@ -1,6 +1,6 @@
 # MeshVault filament guide catalogue
 
-`catalogue.json` is the public, editable feed of reviewed creator colour-guide recommendations. MeshVault fetches it from this repository's `main` branch through `raw.githubusercontent.com`, validates it and retains the last valid copy for offline use. Apps normally check again after 24 hours. Updating this JSON requires no app rebuild.
+`catalogue.json` is the generated public feed of reviewed creator colour-guide recommendations. MeshVault fetches it from this repository's `main` branch through `raw.githubusercontent.com`, validates it and retains the last valid copy for offline use. Apps normally check again after 24 hours. Updating this JSON requires no app rebuild.
 
 The version 1 envelope contains `schemaVersion: 1` and a `guides` array. Each guide identifies its source PDF by SHA-256, creator, brand and release, then lists pack sections, model names/aliases and colour-name/hex pairs. Model matching is scoped to the linked PDF and pack. Preserve `recommended`, `optional` and `alternative` groups. Explicit aliases cover archive names and inner folder names that differ from the PDF headings.
 
@@ -11,3 +11,20 @@ The initial feed was exported from MeshVault's reviewed `data/filament-guides` J
 Each guide can supply optional `purchaseUrl` and `purchaseLabel` fields. `purchaseUrl` must be an absolute HTTPS URL without embedded credentials. The initial Nostalgic 3D entry uses Polymaker's official PLA collection and the label `Polymaker PLA`; replace the URL with your approved affiliate link when available. Windows checks the feed on the first palette load each app session, so published changes can be picked up after restarting the app. Links are shown only for matched guide recommendations, never guessed from 3MF colours.
 
 Publish JSON data only. Do not add source PDFs, affiliate credentials or guessed product URLs. The source PDF may describe recommendations differing from the slicer profiles; guide list order never assigns 3MF filament slots.
+
+## Editing guides and filament brands
+
+- `guides/*.json`: creator palettes, pack/model names and aliases.
+- `brands/polymaker.json`: Polymaker collection URL and individual colour links.
+- Add another file under `brands/` for each new brand. Its `brand` must match the guide brand; colour link names must match the guide colour names (comparison ignores case).
+
+Each brand file has `schemaVersion: 1`, `brand`, optional `purchaseUrl` and `purchaseLabel`, and a `colourPurchaseUrls` object. Add a colour name and its verified product or affiliate URL to that object when available. An explicit guide/colour URL overrides the brand default. Swatches open the colour-specific link, falling back to the brand collection link. Unmatched 3MF colours have no purchase links.
+
+After editing, run from the website repository root:
+
+```sh
+python meshvault/filament-guides/build-catalogue.py
+python meshvault/filament-guides/test_build_catalogue.py
+```
+
+Commit the editable source files and generated `catalogue.json` together, then publish. Keep the generated feed in place for deployed apps; do not edit it directly or overwrite these reviewed sources with an older MeshVault export. Brand names and purchase URLs remain data, with no brand-specific app code.
