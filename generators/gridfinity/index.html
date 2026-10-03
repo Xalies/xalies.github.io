@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Generate custom Gridfinity bins in your browser. Free, open source, with 3D preview and STL download.">
+  <title>Gridfinity Generator · Xalies</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="vendor/deps/three.min.js" defer></script>
+  <script src="vendor/deps/Projector.js" defer></script>
+  <script src="vendor/deps/CanvasRenderer.js" defer></script>
+  <script src="vendor/deps/OrbitControls.js" defer></script>
+  <script src="vendor/deps/webgl_detector.js" defer></script>
+  <script src="vendor/deps/stl_viewer.min.js" defer></script>
+  <script type="module" src="generator.js"></script>
+</head>
+<body>
+  <header><a href="../../">Xalies / Software</a><a href="https://github.com/Xalies/xalies.github.io/tree/main/generators/gridfinity">View source ↗</a></header>
+  <main>
+    <p class="eyebrow">Open-source 3D model generators / 01</p>
+    <h1>Gridfinity bins &amp; bases.</h1>
+    <p class="intro">Make a bin and its matching baseplate. Both use the same 42 mm grid. Choose a part, set the dimensions, and download an STL ready for your slicer. Everything runs on your device.</p>
+    <div class="workspace">
+      <form id="settings">
+        <label>Part<select id="part"><option value="bin">Bin</option><option value="baseplate">Baseplate</option></select></label>
+        <fieldset><legend>Dimensions</legend>
+          <div class="fields">
+            <label>Width · 42 mm units<input name="width" type="number" min="1" max="6" step="1" value="1" required></label>
+            <label>Depth · 42 mm units<input name="depth" type="number" min="1" max="6" step="1" value="1" required></label>
+            <label data-bin>Height · 7 mm units<input name="height" type="number" min="2" max="12" step="1" value="6" required></label>
+            <label data-bin>Compartments across width<input name="chambers" type="number" min="1" max="12" step="1" value="1" required></label>
+          </div>
+        </fieldset>
+        <fieldset data-bin><legend>Features</legend>
+          <label>Label ledge<select name="withLabel"><option value="disabled">None</option><option value="left">Left</option><option value="center">Centre</option><option value="right">Right</option><option value="centerchamber">Each compartment</option></select></label>
+          <label>Stacking lip<select name="lip_style"><option value="normal">Standard</option><option value="reduced">Reduced</option><option value="none">None</option></select></label>
+          <label class="check"><input name="fingerslide" type="checkbox" checked>Finger scoop</label>
+        </fieldset>
+        <details data-bin><summary>Walls &amp; mounting</summary><div class="fields">
+          <label>Wall thickness · mm<input name="wall_thickness" type="number" min="0.8" max="3" step="0.05" value="0.95" required></label>
+          <label>Floor thickness · mm<input name="floor_thickness" type="number" min="0.7" max="3" step="0.1" value="0.7" required></label>
+          <label>Magnet diameter · mm<input name="magnet_diameter" type="number" min="0" max="10" step="0.1" value="0" required><small>0 omits magnet pockets; standard: 6.5.</small></label>
+          <label>Screw depth · mm<input name="screw_depth" type="number" min="0" max="10" step="0.5" value="0" required><small>0 omits screw holes; standard: 6.</small></label>
+        </div></details>
+        <p id="base-note" class="small" hidden>Standard open-frame baseplate. Width and depth stay the same when you switch parts, so the base matches your bin footprint. Increase them for a larger layout.</p>
+        <p class="small">Grid pitch: 42 × 42 mm. Actual bin width and depth include fitting clearance. Compartments divide along the width only.</p>
+        <div class="actions"><button id="generate" type="submit">Generate model</button><button id="cancel" type="button" disabled>Cancel</button></div>
+      </form>
+      <section class="preview" aria-label="Generated model">
+        <div class="preview-toolbar"><span id="status" role="status" aria-live="polite">Ready to generate.</span><a id="download" hidden>Download STL ↓</a></div>
+        <div id="viewer" tabindex="0" aria-label="3D bin preview; drag to orbit, scroll to zoom"></div>
+        <p class="small">Drag to orbit · scroll or pinch to zoom. Large bins can take a few minutes to generate.</p>
+        <details><summary>Generation log</summary><pre id="log"></pre></details>
+      </section>
+    </div>
+  </main>
+  <footer>Models by <a href="https://github.com/vector76/gridfinity_openscad">vector76 / MIT</a>, based on Zack Freedman’s Gridfinity. Powered by <a href="https://github.com/vector76/Web_OpenSCAD_Customizer">Web OpenSCAD Customizer / GPL-2.0</a>. <a href="README.md">Credits &amp; licenses</a>.</footer>
+</body>
+</html>
