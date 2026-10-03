@@ -28,3 +28,7 @@ python meshvault/filament-guides/test_build_catalogue.py
 ```
 
 Commit the editable source files and generated `catalogue.json` together, then publish. Keep the generated feed in place for deployed apps; do not edit it directly or overwrite these reviewed sources with an older MeshVault export. Brand names and purchase URLs remain data, with no brand-specific app code.
+
+## Verified Polymaker links
+
+On 3 October 2026, all 24 colours in the Nostalgic 3D August guide were matched to current Polymaker product variants using the official `/products/panchroma-pla.js`, `/products/matte-pla.js` and `/products/metallic-pla.js` data. Links select 1 kg spools: 15 Basic PLA colours, six specifically named Matte PLA colours and three Metallic PLA colours. Orange selects Basic PLA variant `44863271665721`. Matte variants select the new packaging. These are direct product URLs; replace them with verified affiliate links when available. Variant availability can change independently of this catalogue.

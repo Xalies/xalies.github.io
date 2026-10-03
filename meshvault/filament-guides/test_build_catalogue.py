@@ -37,6 +37,19 @@ class CatalogueTests(unittest.TestCase):
             with self.subTest(url=url), self.assertRaises(ValueError):
                 builder.validate_url(url)
 
+    def test_reviewed_polymaker_colours_have_individual_variant_links(self):
+        root = Path(__file__).resolve().parent
+        colours = [colour for guide in builder.build(root)["guides"] if guide["brand"] == "Polymaker"
+                   for pack in guide["packs"] for model in pack["models"] for colour in model["colours"]]
+        self.assertEqual(len({colour["name"] for colour in colours}), 24)
+        for colour in colours:
+            with self.subTest(colour=colour["name"]):
+                self.assertRegex(colour.get("purchaseUrl", ""),
+                                 r"^https://shop\.polymaker\.com/products/[^?]+\?variant=\d+$")
+                if colour["name"] == "Orange":
+                    self.assertEqual(colour["purchaseUrl"],
+                                     "https://shop.polymaker.com/products/panchroma-pla?variant=44863271665721")
+
 
 if __name__ == "__main__":
     unittest.main()

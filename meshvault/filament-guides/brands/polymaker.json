@@ -3,5 +3,30 @@
   "brand": "Polymaker",
   "purchaseUrl": "https://shop.polymaker.com/collections/pla-filament",
   "purchaseLabel": "Polymaker PLA",
-  "colourPurchaseUrls": {}
+  "colourPurchaseUrls": {
+    "Army Beige": "https://shop.polymaker.com/products/matte-pla?variant=43631458156601",
+    "Azure Blue": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271141433",
+    "Beige": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271436345",
+    "Black": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271731257",
+    "Brown": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271338041",
+    "Cream": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271239737",
+    "Green": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271698489",
+    "Grey": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271862329",
+    "Jungle Green": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271501881",
+    "Lime Green": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271206969",
+    "Metallic Bronze": "https://shop.polymaker.com/products/metallic-pla?variant=43595097407545",
+    "Metallic Gold": "https://shop.polymaker.com/products/metallic-pla?variant=43595097342009",
+    "Metallic Silver": "https://shop.polymaker.com/products/metallic-pla?variant=43595097374777",
+    "Muted White": "https://shop.polymaker.com/products/matte-pla?variant=43631458254905",
+    "Orange": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271665721",
+    "Pastel Mint": "https://shop.polymaker.com/products/matte-pla?variant=43631458582585",
+    "Pastel Watermelon": "https://shop.polymaker.com/products/matte-pla?variant=43631459041337",
+    "Red": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271796793",
+    "Savannah Yellow": "https://shop.polymaker.com/products/matte-pla?variant=43631458484281",
+    "Seafoam Green": "https://shop.polymaker.com/products/matte-pla?variant=45410790015033",
+    "Tan": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271108665",
+    "White": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271895097",
+    "Wine Red": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271534649",
+    "Yellow": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271567417"
+  }
 }
