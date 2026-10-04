@@ -4,6 +4,7 @@
   "sourceUrl": "https://numakers.com/products.json",
   "purchaseUrl": "https://numakers.com/collections/all?ref=meshvault",
   "purchaseLabel": "Numakers",
+  "cartUrl": "https://numakers.com/cart?ref=meshvault",
   "products": [
     {
       "range": "PETG CF",

@@ -23,6 +23,7 @@ class CatalogueTests(unittest.TestCase):
         guide = next(g for g in builder.build(ROOT)["guides"] if g["release"] == "October 2026")
         self.assertEqual(guide["documentHash"], "039e91f1f60751199b5728388907b5e1e7a13f2a1357591d19eaffafc4eb3deb")
         self.assertEqual([len(p["models"]) for p in guide["packs"]], [10, 8, 8, 8])
+        self.assertEqual(guide["cartUrl"], "https://numakers.com/cart?ref=meshvault")
         for pack in guide["packs"]:
             for model in pack["models"]:
                 for colour in model["colours"]:

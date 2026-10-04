@@ -59,6 +59,7 @@ def build():
     if not rows:
         raise ValueError("No Numakers filament variants found; preserve the previous snapshot.")
     return {"schemaVersion": 1, "brand": "Numakers", "sourceUrl": STORE + "/products.json",
+            "cartUrl": STORE + "/cart",
             "purchaseUrl": STORE + "/collections/all", "purchaseLabel": "Numakers", "products": rows}
 
 

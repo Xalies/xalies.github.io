@@ -73,6 +73,8 @@ def build(snapshot, previous=None, affiliate=None):
                 option["affiliateUrl"] = affiliate_url(option["purchaseUrl"], affiliate)
     if affiliate and brand.get("purchaseUrl"):
         brand["purchaseUrl"] = affiliate_url(brand["purchaseUrl"], affiliate)
+    if affiliate and brand.get("cartUrl"):
+        brand["cartUrl"] = affiliate_url(brand["cartUrl"], affiliate)
     return brand
 
 

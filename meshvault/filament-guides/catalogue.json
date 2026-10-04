@@ -3469,7 +3469,8 @@
       ],
       "documentHash": "039e91f1f60751199b5728388907b5e1e7a13f2a1357591d19eaffafc4eb3deb",
       "purchaseUrl": "https://numakers.com/collections/all?ref=meshvault",
-      "purchaseLabel": "Numakers"
+      "purchaseLabel": "Numakers",
+      "cartUrl": "https://numakers.com/cart?ref=meshvault"
     },
     {
       "schemaVersion": 1,
@@ -11757,6 +11758,7 @@
       "sourceUrl": "https://numakers.com/products.json",
       "purchaseUrl": "https://numakers.com/collections/all?ref=meshvault",
       "purchaseLabel": "Numakers",
+      "cartUrl": "https://numakers.com/cart?ref=meshvault",
       "products": [
         {
           "range": "PETG CF",
