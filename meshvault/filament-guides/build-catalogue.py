@@ -3,6 +3,7 @@
 Run: python meshvault/filament-guides/build-catalogue.py
 """
 import json
+import copy
 import re
 from pathlib import Path
 from urllib.parse import urlsplit
@@ -16,6 +17,14 @@ def validate_url(url):
         raise ValueError("Purchase URLs must use HTTPS without credentials.")
 
 
+def validate_affiliate_links(entry):
+    for standard, affiliate in (("purchaseUrl", "affiliateUrl"), ("cartUrl", "affiliateCartUrl")):
+        validate_url(entry.get(standard))
+        validate_url(entry.get(affiliate))
+        if entry.get(affiliate) and not entry.get(standard):
+            raise ValueError("Affiliate links require a standard destination.")
+
+
 def build(root):
     brands = {}
     for path in sorted((root / "brands").glob("*.json")):
@@ -23,8 +32,7 @@ def build(root):
         key = brand["brand"].casefold()
         if brand["schemaVersion"] != 2 or not key or key in brands:
             raise ValueError("Invalid or duplicate brand: " + str(path))
-        validate_url(brand.get("purchaseUrl"))
-        validate_url(brand.get("cartUrl"))
+        validate_affiliate_links(brand)
         identities = [p["code"] for p in brand.get("products", [])]
         if len(set(identities)) != len(identities):
             raise ValueError("Duplicate filament identity")
@@ -50,14 +58,15 @@ def build(root):
     for path in sorted((root / "guides").glob("*.json")):
         guide = json.loads(path.read_text(encoding="utf-8"))
         brand = brands.get(guide["brand"].casefold(), {})
-        for field in ("purchaseUrl", "purchaseLabel", "cartUrl"):
+        for field in ("purchaseUrl", "purchaseLabel", "cartUrl", "affiliateUrl", "affiliateCartUrl"):
             if field in brand and field not in guide:
                 guide[field] = brand[field]
-        validate_url(guide.get("purchaseUrl"))
+        validate_affiliate_links(guide)
         for pack in guide["packs"]:
             for model in pack["models"]:
                 for colour in model["colours"]:
                     product_url = None
+                    affiliate_url = None
                     if "filamentCode" in colour:
                         matches = [p for p in brand.get("products", []) if p["code"] == colour["filamentCode"]]
                         if len(matches) != 1:
@@ -74,11 +83,16 @@ def build(root):
                         options = [o for o in identity["purchaseOptions"] if o["code"] == code]
                         if len(options) != 1:
                             raise ValueError("Missing or ambiguous guide purchase option: " + str(code))
-                        product_url = options[0].get("affiliateUrl") or options[0]["purchaseUrl"]
+                        product_url = options[0]["purchaseUrl"]
+                        affiliate_url = options[0].get("affiliateUrl")
+                    if "purchaseUrl" not in colour and affiliate_url is not None:
+                        colour.setdefault("affiliateUrl", affiliate_url)
+                    validate_url(colour.get("affiliateUrl"))
                     url = colour.get("purchaseUrl", product_url)
                     validate_url(url)
                     if url is not None:
                         colour["purchaseUrl"] = url
+                    validate_affiliate_links(colour)
         guides.append(guide)
     if not guides:
         raise ValueError("No reviewed guides found; preserve the existing feed.")
@@ -86,8 +100,25 @@ def build(root):
             "brands": [brand for brand in brands.values() if "products" in brand]}
 
 
+def legacy_feed(feed):
+    """Keep older clients' default affiliate destinations on the original feed."""
+    result = copy.deepcopy(feed)
+    for entry in result["guides"] + result["brands"]:
+        for standard, affiliate in (("purchaseUrl", "affiliateUrl"), ("cartUrl", "affiliateCartUrl")):
+            if affiliate in entry:
+                entry[standard] = entry.pop(affiliate)
+    for guide in result["guides"]:
+        for pack in guide["packs"]:
+            for model in pack["models"]:
+                for colour in model["colours"]:
+                    if "affiliateUrl" in colour:
+                        colour["purchaseUrl"] = colour.pop("affiliateUrl")
+    return result
+
+
 if __name__ == "__main__":
     root = Path(__file__).resolve().parent
     feed = build(root)
-    (root / "catalogue.json").write_text(json.dumps(feed, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    (root / "catalogue.json").write_text(json.dumps(legacy_feed(feed), indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    (root / "catalogue-v2.json").write_text(json.dumps(feed, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     print(f"Built catalogue.json with {len(feed['guides'])} guides.")

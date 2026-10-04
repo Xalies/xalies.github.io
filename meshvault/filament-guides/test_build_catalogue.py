@@ -17,13 +17,30 @@ builder = module("build-catalogue")
 identities = module("build-identities")
 
 class CatalogueTests(unittest.TestCase):
+    def test_opt_out_feed_preserves_standard_links_and_legacy_feed_keeps_affiliates(self):
+        feed = builder.build(ROOT)
+        legacy = builder.legacy_feed(feed)
+        guide = next(g for g in feed["guides"] if g["brand"] == "Numakers")
+        old = next(g for g in legacy["guides"] if g["brand"] == "Numakers")
+        self.assertEqual(guide["cartUrl"], "https://numakers.com/cart")
+        self.assertEqual(old["cartUrl"], guide["affiliateCartUrl"])
+        self.assertNotIn("affiliateCartUrl", old)
+        for brand in feed["brands"]:
+            if brand.get("affiliateUrl"):
+                self.assertNotEqual(brand["purchaseUrl"], brand["affiliateUrl"])
+                self.assertNotIn("meshvault", brand["purchaseUrl"])
+        for entry in ({"affiliateUrl": "https://affiliate.example.test/item"},
+                      {"affiliateCartUrl": "https://shop.example.test/cart?ref=meshvault"}):
+            with self.assertRaises(ValueError): builder.validate_affiliate_links(entry)
+
     def test_october_guide_uses_exact_numakers_references_and_published_swatches(self):
         source = json.loads((ROOT / "guides/nostalgic-3d-2026-10.json").read_text(encoding="utf-8"))
         self.assertTrue(all(c["hex"] is None for p in source["packs"] for m in p["models"] for c in m["colours"]))
         guide = next(g for g in builder.build(ROOT)["guides"] if g["release"] == "October 2026")
         self.assertEqual(guide["documentHash"], "039e91f1f60751199b5728388907b5e1e7a13f2a1357591d19eaffafc4eb3deb")
         self.assertEqual([len(p["models"]) for p in guide["packs"]], [10, 8, 8, 8])
-        self.assertEqual(guide["cartUrl"], "https://numakers.com/cart?ref=meshvault")
+        self.assertEqual(guide["cartUrl"], "https://numakers.com/cart")
+        self.assertEqual(guide["affiliateCartUrl"], "https://numakers.com/cart?ref=meshvault")
         for pack in guide["packs"]:
             for model in pack["models"]:
                 for colour in model["colours"]:
@@ -33,7 +50,8 @@ class CatalogueTests(unittest.TestCase):
                         self.assertRegex(colour["hex"], r"^#[0-9A-F]{6}$")
                         self.assertTrue(colour["hexSourceUrl"].startswith("https://numakers.com/products/"))
                     self.assertTrue(colour["purchaseUrl"].startswith("https://numakers.com/products/"))
-                    self.assertIn("?ref=meshvault&variant=" + colour["purchaseCode"], colour["purchaseUrl"])
+                    self.assertIn("?ref=meshvault&variant=" + colour["purchaseCode"], colour["affiliateUrl"])
+                    self.assertNotIn("ref=", colour["purchaseUrl"])
         self.assertEqual([c["name"] for c in guide["packs"][3]["models"][3]["colours"]], ["Simply Silver", "Teal Blue"])
 
     def test_affiliate_rules_preserve_variant_selection_and_survive_refresh(self):

@@ -2,7 +2,7 @@
   "schemaVersion": 2,
   "brand": "Overture",
   "sourceUrl": "https://overture3d.com/collections/all/products.json",
-  "purchaseUrl": "https://overture3d.com/collections/all?aff=256",
+  "purchaseUrl": "https://overture3d.com/collections/all",
   "purchaseLabel": "Overture",
   "products": [
     {
@@ -7561,5 +7561,6 @@
       ],
       "preferredPurchaseCode": "46506554392830"
     }
-  ]
+  ],
+  "affiliateUrl": "https://overture3d.com/collections/all?aff=256"
 }

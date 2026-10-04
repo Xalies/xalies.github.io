@@ -2,7 +2,7 @@
   "schemaVersion": 2,
   "brand": "SUNLU",
   "sourceUrl": "https://store.sunlu.com/products.json",
-  "purchaseUrl": "https://store.sunlu.com/collections/?sca_ref=12477616.r65NSOHEnL",
+  "purchaseUrl": "https://store.sunlu.com/collections/",
   "purchaseLabel": "SUNLU",
   "products": [
     {
@@ -22338,5 +22338,6 @@
       "kind": "resin",
       "preferredPurchaseCode": "39992391172182"
     }
-  ]
+  ],
+  "affiliateUrl": "https://store.sunlu.com/collections/?sca_ref=12477616.r65NSOHEnL"
 }
