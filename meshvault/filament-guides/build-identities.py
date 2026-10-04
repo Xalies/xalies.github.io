@@ -5,8 +5,17 @@ not competing colour matches. Different published palettes stay distinct.
 """
 import hashlib
 import json
+import re
 from pathlib import Path
 from urllib.parse import parse_qs, urlsplit
+
+
+def is_single_item(row):
+    label = row.get("variant", row["name"])
+    return not re.search(r"\b(?:MOQ|bundle|bulk|multipack)\b|\bget\s+\d+\s+for\b|"
+                         r"\b(?:[2-9]\d*|1\d+)\s*[- ]?\s*(?:pack|rolls|spools|bottles)\b|"
+                         r"\b(?:pack|rolls|spools|bottles)\s+of\s+(?:[2-9]\d*|1\d+)\b|"
+                         r"(?:kg|g)\s*[x*×]\s*(?:[2-9]\d*|1\d+)\b", label, re.I)
 
 
 def build(snapshot, previous=None):
@@ -17,10 +26,14 @@ def build(snapshot, previous=None):
             code = "filament-" + hashlib.sha256(json.dumps(key, ensure_ascii=False).encode()).hexdigest()[:20]
             groups[key] = {"range": row["range"], "name": row["name"], "hexes": row["hexes"],
                            "profileId": row.get("profileId"), "code": code, "purchaseOptions": []}
+            if row.get("kind") == "resin":
+                groups[key]["kind"] = "resin"
         identity = groups[key]
+        if row.get("kind", "filament") != identity.get("kind", "filament"):
+            raise ValueError("Conflicting material kinds for " + str(key))
         if identity["profileId"] != row.get("profileId"):
             raise ValueError("Conflicting slicer family IDs for " + str(key))
-        if row.get("purchaseUrl"):
+        if row.get("purchaseUrl") and is_single_item(row):
             query = parse_qs(urlsplit(row["purchaseUrl"]).query)
             code = (query.get("variant") or query.get("id") or [row["code"]])[0]
             identity["purchaseOptions"].append({"code": code, "label": row.get("variant", row["name"]),

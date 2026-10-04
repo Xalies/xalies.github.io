@@ -1057,25 +1057,11 @@
           "sku": "VFEBLK17511"
         },
         {
-          "code": "47801985171710",
-          "label": "Overture High Speed PETG 3D Printer Filament 1.75mm - 2 Pack / Black",
-          "purchaseUrl": "https://overture3d.com/products/high-speed-petg-3d-printer-filament-1-75mm-2-pack?variant=47801985171710",
-          "available": true,
-          "sku": "BUNDLE-PETGBLK2"
-        },
-        {
           "code": "46506522509566",
           "label": "Overture High Speed PETG 3D Printer Filament 1.75mm - 2kg / Black / 1.75mm / 2 kg",
           "purchaseUrl": "https://overture3d.com/products/overture-high-speed-petg-3d-printer-filament-1-75mm-2-kg?variant=46506522509566",
           "available": true,
           "sku": "VSB010006"
-        },
-        {
-          "code": "47956137771262",
-          "label": "Overture High Speed PETG 3D Printer Filament 1.75mm - 4 Pack / Black",
-          "purchaseUrl": "https://overture3d.com/products/overture-high-speed-petg-3d-printer-filament-1-75mm-4-pack-1?variant=47956137771262",
-          "available": true,
-          "sku": "BUNDLE-PETGBLK4"
         },
         {
           "code": "47753934176510",
@@ -1100,20 +1086,6 @@
           "purchaseUrl": "https://overture3d.com/products/overture-high-speed-petg?variant=42224802627838",
           "available": true,
           "sku": "VFEWTE17511"
-        },
-        {
-          "code": "47801985204478",
-          "label": "Overture High Speed PETG 3D Printer Filament 1.75mm - 2 Pack / White",
-          "purchaseUrl": "https://overture3d.com/products/high-speed-petg-3d-printer-filament-1-75mm-2-pack?variant=47801985204478",
-          "available": true,
-          "sku": "BUNDLE-PETGWTE2"
-        },
-        {
-          "code": "47956137804030",
-          "label": "Overture High Speed PETG 3D Printer Filament 1.75mm - 4 Pack / White",
-          "purchaseUrl": "https://overture3d.com/products/overture-high-speed-petg-3d-printer-filament-1-75mm-4-pack-1?variant=47956137804030",
-          "available": true,
-          "sku": "BUNDLE-PETGWTE4"
         },
         {
           "code": "47753934209278",
@@ -2552,20 +2524,6 @@
           "purchaseUrl": "https://overture3d.com/products/overture-matte-pla?variant=32981343633485",
           "available": true,
           "sku": "VFFMWT17511"
-        },
-        {
-          "code": "47991229153534",
-          "label": "Overture Matte PLA 3D Printer Filament 1.75mm - 2 Pack / White",
-          "purchaseUrl": "https://overture3d.com/products/overture-matte-pla-3d-printer-filament-1-75mm-2-pack-1?variant=47991229153534",
-          "available": true,
-          "sku": "BUNDLE-MPAWTE2"
-        },
-        {
-          "code": "47991647502590",
-          "label": "Overture Matte PLA 3D Printer Filament 1.75mm - 4 Pack / White",
-          "purchaseUrl": "https://overture3d.com/products/overture-matte-pla-3d-printer-filament-1-75mm-4-pack?variant=47991647502590",
-          "available": true,
-          "sku": null
         }
       ],
       "preferredPurchaseCode": "32981343633485"
@@ -2583,20 +2541,6 @@
           "purchaseUrl": "https://overture3d.com/products/overture-matte-pla?variant=32981343600717",
           "available": true,
           "sku": "VFFMBK17511"
-        },
-        {
-          "code": "47991229186302",
-          "label": "Overture Matte PLA 3D Printer Filament 1.75mm - 2 Pack / Black",
-          "purchaseUrl": "https://overture3d.com/products/overture-matte-pla-3d-printer-filament-1-75mm-2-pack-1?variant=47991229186302",
-          "available": true,
-          "sku": "BUNDLE-MPABLK2"
-        },
-        {
-          "code": "47991647535358",
-          "label": "Overture Matte PLA 3D Printer Filament 1.75mm - 4 Pack / Black",
-          "purchaseUrl": "https://overture3d.com/products/overture-matte-pla-3d-printer-filament-1-75mm-4-pack?variant=47991647535358",
-          "available": true,
-          "sku": null
         }
       ],
       "preferredPurchaseCode": "32981343600717"
@@ -3697,13 +3641,6 @@
       "code": "filament-2ae3533ec52bfda4b029",
       "purchaseOptions": [
         {
-          "code": "47929260507390",
-          "label": "Overture PLA 3D Printer Filament 1.75mm - 2 Pack / White",
-          "purchaseUrl": "https://overture3d.com/products/overture-pla-3d-printer-filament-1-75mm-2-pack-1?variant=47929260507390",
-          "available": true,
-          "sku": "BUNDLE-PLAWTE2"
-        },
-        {
           "code": "43792173138174",
           "label": "Overture PLA 3D Printer Filament 1.75mm - 2kg / White / 1.75mm / 2 kg",
           "purchaseUrl": "https://overture3d.com/products/overture-pla-3d-printing-filament-2kg?variant=43792173138174",
@@ -3716,13 +3653,6 @@
           "purchaseUrl": "https://overture3d.com/products/overture-pla-3d-printer-filament-1-75mm-3-kg?variant=43802109772030",
           "available": true,
           "sku": "OVS-VFPWHE13-010110"
-        },
-        {
-          "code": "47958098182398",
-          "label": "Overture PLA 3D Printer Filament 1.75mm - 4 Pack / White",
-          "purchaseUrl": "https://overture3d.com/products/overture-pla-3d-printer-filament-1-75mm-4-pack-1?variant=47958098182398",
-          "available": true,
-          "sku": "BUNDLE-PLAWTE4"
         },
         {
           "code": "48041533112574",
@@ -3742,13 +3672,6 @@
       "code": "filament-386c8d5aebd7e6769116",
       "purchaseOptions": [
         {
-          "code": "47929260540158",
-          "label": "Overture PLA 3D Printer Filament 1.75mm - 2 Pack / Black",
-          "purchaseUrl": "https://overture3d.com/products/overture-pla-3d-printer-filament-1-75mm-2-pack-1?variant=47929260540158",
-          "available": false,
-          "sku": "BUNDLE-PLABLK2"
-        },
-        {
           "code": "43792374726910",
           "label": "Overture PLA 3D Printer Filament 1.75mm - 2kg / Black / 1.75mm / 2 kg",
           "purchaseUrl": "https://overture3d.com/products/overture-pla-3d-printing-filament-2kg?variant=43792374726910",
@@ -3761,13 +3684,6 @@
           "purchaseUrl": "https://overture3d.com/products/overture-pla-3d-printer-filament-1-75mm-3-kg?variant=43802109804798",
           "available": true,
           "sku": "OVS-VFPBLK13-010109"
-        },
-        {
-          "code": "47958098215166",
-          "label": "Overture PLA 3D Printer Filament 1.75mm - 4 Pack / Black",
-          "purchaseUrl": "https://overture3d.com/products/overture-pla-3d-printer-filament-1-75mm-4-pack-1?variant=47958098215166",
-          "available": false,
-          "sku": "BUNDLE-PLABLK4"
         },
         {
           "code": "47101286842622",
@@ -4380,16 +4296,7 @@
       "hexes": [],
       "profileId": null,
       "code": "filament-5d2d43a4bd2575ec02e1",
-      "purchaseOptions": [
-        {
-          "code": "47991657070846",
-          "label": "Overture PLA Professional 3D Printer Filament 1.75mm - 2 Pack / Black",
-          "purchaseUrl": "https://overture3d.com/products/overture-pla-professional-3d-printer-filament-1-75mm-1?variant=47991657070846",
-          "available": true,
-          "sku": "BUNDLE-PPOBLK2"
-        }
-      ],
-      "preferredPurchaseCode": "47991657070846"
+      "purchaseOptions": []
     },
     {
       "range": "PLA Professional",
@@ -4397,16 +4304,7 @@
       "hexes": [],
       "profileId": null,
       "code": "filament-aa17e4e6d00f46c741ce",
-      "purchaseOptions": [
-        {
-          "code": "47994498384126",
-          "label": "Overture PLA Professional 3D Printer Filament 1.75mm - 2 Pack / White",
-          "purchaseUrl": "https://overture3d.com/products/overture-pla-professional-3d-printer-filament-1-75mm-1?variant=47994498384126",
-          "available": true,
-          "sku": "BUNDLE-PPOWTE2"
-        }
-      ],
-      "preferredPurchaseCode": "47994498384126"
+      "purchaseOptions": []
     },
     {
       "range": "PLA Professional Gradient",

@@ -9,9 +9,9 @@ The website/GitHub feed is the authoritative catalogue. MeshVault downloads a va
 - `guides/*.json`: separate reviewed PDF recommendations. PDF extraction and further matching work are outside this catalogue restructuring pass.
 - `catalogue.json`: the generated public feed. Its version 1 envelope carries `guides` and `brands`; individual brand entries use schema version 2.
 
-An identity contains a stable `code`, `range`, colour `name`, published `hexes`, optional verified slicer `profileId`, and optional reviewed range `aliases`. Spool size, packaging and refill choices belong in its `purchaseOptions`. Each option has its store `code`, `label`, `purchaseUrl`, optional `sku` and snapshot `available` flag. `preferredPurchaseCode` explicitly chooses the default option. Optional `affiliateUrl` overrides that option's outbound link; keep the supplier URL as its source reference. All links must be HTTPS without credentials.
+An identity describes one filament or printing-resin material/colour. Optional `kind` is `resin`; omission means `filament`. Resin identities cannot match embedded filament profiles. An identity contains a stable `code`, `range`, colour `name`, published `hexes`, optional verified slicer `profileId`, and optional reviewed range `aliases`. Individual spool sizes, single refills and resin bottle sizes belong in its `purchaseOptions`. Multipacks, bulk/minimum-order offers and mixed bundles are excluded. Identities available only in those offers may remain without a purchase link; maintenance snapshots retain the underlying supplier evidence. Each option has its store `code`, `label`, `purchaseUrl`, optional `sku` and snapshot `available` flag. `preferredPurchaseCode` explicitly chooses the default option. Optional `affiliateUrl` overrides that option's outbound link; keep the supplier URL as its source reference. All links must be HTTPS without credentials.
 
-Identity grouping uses the supplier's range, colour name and published palette. Different published palettes remain separate, including unknown palettes: incomplete evidence never gets guessed into a known colour. Supplier label/hex changes can create a new identity and need review before publication. Matching evaluates each identity once, regardless of the number of purchase options. Exact vendor/profile/colour evidence is required for 3MF matching; unverified identities remain available for explicit guide references and manual catalogue maintenance.
+Identity grouping uses the supplier's range, colour name and published palette. Different published palettes remain separate, including unknown palettes: incomplete evidence never gets guessed into a known colour. Supplier label/hex changes can create a new identity and need review before publication. Matching evaluates each identity once, regardless of the number of purchase options. Exact vendor/profile/colour evidence is required for embedded filament matching; resin matching is separate work; unverified identities remain available for explicit guide references and manual catalogue maintenance.
 
 The initial preferred-option rule favours a complete spool, 1 kg, then availability. Review this choice before publishing. Subsequent rebuilds preserve reviewed preferred options, aliases, slicer IDs and affiliate overrides when the identity and option still exist. Availability is a snapshot, not a promise of current stock. Do not add credentials or infer physical filament colour from a photograph.
 
@@ -22,7 +22,8 @@ The initial preferred-option rule favours a complete spool, 1 kg, then availabil
 | Bambu Lab | 318 | 274 | 46 |
 | Polymaker | 730 | 974 | 78 |
 | Numakers | 151 | 156 | 16 |
-| Overture | 404 | 454 | 26 |
+| Overture | 404 | 440 | 26 |
+| SUNLU | 599 | 2051 | 72 |
 
 Bambu colour/range evidence comes from its official Bambu Studio `filaments_color_codes.json`. Links reviewed against the AU store use the neutral `store.bambulab.com` domain with `id=` SKU selection. Retired or regionally absent colours retain their identity without purchase options. AU redirects were checked previously; other regions and native Chrome navigation remain separate runtime checks.
 
@@ -30,7 +31,9 @@ Polymaker source data includes every individual filament variant in its official
 
 Numakers uses its official paginated Shopify product feed. Included products cover PLA+, Matte, CF, Metallic, Silk, dual/tri-colour Silk, Marble, Starlight, Glow, Wood, PETG-HS, Translucent PETG, PETG-CF, ABS, ASA and the older-formula clearance listing. Hardware, swatch sets, gift cards, subscriptions, bundle packs and Printopia landing pages are excluded. The source has no verified colour hexes or slicer family IDs, so those fields remain empty/null. Product and colour names, SKUs, availability and exact variant purchase links are retained. Adding this supplier does not invent 3MF matching evidence.
 
-Overture uses the official paginated all-filaments collection feed. Named colour variants include larger spools, refills and single-colour multipacks as purchase options. Bundles without explicit colour choices are excluded. Published material titles keep regular and High Speed PLA, dual-colour and gradient finishes distinct; differently named ranges are not assumed equivalent. The source provides no verified filament hexes or slicer IDs, so these stay empty/null. Exact variant links, SKUs and availability are retained. No unverified cart endpoint is configured.
+Overture uses the official paginated all-filaments collection feed. Named colour variants include larger individual spools and single refills as purchase options. Multipacks are excluded. Bundles without explicit colour choices are excluded. Published material titles keep regular and High Speed PLA, dual-colour and gradient finishes distinct; differently named ranges are not assumed equivalent. The source provides no verified filament hexes or slicer IDs, so these stay empty/null. Exact variant links, SKUs and availability are retained. No unverified cart endpoint is configured.
+
+SUNLU uses its official paginated store product feed, including regional and clearance listings. Reviewed supplier labels and listing ranges live in `sunlu-ranges.json`, outside the app. Individual filaments include regular, high-speed, aesthetic and engineering ranges; printing resins include Standard, Standard Plus, ABS-Like, Water-Wash, Nylon-Like, High Clear, High Toughness, High Temperature, Red Wax and 14K variants. Classic Formula resin remains distinct from current formulas. There are 498 filament and 101 resin identities. Shipping region, weight and refill wording stay in eligible purchase option labels. Exact URLs and SKUs are retained. Bulk/minimum-order offers, multipacks, mixed-spool bundles, hardware, mystery packs and resin mixing kits are excluded from purchase options. Named dual/tri/four-colour strands remain valid individual filaments. Entries with no published colour label use `Unspecified colour`; unknown synonyms stay separate for later review. No unverified filament hexes, slicer IDs or cart endpoint are assumed. Regional selection and stock still need checking on the store page.
 
 ## Refresh and publish
 
@@ -41,6 +44,7 @@ python meshvault/filament-guides/update-bambu.py
 python meshvault/filament-guides/update-polymaker.py
 python meshvault/filament-guides/update-numakers.py
 python meshvault/filament-guides/update-overture.py
+python meshvault/filament-guides/update-sunlu.py
 python meshvault/filament-guides/build-identities.py
 python meshvault/filament-guides/build-catalogue.py
 python meshvault/filament-guides/test_build_catalogue.py

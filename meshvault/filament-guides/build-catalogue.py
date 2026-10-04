@@ -29,6 +29,8 @@ def build(root):
             raise ValueError("Duplicate filament identity")
         codes = []
         for product in brand.get("products", []):
+            if product.get("kind", "filament") not in ("filament", "resin"):
+                raise ValueError("Invalid material kind")
             options = product.get("purchaseOptions", [])
             preferred = product.get("preferredPurchaseCode")
             if (options and sum(o["code"] == preferred for o in options) != 1) or (not options and preferred is not None):

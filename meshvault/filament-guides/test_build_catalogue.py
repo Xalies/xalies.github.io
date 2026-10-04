@@ -71,14 +71,15 @@ class CatalogueTests(unittest.TestCase):
         snapshots = {value["brand"]: value for path in (ROOT / "store-catalogues").glob("*.json")
                      for value in [json.loads(path.read_text(encoding="utf-8"))]}
         expected = {"Bambu Lab": (318, 274, 46), "Polymaker": (730, 974, 78), "Numakers": (151, 156, 16),
-                    "Overture": (404, 454, 26)}
+                    "Overture": (404, 440, 26), "SUNLU": (599, 2051, 72)}
         for brand in feed["brands"]:
             products = brand["products"]
             self.assertEqual(brand["schemaVersion"], 2)
             self.assertEqual((len(products), sum(len(p["purchaseOptions"]) for p in products), len({p["range"] for p in products})), expected[brand["brand"]])
             self.assertEqual(len({p["code"] for p in products}), len(products))
             self.assertEqual(sorted(o["purchaseUrl"] for p in products for o in p["purchaseOptions"]),
-                             sorted(p["purchaseUrl"] for p in snapshots[brand["brand"]]["products"] if p.get("purchaseUrl")))
+                             sorted(p["purchaseUrl"] for p in snapshots[brand["brand"]]["products"]
+                                    if p.get("purchaseUrl") and identities.is_single_item(p)))
             for product in products:
                 for option in product["purchaseOptions"]: builder.validate_url(option["purchaseUrl"])
 
@@ -112,10 +113,56 @@ class CatalogueTests(unittest.TestCase):
         brand = identities.build({"brand": "Overture", "products": rows})
         self.assertEqual(len(brand["products"]), 4)
         pla = next(p for p in brand["products"] if p["range"] == "PLA")
-        self.assertEqual(len(pla["purchaseOptions"]), 3)
+        self.assertEqual(len(pla["purchaseOptions"]), 2)
         self.assertEqual(pla["preferredPurchaseCode"], "3")
         self.assertEqual({p["range"] for p in brand["products"]},
                          {"PLA", "High Speed PLA", "Matte PLA Dual Colors", "Matte PLA Gradient"})
         self.assertTrue(all(p["hexes"] == [] and p["profileId"] is None for p in brand["products"]))
+
+    def test_sunlu_preserves_regions_and_distinguishes_strands_from_mixed_spools(self):
+        importer = module("update-sunlu")
+        rules = json.loads((ROOT / "sunlu-ranges.json").read_text(encoding="utf-8"))
+        product = {"handle": "combined-listing", "title": "Regional filament choices",
+                   "options": [{"name": "Shipment"}, {"name": "Material"}, {"name": "Color"}],
+                   "variants": [{"id": i, "sku": str(i), "available": True, "option1": region,
+                       "option2": material, "option3": colour, "title": region + " / " + material + " / " + colour}
+                       for i, (region, material, colour) in enumerate([
+                           ("USA", "PLA+", "PLA+ Black 1KG"), ("Australia", "PLA+ Refill", "Black 1KG"),
+                           ("USA", "PA6-CF", "PA6-CF | Black 0.5KG"), ("USA", "PA6-CF", "PA6-CF | Black 1KG"),
+                           ("USA", "PLA", "Black+White+Red"), ("USA", "PLA", "Black*2+White*1"),
+                           ("USA", "Dual-Color SILK", "Dual-Color | Black+Purple"),
+                           ("USA", "Standard Resin", "Grey 1KG"), ("USA", "E2 FilaDryer", "Black")], 1)]}
+        rows = importer.rows_from_products([product], rules)
+        self.assertEqual(len(rows), 6)
+        brand = identities.build({"brand": "SUNLU", "products": rows})
+        self.assertEqual(len(brand["products"]), 4)
+        pla = next(p for p in brand["products"] if p["range"] == "PLA+")
+        self.assertEqual(pla["name"], "Black")
+        self.assertEqual(len(pla["purchaseOptions"]), 2)
+        self.assertTrue(any("Australia" in o["label"] for o in pla["purchaseOptions"]))
+        self.assertEqual(len(next(p for p in brand["products"] if p["range"] == "PA6-CF")["purchaseOptions"]), 2)
+        self.assertEqual(next(p for p in brand["products"] if p["range"] == "Dual-Color SILK")["name"], "Black+Purple")
+        choices = {"handle": "unknown-listing", "title": "Special choices", "options": [{"name": "Material"}],
+                   "variants": [{"id": i, "sku": str(i), "available": True, "option1": label, "title": label}
+                                for i, label in enumerate(("Twinkle Blue", "Unknown product"), 1)]}
+        self.assertEqual(len(importer.rows_from_products([choices], rules)), 1)
+        bundled = json.loads((ROOT / "brands/sunlu.json").read_text(encoding="utf-8"))
+        self.assertTrue(any(p["range"] == "PLA-CF" and p["name"] == "Unspecified colour" for p in bundled["products"]))
+        self.assertTrue(all(p["profileId"] is None and p["hexes"] == [] for p in bundled["products"]))
+        self.assertEqual(sum(p.get("kind") == "resin" for p in bundled["products"]), 101)
+        self.assertFalse(any("dryer" in p["range"].lower() for p in bundled["products"]))
+        self.assertTrue(all("+" not in p["name"] or p["range"] in
+                            ("Dual-Color SILK", "Tri-Color SILK", "Four-Color SILK", "Matte PLA Dual-Color") for p in bundled["products"]))
+
+    def test_purchase_options_are_single_spools_refills_or_bottles(self):
+        for label in ("2 Pack / Black", "10 Pack / White", "Pack of 12", "1kg*6", "500g × 8",
+                      "[MOQ: 6KG] PLA Black", "Get 3 for the Price of 2", "Bundle White*3"):
+            self.assertFalse(identities.is_single_item({"name": "Black", "variant": label}), label)
+        for label in ("Spool / 3kg", "Refill / 1 kg", "Bottle / 4000g", "Black / New Packaging / 1kg", "Dual-Color | Black+Purple"):
+            self.assertTrue(identities.is_single_item({"name": "Black", "variant": label}), label)
+        self.assertEqual(module("update-sunlu").clean("Grey1000G | Not included in Discounts"), "Grey")
+        resin = identities.build({"brand": "Example", "products": [{"range": "Standard Resin", "name": "Grey",
+            "kind": "resin", "hexes": [], "code": "1"}]})["products"][0]
+        self.assertEqual(resin["kind"], "resin")
 
 if __name__ == "__main__": unittest.main()
