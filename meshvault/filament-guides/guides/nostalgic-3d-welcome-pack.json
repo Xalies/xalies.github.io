@@ -28,27 +28,32 @@
             {
               "name": "Red",
               "hex": "#E72F1D",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271796793"
             },
             {
               "name": "Black",
               "hex": "#0A0A0A",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271731257"
             },
             {
               "name": "White",
               "hex": "#FAFAFA",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271895097"
             },
             {
               "name": "Yellow",
               "hex": "#FFE800",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271567417"
             },
             {
               "name": "Orange",
               "hex": "#F67405",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271665721"
             }
           ]
         },
@@ -62,22 +67,26 @@
             {
               "name": "Azure Blue",
               "hex": "#0066D9",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271141433"
             },
             {
               "name": "Black",
               "hex": "#0A0A0A",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271731257"
             },
             {
               "name": "White",
               "hex": "#FAFAFA",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271895097"
             },
             {
               "name": "Wood Brown",
               "hex": "#AB7449",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "43631458320441"
             }
           ]
         },
@@ -91,22 +100,26 @@
             {
               "name": "Forrest Green",
               "hex": "#60AD70",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "43631458680889"
             },
             {
               "name": "Silk Gold",
               "hex": "#C49449",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "43637561196601"
             },
             {
               "name": "Black",
               "hex": "#0A0A0A",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271731257"
             },
             {
               "name": "White",
               "hex": "#FAFAFA",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271895097"
             }
           ]
         },
@@ -120,22 +133,26 @@
             {
               "name": "Pink",
               "hex": "#F1A1AF",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271632953"
             },
             {
               "name": "Cream",
               "hex": "#EED1A8",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271239737"
             },
             {
               "name": "Black",
               "hex": "#0A0A0A",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271731257"
             },
             {
               "name": "White",
               "hex": "#FAFAFA",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271895097"
             }
           ]
         },
@@ -149,22 +166,26 @@
             {
               "name": "Red",
               "hex": "#E72F1D",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271796793"
             },
             {
               "name": "Yellow",
               "hex": "#FFE800",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271567417"
             },
             {
               "name": "Black",
               "hex": "#0A0A0A",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271731257"
             },
             {
               "name": "White",
               "hex": "#FAFAFA",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271895097"
             }
           ]
         },
@@ -178,17 +199,20 @@
             {
               "name": "Purple",
               "hex": "#6C47B2",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271600185"
             },
             {
               "name": "Black",
               "hex": "#0A0A0A",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271731257"
             },
             {
               "name": "White",
               "hex": "#FAFAFA",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271895097"
             }
           ]
         }
@@ -212,42 +236,50 @@
             {
               "name": "Purple",
               "hex": "#6C47B2",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271600185"
             },
             {
               "name": "Brown",
               "hex": "#55331A",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271338041"
             },
             {
               "name": "Yellow",
               "hex": "#FFE800",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271567417"
             },
             {
               "name": "White",
               "hex": "#FAFAFA",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271895097"
             },
             {
               "name": "Red",
               "hex": "#E72F1D",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271796793"
             },
             {
               "name": "Pink",
               "hex": "#F1A1AF",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271632953"
             },
             {
               "name": "Black",
               "hex": "#0A0A0A",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271731257"
             },
             {
               "name": "Green",
               "hex": "#06924D",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271698489"
             }
           ]
         },
@@ -261,42 +293,50 @@
             {
               "name": "Purple",
               "hex": "#6C47B2",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271600185"
             },
             {
               "name": "Brown",
               "hex": "#55331A",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271338041"
             },
             {
               "name": "Yellow",
               "hex": "#FFE800",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271567417"
             },
             {
               "name": "White",
               "hex": "#FAFAFA",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271895097"
             },
             {
               "name": "Red",
               "hex": "#E72F1D",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271796793"
             },
             {
               "name": "Silk Silver",
               "hex": "#BCC2C8",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "43637561458745"
             },
             {
               "name": "Black",
               "hex": "#0A0A0A",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271731257"
             },
             {
               "name": "Green",
               "hex": "#06924D",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271698489"
             }
           ]
         },
@@ -310,37 +350,44 @@
             {
               "name": "Red",
               "hex": "#E72F1D",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271796793"
             },
             {
               "name": "Brown",
               "hex": "#55331A",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271338041"
             },
             {
               "name": "Yellow",
               "hex": "#FFE800",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271567417"
             },
             {
               "name": "White",
               "hex": "#FAFAFA",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271895097"
             },
             {
               "name": "Silk Silver",
               "hex": "#BCC2C8",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "43637561458745"
             },
             {
               "name": "Black",
               "hex": "#0A0A0A",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271731257"
             },
             {
               "name": "Green",
               "hex": "#06924D",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271698489"
             }
           ]
         },
@@ -354,37 +401,44 @@
             {
               "name": "Orange",
               "hex": "#F67405",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271665721"
             },
             {
               "name": "Brown",
               "hex": "#55331A",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271338041"
             },
             {
               "name": "Yellow",
               "hex": "#FFE800",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271567417"
             },
             {
               "name": "White",
               "hex": "#FAFAFA",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271895097"
             },
             {
               "name": "Silk Silver",
               "hex": "#BCC2C8",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "43637561458745"
             },
             {
               "name": "Black",
               "hex": "#0A0A0A",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271731257"
             },
             {
               "name": "Green",
               "hex": "#06924D",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271698489"
             }
           ]
         },
@@ -397,42 +451,50 @@
             {
               "name": "Green",
               "hex": "#06924D",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271698489"
             },
             {
               "name": "Cream",
               "hex": "#EED1A8",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271239737"
             },
             {
               "name": "Purple",
               "hex": "#6C47B2",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271600185"
             },
             {
               "name": "Black",
               "hex": "#0A0A0A",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271731257"
             },
             {
               "name": "Steel Grey",
               "hex": "#616469",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271829561"
             },
             {
               "name": "Grey",
               "hex": "#8C9099",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271862329"
             },
             {
               "name": "Silk Silver",
               "hex": "#BCC2C8",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "43637561458745"
             },
             {
               "name": "White",
               "hex": "#FAFAFA",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271895097"
             }
           ]
         },
@@ -445,37 +507,44 @@
             {
               "name": "Brown",
               "hex": "#55331A",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271338041"
             },
             {
               "name": "Cream",
               "hex": "#EED1A8",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271239737"
             },
             {
               "name": "Magenta",
               "hex": "#F24574",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271174201"
             },
             {
               "name": "Yellow",
               "hex": "#FFE800",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271567417"
             },
             {
               "name": "Pink",
               "hex": "#F1A1AF",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271632953"
             },
             {
               "name": "Black",
               "hex": "#0A0A0A",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271731257"
             },
             {
               "name": "White",
               "hex": "#FAFAFA",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271895097"
             }
           ]
         }
@@ -499,37 +568,44 @@
             {
               "name": "Red",
               "hex": "#E72F1D",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271796793"
             },
             {
               "name": "Black",
               "hex": "#0A0A0A",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271731257"
             },
             {
               "name": "White",
               "hex": "#FAFAFA",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271895097"
             },
             {
               "name": "Yellow",
               "hex": "#FFE800",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271567417"
             },
             {
               "name": "Orange",
               "hex": "#F67405",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271665721"
             },
             {
               "name": "Polymaker Teal",
               "hex": "#4CC0C7",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271272505"
             },
             {
               "name": "Pink",
               "hex": "#F1A1AF",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271632953"
             }
           ]
         },
@@ -542,42 +618,50 @@
             {
               "name": "Azure Blue",
               "hex": "#0066D9",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271141433"
             },
             {
               "name": "Aqua Blue",
               "hex": "#5EBDDB",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271403577"
             },
             {
               "name": "Black",
               "hex": "#0A0A0A",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271731257"
             },
             {
               "name": "White",
               "hex": "#FAFAFA",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271895097"
             },
             {
               "name": "Wood Brown",
               "hex": "#AB7449",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "43631458320441"
             },
             {
               "name": "Red",
               "hex": "#E72F1D",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271796793"
             },
             {
               "name": "Grey",
               "hex": "#8C9099",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271862329"
             },
             {
               "name": "Yellow",
               "hex": "#FFE800",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271567417"
             }
           ]
         },
@@ -590,42 +674,50 @@
             {
               "name": "Forrest Green",
               "hex": "#60AD70",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "43631458680889"
             },
             {
               "name": "Jungle Green",
               "hex": "#4E742D",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271501881"
             },
             {
               "name": "Red",
               "hex": "#E72F1D",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271796793"
             },
             {
               "name": "Magenta",
               "hex": "#F24574",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271174201"
             },
             {
               "name": "Yellow",
               "hex": "#FFE800",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271567417"
             },
             {
               "name": "Brown",
               "hex": "#55331A",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271338041"
             },
             {
               "name": "Black",
               "hex": "#0A0A0A",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271731257"
             },
             {
               "name": "White",
               "hex": "#FAFAFA",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271895097"
             }
           ]
         },
@@ -638,37 +730,44 @@
             {
               "name": "Yellow",
               "hex": "#FFE800",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271567417"
             },
             {
               "name": "Lemon Yellow",
               "hex": "#EED230",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271305273"
             },
             {
               "name": "Red",
               "hex": "#E72F1D",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271796793"
             },
             {
               "name": "Brown",
               "hex": "#55331A",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271338041"
             },
             {
               "name": "Pink",
               "hex": "#F1A1AF",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271632953"
             },
             {
               "name": "Black",
               "hex": "#0A0A0A",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271731257"
             },
             {
               "name": "White",
               "hex": "#FAFAFA",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271895097"
             }
           ]
         }
@@ -691,27 +790,32 @@
             {
               "name": "Pink",
               "hex": "#F1A1AF",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271632953"
             },
             {
               "name": "Azure Blue",
               "hex": "#0066D9",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271141433"
             },
             {
               "name": "White",
               "hex": "#FAFAFA",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271895097"
             },
             {
               "name": "Red",
               "hex": "#E72F1D",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271796793"
             },
             {
               "name": "Black",
               "hex": "#0A0A0A",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271731257"
             }
           ]
         },
@@ -724,37 +828,44 @@
             {
               "name": "Pink",
               "hex": "#F1A1AF",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271632953"
             },
             {
               "name": "Azure Blue",
               "hex": "#0066D9",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271141433"
             },
             {
               "name": "White",
               "hex": "#FAFAFA",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271895097"
             },
             {
               "name": "Red",
               "hex": "#E72F1D",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271796793"
             },
             {
               "name": "Black",
               "hex": "#0A0A0A",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271731257"
             },
             {
               "name": "Brown",
               "hex": "#55331A",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271338041"
             },
             {
               "name": "Yellow",
               "hex": "#FFE800",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271567417"
             }
           ]
         },
@@ -767,32 +878,38 @@
             {
               "name": "Pink",
               "hex": "#F1A1AF",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271632953"
             },
             {
               "name": "Azure Blue",
               "hex": "#0066D9",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271141433"
             },
             {
               "name": "White",
               "hex": "#FAFAFA",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271895097"
             },
             {
               "name": "Red",
               "hex": "#E72F1D",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271796793"
             },
             {
               "name": "Black",
               "hex": "#0A0A0A",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271731257"
             },
             {
               "name": "Yellow",
               "hex": "#FFE800",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271567417"
             }
           ]
         },
@@ -805,32 +922,38 @@
             {
               "name": "Pink",
               "hex": "#F1A1AF",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271632953"
             },
             {
               "name": "Azure Blue",
               "hex": "#0066D9",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271141433"
             },
             {
               "name": "White",
               "hex": "#FAFAFA",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271895097"
             },
             {
               "name": "Red",
               "hex": "#E72F1D",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271796793"
             },
             {
               "name": "Black",
               "hex": "#0A0A0A",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271731257"
             },
             {
               "name": "Yellow",
               "hex": "#FFE800",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271567417"
             }
           ]
         },
@@ -843,42 +966,50 @@
             {
               "name": "Pink",
               "hex": "#F1A1AF",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271632953"
             },
             {
               "name": "Azure Blue",
               "hex": "#0066D9",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271141433"
             },
             {
               "name": "White",
               "hex": "#FAFAFA",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271895097"
             },
             {
               "name": "Red",
               "hex": "#E72F1D",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271796793"
             },
             {
               "name": "Black",
               "hex": "#0A0A0A",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271731257"
             },
             {
               "name": "Yellow",
               "hex": "#FFE800",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271567417"
             },
             {
               "name": "Brown",
               "hex": "#55331A",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271338041"
             },
             {
               "name": "Green",
               "hex": "#06924D",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271698489"
             }
           ]
         }
@@ -899,42 +1030,50 @@
             {
               "name": "Jungle Green",
               "hex": "#4E742D",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271501881"
             },
             {
               "name": "White",
               "hex": "#FAFAFA",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271895097"
             },
             {
               "name": "Black",
               "hex": "#0A0A0A",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271731257"
             },
             {
               "name": "Lime Green",
               "hex": "#D5D701",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271206969"
             },
             {
               "name": "Brown",
               "hex": "#55331A",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271338041"
             },
             {
               "name": "Grey",
               "hex": "#8C9099",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271862329"
             },
             {
               "name": "Steel Grey",
               "hex": "#616469",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271829561"
             },
             {
               "name": "Tan",
               "hex": "#A79E82",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271108665"
             }
           ]
         },
@@ -947,37 +1086,44 @@
             {
               "name": "Red",
               "hex": "#E72F1D",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271796793"
             },
             {
               "name": "White",
               "hex": "#FAFAFA",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271895097"
             },
             {
               "name": "Black",
               "hex": "#0A0A0A",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271731257"
             },
             {
               "name": "Steel Grey",
               "hex": "#616469",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271829561"
             },
             {
               "name": "Purple",
               "hex": "#6C47B2",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271600185"
             },
             {
               "name": "Magenta",
               "hex": "#F24574",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271174201"
             },
             {
               "name": "Brown",
               "hex": "#55331A",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271338041"
             }
           ]
         },
@@ -990,32 +1136,38 @@
             {
               "name": "Cold White",
               "hex": "#D9DFE5",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271043129"
             },
             {
               "name": "Stone Blue",
               "hex": "#487BA2",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271370809"
             },
             {
               "name": "Grey",
               "hex": "#8C9099",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271862329"
             },
             {
               "name": "Steel Grey",
               "hex": "#616469",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271829561"
             },
             {
               "name": "Aque Blue",
               "hex": "#5EBDDB",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271403577"
             },
             {
               "name": "Azure Blue",
               "hex": "#0066D9",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271141433"
             }
           ]
         },
@@ -1026,32 +1178,38 @@
             {
               "name": "Brown",
               "hex": "#55331A",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271338041"
             },
             {
               "name": "Lime Green",
               "hex": "#D5D701",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271206969"
             },
             {
               "name": "Purple",
               "hex": "#6C47B2",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271600185"
             },
             {
               "name": "Magenta",
               "hex": "#F24574",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271174201"
             },
             {
               "name": "Black",
               "hex": "#0A0A0A",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271731257"
             },
             {
               "name": "Jungle Green",
               "hex": "#4E742D",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271501881"
             }
           ]
         },
@@ -1062,37 +1220,44 @@
             {
               "name": "Aque Blue",
               "hex": "#5EBDDB",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271403577"
             },
             {
               "name": "Black",
               "hex": "#0A0A0A",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271731257"
             },
             {
               "name": "White",
               "hex": "#FAFAFA",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271895097"
             },
             {
               "name": "Brown",
               "hex": "#55331A",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271338041"
             },
             {
               "name": "Steel Grey",
               "hex": "#616469",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271829561"
             },
             {
               "name": "Grey",
               "hex": "#8C9099",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271862329"
             },
             {
               "name": "Army Beige",
               "hex": "#DBBAA5",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "43631458156601"
             }
           ]
         },
@@ -1103,42 +1268,50 @@
             {
               "name": "Olive Green",
               "hex": "#948902",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271469113"
             },
             {
               "name": "White",
               "hex": "#FAFAFA",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271895097"
             },
             {
               "name": "Black",
               "hex": "#0A0A0A",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271731257"
             },
             {
               "name": "Lime Green",
               "hex": "#D5D701",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271206969"
             },
             {
               "name": "Brown",
               "hex": "#55331A",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271338041"
             },
             {
               "name": "Grey",
               "hex": "#8C9099",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271862329"
             },
             {
               "name": "Red",
               "hex": "#E72F1D",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271796793"
             },
             {
               "name": "Tan",
               "hex": "#A79E82",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271108665"
             }
           ]
         }
@@ -1161,22 +1334,26 @@
             {
               "name": "Black",
               "hex": "#0A0A0A",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271731257"
             },
             {
               "name": "White",
               "hex": "#FAFAFA",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271895097"
             },
             {
               "name": "Grey",
               "hex": "#8C9099",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271862329"
             },
             {
               "name": "Pink",
               "hex": "#F1A1AF",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271632953"
             }
           ]
         },
@@ -1187,22 +1364,26 @@
             {
               "name": "Red",
               "hex": "#E72F1D",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271796793"
             },
             {
               "name": "Cream",
               "hex": "#EED1A8",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271239737"
             },
             {
               "name": "Black",
               "hex": "#0A0A0A",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271731257"
             },
             {
               "name": "White",
               "hex": "#FAFAFA",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271895097"
             }
           ]
         },
@@ -1215,27 +1396,32 @@
             {
               "name": "Yellow",
               "hex": "#FFE800",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271567417"
             },
             {
               "name": "Green",
               "hex": "#06924D",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271698489"
             },
             {
               "name": "Grey",
               "hex": "#8C9099",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271862329"
             },
             {
               "name": "Black",
               "hex": "#0A0A0A",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271731257"
             },
             {
               "name": "White",
               "hex": "#FAFAFA",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271895097"
             }
           ]
         },
@@ -1248,22 +1434,26 @@
             {
               "name": "Army Beige",
               "hex": "#DBBAA5",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "43631458156601"
             },
             {
               "name": "Black",
               "hex": "#0A0A0A",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271731257"
             },
             {
               "name": "White",
               "hex": "#FAFAFA",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271895097"
             },
             {
               "name": "Pink",
               "hex": "#F1A1AF",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271632953"
             }
           ]
         },
@@ -1274,12 +1464,14 @@
             {
               "name": "Black",
               "hex": "#0A0A0A",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271731257"
             },
             {
               "name": "White",
               "hex": "#FAFAFA",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271895097"
             }
           ]
         },
@@ -1292,17 +1484,20 @@
             {
               "name": "Orange",
               "hex": "#F67405",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271665721"
             },
             {
               "name": "Black",
               "hex": "#0A0A0A",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271731257"
             },
             {
               "name": "White",
               "hex": "#FAFAFA",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271895097"
             }
           ]
         }
@@ -1323,37 +1518,44 @@
             {
               "name": "Red",
               "hex": "#E72F1D",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271796793"
             },
             {
               "name": "Black",
               "hex": "#0A0A0A",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271731257"
             },
             {
               "name": "White",
               "hex": "#FAFAFA",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271895097"
             },
             {
               "name": "Yellow",
               "hex": "#FFE800",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271567417"
             },
             {
               "name": "Brown",
               "hex": "#55331A",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271338041"
             },
             {
               "name": "Pink",
               "hex": "#F1A1AF",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271632953"
             },
             {
               "name": "Army Beige",
               "hex": "#DBBAA5",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "43631458156601"
             }
           ]
         },
@@ -1364,32 +1566,38 @@
             {
               "name": "Red",
               "hex": "#E72F1D",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271796793"
             },
             {
               "name": "Black",
               "hex": "#0A0A0A",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271731257"
             },
             {
               "name": "White",
               "hex": "#FAFAFA",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271895097"
             },
             {
               "name": "Pink",
               "hex": "#F1A1AF",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271632953"
             },
             {
               "name": "Army Beige",
               "hex": "#DBBAA5",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "43631458156601"
             },
             {
               "name": "Green",
               "hex": "#06924D",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271698489"
             }
           ]
         },
@@ -1400,42 +1608,50 @@
             {
               "name": "Green",
               "hex": "#06924D",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271698489"
             },
             {
               "name": "Red",
               "hex": "#E72F1D",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271796793"
             },
             {
               "name": "Black",
               "hex": "#0A0A0A",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271731257"
             },
             {
               "name": "White",
               "hex": "#FAFAFA",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271895097"
             },
             {
               "name": "Yellow",
               "hex": "#FFE800",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271567417"
             },
             {
               "name": "Brown",
               "hex": "#55331A",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271338041"
             },
             {
               "name": "Pink",
               "hex": "#F1A1AF",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271632953"
             },
             {
               "name": "Army Beige",
               "hex": "#DBBAA5",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "43631458156601"
             }
           ]
         },
@@ -1446,37 +1662,44 @@
             {
               "name": "Brown",
               "hex": "#55331A",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271338041"
             },
             {
               "name": "Red",
               "hex": "#E72F1D",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271796793"
             },
             {
               "name": "Yellow",
               "hex": "#FFE800",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271567417"
             },
             {
               "name": "Pink",
               "hex": "#F1A1AF",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271632953"
             },
             {
               "name": "Cream",
               "hex": "#EED1A8",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271239737"
             },
             {
               "name": "Black",
               "hex": "#0A0A0A",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271731257"
             },
             {
               "name": "White",
               "hex": "#FAFAFA",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271895097"
             }
           ]
         },
@@ -1487,27 +1710,32 @@
             {
               "name": "White",
               "hex": "#FAFAFA",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271895097"
             },
             {
               "name": "Orange",
               "hex": "#F67405",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271665721"
             },
             {
               "name": "Brown",
               "hex": "#55331A",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271338041"
             },
             {
               "name": "Red",
               "hex": "#E72F1D",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271796793"
             },
             {
               "name": "Black",
               "hex": "#0A0A0A",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271731257"
             }
           ]
         },
@@ -1518,32 +1746,38 @@
             {
               "name": "Red",
               "hex": "#E72F1D",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271796793"
             },
             {
               "name": "Black",
               "hex": "#0A0A0A",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271731257"
             },
             {
               "name": "White",
               "hex": "#FAFAFA",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271895097"
             },
             {
               "name": "Yellow",
               "hex": "#FFE800",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271567417"
             },
             {
               "name": "Orange",
               "hex": "#F67405",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271665721"
             },
             {
               "name": "Army Beige",
               "hex": "#DBBAA5",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "43631458156601"
             }
           ]
         },
@@ -1554,27 +1788,32 @@
             {
               "name": "Stone Blue",
               "hex": "#487BA2",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271370809"
             },
             {
               "name": "Aqua Blue",
               "hex": "#5EBDDB",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271403577"
             },
             {
               "name": "Blue",
               "hex": "#003776",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271764025"
             },
             {
               "name": "Black",
               "hex": "#0A0A0A",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271731257"
             },
             {
               "name": "White",
               "hex": "#FAFAFA",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271895097"
             }
           ]
         }
@@ -1595,27 +1834,32 @@
             {
               "name": "Brown",
               "hex": "#55331A",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271338041"
             },
             {
               "name": "Yellow",
               "hex": "#FFE800",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271567417"
             },
             {
               "name": "White",
               "hex": "#FAFAFA",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271895097"
             },
             {
               "name": "Red",
               "hex": "#E72F1D",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271796793"
             },
             {
               "name": "Black",
               "hex": "#0A0A0A",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271731257"
             }
           ]
         },
@@ -1628,37 +1872,44 @@
             {
               "name": "Tan",
               "hex": "#A79E82",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271108665"
             },
             {
               "name": "Brown",
               "hex": "#55331A",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271338041"
             },
             {
               "name": "Yellow",
               "hex": "#FFE800",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271567417"
             },
             {
               "name": "Orange",
               "hex": "#F67405",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271665721"
             },
             {
               "name": "White",
               "hex": "#FAFAFA",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271895097"
             },
             {
               "name": "Red",
               "hex": "#E72F1D",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271796793"
             },
             {
               "name": "Black",
               "hex": "#0A0A0A",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271731257"
             }
           ]
         },
@@ -1671,42 +1922,50 @@
             {
               "name": "Tan",
               "hex": "#A79E82",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271108665"
             },
             {
               "name": "Brown",
               "hex": "#55331A",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271338041"
             },
             {
               "name": "Dark Olive",
               "hex": "#575B54",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271075897"
             },
             {
               "name": "Yellow",
               "hex": "#FFE800",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271567417"
             },
             {
               "name": "Orange",
               "hex": "#F67405",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271665721"
             },
             {
               "name": "White",
               "hex": "#FAFAFA",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271895097"
             },
             {
               "name": "Red",
               "hex": "#E72F1D",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271796793"
             },
             {
               "name": "Black",
               "hex": "#0A0A0A",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271731257"
             }
           ]
         },
@@ -1719,27 +1978,32 @@
             {
               "name": "Army Beige",
               "hex": "#DBBAA5",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "43631458156601"
             },
             {
               "name": "Brown",
               "hex": "#55331A",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271338041"
             },
             {
               "name": "Yellow",
               "hex": "#FFE800",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271567417"
             },
             {
               "name": "White",
               "hex": "#FAFAFA",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271895097"
             },
             {
               "name": "Black",
               "hex": "#0A0A0A",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271731257"
             }
           ]
         },
@@ -1752,32 +2016,38 @@
             {
               "name": "Army Beige",
               "hex": "#DBBAA5",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "43631458156601"
             },
             {
               "name": "Brown",
               "hex": "#55331A",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271338041"
             },
             {
               "name": "Green",
               "hex": "#06924D",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271698489"
             },
             {
               "name": "Orange",
               "hex": "#F67405",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271665721"
             },
             {
               "name": "White",
               "hex": "#FAFAFA",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271895097"
             },
             {
               "name": "Black",
               "hex": "#0A0A0A",
-              "group": "recommended"
+              "group": "recommended",
+              "productCode": "44863271731257"
             }
           ]
         }

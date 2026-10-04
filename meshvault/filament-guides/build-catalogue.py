@@ -24,8 +24,6 @@ def build(root):
             raise ValueError("Invalid or duplicate brand: " + str(path))
         validate_url(brand.get("purchaseUrl"))
         validate_url(brand.get("cartUrl"))
-        for url in brand.get("colourPurchaseUrls", {}).values():
-            validate_url(url)
         for product in brand.get("products", []):
             validate_url(product.get("purchaseUrl"))
         brands[key] = brand
@@ -38,11 +36,16 @@ def build(root):
             if field in brand and field not in guide:
                 guide[field] = brand[field]
         validate_url(guide.get("purchaseUrl"))
-        urls = {name.casefold(): url for name, url in brand.get("colourPurchaseUrls", {}).items()}
         for pack in guide["packs"]:
             for model in pack["models"]:
                 for colour in model["colours"]:
-                    url = colour.get("purchaseUrl", urls.get(colour["name"].casefold()))
+                    product_url = None
+                    if "productCode" in colour:
+                        matches = [p for p in brand.get("products", []) if p["code"] == colour["productCode"]]
+                        if len(matches) != 1:
+                            raise ValueError("Missing or ambiguous guide product: " + colour["productCode"])
+                        product_url = matches[0].get("purchaseUrl")
+                    url = colour.get("purchaseUrl", product_url)
                     validate_url(url)
                     if url is not None:
                         colour["purchaseUrl"] = url
