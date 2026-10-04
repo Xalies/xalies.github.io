@@ -7,7 +7,7 @@ import hashlib
 import json
 import re
 from pathlib import Path
-from urllib.parse import parse_qs, urlsplit
+from urllib.parse import parse_qs, parse_qsl, urlencode, urlsplit, urlunsplit
 
 
 def is_single_item(row):
@@ -18,7 +18,15 @@ def is_single_item(row):
                          r"(?:kg|g)\s*[x*×]\s*(?:[2-9]\d*|1\d+)\b", label, re.I)
 
 
-def build(snapshot, previous=None):
+def affiliate_url(url, rule):
+    parsed = urlsplit(url)
+    parameters = list(rule["parameters"].items())
+    query = [(key, value) for key, value in parse_qsl(parsed.query, keep_blank_values=True) if key not in rule["parameters"]]
+    query = parameters + query if rule.get("prepend") else query + parameters
+    return urlunsplit(parsed._replace(query=urlencode(query)))
+
+
+def build(snapshot, previous=None, affiliate=None):
     groups = {}
     for row in snapshot["products"]:
         key = (row["range"], row["name"], tuple(row["hexes"]))
@@ -59,14 +67,20 @@ def build(snapshot, previous=None):
         for option in identity["purchaseOptions"]:
             if options.get(option["code"], {}).get("affiliateUrl"):
                 option["affiliateUrl"] = options[option["code"]]["affiliateUrl"]
+            if affiliate:
+                option["affiliateUrl"] = affiliate_url(option["purchaseUrl"], affiliate)
+    if affiliate and brand.get("purchaseUrl"):
+        brand["purchaseUrl"] = affiliate_url(brand["purchaseUrl"], affiliate)
     return brand
 
 
 if __name__ == "__main__":
     root = Path(__file__).resolve().parent
+    affiliates = json.loads((root / "affiliate-links.json").read_text(encoding="utf-8"))
     for path in sorted((root / "store-catalogues").glob("*.json")):
         target = root / "brands" / path.name
         previous = json.loads(target.read_text(encoding="utf-8")) if target.exists() else None
-        brand = build(json.loads(path.read_text(encoding="utf-8")), previous)
+        snapshot = json.loads(path.read_text(encoding="utf-8"))
+        brand = build(snapshot, previous, affiliates.get(snapshot["brand"]))
         target.write_text(json.dumps(brand, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
         print(path.name, len(brand["products"]), "identities")

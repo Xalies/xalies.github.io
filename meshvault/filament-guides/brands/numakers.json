@@ -2,7 +2,7 @@
   "schemaVersion": 2,
   "brand": "Numakers",
   "sourceUrl": "https://numakers.com/products.json",
-  "purchaseUrl": "https://numakers.com/collections/all",
+  "purchaseUrl": "https://numakers.com/collections/all?ref=meshvault",
   "purchaseLabel": "Numakers",
   "products": [
     {
@@ -17,7 +17,8 @@
           "label": "1 kg / Black",
           "purchaseUrl": "https://numakers.com/products/petg-cf?variant=49137316528436",
           "available": false,
-          "sku": "PTHSCF11KTAE"
+          "sku": "PTHSCF11KTAE",
+          "affiliateUrl": "https://numakers.com/products/petg-cf?ref=meshvault&variant=49137316528436"
         }
       ],
       "preferredPurchaseCode": "49137316528436"
@@ -34,7 +35,8 @@
           "label": "1 kg / Volcanic Rock Gray",
           "purchaseUrl": "https://numakers.com/products/petg-cf?variant=49137316561204",
           "available": true,
-          "sku": "PTHSCF11KTAF"
+          "sku": "PTHSCF11KTAF",
+          "affiliateUrl": "https://numakers.com/products/petg-cf?ref=meshvault&variant=49137316561204"
         }
       ],
       "preferredPurchaseCode": "49137316561204"
@@ -51,7 +53,8 @@
           "label": "1 kg / Tactical Green",
           "purchaseUrl": "https://numakers.com/products/petg-cf?variant=49137316593972",
           "available": true,
-          "sku": "PTHSCF11KTAG"
+          "sku": "PTHSCF11KTAG",
+          "affiliateUrl": "https://numakers.com/products/petg-cf?ref=meshvault&variant=49137316593972"
         }
       ],
       "preferredPurchaseCode": "49137316593972"
@@ -68,7 +71,8 @@
           "label": "1 kg / Denim Blue",
           "purchaseUrl": "https://numakers.com/products/petg-cf?variant=49137316626740",
           "available": true,
-          "sku": "PTHSCF11KTAD"
+          "sku": "PTHSCF11KTAD",
+          "affiliateUrl": "https://numakers.com/products/petg-cf?ref=meshvault&variant=49137316626740"
         }
       ],
       "preferredPurchaseCode": "49137316626740"
@@ -85,7 +89,8 @@
           "label": "1 kg / Purple",
           "purchaseUrl": "https://numakers.com/products/petg-cf?variant=49137316659508",
           "available": true,
-          "sku": "PTHSCF11KTAL"
+          "sku": "PTHSCF11KTAL",
+          "affiliateUrl": "https://numakers.com/products/petg-cf?ref=meshvault&variant=49137316659508"
         }
       ],
       "preferredPurchaseCode": "49137316659508"
@@ -102,7 +107,8 @@
           "label": "1 kg / Titanium Blue",
           "purchaseUrl": "https://numakers.com/products/pla-metallic?variant=49124719001908",
           "available": true,
-          "sku": "PLNA11KPCS"
+          "sku": "PLNA11KPCS",
+          "affiliateUrl": "https://numakers.com/products/pla-metallic?ref=meshvault&variant=49124719001908"
         }
       ],
       "preferredPurchaseCode": "49124719001908"
@@ -119,7 +125,8 @@
           "label": "1 kg / Ferrous Green",
           "purchaseUrl": "https://numakers.com/products/pla-metallic?variant=49124719034676",
           "available": true,
-          "sku": "PLNA11KPCR"
+          "sku": "PLNA11KPCR",
+          "affiliateUrl": "https://numakers.com/products/pla-metallic?ref=meshvault&variant=49124719034676"
         }
       ],
       "preferredPurchaseCode": "49124719034676"
@@ -136,7 +143,8 @@
           "label": "1 kg / Sunset Bronze",
           "purchaseUrl": "https://numakers.com/products/pla-metallic?variant=49124719067444",
           "available": true,
-          "sku": "PLNA11KPCU"
+          "sku": "PLNA11KPCU",
+          "affiliateUrl": "https://numakers.com/products/pla-metallic?ref=meshvault&variant=49124719067444"
         }
       ],
       "preferredPurchaseCode": "49124719067444"
@@ -153,7 +161,8 @@
           "label": "1 kg / Tungsten Brown",
           "purchaseUrl": "https://numakers.com/products/pla-metallic?variant=49124719100212",
           "available": true,
-          "sku": "PLNA11KPCT"
+          "sku": "PLNA11KPCT",
+          "affiliateUrl": "https://numakers.com/products/pla-metallic?ref=meshvault&variant=49124719100212"
         }
       ],
       "preferredPurchaseCode": "49124719100212"
@@ -170,7 +179,8 @@
           "label": "1 kg / Burnished Copper",
           "purchaseUrl": "https://numakers.com/products/pla-metallic?variant=49124719132980",
           "available": true,
-          "sku": "PLNA11KPCW"
+          "sku": "PLNA11KPCW",
+          "affiliateUrl": "https://numakers.com/products/pla-metallic?ref=meshvault&variant=49124719132980"
         }
       ],
       "preferredPurchaseCode": "49124719132980"
@@ -187,7 +197,8 @@
           "label": "1 kg / Burnt Copper",
           "purchaseUrl": "https://numakers.com/products/pla-metallic?variant=49124719165748",
           "available": true,
-          "sku": "PLNA11KPCV"
+          "sku": "PLNA11KPCV",
+          "affiliateUrl": "https://numakers.com/products/pla-metallic?ref=meshvault&variant=49124719165748"
         }
       ],
       "preferredPurchaseCode": "49124719165748"
@@ -204,7 +215,8 @@
           "label": "1.75 mm / 1 kg / Blue",
           "purchaseUrl": "https://numakers.com/products/petg-translucent?variant=48982491463988",
           "available": true,
-          "sku": "PTHSNA11KTAV"
+          "sku": "PTHSNA11KTAV",
+          "affiliateUrl": "https://numakers.com/products/petg-translucent?ref=meshvault&variant=48982491463988"
         }
       ],
       "preferredPurchaseCode": "48982491463988"
@@ -221,7 +233,8 @@
           "label": "1.75 mm / 1 kg / Ice Blue",
           "purchaseUrl": "https://numakers.com/products/petg-translucent?variant=48982491496756",
           "available": true,
-          "sku": "PTHSNA11KTAU"
+          "sku": "PTHSNA11KTAU",
+          "affiliateUrl": "https://numakers.com/products/petg-translucent?ref=meshvault&variant=48982491496756"
         }
       ],
       "preferredPurchaseCode": "48982491496756"
@@ -238,7 +251,8 @@
           "label": "1.75 mm / 1 kg / Arctic",
           "purchaseUrl": "https://numakers.com/products/petg-translucent?variant=48982491529524",
           "available": true,
-          "sku": "PTHSNA11KTAS"
+          "sku": "PTHSNA11KTAS",
+          "affiliateUrl": "https://numakers.com/products/petg-translucent?ref=meshvault&variant=48982491529524"
         }
       ],
       "preferredPurchaseCode": "48982491529524"
@@ -255,7 +269,8 @@
           "label": "1.75 mm / 1 kg / Pink",
           "purchaseUrl": "https://numakers.com/products/petg-translucent?variant=48982491562292",
           "available": true,
-          "sku": "PTHSNA11KTAT"
+          "sku": "PTHSNA11KTAT",
+          "affiliateUrl": "https://numakers.com/products/petg-translucent?ref=meshvault&variant=48982491562292"
         }
       ],
       "preferredPurchaseCode": "48982491562292"
@@ -272,7 +287,8 @@
           "label": "1.75 mm / 1 kg / Hot Pink",
           "purchaseUrl": "https://numakers.com/products/petg-translucent?variant=48982491595060",
           "available": true,
-          "sku": "PTHSNA11KTAX"
+          "sku": "PTHSNA11KTAX",
+          "affiliateUrl": "https://numakers.com/products/petg-translucent?ref=meshvault&variant=48982491595060"
         }
       ],
       "preferredPurchaseCode": "48982491595060"
@@ -289,7 +305,8 @@
           "label": "1.75 mm / 1 kg / Red",
           "purchaseUrl": "https://numakers.com/products/petg-translucent?variant=48982491988276",
           "available": true,
-          "sku": "PTHSNA11KTAY"
+          "sku": "PTHSNA11KTAY",
+          "affiliateUrl": "https://numakers.com/products/petg-translucent?ref=meshvault&variant=48982491988276"
         }
       ],
       "preferredPurchaseCode": "48982491988276"
@@ -306,7 +323,8 @@
           "label": "1.75 mm / 1 kg / Orange",
           "purchaseUrl": "https://numakers.com/products/petg-translucent?variant=48982492021044",
           "available": true,
-          "sku": "PTHSNA11KTAR"
+          "sku": "PTHSNA11KTAR",
+          "affiliateUrl": "https://numakers.com/products/petg-translucent?ref=meshvault&variant=48982492021044"
         }
       ],
       "preferredPurchaseCode": "48982492021044"
@@ -323,7 +341,8 @@
           "label": "1.75 mm / 1 kg / Green",
           "purchaseUrl": "https://numakers.com/products/petg-translucent?variant=48982492053812",
           "available": true,
-          "sku": "PTHSNA11KTAZ"
+          "sku": "PTHSNA11KTAZ",
+          "affiliateUrl": "https://numakers.com/products/petg-translucent?ref=meshvault&variant=48982492053812"
         }
       ],
       "preferredPurchaseCode": "48982492053812"
@@ -340,7 +359,8 @@
           "label": "1.75 mm / 1 kg / Yellow",
           "purchaseUrl": "https://numakers.com/products/petg-translucent?variant=48982492086580",
           "available": true,
-          "sku": "PTHSNA11KTAW"
+          "sku": "PTHSNA11KTAW",
+          "affiliateUrl": "https://numakers.com/products/petg-translucent?ref=meshvault&variant=48982492086580"
         }
       ],
       "preferredPurchaseCode": "48982492086580"
@@ -357,7 +377,8 @@
           "label": "1.75 mm / 1 kg / Nebula",
           "purchaseUrl": "https://numakers.com/products/pla-starlight?variant=48981961048372",
           "available": true,
-          "sku": "PLNA11KPCE"
+          "sku": "PLNA11KPCE",
+          "affiliateUrl": "https://numakers.com/products/pla-starlight?ref=meshvault&variant=48981961048372"
         }
       ],
       "preferredPurchaseCode": "48981961048372"
@@ -374,7 +395,8 @@
           "label": "1.75 mm / 1 kg / Comet",
           "purchaseUrl": "https://numakers.com/products/pla-starlight?variant=48981961081140",
           "available": true,
-          "sku": "PLNA11KPCC"
+          "sku": "PLNA11KPCC",
+          "affiliateUrl": "https://numakers.com/products/pla-starlight?ref=meshvault&variant=48981961081140"
         }
       ],
       "preferredPurchaseCode": "48981961081140"
@@ -391,7 +413,8 @@
           "label": "1.75 mm / 1 kg / Titan",
           "purchaseUrl": "https://numakers.com/products/pla-starlight?variant=48981961113908",
           "available": true,
-          "sku": "PLNA11KPCB"
+          "sku": "PLNA11KPCB",
+          "affiliateUrl": "https://numakers.com/products/pla-starlight?ref=meshvault&variant=48981961113908"
         }
       ],
       "preferredPurchaseCode": "48981961113908"
@@ -408,7 +431,8 @@
           "label": "1.75 mm / 1 kg / Midnight",
           "purchaseUrl": "https://numakers.com/products/pla-starlight?variant=48981961146676",
           "available": true,
-          "sku": "PLNA11KPCF"
+          "sku": "PLNA11KPCF",
+          "affiliateUrl": "https://numakers.com/products/pla-starlight?ref=meshvault&variant=48981961146676"
         }
       ],
       "preferredPurchaseCode": "48981961146676"
@@ -425,7 +449,8 @@
           "label": "1.75 mm / 1 kg / Neptune",
           "purchaseUrl": "https://numakers.com/products/pla-starlight?variant=48981961179444",
           "available": true,
-          "sku": "PLNA11KPCD"
+          "sku": "PLNA11KPCD",
+          "affiliateUrl": "https://numakers.com/products/pla-starlight?ref=meshvault&variant=48981961179444"
         }
       ],
       "preferredPurchaseCode": "48981961179444"
@@ -442,7 +467,8 @@
           "label": "1.75 mm / 1 kg / Green",
           "purchaseUrl": "https://numakers.com/products/pla-glow-in-the-dark?variant=48937335554356",
           "available": true,
-          "sku": "PLNA11KPBV"
+          "sku": "PLNA11KPBV",
+          "affiliateUrl": "https://numakers.com/products/pla-glow-in-the-dark?ref=meshvault&variant=48937335554356"
         }
       ],
       "preferredPurchaseCode": "48937335554356"
@@ -459,7 +485,8 @@
           "label": "1.75 mm / 1 kg / Orange",
           "purchaseUrl": "https://numakers.com/products/pla-glow-in-the-dark?variant=48937335521588",
           "available": true,
-          "sku": "PLNA11KPBZ"
+          "sku": "PLNA11KPBZ",
+          "affiliateUrl": "https://numakers.com/products/pla-glow-in-the-dark?ref=meshvault&variant=48937335521588"
         }
       ],
       "preferredPurchaseCode": "48937335521588"
@@ -476,7 +503,8 @@
           "label": "1.75 mm / 1 kg / Pink",
           "purchaseUrl": "https://numakers.com/products/pla-glow-in-the-dark?variant=48937335456052",
           "available": true,
-          "sku": "PLNA11KPCA"
+          "sku": "PLNA11KPCA",
+          "affiliateUrl": "https://numakers.com/products/pla-glow-in-the-dark?ref=meshvault&variant=48937335456052"
         }
       ],
       "preferredPurchaseCode": "48937335456052"
@@ -493,7 +521,8 @@
           "label": "1.75 mm / 1 kg / Blue",
           "purchaseUrl": "https://numakers.com/products/pla-glow-in-the-dark?variant=48937335423284",
           "available": true,
-          "sku": "PLNA11KPBX"
+          "sku": "PLNA11KPBX",
+          "affiliateUrl": "https://numakers.com/products/pla-glow-in-the-dark?ref=meshvault&variant=48937335423284"
         }
       ],
       "preferredPurchaseCode": "48937335423284"
@@ -510,7 +539,8 @@
           "label": "1.75 mm / 1 kg / Aqua Blue",
           "purchaseUrl": "https://numakers.com/products/pla-glow-in-the-dark?variant=48937335488820",
           "available": true,
-          "sku": "PLNA11KPBY"
+          "sku": "PLNA11KPBY",
+          "affiliateUrl": "https://numakers.com/products/pla-glow-in-the-dark?ref=meshvault&variant=48937335488820"
         }
       ],
       "preferredPurchaseCode": "48937335488820"
@@ -527,7 +557,8 @@
           "label": "1.75 mm / 1 kg / Copper-Silver-Gold",
           "purchaseUrl": "https://numakers.com/products/tri-color-silk-pla?variant=48917565145396",
           "available": true,
-          "sku": "PLSK11KCSG"
+          "sku": "PLSK11KCSG",
+          "affiliateUrl": "https://numakers.com/products/tri-color-silk-pla?ref=meshvault&variant=48917565145396"
         }
       ],
       "preferredPurchaseCode": "48917565145396"
@@ -544,7 +575,8 @@
           "label": "1.75 mm / 1 kg / Blue-Green-Gold",
           "purchaseUrl": "https://numakers.com/products/tri-color-silk-pla?variant=48917565178164",
           "available": true,
-          "sku": "PLSK11KBGG"
+          "sku": "PLSK11KBGG",
+          "affiliateUrl": "https://numakers.com/products/tri-color-silk-pla?ref=meshvault&variant=48917565178164"
         }
       ],
       "preferredPurchaseCode": "48917565178164"
@@ -561,7 +593,8 @@
           "label": "1.75 mm / 1 kg / Black-Purple-Gold",
           "purchaseUrl": "https://numakers.com/products/tri-color-silk-pla?variant=48917565210932",
           "available": true,
-          "sku": "PLSK11KBPG"
+          "sku": "PLSK11KBPG",
+          "affiliateUrl": "https://numakers.com/products/tri-color-silk-pla?ref=meshvault&variant=48917565210932"
         }
       ],
       "preferredPurchaseCode": "48917565210932"
@@ -578,7 +611,8 @@
           "label": "1.75 mm / 1 kg / Black-Purple-Orange",
           "purchaseUrl": "https://numakers.com/products/tri-color-silk-pla?variant=48917565243700",
           "available": true,
-          "sku": "PLSK11KBPO"
+          "sku": "PLSK11KBPO",
+          "affiliateUrl": "https://numakers.com/products/tri-color-silk-pla?ref=meshvault&variant=48917565243700"
         }
       ],
       "preferredPurchaseCode": "48917565243700"
@@ -595,7 +629,8 @@
           "label": "1.75 mm / 1 kg / Silver-Purple-Blue",
           "purchaseUrl": "https://numakers.com/products/tri-color-silk-pla?variant=48917565276468",
           "available": true,
-          "sku": "PLSK11KSPB"
+          "sku": "PLSK11KSPB",
+          "affiliateUrl": "https://numakers.com/products/tri-color-silk-pla?ref=meshvault&variant=48917565276468"
         }
       ],
       "preferredPurchaseCode": "48917565276468"
@@ -612,7 +647,8 @@
           "label": "1.75 mm / 1 kg / Green-Magenta-Blue",
           "purchaseUrl": "https://numakers.com/products/tri-color-silk-pla?variant=48917565309236",
           "available": true,
-          "sku": "PLSK11KGMB"
+          "sku": "PLSK11KGMB",
+          "affiliateUrl": "https://numakers.com/products/tri-color-silk-pla?ref=meshvault&variant=48917565309236"
         }
       ],
       "preferredPurchaseCode": "48917565309236"
@@ -629,7 +665,8 @@
           "label": "1.75 mm / 1 kg / Red-Yellow-Blue",
           "purchaseUrl": "https://numakers.com/products/tri-color-silk-pla?variant=48917565342004",
           "available": true,
-          "sku": "PLSK11KRYB"
+          "sku": "PLSK11KRYB",
+          "affiliateUrl": "https://numakers.com/products/tri-color-silk-pla?ref=meshvault&variant=48917565342004"
         }
       ],
       "preferredPurchaseCode": "48917565342004"
@@ -646,7 +683,8 @@
           "label": "1.75 mm / 1 kg / Red-Orange-Gold",
           "purchaseUrl": "https://numakers.com/products/tri-color-silk-pla?variant=48917565374772",
           "available": true,
-          "sku": "PLSK11KBROG"
+          "sku": "PLSK11KBROG",
+          "affiliateUrl": "https://numakers.com/products/tri-color-silk-pla?ref=meshvault&variant=48917565374772"
         }
       ],
       "preferredPurchaseCode": "48917565374772"
@@ -663,7 +701,8 @@
           "label": "1.75 mm / 1 kg / Red-Blue-White",
           "purchaseUrl": "https://numakers.com/products/tri-color-silk-pla?variant=48917565407540",
           "available": true,
-          "sku": "PLSK11KBRBW"
+          "sku": "PLSK11KBRBW",
+          "affiliateUrl": "https://numakers.com/products/tri-color-silk-pla?ref=meshvault&variant=48917565407540"
         }
       ],
       "preferredPurchaseCode": "48917565407540"
@@ -680,7 +719,8 @@
           "label": "1.75 mm / 1 kg / Black-Gold",
           "purchaseUrl": "https://numakers.com/products/tri-color-silk-pla?variant=49065954967860",
           "available": true,
-          "sku": "PLSK11KBG"
+          "sku": "PLSK11KBG",
+          "affiliateUrl": "https://numakers.com/products/tri-color-silk-pla?ref=meshvault&variant=49065954967860"
         }
       ],
       "preferredPurchaseCode": "49065954967860"
@@ -697,7 +737,8 @@
           "label": "1.75 mm / 1 kg / Red-Gold",
           "purchaseUrl": "https://numakers.com/products/tri-color-silk-pla?variant=49065955000628",
           "available": true,
-          "sku": "PLSK11KRG"
+          "sku": "PLSK11KRG",
+          "affiliateUrl": "https://numakers.com/products/tri-color-silk-pla?ref=meshvault&variant=49065955000628"
         }
       ],
       "preferredPurchaseCode": "49065955000628"
@@ -714,7 +755,8 @@
           "label": "1.75 mm / 1 kg / Red-Black",
           "purchaseUrl": "https://numakers.com/products/tri-color-silk-pla?variant=49065955033396",
           "available": true,
-          "sku": "PLSK11KRB"
+          "sku": "PLSK11KRB",
+          "affiliateUrl": "https://numakers.com/products/tri-color-silk-pla?ref=meshvault&variant=49065955033396"
         }
       ],
       "preferredPurchaseCode": "49065955033396"
@@ -731,7 +773,8 @@
           "label": "1.75 mm / 1 kg / Blue-Magenta",
           "purchaseUrl": "https://numakers.com/products/tri-color-silk-pla?variant=49065955066164",
           "available": true,
-          "sku": "PLSK11KBM"
+          "sku": "PLSK11KBM",
+          "affiliateUrl": "https://numakers.com/products/tri-color-silk-pla?ref=meshvault&variant=49065955066164"
         }
       ],
       "preferredPurchaseCode": "49065955066164"
@@ -748,7 +791,8 @@
           "label": "1.75 mm / 1 kg / Purple-Black",
           "purchaseUrl": "https://numakers.com/products/tri-color-silk-pla?variant=49065955098932",
           "available": true,
-          "sku": "PLSK11KPB"
+          "sku": "PLSK11KPB",
+          "affiliateUrl": "https://numakers.com/products/tri-color-silk-pla?ref=meshvault&variant=49065955098932"
         }
       ],
       "preferredPurchaseCode": "49065955098932"
@@ -765,7 +809,8 @@
           "label": "1.75 mm / 1 kg / Black",
           "purchaseUrl": "https://numakers.com/products/pla-matte?variant=48506465681716",
           "available": false,
-          "sku": "PLMT11KPAA"
+          "sku": "PLMT11KPAA",
+          "affiliateUrl": "https://numakers.com/products/pla-matte?ref=meshvault&variant=48506465681716"
         }
       ],
       "preferredPurchaseCode": "48506465681716"
@@ -782,7 +827,8 @@
           "label": "1.75 mm / 1 kg / White",
           "purchaseUrl": "https://numakers.com/products/pla-matte?variant=48506465878324",
           "available": true,
-          "sku": "PLMT11KPAL"
+          "sku": "PLMT11KPAL",
+          "affiliateUrl": "https://numakers.com/products/pla-matte?ref=meshvault&variant=48506465878324"
         }
       ],
       "preferredPurchaseCode": "48506465878324"
@@ -799,7 +845,8 @@
           "label": "1.75 mm / 1 kg / Sakura Pink",
           "purchaseUrl": "https://numakers.com/products/pla-matte?variant=48506465780020",
           "available": false,
-          "sku": "PLMT11KPAH"
+          "sku": "PLMT11KPAH",
+          "affiliateUrl": "https://numakers.com/products/pla-matte?ref=meshvault&variant=48506465780020"
         }
       ],
       "preferredPurchaseCode": "48506465780020"
@@ -816,7 +863,8 @@
           "label": "1.75 mm / 1 kg / Skin",
           "purchaseUrl": "https://numakers.com/products/pla-matte?variant=48506465714484",
           "available": false,
-          "sku": "PLMT11KPAQ"
+          "sku": "PLMT11KPAQ",
+          "affiliateUrl": "https://numakers.com/products/pla-matte?ref=meshvault&variant=48506465714484"
         }
       ],
       "preferredPurchaseCode": "48506465714484"
@@ -833,7 +881,8 @@
           "label": "1.75 mm / 1 kg / Beige",
           "purchaseUrl": "https://numakers.com/products/pla-matte?variant=48506465976628",
           "available": false,
-          "sku": "PLMT11KPAK"
+          "sku": "PLMT11KPAK",
+          "affiliateUrl": "https://numakers.com/products/pla-matte?ref=meshvault&variant=48506465976628"
         }
       ],
       "preferredPurchaseCode": "48506465976628"
@@ -850,7 +899,8 @@
           "label": "1.75 mm / 1 kg / Ruby Red",
           "purchaseUrl": "https://numakers.com/products/pla-matte?variant=48506466009396",
           "available": false,
-          "sku": "PLMT11KPAD"
+          "sku": "PLMT11KPAD",
+          "affiliateUrl": "https://numakers.com/products/pla-matte?ref=meshvault&variant=48506466009396"
         }
       ],
       "preferredPurchaseCode": "48506466009396"
@@ -867,7 +917,8 @@
           "label": "1.75 mm / 1 kg / Ice Blue",
           "purchaseUrl": "https://numakers.com/products/pla-matte?variant=48506465812788",
           "available": false,
-          "sku": "PLMT11KPAJ"
+          "sku": "PLMT11KPAJ",
+          "affiliateUrl": "https://numakers.com/products/pla-matte?ref=meshvault&variant=48506465812788"
         }
       ],
       "preferredPurchaseCode": "48506465812788"
@@ -884,7 +935,8 @@
           "label": "1.75 mm / 1 kg / Navy Blue",
           "purchaseUrl": "https://numakers.com/products/pla-matte?variant=48861582164276",
           "available": true,
-          "sku": "PLMT11KPBQ"
+          "sku": "PLMT11KPBQ",
+          "affiliateUrl": "https://numakers.com/products/pla-matte?ref=meshvault&variant=48861582164276"
         }
       ],
       "preferredPurchaseCode": "48861582164276"
@@ -901,7 +953,8 @@
           "label": "1.75 mm / 1 kg / Mint Green",
           "purchaseUrl": "https://numakers.com/products/pla-matte?variant=48506465943860",
           "available": false,
-          "sku": "PLMT11KPBO"
+          "sku": "PLMT11KPBO",
+          "affiliateUrl": "https://numakers.com/products/pla-matte?ref=meshvault&variant=48506465943860"
         }
       ],
       "preferredPurchaseCode": "48506465943860"
@@ -918,7 +971,8 @@
           "label": "1.75 mm / 1 kg / Olive Green",
           "purchaseUrl": "https://numakers.com/products/pla-matte?variant=48506465648948",
           "available": false,
-          "sku": "PLMT11KPAE"
+          "sku": "PLMT11KPAE",
+          "affiliateUrl": "https://numakers.com/products/pla-matte?ref=meshvault&variant=48506465648948"
         }
       ],
       "preferredPurchaseCode": "48506465648948"
@@ -935,7 +989,8 @@
           "label": "1.75 mm / 1 kg / Lilac Purple",
           "purchaseUrl": "https://numakers.com/products/pla-matte?variant=48506465747252",
           "available": true,
-          "sku": "PLMT11KPBF"
+          "sku": "PLMT11KPBF",
+          "affiliateUrl": "https://numakers.com/products/pla-matte?ref=meshvault&variant=48506465747252"
         }
       ],
       "preferredPurchaseCode": "48506465747252"
@@ -952,7 +1007,8 @@
           "label": "1.75 mm / 1 kg / Sunshine Yellow",
           "purchaseUrl": "https://numakers.com/products/pla-matte?variant=48506466042164",
           "available": false,
-          "sku": "PLMT11KPBG"
+          "sku": "PLMT11KPBG",
+          "affiliateUrl": "https://numakers.com/products/pla-matte?ref=meshvault&variant=48506466042164"
         }
       ],
       "preferredPurchaseCode": "48506466042164"
@@ -969,7 +1025,8 @@
           "label": "1.75 mm / 1 kg / Moon Gray",
           "purchaseUrl": "https://numakers.com/products/pla-matte?variant=48506465911092",
           "available": false,
-          "sku": "PLMT11KPAC"
+          "sku": "PLMT11KPAC",
+          "affiliateUrl": "https://numakers.com/products/pla-matte?ref=meshvault&variant=48506465911092"
         }
       ],
       "preferredPurchaseCode": "48506465911092"
@@ -986,7 +1043,8 @@
           "label": "Dark Gray",
           "purchaseUrl": "https://numakers.com/products/warehouse-clearance-pla-older-formula-dark-gray-or-mystery-color?variant=48500964884788",
           "available": false,
-          "sku": ""
+          "sku": "",
+          "affiliateUrl": "https://numakers.com/products/warehouse-clearance-pla-older-formula-dark-gray-or-mystery-color?ref=meshvault&variant=48500964884788"
         }
       ],
       "preferredPurchaseCode": "48500964884788"
@@ -1003,7 +1061,8 @@
           "label": "Teal Blue",
           "purchaseUrl": "https://numakers.com/products/warehouse-clearance-pla-older-formula-dark-gray-or-mystery-color?variant=48500982939956",
           "available": false,
-          "sku": ""
+          "sku": "",
+          "affiliateUrl": "https://numakers.com/products/warehouse-clearance-pla-older-formula-dark-gray-or-mystery-color?ref=meshvault&variant=48500982939956"
         }
       ],
       "preferredPurchaseCode": "48500982939956"
@@ -1020,7 +1079,8 @@
           "label": "Light Gray",
           "purchaseUrl": "https://numakers.com/products/warehouse-clearance-pla-older-formula-dark-gray-or-mystery-color?variant=48500983300404",
           "available": false,
-          "sku": ""
+          "sku": "",
+          "affiliateUrl": "https://numakers.com/products/warehouse-clearance-pla-older-formula-dark-gray-or-mystery-color?ref=meshvault&variant=48500983300404"
         }
       ],
       "preferredPurchaseCode": "48500983300404"
@@ -1037,7 +1097,8 @@
           "label": "Random Color",
           "purchaseUrl": "https://numakers.com/products/warehouse-clearance-pla-older-formula-dark-gray-or-mystery-color?variant=48500964917556",
           "available": false,
-          "sku": ""
+          "sku": "",
+          "affiliateUrl": "https://numakers.com/products/warehouse-clearance-pla-older-formula-dark-gray-or-mystery-color?ref=meshvault&variant=48500964917556"
         }
       ],
       "preferredPurchaseCode": "48500964917556"
@@ -1054,14 +1115,16 @@
           "label": "1.75 mm / 1 kg / Pitch Black",
           "purchaseUrl": "https://numakers.com/products/petg-hs-filament?variant=48182324920628",
           "available": true,
-          "sku": "PTHSNA11KTAE"
+          "sku": "PTHSNA11KTAE",
+          "affiliateUrl": "https://numakers.com/products/petg-hs-filament?ref=meshvault&variant=48182324920628"
         },
         {
           "code": "48182325248308",
           "label": "1.75 mm / 3 kg / Pitch Black",
           "purchaseUrl": "https://numakers.com/products/petg-hs-filament?variant=48182325248308",
           "available": false,
-          "sku": "PTHSNA13KTAE"
+          "sku": "PTHSNA13KTAE",
+          "affiliateUrl": "https://numakers.com/products/petg-hs-filament?ref=meshvault&variant=48182325248308"
         }
       ],
       "preferredPurchaseCode": "48182324920628"
@@ -1078,14 +1141,16 @@
           "label": "1.75 mm / 1 kg / Pure White",
           "purchaseUrl": "https://numakers.com/products/petg-hs-filament?variant=48182324953396",
           "available": false,
-          "sku": "PTHSNA11KTAH"
+          "sku": "PTHSNA11KTAH",
+          "affiliateUrl": "https://numakers.com/products/petg-hs-filament?ref=meshvault&variant=48182324953396"
         },
         {
           "code": "49134401061172",
           "label": "1.75 mm / 3 kg / Pure White",
           "purchaseUrl": "https://numakers.com/products/petg-hs-filament?variant=49134401061172",
           "available": false,
-          "sku": "PTHSNA13KTAH"
+          "sku": "PTHSNA13KTAH",
+          "affiliateUrl": "https://numakers.com/products/petg-hs-filament?ref=meshvault&variant=49134401061172"
         }
       ],
       "preferredPurchaseCode": "48182324953396"
@@ -1102,7 +1167,8 @@
           "label": "1.75 mm / 1 kg / Transparent",
           "purchaseUrl": "https://numakers.com/products/petg-hs-filament?variant=48182325215540",
           "available": true,
-          "sku": "PTHSNA11KZZZ"
+          "sku": "PTHSNA11KZZZ",
+          "affiliateUrl": "https://numakers.com/products/petg-hs-filament?ref=meshvault&variant=48182325215540"
         }
       ],
       "preferredPurchaseCode": "48182325215540"
@@ -1119,7 +1185,8 @@
           "label": "1.75 mm / 1 kg / Atomic Pink",
           "purchaseUrl": "https://numakers.com/products/petg-hs-filament?variant=48921144754484",
           "available": true,
-          "sku": "PTHSNA11KTAJ"
+          "sku": "PTHSNA11KTAJ",
+          "affiliateUrl": "https://numakers.com/products/petg-hs-filament?ref=meshvault&variant=48921144754484"
         }
       ],
       "preferredPurchaseCode": "48921144754484"
@@ -1136,7 +1203,8 @@
           "label": "1.75 mm / 1 kg / Lemon Yellow",
           "purchaseUrl": "https://numakers.com/products/petg-hs-filament?variant=48182324986164",
           "available": true,
-          "sku": "PTHSNA11KTAA"
+          "sku": "PTHSNA11KTAA",
+          "affiliateUrl": "https://numakers.com/products/petg-hs-filament?ref=meshvault&variant=48182324986164"
         }
       ],
       "preferredPurchaseCode": "48182324986164"
@@ -1153,7 +1221,8 @@
           "label": "1.75 mm / 1 kg / Mauve Purple",
           "purchaseUrl": "https://numakers.com/products/petg-hs-filament?variant=48182325018932",
           "available": true,
-          "sku": "PTHSNA11KTAI"
+          "sku": "PTHSNA11KTAI",
+          "affiliateUrl": "https://numakers.com/products/petg-hs-filament?ref=meshvault&variant=48182325018932"
         }
       ],
       "preferredPurchaseCode": "48182325018932"
@@ -1170,7 +1239,8 @@
           "label": "1.75 mm / 1 kg / Thanos Purple",
           "purchaseUrl": "https://numakers.com/products/petg-hs-filament?variant=48873556214068",
           "available": true,
-          "sku": "PTHSNA11KTAL"
+          "sku": "PTHSNA11KTAL",
+          "affiliateUrl": "https://numakers.com/products/petg-hs-filament?ref=meshvault&variant=48873556214068"
         }
       ],
       "preferredPurchaseCode": "48873556214068"
@@ -1187,7 +1257,8 @@
           "label": "1.75 mm / 1 kg / Nuclear Red",
           "purchaseUrl": "https://numakers.com/products/petg-hs-filament?variant=48182325051700",
           "available": true,
-          "sku": "PTHSNA11KTAC"
+          "sku": "PTHSNA11KTAC",
+          "affiliateUrl": "https://numakers.com/products/petg-hs-filament?ref=meshvault&variant=48182325051700"
         }
       ],
       "preferredPurchaseCode": "48182325051700"
@@ -1204,7 +1275,8 @@
           "label": "1.75 mm / 1 kg / Grass Green",
           "purchaseUrl": "https://numakers.com/products/petg-hs-filament?variant=48182325182772",
           "available": true,
-          "sku": "PTHSNA11KTAG"
+          "sku": "PTHSNA11KTAG",
+          "affiliateUrl": "https://numakers.com/products/petg-hs-filament?ref=meshvault&variant=48182325182772"
         }
       ],
       "preferredPurchaseCode": "48182325182772"
@@ -1221,7 +1293,8 @@
           "label": "1.75 mm / 1 kg / Forest Green",
           "purchaseUrl": "https://numakers.com/products/petg-hs-filament?variant=48921144787252",
           "available": true,
-          "sku": "PTHSNA11KTAP"
+          "sku": "PTHSNA11KTAP",
+          "affiliateUrl": "https://numakers.com/products/petg-hs-filament?ref=meshvault&variant=48921144787252"
         }
       ],
       "preferredPurchaseCode": "48921144787252"
@@ -1238,7 +1311,8 @@
           "label": "1.75 mm / 1 kg / Outrageous Orange",
           "purchaseUrl": "https://numakers.com/products/petg-hs-filament?variant=48182325084468",
           "available": true,
-          "sku": "PTHSNA11KTAB"
+          "sku": "PTHSNA11KTAB",
+          "affiliateUrl": "https://numakers.com/products/petg-hs-filament?ref=meshvault&variant=48182325084468"
         }
       ],
       "preferredPurchaseCode": "48182325084468"
@@ -1255,7 +1329,8 @@
           "label": "1.75 mm / 1 kg / Royal Blue",
           "purchaseUrl": "https://numakers.com/products/petg-hs-filament?variant=48182325117236",
           "available": false,
-          "sku": "PTHSNA11KTAD"
+          "sku": "PTHSNA11KTAD",
+          "affiliateUrl": "https://numakers.com/products/petg-hs-filament?ref=meshvault&variant=48182325117236"
         }
       ],
       "preferredPurchaseCode": "48182325117236"
@@ -1272,7 +1347,8 @@
           "label": "1.75 mm / 1 kg / Light Blue",
           "purchaseUrl": "https://numakers.com/products/petg-hs-filament?variant=48921144820020",
           "available": true,
-          "sku": "PTHSNA11KTAK"
+          "sku": "PTHSNA11KTAK",
+          "affiliateUrl": "https://numakers.com/products/petg-hs-filament?ref=meshvault&variant=48921144820020"
         }
       ],
       "preferredPurchaseCode": "48921144820020"
@@ -1289,7 +1365,8 @@
           "label": "1.75 mm / 1 kg / Light Gray",
           "purchaseUrl": "https://numakers.com/products/petg-hs-filament?variant=48182325150004",
           "available": true,
-          "sku": "PTHSNA11KTAF"
+          "sku": "PTHSNA11KTAF",
+          "affiliateUrl": "https://numakers.com/products/petg-hs-filament?ref=meshvault&variant=48182325150004"
         }
       ],
       "preferredPurchaseCode": "48182325150004"
@@ -1306,7 +1383,8 @@
           "label": "1.75 mm / 1 kg / Simply Silver",
           "purchaseUrl": "https://numakers.com/products/petg-hs-filament?variant=48921144885556",
           "available": true,
-          "sku": "PTHSNA11KTAM"
+          "sku": "PTHSNA11KTAM",
+          "affiliateUrl": "https://numakers.com/products/petg-hs-filament?ref=meshvault&variant=48921144885556"
         }
       ],
       "preferredPurchaseCode": "48921144885556"
@@ -1323,7 +1401,8 @@
           "label": "1.75 mm / 1 kg / Midnight Gray",
           "purchaseUrl": "https://numakers.com/products/petg-hs-filament?variant=48921144852788",
           "available": true,
-          "sku": "PTHSNA11KTAO"
+          "sku": "PTHSNA11KTAO",
+          "affiliateUrl": "https://numakers.com/products/petg-hs-filament?ref=meshvault&variant=48921144852788"
         }
       ],
       "preferredPurchaseCode": "48921144852788"
@@ -1340,7 +1419,8 @@
           "label": "1.75 mm / 1 kg / Black",
           "purchaseUrl": "https://numakers.com/products/pla-cf?variant=48035623731508",
           "available": true,
-          "sku": "PPCF11KPAA"
+          "sku": "PPCF11KPAA",
+          "affiliateUrl": "https://numakers.com/products/pla-cf?ref=meshvault&variant=48035623731508"
         }
       ],
       "preferredPurchaseCode": "48035623731508"
@@ -1357,7 +1437,8 @@
           "label": "1.75 mm / 1 kg / Wine Red",
           "purchaseUrl": "https://numakers.com/products/pla-cf?variant=48348442231092",
           "available": true,
-          "sku": "PLCF11KPAD"
+          "sku": "PLCF11KPAD",
+          "affiliateUrl": "https://numakers.com/products/pla-cf?ref=meshvault&variant=48348442231092"
         }
       ],
       "preferredPurchaseCode": "48348442231092"
@@ -1374,7 +1455,8 @@
           "label": "1.75 mm / 1 kg / Denim Blue",
           "purchaseUrl": "https://numakers.com/products/pla-cf?variant=48462471299380",
           "available": true,
-          "sku": "PLCF11KPAR"
+          "sku": "PLCF11KPAR",
+          "affiliateUrl": "https://numakers.com/products/pla-cf?ref=meshvault&variant=48462471299380"
         }
       ],
       "preferredPurchaseCode": "48462471299380"
@@ -1391,7 +1473,8 @@
           "label": "1.75 mm / 1 kg / Lemongrass Green",
           "purchaseUrl": "https://numakers.com/products/pla-cf?variant=48462471332148",
           "available": true,
-          "sku": "PLCF11KPAF"
+          "sku": "PLCF11KPAF",
+          "affiliateUrl": "https://numakers.com/products/pla-cf?ref=meshvault&variant=48462471332148"
         }
       ],
       "preferredPurchaseCode": "48462471332148"
@@ -1408,7 +1491,8 @@
           "label": "1.75 mm / 1 kg / White Marble",
           "purchaseUrl": "https://numakers.com/products/pla-marble?variant=48008272445748",
           "available": true,
-          "sku": "PLNA11KMB1"
+          "sku": "PLNA11KMB1",
+          "affiliateUrl": "https://numakers.com/products/pla-marble?ref=meshvault&variant=48008272445748"
         }
       ],
       "preferredPurchaseCode": "48008272445748"
@@ -1425,7 +1509,8 @@
           "label": "1.75 mm / 1 kg / Pitch Black",
           "purchaseUrl": "https://numakers.com/products/abs-filament?variant=46944297320756",
           "available": true,
-          "sku": "ABNA11KSAE"
+          "sku": "ABNA11KSAE",
+          "affiliateUrl": "https://numakers.com/products/abs-filament?ref=meshvault&variant=46944297320756"
         }
       ],
       "preferredPurchaseCode": "46944297320756"
@@ -1442,7 +1527,8 @@
           "label": "1.75 mm / 1 kg / Pure White",
           "purchaseUrl": "https://numakers.com/products/abs-filament?variant=48380370223412",
           "available": true,
-          "sku": "ABNA11KASJ"
+          "sku": "ABNA11KASJ",
+          "affiliateUrl": "https://numakers.com/products/abs-filament?ref=meshvault&variant=48380370223412"
         }
       ],
       "preferredPurchaseCode": "48380370223412"
@@ -1459,7 +1545,8 @@
           "label": "1.75 mm / 1 kg / Lemon Yellow",
           "purchaseUrl": "https://numakers.com/products/abs-filament?variant=46944297386292",
           "available": true,
-          "sku": "ABNA11KSAA"
+          "sku": "ABNA11KSAA",
+          "affiliateUrl": "https://numakers.com/products/abs-filament?ref=meshvault&variant=46944297386292"
         }
       ],
       "preferredPurchaseCode": "46944297386292"
@@ -1476,7 +1563,8 @@
           "label": "1.75 mm / 1 kg / Apple Red",
           "purchaseUrl": "https://numakers.com/products/abs-filament?variant=46944297419060",
           "available": true,
-          "sku": "ABNA11KSAC"
+          "sku": "ABNA11KSAC",
+          "affiliateUrl": "https://numakers.com/products/abs-filament?ref=meshvault&variant=46944297419060"
         }
       ],
       "preferredPurchaseCode": "46944297419060"
@@ -1493,7 +1581,8 @@
           "label": "1.75 mm / 1 kg / Burnt Orange",
           "purchaseUrl": "https://numakers.com/products/abs-filament?variant=46944297451828",
           "available": true,
-          "sku": "ABNA11KSAB"
+          "sku": "ABNA11KSAB",
+          "affiliateUrl": "https://numakers.com/products/abs-filament?ref=meshvault&variant=46944297451828"
         }
       ],
       "preferredPurchaseCode": "46944297451828"
@@ -1510,7 +1599,8 @@
           "label": "1.75 mm / 1 kg / Royal Blue",
           "purchaseUrl": "https://numakers.com/products/abs-filament?variant=46944297484596",
           "available": true,
-          "sku": "ABNA11KSAD"
+          "sku": "ABNA11KSAD",
+          "affiliateUrl": "https://numakers.com/products/abs-filament?ref=meshvault&variant=46944297484596"
         }
       ],
       "preferredPurchaseCode": "46944297484596"
@@ -1527,7 +1617,8 @@
           "label": "1.75 mm / 1 kg / Light Gray",
           "purchaseUrl": "https://numakers.com/products/abs-filament?variant=46944297517364",
           "available": true,
-          "sku": "SKU:ABNA11KSAF"
+          "sku": "SKU:ABNA11KSAF",
+          "affiliateUrl": "https://numakers.com/products/abs-filament?ref=meshvault&variant=46944297517364"
         }
       ],
       "preferredPurchaseCode": "46944297517364"
@@ -1544,7 +1635,8 @@
           "label": "1.75 mm / 1 kg / Grass Green",
           "purchaseUrl": "https://numakers.com/products/abs-filament?variant=46944297550132",
           "available": true,
-          "sku": "SKU:ABNA11KSAG"
+          "sku": "SKU:ABNA11KSAG",
+          "affiliateUrl": "https://numakers.com/products/abs-filament?ref=meshvault&variant=46944297550132"
         }
       ],
       "preferredPurchaseCode": "46944297550132"
@@ -1561,14 +1653,16 @@
           "label": "1.75 mm / 1 kg / Pure White",
           "purchaseUrl": "https://numakers.com/products/pla-filament?variant=46209336246580",
           "available": true,
-          "sku": "PPNA11KPAL"
+          "sku": "PPNA11KPAL",
+          "affiliateUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336246580"
         },
         {
           "code": "47078003900724",
           "label": "1.75 mm / 3 kg / Pure White",
           "purchaseUrl": "https://numakers.com/products/pla-filament?variant=47078003900724",
           "available": false,
-          "sku": "PPNA13KPAL"
+          "sku": "PPNA13KPAL",
+          "affiliateUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=47078003900724"
         }
       ],
       "preferredPurchaseCode": "46209336246580"
@@ -1585,7 +1679,8 @@
           "label": "1.75 mm / 1 kg / Cool (Lithophane) White",
           "purchaseUrl": "https://numakers.com/products/pla-filament?variant=48008280277300",
           "available": true,
-          "sku": "PPNA11KPBH"
+          "sku": "PPNA11KPBH",
+          "affiliateUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=48008280277300"
         }
       ],
       "preferredPurchaseCode": "48008280277300"
@@ -1602,7 +1697,8 @@
           "label": "1.75 mm / 1 kg / Bone White",
           "purchaseUrl": "https://numakers.com/products/pla-filament?variant=49075989512500",
           "available": true,
-          "sku": "PPNA11KPCG"
+          "sku": "PPNA11KPCG",
+          "affiliateUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=49075989512500"
         }
       ],
       "preferredPurchaseCode": "49075989512500"
@@ -1619,7 +1715,8 @@
           "label": "1.75 mm / 1 kg / Ivory White",
           "purchaseUrl": "https://numakers.com/products/pla-filament?variant=46209398243636",
           "available": false,
-          "sku": "PPNA11KPAP"
+          "sku": "PPNA11KPAP",
+          "affiliateUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209398243636"
         }
       ],
       "preferredPurchaseCode": "46209398243636"
@@ -1636,7 +1733,8 @@
           "label": "1.75 mm / 1 kg / Transparent",
           "purchaseUrl": "https://numakers.com/products/pla-filament?variant=46209336508724",
           "available": true,
-          "sku": "PPNA11KZZZ"
+          "sku": "PPNA11KZZZ",
+          "affiliateUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336508724"
         }
       ],
       "preferredPurchaseCode": "46209336508724"
@@ -1653,7 +1751,8 @@
           "label": "1.75 mm / 1 kg / Light Beige",
           "purchaseUrl": "https://numakers.com/products/pla-filament?variant=49139597377844",
           "available": true,
-          "sku": "PPNA11KPDE"
+          "sku": "PPNA11KPDE",
+          "affiliateUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=49139597377844"
         }
       ],
       "preferredPurchaseCode": "49139597377844"
@@ -1670,7 +1769,8 @@
           "label": "1.75 mm / 1 kg / Apricot",
           "purchaseUrl": "https://numakers.com/products/pla-filament?variant=46209398309172",
           "available": false,
-          "sku": "PPNA11KPAQ"
+          "sku": "PPNA11KPAQ",
+          "affiliateUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209398309172"
         }
       ],
       "preferredPurchaseCode": "46209398309172"
@@ -1687,7 +1787,8 @@
           "label": "1.75 mm / 1 kg / Lemon Yellow",
           "purchaseUrl": "https://numakers.com/products/pla-filament?variant=46209336279348",
           "available": true,
-          "sku": "PPNA11KPAI"
+          "sku": "PPNA11KPAI",
+          "affiliateUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336279348"
         }
       ],
       "preferredPurchaseCode": "46209336279348"
@@ -1704,7 +1805,8 @@
           "label": "1.75 mm / 1 kg / Fluorescent Yellow",
           "purchaseUrl": "https://numakers.com/products/pla-filament?variant=47844590289204",
           "available": true,
-          "sku": "PPNA11KPAO"
+          "sku": "PPNA11KPAO",
+          "affiliateUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=47844590289204"
         }
       ],
       "preferredPurchaseCode": "47844590289204"
@@ -1721,7 +1823,8 @@
           "label": "1.75 mm / 1 kg / Bahama Yellow",
           "purchaseUrl": "https://numakers.com/products/pla-filament?variant=47846168396084",
           "available": true,
-          "sku": "PPNA11KPBG"
+          "sku": "PPNA11KPBG",
+          "affiliateUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=47846168396084"
         }
       ],
       "preferredPurchaseCode": "47846168396084"
@@ -1738,7 +1841,8 @@
           "label": "1.75 mm / 1 kg / Fluorescent Orange",
           "purchaseUrl": "https://numakers.com/products/pla-filament?variant=46313789161780",
           "available": true,
-          "sku": "PPNA11KPAN"
+          "sku": "PPNA11KPAN",
+          "affiliateUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46313789161780"
         }
       ],
       "preferredPurchaseCode": "46313789161780"
@@ -1755,7 +1859,8 @@
           "label": "1.75 mm / 1 kg / Outrageous Orange",
           "purchaseUrl": "https://numakers.com/products/pla-filament?variant=46209336377652",
           "available": true,
-          "sku": "PPNA11KPAT"
+          "sku": "PPNA11KPAT",
+          "affiliateUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336377652"
         }
       ],
       "preferredPurchaseCode": "46209336377652"
@@ -1772,7 +1877,8 @@
           "label": "1.75 mm / 1 kg / Terracotta Orange",
           "purchaseUrl": "https://numakers.com/products/pla-filament?variant=49075989545268",
           "available": true,
-          "sku": "PPNA11KPDR"
+          "sku": "PPNA11KPDR",
+          "affiliateUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=49075989545268"
         }
       ],
       "preferredPurchaseCode": "49075989545268"
@@ -1789,7 +1895,8 @@
           "label": "1.75 mm / 1 kg / Rust Copper",
           "purchaseUrl": "https://numakers.com/products/pla-filament?variant=46209398276404",
           "available": true,
-          "sku": "PPNA11KPAW"
+          "sku": "PPNA11KPAW",
+          "affiliateUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209398276404"
         }
       ],
       "preferredPurchaseCode": "46209398276404"
@@ -1806,7 +1913,8 @@
           "label": "1.75 mm / 1 kg / Nuclear Red",
           "purchaseUrl": "https://numakers.com/products/pla-filament?variant=46209336344884",
           "available": false,
-          "sku": "PPNA11KPAD"
+          "sku": "PPNA11KPAD",
+          "affiliateUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336344884"
         }
       ],
       "preferredPurchaseCode": "46209336344884"
@@ -1823,7 +1931,8 @@
           "label": "1.75 mm / 1 kg / Imperial Red",
           "purchaseUrl": "https://numakers.com/products/pla-filament?variant=48504970838324",
           "available": true,
-          "sku": "PPNA11KPBS"
+          "sku": "PPNA11KPBS",
+          "affiliateUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=48504970838324"
         }
       ],
       "preferredPurchaseCode": "48504970838324"
@@ -1840,7 +1949,8 @@
           "label": "1.75 mm / 1 kg / Cotton Candy Pink",
           "purchaseUrl": "https://numakers.com/products/pla-filament?variant=49283691905332",
           "available": true,
-          "sku": null
+          "sku": null,
+          "affiliateUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=49283691905332"
         }
       ],
       "preferredPurchaseCode": "49283691905332"
@@ -1857,7 +1967,8 @@
           "label": "1.75 mm / 1 kg / Atomic Pink",
           "purchaseUrl": "https://numakers.com/products/pla-filament?variant=46209398047028",
           "available": true,
-          "sku": "PPNA11KPAH"
+          "sku": "PPNA11KPAH",
+          "affiliateUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209398047028"
         }
       ],
       "preferredPurchaseCode": "46209398047028"
@@ -1874,7 +1985,8 @@
           "label": "1.75 mm / 1 kg / Fuchsia/Magenta",
           "purchaseUrl": "https://numakers.com/products/pla-filament?variant=47846152274228",
           "available": true,
-          "sku": "PPNA11KPBE"
+          "sku": "PPNA11KPBE",
+          "affiliateUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=47846152274228"
         }
       ],
       "preferredPurchaseCode": "47846152274228"
@@ -1891,7 +2003,8 @@
           "label": "1.75 mm / 1 kg / Mauve Purple",
           "purchaseUrl": "https://numakers.com/products/pla-filament?variant=46209336312116",
           "available": true,
-          "sku": "PPNA11KPAS"
+          "sku": "PPNA11KPAS",
+          "affiliateUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336312116"
         }
       ],
       "preferredPurchaseCode": "46209336312116"
@@ -1908,7 +2021,8 @@
           "label": "1.75 mm / 1 kg / Lavender Violet",
           "purchaseUrl": "https://numakers.com/products/pla-filament?variant=47583304810804",
           "available": true,
-          "sku": "PPNA11KPBF"
+          "sku": "PPNA11KPBF",
+          "affiliateUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=47583304810804"
         }
       ],
       "preferredPurchaseCode": "47583304810804"
@@ -1925,7 +2039,8 @@
           "label": "1.75 mm / 1 kg / Thanos Purple",
           "purchaseUrl": "https://numakers.com/products/pla-filament?variant=48304849617204",
           "available": false,
-          "sku": "PPNA11KPBK"
+          "sku": "PPNA11KPBK",
+          "affiliateUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=48304849617204"
         }
       ],
       "preferredPurchaseCode": "48304849617204"
@@ -1942,7 +2057,8 @@
           "label": "1.75 mm / 1 kg / Cobalt Blue",
           "purchaseUrl": "https://numakers.com/products/pla-filament?variant=49283691938100",
           "available": true,
-          "sku": null
+          "sku": null,
+          "affiliateUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=49283691938100"
         }
       ],
       "preferredPurchaseCode": "49283691938100"
@@ -1959,7 +2075,8 @@
           "label": "1.75 mm / 1 kg / Royal Blue",
           "purchaseUrl": "https://numakers.com/products/pla-filament?variant=46209336410420",
           "available": true,
-          "sku": "PPNA11KPAR"
+          "sku": "PPNA11KPAR",
+          "affiliateUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336410420"
         }
       ],
       "preferredPurchaseCode": "46209336410420"
@@ -1976,7 +2093,8 @@
           "label": "1.75 mm / 1 kg / Light Blue",
           "purchaseUrl": "https://numakers.com/products/pla-filament?variant=46209398079796",
           "available": true,
-          "sku": "PPNA11KPAV"
+          "sku": "PPNA11KPAV",
+          "affiliateUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209398079796"
         }
       ],
       "preferredPurchaseCode": "46209398079796"
@@ -1993,7 +2111,8 @@
           "label": "1.75 mm / 1 kg / Water Blue",
           "purchaseUrl": "https://numakers.com/products/pla-filament?variant=49139597410612",
           "available": false,
-          "sku": "PPNA11KPBT"
+          "sku": "PPNA11KPBT",
+          "affiliateUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=49139597410612"
         }
       ],
       "preferredPurchaseCode": "49139597410612"
@@ -2010,7 +2129,8 @@
           "label": "1.75 mm / 1 kg / Lagoon Blue",
           "purchaseUrl": "https://numakers.com/products/pla-filament?variant=46209398341940",
           "available": true,
-          "sku": "PPNA11KPAU"
+          "sku": "PPNA11KPAU",
+          "affiliateUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209398341940"
         }
       ],
       "preferredPurchaseCode": "46209398341940"
@@ -2027,7 +2147,8 @@
           "label": "1.75 mm / 1 kg / Teal Blue",
           "purchaseUrl": "https://numakers.com/products/pla-filament?variant=46209398145332",
           "available": true,
-          "sku": "PPNA11KPAJ"
+          "sku": "PPNA11KPAJ",
+          "affiliateUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209398145332"
         }
       ],
       "preferredPurchaseCode": "46209398145332"
@@ -2044,7 +2165,8 @@
           "label": "1.75 mm / 1 kg / Fluorescent Green",
           "purchaseUrl": "https://numakers.com/products/pla-filament?variant=46209398440244",
           "available": true,
-          "sku": "PPNA11KPAM"
+          "sku": "PPNA11KPAM",
+          "affiliateUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209398440244"
         }
       ],
       "preferredPurchaseCode": "46209398440244"
@@ -2061,7 +2183,8 @@
           "label": "1.75 mm / 1 kg / Ryobix Green",
           "purchaseUrl": "https://numakers.com/products/pla-filament?variant=47583304843572",
           "available": true,
-          "sku": "PPNA11KPAX"
+          "sku": "PPNA11KPAX",
+          "affiliateUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=47583304843572"
         }
       ],
       "preferredPurchaseCode": "47583304843572"
@@ -2078,7 +2201,8 @@
           "label": "1.75 mm / 1 kg / Grass Green",
           "purchaseUrl": "https://numakers.com/products/pla-filament?variant=46209336475956",
           "available": true,
-          "sku": "PPNA11KPAF"
+          "sku": "PPNA11KPAF",
+          "affiliateUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336475956"
         }
       ],
       "preferredPurchaseCode": "46209336475956"
@@ -2095,7 +2219,8 @@
           "label": "1.75 mm / 1 kg / Forest Green",
           "purchaseUrl": "https://numakers.com/products/pla-filament?variant=46209398374708",
           "available": true,
-          "sku": "PPNA11KPAG"
+          "sku": "PPNA11KPAG",
+          "affiliateUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209398374708"
         }
       ],
       "preferredPurchaseCode": "46209398374708"
@@ -2112,7 +2237,8 @@
           "label": "1.75 mm / 1 kg / Army Green",
           "purchaseUrl": "https://numakers.com/products/pla-filament?variant=46209398178100",
           "available": true,
-          "sku": "PPNA11KPAE"
+          "sku": "PPNA11KPAE",
+          "affiliateUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209398178100"
         }
       ],
       "preferredPurchaseCode": "46209398178100"
@@ -2129,7 +2255,8 @@
           "label": "1.75 mm / 1 kg / Military Khaki",
           "purchaseUrl": "https://numakers.com/products/pla-filament?variant=48488462549300",
           "available": true,
-          "sku": "PPNA11KPBI"
+          "sku": "PPNA11KPBI",
+          "affiliateUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=48488462549300"
         }
       ],
       "preferredPurchaseCode": "48488462549300"
@@ -2146,7 +2273,8 @@
           "label": "1.75 mm / 1 kg / Beige Brown",
           "purchaseUrl": "https://numakers.com/products/pla-filament?variant=46209398112564",
           "available": true,
-          "sku": "PPNA11KPAK"
+          "sku": "PPNA11KPAK",
+          "affiliateUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209398112564"
         }
       ],
       "preferredPurchaseCode": "46209398112564"
@@ -2163,7 +2291,8 @@
           "label": "1.75 mm / 1 kg / Chocolate Brown",
           "purchaseUrl": "https://numakers.com/products/pla-filament?variant=47846146212148",
           "available": false,
-          "sku": "PPNA11KPAZ"
+          "sku": "PPNA11KPAZ",
+          "affiliateUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=47846146212148"
         }
       ],
       "preferredPurchaseCode": "47846146212148"
@@ -2180,7 +2309,8 @@
           "label": "1.75 mm / 1 kg / Simply Silver",
           "purchaseUrl": "https://numakers.com/products/pla-filament?variant=48191754043700",
           "available": true,
-          "sku": "PPNA11KPBL"
+          "sku": "PPNA11KPBL",
+          "affiliateUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=48191754043700"
         }
       ],
       "preferredPurchaseCode": "48191754043700"
@@ -2197,14 +2327,16 @@
           "label": "1.75 mm / 1 kg / Light Gray",
           "purchaseUrl": "https://numakers.com/products/pla-filament?variant=46209336443188",
           "available": true,
-          "sku": "PPNA11KPAB"
+          "sku": "PPNA11KPAB",
+          "affiliateUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336443188"
         },
         {
           "code": "47078003933492",
           "label": "1.75 mm / 3 kg / Light Gray",
           "purchaseUrl": "https://numakers.com/products/pla-filament?variant=47078003933492",
           "available": false,
-          "sku": "PPNA13KPAB"
+          "sku": "PPNA13KPAB",
+          "affiliateUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=47078003933492"
         }
       ],
       "preferredPurchaseCode": "46209336443188"
@@ -2221,7 +2353,8 @@
           "label": "1.75 mm / 1 kg / Dark Gray",
           "purchaseUrl": "https://numakers.com/products/pla-filament?variant=46209398210868",
           "available": true,
-          "sku": "PPNA11KPAC"
+          "sku": "PPNA11KPAC",
+          "affiliateUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209398210868"
         }
       ],
       "preferredPurchaseCode": "46209398210868"
@@ -2238,7 +2371,8 @@
           "label": "1.75 mm / 1 kg / Midnight Gray",
           "purchaseUrl": "https://numakers.com/products/pla-filament?variant=48191754076468",
           "available": true,
-          "sku": "PPNA11KPBJ"
+          "sku": "PPNA11KPBJ",
+          "affiliateUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=48191754076468"
         }
       ],
       "preferredPurchaseCode": "48191754076468"
@@ -2255,14 +2389,16 @@
           "label": "1.75 mm / 1 kg / Pitch Black",
           "purchaseUrl": "https://numakers.com/products/pla-filament?variant=46209336213812",
           "available": true,
-          "sku": "PPNA11KPAA"
+          "sku": "PPNA11KPAA",
+          "affiliateUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336213812"
         },
         {
           "code": "47078003867956",
           "label": "1.75 mm / 3 kg / Pitch Black",
           "purchaseUrl": "https://numakers.com/products/pla-filament?variant=47078003867956",
           "available": false,
-          "sku": "PPNA13KPAA"
+          "sku": "PPNA13KPAA",
+          "affiliateUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=47078003867956"
         }
       ],
       "preferredPurchaseCode": "46209336213812"
@@ -2279,7 +2415,8 @@
           "label": "1.75 mm / 1 kg / Pitch Black",
           "purchaseUrl": "https://numakers.com/products/asa-filament?variant=46158921957684",
           "available": true,
-          "sku": "SKU:ASNA11KSAE"
+          "sku": "SKU:ASNA11KSAE",
+          "affiliateUrl": "https://numakers.com/products/asa-filament?ref=meshvault&variant=46158921957684"
         }
       ],
       "preferredPurchaseCode": "46158921957684"
@@ -2296,7 +2433,8 @@
           "label": "1.75 mm / 1 kg / Pure White",
           "purchaseUrl": "https://numakers.com/products/asa-filament?variant=46158921662772",
           "available": true,
-          "sku": "SKU:ASNA11KASJ"
+          "sku": "SKU:ASNA11KASJ",
+          "affiliateUrl": "https://numakers.com/products/asa-filament?ref=meshvault&variant=46158921662772"
         }
       ],
       "preferredPurchaseCode": "46158921662772"
@@ -2313,7 +2451,8 @@
           "label": "1.75 mm / 1 kg / Lemon Yellow",
           "purchaseUrl": "https://numakers.com/products/asa-filament?variant=46158921695540",
           "available": true,
-          "sku": "SKU:ASNA11KSAD"
+          "sku": "SKU:ASNA11KSAD",
+          "affiliateUrl": "https://numakers.com/products/asa-filament?ref=meshvault&variant=46158921695540"
         }
       ],
       "preferredPurchaseCode": "46158921695540"
@@ -2330,7 +2469,8 @@
           "label": "1.75 mm / 1 kg / Apple Red",
           "purchaseUrl": "https://numakers.com/products/asa-filament?variant=46158921761076",
           "available": true,
-          "sku": "ASNA11KSAC"
+          "sku": "ASNA11KSAC",
+          "affiliateUrl": "https://numakers.com/products/asa-filament?ref=meshvault&variant=46158921761076"
         }
       ],
       "preferredPurchaseCode": "46158921761076"
@@ -2347,7 +2487,8 @@
           "label": "1.75 mm / 1 kg / Burnt Orange",
           "purchaseUrl": "https://numakers.com/products/asa-filament?variant=46158921793844",
           "available": true,
-          "sku": "SKU:ASNA11KSAB"
+          "sku": "SKU:ASNA11KSAB",
+          "affiliateUrl": "https://numakers.com/products/asa-filament?ref=meshvault&variant=46158921793844"
         }
       ],
       "preferredPurchaseCode": "46158921793844"
@@ -2364,7 +2505,8 @@
           "label": "1.75 mm / 1 kg / Royal Blue",
           "purchaseUrl": "https://numakers.com/products/asa-filament?variant=46158921826612",
           "available": true,
-          "sku": "SKU:ASNA11KSAD"
+          "sku": "SKU:ASNA11KSAD",
+          "affiliateUrl": "https://numakers.com/products/asa-filament?ref=meshvault&variant=46158921826612"
         }
       ],
       "preferredPurchaseCode": "46158921826612"
@@ -2381,7 +2523,8 @@
           "label": "1.75 mm / 1 kg / Light Gray",
           "purchaseUrl": "https://numakers.com/products/asa-filament?variant=46158921859380",
           "available": true,
-          "sku": "SKU:ASNA11KSAF"
+          "sku": "SKU:ASNA11KSAF",
+          "affiliateUrl": "https://numakers.com/products/asa-filament?ref=meshvault&variant=46158921859380"
         }
       ],
       "preferredPurchaseCode": "46158921859380"
@@ -2398,7 +2541,8 @@
           "label": "1.75 mm / 1 kg / Grass Green",
           "purchaseUrl": "https://numakers.com/products/asa-filament?variant=46158921892148",
           "available": true,
-          "sku": "SKU:ASNA11KSAD"
+          "sku": "SKU:ASNA11KSAD",
+          "affiliateUrl": "https://numakers.com/products/asa-filament?ref=meshvault&variant=46158921892148"
         }
       ],
       "preferredPurchaseCode": "46158921892148"
@@ -2415,7 +2559,8 @@
           "label": "1.75 mm / 1 kg / Gold",
           "purchaseUrl": "https://numakers.com/products/pla-silk?variant=46158792950068",
           "available": true,
-          "sku": "PLSK11KPBA"
+          "sku": "PLSK11KPBA",
+          "affiliateUrl": "https://numakers.com/products/pla-silk?ref=meshvault&variant=46158792950068"
         }
       ],
       "preferredPurchaseCode": "46158792950068"
@@ -2432,7 +2577,8 @@
           "label": "1.75 mm / 1 kg / Enchanted Gold",
           "purchaseUrl": "https://numakers.com/products/pla-silk?variant=48861730013492",
           "available": false,
-          "sku": "PLSK11KPBN"
+          "sku": "PLSK11KPBN",
+          "affiliateUrl": "https://numakers.com/products/pla-silk?ref=meshvault&variant=48861730013492"
         }
       ],
       "preferredPurchaseCode": "48861730013492"
@@ -2449,7 +2595,8 @@
           "label": "1.75 mm / 1 kg / Silver",
           "purchaseUrl": "https://numakers.com/products/pla-silk?variant=46158803894580",
           "available": true,
-          "sku": "PLSK11KPBD"
+          "sku": "PLSK11KPBD",
+          "affiliateUrl": "https://numakers.com/products/pla-silk?ref=meshvault&variant=46158803894580"
         }
       ],
       "preferredPurchaseCode": "46158803894580"
@@ -2466,7 +2613,8 @@
           "label": "1.75 mm / 1 kg / Copper",
           "purchaseUrl": "https://numakers.com/products/pla-silk?variant=46158803927348",
           "available": true,
-          "sku": "SKU:PLSK11KPBC"
+          "sku": "SKU:PLSK11KPBC",
+          "affiliateUrl": "https://numakers.com/products/pla-silk?ref=meshvault&variant=46158803927348"
         }
       ],
       "preferredPurchaseCode": "46158803927348"
@@ -2483,7 +2631,8 @@
           "label": "1.75 mm / 1 kg / Bronze",
           "purchaseUrl": "https://numakers.com/products/pla-silk?variant=46158803960116",
           "available": true,
-          "sku": "SKU:PLSK11KPBB"
+          "sku": "SKU:PLSK11KPBB",
+          "affiliateUrl": "https://numakers.com/products/pla-silk?ref=meshvault&variant=46158803960116"
         }
       ],
       "preferredPurchaseCode": "46158803960116"
@@ -2500,7 +2649,8 @@
           "label": "1.75 mm / 1 kg / Red",
           "purchaseUrl": "https://numakers.com/products/pla-silk?variant=46158803992884",
           "available": false,
-          "sku": "SKU:PLSK11KPAD"
+          "sku": "SKU:PLSK11KPAD",
+          "affiliateUrl": "https://numakers.com/products/pla-silk?ref=meshvault&variant=46158803992884"
         }
       ],
       "preferredPurchaseCode": "46158803992884"
@@ -2517,7 +2667,8 @@
           "label": "1.75 mm / 1 kg / Purple",
           "purchaseUrl": "https://numakers.com/products/pla-silk?variant=46158804025652",
           "available": true,
-          "sku": "SKU:PPSK11KPAS"
+          "sku": "SKU:PPSK11KPAS",
+          "affiliateUrl": "https://numakers.com/products/pla-silk?ref=meshvault&variant=46158804025652"
         }
       ],
       "preferredPurchaseCode": "46158804025652"
@@ -2534,7 +2685,8 @@
           "label": "1.75 mm / 1 kg / Blue",
           "purchaseUrl": "https://numakers.com/products/pla-silk?variant=47846165479732",
           "available": false,
-          "sku": "PPSK11KPAR"
+          "sku": "PPSK11KPAR",
+          "affiliateUrl": "https://numakers.com/products/pla-silk?ref=meshvault&variant=47846165479732"
         }
       ],
       "preferredPurchaseCode": "47846165479732"
@@ -2551,7 +2703,8 @@
           "label": "1.75 mm / 1 kg / Forest Green",
           "purchaseUrl": "https://numakers.com/products/pla-silk?variant=48622136197428",
           "available": false,
-          "sku": "PLSK11KPAG"
+          "sku": "PLSK11KPAG",
+          "affiliateUrl": "https://numakers.com/products/pla-silk?ref=meshvault&variant=48622136197428"
         }
       ],
       "preferredPurchaseCode": "48622136197428"
@@ -2568,7 +2721,8 @@
           "label": "1.75 mm / 1 kg / Obsidian Night",
           "purchaseUrl": "https://numakers.com/products/pla-silk?variant=48622136230196",
           "available": false,
-          "sku": "SKU:PLSK11KPAA"
+          "sku": "SKU:PLSK11KPAA",
+          "affiliateUrl": "https://numakers.com/products/pla-silk?ref=meshvault&variant=48622136230196"
         }
       ],
       "preferredPurchaseCode": "48622136230196"
@@ -2585,7 +2739,8 @@
           "label": "1.75 mm / 1 kg / Molten Sol",
           "purchaseUrl": "https://numakers.com/products/pla-silk?variant=48622136262964",
           "available": true,
-          "sku": "SKU:PLSK11KPAT"
+          "sku": "SKU:PLSK11KPAT",
+          "affiliateUrl": "https://numakers.com/products/pla-silk?ref=meshvault&variant=48622136262964"
         }
       ],
       "preferredPurchaseCode": "48622136262964"
@@ -2602,7 +2757,8 @@
           "label": "1.75 / 1 kg",
           "purchaseUrl": "https://numakers.com/products/pla-wood?variant=45769784361268",
           "available": false,
-          "sku": "PPWD11K"
+          "sku": "PPWD11K",
+          "affiliateUrl": "https://numakers.com/products/pla-wood?ref=meshvault&variant=45769784361268"
         }
       ],
       "preferredPurchaseCode": "45769784361268"

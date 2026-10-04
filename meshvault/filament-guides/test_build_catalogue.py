@@ -3,6 +3,7 @@ import json
 from pathlib import Path
 import tempfile
 import unittest
+from urllib.parse import parse_qs, urlsplit
 
 ROOT = Path(__file__).resolve().parent
 
@@ -16,6 +17,24 @@ builder = module("build-catalogue")
 identities = module("build-identities")
 
 class CatalogueTests(unittest.TestCase):
+    def test_affiliate_rules_preserve_variant_selection_and_survive_refresh(self):
+        rules = json.loads((ROOT / "affiliate-links.json").read_text(encoding="utf-8"))
+        source = "https://numakers.com/products/abs-filament?variant=46944297451828"
+        self.assertEqual(identities.affiliate_url(source, rules["Numakers"]),
+                         "https://numakers.com/products/abs-filament?ref=meshvault&variant=46944297451828")
+        for brand in builder.build(ROOT)["brands"]:
+            rule = rules.get(brand["brand"])
+            if not rule: continue
+            snapshot = json.loads((ROOT / "store-catalogues" / (brand["brand"].lower() + ".json")).read_text(encoding="utf-8"))
+            self.assertEqual(identities.build(snapshot, brand, rule), brand)
+            for product in brand["products"]:
+                for option in product["purchaseOptions"]:
+                    self.assertEqual(option["affiliateUrl"], identities.affiliate_url(option["purchaseUrl"], rule))
+                    self.assertEqual(parse_qs(urlsplit(option["affiliateUrl"]).query)["variant"], [option["code"]])
+                    self.assertEqual(identities.affiliate_url(option["affiliateUrl"], rule), option["affiliateUrl"])
+        self.assertEqual(identities.affiliate_url("https://store.sunlu.com/products/resin", rules["SUNLU"]),
+                         "https://store.sunlu.com/products/resin?sca_ref=12477616.r65NSOHEnL")
+
     def test_variants_become_options_and_reviewed_preferences_survive_refresh(self):
         rows = [{"range": "PLA", "name": "White", "hexes": ["#FFFFFF"], "code": str(i), "profileId": None,
                  "variant": label, "purchaseUrl": "https://shop.example.test/products/pla?variant=" + str(i)}
