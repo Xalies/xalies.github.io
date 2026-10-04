@@ -17,14 +17,20 @@ builder = module("build-catalogue")
 identities = module("build-identities")
 
 class CatalogueTests(unittest.TestCase):
-    def test_october_guide_uses_exact_numakers_references_without_invented_hexes(self):
+    def test_october_guide_uses_exact_numakers_references_and_published_swatches(self):
+        source = json.loads((ROOT / "guides/nostalgic-3d-2026-10.json").read_text(encoding="utf-8"))
+        self.assertTrue(all(c["hex"] is None for p in source["packs"] for m in p["models"] for c in m["colours"]))
         guide = next(g for g in builder.build(ROOT)["guides"] if g["release"] == "October 2026")
         self.assertEqual(guide["documentHash"], "039e91f1f60751199b5728388907b5e1e7a13f2a1357591d19eaffafc4eb3deb")
         self.assertEqual([len(p["models"]) for p in guide["packs"]], [10, 8, 8, 8])
         for pack in guide["packs"]:
             for model in pack["models"]:
                 for colour in model["colours"]:
-                    self.assertIsNone(colour["hex"])
+                    if colour["name"] == "Dark Gray":
+                        self.assertIsNone(colour["hex"])
+                    else:
+                        self.assertRegex(colour["hex"], r"^#[0-9A-F]{6}$")
+                        self.assertTrue(colour["hexSourceUrl"].startswith("https://numakers.com/products/"))
                     self.assertTrue(colour["purchaseUrl"].startswith("https://numakers.com/products/"))
                     self.assertIn("?ref=meshvault&variant=" + colour["purchaseCode"], colour["purchaseUrl"])
         self.assertEqual([c["name"] for c in guide["packs"][3]["models"][3]["colours"]], ["Simply Silver", "Teal Blue"])
@@ -119,8 +125,33 @@ class CatalogueTests(unittest.TestCase):
         self.assertTrue(any(p["range"] == "PLA+ Filament" and p["name"] == "Pitch Black" for p in brand["products"]))
         for product in brand["products"]:
             self.assertIsNone(product["profileId"])
-            self.assertEqual(product["hexes"], [])
+            if product["hexes"]:
+                self.assertRegex(product["hexes"][0], r"^#[0-9A-F]{6}$")
+                self.assertTrue(product["hexSourceUrl"].startswith("https://numakers.com/products/"))
         self.assertFalse(any("Build Plate" in p["range"] or "Gift Card" in p["range"] for p in brand["products"]))
+
+    def test_numakers_swatches_require_exact_unambiguous_published_hexes(self):
+        importer = module("update-numakers")
+        html = "product_colors: " + json.dumps("Thanos Purple: #6843b4,\nGold: #d4af37,\nOrange: #ff0000,\norange: #00ff00,\nPhoto: image.png")
+        self.assertEqual(importer.parse_swatches(html), {"thanos purple": "#6843B4", "gold": "#D4AF37"})
+        with self.assertRaises(ValueError): importer.parse_swatches("layout changed")
+
+    def test_supplier_swatches_fill_only_missing_single_hexes_after_exact_reference(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            (root / "brands").mkdir()
+            (root / "guides").mkdir()
+            products = [{"code": code, "hexes": hexes, "hexSourceUrl": "https://example.test/pla",
+                         "purchaseOptions": [{"code": code, "purchaseUrl": "https://example.test/" + code}],
+                         "preferredPurchaseCode": code} for code, hexes in [("purple", ["#6843B4"]), ("dual", ["#000000", "#FFFFFF"]), ("unknown", [])]]
+            (root / "brands/brand.json").write_text(json.dumps({"schemaVersion": 2, "brand": "Example", "products": products}))
+            colours = [{"name": "PDF label", "hex": hex_value, "filamentCode": code} for code, hex_value in
+                       [("purple", None), ("purple", "#123456"), ("dual", None), ("unknown", None)]]
+            (root / "guides/guide.json").write_text(json.dumps({"brand": "Example", "packs": [{"models": [{"colours": colours}]}]}))
+            compiled = builder.build(root)["guides"][0]["packs"][0]["models"][0]["colours"]
+            self.assertEqual([c["hex"] for c in compiled], ["#6843B4", "#123456", None, None])
+            self.assertEqual(compiled[0]["name"], "PDF label")
+            self.assertNotIn("hexSourceUrl", compiled[1])
 
     def test_published_multi_colour_values_are_preserved_without_guessing(self):
         importer = module("update-polymaker")

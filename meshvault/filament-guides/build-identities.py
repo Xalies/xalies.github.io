@@ -36,6 +36,8 @@ def build(snapshot, previous=None, affiliate=None):
                            "profileId": row.get("profileId"), "code": code, "purchaseOptions": []}
             if row.get("kind") == "resin":
                 groups[key]["kind"] = "resin"
+            if row.get("hexSourceUrl"):
+                groups[key]["hexSourceUrl"] = row["hexSourceUrl"]
         identity = groups[key]
         if row.get("kind", "filament") != identity.get("kind", "filament"):
             raise ValueError("Conflicting material kinds for " + str(key))

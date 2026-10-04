@@ -3,6 +3,7 @@
 Run: python meshvault/filament-guides/build-catalogue.py
 """
 import json
+import re
 from pathlib import Path
 from urllib.parse import urlsplit
 
@@ -62,6 +63,13 @@ def build(root):
                         if len(matches) != 1:
                             raise ValueError("Missing or ambiguous guide filament: " + colour["filamentCode"])
                         identity = matches[0]
+                        # Guide RGB takes priority. Only an exact reviewed identity
+                        # with one published swatch can fill a missing guide hex.
+                        if (colour.get("hex") is None and len(identity.get("hexes", [])) == 1
+                                and re.fullmatch(r"#[0-9a-fA-F]{6}", identity["hexes"][0])):
+                            colour["hex"] = identity["hexes"][0]
+                            if identity.get("hexSourceUrl"):
+                                colour["hexSourceUrl"] = identity["hexSourceUrl"]
                         code = colour.get("purchaseCode", identity.get("preferredPurchaseCode"))
                         options = [o for o in identity["purchaseOptions"] if o["code"] == code]
                         if len(options) != 1:
