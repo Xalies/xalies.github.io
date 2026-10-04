@@ -953,6 +953,2311 @@
     {
       "schemaVersion": 1,
       "creator": "Nostalgic 3D",
+      "documentName": "01 Final Fantasy October 2026 Filament Guide.pdf",
+      "release": "October 2026",
+      "brand": "Numakers",
+      "extraction": {
+        "bodyTop": 90,
+        "groups": {},
+        "namedColours": true,
+        "colourPattern": "[^\\w]*(.+?)\\s+(PLA\\+|PLA Silk)"
+      },
+      "packs": [
+        {
+          "name": "Monthly Mashup Final Fantasy VII - October 2026",
+          "section": "Final Fantasy VII “Pure” Set",
+          "page": 2,
+          "aliases": [],
+          "models": [
+            {
+              "name": "Cloud Strife",
+              "aliases": [],
+              "colours": [
+                {
+                  "name": "Royal Blue",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-3c004a70cdd3d57e2ea8",
+                  "purchaseCode": "46209336410420",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336410420"
+                },
+                {
+                  "name": "Lemon Yellow",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-72e161bf156888785dd9",
+                  "purchaseCode": "46209336279348",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336279348"
+                },
+                {
+                  "name": "Beige Brown",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-a7624989909e27b06ed4",
+                  "purchaseCode": "46209398112564",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209398112564"
+                },
+                {
+                  "name": "Simply Silver",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-0bcbddeb88f9752abe9d",
+                  "purchaseCode": "48191754043700",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=48191754043700"
+                },
+                {
+                  "name": "Imperial Red",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-4de727a9d1e96cb26890",
+                  "purchaseCode": "48504970838324",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=48504970838324"
+                },
+                {
+                  "name": "Apricot (Skin)",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-f3cd0533803b94349e0d",
+                  "purchaseCode": "46209398309172",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209398309172"
+                },
+                {
+                  "name": "Silver",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA Silk",
+                  "filamentCode": "filament-250a6a3d3f0f05df3bac",
+                  "purchaseCode": "46158803894580",
+                  "purchaseUrl": "https://numakers.com/products/pla-silk?ref=meshvault&variant=46158803894580"
+                },
+                {
+                  "name": "Pure White",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-3fe090637bafbcc65608",
+                  "purchaseCode": "46209336246580",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336246580"
+                },
+                {
+                  "name": "Pitch Black",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-00e1be3adc93460fdaac",
+                  "purchaseCode": "46209336213812",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336213812"
+                }
+              ],
+              "page": 2
+            },
+            {
+              "name": "Barret Wallace",
+              "aliases": [],
+              "colours": [
+                {
+                  "name": "Beige Brown",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-a7624989909e27b06ed4",
+                  "purchaseCode": "46209398112564",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209398112564"
+                },
+                {
+                  "name": "Forest Green",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-5482dc696f7261e277e8",
+                  "purchaseCode": "46209398374708",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209398374708"
+                },
+                {
+                  "name": "Simply Silver",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-0bcbddeb88f9752abe9d",
+                  "purchaseCode": "48191754043700",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=48191754043700"
+                },
+                {
+                  "name": "Military Khaki",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-33bde7b757bceb79b17a",
+                  "purchaseCode": "48488462549300",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=48488462549300"
+                },
+                {
+                  "name": "Nuclear Red",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-2fe88f54f1e73f69be32",
+                  "purchaseCode": "46209336344884",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336344884"
+                },
+                {
+                  "name": "Silver",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA Silk",
+                  "filamentCode": "filament-250a6a3d3f0f05df3bac",
+                  "purchaseCode": "46158803894580",
+                  "purchaseUrl": "https://numakers.com/products/pla-silk?ref=meshvault&variant=46158803894580"
+                },
+                {
+                  "name": "Pure White",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-3fe090637bafbcc65608",
+                  "purchaseCode": "46209336246580",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336246580"
+                },
+                {
+                  "name": "Pitch Black",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-00e1be3adc93460fdaac",
+                  "purchaseCode": "46209336213812",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336213812"
+                }
+              ],
+              "page": 2
+            },
+            {
+              "name": "Tifa Lockhart",
+              "aliases": [],
+              "colours": [
+                {
+                  "name": "Imperial Red",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-4de727a9d1e96cb26890",
+                  "purchaseCode": "48504970838324",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=48504970838324"
+                },
+                {
+                  "name": "Nuclear Red",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-2fe88f54f1e73f69be32",
+                  "purchaseCode": "46209336344884",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336344884"
+                },
+                {
+                  "name": "Simply Silver",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-0bcbddeb88f9752abe9d",
+                  "purchaseCode": "48191754043700",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=48191754043700"
+                },
+                {
+                  "name": "Apricot (Skin)",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-f3cd0533803b94349e0d",
+                  "purchaseCode": "46209398309172",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209398309172"
+                },
+                {
+                  "name": "Ivory White",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-682049a6091d491fd48d",
+                  "purchaseCode": "46209398243636",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209398243636"
+                },
+                {
+                  "name": "Atomic Pink",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-987c502a60d18fa4e3fc",
+                  "purchaseCode": "46209398047028",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209398047028"
+                },
+                {
+                  "name": "Pure White",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-3fe090637bafbcc65608",
+                  "purchaseCode": "46209336246580",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336246580"
+                },
+                {
+                  "name": "Pitch Black",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-00e1be3adc93460fdaac",
+                  "purchaseCode": "46209336213812",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336213812"
+                }
+              ],
+              "page": 2
+            },
+            {
+              "name": "Aerith Gainsborough",
+              "aliases": [
+                "Aerith Gainsborough Split"
+              ],
+              "colours": [
+                {
+                  "name": "Nuclear Red",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-2fe88f54f1e73f69be32",
+                  "purchaseCode": "46209336344884",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336344884"
+                },
+                {
+                  "name": "Apricot (Skin)",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-f3cd0533803b94349e0d",
+                  "purchaseCode": "46209398309172",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209398309172"
+                },
+                {
+                  "name": "Beige Brown",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-a7624989909e27b06ed4",
+                  "purchaseCode": "46209398112564",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209398112564"
+                },
+                {
+                  "name": "Atomic Pink",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-987c502a60d18fa4e3fc",
+                  "purchaseCode": "46209398047028",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209398047028"
+                },
+                {
+                  "name": "Forest Green",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-5482dc696f7261e277e8",
+                  "purchaseCode": "46209398374708",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209398374708"
+                },
+                {
+                  "name": "Silver",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA Silk",
+                  "filamentCode": "filament-250a6a3d3f0f05df3bac",
+                  "purchaseCode": "46158803894580",
+                  "purchaseUrl": "https://numakers.com/products/pla-silk?ref=meshvault&variant=46158803894580"
+                },
+                {
+                  "name": "Pure White",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-3fe090637bafbcc65608",
+                  "purchaseCode": "46209336246580",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336246580"
+                },
+                {
+                  "name": "Pitch Black",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-00e1be3adc93460fdaac",
+                  "purchaseCode": "46209336213812",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336213812"
+                }
+              ],
+              "page": 2
+            },
+            {
+              "name": "Red XIII",
+              "aliases": [
+                "Red XIII Split"
+              ],
+              "colours": [
+                {
+                  "name": "Beige Brown",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-a7624989909e27b06ed4",
+                  "purchaseCode": "46209398112564",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209398112564"
+                },
+                {
+                  "name": "Lemon Yellow",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-72e161bf156888785dd9",
+                  "purchaseCode": "46209336279348",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336279348"
+                },
+                {
+                  "name": "Terracotta Orange",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-cb5a144815723c927192",
+                  "purchaseCode": "49075989545268",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=49075989545268"
+                },
+                {
+                  "name": "Imperial Red",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-4de727a9d1e96cb26890",
+                  "purchaseCode": "48504970838324",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=48504970838324"
+                },
+                {
+                  "name": "Forest Green",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-5482dc696f7261e277e8",
+                  "purchaseCode": "46209398374708",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209398374708"
+                },
+                {
+                  "name": "Gold",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA Silk",
+                  "filamentCode": "filament-3a77a09d9bfc5be15f72",
+                  "purchaseCode": "46158792950068",
+                  "purchaseUrl": "https://numakers.com/products/pla-silk?ref=meshvault&variant=46158792950068"
+                },
+                {
+                  "name": "Pure White",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-3fe090637bafbcc65608",
+                  "purchaseCode": "46209336246580",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336246580"
+                },
+                {
+                  "name": "Pitch Black",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-00e1be3adc93460fdaac",
+                  "purchaseCode": "46209336213812",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336213812"
+                }
+              ],
+              "page": 2
+            },
+            {
+              "name": "Cait Sith",
+              "aliases": [],
+              "colours": [
+                {
+                  "name": "Thanos Purple",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-febdea3d562c2b2b1f6a",
+                  "purchaseCode": "48304849617204",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=48304849617204"
+                },
+                {
+                  "name": "Lemon Yellow",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-72e161bf156888785dd9",
+                  "purchaseCode": "46209336279348",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336279348"
+                },
+                {
+                  "name": "Imperial Red",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-4de727a9d1e96cb26890",
+                  "purchaseCode": "48504970838324",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=48504970838324"
+                },
+                {
+                  "name": "Ivory White",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-682049a6091d491fd48d",
+                  "purchaseCode": "46209398243636",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209398243636"
+                },
+                {
+                  "name": "Atomic Pink",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-987c502a60d18fa4e3fc",
+                  "purchaseCode": "46209398047028",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209398047028"
+                },
+                {
+                  "name": "Simply Silver",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-0bcbddeb88f9752abe9d",
+                  "purchaseCode": "48191754043700",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=48191754043700"
+                },
+                {
+                  "name": "Dark Gray",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-f45138256b54f47ad44f",
+                  "purchaseCode": "46209398210868",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209398210868"
+                },
+                {
+                  "name": "Gold",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA Silk",
+                  "filamentCode": "filament-3a77a09d9bfc5be15f72",
+                  "purchaseCode": "46158792950068",
+                  "purchaseUrl": "https://numakers.com/products/pla-silk?ref=meshvault&variant=46158792950068"
+                },
+                {
+                  "name": "Pure White",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-3fe090637bafbcc65608",
+                  "purchaseCode": "46209336246580",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336246580"
+                },
+                {
+                  "name": "Pitch Black",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-00e1be3adc93460fdaac",
+                  "purchaseCode": "46209336213812",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336213812"
+                }
+              ],
+              "page": 2
+            },
+            {
+              "name": "Vincent Valentine",
+              "aliases": [],
+              "colours": [
+                {
+                  "name": "Dark Gray",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-f45138256b54f47ad44f",
+                  "purchaseCode": "46209398210868",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209398210868"
+                },
+                {
+                  "name": "Apricot (Skin)",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-f3cd0533803b94349e0d",
+                  "purchaseCode": "46209398309172",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209398309172"
+                },
+                {
+                  "name": "Imperial Red",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-4de727a9d1e96cb26890",
+                  "purchaseCode": "48504970838324",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=48504970838324"
+                },
+                {
+                  "name": "Nuclear Red",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-2fe88f54f1e73f69be32",
+                  "purchaseCode": "46209336344884",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336344884"
+                },
+                {
+                  "name": "Gold",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA Silk",
+                  "filamentCode": "filament-3a77a09d9bfc5be15f72",
+                  "purchaseCode": "46158792950068",
+                  "purchaseUrl": "https://numakers.com/products/pla-silk?ref=meshvault&variant=46158792950068"
+                },
+                {
+                  "name": "Silver",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA Silk",
+                  "filamentCode": "filament-250a6a3d3f0f05df3bac",
+                  "purchaseCode": "46158803894580",
+                  "purchaseUrl": "https://numakers.com/products/pla-silk?ref=meshvault&variant=46158803894580"
+                },
+                {
+                  "name": "Pure White",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-3fe090637bafbcc65608",
+                  "purchaseCode": "46209336246580",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336246580"
+                },
+                {
+                  "name": "Pitch Black",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-00e1be3adc93460fdaac",
+                  "purchaseCode": "46209336213812",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336213812"
+                }
+              ],
+              "page": 2
+            },
+            {
+              "name": "Cid Highwind",
+              "aliases": [
+                "Cid Highwind Split"
+              ],
+              "colours": [
+                {
+                  "name": "Royal Blue",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-3c004a70cdd3d57e2ea8",
+                  "purchaseCode": "46209336410420",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336410420"
+                },
+                {
+                  "name": "Lagoon Blue",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-21e043a117c27d323bb8",
+                  "purchaseCode": "46209398341940",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209398341940"
+                },
+                {
+                  "name": "Lemon Yellow",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-72e161bf156888785dd9",
+                  "purchaseCode": "46209336279348",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336279348"
+                },
+                {
+                  "name": "Beige Brown",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-a7624989909e27b06ed4",
+                  "purchaseCode": "46209398112564",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209398112564"
+                },
+                {
+                  "name": "Simply Silver",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-0bcbddeb88f9752abe9d",
+                  "purchaseCode": "48191754043700",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=48191754043700"
+                },
+                {
+                  "name": "Nuclear Red",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-2fe88f54f1e73f69be32",
+                  "purchaseCode": "46209336344884",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336344884"
+                },
+                {
+                  "name": "Apricot (Skin)",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-f3cd0533803b94349e0d",
+                  "purchaseCode": "46209398309172",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209398309172"
+                },
+                {
+                  "name": "Silver",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA Silk",
+                  "filamentCode": "filament-250a6a3d3f0f05df3bac",
+                  "purchaseCode": "46158803894580",
+                  "purchaseUrl": "https://numakers.com/products/pla-silk?ref=meshvault&variant=46158803894580"
+                },
+                {
+                  "name": "Pure White",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-3fe090637bafbcc65608",
+                  "purchaseCode": "46209336246580",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336246580"
+                },
+                {
+                  "name": "Pitch Black",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-00e1be3adc93460fdaac",
+                  "purchaseCode": "46209336213812",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336213812"
+                }
+              ],
+              "page": 2
+            },
+            {
+              "name": "Yuffie Kisaragi",
+              "aliases": [],
+              "colours": [
+                {
+                  "name": "Atomic Pink",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-987c502a60d18fa4e3fc",
+                  "purchaseCode": "46209398047028",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209398047028"
+                },
+                {
+                  "name": "Terracotta Orange",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-cb5a144815723c927192",
+                  "purchaseCode": "49075989545268",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=49075989545268"
+                },
+                {
+                  "name": "Beige Brown",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-a7624989909e27b06ed4",
+                  "purchaseCode": "46209398112564",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209398112564"
+                },
+                {
+                  "name": "Simply Silver",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-0bcbddeb88f9752abe9d",
+                  "purchaseCode": "48191754043700",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=48191754043700"
+                },
+                {
+                  "name": "Apricot (Skin)",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-f3cd0533803b94349e0d",
+                  "purchaseCode": "46209398309172",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209398309172"
+                },
+                {
+                  "name": "Ivory White",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-682049a6091d491fd48d",
+                  "purchaseCode": "46209398243636",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209398243636"
+                },
+                {
+                  "name": "Forest Green",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-5482dc696f7261e277e8",
+                  "purchaseCode": "46209398374708",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209398374708"
+                },
+                {
+                  "name": "Pure White",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-3fe090637bafbcc65608",
+                  "purchaseCode": "46209336246580",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336246580"
+                },
+                {
+                  "name": "Pitch Black",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-00e1be3adc93460fdaac",
+                  "purchaseCode": "46209336213812",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336213812"
+                }
+              ],
+              "page": 3
+            },
+            {
+              "name": "Chocobo",
+              "aliases": [],
+              "colours": [
+                {
+                  "name": "Royal Blue",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-3c004a70cdd3d57e2ea8",
+                  "purchaseCode": "46209336410420",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336410420"
+                },
+                {
+                  "name": "Lemon Yellow",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-72e161bf156888785dd9",
+                  "purchaseCode": "46209336279348",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336279348"
+                },
+                {
+                  "name": "Beige Brown",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-a7624989909e27b06ed4",
+                  "purchaseCode": "46209398112564",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209398112564"
+                },
+                {
+                  "name": "Simply Silver",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-0bcbddeb88f9752abe9d",
+                  "purchaseCode": "48191754043700",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=48191754043700"
+                },
+                {
+                  "name": "Outrageous Orange",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-0e26a2433abeea911c17",
+                  "purchaseCode": "46209336377652",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336377652"
+                },
+                {
+                  "name": "Pure White",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-3fe090637bafbcc65608",
+                  "purchaseCode": "46209336246580",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336246580"
+                },
+                {
+                  "name": "Pitch Black",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-00e1be3adc93460fdaac",
+                  "purchaseCode": "46209336213812",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336213812"
+                }
+              ],
+              "page": 3
+            }
+          ],
+          "pages": [
+            2,
+            3
+          ],
+          "sharedHeading": "Required for ALL (10) Models:"
+        },
+        {
+          "name": "LowPoly Set Final Fantasy VII - October 2026",
+          "section": "Final Fantasy VII LowPoly & Flexi",
+          "page": 4,
+          "aliases": [],
+          "models": [
+            {
+              "name": "Cloud Strife",
+              "aliases": [
+                "Cloud Strife LowPoly"
+              ],
+              "colours": [
+                {
+                  "name": "Royal Blue",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-3c004a70cdd3d57e2ea8",
+                  "purchaseCode": "46209336410420",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336410420"
+                },
+                {
+                  "name": "Lemon Yellow",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-72e161bf156888785dd9",
+                  "purchaseCode": "46209336279348",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336279348"
+                },
+                {
+                  "name": "Beige Brown",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-a7624989909e27b06ed4",
+                  "purchaseCode": "46209398112564",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209398112564"
+                },
+                {
+                  "name": "Simply Silver",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-0bcbddeb88f9752abe9d",
+                  "purchaseCode": "48191754043700",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=48191754043700"
+                },
+                {
+                  "name": "Apricot (Skin)",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-f3cd0533803b94349e0d",
+                  "purchaseCode": "46209398309172",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209398309172"
+                },
+                {
+                  "name": "Pure White",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-3fe090637bafbcc65608",
+                  "purchaseCode": "46209336246580",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336246580"
+                },
+                {
+                  "name": "Pitch Black",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-00e1be3adc93460fdaac",
+                  "purchaseCode": "46209336213812",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336213812"
+                }
+              ]
+            },
+            {
+              "name": "Barret Wallace",
+              "aliases": [
+                "Barrett LowPoly"
+              ],
+              "colours": [
+                {
+                  "name": "Beige Brown",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-a7624989909e27b06ed4",
+                  "purchaseCode": "46209398112564",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209398112564"
+                },
+                {
+                  "name": "Forest Green",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-5482dc696f7261e277e8",
+                  "purchaseCode": "46209398374708",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209398374708"
+                },
+                {
+                  "name": "Simply Silver",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-0bcbddeb88f9752abe9d",
+                  "purchaseCode": "48191754043700",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=48191754043700"
+                },
+                {
+                  "name": "Military Khaki",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-33bde7b757bceb79b17a",
+                  "purchaseCode": "48488462549300",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=48488462549300"
+                },
+                {
+                  "name": "Pure White",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-3fe090637bafbcc65608",
+                  "purchaseCode": "46209336246580",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336246580"
+                },
+                {
+                  "name": "Pitch Black",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-00e1be3adc93460fdaac",
+                  "purchaseCode": "46209336213812",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336213812"
+                }
+              ]
+            },
+            {
+              "name": "Tifa Lockhart",
+              "aliases": [
+                "Tifa LowPoly",
+                "Tifa LowPoly Split"
+              ],
+              "colours": [
+                {
+                  "name": "Imperial Red",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-4de727a9d1e96cb26890",
+                  "purchaseCode": "48504970838324",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=48504970838324"
+                },
+                {
+                  "name": "Nuclear Red",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-2fe88f54f1e73f69be32",
+                  "purchaseCode": "46209336344884",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336344884"
+                },
+                {
+                  "name": "Simply Silver",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-0bcbddeb88f9752abe9d",
+                  "purchaseCode": "48191754043700",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=48191754043700"
+                },
+                {
+                  "name": "Apricot (Skin)",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-f3cd0533803b94349e0d",
+                  "purchaseCode": "46209398309172",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209398309172"
+                },
+                {
+                  "name": "Pure White",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-3fe090637bafbcc65608",
+                  "purchaseCode": "46209336246580",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336246580"
+                },
+                {
+                  "name": "Pitch Black",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-00e1be3adc93460fdaac",
+                  "purchaseCode": "46209336213812",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336213812"
+                }
+              ]
+            },
+            {
+              "name": "Aerith Gainsborough",
+              "aliases": [
+                "Aerith LowPoly",
+                "Aerith LowPoly Split"
+              ],
+              "colours": [
+                {
+                  "name": "Nuclear Red",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-2fe88f54f1e73f69be32",
+                  "purchaseCode": "46209336344884",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336344884"
+                },
+                {
+                  "name": "Apricot (Skin)",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-f3cd0533803b94349e0d",
+                  "purchaseCode": "46209398309172",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209398309172"
+                },
+                {
+                  "name": "Beige Brown",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-a7624989909e27b06ed4",
+                  "purchaseCode": "46209398112564",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209398112564"
+                },
+                {
+                  "name": "Lemon Yellow",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-72e161bf156888785dd9",
+                  "purchaseCode": "46209336279348",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336279348"
+                },
+                {
+                  "name": "Atomic Pink",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-987c502a60d18fa4e3fc",
+                  "purchaseCode": "46209398047028",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209398047028"
+                },
+                {
+                  "name": "Pure White",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-3fe090637bafbcc65608",
+                  "purchaseCode": "46209336246580",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336246580"
+                },
+                {
+                  "name": "Pitch Black",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-00e1be3adc93460fdaac",
+                  "purchaseCode": "46209336213812",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336213812"
+                }
+              ]
+            },
+            {
+              "name": "Red XIII",
+              "aliases": [
+                "Red XIII LowPoly"
+              ],
+              "colours": [
+                {
+                  "name": "Beige Brown",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-a7624989909e27b06ed4",
+                  "purchaseCode": "46209398112564",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209398112564"
+                },
+                {
+                  "name": "Lemon Yellow",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-72e161bf156888785dd9",
+                  "purchaseCode": "46209336279348",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336279348"
+                },
+                {
+                  "name": "Outrageous Orange",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-0e26a2433abeea911c17",
+                  "purchaseCode": "46209336377652",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336377652"
+                },
+                {
+                  "name": "Nuclear Red",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-2fe88f54f1e73f69be32",
+                  "purchaseCode": "46209336344884",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336344884"
+                },
+                {
+                  "name": "Lagoon Blue",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-21e043a117c27d323bb8",
+                  "purchaseCode": "46209398341940",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209398341940"
+                },
+                {
+                  "name": "Pure White",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-3fe090637bafbcc65608",
+                  "purchaseCode": "46209336246580",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336246580"
+                },
+                {
+                  "name": "Pitch Black",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-00e1be3adc93460fdaac",
+                  "purchaseCode": "46209336213812",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336213812"
+                }
+              ]
+            },
+            {
+              "name": "Cait Sith",
+              "aliases": [
+                "Cait Sith LowPoly",
+                "Cait Sith LowPoly Split"
+              ],
+              "colours": [
+                {
+                  "name": "Lavender Violet",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-d4287271d8716e8c3441",
+                  "purchaseCode": "47583304810804",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=47583304810804"
+                },
+                {
+                  "name": "Lemon Yellow",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-72e161bf156888785dd9",
+                  "purchaseCode": "46209336279348",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336279348"
+                },
+                {
+                  "name": "Nuclear Red",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-2fe88f54f1e73f69be32",
+                  "purchaseCode": "46209336344884",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336344884"
+                },
+                {
+                  "name": "Ivory White",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-682049a6091d491fd48d",
+                  "purchaseCode": "46209398243636",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209398243636"
+                },
+                {
+                  "name": "Pure White",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-3fe090637bafbcc65608",
+                  "purchaseCode": "46209336246580",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336246580"
+                },
+                {
+                  "name": "Pitch Black",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-00e1be3adc93460fdaac",
+                  "purchaseCode": "46209336213812",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336213812"
+                }
+              ]
+            },
+            {
+              "name": "Vincent Valentine",
+              "aliases": [
+                "Vincent LowPoly",
+                "Vincent LowPoly Split"
+              ],
+              "colours": [
+                {
+                  "name": "Lemon Yellow",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-72e161bf156888785dd9",
+                  "purchaseCode": "46209336279348",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336279348"
+                },
+                {
+                  "name": "Beige Brown",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-a7624989909e27b06ed4",
+                  "purchaseCode": "46209398112564",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209398112564"
+                },
+                {
+                  "name": "Simply Silver",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-0bcbddeb88f9752abe9d",
+                  "purchaseCode": "48191754043700",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=48191754043700"
+                },
+                {
+                  "name": "Apricot (Skin)",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-f3cd0533803b94349e0d",
+                  "purchaseCode": "46209398309172",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209398309172"
+                },
+                {
+                  "name": "Nuclear Red",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-2fe88f54f1e73f69be32",
+                  "purchaseCode": "46209336344884",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336344884"
+                },
+                {
+                  "name": "Pure White",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-3fe090637bafbcc65608",
+                  "purchaseCode": "46209336246580",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336246580"
+                },
+                {
+                  "name": "Pitch Black",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-00e1be3adc93460fdaac",
+                  "purchaseCode": "46209336213812",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336213812"
+                }
+              ]
+            },
+            {
+              "name": "Cid Highwind",
+              "aliases": [
+                "Cid Highwind LowPoly"
+              ],
+              "colours": [
+                {
+                  "name": "Royal Blue",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-3c004a70cdd3d57e2ea8",
+                  "purchaseCode": "46209336410420",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336410420"
+                },
+                {
+                  "name": "Lemon Yellow",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-72e161bf156888785dd9",
+                  "purchaseCode": "46209336279348",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336279348"
+                },
+                {
+                  "name": "Beige Brown",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-a7624989909e27b06ed4",
+                  "purchaseCode": "46209398112564",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209398112564"
+                },
+                {
+                  "name": "Simply Silver",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-0bcbddeb88f9752abe9d",
+                  "purchaseCode": "48191754043700",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=48191754043700"
+                },
+                {
+                  "name": "Apricot (Skin)",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-f3cd0533803b94349e0d",
+                  "purchaseCode": "46209398309172",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209398309172"
+                },
+                {
+                  "name": "Pure White",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-3fe090637bafbcc65608",
+                  "purchaseCode": "46209336246580",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336246580"
+                },
+                {
+                  "name": "Pitch Black",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-00e1be3adc93460fdaac",
+                  "purchaseCode": "46209336213812",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336213812"
+                }
+              ]
+            }
+          ],
+          "sharedHeading": "Required for ALL (8) Models:"
+        },
+        {
+          "name": "Flexi Final Fantasy VII - October 2026",
+          "section": "Final Fantasy VII LowPoly & Flexi",
+          "page": 4,
+          "aliases": [],
+          "models": [
+            {
+              "name": "Cloud Strife",
+              "aliases": [
+                "Cloud Strife Flexi"
+              ],
+              "colours": [
+                {
+                  "name": "Royal Blue",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-3c004a70cdd3d57e2ea8",
+                  "purchaseCode": "46209336410420",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336410420"
+                },
+                {
+                  "name": "Lemon Yellow",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-72e161bf156888785dd9",
+                  "purchaseCode": "46209336279348",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336279348"
+                },
+                {
+                  "name": "Beige Brown",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-a7624989909e27b06ed4",
+                  "purchaseCode": "46209398112564",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209398112564"
+                },
+                {
+                  "name": "Simply Silver",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-0bcbddeb88f9752abe9d",
+                  "purchaseCode": "48191754043700",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=48191754043700"
+                },
+                {
+                  "name": "Apricot (Skin)",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-f3cd0533803b94349e0d",
+                  "purchaseCode": "46209398309172",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209398309172"
+                },
+                {
+                  "name": "Pure White",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-3fe090637bafbcc65608",
+                  "purchaseCode": "46209336246580",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336246580"
+                },
+                {
+                  "name": "Pitch Black",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-00e1be3adc93460fdaac",
+                  "purchaseCode": "46209336213812",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336213812"
+                }
+              ]
+            },
+            {
+              "name": "Barret Wallace",
+              "aliases": [
+                "Barret Wallace Flexi"
+              ],
+              "colours": [
+                {
+                  "name": "Beige Brown",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-a7624989909e27b06ed4",
+                  "purchaseCode": "46209398112564",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209398112564"
+                },
+                {
+                  "name": "Forest Green",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-5482dc696f7261e277e8",
+                  "purchaseCode": "46209398374708",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209398374708"
+                },
+                {
+                  "name": "Simply Silver",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-0bcbddeb88f9752abe9d",
+                  "purchaseCode": "48191754043700",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=48191754043700"
+                },
+                {
+                  "name": "Military Khaki",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-33bde7b757bceb79b17a",
+                  "purchaseCode": "48488462549300",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=48488462549300"
+                },
+                {
+                  "name": "Pure White",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-3fe090637bafbcc65608",
+                  "purchaseCode": "46209336246580",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336246580"
+                },
+                {
+                  "name": "Pitch Black",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-00e1be3adc93460fdaac",
+                  "purchaseCode": "46209336213812",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336213812"
+                }
+              ]
+            },
+            {
+              "name": "Tifa Lockhart",
+              "aliases": [
+                "Tifa Lockhart Flexi"
+              ],
+              "colours": [
+                {
+                  "name": "Imperial Red",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-4de727a9d1e96cb26890",
+                  "purchaseCode": "48504970838324",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=48504970838324"
+                },
+                {
+                  "name": "Nuclear Red",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-2fe88f54f1e73f69be32",
+                  "purchaseCode": "46209336344884",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336344884"
+                },
+                {
+                  "name": "Simply Silver",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-0bcbddeb88f9752abe9d",
+                  "purchaseCode": "48191754043700",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=48191754043700"
+                },
+                {
+                  "name": "Apricot (Skin)",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-f3cd0533803b94349e0d",
+                  "purchaseCode": "46209398309172",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209398309172"
+                },
+                {
+                  "name": "Pure White",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-3fe090637bafbcc65608",
+                  "purchaseCode": "46209336246580",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336246580"
+                },
+                {
+                  "name": "Pitch Black",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-00e1be3adc93460fdaac",
+                  "purchaseCode": "46209336213812",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336213812"
+                }
+              ]
+            },
+            {
+              "name": "Aerith Gainsborough",
+              "aliases": [
+                "Aerith LowPoly Flexi"
+              ],
+              "colours": [
+                {
+                  "name": "Nuclear Red",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-2fe88f54f1e73f69be32",
+                  "purchaseCode": "46209336344884",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336344884"
+                },
+                {
+                  "name": "Apricot (Skin)",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-f3cd0533803b94349e0d",
+                  "purchaseCode": "46209398309172",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209398309172"
+                },
+                {
+                  "name": "Beige Brown",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-a7624989909e27b06ed4",
+                  "purchaseCode": "46209398112564",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209398112564"
+                },
+                {
+                  "name": "Lemon Yellow",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-72e161bf156888785dd9",
+                  "purchaseCode": "46209336279348",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336279348"
+                },
+                {
+                  "name": "Atomic Pink",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-987c502a60d18fa4e3fc",
+                  "purchaseCode": "46209398047028",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209398047028"
+                },
+                {
+                  "name": "Pure White",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-3fe090637bafbcc65608",
+                  "purchaseCode": "46209336246580",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336246580"
+                },
+                {
+                  "name": "Pitch Black",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-00e1be3adc93460fdaac",
+                  "purchaseCode": "46209336213812",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336213812"
+                }
+              ]
+            },
+            {
+              "name": "Red XIII",
+              "aliases": [
+                "Red XIII Flexi"
+              ],
+              "colours": [
+                {
+                  "name": "Beige Brown",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-a7624989909e27b06ed4",
+                  "purchaseCode": "46209398112564",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209398112564"
+                },
+                {
+                  "name": "Lemon Yellow",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-72e161bf156888785dd9",
+                  "purchaseCode": "46209336279348",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336279348"
+                },
+                {
+                  "name": "Outrageous Orange",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-0e26a2433abeea911c17",
+                  "purchaseCode": "46209336377652",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336377652"
+                },
+                {
+                  "name": "Nuclear Red",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-2fe88f54f1e73f69be32",
+                  "purchaseCode": "46209336344884",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336344884"
+                },
+                {
+                  "name": "Lagoon Blue",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-21e043a117c27d323bb8",
+                  "purchaseCode": "46209398341940",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209398341940"
+                },
+                {
+                  "name": "Pure White",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-3fe090637bafbcc65608",
+                  "purchaseCode": "46209336246580",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336246580"
+                },
+                {
+                  "name": "Pitch Black",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-00e1be3adc93460fdaac",
+                  "purchaseCode": "46209336213812",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336213812"
+                }
+              ]
+            },
+            {
+              "name": "Cait Sith",
+              "aliases": [],
+              "colours": [
+                {
+                  "name": "Lavender Violet",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-d4287271d8716e8c3441",
+                  "purchaseCode": "47583304810804",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=47583304810804"
+                },
+                {
+                  "name": "Lemon Yellow",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-72e161bf156888785dd9",
+                  "purchaseCode": "46209336279348",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336279348"
+                },
+                {
+                  "name": "Nuclear Red",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-2fe88f54f1e73f69be32",
+                  "purchaseCode": "46209336344884",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336344884"
+                },
+                {
+                  "name": "Ivory White",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-682049a6091d491fd48d",
+                  "purchaseCode": "46209398243636",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209398243636"
+                },
+                {
+                  "name": "Pure White",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-3fe090637bafbcc65608",
+                  "purchaseCode": "46209336246580",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336246580"
+                },
+                {
+                  "name": "Pitch Black",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-00e1be3adc93460fdaac",
+                  "purchaseCode": "46209336213812",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336213812"
+                }
+              ]
+            },
+            {
+              "name": "Vincent Valentine",
+              "aliases": [
+                "Vincent Valentine Flexi"
+              ],
+              "colours": [
+                {
+                  "name": "Lemon Yellow",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-72e161bf156888785dd9",
+                  "purchaseCode": "46209336279348",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336279348"
+                },
+                {
+                  "name": "Beige Brown",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-a7624989909e27b06ed4",
+                  "purchaseCode": "46209398112564",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209398112564"
+                },
+                {
+                  "name": "Simply Silver",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-0bcbddeb88f9752abe9d",
+                  "purchaseCode": "48191754043700",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=48191754043700"
+                },
+                {
+                  "name": "Apricot (Skin)",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-f3cd0533803b94349e0d",
+                  "purchaseCode": "46209398309172",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209398309172"
+                },
+                {
+                  "name": "Nuclear Red",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-2fe88f54f1e73f69be32",
+                  "purchaseCode": "46209336344884",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336344884"
+                },
+                {
+                  "name": "Pure White",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-3fe090637bafbcc65608",
+                  "purchaseCode": "46209336246580",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336246580"
+                },
+                {
+                  "name": "Pitch Black",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-00e1be3adc93460fdaac",
+                  "purchaseCode": "46209336213812",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336213812"
+                }
+              ]
+            },
+            {
+              "name": "Cid Highwind",
+              "aliases": [
+                "Cid Highwind Flexi"
+              ],
+              "colours": [
+                {
+                  "name": "Royal Blue",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-3c004a70cdd3d57e2ea8",
+                  "purchaseCode": "46209336410420",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336410420"
+                },
+                {
+                  "name": "Lemon Yellow",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-72e161bf156888785dd9",
+                  "purchaseCode": "46209336279348",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336279348"
+                },
+                {
+                  "name": "Beige Brown",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-a7624989909e27b06ed4",
+                  "purchaseCode": "46209398112564",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209398112564"
+                },
+                {
+                  "name": "Simply Silver",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-0bcbddeb88f9752abe9d",
+                  "purchaseCode": "48191754043700",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=48191754043700"
+                },
+                {
+                  "name": "Apricot (Skin)",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-f3cd0533803b94349e0d",
+                  "purchaseCode": "46209398309172",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209398309172"
+                },
+                {
+                  "name": "Pure White",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-3fe090637bafbcc65608",
+                  "purchaseCode": "46209336246580",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336246580"
+                },
+                {
+                  "name": "Pitch Black",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-00e1be3adc93460fdaac",
+                  "purchaseCode": "46209336213812",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336213812"
+                }
+              ]
+            }
+          ],
+          "sharedHeading": "Required for ALL (8) Models:"
+        },
+        {
+          "name": "Clicker Final Fantasy VII - October 2026",
+          "section": "Final Fantasy VII Clickers",
+          "page": 5,
+          "aliases": [],
+          "models": [
+            {
+              "name": "Gil",
+              "aliases": [
+                "Gil Bottom Keychain",
+                "Gil Bottom",
+                "Gil Top"
+              ],
+              "colours": [
+                {
+                  "name": "Gold",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA Silk",
+                  "filamentCode": "filament-3a77a09d9bfc5be15f72",
+                  "purchaseCode": "46158792950068",
+                  "purchaseUrl": "https://numakers.com/products/pla-silk?ref=meshvault&variant=46158792950068"
+                }
+              ]
+            },
+            {
+              "name": "Tonberry",
+              "aliases": [
+                "Tonberry Bottom",
+                "Tonberry Top Keychain",
+                "Tonberry Top"
+              ],
+              "colours": [
+                {
+                  "name": "Beige Brown",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-a7624989909e27b06ed4",
+                  "purchaseCode": "46209398112564",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209398112564"
+                },
+                {
+                  "name": "Forest Green",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-5482dc696f7261e277e8",
+                  "purchaseCode": "46209398374708",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209398374708"
+                },
+                {
+                  "name": "Simply Silver",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-0bcbddeb88f9752abe9d",
+                  "purchaseCode": "48191754043700",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=48191754043700"
+                },
+                {
+                  "name": "Lemon Yellow",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-72e161bf156888785dd9",
+                  "purchaseCode": "46209336279348",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336279348"
+                }
+              ]
+            },
+            {
+              "name": "Moogle",
+              "aliases": [
+                "Moogle Bottom",
+                "Moogle Top"
+              ],
+              "colours": [
+                {
+                  "name": "Lavender Violet",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-d4287271d8716e8c3441",
+                  "purchaseCode": "47583304810804",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=47583304810804"
+                },
+                {
+                  "name": "Lemon Yellow",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-72e161bf156888785dd9",
+                  "purchaseCode": "46209336279348",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336279348"
+                },
+                {
+                  "name": "Nuclear Red",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-2fe88f54f1e73f69be32",
+                  "purchaseCode": "46209336344884",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336344884"
+                },
+                {
+                  "name": "Ivory White",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-682049a6091d491fd48d",
+                  "purchaseCode": "46209398243636",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209398243636"
+                },
+                {
+                  "name": "Pitch Black",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-00e1be3adc93460fdaac",
+                  "purchaseCode": "46209336213812",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336213812"
+                }
+              ]
+            },
+            {
+              "name": "Potion",
+              "aliases": [
+                "Potion Bottom Keychain",
+                "Potion Bottom",
+                "Potion Middle",
+                "Potion Top"
+              ],
+              "colours": [
+                {
+                  "name": "Simply Silver",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-0bcbddeb88f9752abe9d",
+                  "purchaseCode": "48191754043700",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=48191754043700"
+                },
+                {
+                  "name": "Teal Blue",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-1e70f74c5599d73c807c",
+                  "purchaseCode": "46209398145332",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209398145332"
+                }
+              ]
+            },
+            {
+              "name": "Ether",
+              "aliases": [
+                "Ether Bottom",
+                "Ether Top Keychain",
+                "Ether Top"
+              ],
+              "colours": [
+                {
+                  "name": "Simply Silver",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-0bcbddeb88f9752abe9d",
+                  "purchaseCode": "48191754043700",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=48191754043700"
+                },
+                {
+                  "name": "Light Blue",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-8d908e27d9b89ba93654",
+                  "purchaseCode": "46209398079796",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209398079796"
+                }
+              ]
+            },
+            {
+              "name": "Baby Chocobo",
+              "aliases": [
+                "Baby Chocobo Bottom Keychain",
+                "Baby Chocobo Bottom",
+                "Baby Chocobo Top"
+              ],
+              "colours": [
+                {
+                  "name": "Lemon Yellow",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-72e161bf156888785dd9",
+                  "purchaseCode": "46209336279348",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336279348"
+                },
+                {
+                  "name": "Outrageous Orange",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-0e26a2433abeea911c17",
+                  "purchaseCode": "46209336377652",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336377652"
+                },
+                {
+                  "name": "Light Blue",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-8d908e27d9b89ba93654",
+                  "purchaseCode": "46209398079796",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209398079796"
+                },
+                {
+                  "name": "Pitch Black",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-00e1be3adc93460fdaac",
+                  "purchaseCode": "46209336213812",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336213812"
+                },
+                {
+                  "name": "Pure White",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-3fe090637bafbcc65608",
+                  "purchaseCode": "46209336246580",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336246580"
+                }
+              ]
+            },
+            {
+              "name": "Bomb",
+              "aliases": [
+                "Bomb Bottom",
+                "Bomb Top Keychain",
+                "Bomb Top"
+              ],
+              "colours": [
+                {
+                  "name": "Nuclear Red",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-2fe88f54f1e73f69be32",
+                  "purchaseCode": "46209336344884",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336344884"
+                },
+                {
+                  "name": "Lemon Yellow",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-72e161bf156888785dd9",
+                  "purchaseCode": "46209336279348",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336279348"
+                },
+                {
+                  "name": "Outrageous Orange",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-0e26a2433abeea911c17",
+                  "purchaseCode": "46209336377652",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336377652"
+                },
+                {
+                  "name": "Pitch Black",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-00e1be3adc93460fdaac",
+                  "purchaseCode": "46209336213812",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336213812"
+                },
+                {
+                  "name": "Pure White",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-3fe090637bafbcc65608",
+                  "purchaseCode": "46209336246580",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336246580"
+                }
+              ]
+            },
+            {
+              "name": "Cactuar",
+              "aliases": [
+                "Cactuar Bottom",
+                "Cactuar Top Keychain",
+                "Cactuar Top"
+              ],
+              "colours": [
+                {
+                  "name": "Forest Green",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-5482dc696f7261e277e8",
+                  "purchaseCode": "46209398374708",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209398374708"
+                },
+                {
+                  "name": "Military Khaki",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-33bde7b757bceb79b17a",
+                  "purchaseCode": "48488462549300",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=48488462549300"
+                },
+                {
+                  "name": "Pitch Black",
+                  "hex": null,
+                  "group": "recommended",
+                  "material": "PLA+",
+                  "filamentCode": "filament-00e1be3adc93460fdaac",
+                  "purchaseCode": "46209336213812",
+                  "purchaseUrl": "https://numakers.com/products/pla-filament?ref=meshvault&variant=46209336213812"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "documentHash": "039e91f1f60751199b5728388907b5e1e7a13f2a1357591d19eaffafc4eb3deb",
+      "purchaseUrl": "https://numakers.com/collections/all?ref=meshvault",
+      "purchaseLabel": "Numakers"
+    },
+    {
+      "schemaVersion": 1,
+      "creator": "Nostalgic 3D",
       "documentHash": "067db165f987d4db4799a64fa554814a5060eb8fa25f012fc2d0933d449bc9f9",
       "documentName": "01 Welcome Pack Color Recommendations.pdf",
       "release": "welcome-pack",

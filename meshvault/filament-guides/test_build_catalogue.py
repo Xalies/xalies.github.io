@@ -17,6 +17,18 @@ builder = module("build-catalogue")
 identities = module("build-identities")
 
 class CatalogueTests(unittest.TestCase):
+    def test_october_guide_uses_exact_numakers_references_without_invented_hexes(self):
+        guide = next(g for g in builder.build(ROOT)["guides"] if g["release"] == "October 2026")
+        self.assertEqual(guide["documentHash"], "039e91f1f60751199b5728388907b5e1e7a13f2a1357591d19eaffafc4eb3deb")
+        self.assertEqual([len(p["models"]) for p in guide["packs"]], [10, 8, 8, 8])
+        for pack in guide["packs"]:
+            for model in pack["models"]:
+                for colour in model["colours"]:
+                    self.assertIsNone(colour["hex"])
+                    self.assertTrue(colour["purchaseUrl"].startswith("https://numakers.com/products/"))
+                    self.assertIn("?ref=meshvault&variant=" + colour["purchaseCode"], colour["purchaseUrl"])
+        self.assertEqual([c["name"] for c in guide["packs"][3]["models"][3]["colours"]], ["Simply Silver", "Teal Blue"])
+
     def test_affiliate_rules_preserve_variant_selection_and_survive_refresh(self):
         rules = json.loads((ROOT / "affiliate-links.json").read_text(encoding="utf-8"))
         source = "https://numakers.com/products/abs-filament?variant=46944297451828"

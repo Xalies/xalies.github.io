@@ -38,6 +38,8 @@ SUNLU uses its official paginated store product feed, including regional and cle
 
 ## Refresh and publish
 
+`guides/nostalgic-3d-2026-10.json` covers the October Final Fantasy VII Pure/Monthly Mashup, LowPoly, Flexi and Clicker packs. It preserves the five-page PDF's Numakers material names, exact product references, pack-specific aliases and shared white/black requirements. The PDF supplies no RGB values, so `hex` is null; clients show named recommendations without inventing a colour. Pure models on page 3 retain their own source page. `Apricot (Skin)` is explicitly reviewed against Numakers `Apricot` in PLA+; PLA Silk Gold/Silver stay separate from PLA+ Simply Silver. The repeated Tonberry Simply Silver recommendation is deduplicated. Named-colour extraction is reproducible with MeshVault's `scripts/extract-filament-guide.py` and the guide's data-driven extraction rules; review/reapply product references before publishing a new draft.
+
 Run the appropriate importer, then rebuild identities and the feed:
 
 ```sh
