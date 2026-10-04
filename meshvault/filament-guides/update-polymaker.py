@@ -1,6 +1,6 @@
 """Refresh the entire Polymaker US-shop filament catalogue from official data.
 
-Review polymaker.json, then rebuild/test the public feed before publishing.
+Run build-identities.py, review brands/polymaker.json, then rebuild/test the public feed.
 Each purchasable variant is retained, including sizes, refills and legacy lines.
 """
 import json
@@ -69,6 +69,6 @@ def build():
 
 if __name__ == "__main__":
     catalogue = build()
-    target = Path(__file__).resolve().parent / "brands" / "polymaker.json"
+    target = Path(__file__).resolve().parent / "store-catalogues" / "polymaker.json"
     target.write_text(json.dumps(catalogue, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     print(len(catalogue["products"]), "variants;", len({p["range"] for p in catalogue["products"]}), "ranges")

@@ -1,6 +1,6 @@
 """Refresh Bambu colours and AU product variants from official public sources.
 
-Run this manually, review bambu.json and rebuild catalogue.json before publishing.
+Run this manually, then build-identities.py; review brands/bambu.json and rebuild the feed.
 Unavailable/retired colours stay in the catalogue without a purchase URL.
 """
 import json
@@ -87,6 +87,6 @@ def build():
 
 if __name__ == "__main__":
     catalogue = build()
-    target = Path(__file__).resolve().parent / "brands" / "bambu.json"
+    target = Path(__file__).resolve().parent / "store-catalogues" / "bambu.json"
     target.write_text(json.dumps(catalogue, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     print(len(catalogue["products"]), "colours;", sum("purchaseUrl" in p for p in catalogue["products"]), "linked")

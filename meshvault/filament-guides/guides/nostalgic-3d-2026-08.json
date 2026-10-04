@@ -30,37 +30,43 @@
               "name": "Army Beige",
               "hex": "#DBBAA5",
               "group": "recommended",
-              "productCode": "43631458156601"
+              "filamentCode": "filament-5f514bf8cbbacf660c4a",
+              "purchaseCode": "43631458156601"
             },
             {
               "name": "Black",
               "hex": "#0A0A0A",
               "group": "recommended",
-              "productCode": "44863271731257"
+              "filamentCode": "filament-b8a7a7db48a0bb5aae8d",
+              "purchaseCode": "44863271731257"
             },
             {
               "name": "White",
               "hex": "#FAFAFA",
               "group": "recommended",
-              "productCode": "44863271895097"
+              "filamentCode": "filament-58ebfe261c0dbf38e397",
+              "purchaseCode": "44863271895097"
             },
             {
               "name": "Brown",
               "hex": "#55331A",
               "group": "recommended",
-              "productCode": "44863271338041"
+              "filamentCode": "filament-fdf4871d80962db65958",
+              "purchaseCode": "44863271338041"
             },
             {
               "name": "Grey",
               "hex": "#8C9099",
               "group": "recommended",
-              "productCode": "44863271862329"
+              "filamentCode": "filament-0af0fde0f55a9873dfce",
+              "purchaseCode": "44863271862329"
             },
             {
               "name": "Tan",
               "hex": "#A79E82",
               "group": "recommended",
-              "productCode": "44863271108665"
+              "filamentCode": "filament-1246a4f08e4c033ac7cd",
+              "purchaseCode": "44863271108665"
             }
           ]
         },
@@ -74,31 +80,36 @@
               "name": "Black",
               "hex": "#0A0A0A",
               "group": "recommended",
-              "productCode": "44863271731257"
+              "filamentCode": "filament-b8a7a7db48a0bb5aae8d",
+              "purchaseCode": "44863271731257"
             },
             {
               "name": "Grey",
               "hex": "#8C9099",
               "group": "recommended",
-              "productCode": "44863271862329"
+              "filamentCode": "filament-0af0fde0f55a9873dfce",
+              "purchaseCode": "44863271862329"
             },
             {
               "name": "White",
               "hex": "#FAFAFA",
               "group": "recommended",
-              "productCode": "44863271895097"
+              "filamentCode": "filament-58ebfe261c0dbf38e397",
+              "purchaseCode": "44863271895097"
             },
             {
               "name": "Red",
               "hex": "#E72F1D",
               "group": "recommended",
-              "productCode": "44863271796793"
+              "filamentCode": "filament-11b88dc4f73a49bcb595",
+              "purchaseCode": "44863271796793"
             },
             {
               "name": "Green",
               "hex": "#06924D",
               "group": "recommended",
-              "productCode": "44863271698489"
+              "filamentCode": "filament-3cd1b67c4b823266fe1f",
+              "purchaseCode": "44863271698489"
             }
           ]
         },
@@ -110,43 +121,50 @@
               "name": "Pastel Watermelon",
               "hex": "#EE474B",
               "group": "recommended",
-              "productCode": "43631459041337"
+              "filamentCode": "filament-4a9b6ff8f38498ca217a",
+              "purchaseCode": "43631459041337"
             },
             {
               "name": "Black",
               "hex": "#0A0A0A",
               "group": "recommended",
-              "productCode": "44863271731257"
+              "filamentCode": "filament-b8a7a7db48a0bb5aae8d",
+              "purchaseCode": "44863271731257"
             },
             {
               "name": "White",
               "hex": "#FAFAFA",
               "group": "recommended",
-              "productCode": "44863271895097"
+              "filamentCode": "filament-58ebfe261c0dbf38e397",
+              "purchaseCode": "44863271895097"
             },
             {
               "name": "Brown",
               "hex": "#55331A",
               "group": "recommended",
-              "productCode": "44863271338041"
+              "filamentCode": "filament-fdf4871d80962db65958",
+              "purchaseCode": "44863271338041"
             },
             {
               "name": "Grey",
               "hex": "#8C9099",
               "group": "recommended",
-              "productCode": "44863271862329"
+              "filamentCode": "filament-0af0fde0f55a9873dfce",
+              "purchaseCode": "44863271862329"
             },
             {
               "name": "Tan",
               "hex": "#A79E82",
               "group": "recommended",
-              "productCode": "44863271108665"
+              "filamentCode": "filament-1246a4f08e4c033ac7cd",
+              "purchaseCode": "44863271108665"
             },
             {
               "name": "Pastel Mint",
               "hex": "#D2DEBB",
               "group": "recommended",
-              "productCode": "43631458582585"
+              "filamentCode": "filament-93aae1e72caf9cf02ea0",
+              "purchaseCode": "43631458582585"
             }
           ]
         },
@@ -158,31 +176,36 @@
               "name": "Cream",
               "hex": "#EED1A8",
               "group": "recommended",
-              "productCode": "44863271239737"
+              "filamentCode": "filament-8fd81fb57f78c5f7bb60",
+              "purchaseCode": "44863271239737"
             },
             {
               "name": "Black",
               "hex": "#0A0A0A",
               "group": "recommended",
-              "productCode": "44863271731257"
+              "filamentCode": "filament-b8a7a7db48a0bb5aae8d",
+              "purchaseCode": "44863271731257"
             },
             {
               "name": "White",
               "hex": "#FAFAFA",
               "group": "recommended",
-              "productCode": "44863271895097"
+              "filamentCode": "filament-58ebfe261c0dbf38e397",
+              "purchaseCode": "44863271895097"
             },
             {
               "name": "Brown",
               "hex": "#55331A",
               "group": "recommended",
-              "productCode": "44863271338041"
+              "filamentCode": "filament-fdf4871d80962db65958",
+              "purchaseCode": "44863271338041"
             },
             {
               "name": "Grey",
               "hex": "#8C9099",
               "group": "recommended",
-              "productCode": "44863271862329"
+              "filamentCode": "filament-0af0fde0f55a9873dfce",
+              "purchaseCode": "44863271862329"
             }
           ]
         },
@@ -194,31 +217,36 @@
               "name": "Muted White",
               "hex": "#BBADA4",
               "group": "recommended",
-              "productCode": "43631458254905"
+              "filamentCode": "filament-f54a4ed58d5a7aa14277",
+              "purchaseCode": "43631458254905"
             },
             {
               "name": "Black",
               "hex": "#0A0A0A",
               "group": "recommended",
-              "productCode": "44863271731257"
+              "filamentCode": "filament-b8a7a7db48a0bb5aae8d",
+              "purchaseCode": "44863271731257"
             },
             {
               "name": "White",
               "hex": "#FAFAFA",
               "group": "recommended",
-              "productCode": "44863271895097"
+              "filamentCode": "filament-58ebfe261c0dbf38e397",
+              "purchaseCode": "44863271895097"
             },
             {
               "name": "Red",
               "hex": "#E72F1D",
               "group": "recommended",
-              "productCode": "44863271796793"
+              "filamentCode": "filament-11b88dc4f73a49bcb595",
+              "purchaseCode": "44863271796793"
             },
             {
               "name": "Azure Blue",
               "hex": "#0066D9",
               "group": "recommended",
-              "productCode": "44863271141433"
+              "filamentCode": "filament-ca22ddb2a678d3d89492",
+              "purchaseCode": "44863271141433"
             }
           ]
         },
@@ -230,37 +258,43 @@
               "name": "Army Beige",
               "hex": "#DBBAA5",
               "group": "recommended",
-              "productCode": "43631458156601"
+              "filamentCode": "filament-5f514bf8cbbacf660c4a",
+              "purchaseCode": "43631458156601"
             },
             {
               "name": "Black",
               "hex": "#0A0A0A",
               "group": "recommended",
-              "productCode": "44863271731257"
+              "filamentCode": "filament-b8a7a7db48a0bb5aae8d",
+              "purchaseCode": "44863271731257"
             },
             {
               "name": "White",
               "hex": "#FAFAFA",
               "group": "recommended",
-              "productCode": "44863271895097"
+              "filamentCode": "filament-58ebfe261c0dbf38e397",
+              "purchaseCode": "44863271895097"
             },
             {
               "name": "Brown",
               "hex": "#55331A",
               "group": "recommended",
-              "productCode": "44863271338041"
+              "filamentCode": "filament-fdf4871d80962db65958",
+              "purchaseCode": "44863271338041"
             },
             {
               "name": "Grey",
               "hex": "#8C9099",
               "group": "recommended",
-              "productCode": "44863271862329"
+              "filamentCode": "filament-0af0fde0f55a9873dfce",
+              "purchaseCode": "44863271862329"
             },
             {
               "name": "Yellow",
               "hex": "#FFE800",
               "group": "recommended",
-              "productCode": "44863271567417"
+              "filamentCode": "filament-934d67553a1072eb8ba3",
+              "purchaseCode": "44863271567417"
             }
           ]
         },
@@ -272,31 +306,36 @@
               "name": "Metallic Gold",
               "hex": "#DA9F1D",
               "group": "recommended",
-              "productCode": "43595097342009"
+              "filamentCode": "filament-a0221b9fdd31207393b1",
+              "purchaseCode": "43595097342009"
             },
             {
               "name": "Lime Green",
               "hex": "#D7D602",
               "group": "recommended",
-              "productCode": "44863271206969"
+              "filamentCode": "filament-2883f9e3f7b80498d07b",
+              "purchaseCode": "44863271206969"
             },
             {
               "name": "Black",
               "hex": "#0A0A0A",
               "group": "recommended",
-              "productCode": "44863271731257"
+              "filamentCode": "filament-b8a7a7db48a0bb5aae8d",
+              "purchaseCode": "44863271731257"
             },
             {
               "name": "Grey",
               "hex": "#8C9099",
               "group": "recommended",
-              "productCode": "44863271862329"
+              "filamentCode": "filament-0af0fde0f55a9873dfce",
+              "purchaseCode": "44863271862329"
             },
             {
               "name": "Red",
               "hex": "#E72F1D",
               "group": "recommended",
-              "productCode": "44863271796793"
+              "filamentCode": "filament-11b88dc4f73a49bcb595",
+              "purchaseCode": "44863271796793"
             }
           ]
         }
@@ -316,25 +355,29 @@
               "name": "Black",
               "hex": "#0A0A0A",
               "group": "recommended",
-              "productCode": "44863271731257"
+              "filamentCode": "filament-b8a7a7db48a0bb5aae8d",
+              "purchaseCode": "44863271731257"
             },
             {
               "name": "Grey",
               "hex": "#8C9099",
               "group": "recommended",
-              "productCode": "44863271862329"
+              "filamentCode": "filament-0af0fde0f55a9873dfce",
+              "purchaseCode": "44863271862329"
             },
             {
               "name": "White",
               "hex": "#FAFAFA",
               "group": "recommended",
-              "productCode": "44863271895097"
+              "filamentCode": "filament-58ebfe261c0dbf38e397",
+              "purchaseCode": "44863271895097"
             },
             {
               "name": "Red",
               "hex": "#E72F1D",
               "group": "recommended",
-              "productCode": "44863271796793"
+              "filamentCode": "filament-11b88dc4f73a49bcb595",
+              "purchaseCode": "44863271796793"
             }
           ]
         },
@@ -346,49 +389,57 @@
               "name": "Black",
               "hex": "#0A0A0A",
               "group": "recommended",
-              "productCode": "44863271731257"
+              "filamentCode": "filament-b8a7a7db48a0bb5aae8d",
+              "purchaseCode": "44863271731257"
             },
             {
               "name": "Muted White",
               "hex": "#BBADA4",
               "group": "recommended",
-              "productCode": "43631458254905"
+              "filamentCode": "filament-f54a4ed58d5a7aa14277",
+              "purchaseCode": "43631458254905"
             },
             {
               "name": "Grey",
               "hex": "#8C9099",
               "group": "recommended",
-              "productCode": "44863271862329"
+              "filamentCode": "filament-0af0fde0f55a9873dfce",
+              "purchaseCode": "44863271862329"
             },
             {
               "name": "White",
               "hex": "#FAFAFA",
               "group": "recommended",
-              "productCode": "44863271895097"
+              "filamentCode": "filament-58ebfe261c0dbf38e397",
+              "purchaseCode": "44863271895097"
             },
             {
               "name": "Yellow",
               "hex": "#FFE800",
               "group": "recommended",
-              "productCode": "44863271567417"
+              "filamentCode": "filament-934d67553a1072eb8ba3",
+              "purchaseCode": "44863271567417"
             },
             {
               "name": "Red",
               "hex": "#E72F1D",
               "group": "optional",
-              "productCode": "44863271796793"
+              "filamentCode": "filament-11b88dc4f73a49bcb595",
+              "purchaseCode": "44863271796793"
             },
             {
               "name": "Azure Blue",
               "hex": "#0066D9",
               "group": "optional",
-              "productCode": "44863271141433"
+              "filamentCode": "filament-ca22ddb2a678d3d89492",
+              "purchaseCode": "44863271141433"
             },
             {
               "name": "Green",
               "hex": "#06924D",
               "group": "optional",
-              "productCode": "44863271698489"
+              "filamentCode": "filament-3cd1b67c4b823266fe1f",
+              "purchaseCode": "44863271698489"
             }
           ]
         },
@@ -402,37 +453,43 @@
               "name": "Muted White",
               "hex": "#BBADA4",
               "group": "recommended",
-              "productCode": "43631458254905"
+              "filamentCode": "filament-f54a4ed58d5a7aa14277",
+              "purchaseCode": "43631458254905"
             },
             {
               "name": "Black",
               "hex": "#0A0A0A",
               "group": "recommended",
-              "productCode": "44863271731257"
+              "filamentCode": "filament-b8a7a7db48a0bb5aae8d",
+              "purchaseCode": "44863271731257"
             },
             {
               "name": "White",
               "hex": "#FAFAFA",
               "group": "recommended",
-              "productCode": "44863271895097"
+              "filamentCode": "filament-58ebfe261c0dbf38e397",
+              "purchaseCode": "44863271895097"
             },
             {
               "name": "Red",
               "hex": "#E72F1D",
               "group": "recommended",
-              "productCode": "44863271796793"
+              "filamentCode": "filament-11b88dc4f73a49bcb595",
+              "purchaseCode": "44863271796793"
             },
             {
               "name": "Azure Blue",
               "hex": "#0066D9",
               "group": "recommended",
-              "productCode": "44863271141433"
+              "filamentCode": "filament-ca22ddb2a678d3d89492",
+              "purchaseCode": "44863271141433"
             },
             {
               "name": "Grey",
               "hex": "#8C9099",
               "group": "recommended",
-              "productCode": "44863271862329"
+              "filamentCode": "filament-0af0fde0f55a9873dfce",
+              "purchaseCode": "44863271862329"
             }
           ]
         },
@@ -444,31 +501,36 @@
               "name": "Seafoam Green",
               "hex": "#7DD4BE",
               "group": "recommended",
-              "productCode": "45410790015033"
+              "filamentCode": "filament-38b2d6204226c76af154",
+              "purchaseCode": "45410790015033"
             },
             {
               "name": "Black",
               "hex": "#0A0A0A",
               "group": "recommended",
-              "productCode": "44863271731257"
+              "filamentCode": "filament-b8a7a7db48a0bb5aae8d",
+              "purchaseCode": "44863271731257"
             },
             {
               "name": "White",
               "hex": "#FAFAFA",
               "group": "recommended",
-              "productCode": "44863271895097"
+              "filamentCode": "filament-58ebfe261c0dbf38e397",
+              "purchaseCode": "44863271895097"
             },
             {
               "name": "Brown",
               "hex": "#55331A",
               "group": "recommended",
-              "productCode": "44863271338041"
+              "filamentCode": "filament-fdf4871d80962db65958",
+              "purchaseCode": "44863271338041"
             },
             {
               "name": "Muted White",
               "hex": "#BBADA4",
               "group": "recommended",
-              "productCode": "43631458254905"
+              "filamentCode": "filament-f54a4ed58d5a7aa14277",
+              "purchaseCode": "43631458254905"
             }
           ]
         },
@@ -480,25 +542,29 @@
               "name": "Metallic Gold",
               "hex": "#DA9F1D",
               "group": "recommended",
-              "productCode": "43595097342009"
+              "filamentCode": "filament-a0221b9fdd31207393b1",
+              "purchaseCode": "43595097342009"
             },
             {
               "name": "Savannah Yellow",
               "hex": "#F3C432",
               "group": "recommended",
-              "productCode": "43631458484281"
+              "filamentCode": "filament-f46730624b3bfcce5305",
+              "purchaseCode": "43631458484281"
             },
             {
               "name": "Black",
               "hex": "#0A0A0A",
               "group": "recommended",
-              "productCode": "44863271731257"
+              "filamentCode": "filament-b8a7a7db48a0bb5aae8d",
+              "purchaseCode": "44863271731257"
             },
             {
               "name": "Grey",
               "hex": "#8C9099",
               "group": "recommended",
-              "productCode": "44863271862329"
+              "filamentCode": "filament-0af0fde0f55a9873dfce",
+              "purchaseCode": "44863271862329"
             }
           ]
         }
@@ -518,19 +584,22 @@
               "name": "Black",
               "hex": "#0A0A0A",
               "group": "recommended",
-              "productCode": "44863271731257"
+              "filamentCode": "filament-b8a7a7db48a0bb5aae8d",
+              "purchaseCode": "44863271731257"
             },
             {
               "name": "Grey",
               "hex": "#8C9099",
               "group": "recommended",
-              "productCode": "44863271862329"
+              "filamentCode": "filament-0af0fde0f55a9873dfce",
+              "purchaseCode": "44863271862329"
             },
             {
               "name": "Red",
               "hex": "#E72F1D",
               "group": "recommended",
-              "productCode": "44863271796793"
+              "filamentCode": "filament-11b88dc4f73a49bcb595",
+              "purchaseCode": "44863271796793"
             }
           ]
         },
@@ -542,13 +611,15 @@
               "name": "Black",
               "hex": "#0A0A0A",
               "group": "recommended",
-              "productCode": "44863271731257"
+              "filamentCode": "filament-b8a7a7db48a0bb5aae8d",
+              "purchaseCode": "44863271731257"
             },
             {
               "name": "White",
               "hex": "#FAFAFA",
               "group": "recommended",
-              "productCode": "44863271895097"
+              "filamentCode": "filament-58ebfe261c0dbf38e397",
+              "purchaseCode": "44863271895097"
             }
           ]
         },
@@ -560,49 +631,57 @@
               "name": "Beige",
               "hex": "#C2AB72",
               "group": "recommended",
-              "productCode": "44863271436345"
+              "filamentCode": "filament-a1c1424936dd3e029459",
+              "purchaseCode": "44863271436345"
             },
             {
               "name": "Black",
               "hex": "#0A0A0A",
               "group": "recommended",
-              "productCode": "44863271731257"
+              "filamentCode": "filament-b8a7a7db48a0bb5aae8d",
+              "purchaseCode": "44863271731257"
             },
             {
               "name": "White",
               "hex": "#FAFAFA",
               "group": "recommended",
-              "productCode": "44863271895097"
+              "filamentCode": "filament-58ebfe261c0dbf38e397",
+              "purchaseCode": "44863271895097"
             },
             {
               "name": "Red",
               "hex": "#E72F1D",
               "group": "recommended",
-              "productCode": "44863271796793"
+              "filamentCode": "filament-11b88dc4f73a49bcb595",
+              "purchaseCode": "44863271796793"
             },
             {
               "name": "Jungle Green",
               "hex": "#4E742D",
               "group": "recommended",
-              "productCode": "44863271501881"
+              "filamentCode": "filament-69c1bed87c13d562c239",
+              "purchaseCode": "44863271501881"
             },
             {
               "name": "Grey",
               "hex": "#8C9099",
               "group": "recommended",
-              "productCode": "44863271862329"
+              "filamentCode": "filament-0af0fde0f55a9873dfce",
+              "purchaseCode": "44863271862329"
             },
             {
               "name": "Yellow",
               "hex": "#FFE800",
               "group": "recommended",
-              "productCode": "44863271567417"
+              "filamentCode": "filament-934d67553a1072eb8ba3",
+              "purchaseCode": "44863271567417"
             },
             {
               "name": "Wine Red",
               "hex": "#D60212",
               "group": "recommended",
-              "productCode": "44863271534649"
+              "filamentCode": "filament-c5ae15da0fd6f7b13958",
+              "purchaseCode": "44863271534649"
             }
           ]
         },
@@ -614,31 +693,36 @@
               "name": "Seafoam Green",
               "hex": "#7DD4BE",
               "group": "recommended",
-              "productCode": "45410790015033"
+              "filamentCode": "filament-38b2d6204226c76af154",
+              "purchaseCode": "45410790015033"
             },
             {
               "name": "Black",
               "hex": "#0A0A0A",
               "group": "recommended",
-              "productCode": "44863271731257"
+              "filamentCode": "filament-b8a7a7db48a0bb5aae8d",
+              "purchaseCode": "44863271731257"
             },
             {
               "name": "White",
               "hex": "#FAFAFA",
               "group": "recommended",
-              "productCode": "44863271895097"
+              "filamentCode": "filament-58ebfe261c0dbf38e397",
+              "purchaseCode": "44863271895097"
             },
             {
               "name": "Brown",
               "hex": "#55331A",
               "group": "recommended",
-              "productCode": "44863271338041"
+              "filamentCode": "filament-fdf4871d80962db65958",
+              "purchaseCode": "44863271338041"
             },
             {
               "name": "Beige",
               "hex": "#C2AB72",
               "group": "recommended",
-              "productCode": "44863271436345"
+              "filamentCode": "filament-a1c1424936dd3e029459",
+              "purchaseCode": "44863271436345"
             }
           ]
         },
@@ -650,19 +734,22 @@
               "name": "Metallic Gold",
               "hex": "#DA9F1D",
               "group": "alternative",
-              "productCode": "43595097342009"
+              "filamentCode": "filament-a0221b9fdd31207393b1",
+              "purchaseCode": "43595097342009"
             },
             {
               "name": "Metallic Silver",
               "hex": "#7A838E",
               "group": "alternative",
-              "productCode": "43595097374777"
+              "filamentCode": "filament-0870b88a4a3ad0e274e0",
+              "purchaseCode": "43595097374777"
             },
             {
               "name": "Metallic Bronze",
               "hex": "#926043",
               "group": "alternative",
-              "productCode": "43595097407545"
+              "filamentCode": "filament-3eda2b3b4765f79c8b01",
+              "purchaseCode": "43595097407545"
             }
           ]
         },
@@ -674,7 +761,8 @@
               "name": "Metallic Silver",
               "hex": "#7A838E",
               "group": "recommended",
-              "productCode": "43595097374777"
+              "filamentCode": "filament-0870b88a4a3ad0e274e0",
+              "purchaseCode": "43595097374777"
             }
           ]
         },
@@ -686,25 +774,29 @@
               "name": "Orange",
               "hex": "#F67405",
               "group": "recommended",
-              "productCode": "44863271665721"
+              "filamentCode": "filament-17c20aa183f9a7002d29",
+              "purchaseCode": "44863271665721"
             },
             {
               "name": "White",
               "hex": "#FAFAFA",
               "group": "recommended",
-              "productCode": "44863271895097"
+              "filamentCode": "filament-58ebfe261c0dbf38e397",
+              "purchaseCode": "44863271895097"
             },
             {
               "name": "Black",
               "hex": "#0A0A0A",
               "group": "recommended",
-              "productCode": "44863271731257"
+              "filamentCode": "filament-b8a7a7db48a0bb5aae8d",
+              "purchaseCode": "44863271731257"
             },
             {
               "name": "Grey",
               "hex": "#8C9099",
               "group": "recommended",
-              "productCode": "44863271862329"
+              "filamentCode": "filament-0af0fde0f55a9873dfce",
+              "purchaseCode": "44863271862329"
             }
           ]
         },
@@ -718,31 +810,36 @@
               "name": "Black",
               "hex": "#0A0A0A",
               "group": "recommended",
-              "productCode": "44863271731257"
+              "filamentCode": "filament-b8a7a7db48a0bb5aae8d",
+              "purchaseCode": "44863271731257"
             },
             {
               "name": "Grey",
               "hex": "#8C9099",
               "group": "recommended",
-              "productCode": "44863271862329"
+              "filamentCode": "filament-0af0fde0f55a9873dfce",
+              "purchaseCode": "44863271862329"
             },
             {
               "name": "Metallic Silver",
               "hex": "#7A838E",
               "group": "recommended",
-              "productCode": "43595097374777"
+              "filamentCode": "filament-0870b88a4a3ad0e274e0",
+              "purchaseCode": "43595097374777"
             },
             {
               "name": "Red",
               "hex": "#E72F1D",
               "group": "optional",
-              "productCode": "44863271796793"
+              "filamentCode": "filament-11b88dc4f73a49bcb595",
+              "purchaseCode": "44863271796793"
             },
             {
               "name": "Azure Blue",
               "hex": "#0066D9",
               "group": "optional",
-              "productCode": "44863271141433"
+              "filamentCode": "filament-ca22ddb2a678d3d89492",
+              "purchaseCode": "44863271141433"
             }
           ]
         }
