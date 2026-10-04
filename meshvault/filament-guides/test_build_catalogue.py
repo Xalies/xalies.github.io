@@ -39,6 +39,16 @@ class CatalogueTests(unittest.TestCase):
             with self.subTest(url=url), self.assertRaises(ValueError):
                 builder.validate_url(url)
 
+    def test_bambu_products_are_exported_separately_from_creator_guides(self):
+        feed = builder.build(Path(__file__).resolve().parent)
+        brand = next(b for b in feed["brands"] if b["brand"] == "Bambu Lab")
+        self.assertEqual(len(brand["products"]), 318)
+        self.assertEqual(len({p["range"] for p in brand["products"]}), 46)
+        self.assertEqual(sum("purchaseUrl" in p for p in brand["products"]), 274)
+        for product in brand["products"]:
+            if "purchaseUrl" in product:
+                self.assertRegex(product["purchaseUrl"], r"^https://store\.bambulab\.com/products/[^?]+\?id=\d+$")
+
     def test_reviewed_polymaker_colours_have_individual_variant_links(self):
         root = Path(__file__).resolve().parent
         colours = [colour for guide in builder.build(root)["guides"] if guide["brand"] == "Polymaker"

@@ -26,6 +26,8 @@ def build(root):
         validate_url(brand.get("cartUrl"))
         for url in brand.get("colourPurchaseUrls", {}).values():
             validate_url(url)
+        for product in brand.get("products", []):
+            validate_url(product.get("purchaseUrl"))
         brands[key] = brand
 
     guides = []
@@ -47,7 +49,8 @@ def build(root):
         guides.append(guide)
     if not guides:
         raise ValueError("No reviewed guides found; preserve the existing feed.")
-    return {"schemaVersion": 1, "guides": guides}
+    return {"schemaVersion": 1, "guides": guides,
+            "brands": [brand for brand in brands.values() if "products" in brand]}
 
 
 if __name__ == "__main__":

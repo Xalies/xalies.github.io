@@ -1,0 +1,3168 @@
+{
+  "schemaVersion": 1,
+  "brand": "Bambu Lab",
+  "sourceUrl": "https://raw.githubusercontent.com/bambulab/BambuStudio/master/resources/profiles/BBL/filament/filaments_color_codes.json",
+  "store": "https://au.store.bambulab.com",
+  "products": [
+    {
+      "range": "PLA Basic",
+      "profileId": "GFA00",
+      "code": "10300",
+      "name": "Orange",
+      "hexes": [
+        "#FF6A13FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-basic-filament?id=42647412703395"
+    },
+    {
+      "range": "PLA Basic",
+      "profileId": "GFA00",
+      "code": "10301",
+      "name": "Pumpkin Orange",
+      "hexes": [
+        "#FF9016FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-basic-filament?id=565678226021130246"
+    },
+    {
+      "range": "PLA Basic",
+      "profileId": "GFA00",
+      "code": "10602",
+      "name": "Blue Gray",
+      "hexes": [
+        "#5B6579FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-basic-filament?id=42647412900003"
+    },
+    {
+      "range": "PLA Basic",
+      "profileId": "GFA00",
+      "code": "10604",
+      "name": "Cobalt Blue",
+      "hexes": [
+        "#0056B8FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-basic-filament?id=528066834932404266"
+    },
+    {
+      "range": "PLA Basic",
+      "profileId": "GFA00",
+      "code": "10605",
+      "name": "Turquoise",
+      "hexes": [
+        "#00B1B7FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-basic-filament?id=528066834932404236"
+    },
+    {
+      "range": "PLA Basic",
+      "profileId": "GFA00",
+      "code": "10603",
+      "name": "Cyan",
+      "hexes": [
+        "#0086D6FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-basic-filament?id=558066145095319559"
+    },
+    {
+      "range": "PLA Basic",
+      "profileId": "GFA00",
+      "code": "10601",
+      "name": "Blue",
+      "hexes": [
+        "#0A2989FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-basic-filament?id=43399550927011"
+    },
+    {
+      "range": "PLA Basic",
+      "profileId": "GFA00",
+      "code": "10103",
+      "name": "Gray",
+      "hexes": [
+        "#8E9089FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-basic-filament?id=43466347348131"
+    },
+    {
+      "range": "PLA Basic",
+      "profileId": "GFA00",
+      "code": "10102",
+      "name": "Silver",
+      "hexes": [
+        "#A6A9AAFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-basic-filament?id=42647412834467"
+    },
+    {
+      "range": "PLA Basic",
+      "profileId": "GFA00",
+      "code": "10104",
+      "name": "Light Gray",
+      "hexes": [
+        "#D1D3D5FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-basic-filament?id=45113942671523"
+    },
+    {
+      "range": "PLA Basic",
+      "profileId": "GFA00",
+      "code": "10105",
+      "name": "Dark Gray",
+      "hexes": [
+        "#545454FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-basic-filament?id=45113942704291"
+    },
+    {
+      "range": "PLA Basic",
+      "profileId": "GFA00",
+      "code": "10502",
+      "name": "Mistletoe Green",
+      "hexes": [
+        "#3F8E43FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-basic-filament?id=558066145095319553"
+    },
+    {
+      "range": "PLA Basic",
+      "profileId": "GFA00",
+      "code": "10503",
+      "name": "Bright Green",
+      "hexes": [
+        "#BECF00FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-basic-filament?id=528066834932404248"
+    },
+    {
+      "range": "PLA Basic",
+      "profileId": "GFA00",
+      "code": "10501",
+      "name": "Bambu Green",
+      "hexes": [
+        "#00AE42FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-basic-filament?id=43392761561251"
+    },
+    {
+      "range": "PLA Basic",
+      "profileId": "GFA00",
+      "code": "10101",
+      "name": "Black",
+      "hexes": [
+        "#000000FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-basic-filament?id=43281977016483"
+    },
+    {
+      "range": "PLA Basic",
+      "profileId": "GFA00",
+      "code": "10900",
+      "name": "Arctic Whisper",
+      "hexes": [
+        "#9CDBD9FF",
+        "#FFFFFFFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-basic-gradient?id=43466013868195"
+    },
+    {
+      "range": "PLA Basic",
+      "profileId": "GFA00",
+      "code": "10901",
+      "name": "Solar Breeze",
+      "hexes": [
+        "#E94B3CFF",
+        "#FFFFFFFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-basic-gradient?id=43467129946275"
+    },
+    {
+      "range": "PLA Basic",
+      "profileId": "GFA00",
+      "code": "10902",
+      "name": "Ocean to Meadow",
+      "hexes": [
+        "#307FE2FF",
+        "#54FF9BFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-basic-gradient?id=43467129979043"
+    },
+    {
+      "range": "PLA Basic",
+      "profileId": "GFA00",
+      "code": "10903",
+      "name": "Pink Citrus",
+      "hexes": [
+        "#F78F77FF",
+        "#E4505AFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-basic-gradient?id=545399165960667149"
+    },
+    {
+      "range": "PLA Basic",
+      "profileId": "GFA00",
+      "code": "10904",
+      "name": "Mint Lime",
+      "hexes": [
+        "#B6FF43FF",
+        "#4EC939FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-basic-gradient?id=545399165960667155"
+    },
+    {
+      "range": "PLA Basic",
+      "profileId": "GFA00",
+      "code": "10905",
+      "name": "Blueberry Bubblegum",
+      "hexes": [
+        "#6FCAEFFF",
+        "#8573DDFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-basic-gradient?id=545399165960667137"
+    },
+    {
+      "range": "PLA Basic",
+      "profileId": "GFA00",
+      "code": "10906",
+      "name": "Dusk Glare",
+      "hexes": [
+        "#CE4406FF",
+        "#ED9558FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-basic-gradient?id=548990496153751554"
+    },
+    {
+      "range": "PLA Basic",
+      "profileId": "GFA00",
+      "code": "10907",
+      "name": "Cotton Candy Cloud",
+      "hexes": [
+        "#E7C1D5FF",
+        "#8EC9E9FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-basic-gradient?id=545399165960667143"
+    },
+    {
+      "range": "PLA Basic",
+      "profileId": "GFA00",
+      "code": "10800",
+      "name": "Brown",
+      "hexes": [
+        "#9D432CFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-basic-filament?id=42647412998307"
+    },
+    {
+      "range": "PLA Basic",
+      "profileId": "GFA00",
+      "code": "10802",
+      "name": "Cocoa Brown",
+      "hexes": [
+        "#6F5034FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-basic-filament?id=565678226021130264"
+    },
+    {
+      "range": "PLA Basic",
+      "profileId": "GFA00",
+      "code": "10201",
+      "name": "Beige",
+      "hexes": [
+        "#F7E6DEFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-basic-filament?id=42647412801699"
+    },
+    {
+      "range": "PLA Basic",
+      "profileId": "GFA00",
+      "code": "10203",
+      "name": "Pink",
+      "hexes": [
+        "#F55A74FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-basic-filament?id=42647412932771"
+    },
+    {
+      "range": "PLA Basic",
+      "profileId": "GFA00",
+      "code": "10701",
+      "name": "Indigo Purple",
+      "hexes": [
+        "#482960FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-basic-filament?id=565678226021130258"
+    },
+    {
+      "range": "PLA Basic",
+      "profileId": "GFA00",
+      "code": "10700",
+      "name": "Purple",
+      "hexes": [
+        "#5E43B7FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-basic-filament?id=44143373746339"
+    },
+    {
+      "range": "PLA Basic",
+      "profileId": "GFA00",
+      "code": "10202",
+      "name": "Magenta",
+      "hexes": [
+        "#EC008CFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-basic-filament?id=44143382069411"
+    },
+    {
+      "range": "PLA Basic",
+      "profileId": "GFA00",
+      "code": "10200",
+      "name": "Red",
+      "hexes": [
+        "#C12E1FFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-basic-filament?id=43281976950947"
+    },
+    {
+      "range": "PLA Basic",
+      "profileId": "GFA00",
+      "code": "10205",
+      "name": "Maroon Red",
+      "hexes": [
+        "#9D2235FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-basic-filament?id=528066834932404224"
+    },
+    {
+      "range": "PLA Basic",
+      "profileId": "GFA00",
+      "code": "10204",
+      "name": "Hot Pink",
+      "hexes": [
+        "#F5547CFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-basic-filament?id=565678226021130252"
+    },
+    {
+      "range": "PLA Basic",
+      "profileId": "GFA00",
+      "code": "10100",
+      "name": "Jade White",
+      "hexes": [
+        "#FFFFFFFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-basic-filament?id=43281977049251"
+    },
+    {
+      "range": "PLA Basic",
+      "profileId": "GFA00",
+      "code": "10400",
+      "name": "Yellow",
+      "hexes": [
+        "#F4EE2AFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-basic-filament?id=42647412867235"
+    },
+    {
+      "range": "PLA Basic",
+      "profileId": "GFA00",
+      "code": "10402",
+      "name": "Sunflower Yellow",
+      "hexes": [
+        "#FEC600FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-basic-filament?id=565678226021130240"
+    },
+    {
+      "range": "PLA Basic",
+      "profileId": "GFA00",
+      "code": "10801",
+      "name": "Bronze",
+      "hexes": [
+        "#847D48FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-basic-filament?id=44143376105635"
+    },
+    {
+      "range": "PLA Basic",
+      "profileId": "GFA00",
+      "code": "10401",
+      "name": "Gold",
+      "hexes": [
+        "#E4BD68FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-basic-filament?id=44143368536227"
+    },
+    {
+      "range": "PLA Matte",
+      "profileId": "GFA01",
+      "code": "11300",
+      "name": "Mandarin Orange",
+      "hexes": [
+        "#F99963FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-matte?id=43452356264099"
+    },
+    {
+      "range": "PLA Matte",
+      "profileId": "GFA01",
+      "code": "11603",
+      "name": "Sky Blue",
+      "hexes": [
+        "#56B7E6FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-matte?id=563873274318602252"
+    },
+    {
+      "range": "PLA Matte",
+      "profileId": "GFA01",
+      "code": "11600",
+      "name": "Marine Blue",
+      "hexes": [
+        "#0078BFFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-matte?id=43281987207331"
+    },
+    {
+      "range": "PLA Matte",
+      "profileId": "GFA01",
+      "code": "11601",
+      "name": "Ice Blue",
+      "hexes": [
+        "#A3D8E1FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-matte?id=42647402610851"
+    },
+    {
+      "range": "PLA Matte",
+      "profileId": "GFA01",
+      "code": "11602",
+      "name": "Dark Blue",
+      "hexes": [
+        "#042F56FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-matte?id=44143433875619"
+    },
+    {
+      "range": "PLA Matte",
+      "profileId": "GFA01",
+      "code": "11104",
+      "name": "Nardo Gray",
+      "hexes": [
+        "#757575FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-matte?id=563873274318602282"
+    },
+    {
+      "range": "PLA Matte",
+      "profileId": "GFA01",
+      "code": "11102",
+      "name": "Ash Gray",
+      "hexes": [
+        "#9B9EA0FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-matte?id=43281987338403"
+    },
+    {
+      "range": "PLA Matte",
+      "profileId": "GFA01",
+      "code": "11502",
+      "name": "Apple Green",
+      "hexes": [
+        "#C2E189FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-matte?id=563873274318602258"
+    },
+    {
+      "range": "PLA Matte",
+      "profileId": "GFA01",
+      "code": "11500",
+      "name": "Grass Green",
+      "hexes": [
+        "#61C680FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-matte?id=42647402512547"
+    },
+    {
+      "range": "PLA Matte",
+      "profileId": "GFA01",
+      "code": "11501",
+      "name": "Dark Green",
+      "hexes": [
+        "#68724DFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-matte?id=44143426207907"
+    },
+    {
+      "range": "PLA Matte",
+      "profileId": "GFA01",
+      "code": "11101",
+      "name": "Charcoal",
+      "hexes": [
+        "#000000FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-matte?id=43281987272867"
+    },
+    {
+      "range": "PLA Matte",
+      "profileId": "GFA01",
+      "code": "11802",
+      "name": "Dark Chocolate",
+      "hexes": [
+        "#4D3324FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-matte?id=563873274318602264"
+    },
+    {
+      "range": "PLA Matte",
+      "profileId": "GFA01",
+      "code": "11800",
+      "name": "Latte Brown",
+      "hexes": [
+        "#D3B7A7FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-matte?id=42647402545315"
+    },
+    {
+      "range": "PLA Matte",
+      "profileId": "GFA01",
+      "code": "11801",
+      "name": "Dark Brown",
+      "hexes": [
+        "#7D6556FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-matte?id=44143422767267"
+    },
+    {
+      "range": "PLA Matte",
+      "profileId": "GFA01",
+      "code": "11803",
+      "name": "Caramel",
+      "hexes": [
+        "#AE835BFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-matte?id=563873274318602270"
+    },
+    {
+      "range": "PLA Matte",
+      "profileId": "GFA01",
+      "code": "11201",
+      "name": "Sakura Pink",
+      "hexes": [
+        "#E8AFCFFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-matte?id=42647402414243"
+    },
+    {
+      "range": "PLA Matte",
+      "profileId": "GFA01",
+      "code": "11700",
+      "name": "Lilac Purple",
+      "hexes": [
+        "#AE96D4FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-matte?id=42647402643619"
+    },
+    {
+      "range": "PLA Matte",
+      "profileId": "GFA01",
+      "code": "11200",
+      "name": "Scarlet Red",
+      "hexes": [
+        "#DE4343FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-matte?id=43281987240099"
+    },
+    {
+      "range": "PLA Matte",
+      "profileId": "GFA01",
+      "code": "11203",
+      "name": "Terracotta",
+      "hexes": [
+        "#B15533FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-matte?id=563873274318602276"
+    },
+    {
+      "range": "PLA Matte",
+      "profileId": "GFA01",
+      "code": "11204",
+      "name": "Plum",
+      "hexes": [
+        "#950051FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-matte?id=563873274318602246"
+    },
+    {
+      "range": "PLA Matte",
+      "profileId": "GFA01",
+      "code": "11202",
+      "name": "Dark Red",
+      "hexes": [
+        "#BB3D43FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-matte?id=44143420506275"
+    },
+    {
+      "range": "PLA Matte",
+      "profileId": "GFA01",
+      "code": "11100",
+      "name": "Ivory White",
+      "hexes": [
+        "#FFFFFFFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-matte?id=43281987305635"
+    },
+    {
+      "range": "PLA Matte",
+      "profileId": "GFA01",
+      "code": "11103",
+      "name": "Bone White",
+      "hexes": [
+        "#CBC6B8FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-matte?id=563873274318602240"
+    },
+    {
+      "range": "PLA Matte",
+      "profileId": "GFA01",
+      "code": "11400",
+      "name": "Lemon Yellow",
+      "hexes": [
+        "#F7D959FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-matte?id=42647402447011"
+    },
+    {
+      "range": "PLA Matte",
+      "profileId": "GFA01",
+      "code": "11401",
+      "name": "Desert Tan",
+      "hexes": [
+        "#E8DBB7FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-matte?id=44458991386787"
+    },
+    {
+      "range": "PLA Silk",
+      "profileId": "GFA05",
+      "code": "13601",
+      "name": "Blue",
+      "hexes": [
+        "#147BD1FF"
+      ]
+    },
+    {
+      "range": "PLA Silk",
+      "profileId": "GFA05",
+      "code": "13104",
+      "name": "Silver",
+      "hexes": [
+        "#EAECEBFF"
+      ]
+    },
+    {
+      "range": "PLA Silk",
+      "profileId": "GFA05",
+      "code": "13502",
+      "name": "Green",
+      "hexes": [
+        "#4CE4A0FF"
+      ]
+    },
+    {
+      "range": "PLA Silk",
+      "profileId": "GFA05",
+      "code": "13300",
+      "name": "Copper",
+      "hexes": [
+        "#5E4B3CFF"
+      ]
+    },
+    {
+      "range": "PLA Silk",
+      "profileId": "GFA05",
+      "code": "13202",
+      "name": "Pink",
+      "hexes": [
+        "#EEB1C1FF"
+      ]
+    },
+    {
+      "range": "PLA Silk",
+      "profileId": "GFA05",
+      "code": "13701",
+      "name": "Purple",
+      "hexes": [
+        "#854CE4FF"
+      ]
+    },
+    {
+      "range": "PLA Silk",
+      "profileId": "GFA05",
+      "code": "13901",
+      "name": "Gilded Rose",
+      "hexes": [
+        "#FF9425FF",
+        "#C16784FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-silk-multi-color?id=43853538853027"
+    },
+    {
+      "range": "PLA Silk",
+      "profileId": "GFA05",
+      "code": "13902",
+      "name": "Midnight Blaze",
+      "hexes": [
+        "#0047BBFF",
+        "#7D1B49FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-silk-multi-color?id=43853538885795"
+    },
+    {
+      "range": "PLA Silk",
+      "profileId": "GFA05",
+      "code": "13903",
+      "name": "Neon City",
+      "hexes": [
+        "#0047BBFF",
+        "#BB22A3FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-silk-multi-color?id=43853538918563"
+    },
+    {
+      "range": "PLA Silk",
+      "profileId": "GFA05",
+      "code": "13904",
+      "name": "Blue Hawaii",
+      "hexes": [
+        "#418FDEFF",
+        "#70C884FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-silk-multi-color?id=43853538951331"
+    },
+    {
+      "range": "PLA Silk",
+      "profileId": "GFA05",
+      "code": "13905",
+      "name": "Velvet Eclipse (Black-Red)",
+      "hexes": [
+        "#000000FF",
+        "#A34342FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-silk-multi-color?id=535953792676773890"
+    },
+    {
+      "range": "PLA Silk",
+      "profileId": "GFA05",
+      "code": "13105",
+      "name": "White",
+      "hexes": [
+        "#FFFFFFFF"
+      ]
+    },
+    {
+      "range": "PLA Silk",
+      "profileId": "GFA05",
+      "code": "13401",
+      "name": "Gold",
+      "hexes": [
+        "#E5B03DFF"
+      ]
+    },
+    {
+      "range": "PLA Silk+",
+      "profileId": "GFA06",
+      "code": "13603",
+      "name": "Baby Blue",
+      "hexes": [
+        "#A8C6EEFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-silk-upgrade?id=542501901848416322"
+    },
+    {
+      "range": "PLA Silk+",
+      "profileId": "GFA06",
+      "code": "13604",
+      "name": "Blue",
+      "hexes": [
+        "#008BDAFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-silk-upgrade?id=542501901848416292"
+    },
+    {
+      "range": "PLA Silk+",
+      "profileId": "GFA06",
+      "code": "13108",
+      "name": "Titan Gray",
+      "hexes": [
+        "#5F6367FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-silk-upgrade?id=542501901848416286"
+    },
+    {
+      "range": "PLA Silk+",
+      "profileId": "GFA06",
+      "code": "13109",
+      "name": "Silver",
+      "hexes": [
+        "#C8C8C8FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-silk-upgrade?id=542501901848416280"
+    },
+    {
+      "range": "PLA Silk+",
+      "profileId": "GFA06",
+      "code": "13506",
+      "name": "Candy Green",
+      "hexes": [
+        "#018814FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-silk-upgrade?id=542501901848416310"
+    },
+    {
+      "range": "PLA Silk+",
+      "profileId": "GFA06",
+      "code": "13507",
+      "name": "Mint",
+      "hexes": [
+        "#96DCB9FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-silk-upgrade?id=542501901848416328"
+    },
+    {
+      "range": "PLA Silk+",
+      "profileId": "GFA06",
+      "code": "13702",
+      "name": "Purple",
+      "hexes": [
+        "#8671CBFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-silk-upgrade?id=542501901848416298"
+    },
+    {
+      "range": "PLA Silk+",
+      "profileId": "GFA06",
+      "code": "13205",
+      "name": "Candy Red",
+      "hexes": [
+        "#D02727FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-silk-upgrade?id=542501901848416304"
+    },
+    {
+      "range": "PLA Silk+",
+      "profileId": "GFA06",
+      "code": "13206",
+      "name": "Rose Gold",
+      "hexes": [
+        "#BA9594FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-silk-upgrade?id=542501901848416316"
+    },
+    {
+      "range": "PLA Silk+",
+      "profileId": "GFA06",
+      "code": "13207",
+      "name": "Pink",
+      "hexes": [
+        "#F7ADA6FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-silk-upgrade?id=542501901848416334"
+    },
+    {
+      "range": "PLA Silk+",
+      "profileId": "GFA06",
+      "code": "13110",
+      "name": "White",
+      "hexes": [
+        "#FFFFFFFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-silk-upgrade?id=542501901848416346"
+    },
+    {
+      "range": "PLA Silk+",
+      "profileId": "GFA06",
+      "code": "13404",
+      "name": "Champagne",
+      "hexes": [
+        "#F3CFB2FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-silk-upgrade?id=542501901848416340"
+    },
+    {
+      "range": "PLA Silk+",
+      "profileId": "GFA06",
+      "code": "13405",
+      "name": "Gold",
+      "hexes": [
+        "#F4A925FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-silk-upgrade?id=542501901848416274"
+    },
+    {
+      "range": "PLA Marble",
+      "profileId": "GFA07",
+      "code": "13103",
+      "name": "White Marble",
+      "hexes": [
+        "#F7F3F0FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-marble?id=43267094773923"
+    },
+    {
+      "range": "PLA Marble",
+      "profileId": "GFA07",
+      "code": "13201",
+      "name": "Red Granite",
+      "hexes": [
+        "#AD4E38FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-marble?id=43416854036643"
+    },
+    {
+      "range": "PLA Sparkle",
+      "profileId": "GFA08",
+      "code": "13700",
+      "name": "Royal Purple Sparkle",
+      "hexes": [
+        "#483D8BFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-sparkle?id=43251465519267"
+    },
+    {
+      "range": "PLA Sparkle",
+      "profileId": "GFA08",
+      "code": "13102",
+      "name": "Slate Gray Sparkle",
+      "hexes": [
+        "#8E9089FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-sparkle?id=43251479609507"
+    },
+    {
+      "range": "PLA Sparkle",
+      "profileId": "GFA08",
+      "code": "13501",
+      "name": "Alpine Green Sparkle",
+      "hexes": [
+        "#3F5443FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-sparkle?id=43251465584803"
+    },
+    {
+      "range": "PLA Sparkle",
+      "profileId": "GFA08",
+      "code": "13101",
+      "name": "Onyx Black Sparkle",
+      "hexes": [
+        "#2D2B28FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-sparkle?id=43416880742563"
+    },
+    {
+      "range": "PLA Sparkle",
+      "profileId": "GFA08",
+      "code": "13200",
+      "name": "Crimson Red Sparkle",
+      "hexes": [
+        "#792B36FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-sparkle?id=43416880709795"
+    },
+    {
+      "range": "PLA Sparkle",
+      "profileId": "GFA08",
+      "code": "13402",
+      "name": "Classic Gold Sparkle",
+      "hexes": [
+        "#CEA629FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-sparkle?id=44668107128995"
+    },
+    {
+      "range": "PLA Tough",
+      "profileId": "GFA09",
+      "code": "12300",
+      "name": "Orange",
+      "hexes": [
+        "#FF7F41FF"
+      ]
+    },
+    {
+      "range": "PLA Tough",
+      "profileId": "GFA09",
+      "code": "12600",
+      "name": "Light Blue",
+      "hexes": [
+        "#0085ADFF"
+      ]
+    },
+    {
+      "range": "PLA Tough",
+      "profileId": "GFA09",
+      "code": "12700",
+      "name": "Lavender Blue",
+      "hexes": [
+        "#6667ABFF"
+      ]
+    },
+    {
+      "range": "PLA Tough",
+      "profileId": "GFA09",
+      "code": "12102",
+      "name": "Gray",
+      "hexes": [
+        "#515A6CFF"
+      ]
+    },
+    {
+      "range": "PLA Tough",
+      "profileId": "GFA09",
+      "code": "12103",
+      "name": "Silver",
+      "hexes": [
+        "#898D8DFF"
+      ]
+    },
+    {
+      "range": "PLA Tough",
+      "profileId": "GFA09",
+      "code": "12500",
+      "name": "Pine Green",
+      "hexes": [
+        "#00482BFF"
+      ]
+    },
+    {
+      "range": "PLA Tough",
+      "profileId": "GFA09",
+      "code": "12101",
+      "name": "Black",
+      "hexes": [
+        "#25282AFF"
+      ]
+    },
+    {
+      "range": "PLA Tough",
+      "profileId": "GFA09",
+      "code": "12200",
+      "name": "Vermilion Red",
+      "hexes": [
+        "#DD3C22FF"
+      ]
+    },
+    {
+      "range": "PLA Tough",
+      "profileId": "GFA09",
+      "code": "12100",
+      "name": "White",
+      "hexes": [
+        "#F9F7F4FF"
+      ]
+    },
+    {
+      "range": "PLA Tough",
+      "profileId": "GFA09",
+      "code": "12400",
+      "name": "Yellow",
+      "hexes": [
+        "#FEDB00FF"
+      ]
+    },
+    {
+      "range": "PLA Aero",
+      "profileId": "GFA11",
+      "code": "14104",
+      "name": "Gray",
+      "hexes": [
+        "#CDCECAFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-aero?id=44858706788515"
+    },
+    {
+      "range": "PLA Aero",
+      "profileId": "GFA11",
+      "code": "14103",
+      "name": "Black",
+      "hexes": [
+        "#000000FF"
+      ]
+    },
+    {
+      "range": "PLA Aero",
+      "profileId": "GFA11",
+      "code": "14102",
+      "name": "White",
+      "hexes": [
+        "#FFFFFFFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-aero?id=43493482430627"
+    },
+    {
+      "range": "PLA Glow",
+      "profileId": "GFA12",
+      "code": "15300",
+      "name": "Glow Orange",
+      "hexes": [
+        "#FF9D5BFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-glow?id=43787144462499"
+    },
+    {
+      "range": "PLA Glow",
+      "profileId": "GFA12",
+      "code": "15600",
+      "name": "Glow Blue",
+      "hexes": [
+        "#7AC0E9FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-glow?id=43787144495267"
+    },
+    {
+      "range": "PLA Glow",
+      "profileId": "GFA12",
+      "code": "15500",
+      "name": "Glow Green",
+      "hexes": [
+        "#A1FFACFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-glow?id=43787144528035"
+    },
+    {
+      "range": "PLA Glow",
+      "profileId": "GFA12",
+      "code": "15200",
+      "name": "Glow Pink",
+      "hexes": [
+        "#F17B8FFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-glow?id=43787144560803"
+    },
+    {
+      "range": "PLA Glow",
+      "profileId": "GFA12",
+      "code": "15400",
+      "name": "Glow Yellow",
+      "hexes": [
+        "#F8FF80FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-glow?id=43787144593571"
+    },
+    {
+      "range": "PLA Dynamic",
+      "profileId": "GFA13",
+      "code": "15100",
+      "name": "UV Color Changing - White to Coral",
+      "hexes": [
+        "#FFFFFFFF"
+      ]
+    },
+    {
+      "range": "PLA Galaxy",
+      "profileId": "GFA15",
+      "code": "13602",
+      "name": "Purple",
+      "hexes": [
+        "#594177FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-galaxy?id=44070134513827"
+    },
+    {
+      "range": "PLA Galaxy",
+      "profileId": "GFA15",
+      "code": "13503",
+      "name": "Green",
+      "hexes": [
+        "#3B665EFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-galaxy?id=44070134448291"
+    },
+    {
+      "range": "PLA Galaxy",
+      "profileId": "GFA15",
+      "code": "13504",
+      "name": "Nebulae",
+      "hexes": [
+        "#424379FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-galaxy?id=44070134481059"
+    },
+    {
+      "range": "PLA Galaxy",
+      "profileId": "GFA15",
+      "code": "13203",
+      "name": "Brown",
+      "hexes": [
+        "#684A43FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-galaxy?id=44070134415523"
+    },
+    {
+      "range": "PLA Wood",
+      "profileId": "GFA16",
+      "code": "13505",
+      "name": "Classic Birch",
+      "hexes": [
+        "#918669FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-wood?id=533180634139738143"
+    },
+    {
+      "range": "PLA Wood",
+      "profileId": "GFA16",
+      "code": "13107",
+      "name": "Black Walnut",
+      "hexes": [
+        "#4F3F24FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-wood?id=533180634139738125"
+    },
+    {
+      "range": "PLA Wood",
+      "profileId": "GFA16",
+      "code": "13801",
+      "name": "Clay Brown",
+      "hexes": [
+        "#995F11FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-wood?id=533180634139738137"
+    },
+    {
+      "range": "PLA Wood",
+      "profileId": "GFA16",
+      "code": "13204",
+      "name": "Rosewood",
+      "hexes": [
+        "#4C241CFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-wood?id=533180634139738131"
+    },
+    {
+      "range": "PLA Wood",
+      "profileId": "GFA16",
+      "code": "13106",
+      "name": "White Oak",
+      "hexes": [
+        "#D6CCA3FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-wood?id=533180634139738149"
+    },
+    {
+      "range": "PLA Wood",
+      "profileId": "GFA16",
+      "code": "13403",
+      "name": "Ochre Yellow",
+      "hexes": [
+        "#C98935FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-wood?id=533180634139738155"
+    },
+    {
+      "range": "PLA-CF",
+      "profileId": "GFA50",
+      "code": "14601",
+      "name": "Royal Blue",
+      "hexes": [
+        "#2842ADFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-cf?id=43551359008931"
+    },
+    {
+      "range": "PLA-CF",
+      "profileId": "GFA50",
+      "code": "14600",
+      "name": "Jeans Blue",
+      "hexes": [
+        "#6E88BCFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-cf?id=43403621826723"
+    },
+    {
+      "range": "PLA-CF",
+      "profileId": "GFA50",
+      "code": "14101",
+      "name": "Lava Gray",
+      "hexes": [
+        "#4D5054FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-cf?id=43403621859491"
+    },
+    {
+      "range": "PLA-CF",
+      "profileId": "GFA50",
+      "code": "14500",
+      "name": "Matcha Green",
+      "hexes": [
+        "#5C9748FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-cf?id=43448276713635"
+    },
+    {
+      "range": "PLA-CF",
+      "profileId": "GFA50",
+      "code": "14100",
+      "name": "Black",
+      "hexes": [
+        "#000000FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-cf?id=43218864472227"
+    },
+    {
+      "range": "PLA-CF",
+      "profileId": "GFA50",
+      "code": "14700",
+      "name": "Iris Purple",
+      "hexes": [
+        "#69398EFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-cf?id=43551359041699"
+    },
+    {
+      "range": "PLA-CF",
+      "profileId": "GFA50",
+      "code": "14200",
+      "name": "Burgundy Red",
+      "hexes": [
+        "#951E23FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-cf?id=43403621793955"
+    },
+    {
+      "range": "ABS",
+      "profileId": "GFB00",
+      "code": "40300",
+      "name": "Orange",
+      "hexes": [
+        "#FF6A13FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/abs-filament?id=44668285583523"
+    },
+    {
+      "range": "ABS",
+      "profileId": "GFB00",
+      "code": "40600",
+      "name": "Blue",
+      "hexes": [
+        "#0A2CA5FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/abs-filament?id=42647357718691"
+    },
+    {
+      "range": "ABS",
+      "profileId": "GFB00",
+      "code": "40601",
+      "name": "Azure",
+      "hexes": [
+        "#489FDFFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/abs-filament?id=44822432120995"
+    },
+    {
+      "range": "ABS",
+      "profileId": "GFB00",
+      "code": "40602",
+      "name": "Navy Blue",
+      "hexes": [
+        "#0C2340FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/abs-filament?id=44822429401251"
+    },
+    {
+      "range": "ABS",
+      "profileId": "GFB00",
+      "code": "40501",
+      "name": "Mint",
+      "hexes": [
+        "#7AE1BFFF"
+      ]
+    },
+    {
+      "range": "ABS",
+      "profileId": "GFB00",
+      "code": "40102",
+      "name": "Silver",
+      "hexes": [
+        "#87909AFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/abs-filament?id=43433659826339"
+    },
+    {
+      "range": "ABS",
+      "profileId": "GFB00",
+      "code": "40500",
+      "name": "Bambu Green",
+      "hexes": [
+        "#00AE42FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/abs-filament?id=44668287484067"
+    },
+    {
+      "range": "ABS",
+      "profileId": "GFB00",
+      "code": "40502",
+      "name": "Olive",
+      "hexes": [
+        "#789D4AFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/abs-filament?id=44801726316707"
+    },
+    {
+      "range": "ABS",
+      "profileId": "GFB00",
+      "code": "40101",
+      "name": "Black",
+      "hexes": [
+        "#000000FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/abs-filament?id=43468787450019"
+    },
+    {
+      "range": "ABS",
+      "profileId": "GFB00",
+      "code": "40701",
+      "name": "Lavender",
+      "hexes": [
+        "#7248BDFF"
+      ]
+    },
+    {
+      "range": "ABS",
+      "profileId": "GFB00",
+      "code": "40700",
+      "name": "Purple",
+      "hexes": [
+        "#AF1685FF"
+      ]
+    },
+    {
+      "range": "ABS",
+      "profileId": "GFB00",
+      "code": "40200",
+      "name": "Red",
+      "hexes": [
+        "#D32941FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/abs-filament?id=42647357653155"
+    },
+    {
+      "range": "ABS",
+      "profileId": "GFB00",
+      "code": "40100",
+      "name": "White",
+      "hexes": [
+        "#FFFFFFFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/abs-filament?id=43468788531363"
+    },
+    {
+      "range": "ABS",
+      "profileId": "GFB00",
+      "code": "40400",
+      "name": "Yellow",
+      "hexes": [
+        "#FCE900FF"
+      ]
+    },
+    {
+      "range": "ABS",
+      "profileId": "GFB00",
+      "code": "40402",
+      "name": "Tangerine Yellow",
+      "hexes": [
+        "#FFC72CFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/abs-filament?id=44801736671395"
+    },
+    {
+      "range": "ABS",
+      "profileId": "GFB00",
+      "code": "40401",
+      "name": "Beige",
+      "hexes": [
+        "#DFD1A7FF"
+      ]
+    },
+    {
+      "range": "ASA",
+      "profileId": "GFB01",
+      "code": "45600",
+      "name": "Blue",
+      "hexes": [
+        "#2140B4FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/asa-filament?id=43480655233187"
+    },
+    {
+      "range": "ASA",
+      "profileId": "GFB01",
+      "code": "45102",
+      "name": "Gray",
+      "hexes": [
+        "#8A949EFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/asa-filament?id=43480655331491"
+    },
+    {
+      "range": "ASA",
+      "profileId": "GFB01",
+      "code": "45500",
+      "name": "Green",
+      "hexes": [
+        "#00A6A0FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/asa-filament?id=43480655200419"
+    },
+    {
+      "range": "ASA",
+      "profileId": "GFB01",
+      "code": "45101",
+      "name": "Black",
+      "hexes": [
+        "#000000FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/asa-filament?id=43480655265955"
+    },
+    {
+      "range": "ASA",
+      "profileId": "GFB01",
+      "code": "45200",
+      "name": "Red",
+      "hexes": [
+        "#E02928FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/asa-filament?id=43480655167651"
+    },
+    {
+      "range": "ASA",
+      "profileId": "GFB01",
+      "code": "45100",
+      "name": "White",
+      "hexes": [
+        "#FFFAF2FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/asa-filament?id=43480655298723"
+    },
+    {
+      "range": "ASA Aero",
+      "profileId": "GFB02",
+      "code": "46100",
+      "name": "White",
+      "hexes": [
+        "#F5F1DDFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/asa-aero?id=44311156129955"
+    },
+    {
+      "range": "ABS-GF",
+      "profileId": "GFB50",
+      "code": "41300",
+      "name": "Orange",
+      "hexes": [
+        "#F48438FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/abs-gf?id=44380160884899"
+    },
+    {
+      "range": "ABS-GF",
+      "profileId": "GFB50",
+      "code": "41600",
+      "name": "Blue",
+      "hexes": [
+        "#0C3B95FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/abs-gf?id=44589123829923"
+    },
+    {
+      "range": "ABS-GF",
+      "profileId": "GFB50",
+      "code": "41102",
+      "name": "Gray",
+      "hexes": [
+        "#C6C6C6FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/abs-gf?id=44380161048739"
+    },
+    {
+      "range": "ABS-GF",
+      "profileId": "GFB50",
+      "code": "41500",
+      "name": "Green",
+      "hexes": [
+        "#61BF36FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/abs-gf?id=44380160917667"
+    },
+    {
+      "range": "ABS-GF",
+      "profileId": "GFB50",
+      "code": "41101",
+      "name": "Black",
+      "hexes": [
+        "#000000FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/abs-gf?id=44380161081507"
+    },
+    {
+      "range": "ABS-GF",
+      "profileId": "GFB50",
+      "code": "41200",
+      "name": "Red",
+      "hexes": [
+        "#E83100FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/abs-gf?id=44380160950435"
+    },
+    {
+      "range": "ABS-GF",
+      "profileId": "GFB50",
+      "code": "41100",
+      "name": "White",
+      "hexes": [
+        "#FFFFFFFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/abs-gf?id=44380161015971"
+    },
+    {
+      "range": "ABS-GF",
+      "profileId": "GFB50",
+      "code": "41400",
+      "name": "Yellow",
+      "hexes": [
+        "#FFE133FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/abs-gf?id=44380160983203"
+    },
+    {
+      "range": "ASA-CF",
+      "profileId": "GFB51",
+      "code": "46101",
+      "name": "Black",
+      "hexes": [
+        "#000000FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/asa-cf?id=514708947075215367"
+    },
+    {
+      "range": "PC",
+      "profileId": "GFC00",
+      "code": "60102",
+      "name": "Clear Black",
+      "hexes": [
+        "#68686580"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pc-filament?id=43399557513379"
+    },
+    {
+      "range": "PC",
+      "profileId": "GFC00",
+      "code": "60103",
+      "name": "Transparent",
+      "hexes": [
+        "#00000000"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pc-filament?id=43399557906595"
+    },
+    {
+      "range": "PC",
+      "profileId": "GFC00",
+      "code": "60101",
+      "name": "Black",
+      "hexes": [
+        "#000000FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pc-filament?id=42967947837603"
+    },
+    {
+      "range": "PC",
+      "profileId": "GFC00",
+      "code": "60100",
+      "name": "White",
+      "hexes": [
+        "#FFFFFFFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pc-filament?id=42967947804835"
+    },
+    {
+      "range": "PC FR",
+      "profileId": "GFC01",
+      "code": "63102",
+      "name": "Gray",
+      "hexes": [
+        "#A8A8AAFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pc-fr?id=546460137665712148"
+    },
+    {
+      "range": "PC FR",
+      "profileId": "GFC01",
+      "code": "63100",
+      "name": "Black",
+      "hexes": [
+        "#000000FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pc-fr?id=546460137665712136"
+    },
+    {
+      "range": "PC FR",
+      "profileId": "GFC01",
+      "code": "63101",
+      "name": "White",
+      "hexes": [
+        "#FFFFFFFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pc-fr?id=546460137665712142"
+    },
+    {
+      "range": "PETG Translucent",
+      "profileId": "GFG01",
+      "code": "32300",
+      "name": "Translucent Orange",
+      "hexes": [
+        "#FF911A80"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/petg-translucent?id=44801743126691"
+    },
+    {
+      "range": "PETG Translucent",
+      "profileId": "GFG01",
+      "code": "32600",
+      "name": "Translucent Light Blue",
+      "hexes": [
+        "#61B0FF80"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/petg-translucent?id=43863196500131"
+    },
+    {
+      "range": "PETG Translucent",
+      "profileId": "GFG01",
+      "code": "32101",
+      "name": "Clear",
+      "hexes": [
+        "#00000000"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/petg-translucent?id=44440606671011"
+    },
+    {
+      "range": "PETG Translucent",
+      "profileId": "GFG01",
+      "code": "32100",
+      "name": "Translucent Gray",
+      "hexes": [
+        "#8E8E8E80"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/petg-translucent?id=45099064524963"
+    },
+    {
+      "range": "PETG Translucent",
+      "profileId": "GFG01",
+      "code": "32500",
+      "name": "Translucent Olive",
+      "hexes": [
+        "#748C4580"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/petg-translucent?id=44818696175779"
+    },
+    {
+      "range": "PETG Translucent",
+      "profileId": "GFG01",
+      "code": "32501",
+      "name": "Translucent Teal",
+      "hexes": [
+        "#77EDD780"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/petg-translucent?id=43863196598435"
+    },
+    {
+      "range": "PETG Translucent",
+      "profileId": "GFG01",
+      "code": "32800",
+      "name": "Translucent Brown",
+      "hexes": [
+        "#C9A38180"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/petg-translucent?id=45084368076963"
+    },
+    {
+      "range": "PETG Translucent",
+      "profileId": "GFG01",
+      "code": "32700",
+      "name": "Translucent Purple",
+      "hexes": [
+        "#D6ABFF80"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/petg-translucent?id=44801744339107"
+    },
+    {
+      "range": "PETG Translucent",
+      "profileId": "GFG01",
+      "code": "32200",
+      "name": "Translucent Pink",
+      "hexes": [
+        "#F9C1BD80"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/petg-translucent?id=44801744502947"
+    },
+    {
+      "range": "PETG HF",
+      "profileId": "GFG02",
+      "code": "33300",
+      "name": "Orange",
+      "hexes": [
+        "#F75403FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/petg-hf?id=660343589841678337"
+    },
+    {
+      "range": "PETG HF",
+      "profileId": "GFG02",
+      "code": "33600",
+      "name": "Blue",
+      "hexes": [
+        "#002E96FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/petg-hf?id=44822190162083"
+    },
+    {
+      "range": "PETG HF",
+      "profileId": "GFG02",
+      "code": "33601",
+      "name": "Lake Blue",
+      "hexes": [
+        "#1F79E5FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/petg-hf?id=690453566936870924"
+    },
+    {
+      "range": "PETG HF",
+      "profileId": "GFG02",
+      "code": "33101",
+      "name": "Gray",
+      "hexes": [
+        "#ADB1B2FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/petg-hf?id=737817458076905473"
+    },
+    {
+      "range": "PETG HF",
+      "profileId": "GFG02",
+      "code": "33103",
+      "name": "Dark Gray",
+      "hexes": [
+        "#515151FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/petg-hf?id=690453566936870918"
+    },
+    {
+      "range": "PETG HF",
+      "profileId": "GFG02",
+      "code": "33500",
+      "name": "Green",
+      "hexes": [
+        "#00AE42FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/petg-hf?id=660362617612009479"
+    },
+    {
+      "range": "PETG HF",
+      "profileId": "GFG02",
+      "code": "33501",
+      "name": "Lime Green",
+      "hexes": [
+        "#6EE53CFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/petg-hf?id=660362617616203800"
+    },
+    {
+      "range": "PETG HF",
+      "profileId": "GFG02",
+      "code": "33502",
+      "name": "Forest Green",
+      "hexes": [
+        "#39541AFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/petg-hf?id=660362617616203776"
+    },
+    {
+      "range": "PETG HF",
+      "profileId": "GFG02",
+      "code": "33102",
+      "name": "Black",
+      "hexes": [
+        "#000000FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/petg-hf?id=690453566936870912"
+    },
+    {
+      "range": "PETG HF",
+      "profileId": "GFG02",
+      "code": "33801",
+      "name": "Peanut Brown",
+      "hexes": [
+        "#875718FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/petg-hf?id=660362617616203782"
+    },
+    {
+      "range": "PETG HF",
+      "profileId": "GFG02",
+      "code": "33200",
+      "name": "Red",
+      "hexes": [
+        "#BC0900FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/petg-hf?id=44822190063779"
+    },
+    {
+      "range": "PETG HF",
+      "profileId": "GFG02",
+      "code": "33100",
+      "name": "White",
+      "hexes": [
+        "#FFFFFFFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/petg-hf?id=44822190129315"
+    },
+    {
+      "range": "PETG HF",
+      "profileId": "GFG02",
+      "code": "33400",
+      "name": "Yellow",
+      "hexes": [
+        "#FFD00BFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/petg-hf?id=660362617612009473"
+    },
+    {
+      "range": "PETG HF",
+      "profileId": "GFG02",
+      "code": "33401",
+      "name": "Cream",
+      "hexes": [
+        "#F9DFB9FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/petg-hf?id=660362617616203794"
+    },
+    {
+      "range": "PETG-CF",
+      "profileId": "GFG50",
+      "code": "31600",
+      "name": "Indigo Blue",
+      "hexes": [
+        "#324585FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/petg-cf?id=43484522840227"
+    },
+    {
+      "range": "PETG-CF",
+      "profileId": "GFG50",
+      "code": "31101",
+      "name": "Titan Gray",
+      "hexes": [
+        "#565656FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/petg-cf?id=43657602433187"
+    },
+    {
+      "range": "PETG-CF",
+      "profileId": "GFG50",
+      "code": "31500",
+      "name": "Malachite Green",
+      "hexes": [
+        "#16B08EFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/petg-cf?id=43484522872995"
+    },
+    {
+      "range": "PETG-CF",
+      "profileId": "GFG50",
+      "code": "31100",
+      "name": "Black",
+      "hexes": [
+        "#000000FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/petg-cf?id=43275608490147"
+    },
+    {
+      "range": "PETG-CF",
+      "profileId": "GFG50",
+      "code": "31700",
+      "name": "Violet Purple",
+      "hexes": [
+        "#583061FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/petg-cf?id=43484522774691"
+    },
+    {
+      "range": "PETG-CF",
+      "profileId": "GFG50",
+      "code": "31200",
+      "name": "Brick Red",
+      "hexes": [
+        "#9F332AFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/petg-cf?id=43484522807459"
+    },
+    {
+      "range": "PAHT-CF",
+      "profileId": "GFN04",
+      "code": "70100",
+      "name": "Black",
+      "hexes": [
+        "#000000FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/paht-cf?id=43218864242851"
+    },
+    {
+      "range": "PA6-CF",
+      "profileId": "GFN05",
+      "code": "72100",
+      "name": "Black",
+      "hexes": [
+        "#000000FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pa6-cf?id=43526428983459"
+    },
+    {
+      "range": "PPA-CF",
+      "profileId": "GFN06",
+      "code": "73100",
+      "name": "Black",
+      "hexes": [
+        "#000000FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/ppa-cf?id=513617370469990401"
+    },
+    {
+      "range": "PA6-GF",
+      "profileId": "GFN08",
+      "code": "72600",
+      "name": "Blue",
+      "hexes": [
+        "#75AED8FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pa6-gf?id=44163808821411"
+    },
+    {
+      "range": "PA6-GF",
+      "profileId": "GFN08",
+      "code": "72102",
+      "name": "White",
+      "hexes": [
+        "#EAEAE4FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pa6-gf?id=44163808985251"
+    },
+    {
+      "range": "PA6-GF",
+      "profileId": "GFN08",
+      "code": "72103",
+      "name": "Gray",
+      "hexes": [
+        "#353533FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pa6-gf?id=44163809018019"
+    },
+    {
+      "range": "PA6-GF",
+      "profileId": "GFN08",
+      "code": "72500",
+      "name": "Lime",
+      "hexes": [
+        "#C5ED48FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pa6-gf?id=44163808919715"
+    },
+    {
+      "range": "PA6-GF",
+      "profileId": "GFN08",
+      "code": "72104",
+      "name": "Black",
+      "hexes": [
+        "#000000FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pa6-gf?id=44163809050787"
+    },
+    {
+      "range": "PA6-GF",
+      "profileId": "GFN08",
+      "code": "72800",
+      "name": "Brown",
+      "hexes": [
+        "#5B492FFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pa6-gf?id=44163808952483"
+    },
+    {
+      "range": "PA6-GF",
+      "profileId": "GFN08",
+      "code": "72200",
+      "name": "Orange",
+      "hexes": [
+        "#FF4800FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pa6-gf?id=44163808854179"
+    },
+    {
+      "range": "PA6-GF",
+      "profileId": "GFN08",
+      "code": "72400",
+      "name": "Yellow",
+      "hexes": [
+        "#FFCE00FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pa6-gf?id=44163808886947"
+    },
+    {
+      "range": "Support for PA/PET",
+      "profileId": "GFS03",
+      "code": "65500",
+      "name": "Green",
+      "hexes": [
+        "#C0DF16FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/support-for-pa-pet?id=568564025963786243"
+    },
+    {
+      "range": "PVA",
+      "profileId": "GFS04",
+      "code": "66400",
+      "name": "Clear",
+      "hexes": [
+        "#F0F1A880"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pva?id=44120999755939"
+    },
+    {
+      "range": "Support for PLA/PETG",
+      "profileId": "GFS05",
+      "code": "65102",
+      "name": "Nature",
+      "hexes": [
+        "#00000000"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/support-for-pla-petg?id=44722896208035"
+    },
+    {
+      "range": "Support for PLA/PETG",
+      "profileId": "GFS05",
+      "code": "65103",
+      "name": "Black",
+      "hexes": [
+        "#000000FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/support-for-pla-petg?id=538563722316681218"
+    },
+    {
+      "range": "Support for ABS",
+      "profileId": "GFS06",
+      "code": "66100",
+      "name": "White",
+      "hexes": [
+        "#FFFFFFFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/support-for-abs?id=44818615894179"
+    },
+    {
+      "range": "PET-CF",
+      "profileId": "GFT01",
+      "code": "71100",
+      "name": "Black",
+      "hexes": [
+        "#000000FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pet-cf?id=43323262501027"
+    },
+    {
+      "range": "PPS-CF",
+      "profileId": "GFT02",
+      "code": "76100",
+      "name": "Black",
+      "hexes": [
+        "#000000FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pps-cf?id=45140518731939"
+    },
+    {
+      "range": "TPU 95A HF",
+      "profileId": "GFU00",
+      "code": "51600",
+      "name": "Blue",
+      "hexes": [
+        "#0072CEFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/tpu-95a-hf?id=43735143841955"
+    },
+    {
+      "range": "TPU 95A HF",
+      "profileId": "GFU00",
+      "code": "51101",
+      "name": "Gray",
+      "hexes": [
+        "#898D8DFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/tpu-95a-hf?id=43735143776419"
+    },
+    {
+      "range": "TPU 95A HF",
+      "profileId": "GFU00",
+      "code": "51100",
+      "name": "Black",
+      "hexes": [
+        "#101820FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/tpu-95a-hf?id=43735143678115"
+    },
+    {
+      "range": "TPU 95A HF",
+      "profileId": "GFU00",
+      "code": "51200",
+      "name": "Red",
+      "hexes": [
+        "#C8102EFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/tpu-95a-hf?id=43735143874723"
+    },
+    {
+      "range": "TPU 95A HF",
+      "profileId": "GFU00",
+      "code": "51102",
+      "name": "White",
+      "hexes": [
+        "#FFFFFFFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/tpu-95a-hf?id=43735143743651"
+    },
+    {
+      "range": "TPU 95A HF",
+      "profileId": "GFU00",
+      "code": "51400",
+      "name": "Yellow",
+      "hexes": [
+        "#F3E600FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/tpu-95a-hf?id=43735143809187"
+    },
+    {
+      "range": "TPU 95A",
+      "profileId": "GFU01",
+      "code": "50101",
+      "name": "Black",
+      "hexes": [
+        "#000000FF"
+      ]
+    },
+    {
+      "range": "TPU 95A",
+      "profileId": "GFU01",
+      "code": "50100",
+      "name": "White",
+      "hexes": [
+        "#FFFFFFFF"
+      ]
+    },
+    {
+      "range": "TPU for AMS",
+      "profileId": "GFU02",
+      "code": "53600",
+      "name": "Blue",
+      "hexes": [
+        "#5898DDFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/tpu-for-ams?id=532429915244871704"
+    },
+    {
+      "range": "TPU for AMS",
+      "profileId": "GFU02",
+      "code": "53102",
+      "name": "Gray",
+      "hexes": [
+        "#939393FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/tpu-for-ams?id=532429915244871722"
+    },
+    {
+      "range": "TPU for AMS",
+      "profileId": "GFU02",
+      "code": "53500",
+      "name": "Neon Green",
+      "hexes": [
+        "#90FF1AFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/tpu-for-ams?id=532429915244871710"
+    },
+    {
+      "range": "TPU for AMS",
+      "profileId": "GFU02",
+      "code": "53101",
+      "name": "Black",
+      "hexes": [
+        "#000000FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/tpu-for-ams?id=532429915244871728"
+    },
+    {
+      "range": "TPU for AMS",
+      "profileId": "GFU02",
+      "code": "53200",
+      "name": "Red",
+      "hexes": [
+        "#ED0000FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/tpu-for-ams?id=532429915244871692"
+    },
+    {
+      "range": "TPU for AMS",
+      "profileId": "GFU02",
+      "code": "53100",
+      "name": "White",
+      "hexes": [
+        "#FFFFFFFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/tpu-for-ams?id=532429915244871716"
+    },
+    {
+      "range": "TPU for AMS",
+      "profileId": "GFU02",
+      "code": "53400",
+      "name": "Yellow",
+      "hexes": [
+        "#F9EF41FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/tpu-for-ams?id=532429915244871698"
+    },
+    {
+      "range": "PLA Lite",
+      "profileId": "GFA18",
+      "code": "16100",
+      "name": "Black",
+      "hexes": [
+        "#000000FF"
+      ]
+    },
+    {
+      "range": "PLA Lite",
+      "profileId": "GFA18",
+      "code": "16400",
+      "name": "Yellow",
+      "hexes": [
+        "#EFE255FF"
+      ]
+    },
+    {
+      "range": "PLA Lite",
+      "profileId": "GFA18",
+      "code": "16103",
+      "name": "White",
+      "hexes": [
+        "#FFFFFFFF"
+      ]
+    },
+    {
+      "range": "PLA Lite",
+      "profileId": "GFA18",
+      "code": "16600",
+      "name": "Cyan",
+      "hexes": [
+        "#4DAFDAFF"
+      ]
+    },
+    {
+      "range": "PLA Lite",
+      "profileId": "GFA18",
+      "code": "16200",
+      "name": "Red",
+      "hexes": [
+        "#C6001AFF"
+      ]
+    },
+    {
+      "range": "PLA Lite",
+      "profileId": "GFA18",
+      "code": "16101",
+      "name": "Gray",
+      "hexes": [
+        "#999D9DFF"
+      ]
+    },
+    {
+      "range": "PLA Translucent",
+      "profileId": "GFA17",
+      "code": "13210",
+      "name": "Red",
+      "hexes": [
+        "#B5001180"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-translucent?id=594047785382744103"
+    },
+    {
+      "range": "PLA Translucent",
+      "profileId": "GFA17",
+      "code": "13211",
+      "name": "Cherry Pink",
+      "hexes": [
+        "#F5B6CD80"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-translucent?id=594047785382744121"
+    },
+    {
+      "range": "PLA Translucent",
+      "profileId": "GFA17",
+      "code": "13301",
+      "name": "Orange",
+      "hexes": [
+        "#F74E0280"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-translucent?id=594047785382744097"
+    },
+    {
+      "range": "PLA Translucent",
+      "profileId": "GFA17",
+      "code": "13410",
+      "name": "Mellow Yellow",
+      "hexes": [
+        "#F5DBAB80"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-translucent?id=594047785382744115"
+    },
+    {
+      "range": "PLA Translucent",
+      "profileId": "GFA17",
+      "code": "13510",
+      "name": "Light Jade",
+      "hexes": [
+        "#96D8AF80"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-translucent?id=594047785382744109"
+    },
+    {
+      "range": "PLA Translucent",
+      "profileId": "GFA17",
+      "code": "13610",
+      "name": "Ice Blue",
+      "hexes": [
+        "#B8CDE980"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-translucent?id=594047785382744127"
+    },
+    {
+      "range": "PLA Translucent",
+      "profileId": "GFA17",
+      "code": "13611",
+      "name": "Blue",
+      "hexes": [
+        "#0047BB80"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-translucent?id=594047785382744085"
+    },
+    {
+      "range": "PLA Translucent",
+      "profileId": "GFA17",
+      "code": "13612",
+      "name": "Teal",
+      "hexes": [
+        "#009FA180"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-translucent?id=594047785382744079"
+    },
+    {
+      "range": "PLA Translucent",
+      "profileId": "GFA17",
+      "code": "13710",
+      "name": "Purple",
+      "hexes": [
+        "#8344B080"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-translucent?id=594047785382744091"
+    },
+    {
+      "range": "PLA Translucent",
+      "profileId": "GFA17",
+      "code": "13711",
+      "name": "Lavender",
+      "hexes": [
+        "#B8ACD680"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-translucent?id=594047785382744133"
+    },
+    {
+      "range": "PLA Silk",
+      "profileId": "GFA05",
+      "code": "13906",
+      "name": "South Beach",
+      "hexes": [
+        "#F772A4FF",
+        "#00918BFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-silk-multi-color?id=601300140146098192"
+    },
+    {
+      "range": "PLA Silk",
+      "profileId": "GFA05",
+      "code": "13909",
+      "name": "Aurora Purple",
+      "hexes": [
+        "#7F3696FF",
+        "#006EC9FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-silk-multi-color?id=601300140146098186"
+    },
+    {
+      "range": "PLA Silk",
+      "profileId": "GFA05",
+      "code": "13912",
+      "name": "Dawn Radiance",
+      "hexes": [
+        "#EC984CFF",
+        "#6CD4BCFF",
+        "#A66EB9FF",
+        "#D87694FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-silk-multi-color?id=601300140146098180"
+    },
+    {
+      "range": "TPU 90A",
+      "profileId": "GFU03",
+      "code": "51103",
+      "name": "Black",
+      "hexes": [
+        "#000000FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/tpu-85a-tpu-90a?id=573760925208563742"
+    },
+    {
+      "range": "TPU 90A",
+      "profileId": "GFU03",
+      "code": "51105",
+      "name": "White",
+      "hexes": [
+        "#FFFFFFFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/tpu-85a-tpu-90a?id=703820883771670529"
+    },
+    {
+      "range": "TPU 85A",
+      "profileId": "GFU04",
+      "code": "51305",
+      "name": "Neon Orange",
+      "hexes": [
+        "#F68B1BFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/tpu-85a-tpu-90a?id=675475938282852353"
+    },
+    {
+      "range": "TPU 85A",
+      "profileId": "GFU04",
+      "code": "51500",
+      "name": "Light Cyan",
+      "hexes": [
+        "#C3E2D6FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/tpu-85a-tpu-90a?id=573760925208563754"
+    },
+    {
+      "range": "TPU 90A",
+      "profileId": "GFU03",
+      "code": "51900",
+      "name": "Frozen",
+      "hexes": [
+        "#40B6E4FF",
+        "#FFFFFFFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/tpu-85a-tpu-90a?id=573760925208563724"
+    },
+    {
+      "range": "TPU 90A",
+      "profileId": "GFU03",
+      "code": "51901",
+      "name": "Blaze",
+      "hexes": [
+        "#D21B3CFF",
+        "#F1AAA8FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/tpu-85a-tpu-90a?id=573760925208563730"
+    },
+    {
+      "range": "Support for PLA",
+      "profileId": "GFS02",
+      "code": "65104",
+      "name": "White",
+      "hexes": [
+        "#FFFFFFFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/support-for-pla-new?id=578094703263879176"
+    },
+    {
+      "range": "PLA Tough+",
+      "profileId": "GFA10",
+      "code": "12104",
+      "name": "Black",
+      "hexes": [
+        "#000000FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-tough-upgrade?id=623768847717027888"
+    },
+    {
+      "range": "PLA Tough+",
+      "profileId": "GFA10",
+      "code": "12105",
+      "name": "Gray",
+      "hexes": [
+        "#AFB1AEFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-tough-upgrade?id=623768847717027870"
+    },
+    {
+      "range": "PLA Tough+",
+      "profileId": "GFA10",
+      "code": "12106",
+      "name": "Silver",
+      "hexes": [
+        "#959698FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-tough-upgrade?id=623768847717027876"
+    },
+    {
+      "range": "PLA Tough+",
+      "profileId": "GFA10",
+      "code": "12107",
+      "name": "White",
+      "hexes": [
+        "#FFFFFFFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-tough-upgrade?id=623768847717027852"
+    },
+    {
+      "range": "PLA Tough+",
+      "profileId": "GFA10",
+      "code": "12301",
+      "name": "Orange",
+      "hexes": [
+        "#DC3A27FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-tough-upgrade?id=623768847717027864"
+    },
+    {
+      "range": "PLA Tough+",
+      "profileId": "GFA10",
+      "code": "12401",
+      "name": "Yellow",
+      "hexes": [
+        "#F4D53FFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-tough-upgrade?id=623768847717027858"
+    },
+    {
+      "range": "PLA Tough+",
+      "profileId": "GFA10",
+      "code": "12601",
+      "name": "Cyan",
+      "hexes": [
+        "#009BD8FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-tough-upgrade?id=623768847717027882"
+    },
+    {
+      "range": "PLA Metal",
+      "profileId": "GFA02",
+      "code": "13100",
+      "name": "Iron Gray Metallic",
+      "hexes": [
+        "#43403DFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-metal?id=43416860262563"
+    },
+    {
+      "range": "PLA Metal",
+      "profileId": "GFA02",
+      "code": "13400",
+      "name": "Iridium Gold Metallic",
+      "hexes": [
+        "#B39B84FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-metal?id=43416860295331"
+    },
+    {
+      "range": "PLA Metal",
+      "profileId": "GFA02",
+      "code": "13500",
+      "name": "Oxide Green Metallic",
+      "hexes": [
+        "#1D7C6AFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-metal?id=43218863423651"
+    },
+    {
+      "range": "PLA Metal",
+      "profileId": "GFA02",
+      "code": "13600",
+      "name": "Cobalt Blue Metallic",
+      "hexes": [
+        "#39699EFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-metal?id=43218863358115"
+    },
+    {
+      "range": "PLA Metal",
+      "profileId": "GFA02",
+      "code": "13800",
+      "name": "Copper Brown Metallic",
+      "hexes": [
+        "#AA6443FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-metal?id=43218863390883"
+    },
+    {
+      "range": "PLA Lite",
+      "profileId": "GFA18",
+      "code": "16601",
+      "name": "Blue",
+      "hexes": [
+        "#004EA8FF"
+      ]
+    },
+    {
+      "range": "PLA Lite",
+      "profileId": "GFA18",
+      "code": "16401",
+      "name": "Sunflower Yellow",
+      "hexes": [
+        "#FFB549FF"
+      ]
+    },
+    {
+      "range": "PLA Lite",
+      "profileId": "GFA18",
+      "code": "16501",
+      "name": "Green",
+      "hexes": [
+        "#00BB31FF"
+      ]
+    },
+    {
+      "range": "PLA Lite",
+      "profileId": "GFA18",
+      "code": "16301",
+      "name": "Orange",
+      "hexes": [
+        "#FF671FFF"
+      ]
+    },
+    {
+      "range": "PLA Lite",
+      "profileId": "GFA18",
+      "code": "16700",
+      "name": "Matte Beige",
+      "hexes": [
+        "#ECC3B2FF"
+      ]
+    },
+    {
+      "range": "PLA Lite",
+      "profileId": "GFA18",
+      "code": "16800",
+      "name": "Cocoa Brown",
+      "hexes": [
+        "#745335FF"
+      ]
+    },
+    {
+      "range": "PLA Lite",
+      "profileId": "GFA18",
+      "code": "16102",
+      "name": "Dark Gray",
+      "hexes": [
+        "#8C8B8CFF"
+      ]
+    },
+    {
+      "range": "PLA Silk",
+      "profileId": "GFA05",
+      "code": "13913",
+      "name": "Mystic Magenta",
+      "hexes": [
+        "#720062FF",
+        "#3A913FFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-silk-multi-color?id=665320543900983296"
+    },
+    {
+      "range": "PLA Silk",
+      "profileId": "GFA05",
+      "code": "13916",
+      "name": "Phantom Blue",
+      "hexes": [
+        "#00629BFF",
+        "#000000FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-silk-multi-color?id=665320543900983302"
+    },
+    {
+      "range": "TPU 90A",
+      "profileId": "GFU03",
+      "code": "51601",
+      "name": "Crystal Blue",
+      "hexes": [
+        "#7EB4E180"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/tpu-85a-tpu-90a?id=679918784826974214"
+    },
+    {
+      "range": "TPU 90A",
+      "profileId": "GFU03",
+      "code": "51106",
+      "name": "Quicksilver",
+      "hexes": [
+        "#9EA2A2FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/tpu-85a-tpu-90a?id=697574372027891713"
+    },
+    {
+      "range": "TPU 85A",
+      "profileId": "GFU04",
+      "code": "51201",
+      "name": "Rose Beige/Flesh",
+      "hexes": [
+        "#F3CFB2FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/tpu-85a-tpu-90a?id=679918784831168514"
+    },
+    {
+      "range": "TPU 90A",
+      "profileId": "GFU03",
+      "code": "51700",
+      "name": "Grape Jelly",
+      "hexes": [
+        "#D6ABFF80"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/tpu-85a-tpu-90a?id=679918784826974208"
+    },
+    {
+      "range": "TPU 85A",
+      "profileId": "GFU04",
+      "code": "51107",
+      "name": "Black",
+      "hexes": [
+        "#000000FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/tpu-85a-tpu-90a?id=679918784826974226"
+    },
+    {
+      "range": "TPU 85A",
+      "profileId": "GFU04",
+      "code": "51501",
+      "name": "Lime Green",
+      "hexes": [
+        "#CDEA80FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/tpu-85a-tpu-90a?id=679918784831168520"
+    },
+    {
+      "range": "TPU 90A",
+      "profileId": "GFU03",
+      "code": "51800",
+      "name": "Cocoa Brown",
+      "hexes": [
+        "#5C4738FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/tpu-85a-tpu-90a?id=679918784826974220"
+    },
+    {
+      "range": "PETG Basic",
+      "profileId": "GFG00",
+      "code": "30105",
+      "name": "Black",
+      "hexes": [
+        "#000000FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/petg-basic?id=703074636298158099"
+    },
+    {
+      "range": "PETG Basic",
+      "profileId": "GFG00",
+      "code": "30106",
+      "name": "White",
+      "hexes": [
+        "#FFFFFFFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/petg-basic?id=703074636298158111"
+    },
+    {
+      "range": "PETG Basic",
+      "profileId": "GFG00",
+      "code": "30107",
+      "name": "Gray",
+      "hexes": [
+        "#7F7E83FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/petg-basic?id=703074636298158123"
+    },
+    {
+      "range": "PETG Basic",
+      "profileId": "GFG00",
+      "code": "30402",
+      "name": "Yellow",
+      "hexes": [
+        "#FCE300FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/petg-basic?id=703074636298158147"
+    },
+    {
+      "range": "PETG Basic",
+      "profileId": "GFG00",
+      "code": "30201",
+      "name": "Red",
+      "hexes": [
+        "#D6001CFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/petg-basic?id=703074636298158135"
+    },
+    {
+      "range": "PETG Basic",
+      "profileId": "GFG00",
+      "code": "30603",
+      "name": "Reflex Blue",
+      "hexes": [
+        "#001489FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/petg-basic?id=703074636298158159"
+    },
+    {
+      "range": "PETG Basic",
+      "profileId": "GFG00",
+      "code": "30800",
+      "name": "Dark Brown",
+      "hexes": [
+        "#4F2C1DFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/petg-basic?id=703074636298158171"
+    },
+    {
+      "range": "PETG Basic",
+      "profileId": "GFG00",
+      "code": "30502",
+      "name": "Green",
+      "hexes": [
+        "#009639FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/petg-basic?id=738163451200892953"
+    },
+    {
+      "range": "PETG Basic",
+      "profileId": "GFG00",
+      "code": "30301",
+      "name": "Orange",
+      "hexes": [
+        "#FF671FFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/petg-basic?id=738163451200892941"
+    },
+    {
+      "range": "PETG Basic",
+      "profileId": "GFG00",
+      "code": "30503",
+      "name": "Pine Green",
+      "hexes": [
+        "#034638FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/petg-basic?id=738163451200893001"
+    },
+    {
+      "range": "PETG Basic",
+      "profileId": "GFG00",
+      "code": "30604",
+      "name": "Navy Blue",
+      "hexes": [
+        "#0086D6FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/petg-basic?id=738163451200892965"
+    },
+    {
+      "range": "PETG Basic",
+      "profileId": "GFG00",
+      "code": "30108",
+      "name": "Misty Blue",
+      "hexes": [
+        "#688197FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/petg-basic?id=738163451200892989"
+    },
+    {
+      "range": "PETG Basic",
+      "profileId": "GFG00",
+      "code": "30403",
+      "name": "Dark Beige",
+      "hexes": [
+        "#DBC8B6FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/petg-basic?id=738163451200892977"
+    },
+    {
+      "range": "PLA Pure",
+      "profileId": "GFA19",
+      "code": "17100",
+      "name": "Pure White",
+      "hexes": [
+        "#FFFFFFFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-pure?id=738887028623634484"
+    },
+    {
+      "range": "PLA Pure",
+      "profileId": "GFA19",
+      "code": "17101",
+      "name": "Absolute Black",
+      "hexes": [
+        "#000000FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-pure?id=738887028623634496"
+    },
+    {
+      "range": "PLA Pure",
+      "profileId": "GFA19",
+      "code": "17200",
+      "name": "Milky Pink",
+      "hexes": [
+        "#F7CED7FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-pure?id=738887028623634448"
+    },
+    {
+      "range": "PLA Pure",
+      "profileId": "GFA19",
+      "code": "17600",
+      "name": "Baby Blue",
+      "hexes": [
+        "#A4DBE8FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-pure?id=738887028623634460"
+    },
+    {
+      "range": "PLA Pure",
+      "profileId": "GFA19",
+      "code": "17300",
+      "name": "Apricot",
+      "hexes": [
+        "#FFB673FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/pla-pure?id=738887028623634472"
+    },
+    {
+      "range": "PETG Basic",
+      "profileId": "GFG00",
+      "code": "30701",
+      "name": "Purple",
+      "hexes": [
+        "#8A75D1FF"
+      ]
+    },
+    {
+      "range": "PETG Basic",
+      "profileId": "GFG00",
+      "code": "30404",
+      "name": "Sunflower Yellow",
+      "hexes": [
+        "#FFB81CFF"
+      ]
+    },
+    {
+      "range": "PETG Basic",
+      "profileId": "GFG00",
+      "code": "30504",
+      "name": "Bright Green",
+      "hexes": [
+        "#97D700FF"
+      ]
+    },
+    {
+      "range": "PETG Basic",
+      "profileId": "GFG00",
+      "code": "30702",
+      "name": "Hot Pink",
+      "hexes": [
+        "#F277C6FF"
+      ]
+    },
+    {
+      "range": "PETG Matte",
+      "profileId": "GFG03",
+      "code": "35100",
+      "name": "White",
+      "hexes": [
+        "#FFFFFFFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/petg-matte?id=775976386677485588"
+    },
+    {
+      "range": "PETG Matte",
+      "profileId": "GFG03",
+      "code": "35101",
+      "name": "Black",
+      "hexes": [
+        "#000000FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/petg-matte?id=775976386677485600"
+    },
+    {
+      "range": "PETG Matte",
+      "profileId": "GFG03",
+      "code": "35500",
+      "name": "Lime",
+      "hexes": [
+        "#C0DF16FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/petg-matte?id=775976386677485612"
+    },
+    {
+      "range": "PETG Matte",
+      "profileId": "GFG03",
+      "code": "35102",
+      "name": "Gray",
+      "hexes": [
+        "#7F7E83FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/petg-matte?id=775976386677485624"
+    },
+    {
+      "range": "PETG Matte",
+      "profileId": "GFG03",
+      "code": "35700",
+      "name": "Pink",
+      "hexes": [
+        "#FABBCBFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/petg-matte?id=775976386677485636"
+    },
+    {
+      "range": "PETG Matte",
+      "profileId": "GFG03",
+      "code": "35600",
+      "name": "Baby Blue",
+      "hexes": [
+        "#B9D9EBFF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/petg-matte?id=775976386677485648"
+    },
+    {
+      "range": "PETG Matte",
+      "profileId": "GFG03",
+      "code": "35702",
+      "name": "Violet",
+      "hexes": [
+        "#A7A4E0FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/petg-matte?id=775976386677485660"
+    },
+    {
+      "range": "PETG Matte",
+      "profileId": "GFG03",
+      "code": "35501",
+      "name": "Avocado Green",
+      "hexes": [
+        "#BCE194FF"
+      ],
+      "purchaseUrl": "https://store.bambulab.com/products/petg-matte?id=775976386677485672"
+    }
+  ],
+  "profilePrefix": "Bambu ",
+  "purchaseUrl": "https://store.bambulab.com/collections/bambu-lab-3d-printer-filament"
+}
