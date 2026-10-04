@@ -70,7 +70,8 @@ class CatalogueTests(unittest.TestCase):
         feed = builder.build(ROOT)
         snapshots = {value["brand"]: value for path in (ROOT / "store-catalogues").glob("*.json")
                      for value in [json.loads(path.read_text(encoding="utf-8"))]}
-        expected = {"Bambu Lab": (318, 274, 46), "Polymaker": (730, 974, 78), "Numakers": (151, 156, 16)}
+        expected = {"Bambu Lab": (318, 274, 46), "Polymaker": (730, 974, 78), "Numakers": (151, 156, 16),
+                    "Overture": (404, 454, 26)}
         for brand in feed["brands"]:
             products = brand["products"]
             self.assertEqual(brand["schemaVersion"], 2)
@@ -94,5 +95,27 @@ class CatalogueTests(unittest.TestCase):
         self.assertEqual(importer.parse_hexes("#F4EFEB, #2F2E30"), ["#F4EFEB", "#2F2E30"])
         self.assertEqual(importer.parse_hexes(None), [])
         self.assertEqual(importer.parse_hexes("#F4EFEB, rainbow"), [])
+
+    def test_overture_keeps_packaging_as_options_and_finishes_distinct(self):
+        importer = module("update-overture")
+        products = [{"title": title, "handle": "item-" + str(i), "product_type": "3D Printer Filament > PLA > PLA",
+                     "options": [{"name": "Size"}, {"name": "Color"}], "variants": [{"id": i, "sku": str(i),
+                     "option1": "1.75mm", "option2": "Blue-Red", "title": "1.75mm / Blue-Red / 1 kg", "available": True}]}
+                    for i, title in enumerate(["Overture Matte PLA Dual Colors 3D Printer Filament 1.75mm",
+                        "Overture Matte PLA Gradient Filament 1.75mm", "Overture PLA 3D Printer Filament 1.75mm",
+                        "Overture PLA Refill 3D Printer Filament 1.75mm", "Overture PLA 3D Printer Filament 1.75mm - 2 Pack",
+                        "Overture High Speed PLA 3D Printer Filament 1.75mm"], 1)]
+        products.append({"options": [{"name": "Title"}], "product_type": "3D Printer Filament > PLA > PLA"})
+        products.append({"options": [{"name": "Color"}], "product_type": "Build Plate"})
+        rows = importer.rows_from_products(products)
+        self.assertEqual(len(rows), 6)
+        brand = identities.build({"brand": "Overture", "products": rows})
+        self.assertEqual(len(brand["products"]), 4)
+        pla = next(p for p in brand["products"] if p["range"] == "PLA")
+        self.assertEqual(len(pla["purchaseOptions"]), 3)
+        self.assertEqual(pla["preferredPurchaseCode"], "3")
+        self.assertEqual({p["range"] for p in brand["products"]},
+                         {"PLA", "High Speed PLA", "Matte PLA Dual Colors", "Matte PLA Gradient"})
+        self.assertTrue(all(p["hexes"] == [] and p["profileId"] is None for p in brand["products"]))
 
 if __name__ == "__main__": unittest.main()

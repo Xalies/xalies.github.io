@@ -22,12 +22,15 @@ The initial preferred-option rule favours a complete spool, 1 kg, then availabil
 | Bambu Lab | 318 | 274 | 46 |
 | Polymaker | 730 | 974 | 78 |
 | Numakers | 151 | 156 | 16 |
+| Overture | 404 | 454 | 26 |
 
 Bambu colour/range evidence comes from its official Bambu Studio `filaments_color_codes.json`. Links reviewed against the AU store use the neutral `store.bambulab.com` domain with `id=` SKU selection. Retired or regionally absent colours retain their identity without purchase options. AU redirects were checked previously; other regions and native Chrome navigation remain separate runtime checks.
 
 Polymaker source data includes every individual filament variant in its official US Shopify shop: Panchroma, Fiberon, engineering materials, support, TPU and legacy lines. Published `custom.hex_code` values provide single/multi-colour palettes. Unpublished values remain empty and slicer family IDs remain null. Different palettes and missing evidence are kept separate rather than merging uncertain older stock.
 
 Numakers uses its official paginated Shopify product feed. Included products cover PLA+, Matte, CF, Metallic, Silk, dual/tri-colour Silk, Marble, Starlight, Glow, Wood, PETG-HS, Translucent PETG, PETG-CF, ABS, ASA and the older-formula clearance listing. Hardware, swatch sets, gift cards, subscriptions, bundle packs and Printopia landing pages are excluded. The source has no verified colour hexes or slicer family IDs, so those fields remain empty/null. Product and colour names, SKUs, availability and exact variant purchase links are retained. Adding this supplier does not invent 3MF matching evidence.
+
+Overture uses the official paginated all-filaments collection feed. Named colour variants include larger spools, refills and single-colour multipacks as purchase options. Bundles without explicit colour choices are excluded. Published material titles keep regular and High Speed PLA, dual-colour and gradient finishes distinct; differently named ranges are not assumed equivalent. The source provides no verified filament hexes or slicer IDs, so these stay empty/null. Exact variant links, SKUs and availability are retained. No unverified cart endpoint is configured.
 
 ## Refresh and publish
 
@@ -37,6 +40,7 @@ Run the appropriate importer, then rebuild identities and the feed:
 python meshvault/filament-guides/update-bambu.py
 python meshvault/filament-guides/update-polymaker.py
 python meshvault/filament-guides/update-numakers.py
+python meshvault/filament-guides/update-overture.py
 python meshvault/filament-guides/build-identities.py
 python meshvault/filament-guides/build-catalogue.py
 python meshvault/filament-guides/test_build_catalogue.py
