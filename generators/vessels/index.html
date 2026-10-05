@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vessel Studio · Vase & Bowl Generator</title>
+  <meta name="description" content="Design sculptural vases and bowls in your browser. Live 3D preview, STL downloads and a working MeshVault .mvpack integration demo.">
+  <link rel="stylesheet" href="../shared/studio.css">
+  <script src="../gridfinity/vendor/deps/three.min.js" defer></script>
+  <script src="../gridfinity/vendor/deps/OrbitControls.js" defer></script>
+  <script type="module" src="studio.js"></script>
+</head>
+<body class="vessel-studio">
+  <header><a href="../../">Xalies / Creator tools</a><nav><a href="../gridfinity/">Gridfinity</a><a href="../../generator/">.mvpack guide ↗</a><span class="demo-account" title="Simulated sign-in for this demo; no real account is connected">Xalies <small>· Demo account</small></span></nav></header>
+  <main>
+    <p class="eyebrow">Vessel Studio / A MeshVault integration demo</p>
+    <h1>A shape of your own.</h1>
+    <p class="intro">Turn a simple profile into a sculptural vase or a useful bowl. Shape it, add a twist, and take your design from the browser to your slicer — with its story and settings attached.</p>
+    <div class="workspace">
+      <form id="settings">
+        <p class="step">01 / Choose a starting point</p>
+        <div class="presets" aria-label="Shape presets"><button type="button" data-preset="vase">Fluted vase</button><button type="button" data-preset="bowl">Serving bowl</button><button type="button" data-preset="urn">Soft urn</button><button type="button" data-preset="cup">Little pot</button></div>
+        <label>Design name<input name="title" type="text" maxlength="80" value="Twisted fluted vase" required></label>
+        <fieldset><legend>02 / Shape · millimetres</legend><div class="fields">
+          <label>Height<input name="height" type="number" min="25" max="300" step="1" value="160" required></label>
+          <label>Base diameter<input name="base" type="number" min="25" max="240" step="1" value="65" required></label>
+          <label>Belly diameter<input name="belly" type="number" min="25" max="260" step="1" value="100" required></label>
+          <label>Mouth diameter<input name="mouth" type="number" min="25" max="260" step="1" value="60" required></label>
+          <label>Radial wall<input name="wall" type="number" min="0.8" max="5" step="0.1" value="1.6" required></label>
+          <label>Base thickness<input name="floor" type="number" min="1" max="6" step="0.2" value="2" required></label>
+        </div></fieldset>
+        <fieldset><legend>03 / Surface</legend>
+          <label>Flutes <output id="flutes-value">24</output><input name="flutes" type="range" min="0" max="48" step="1" value="24"></label>
+          <label>Flute depth · mm <output id="amplitude-value">2</output><input name="amplitude" type="range" min="0" max="5" step="0.2" value="2"></label>
+          <label>Twist · degrees <output id="twist-value">60</output><input name="twist" type="range" min="-180" max="180" step="5" value="60"></label>
+          <div class="fields"><label>Preview colour<input id="colour" type="color" value="#bf785b"></label><label>Mesh quality<select name="quality"><option value="standard">Standard</option><option value="fine">Fine</option></select></label></div>
+        </fieldset>
+        <p class="small">Closed base, open mouth, modelled walls. Use normal slicing; this is not a spiral vase-mode mesh. Preview colour is not stored in the STL.</p>
+      </form>
+      <section class="preview" aria-label="Vessel preview and exports">
+        <div class="preview-toolbar"><span id="status" role="status" aria-live="polite">Preparing your design…</span><button class="secondary" id="reset-view" type="button">Reset view</button></div>
+        <div id="viewer" tabindex="0" aria-label="3D vessel preview. Drag to orbit; scroll or pinch to zoom."></div>
+        <div class="preview-toolbar"><span id="dimensions" class="dimension"></span><span class="small">Drag to orbit · scroll to zoom</span></div>
+        <section class="export-panel" aria-label="Suggested print settings">
+          <p class="step">04 / From shape to print</p>
+          <h2>A starting point for your slicer.</h2>
+          <label>Print goal<select id="print-profile"><option value="general">General · decorative vessel</option><option value="watertight">Watertight-focused · test before use</option></select></label>
+          <dl id="print-settings" class="fields"></dl>
+          <p id="print-advice" class="small"></p>
+          <p id="print-fit" class="small" role="status"></p>
+          <button id="apply-print-dimensions" class="secondary" type="button">Apply suggested wall &amp; base minimums</button>
+          <p class="small" style="margin-top:14px">Use a calibrated filament profile for temperatures, cooling and flow. Print upright on the flat base using normal slicing; check overhangs for supports. These are suggestions, not an embedded slicer preset. The selected advice is saved in the MeshVault package.</p>
+          <p class="small">Based on <a href="https://blog.prusa3d.com/watertight-3d-printing-pt1-vases-cups-and-other-open-models_48949/">Prusa’s watertight printing guidance</a>. Settings cannot guarantee a leak-free print: inspect the sliced walls and base for gaps, then leak-test over a tray. Watertight does not mean food-safe.</p>
+        </section>
+        <div class="export-panel"><p class="small">Choose a model format for your slicer or MeshVault package. 3MF stores explicit millimetre units; both formats contain the same shape.</p><label>Model format<select id="format"><option value="3mf">3MF · recommended</option><option value="stl">STL · universal</option></select></label><div class="export-actions"><button class="secondary" id="stl" type="button" disabled>Download 3MF ↓</button><button id="mvpack" type="button" disabled>Export for MeshVault ↓</button></div></div>
+      </section>
+    </div>
+    <section class="integration" aria-label="MeshVault integration example">
+      <div><p class="step">One export. A little more context.</p><h2>The design travels with its details.</h2><p>This demo includes a title, source link, generator credit, support link, tags, preview and selected printing advice. The shape parameters are attached as a JSON document, so you can refer to them later.</p><p>Printing advice uses <code>printSettingsJson</code>; the generator support link uses <code>exportDonationUrl</code>. These stay separate from the attached design parameters.</p><p>An .mvpack is a standard ZIP. All packaging happens on your device. No account or MeshVault API is needed.</p><a href="../../generator/">Build this into your own site →</a> · <a href="studio.js">View demo source</a></div>
+      <div><p class="step">Inside your download</p><pre id="package-contents"></pre><p class="small">Import the package into MeshVault. The root-level model goes into Imports to Review. Parameters are reference data; MeshVault does not regenerate the design.</p></div>
+    </section>
+  </main>
+  <footer>Vessel Studio by Xalies · Generated models are yours to use. <a href="https://buymeacoffee.com/xalies">Support Vessel Studio</a> · <a href="README.md">Source & licences</a> · <a href="../../meshvault/">Meet MeshVault</a>. Test your slicer settings and print suitability; vessels are not certified watertight or food-safe.</footer>
+</body>
+</html>

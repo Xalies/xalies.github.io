@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Generate custom Gridfinity bins in your browser. Free, open source, with 3D preview and STL download.">
+  <meta name="description" content="Design custom Gridfinity bins and baseplates in your browser. Live 3D preview, STL and 3MF downloads, and a working MeshVault .mvpack export demo.">
   <title>Gridfinity Generator · Xalies</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="../shared/studio.css">
   <script src="vendor/deps/three.min.js" defer></script>
   <script src="vendor/deps/Projector.js" defer></script>
   <script src="vendor/deps/CanvasRenderer.js" defer></script>
@@ -14,14 +14,16 @@
   <script src="vendor/deps/stl_viewer.min.js" defer></script>
   <script type="module" src="generator.js"></script>
 </head>
-<body>
-  <header><a href="../../">Xalies / Software</a><a href="https://github.com/Xalies/xalies.github.io/tree/main/generators/gridfinity">View source ↗</a></header>
+<body class="gridfinity-studio">
+  <header><a href="../../">Xalies / Creator tools</a><nav><a href="../vessels/">Vessel Studio</a><a href="../../generator/">.mvpack guide ↗</a><span class="demo-account" title="Simulated sign-in for this demo; no real account is connected">Xalies <small>· Demo account</small></span></nav></header>
   <main>
-    <p class="eyebrow">Open-source 3D model generators / 01</p>
-    <h1>Gridfinity bins &amp; bases.</h1>
-    <p class="intro">Make a bin and its matching baseplate. Both use the same 42 mm grid. Choose a part, set the dimensions, and download an STL ready for your slicer. Everything runs on your device.</p>
+    <p class="eyebrow">Gridfinity Studio / A MeshVault integration demo</p>
+    <h1>A place for everything.</h1>
+    <p class="intro">Give your workspace a little order. Design a custom bin or its matching baseplate on the original 42 mm grid, then keep the model and its settings together with MeshVault. Everything runs on your device.</p>
     <div class="workspace">
       <form id="settings">
+        <p class="step">01 / Your workspace, your layout</p>
+        <div class="presets" aria-label="Bin presets"><button type="button" data-preset="small">Small parts</button><button type="button" data-preset="tools">Tool tray</button><button type="button" data-preset="base">Desk base</button></div>
         <label>Part<select id="part"><option value="bin">Bin</option><option value="baseplate">Baseplate</option></select></label>
         <fieldset><legend>Dimensions</legend>
           <div class="fields">
@@ -36,23 +38,63 @@
           <label>Stacking lip<select name="lip_style"><option value="normal">Standard</option><option value="reduced">Reduced</option><option value="none">None</option></select></label>
           <label class="check"><input name="fingerslide" type="checkbox" checked>Finger scoop</label>
         </fieldset>
-        <details data-bin><summary>Walls &amp; mounting</summary><div class="fields">
+        <fieldset data-bin><legend>Magnets &amp; screws</legend>
+          <label class="check"><input id="magnets" type="checkbox">Add magnet pockets</label>
+          <label>Magnet pocket diameter · mm<input name="magnet_diameter" type="number" min="3" max="10" step="0.1" value="6.5" required disabled><small>Pockets are 2.4 mm deep. Adjust diameter for your magnets and printer fit.</small></label>
+          <label class="check"><input id="screws" type="checkbox">Add screw holes</label>
+          <label>Screw hole depth · mm<input name="screw_depth" type="number" min="1" max="10" step="0.5" value="6" required disabled><small>3 mm diameter holes in the underside of the bin.</small></label>
+          <p class="small">Choose either or both. Mounting points sit at the four corners of each grid cell. Match magnet polarity to your baseplate before fitting.</p>
+        </fieldset>
+        <fieldset data-base hidden><legend>Baseplate footprint</legend>
+          <label>Shape<select id="base-shape" name="base_shape" disabled><option value="rectangle">Rectangle</option><option value="l">L-shape</option><option value="t">T-shape</option><option value="steps">Staircase</option><option value="custom">Custom cells</option></select></label>
+          <div id="cell-layout" role="group" aria-label="Baseplate cells; toggle a cell to include or remove it"></div>
+          <p id="layout-status" class="small" role="status"></p>
+          <p class="small">Each square is one 42 mm cell. Click squares to combine them into your own footprint. Cells must connect along an edge to make one piece. Width and depth set the editing area.</p>
+        </fieldset>
+        <fieldset data-base hidden><legend>Baseplate mounting</legend>
+          <label>Base style<select name="weighted" disabled><option value="false">Open frame · no mounting holes</option><option value="true">Reinforced · magnets &amp; screws</option></select></label>
+          <p class="small">Reinforced base: 6.5 × 2.4 mm magnet pockets, 3.5 mm screw clearance holes and 8.5 mm countersinks underneath. Both are included at each cell’s corners. Total height: 10.8 mm.</p>
+        </fieldset>
+        <details data-bin><summary>Wall &amp; floor thickness</summary><div class="fields">
           <label>Wall thickness · mm<input name="wall_thickness" type="number" min="0.8" max="3" step="0.05" value="0.95" required></label>
           <label>Floor thickness · mm<input name="floor_thickness" type="number" min="0.7" max="3" step="0.1" value="0.7" required></label>
-          <label>Magnet diameter · mm<input name="magnet_diameter" type="number" min="0" max="10" step="0.1" value="0" required><small>0 omits magnet pockets; standard: 6.5.</small></label>
-          <label>Screw depth · mm<input name="screw_depth" type="number" min="0" max="10" step="0.5" value="0" required><small>0 omits screw holes; standard: 6.</small></label>
         </div></details>
-        <p id="base-note" class="small" hidden>Standard open-frame baseplate. Width and depth stay the same when you switch parts, so the base matches your bin footprint. Increase them for a larger layout.</p>
+        <p id="base-note" class="small" hidden>Width and depth stay the same when you switch parts, so the base matches your bin footprint. Choose the reinforced base to secure it with magnets or screws.</p>
         <p class="small">Grid pitch: 42 × 42 mm. Actual bin width and depth include fitting clearance. Compartments divide along the width only.</p>
         <div class="actions"><button id="generate" type="submit">Generate model</button><button id="cancel" type="button" disabled>Cancel</button></div>
       </form>
       <section class="preview" aria-label="Generated model">
-        <div class="preview-toolbar"><span id="status" role="status" aria-live="polite">Ready to generate.</span><a id="download" hidden>Download STL ↓</a></div>
+        <div class="preview-toolbar"><span id="status" role="status" aria-live="polite">Ready to generate.</span><div class="export-actions"><button id="add-to-set" class="secondary" type="button" disabled>Add to set +</button><a id="download" hidden>Download STL ↓</a></div></div>
         <div id="viewer" tabindex="0" aria-label="3D bin preview; drag to orbit, scroll to zoom"></div>
         <p class="small">Drag to orbit · scroll or pinch to zoom. Large bins can take a few minutes to generate.</p>
+        <div class="export-panel"><p class="small">The same geometry in two formats. 3MF includes millimetre units. A .mvpack adds source credit, print notes and your design parameters.</p><div class="export-actions"><button id="download-3mf" class="secondary" type="button" disabled>Download 3MF ↓</button><button id="mvpack" type="button" disabled>Export for MeshVault ↓</button></div><label style="margin-top:16px">Model inside MeshVault package<select id="format"><option value="3mf">3MF · recommended</option><option value="stl">STL</option></select></label></div>
         <details><summary>Generation log</summary><pre id="log"></pre></details>
       </section>
+      <section class="set-panel" aria-label="Your Gridfinity set">
+        <p class="step">02 / Set &amp; print plates</p>
+        <h2>A set that fits your printer.</h2>
+        <p class="small">Add each generated bin or baseplate, then choose quantities and your printer’s bed size.</p>
+        <form id="bed-settings"><div class="fields">
+          <label>Bed width · mm<input name="bedWidth" type="number" min="50" max="1000" step="1" value="220" required></label>
+          <label>Bed depth · mm<input name="bedDepth" type="number" min="50" max="1000" step="1" value="220" required></label>
+          <label>Spacing / edge · mm<input name="spacing" type="number" min="2" max="20" step="1" value="5" required></label>
+          <label>Plate model format<select id="set-format"><option value="3mf">3MF</option><option value="stl">STL</option></select></label>
+        </div><label class="check"><input name="rotate" type="checkbox" checked>Allow 90° rotation</label></form>
+        <div class="set-plan">
+          <p class="step">Saved designs &amp; planned plates</p>
+          <ul id="set-items" class="set-items" aria-label="Parts in your set"></ul>
+          <p id="set-empty" class="small">Add your first generated model to start.</p>
+          <button id="clear-set" class="secondary" type="button" disabled>Clear set</button>
+          <div id="plate-layouts" aria-label="Planned print plates"></div>
+        </div>
+        <div class="set-export">
+          <p id="set-status" class="small" role="status" aria-live="polite">Your set is empty.</p>
+          <div class="export-actions"><button id="export-set" type="button" disabled>Export set for MeshVault ↓</button><button id="export-set-zip" class="secondary" type="button" disabled>Download plate ZIP ↓</button></div>
+          <details><summary>About plate exports</summary><p class="small">Each numbered plate contains its arranged parts. MeshVault imports plates as separate library items, with the original part settings attached. Plans follow selected baseplate cells, keeping clearance between parts. Check placement and printable area in your slicer. These are model layouts, not sliced printer projects. Your set stays on this page until refresh or close.</p></details>
+        </div>
+      </section>
     </div>
+    <section class="integration" aria-label="MeshVault integration example"><div><p class="step">Useful metadata, chosen for this tool</p><h2>Keep more than a file.</h2><p>This demo includes source and generator credit, tags, print notes and attached parameters. Single parts use <code>meshvault.model.json</code>. Sets use <code>meshvault.models.json</code>, with one entry per numbered print plate.</p><a href="../../generator/">Add .mvpack to your site →</a> · <a href="generator.js">View demo source</a></div><div><p class="step">Inside your single-part download</p><pre id="package-contents">Generate a model to see your package contents.</pre><p class="small">Set exports additionally retain bed dimensions, part quantities and placement in each plate’s attached settings.</p></div></section>
   </main>
   <footer>Models by <a href="https://github.com/vector76/gridfinity_openscad">vector76 / MIT</a>, based on Zack Freedman’s Gridfinity. Powered by <a href="https://github.com/vector76/Web_OpenSCAD_Customizer">Web OpenSCAD Customizer / GPL-2.0</a>. <a href="README.md">Credits &amp; licenses</a>.</footer>
 </body>
