@@ -4,6 +4,16 @@ Use this document as the complete implementation brief for a developer or coding
 assistant. It does not assume a programming language, framework, renderer,
 backend, model format, or set of generator controls.
 
+Last checked against MeshVault Core on 5 October 2026.
+
+MeshVault is downloadable software released for Windows, Linux and macOS. Users
+keep their own libraries; generator integration requires no cloud SaaS account.
+
+A complete [vase sample package](samples/meshvault-vase-demo.mvpack) is available
+for import and ZIP inspection. It includes a 3MF, two images, generation settings
+and print notes. Its generator name and example.org URLs are placeholders.
+Desktop link placement and physical printing require manual verification.
+
 ## Goal
 
 Keep every existing export option unchanged. Add a separate **Export for
@@ -31,9 +41,12 @@ The generator does not need to provide every field.
 | Title or source page | Add the available metadata fields |
 | Preview image as a file or Blob | Add it to the ZIP and use `thumbnailFile` |
 | Gallery images as files or Blobs | Add them to the ZIP and use `extraImageFiles` |
-| Images already encoded as Base64 | Use `thumbnailDataBase64` and `extraImageDataBase64` |
-| Instructions or a colour guide PDF | Add it to the ZIP and use `documentFiles` |
-| Generator settings | Serialise them into `printSettingsJson` |
+| Images already encoded as Base64 | Prefer decoding into image files and referencing their ZIP paths |
+| Instructions, PDFs or other reference files | Add them to the ZIP and use `documentFiles` |
+| Generation parameters | Attach a JSON file through `documentFiles` |
+| Printing advice or printer settings | Add useful text or serialised JSON to `printSettingsJson` |
+| Referenced materials, buffers or textures | Include the dependent files with their relative layout |
+| Generator name and support page | Add `generatorName` and optional `exportDonationUrl` |
 | Several independently useful model files | Use the multi-model package form |
 
 Omit unavailable optional fields. Do not invent authors, URLs, settings, images,
@@ -41,7 +54,8 @@ licences, dimensions, or other data.
 
 ## Single-model package
 
-Use this form when one export produces one model file.
+Use this form when one export produces one model file. Supply an available
+title, or derive it from the model filename when the generator has no title.
 
 ### Minimum package layout
 
@@ -88,7 +102,9 @@ Generated-Model.mvpack
   "version": 1,
   "exportedUtc": "2026-10-01T00:00:00Z",
   "title": "Generated Model",
-  "author": "Generator or creator name",
+  "author": "Model designer name",
+  "generatorName": "Example Generator",
+  "exportDonationUrl": "https://example.org/support",
   "authorUrl": "https://example.com/creator",
   "sourceUrl": "https://example.com/generator",
   "summary": "Created with Example Generator",
@@ -108,10 +124,12 @@ Generated-Model.mvpack
   "relativePath": "Generated-Model.3mf",
   "fileType": "3MF",
   "fileSizeBytes": 123456,
-  "sha256": "optional-lowercase-sha256-of-the-model-file",
-  "printedStatus": 0
+  "sha256": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef"
 }
 ```
+
+The example byte length and hash are illustrative: compute them from the actual
+model bytes or omit them. Do not copy those values.
 
 Image paths are paths inside the ZIP. Use `/` separators, even when generating
 the package on Windows. Paths must not be absolute and must not contain `.` or
@@ -122,19 +140,27 @@ If both `thumbnailDataBase64` and `thumbnailFile` are supplied, Base64 is used.
 Base64 and file-based extra-image arrays can both be supplied; their images are
 combined.
 
-### Reference PDFs
+### Reference attachments
 
-Instructions, colour guides and other reference PDFs can be stored as ordinary
-ZIP entries and listed in `documentFiles`. MeshVault attaches them to the model
-and exposes them through its Documents or Related files view.
+Instructions, colour guides, generation parameters and other reference files can
+be stored as ordinary ZIP entries listed in `documentFiles`. Any file type is
+accepted. MeshVault attaches them to the model through Documents or Related files.
+Each attachment is limited to 10 MiB, with at most ten attachments per model.
+PDF filenames must end in `.pdf` and their contents must begin with a PDF
+signature; other file types are opaque bytes. Use the same safe ZIP path rules
+as images. Store attachments as files, not Base64 metadata fields.
 
-Each entry must have a `.pdf` filename, begin with a valid PDF signature and be
-no larger than 10 MiB. A model can reference up to ten PDFs. Apply the same safe
-portable path rules used for images.
+Attach design parameters as, for example, `documents/generator-settings.json`.
+MeshVault preserves the file; it does not automatically regenerate a model from
+those settings. `printSettingsJson` describes printing, not generator controls.
+Do not hide extra supported model files among attachments in a single-model
+package: they count towards its one-model limit. Use multi-model metadata when
+several supported models are intentionally included.
 
 ### Package with Base64 images
 
-Use this only when Base64 is already convenient:
+This remains accepted for existing integrations. New integrations should prefer
+actual image files, including when the source can be decoded from Base64:
 
 ```json
 {
@@ -162,7 +188,9 @@ are required by this public integration profile; every other field is optional.
 | `version` | integer | Must be `1` |
 | `exportedUtc` | string | ISO 8601 UTC export time |
 | `title` | string | Human-readable model title |
-| `author` | string | Creator or generator author |
+| `author` | string | Person who designed the model; omit if unknown |
+| `generatorName` | string | Name of the generating site or tool |
+| `exportDonationUrl` | string | Optional HTTPS support page for the generator |
 | `authorUrl` | string | Creator profile URL |
 | `sourceUrl` | string | Page where the model was generated |
 | `summary` | string | Short plain-text summary |
@@ -172,7 +200,7 @@ are required by this public integration profile; every other field is optional.
 | `packageInfo` | string | Generator or package information |
 | `thumbnailFile` | string | ZIP path to the main image |
 | `extraImageFiles` | string array | ZIP paths to gallery images |
-| `documentFiles` | string array | ZIP paths to attached reference PDFs |
+| `documentFiles` | string array | ZIP paths to attached reference files of any type |
 | `thumbnailDataBase64` | string | Base64 main image |
 | `extraImageDataBase64` | string array | Base64 gallery images |
 | `fileName` | string | Model filename including extension |
@@ -180,10 +208,74 @@ are required by this public integration profile; every other field is optional.
 | `fileType` | string | Extension without the leading dot |
 | `fileSizeBytes` | integer | Model byte length |
 | `sha256` | string | Lowercase SHA-256 of the model bytes |
-| `printedStatus` | integer | Use `0` for a newly generated model |
 
 Do not put a JSON object directly in `printSettingsJson`. Serialise the object to
 a JSON string. In JavaScript, use `JSON.stringify(settings)`.
+
+## Generator credit and donation link
+
+`author` identifies the model designer; `generatorName` identifies the site or
+tool. Do not put the generator creator into `author` unless they also designed
+the model. These fields are separate in single-model and multi-model metadata.
+
+An optional `exportDonationUrl` must be an absolute HTTPS URL without embedded
+username or password. It can point to the generator's own support page, Ko-fi,
+Buy Me a Coffee or another donation service. Missing or blank means no link.
+Invalid optional links are ignored without discarding the other metadata.
+The unreleased `donationUrl` spelling is not supported; use `exportDonationUrl`.
+
+Model details show “Created by [author]” when known, then “Generated with
+[generatorName]” and a discreet “Support [generatorName]” link in the attribution
+area. Without a generator name, the support label is “Support the generator”.
+The link opens only when clicked; there are no automatic redirects or pop-ups.
+The donation supports the generator and is separate from model authorship.
+
+Printed status is personal library state. **Do not export `printedStatus`**,
+even as `0`. It is not restored from imported package metadata. Printing advice
+and `printSettingsJson` remain supported.
+
+## Model dependencies
+
+Include every locally referenced model dependency, preserving its path relative
+to the referencing file. OBJ models may need `mtllib` material files and their
+texture maps. glTF/GLB may need external buffers and images. Embedded data URIs
+need no separate file. Decode percent-escaped glTF filenames for ZIP entry names,
+but retain the model's original URI. Quote OBJ material-library names containing
+spaces. Preserve the model bytes rather than rewriting its references.
+
+```text
+Generated/vase.obj
+Generated/materials/vase.mtl
+Generated/textures/colour.png
+meshvault.model.json
+```
+
+Here the OBJ can refer to `materials/vase.mtl`; that MTL can refer to
+`../textures/colour.png`. ZIP entry names must have no `.` or `..` segments,
+but references within model files can use them if resolution stays inside the
+package and library. Use `/` for canonical package paths. Missing files,
+absolute/remote references, symbolic-link destinations and references into
+MeshVault's private library data fail visibly. Do not fetch remote resources
+as part of import.
+
+Resources shared by models may share one ZIP entry when their bytes agree.
+Different contents at the same dependency path are a conflict. During import,
+identical existing files may be reused; different existing contents fail before
+extraction and are never overwritten. Inconsistent reference filename casing
+can break portability; use exact matching case everywhere.
+
+Automatic dependency restoration currently covers OBJ material/texture references
+and glTF/GLB buffer/image references. Do not assume other formats restore
+external resources automatically; prefer a self-contained model or verify the
+actual import outcome.
+
+No extra dependency manifest is required for these formats: MeshVault follows
+model references.
+This preserves resources without promising that every preview renderer displays
+all materials or format extensions. Metadata images and attachments may use
+any safe ZIP paths. Keep them distinct from model resources; MeshVault's own
+exports move metadata assets under an available `mvpack-metadata` folder when
+needed. Consumers should follow metadata references, not fixed folder names.
 
 ## Destination folders
 
@@ -261,13 +353,13 @@ for additional matching.
 3. Add a separate **Export for MeshVault** action.
 4. Reuse the exact model bytes produced by the existing exporter.
 5. Build only metadata the generator actually knows.
-6. If preview images, gallery images or reference PDFs are available, add their
+6. If preview images, gallery images or reference attachments are available, add their
    bytes as ordinary ZIP entries and reference them with `thumbnailFile`,
    `extraImageFiles` or `documentFiles`.
 7. Create `meshvault.model.json` for one model or `meshvault.models.json` for
    several models.
-8. Create a standard, unencrypted ZIP containing the model, metadata and any
-   referenced images.
+8. Create a standard, unencrypted ZIP containing the model, its local dependencies, metadata and
+   referenced images and attachments.
 9. Download or return the ZIP with a `.mvpack` filename and the MeshVault MIME
    type.
 10. Surface packaging failures to the user. Do not silently download a partial
@@ -296,6 +388,12 @@ metadata = {
 }
 
 zip.add(chosenPortablePath, model.bytes)
+add all locally referenced model dependencies, preserving relative layout
+if a required dependency is missing or conflicts: fail visibly
+if model designer is known: metadata.author = designer name
+if generator name is known: metadata.generatorName = generator name
+if a valid HTTPS support URL exists: metadata.exportDonationUrl = support URL
+never add printedStatus
 
 if thumbnail bytes exist:
     zip.add("images/thumbnail.png", thumbnail bytes)
@@ -306,9 +404,9 @@ if extra image bytes exist:
         add image under "images/"
         append its ZIP path to metadata.extraImageFiles
 
-if reference PDF bytes exist:
-    for each PDF:
-        add PDF under "documents/"
+if reference attachment bytes exist:
+    for each attachment:
+        add attachment under "documents/"
         append its ZIP path to metadata.documentFiles
 
 zip.add("meshvault.model.json", UTF8(JSON(metadata)))
@@ -342,13 +440,17 @@ An implementation is complete when all applicable checks pass:
 - The correct metadata filename exists at the ZIP root.
 - Metadata is valid UTF-8 JSON with the correct schema and version.
 - Every referenced image path exists in the ZIP and contains a supported image.
-- Every referenced document path exists in the ZIP and contains a PDF of at
-  most 10 MiB; no model references more than ten PDFs.
-- Every logical path uses `/` and contains no traversal segments.
+- Every referenced document path exists in the ZIP and contains at most
+  10 MiB; no model references more than ten attachments. PDFs have a PDF signature.
+- Every ZIP entry path uses `/` and contains no traversal segments.
+- Every local model dependency is present and resolves inside the package.
+- Model author and generator credit remain separate.
+- Optional support links use `exportDonationUrl` and HTTPS without credentials.
+- No metadata object includes `printedStatus`.
 - A root-level model imports into `Imports to Review`.
 - A foldered model preserves its package folder from the MeshVault library root.
 - MeshVault restores the available title, source, tags, description, settings,
-  thumbnail and gallery images.
+  thumbnail, gallery images, generator credits and attachments.
 - Missing optional information does not block export.
 - Packaging errors do not replace or break the generator's normal export.
 
@@ -368,18 +470,26 @@ root. The minimum JSON is:
 {"schema":"meshvault.model","version":1,"title":"<available title>"}
 
 Include only metadata the project already knows. Optional supported properties
-are exportedUtc, author, authorUrl, sourceUrl, summary, tags, descriptionHtml,
-printSettingsJson, packageInfo, fileName, relativePath, fileType, fileSizeBytes,
-sha256 and printedStatus. printSettingsJson must be a string.
+are exportedUtc, author, authorUrl, generatorName, exportDonationUrl, sourceUrl,
+summary, tags, descriptionHtml, printSettingsJson, packageInfo, fileName, relativePath, fileType, fileSizeBytes,
+sha256. printSettingsJson must be a string. Never export printedStatus.
+The author is the model designer; generatorName is the site/tool. Use
+exportDonationUrl for its optional HTTPS support link, without credentials.
+Do not use donationUrl.
 
 If image bytes are available, store them as normal ZIP entries and reference
 them with thumbnailFile and extraImageFiles. Base64 is optional; existing Base64
-may instead use thumbnailDataBase64 and extraImageDataBase64. Do not invent
+may instead use thumbnailDataBase64 and extraImageDataBase64; new integrations
+should prefer decoding to image files. Do not invent
 missing images or metadata.
 
-If the generator has instruction sheets, colour guides or other reference PDFs,
-store them as normal ZIP entries and list their paths in documentFiles. Accept
-at most ten PDFs per model and 10 MiB per PDF. Do not encode them as Base64.
+If the generator has instructions, design parameters or other attachments,
+store them as ZIP files and list their paths in documentFiles. Any file type is
+accepted, at most ten per model and 10 MiB each; PDFs require a PDF signature.
+Attach generator parameters as JSON. Do not encode attachments as Base64.
+Include every locally referenced OBJ material/texture and glTF/GLB buffer/image
+with its relative layout. Embedded data URIs need no extra file. Fail visibly
+on missing dependencies or conflicting paths; do not download remote references.
 
 Use / for all ZIP and relative paths. A model at the ZIP root will enter
 “Imports to Review”. A path such as Generated/Example/model.3mf will be restored
@@ -392,7 +502,9 @@ TypeScript with no existing ZIP dependency, use fflate or JSZip; do not
 hand-write ZIP headers or CRC logic. Preserve existing exports.
 Add the smallest meaningful test that opens the generated ZIP and verifies the
 model entry, metadata entry, parsed schema/title and referenced image entries.
-Also verify every referenced PDF entry when documents are included.
+Also verify dependency and attachment entries, separate author/generator credits,
+valid optional support URLs and the absence of printedStatus. Test a real
+MeshVault import from the download when that runtime is available.
 ```
 
 ## Supported model extensions

@@ -7,3 +7,8 @@ This folder publishes the framework-independent `.mvpack` integration guide at
 The page intentionally contains no model generator or packaging SDK. Generator
 authors keep their existing export implementation and create a standard ZIP
 containing their generated model plus MeshVault metadata.
+
+The ready-to-import vase example is published as
+[`samples/meshvault-vase-demo.mvpack`](samples/meshvault-vase-demo.mvpack). It is
+identical to the Core-tested sample in the MeshVault repository; update both
+when replacing it. Branding and support URLs in the example are placeholders.

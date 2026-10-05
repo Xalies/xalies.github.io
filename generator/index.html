@@ -41,7 +41,10 @@
       <aside class="contents" aria-label="On this page">
         <strong>On this page</strong>
         <a href="#minimum">Minimum package</a>
-        <a href="#documents">PDF documents</a>
+        <a href="#documents">Attached files</a>
+        <a href="#credits">Generator credit</a>
+        <a href="#dependencies">Model dependencies</a>
+        <a href="#sample">Test package</a>
         <a href="#images">Image files</a>
         <a href="#metadata">Metadata</a>
         <a href="#folders">Folder behaviour</a>
@@ -72,7 +75,7 @@
         <section id="documents">
           <p class="step">Optional reference files</p>
           <h2>Instructions and colour guides can travel with the model</h2>
-          <p>Add PDF files to the ZIP and list their portable paths in <code>documentFiles</code>. MeshVault attaches them to the imported model and shows them through Documents or Related files.</p>
+          <p>Add instructions, PDFs, JSON generation parameters or other files to the ZIP and list their portable paths in <code>documentFiles</code>. MeshVault attaches them to the imported model and shows them through Documents or Related files.</p>
           <div class="split">
             <div class="code-card"><div class="code-title">Package contents</div><pre><code>Generated-Model.mvpack
 ├── Generated-Model.3mf
@@ -88,7 +91,7 @@
   ]
 }</code></pre></div>
           </div>
-          <p class="note">Each model can include up to ten PDFs, with a maximum size of 10 MiB each. Files must have a <code>.pdf</code> name and valid PDF content.</p>
+          <p class="note">Each model can include up to ten attachments of any file type, up to 10 MiB each. PDF files must have a PDF signature. Generation parameters remain attached files; MeshVault does not regenerate a model from them.</p>
         </section>
 
         <section id="images">
@@ -114,7 +117,7 @@
   ]
 }</code></pre></div>
           </div>
-          <p class="note">PNG, JPEG, BMP, GIF and WebP are accepted, up to 50 MiB per image. Existing Base64 remains supported through <code>thumbnailDataBase64</code> and <code>extraImageDataBase64</code>.</p>
+          <p class="note">PNG, JPEG, BMP, GIF and WebP are accepted, up to 50 MiB per image. Prefer file references for new integrations. Existing Base64 remains supported through <code>thumbnailDataBase64</code> and <code>extraImageDataBase64</code>.</p>
         </section>
 
         <section id="metadata">
@@ -128,6 +131,37 @@
           </div>
           <p>The complete field definitions, exact types, Base64 alternative, supported model formats and full JSON example are in the Markdown specification.</p>
           <a class="button secondary inline-button" href="mvpack-integration.md#metadata-fields">View every metadata field</a>
+        </section>
+
+        <section id="credits">
+          <p class="step">Separate model and generator credit</p>
+          <h2>Keep the generator associated with the design</h2>
+          <p><code>author</code> is the model designer. <code>generatorName</code> names the generating site or tool. An optional <code>exportDonationUrl</code> supplies its HTTPS support page, without credentials.</p>
+          <div class="code-card"><div class="code-title">Generator attribution</div><pre><code>{
+  "schema": "meshvault.model",
+  "version": 1,
+  "title": "Generated Vase",
+  "author": "Model designer",
+  "generatorName": "Example Generator",
+  "exportDonationUrl": "https://example.org/support"
+}</code></pre></div>
+          <p>Details show “Created by [author]”, “Generated with [generator]” and a discreet “Support [generator]” link. It opens only when clicked. Omit unknown authors and optional support links. The old <code>donationUrl</code> spelling is unsupported.</p>
+          <p class="note">Never export <code>printedStatus</code>. It is personal library state. Printing advice and <code>printSettingsJson</code> remain supported.</p>
+        </section>
+
+        <section id="dependencies">
+          <p class="step">Complete model exports</p>
+          <h2>Include the files the model references</h2>
+          <p>Package OBJ material files and texture maps, and glTF/GLB external buffers and images with their relative layout. Embedded data needs no extra file. Missing resources, remote or absolute references, and conflicting contents fail visibly.</p>
+          <p class="note">ZIP paths cannot contain traversal segments. References inside model files may use relative parent segments only while they stay inside the package and library. Exact filename casing matters. Existing resources with different bytes are never overwritten.</p>
+        </section>
+
+        <section id="sample">
+          <p class="step">Ready-to-import example</p>
+          <h2>Try the complete vase package</h2>
+          <p>The original 110 mm vase example contains a 3MF, thumbnail, gallery image, metadata, print notes and JSON generation parameters. Generator branding and support URLs are clearly labelled placeholders.</p>
+          <a class="button primary inline-button" href="samples/meshvault-vase-demo.mvpack" download>Download sample .mvpack</a>
+          <p>MeshVault is downloadable software released for Windows, Linux and macOS. Use a build with current package and generator-attribution support. Core import, model loading and re-export are checked; desktop link placement and physical printing need manual verification.</p>
         </section>
 
         <section id="folders">
@@ -172,7 +206,7 @@
           <ol class="steps">
             <li><span>1</span><div><strong>Find the current model export</strong><p>Identify the function that produces the final Blob, byte array, stream, buffer or file.</p></div></li>
             <li><span>2</span><div><strong>Collect available information</strong><p>Use real values already held by the generator. Omit everything else.</p></div></li>
-            <li><span>3</span><div><strong>Create the standard ZIP</strong><p>Add model bytes, JSON metadata and any referenced image files.</p></div></li>
+            <li><span>3</span><div><strong>Create the standard ZIP</strong><p>Add model bytes, dependencies, JSON metadata, images and attached files.</p></div></li>
             <li><span>4</span><div><strong>Return or download <code>.mvpack</code></strong><p>Use MIME type <code>application/vnd.meshvault.package+zip</code>.</p></div></li>
           </ol>
           <p>Use the project’s existing ZIP library. Browser JavaScript or TypeScript projects without one should use <code>fflate</code> or <code>JSZip</code>, including a pinned local copy for no-build sites. Do not hand-write ZIP records. No MeshVault-specific package is required.</p>
@@ -187,7 +221,10 @@
             <li>The model and correct metadata filename are present.</li>
             <li>Metadata parses as UTF-8 JSON with schema version 1.</li>
             <li>Every referenced image exists and contains a supported image.</li>
-            <li>All logical paths use <code>/</code> and contain no traversal.</li>
+            <li>All ZIP entry paths use <code>/</code> and contain no traversal.</li>
+            <li>Model dependencies and attachments are present and valid.</li>
+            <li>Generator credit and optional support links are separate from the model author.</li>
+            <li>Printed status is excluded.</li>
             <li>Missing optional data does not block export.</li>
             <li>Failures are shown instead of downloading a partial package.</li>
           </ul>
