@@ -1,6 +1,6 @@
 # MeshVault Privacy Policy
 
-**Last updated: 10 September 2026**
+**Last updated: 7 October 2026**
 
 MeshVault is a local-first set of applications for organising and transferring 3D-model files. This policy covers:
 
@@ -86,9 +86,13 @@ Feedback reports are retained only while reasonably necessary for those purposes
 
 Not every MeshVault product offers paid features. Where a version offers an App Store or Google Play purchase, trial or optional donation, Apple or Google processes the transaction under its own privacy policy. MeshVault receives the purchase or entitlement information needed to provide the feature or acknowledge the donation, but does not receive your complete payment-card details.
 
-Direct desktop and server builds may offer licence purchase and activation through Lemon Squeezy. Opening the checkout takes you to Lemon Squeezy's website. Activation sends the licence key and the information required to validate and register that activation. Lemon Squeezy processes this information under its [Privacy Policy](https://www.lemonsqueezy.com/privacy).
+MeshVault 2.3 desktop and server builds are free and do not require licence activation. Older direct builds offered licence purchase and activation through Lemon Squeezy. Opening the checkout takes you to Lemon Squeezy's website. Activation sends the licence key and the information required to validate and register that activation. Lemon Squeezy processes this information under its [Privacy Policy](https://www.lemonsqueezy.com/privacy).
 
 ## Updates and external links
+
+Optional filament affiliate links help fund MeshVault. When enabled, retailer links may include referral information so a qualifying purchase can earn a commission. Turn them off in Options to use standard retailer links. Retailers and their affiliate providers process visits and purchases under their own policies.
+
+Where a Buy Me a Coffee support button and supporter names are shown, MeshVault requests public supporter information from Buy Me a Coffee. Private and anonymous supporters are excluded. Opening the support button takes you to that external service; payment details are handled there.
 
 Some MeshVault desktop builds check MeshVault's website or GitHub for available updates. These services may receive standard request information such as an IP address, request time and software or browser information. An update is installed only through the update flow provided by that build or its application store.
 

@@ -166,10 +166,10 @@
           </div>
         </div>
         <div class="hero-facts" aria-label="Feature reference summary">
-          <div class="hero-fact"><strong>Desktop 2.2.0.0</strong><span>Released desktop behaviour used for this reference.</span></div>
-          <div class="hero-fact"><strong>Connect 2.1.0.0</strong><span>Repository and cloud-drive capture, plus direct slicer hand-off.</span></div>
+          <div class="hero-fact"><strong>Desktop 2.3.0.0</strong><span>Free desktop and server access, complete model packages and improved 3MF compatibility.</span></div>
+          <div class="hero-fact"><strong>Connect 2.3.0.1</strong><span>Repository and cloud-drive capture, plus direct slicer hand-off.</span></div>
           <div class="hero-fact"><strong>58 indexed extensions</strong><span>50 model, CAD, project, and G-code types plus eight archive variants.</span></div>
-          <div class="hero-fact"><strong>$19.99 once</strong><span>Direct licence; no subscription required.</span></div>
+          <div class="hero-fact"><strong>MeshVault is free</strong><span>No desktop or server trial, licence key or subscription.</span></div>
         </div>
       </div>
     </section>
@@ -178,6 +178,7 @@
       <div class="container contents-list">
         <a href="#desktop">Library and importing</a>
         <a href="#organise">Browse and organise</a>
+        <a href="#packages">New in 2.3</a>
         <a href="#metadata">Metadata and images</a>
         <a href="#preview">Preview and archives</a>
         <a href="#making">Slicers and making</a>
@@ -260,6 +261,18 @@
       </div>
     </section>
 
+    <section id="packages">
+      <div class="container">
+        <div class="section-head"><div><span class="section-number">New in 2.3</span><h2>Complete packages and filament colours</h2></div><p>Keep the model, its context and its recommended materials together.</p></div>
+        <div class="feature-table">
+          <div class="feature-row"><span class="scope">Desktop</span><h3><code>.mvpack</code> import and export</h3><p>Share one or more complete model listings with metadata, images, print settings and attachments in one package.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>Creator and generator details</h3><p>Preserve author donation links, generator names and export support links with the model listing.</p></div>
+          <div class="feature-row"><span class="scope">Windows</span><h3>Filament colours and links</h3><p>Show swatches in the details panel using supported 3MF filament profiles and matched creator guides. Reviewed creator matches take priority over automatic profile matches.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>Optional affiliate links</h3><p>Affiliate links help keep MeshVault free. Choose them during onboarding or turn them off in Options to use standard retailer links.</p></div>
+        </div>
+      </div>
+    </section>
+
     <section id="metadata">
       <div class="container">
         <div class="section-head">
@@ -319,6 +332,7 @@
           <div class="feature-row"><span class="scope">Desktop</span><h3>Program detection</h3><p>Detects compatible installed manufacturing programs and lets you review or override the applications used for each workflow.</p></div>
           <div class="feature-row"><span class="scope">Desktop</span><h3>Slicer hand-off</h3><p>Sends supported local, archive-contained, or remote files to the configured slicer; remote files use a managed temporary working copy. FBX and PLY models are converted to STL first, so they can be sent to any configured slicer. Conversion may not reproduce every model perfectly.</p></div>
           <div class="feature-row"><span class="scope">Desktop</span><h3>Slicer result association</h3><p>Watches supported slicer output after a hand-off and connects the resulting metrics to the original model.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>3MF compatibility choices</h3><p>Prepare supported projects for OrcaSlicer, Snapmaker Orca or PrusaSlicer. Temporary conversions are cached and reused while the source and destination settings are unchanged. Keep original retains the source under Related files → Versions; Replace original saves the conversion without retaining a new original version. Choose in Options → Slicers.</p></div>
           <div class="feature-row"><span class="scope">Desktop</span><h3>Print metrics</h3><p>Captures print time, filament length, weight, volume and cost, layers, maximum Z, layer height, nozzle size, printer, material, material changes, and multi-object counts when supplied.</p></div>
           <div class="feature-row"><span class="scope">Desktop</span><h3>Tested slicers</h3><p>Tracks supported output from OrcaSlicer, Bambu Studio, PrusaSlicer, SuperSlicer, Cura, and Creality Print.</p></div>
         </div>
@@ -346,7 +360,7 @@
           <div class="feature-row"><span class="scope">Connect</span><h3>Repository-to-slicer hand-off</h3><p>Sends supported files from Thingiverse, Printables, MakerWorld, Cults3D, and GrabCAD, plus 3MF profiles from Creality Cloud, through a running MeshVault app to its slicer without first saving them to the library.</p></div>
           <div class="feature-row"><span class="scope">Connect</span><h3>Complete Thingiverse downloads</h3><p>Captures Thingiverse’s Download All flow and merges multipart ZIP downloads into one package before importing them into MeshVault.</p></div>
           <div class="feature-row"><span class="scope">Connect</span><h3>Image capture controls</h3><p>Chooses whether animated GIFs are included. Set the extra gallery image limit in the import prompt, with your choice remembered for the next import.</p></div>
-          <div class="feature-row"><span class="scope">Connect</span><h3>Local or server target</h3><p>Sends to the local desktop connector or a selected LAN server, tests the connection, and refreshes the available destination folders. Server writes remain protected by the server PIN and licence/write state.</p></div>
+          <div class="feature-row"><span class="scope">Connect</span><h3>Local or server target</h3><p>Sends to the local desktop connector or a selected LAN server, tests the connection, and refreshes the available destination folders. Server writes remain protected by the server PIN and write permissions.</p></div>
           <div class="feature-row"><span class="scope">Connect</span><h3>Normal-download fallback</h3><p>Allows the browser download to continue normally when MeshVault is unavailable or rejects the import.</p></div>
           <div class="feature-row"><span class="scope">Connect</span><h3>Optional browser-only tools</h3><p>When MeshVault is not running, can still save generated Printables collections through Chrome, Edge, or Firefox. Chrome and Edge can also replace opaque MakerWorld filenames with useful model-title names.</p></div>
           <div class="feature-row"><span class="scope">Connect</span><h3>Folder visibility</h3><p>Hides selected destination folders or only their subfolders from Connect’s folder picker without hiding or changing those folders inside MeshVault.</p></div>
@@ -382,7 +396,7 @@
           <div class="feature-row"><span class="scope">Desktop</span><h3>Remote importing</h3><p>Imports files, folders, drag-and-drop content, and Connect downloads to the server when Server import is enabled.</p></div>
           <div class="feature-row"><span class="scope">Desktop</span><h3>Client-assisted server imports</h3><p>Can use the desktop computer for archive extraction and thumbnail generation during manual server imports, which is useful when the server has limited CPU power.</p></div>
           <div class="feature-row"><span class="scope">Desktop</span><h3>Local slicer for remote files</h3><p>Downloads a managed temporary copy of a remote model and opens it in the slicer installed on the desktop computer.</p></div>
-          <div class="feature-row"><span class="scope">Licence</span><h3>Compatible unlock sharing</h3><p>A desktop client unlocked with a direct key can unlock a compatible server while keeping PIN authentication and write permission as separate checks.</p></div>
+          <div class="feature-row"><span class="scope">Server</span><h3>Free server access</h3><p>Desktop and server library features are free. PIN authentication and write permissions continue to control access.</p></div>
         </div>
       </div>
     </section>
@@ -406,7 +420,6 @@
           <div class="feature-row"><span class="scope">Android</span><h3>Local Wi-Fi server</h3><p>Serves the phone library to a browser on the same network for browsing, details, downloads, selected-model ZIPs, metadata export, and permitted management actions.</p></div>
           <div class="feature-row"><span class="scope">Android Pro</span><h3>Desktop discovery and transfer</h3><p>Discovers compatible MeshVault apps on the LAN, sends individual models or the phone library to the desktop, and supports automatic backup/sync workflows.</p></div>
           <div class="feature-row"><span class="scope">Android Pro</span><h3>Direct slicer hand-off</h3><p>Sends a selected phone model through a connected desktop app to its configured slicer.</p></div>
-          <div class="feature-row"><span class="scope">Android Pro</span><h3>Ecosystem unlock</h3><p>Can synchronise a compatible Google Play Pro entitlement to connected desktop and server apps.</p></div>
         </div>
       </div>
     </section>
@@ -418,17 +431,17 @@
           <p>Core library outcomes are shared across the desktop clients, while installation, stores, security, startup, tray behaviour, and native pickers follow each operating system.</p>
         </div>
         <div class="feature-table">
-          <div class="feature-row"><span class="scope">Windows</span><h3>WinUI desktop client</h3><p>Available as a direct installer and Microsoft Store package, with direct-key or Store licensing, startup registration, tray support, and distribution-appropriate updates.</p></div>
-          <div class="feature-row"><span class="scope">macOS</span><h3>Native macOS clients</h3><p>Uses SwiftUI, native menus and lifecycle, security-scoped access for libraries and slicers, and Safari Connect. Separate native Apple silicon and Intel direct builds are available alongside the universal Mac App Store app. Both options include a seven-day trial.</p></div>
+          <div class="feature-row"><span class="scope">Windows</span><h3>WinUI desktop client</h3><p>Available as a direct installer and Microsoft Store package, with free library access, startup registration, tray support, and distribution-appropriate updates.</p></div>
+          <div class="feature-row"><span class="scope">macOS</span><h3>Native macOS clients</h3><p>Uses SwiftUI, native menus and lifecycle, security-scoped access for libraries and slicers, and Safari Connect. Separate native Apple silicon and Intel direct builds are available alongside the universal Mac App Store app. Both distributions are free from 2.3.</p></div>
           <div class="feature-row"><span class="scope">Linux</span><h3>Avalonia desktop client</h3><p>Uses Linux-native file launching, pickers, desktop/menu integration, DEB packaging, and desktop-environment-dependent tray and startup support.</p></div>
-          <div class="feature-row"><span class="scope">Desktop</span><h3>Onboarding</h3><p>Chooses a language, local library or server, FDM/resin/CNC apps, a default making mode, and an available trial or unlock route.</p></div>
-          <div class="feature-row"><span class="scope">Desktop</span><h3>Grouped options</h3><p>Separates app, library, actions, viewer, connections, and licensing settings rather than presenting one undifferentiated settings page.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>Onboarding</h3><p>Chooses a language, local library or server, FDM/resin/CNC apps, a default making mode, and the optional affiliate-link preference.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>Grouped options</h3><p>Separates app, library, actions, viewer, connections, slicers and support settings rather than presenting one undifferentiated settings page.</p></div>
           <div class="feature-row"><span class="scope">Desktop</span><h3>Cache and database recovery</h3><p>Can cache library images locally per device, clears or rebuilds the image cache, opens the settings folder, and provides a deliberate library-database reset route. Remote-server images are cached locally automatically.</p></div>
-          <div class="feature-row"><span class="scope">Desktop</span><h3>Layout and onboarding recovery</h3><p>Resets an off-screen or broken window layout and can rerun onboarding without deleting the library or licence state.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>Layout and onboarding recovery</h3><p>Resets an off-screen or broken window layout and can rerun onboarding without deleting the library.</p></div>
           <div class="feature-row"><span class="scope">Desktop</span><h3>Localisation</h3><p>Supports system-default selection and 13 language families with regional variants, including English, Czech, Danish, German, Spanish, Finnish, French, Hebrew, Norwegian, Dutch, Brazilian Portuguese, Russian, and Swedish.</p></div>
           <div class="feature-row"><span class="scope">Desktop</span><h3>Feedback</h3><p>Sends optional feedback with app version, platform, and distribution context, with a contact address optional unless an email workflow requires it.</p></div>
-          <div class="feature-row"><span class="scope">Desktop</span><h3>Diagnostics</h3><p>Provides focused logs for startup, scan, import, thumbnails, preview, remote connections, updates, licensing, and Connect, with automatic cleanup of old logs.</p></div>
-          <div class="feature-row"><span class="scope">Licence</span><h3>Trial and unlocks</h3><p>Includes a seven-day desktop/server trial, a $19.99 direct licence key, store licensing on Windows and macOS, optional Android Pro ecosystem activation, and free MeshVault Mobile releases.</p></div>
+          <div class="feature-row"><span class="scope">Desktop</span><h3>Diagnostics</h3><p>Provides focused logs for startup, scan, import, thumbnails, preview, remote connections, updates and Connect, with automatic cleanup of old logs.</p></div>
+          <div class="feature-row"><span class="scope">Desktop / Server</span><h3>Free from 2.3</h3><p>Full library access without a trial, licence key, store purchase or subscription. Optional filament affiliate links help keep MeshVault free; disable them in Options to use standard links.</p></div>
           <div class="feature-row"><span class="scope">Privacy</span><h3>No required account or vendor cloud</h3><p>The core library stays in your folders and database. An account is not required to catalogue models, and local server access remains under your control.</p></div>
         </div>
       </div>
@@ -458,10 +471,10 @@
           <h2>Current, public, and correctable.</h2>
         </div>
         <div class="availability-copy">
-          <p>This reference was checked against the released MeshVault desktop behaviour, the Connect extension, and the current Android and iOS MeshVault Mobile implementations on <strong>21 September 2026</strong>.</p>
+          <p>This reference was updated for MeshVault 2.3 and Connect 2.3.0.1 on <strong>7 October 2026</strong>. Mobile details retain their September reference; release availability can vary by platform.</p>
           <p>Windows is the desktop behavioural reference. Linux and macOS target the same library outcomes while using native controls, but operating-system integration and release timing can differ.</p>
-          <p>Features still only present in an unreleased development workspace are not included here. If a released capability is missing or described incorrectly, <a href="https://github.com/Xalies/xalies.github.io/issues">report a correction</a>.</p>
-          <span class="checked">Desktop 2.2.0.0 · Connect 2.1.0.0 · updated 2026-09-21</span>
+          <p>The 2.3 features describe the release being rolled out. If a released capability is missing or described incorrectly, <a href="https://github.com/Xalies/xalies.github.io/issues">report a correction</a>.</p>
+          <span class="checked">Desktop 2.3.0.0 · Connect 2.3.0.1 · updated 2026-10-07</span>
         </div>
       </div>
     </section>
@@ -471,11 +484,11 @@
         <div>
           <p class="eyebrow">Try MeshVault</p>
           <h2>See if MeshVault fits your library.</h2>
-          <p>Windows, Linux, macOS, and server builds include a seven-day trial. MeshVault Mobile for Android and iOS is free.</p>
+          <p>MeshVault 2.3 desktop and server builds are free on Windows, Linux and macOS. MeshVault Mobile is free to download.</p>
         </div>
         <div class="actions">
           <a class="button primary" href="../index.html#downloads">Download MeshVault</a>
-          <a class="button" href="https://meshvault.lemonsqueezy.com/checkout/buy/55a16f70-5c0a-4fd8-a808-5b0108fd6d71?media=0&amp;logo=0&amp;discount=0&amp;dark=1">Buy once — $19.99</a>
+          <a class="button" href="../index.html#whats-new">What’s new in 2.3</a>
         </div>
       </div>
     </section>
