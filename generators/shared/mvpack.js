@@ -87,10 +87,10 @@ export function saveFile(blob, name) {
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 
-export function canvasThumbnail(canvas) {
+export function canvasThumbnail(canvas, background = '#19231f') {
   const image = document.createElement('canvas'); image.width = 1280; image.height = 720;
   const context = image.getContext('2d'), scale = Math.min(image.width / canvas.width, image.height / canvas.height);
-  context.fillStyle = '#19231f'; context.fillRect(0, 0, image.width, image.height);
+  context.fillStyle = background; context.fillRect(0, 0, image.width, image.height);
   const width = canvas.width * scale, height = canvas.height * scale;
   context.drawImage(canvas, (image.width - width) / 2, (image.height - height) / 2, width, height);
   return new Promise((resolve, reject) => image.toBlob(blob => blob ? resolve(blob) : reject(new Error('Could not capture the preview.')), 'image/png'));

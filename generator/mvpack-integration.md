@@ -234,6 +234,31 @@ Printed status is personal library state. **Do not export `printedStatus`**,
 even as `0`. It is not restored from imported package metadata. Printing advice
 and `printSettingsJson` remain supported.
 
+## Description links and video
+
+`descriptionHtml` can carry escaped text, clickable links and a YouTube iframe.
+[Bracket Works](../generators/brackets/) demonstrates editable author/profile
+values, a related-page link, an author support link and an optional video guide.
+The dedicated `exportDonationUrl` belongs to the generator; an author's support
+link belongs in the description, rather than an invented metadata field.
+
+```html
+<p><a href="https://example.org/tutorial">Project tutorial</a></p>
+<div class="video-embed">
+  <iframe src="https://www.youtube-nocookie.com/embed/VIDEO_ID"
+    title="YouTube video guide" width="560" height="315" loading="lazy"
+    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+<p><a href="https://www.youtube.com/watch?v=VIDEO_ID">Watch on YouTube</a></p>
+```
+
+Replace `VIDEO_ID` with a real 11-character YouTube video ID. Escape supplied
+text and attribute values, validate URLs, and build embeds only for supported
+YouTube hosts. Include a watch link because HTML rendering varies by client.
+Video playback requires internet access and a video whose owner permits embedding;
+the package stores HTML, not an offline video. MeshVault Windows recognises YouTube
+iframes in descriptions; playback still needs verification in the target client.
+
 ## Model dependencies
 
 Include every locally referenced model dependency, preserving its path relative
