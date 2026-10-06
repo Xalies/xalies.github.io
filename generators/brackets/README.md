@@ -25,3 +25,11 @@ Optional related-page and YouTube URLs become description links and a privacy-
 enhanced iframe with a watch-link fallback. Only supported YouTube hosts and
 11-character video IDs are accepted. Playback requires an online client and
 an embeddable video; a packaged iframe is not an offline video download.
+
+Optional 45° chamfers have independent outer-edge and hole-opening sizes; zero
+keeps square edges. Outer bevels cover convex corners across the width and the
+side-cap perimeter, preserving the internal right-angle joint. Size is capped
+at a quarter of thickness and 3 mm. Both hole mouths receive a bevel smaller
+than half the thickness, with 3 mm maximum and a straight bore in between.
+Extra hole clearance is validated after chamfering. This is an edge break, not
+a screw-head countersink. Chamfer sizes travel in settings and description.
