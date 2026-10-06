@@ -95,3 +95,29 @@ footer { border-top: 1px solid var(--line); padding: 24px 0 36px; font-size: .76
   .vessel-studio .preview > section.export-panel { grid-column: 2; grid-row: 1 / span 4; border-top: 0; border-left: 1px solid var(--line); padding: 20px 0 0 28px; }
 }
 @media(max-width: 850px) { body { padding: 0 16px; } header nav { gap: 12px; } .workspace, .integration { grid-template-columns: 1fr; gap: 24px; } #settings { max-height: none; border-right: 0; padding-right: 0; } #viewer { height: 390px; } main { padding-top: 24px; } }
+
+.assembly-notes { min-width: 0; padding-top: 20px; }
+.assembly-notes > .step { margin-top: 0; }
+.assembly-notes ol { padding-left: 20px; font-size: .85rem; color: var(--muted); }
+.assembly-notes li { margin-bottom: 16px; }
+.assembly-notes strong { color: #e0e7e4; }
+.rich-description { max-width: 1200px; margin: 24px auto 40px; padding-top: 24px; border-top: 1px solid var(--line); font-size: 1rem; }
+.rich-description figure { margin: 28px 0; }
+.rich-description img { display: block; width: 100%; height: auto; }
+.rich-description figcaption { color: var(--muted); font-size: .82rem; padding-top: 10px; }
+.rich-description h3 { margin-top: 32px; font-size: 1.2rem; }
+.rich-description table { width: 100%; border-collapse: collapse; font-size: .85rem; }
+.rich-description th, .rich-description td { padding: 12px; border-bottom: 1px solid var(--line); text-align: left; }
+.rich-description li { margin-bottom: 12px; }
+@media(min-width: 1300px) {
+  .assembly-studio h1 { font-size: 2.4rem; margin: 6px 0 8px; }
+  .assembly-studio .eyebrow { margin-top: 0; }
+  .assembly-studio .intro { max-width: 1200px; }
+  .assembly-studio .workspace { grid-template-columns: 300px minmax(0,1fr) 320px; gap: 24px; margin-top: 20px; }
+  .assembly-studio #settings, .assembly-notes { max-height: calc(100vh - 230px); overflow-y: auto; scrollbar-width: thin; }
+  .assembly-studio #viewer { height: clamp(360px, 48vh, 760px); }
+  .assembly-notes { border-left: 1px solid var(--line); padding-left: 24px; }
+}
+@media(min-width: 851px) and (max-width: 1299px) { .assembly-notes { grid-column: 2; border-top: 1px solid var(--line); } }
+
+.assembly-studio .export-actions select { width: auto; max-width: 100%; }

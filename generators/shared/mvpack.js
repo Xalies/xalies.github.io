@@ -1,16 +1,20 @@
 import { zipSync, strToU8 } from './vendor/fflate.js';
 export const demoAccount = { name: 'Xalies' };
 
-// Both demos package the same bytes as their normal STL downloads.
-async function packageModel({ file, title, author, generatorName, exportDonationUrl, sourceUrl, summary, tags, settings, printNotes, thumbnail }, prefix = '') {
+// Package the same model bytes as the normal downloads.
+async function packageModel({ file, title, author, authorUrl, generatorName, exportDonationUrl, sourceUrl, summary, tags, settings, printNotes, thumbnail, descriptionHtml, packageInfo, gallery = [], documents = [] }, prefix = '') {
   const name = prefix + file.name, documentPath = `documents/${prefix}generator-settings.json`, thumbnailPath = `images/${prefix}thumbnail.png`;
   const metadata = {
     schema: 'meshvault.model', version: 1, title,
     exportedUtc: new Date().toISOString(), generatorName, sourceUrl, summary, tags,
     ...(author ? { author } : {}),
+    ...(authorUrl ? { authorUrl } : {}),
+    ...(descriptionHtml ? { descriptionHtml } : {}),
+    ...(packageInfo ? { packageInfo } : {}),
     ...(exportDonationUrl ? { exportDonationUrl } : {}),
     fileName: name, relativePath: name, fileType: file.name.split('.').pop().toUpperCase(), fileSizeBytes: file.size,
-    documentFiles: [documentPath],
+    documentFiles: [documentPath, ...documents.map(item => `documents/${prefix}${item.name}`)],
+    ...(gallery.length ? { extraImageFiles: gallery.map(item => `images/${prefix}${item.name}`) } : {}),
     ...(printNotes ? { printSettingsJson: printNotes } : {}),
     ...(thumbnail ? { thumbnailFile: thumbnailPath } : {})
   };
@@ -19,6 +23,8 @@ async function packageModel({ file, title, author, generatorName, exportDonation
     [documentPath]: strToU8(JSON.stringify(settings, null, 2))
   };
   if (thumbnail) entries[thumbnailPath] = new Uint8Array(await thumbnail.arrayBuffer());
+  for (const item of gallery) entries[`images/${prefix}${item.name}`] = new Uint8Array(await item.blob.arrayBuffer());
+  for (const item of documents) entries[`documents/${prefix}${item.name}`] = new Uint8Array(await item.blob.arrayBuffer());
   return { metadata, entries };
 }
 
