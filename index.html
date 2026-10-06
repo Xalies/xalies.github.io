@@ -48,15 +48,14 @@
 
     a { text-underline-offset:4px; }
     a:hover { color:#92e4b1; }
-    .brand { text-decoration:none; letter-spacing:0; text-transform:none; font-size:1.3rem; }
+    .brand { margin:0; text-decoration:none; letter-spacing:0; text-transform:none; font-size:1.3rem; }
+    .brand a { text-decoration:none; }
     .brand span { color:#a9b9b1; font-weight:400; }
     header nav { display:flex; flex-wrap:wrap; gap:26px; letter-spacing:.05em; }
     header nav a { text-decoration:none; }
-    .intro { display:flex; justify-content:space-between; align-items:end; gap:48px; padding:42px 0; }
-    .intro h1 { margin:12px 0 0; font:700 clamp(2.6rem,4vw,4.5rem)/1.04 Arial,sans-serif; letter-spacing:-.055em; }
-    .intro > p { max-width:500px; color:#bdc8c2; font-size:1rem; line-height:1.7; margin:0 0 5px; }
     .kicker { margin:0 0 10px; color:#92e4b1; font-size:.68rem; font-weight:700; letter-spacing:.15em; text-transform:uppercase; }
     .directory-section { scroll-margin-top:24px; padding:24px 0 32px; border-top:1px solid #53605d; }
+    main > .directory-section:first-child { border-top:0; }
     .section-heading { display:flex; justify-content:space-between; align-items:end; gap:24px; margin-bottom:24px; }
     .section-heading h2 { margin:0; font-size:1.9rem; letter-spacing:-.04em; }
     .section-heading > p { margin:0; color:#a9b9b1; font-size:.85rem; }
@@ -116,13 +115,11 @@
     }
 
     @media (max-width:1200px) { .project { grid-template-columns:140px minmax(0,1fr); gap:18px; } .projects { gap:24px; } }
-    @media (max-width:900px) { .projects { grid-template-columns:1fr; } .intro { align-items:start; gap:24px; } .intro > p { max-width:320px; } .section-heading { align-items:start; } }
+    @media (max-width:900px) { .projects { grid-template-columns:1fr; } .section-heading { align-items:start; } }
     @media (max-width:600px) {
       .shell { width:calc(100% - 32px); }
       header { align-items:start; flex-direction:column; gap:18px; padding:20px 0; }
       header nav { gap:16px; font-size:.68rem; }
-      .intro { display:block; padding:32px 0; }
-      .intro > p { max-width:none; margin-top:20px; }
       .section-heading { display:block; }
       .section-heading > p { margin-top:12px; }
       .project { grid-template-columns:104px minmax(0,1fr); gap:16px; }
@@ -140,15 +137,11 @@
   <a class="skip-link" href="#main">Skip to projects</a>
   <div class="shell">
     <header>
-      <a class="brand" href="./">Xalies<span> / Projects</span></a>
+      <h1 class="brand"><a href="./">Xalies<span> / Projects</span></a></h1>
       <nav aria-label="Main navigation"><a href="#meshvault">MeshVault</a><a href="#generators">Generators</a><a href="#tools">Apps & utilities</a><a href="https://github.com/Xalies">GitHub ↗</a></nav>
     </header>
 
     <main id="main">
-      <section class="intro" aria-labelledby="page-title">
-        <div><p class="kicker">Independent projects by Xalies</p><h1 id="page-title">Software. Tools.<br>Things to make.</h1></div>
-        <p>Keep your models organised, make something custom, or open a useful tool. Everything here has a direct route to its app, download or source.</p>
-      </section>
       <section id="meshvault" class="directory-section" aria-labelledby="meshvault-heading">
         <div class="section-heading"><div><p class="kicker">01 / Your model library</p><h2 id="meshvault-heading">MeshVault</h2></div><p>Desktop, server and mobile tools for your 3D models.</p></div>
         <div class="projects meshvault-projects"><article class="project">
