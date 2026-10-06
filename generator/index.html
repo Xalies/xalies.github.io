@@ -181,9 +181,13 @@
           <p class="step">Optional multi-model form</p>
           <h2>Several model files need a manifest</h2>
           <p>When one export intentionally produces several independent library items, use <code>meshvault.models.json</code> with one metadata object per model. Each object identifies its <code>fileName</code> and exact portable <code>relativePath</code>.</p>
+          <p>Declare <code>packType: "collection"</code> for separate items, or <code>packType: "project"</code> for one retained archive with accessible parts. Put a project's shared title, description, images and documents in the root <code>project</code> object. Import options cannot change that identity.</p>
+          <p>A project without a declared folder enters <strong>Imports to Review</strong>. Only <code>project.relativePath</code>, such as <code>Furniture/riser.mvpack</code>, sets its library location; internal part folders do not. Unmarked packages keep their legacy behaviour. Project support requires an updated MeshVault build.</p>
+          <p><a href="mvpack-integration.md#package-identity">Read the project manifest example</a> · <a href="../generators/assembly/">Try the assembly project demo</a></p>
           <div class="code-card"><div class="code-title">Multi-model outline</div><pre><code>{
   "schema": "meshvault.models",
   "version": 1,
+  "packType": "collection",
   "models": [
     {
       "schema": "meshvault.model",

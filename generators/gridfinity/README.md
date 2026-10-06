@@ -51,7 +51,8 @@ possible plates. Check the actual printable region in the slicer.
 **Download plate ZIP** contains numbered STL or 3MF plates. Each plate contains
 the requested copies, placed on the bed with their bases at Z=0. These are model
 layouts, not sliced printer projects. **Export set for MeshVault** packages the
-same plate geometry with `meshvault.models.json`; each plate becomes one library
+same plate geometry with `meshvault.models.json` and `packType: "collection"`;
+each plate becomes one library
 item with its layout preview and an attached JSON containing bed dimensions,
 placements, quantities (as individual copy entries), and original design settings.
 The normal single-part STL/3MF and `.mvpack` exports remain available.

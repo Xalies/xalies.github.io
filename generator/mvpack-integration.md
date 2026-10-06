@@ -4,7 +4,7 @@ Use this document as the complete implementation brief for a developer or coding
 assistant. It does not assume a programming language, framework, renderer,
 backend, model format, or set of generator controls.
 
-Last checked against MeshVault Core on 5 October 2026.
+Last checked against MeshVault Core on 6 October 2026.
 
 MeshVault is downloadable software released for Windows, Linux and macOS. Users
 keep their own libraries; generator integration requires no cloud SaaS account.
@@ -299,10 +299,56 @@ path. Use `/` separators. Do not use absolute paths, drive letters, leading `/`,
 For a single-model package, `relativePath` should match the model entry path. If
 it is omitted, MeshVault uses the entry path.
 
-## Multi-model package
+## Package identity
 
-Use this only when one generator export intentionally contains several models
-that should appear as separate MeshVault library items. Do not use the
+New multi-model exports declare `packType` at the root of
+`meshvault.models.json` (or its packed `.mvdata` equivalent):
+
+- `project`: one library item, retaining the `.mvpack` archive and accessible
+  parts. Put shared descriptive metadata in the root `project` object.
+- `collection`: separate library items, with metadata in each `models` entry.
+
+The declaration is authoritative; import and archive-review options cannot
+change it. Unknown types fail visibly. Existing unmarked packages retain their
+legacy import behaviour. Use a MeshVault build with project-package support;
+older builds may ignore the declaration and split a project.
+
+```json
+{
+  "schema": "meshvault.models",
+  "version": 1,
+  "packType": "project",
+  "project": {
+    "title": "Display riser",
+    "author": "Xalies",
+    "descriptionHtml": "<h2>Assembly</h2><p>Fit the rails into the frames.</p>",
+    "thumbnailFile": "images/assembled.png",
+    "documentFiles": ["documents/assembly-guide.html"]
+  },
+  "models": [
+    {"fileName": "frame.3mf", "relativePath": "Parts/frame.3mf"},
+    {"fileName": "rail.3mf", "relativePath": "Parts/rail.3mf"}
+  ]
+}
+```
+
+Include every declared part and referenced resource in the ZIP. Declare every
+supported model file exactly once. Paths must be portable and safe. The project
+object accepts the same descriptive fields, images and attachments as a model.
+HTML rendering varies between clients; an attached offline guide preserves the
+full instructions and embedded pictures.
+
+Project placement uses optional `project.relativePath`, such as
+`Furniture/display-riser.mvpack`. Without a declared folder, the retained archive
+goes into **Imports to Review**. Internal paths such as `Parts/frame.3mf` describe
+archive contents and do not place the project in a library folder. Review still
+lets users organise the item; its project identity is fixed. Re-export preserves
+that identity and the parts, without wrapping another `.mvpack` around them.
+
+## Multi-model collection
+
+Use `packType: "collection"` when one generator export intentionally contains
+several models that should appear as separate MeshVault library items. Do not use the
 single-model metadata file when the ZIP contains more than one supported model.
 
 ```text
@@ -318,6 +364,7 @@ Generated-Set.mvpack
 {
   "schema": "meshvault.models",
   "version": 1,
+  "packType": "collection",
   "exportedUtc": "2026-10-01T00:00:00Z",
   "models": [
     {
@@ -357,7 +404,7 @@ for additional matching.
    bytes as ordinary ZIP entries and reference them with `thumbnailFile`,
    `extraImageFiles` or `documentFiles`.
 7. Create `meshvault.model.json` for one model or `meshvault.models.json` for
-   several models.
+   several models, declaring `packType` as `project` or `collection`.
 8. Create a standard, unencrypted ZIP containing the model, its local dependencies, metadata and
    referenced images and attachments.
 9. Download or return the ZIP with a `.mvpack` filename and the MeshVault MIME

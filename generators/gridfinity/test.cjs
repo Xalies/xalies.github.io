@@ -127,9 +127,9 @@ const server = http.createServer((req, res) => {
             valid &&= points.every(([x,y,z]) => x>=4.999 && y>=4.999 && x<=95.001 && y<=95.001 && z>=-.001);
             valid &&= new Set(manifest.models.map(m=>m.relativePath)).size === manifest.models.length;
           }
-          return { valid, schema: manifest.schema, version: manifest.version, plates: manifest.models.length, triangles, copies };
+          return { valid, packType: manifest.packType, schema: manifest.schema, version: manifest.version, plates: manifest.models.length, triangles, copies };
         }, {bytes:result.bytes,format});
-        assert(check.valid); assert.equal(check.schema,'meshvault.models'); assert.equal(check.version,1); assert.equal(check.plates,2); assert.equal(check.copies,7);
+        assert(check.valid); assert.equal(check.packType,'collection'); assert.equal(check.schema,'meshvault.models'); assert.equal(check.version,1); assert.equal(check.plates,2); assert.equal(check.copies,7);
         assert.equal(check.triangles,binTriangles*6+baseTriangles,'Every requested part must appear, without changing its triangles');
         const zip = await downloaded('#export-set-zip'); assert.equal(zip.name,'gridfinity-set.zip');
         assert(await page.evaluate(async ({bytes,format}) => { const {unzipSync}=await import('/generators/shared/vendor/fflate.js'); const keys=Object.keys(unzipSync(new Uint8Array(bytes))); return keys.length===2 && keys.every(k=>k.endsWith(`.${format}`)); },{bytes:zip.bytes,format}));

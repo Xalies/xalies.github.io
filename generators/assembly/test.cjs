@@ -45,21 +45,23 @@ const server = http.createServer((req,res)=>{
     for(const format of ['3mf','stl']){
       await page.locator('#format').selectOption(format);
       const zip=await downloaded('#download-kit'),pack=await downloaded('#mvpack');
+      if(format==='3mf'&&process.env.PROJECT_FIXTURE)fs.writeFileSync(process.env.PROJECT_FIXTURE,pack);
       const result=await page.evaluate(async({zip,pack,format})=>{
         const {unzipSync,strFromU8}=await import('../shared/vendor/fflate.js');
         const normal=unzipSync(new Uint8Array(zip)),entries=unzipSync(new Uint8Array(pack)),meta=JSON.parse(strFromU8(entries['meshvault.models.json']));
-        if(Object.keys(normal).length!==5||meta.schema!=='meshvault.models'||meta.models.length!==5||entries['meshvault.model.json'])return false;
+        if(Object.keys(normal).length!==5||meta.schema!=='meshvault.models'||meta.models.length!==5||meta.packType!=='project'||entries['meshvault.model.json'])return false;
+        if(meta.project.author!=='Xalies'||meta.project.extraImageFiles.length!==3||meta.project.documentFiles.length!==3)return false;
         for(const m of meta.models){
-          if(m.author!=='Xalies'||m.extraImageFiles.length!==3||m.documentFiles.length!==3||JSON.parse(m.printSettingsJson).quantity!==1)return false;
+          if(m.author!=='Xalies'||m.extraImageFiles||m.documentFiles.length!==1||JSON.parse(m.printSettingsJson).quantity!==1)return false;
           const name=m.fileName.replace(/^\d+-/,''),bytes=entries[m.relativePath];
           if(!normal[m.relativePath]||!bytes.every((v,i)=>v===normal[m.relativePath][i]))return false;
           if(format==='3mf'){const xml=strFromU8(unzipSync(bytes)['3D/3dmodel.model']);if(!xml.includes('unit="millimeter"')||!xml.includes('<triangle'))return false;}
           else {const d=new DataView(bytes.buffer,bytes.byteOffset,bytes.byteLength);if(bytes.length!==84+50*d.getUint32(80,true))return false;}
-          for(const file of [m.thumbnailFile,...m.extraImageFiles]){const png=entries[file];if(!png)return false;const d=new DataView(png.buffer,png.byteOffset,png.byteLength);if(d.getUint32(16)!==1280||d.getUint32(20)!==720)return false;}
-          for(const file of m.documentFiles)if(!entries[file])return false;
-          const guide=strFromU8(entries[m.documentFiles.find(f=>f.endsWith('assembly-guide.html'))]);
+          for(const file of [meta.project.thumbnailFile,...meta.project.extraImageFiles]){const png=entries[file];if(!png)return false;const d=new DataView(png.buffer,png.byteOffset,png.byteLength);if(d.getUint32(16)!==1280||d.getUint32(20)!==720)return false;}
+          for(const file of [...m.documentFiles,...meta.project.documentFiles])if(!entries[file])return false;
+          const guide=strFromU8(entries[meta.project.documentFiles.find(f=>f.endsWith('assembly-guide.html'))]);
           if(!guide.startsWith('<!doctype html>')||!guide.includes('data:image/png;base64,')||guide.includes('src="http'))return false;
-          const doc=new DOMParser().parseFromString(m.descriptionHtml,'text/html');
+          const doc=new DOMParser().parseFromString(meta.project.descriptionHtml,'text/html');
           if(doc.querySelectorAll('img').length!==3||!doc.querySelector('table')||doc.querySelectorAll('ol li').length!==4||doc.querySelectorAll('a[href^="https://"]').length<3)return false;
         }return true;
       },{zip:[...zip],pack:[...pack],format});assert(result,'Model bytes, rich HTML, embedded pictures, gallery and document references');

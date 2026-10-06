@@ -15,8 +15,11 @@ is not a packed bed layout. No physically tested load rating is claimed. Dry-fit
 before gluing and verify printer-specific tolerances.
 
 Normal export is a ZIP of five named STL or 3MF files. `.mvpack` uses
-`meshvault.models.json` so every part becomes a separate MeshVault library item.
-The demo account supplies Xalies as author. Each model includes:
+`meshvault.models.json` with `packType: "project"`: the archive remains one
+MeshVault library item, with five accessible parts. A root-level project enters
+Imports to Review. This requires a MeshVault build with project-package support;
+older builds may split the parts. The demo account supplies Xalies as author.
+The shared `project` metadata includes:
 
 - Rich `descriptionHtml`: headings, parts table, numbered steps, links and actual
   generated pictures. PNG pictures are embedded as data URLs so HTML does not
@@ -24,7 +27,9 @@ The demo account supplies Xalies as author. Each model includes:
 - A 1280 × 720 thumbnail and three PNG gallery files through `extraImageFiles`.
 - Offline `assembly-guide.html`, `parts-list.csv` and generation parameters
   through `documentFiles`. The HTML guide embeds its pictures.
-- Part-specific print notes, generator / source credit and a support link.
+- Shared print notes, generator / source credit and a support link.
+
+Each part keeps its title, print settings and generation parameters.
 
 The standalone guide is a complete HTML document; description metadata is an
 HTML fragment. Rich rendering varies by MeshVault client. Gallery files and the

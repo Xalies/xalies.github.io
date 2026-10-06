@@ -34,13 +34,20 @@ export async function createPackage(model) {
   return new Blob([zipSync(entries, { level: 1 })], { type: 'application/vnd.meshvault.package+zip' });
 }
 
-export async function createSetPackage(models, meshvault) {
+export async function createSetPackage(models, meshvault, project) {
   if (!models.length) throw new Error('Add at least one model to the set.');
-  const entries = {}, manifest = { schema: 'meshvault.models', version: 1, exportedUtc: new Date().toISOString(), models: [] };
+  const entries = {}, manifest = { schema: 'meshvault.models', version: 1, packType: project ? 'project' : 'collection', exportedUtc: new Date().toISOString(), models: [] };
   for (let i = 0; i < models.length; i++) {
     const { metadata, entries: files } = await packageModel(models[i], `${String(i + 1).padStart(2, '0')}-`);
     if (meshvault) { Object.assign(entries, files); manifest.models.push(metadata); }
     else entries[metadata.relativePath] = files[metadata.relativePath];
+  }
+  if (meshvault && project) {
+    const { metadata, entries: resources } = await packageModel({ ...project, file: models[0].file }, 'project-');
+    delete resources[metadata.relativePath];
+    for (const field of ['fileName', 'relativePath', 'fileType', 'fileSizeBytes']) delete metadata[field];
+    if (project.relativePath) metadata.relativePath = project.relativePath;
+    manifest.project = metadata; Object.assign(entries, resources);
   }
   if (meshvault) entries['meshvault.models.json'] = strToU8(JSON.stringify(manifest, null, 2));
   return new Blob([zipSync(entries, { level: 1 })], { type: meshvault ? 'application/vnd.meshvault.package+zip' : 'application/zip' });
