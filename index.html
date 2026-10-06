@@ -46,133 +46,46 @@
 
     header h1 { margin: 0; font: inherit; }
 
-    .projects {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      grid-auto-rows: 1fr;
-      gap: 40px 28px;
-      padding: 36px 0 48px;
-    }
-
-    .project {
-      display: flex;
-      min-width: 0;
-      flex-direction: column;
-      padding-bottom: 32px;
-      border-bottom: 1px solid #53605d;
-    }
-
-    .thumbnail {
-      position: relative;
-      aspect-ratio: 16 / 10;
-      overflow: hidden;
-      border: 1px solid #53605d;
-      background: #0e1417;
-    }
-
-    .thumbnail img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: top center;
-    }
-
-    .mobile-thumbnail {
-      background: #514091;
-    }
-
-    .mobile-thumbnail img {
-      width: auto;
-      margin: 0 auto;
-      object-fit: contain;
-    }
-
-    .pulse-thumbnail img, .haos-thumbnail img, .resizer-thumbnail img { object-fit: contain; }
-
-    .project-copy {
-      display: flex;
-      flex: 1;
-      min-width: 0;
-      flex-direction: column;
-    }
-
-    .project-number {
-      margin: 24px 0 14px;
-      font: 700 .76rem/1 Arial, Helvetica, sans-serif;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-    }
-
-    .project h2 {
-      margin: 0;
-      font-size: clamp(2.4rem, 3vw, 3.8rem);
-      letter-spacing: -.06em;
-      line-height: .92;
-    }
-
-    .description {
-      max-width: 42rem;
-      margin: 18px 0 28px;
-      color: #bdc8c2;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 1.05rem;
-      line-height: 1.55;
-    }
-
-    .facts {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      margin: auto 0 32px;
-      border-top: 1px solid #53605d;
-      border-bottom: 1px solid #53605d;
-    }
-
-    .fact {
-      padding: 13px 0;
-    }
-
-    .fact + .fact {
-      padding-left: 18px;
-      border-left: 1px solid #53605d;
-    }
-
-    .fact dt {
-      margin-bottom: 5px;
-      color: #a9b9b1;
-      font-size: .68rem;
-      font-weight: 700;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-    }
-
-    .fact dd {
-      margin: 0;
-      font-size: .95rem;
-      font-weight: 700;
-    }
-
-    .project-link {
-      align-self: flex-start;
-      padding-bottom: 5px;
-      border-bottom: 2px solid currentColor;
-      font-size: .84rem;
-      font-weight: 800;
-      letter-spacing: .08em;
-      text-decoration: none;
-      text-transform: uppercase;
-    }
-
-    .project-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 18px;
-    }
-
-    .project-link:hover,
-    .project-link:focus-visible {
-      color: #92e4b1;
-    }
+    a { text-underline-offset:4px; }
+    a:hover { color:#92e4b1; }
+    .brand { text-decoration:none; letter-spacing:0; text-transform:none; font-size:1.3rem; }
+    .brand span { color:#a9b9b1; font-weight:400; }
+    header nav { display:flex; flex-wrap:wrap; gap:26px; letter-spacing:.05em; }
+    header nav a { text-decoration:none; }
+    .intro { display:flex; justify-content:space-between; align-items:end; gap:48px; padding:42px 0; }
+    .intro h1 { margin:12px 0 0; font:700 clamp(2.6rem,4vw,4.5rem)/1.04 Arial,sans-serif; letter-spacing:-.055em; }
+    .intro > p { max-width:500px; color:#bdc8c2; font-size:1rem; line-height:1.7; margin:0 0 5px; }
+    .kicker { margin:0 0 10px; color:#92e4b1; font-size:.68rem; font-weight:700; letter-spacing:.15em; text-transform:uppercase; }
+    .directory-section { scroll-margin-top:24px; padding:24px 0 32px; border-top:1px solid #53605d; }
+    .section-heading { display:flex; justify-content:space-between; align-items:end; gap:24px; margin-bottom:24px; }
+    .section-heading h2 { margin:0; font-size:1.9rem; letter-spacing:-.04em; }
+    .section-heading > p { margin:0; color:#a9b9b1; font-size:.85rem; }
+    .projects { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px 40px; }
+    .project { display:grid; grid-template-columns:190px minmax(0,1fr); gap:24px; min-width:0; padding:0 0 24px; border-bottom:1px solid #34423e; }
+    .thumbnail { display:block; position:relative; aspect-ratio:4 / 3; overflow:hidden; background:#0e1417; border:1px solid #34423e; }
+    .thumbnail img { display:block; width:100%; height:100%; object-fit:cover; object-position:top center; }
+    .mobile-thumbnail { background:#514091; }
+    .mobile-thumbnail img { width:auto; margin:0 auto; object-fit:contain; }
+    .pulse-thumbnail img, .haos-thumbnail img, .resizer-thumbnail img { object-fit:contain; }
+    .project-copy { min-width:0; display:flex; flex-direction:column; align-items:start; }
+    .project-number { margin:0 0 8px; font-size:.65rem; font-weight:700; color:#a9b9b1; letter-spacing:.1em; text-transform:uppercase; }
+    .project h3 { margin:0; font-size:1.65rem; letter-spacing:-.035em; line-height:1.15; }
+    .description { color:#bdc8c2; font: .85rem/1.6 Arial,sans-serif; margin:12px 0; max-width:48rem; }
+    .facts { display:flex; flex-wrap:wrap; gap:14px 24px; margin:0 0 16px; font-size:.75rem; }
+    .fact { display:flex; gap:7px; }
+    .fact dt { color:#a9b9b1; }
+    .fact dd { margin:0; }
+    .project-links { display:flex; flex-wrap:wrap; gap:18px; margin-top:auto; }
+    .project-link { font-size:.78rem; font-weight:700; text-decoration:none; border-bottom:1px solid #53605d; padding-bottom:4px; }
+    .project-copy > .project-link { margin-top:auto; }
+    .guide-link { display:flex; align-items:center; justify-content:space-between; gap:24px; padding:16px 20px; margin-bottom:28px; background:#1b2924; border-left:3px solid #92e4b1; font-size:.82rem; line-height:1.5; }
+    .guide-link span { color:#bdc8c2; }
+    .guide-link a { flex-shrink:0; color:#92e4b1; font-weight:700; }
+    .generator-projects .thumbnail { aspect-ratio:16 / 10; }
+    .generator-projects .facts { display:none; }
+    .skip-link { position:absolute; top:-100px; left:20px; background:#92e4b1; color:#141a1c; padding:12px; z-index:10; }
+    .skip-link:focus { top:12px; }
+    :focus-visible { outline:2px solid #92e4b1; outline-offset:5px; }
 
     footer {
       padding: 16px 0 48px;
@@ -202,33 +115,49 @@
       .supporters-window { overflow: auto; }
     }
 
-    @media (max-width: 1000px) {
-      .projects { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    }
-
-    @media (max-width: 760px) {
-      .shell { width: calc(100% - 28px); }
-      .projects { grid-template-columns: 1fr; }
-      .footer-bottom { flex-wrap: wrap; }
+    @media (max-width:1200px) { .project { grid-template-columns:140px minmax(0,1fr); gap:18px; } .projects { gap:24px; } }
+    @media (max-width:900px) { .projects { grid-template-columns:1fr; } .intro { align-items:start; gap:24px; } .intro > p { max-width:320px; } .section-heading { align-items:start; } }
+    @media (max-width:600px) {
+      .shell { width:calc(100% - 32px); }
+      header { align-items:start; flex-direction:column; gap:18px; padding:20px 0; }
+      header nav { gap:16px; font-size:.68rem; }
+      .intro { display:block; padding:32px 0; }
+      .intro > p { max-width:none; margin-top:20px; }
+      .section-heading { display:block; }
+      .section-heading > p { margin-top:12px; }
+      .project { grid-template-columns:104px minmax(0,1fr); gap:16px; }
+      .project h3 { font-size:1.35rem; }
+      .project .description { grid-column:1 / -1; }
+      .facts { font-size:.7rem; gap:6px; }
+      .fact { flex-wrap:wrap; }
+      .guide-link { display:block; padding:14px; }
+      .guide-link a { display:inline-block; margin-top:10px; }
+      .footer-bottom { flex-wrap:wrap; }
     }
   </style>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to projects</a>
   <div class="shell">
     <header>
-      <h1>Xalies / Software</h1>
-      <a href="https://github.com/Xalies">GitHub ↗</a>
+      <a class="brand" href="./">Xalies<span> / Projects</span></a>
+      <nav aria-label="Main navigation"><a href="#meshvault">MeshVault</a><a href="#generators">Generators</a><a href="#tools">Apps & utilities</a><a href="https://github.com/Xalies">GitHub ↗</a></nav>
     </header>
 
-    <main>
-      <section class="projects" aria-label="Projects">
-        <article class="project">
+    <main id="main">
+      <section class="intro" aria-labelledby="page-title">
+        <div><p class="kicker">Independent projects by Xalies</p><h1 id="page-title">Software. Tools.<br>Things to make.</h1></div>
+        <p>Keep your models organised, make something custom, or open a useful tool. Everything here has a direct route to its app, download or source.</p>
+      </section>
+      <section id="meshvault" class="directory-section" aria-labelledby="meshvault-heading">
+        <div class="section-heading"><div><p class="kicker">01 / Your model library</p><h2 id="meshvault-heading">MeshVault</h2></div><p>Desktop, server and mobile tools for your 3D models.</p></div>
+        <div class="projects meshvault-projects"><article class="project">
           <a class="thumbnail" href="https://www.meshvault.app/" aria-label="Visit the MeshVault website">
             <img src="meshvault/images/meshvaultweb.webp" alt="MeshVault Web showing a library of 3D models">
           </a>
           <div class="project-copy">
-            <p class="project-number">01 / 3D model library</p>
-            <h2>MeshVault</h2>
+            <p class="project-number">Desktop / Server</p>
+            <h3>MeshVault</h3>
             <p class="description">A desktop/server app for organising your 3D models. Indexes almost 60 file types and previews over 20 of them. Its extension downloads models with metadata from 11 repositories. Available for Windows, macOS, Linux, and Docker.</p>
             <dl class="facts">
               <div class="fact">
@@ -242,15 +171,13 @@
             </dl>
             <a class="project-link" href="https://www.meshvault.app/">Visit MeshVault →</a>
           </div>
-        </article>
-
-        <article class="project">
+        </article><article class="project">
           <div class="thumbnail mobile-thumbnail">
             <img src="meshvault/images/meshvaultmobile.webp" alt="MeshVault Mobile showing supported 3D model websites">
           </div>
           <div class="project-copy">
-            <p class="project-number">02 / Mobile 3D model library</p>
-            <h2>MeshVault Mobile</h2>
+            <p class="project-number">Android / iOS</p>
+            <h3>MeshVault Mobile</h3>
             <p class="description">A free standalone version of MeshVault for Android and iOS, combining the desktop, server, and extension all into one.</p>
             <dl class="facts">
               <div class="fact">
@@ -267,59 +194,54 @@
               <a class="project-link" href="https://testflight.apple.com/join/NAaS8nbh">TestFlight →</a>
             </div>
           </div>
-        </article>
-
-        <article class="project">
-          <a class="thumbnail haos-thumbnail" href="https://github.com/Xalies/HAOS-USB-Creator" aria-label="View HAOS USB Creator on GitHub">
-            <img src="images/haos-usb-creator.png" alt="HAOS USB Creator showing installer USB creation progress" loading="lazy">
+        </article></div>
+      </section>
+      <section id="generators" class="directory-section" aria-labelledby="generators-heading">
+        <div class="section-heading"><div><p class="kicker">02 / Design in your browser</p><h2 id="generators-heading">3D generators</h2></div><p>Four different sites. STL, 3MF and richer MeshVault exports.</p></div>
+        <div class="guide-link"><div><strong>Building your own generator?</strong><span> Explore the .mvpack format, examples and integration instructions.</span></div><a href="generator/">Open the integration guide →</a></div>
+        <div class="projects generator-projects"><article class="project">
+          <a class="thumbnail" href="generators/gridfinity/" aria-label="Open Gridfinity Generator">
+            <img src="images/gridfinity-generator.png" alt="Gridfinity Generator with bin dimensions and a 3D preview" loading="lazy">
           </a>
           <div class="project-copy">
-            <p class="project-number">03 / Installation utility</p>
-            <h2>HAOS USB Creator</h2>
-            <p class="description">An unofficial tool for creating an all-in-one Home Assistant OS installer USB for dedicated x86-64 PCs. Available as a Windows app, Linux AppImage, or ISO.</p>
+            <p class="project-number">Storage systems</p>
+            <h3>Gridfinity Generator</h3>
+            <p class="description">Design custom storage bins and matching baseplates in Gridfinity Studio. Preview locally in 3D, download STL or 3MF, or keep the model, preview and settings together in a MeshVault package.</p>
             <dl class="facts">
-              <div class="fact">
-                <dt>Price</dt>
-                <dd>Free</dd>
-              </div>
-              <div class="fact">
-                <dt>Source</dt>
-                <dd>Open source / AGPL-3.0</dd>
-              </div>
+              <div class="fact"><dt>Price</dt><dd>Free</dd></div>
+              <div class="fact"><dt>Source</dt><dd>Open source / GPL-2.0 + MIT</dd></div>
             </dl>
-            <a class="project-link" href="https://github.com/Xalies/HAOS-USB-Creator">View on GitHub →</a>
+            <div class="project-links">
+              <a class="project-link" href="generators/gridfinity/">Open generator →</a>
+              <a class="project-link" href="https://github.com/Xalies/xalies.github.io/tree/main/generators/gridfinity">View source →</a>
+            </div>
           </div>
-        </article>
-
-        <article class="project">
-          <a class="thumbnail pulse-thumbnail" href="https://play.google.com/store/apps/details?id=com.xalies.pulseaod" aria-label="Get PulseAOD on Google Play">
-            <img src="images/pulseaod-graphic.png" alt="PulseAOD notification LED and edge lighting effects on Android phones" loading="lazy">
-          </a>
+        </article><article class="project">
+          <a class="thumbnail" href="generators/vessels/" aria-label="Open Vessel Studio"><img src="images/vessel-studio.png" alt="Vessel Studio with sculptural vase controls and a live 3D preview" loading="lazy"></a>
           <div class="project-copy">
-            <p class="project-number">04 / Android notification lights</p>
-            <h2>PulseAOD</h2>
-            <p class="description">Custom notification LEDs and edge lighting for Android, with individual app profiles and live previews. The app uses a hybrid free/ad-supported model. New effect sets unlock weekly for free, or you can enable ads to unlock them all. You can switch between the two at any time.</p>
-            <dl class="facts">
-              <div class="fact">
-                <dt>Price</dt>
-                <dd>Free / optional purchases</dd>
-              </div>
-              <div class="fact">
-                <dt>Source</dt>
-                <dd>Closed source</dd>
-              </div>
-            </dl>
-            <a class="project-link" href="https://play.google.com/store/apps/details?id=com.xalies.pulseaod">Google Play →</a>
+            <p class="project-number">Vases & bowls</p>
+            <h3>Vessel Studio</h3>
+            <p class="description">Shape your own vase or bowl with live 3D controls, flutes and twist. Export STL, 3MF or a MeshVault package — a working example of bringing .mvpack to a creative site.</p>
+            <dl class="facts"><div class="fact"><dt>Price</dt><dd>Free</dd></div><div class="fact"><dt>Source</dt><dd>Open source / MIT</dd></div></dl>
+            <div class="project-links"><a class="project-link" href="generators/vessels/">Open studio →</a><a class="project-link" href="https://github.com/Xalies/xalies.github.io/tree/main/generators/vessels">View source ↗</a></div>
           </div>
-        </article>
-
-        <article class="project">
+        </article><article class="project">
+          <a class="thumbnail" href="generators/assembly/" aria-label="Open Assembly Studio"><img src="images/assembly-studio.png" alt="Assembly Studio with a five-piece display riser and illustrated assembly instructions" loading="lazy"></a>
+          <div class="project-copy"><p class="project-number">Multi-part projects</p><h3>Assembly Studio</h3><p class="description">Generate a five-piece display riser with assembled and exploded previews. Export STL or 3MF parts, or carry illustrated HTML instructions, pictures and attachments into MeshVault.</p><dl class="facts"><div class="fact"><dt>Price</dt><dd>Free</dd></div><div class="fact"><dt>Source</dt><dd>Open source / MIT</dd></div></dl><div class="project-links"><a class="project-link" href="generators/assembly/">Open studio →</a><a class="project-link" href="https://github.com/Xalies/xalies.github.io/tree/main/generators/assembly">View source ↗</a></div></div>
+        </article><article class="project">
+          <a class="thumbnail" href="generators/brackets/" aria-label="Open Bracket Works"><img src="images/bracket-works.png" alt="Bracket Works showing a custom L bracket, dimension controls and editable creator details" loading="lazy"></a>
+          <div class="project-copy"><p class="project-number">Custom hardware</p><h3>Bracket Works</h3><p class="description">Make L-shaped mounting brackets with custom screw holes. Export STL or 3MF, or add your own author credit, support links and a YouTube video guide to a MeshVault package.</p><dl class="facts"><div class="fact"><dt>Price</dt><dd>Free</dd></div><div class="fact"><dt>Source</dt><dd>Open source / MIT</dd></div></dl><div class="project-links"><a class="project-link" href="generators/brackets/">Open workshop →</a><a class="project-link" href="https://github.com/Xalies/xalies.github.io/tree/main/generators/brackets">View source ↗</a></div></div>
+        </article></div>
+      </section>
+      <section id="tools" class="directory-section" aria-labelledby="tools-heading">
+        <div class="section-heading"><div><p class="kicker">03 / More from Xalies</p><h2 id="tools-heading">Apps & utilities</h2></div><p>Image tools, installation helpers and Android customisation.</p></div>
+        <div class="projects utility-projects"><article class="project">
           <a class="thumbnail resizer-thumbnail" href="image-resizer/" aria-label="Open Image Resizer">
             <img src="images/ImageResizer.png" alt="Image Resizer interface showing size controls and image previews" loading="lazy">
           </a>
           <div class="project-copy">
-            <p class="project-number">05 / Image utility</p>
-            <h2>Image Resizer</h2>
+            <p class="project-number">Browser utility</p>
+            <h3>Image Resizer</h3>
             <p class="description">Resize an image to fit or fill your dimensions, then export it under a chosen file size. Everything runs in your browser.</p>
             <dl class="facts">
               <div class="fact">
@@ -336,45 +258,47 @@
               <a class="project-link" href="https://github.com/Xalies/xalies.github.io/tree/main/image-resizer">View source →</a>
             </div>
           </div>
-        </article>
-      </section>
-      <section class="projects" aria-label="Open-source 3D model generators">
-        <article class="project">
-          <a class="thumbnail" href="generators/brackets/" aria-label="Open Bracket Works"><img src="images/bracket-works.png" alt="Bracket Works showing a custom L bracket, dimension controls and editable creator details" loading="lazy"></a>
-          <div class="project-copy"><p class="project-number">09 / Creator tools</p><h2>Bracket Works</h2><p class="description">Make L-shaped mounting brackets with custom screw holes. Export STL or 3MF, or add your own author credit, support links and a YouTube video guide to a MeshVault package.</p><dl class="facts"><div class="fact"><dt>Price</dt><dd>Free</dd></div><div class="fact"><dt>Source</dt><dd>Open source / MIT</dd></div></dl><div class="project-links"><a class="project-link" href="generators/brackets/">Open workshop →</a><a class="project-link" href="generator/">Integration guide →</a></div></div>
-        </article>
-        <article class="project">
-          <a class="thumbnail" href="generators/assembly/" aria-label="Open Assembly Studio"><img src="images/assembly-studio.png" alt="Assembly Studio with a five-piece display riser and illustrated assembly instructions" loading="lazy"></a>
-          <div class="project-copy"><p class="project-number">08 / Creator tools</p><h2>Assembly Studio</h2><p class="description">Generate a five-piece display riser with assembled and exploded previews. Export STL or 3MF parts, or carry illustrated HTML instructions, pictures and attachments into MeshVault.</p><dl class="facts"><div class="fact"><dt>Price</dt><dd>Free</dd></div><div class="fact"><dt>Source</dt><dd>Open source / MIT</dd></div></dl><div class="project-links"><a class="project-link" href="generators/assembly/">Open studio →</a><a class="project-link" href="generator/">Integration guide →</a></div></div>
-        </article>
-        <article class="project">
-          <a class="thumbnail" href="generators/vessels/" aria-label="Open Vessel Studio"><img src="images/vessel-studio.png" alt="Vessel Studio with sculptural vase controls and a live 3D preview" loading="lazy"></a>
-          <div class="project-copy">
-            <p class="project-number">07 / Creator tools</p>
-            <h2>Vessel Studio</h2>
-            <p class="description">Shape your own vase or bowl with live 3D controls, flutes and twist. Export STL, 3MF or a MeshVault package — a working example of bringing .mvpack to a creative site.</p>
-            <dl class="facts"><div class="fact"><dt>Price</dt><dd>Free</dd></div><div class="fact"><dt>Source</dt><dd>Open source / MIT</dd></div></dl>
-            <div class="project-links"><a class="project-link" href="generators/vessels/">Open studio →</a><a class="project-link" href="generator/">Integration guide →</a></div>
-          </div>
-        </article>
-        <article class="project">
-          <a class="thumbnail" href="generators/gridfinity/" aria-label="Open Gridfinity Generator">
-            <img src="images/gridfinity-generator.png" alt="Gridfinity Generator with bin dimensions and a 3D preview" loading="lazy">
+        </article><article class="project">
+          <a class="thumbnail haos-thumbnail" href="https://github.com/Xalies/HAOS-USB-Creator" aria-label="View HAOS USB Creator on GitHub">
+            <img src="images/haos-usb-creator.png" alt="HAOS USB Creator showing installer USB creation progress" loading="lazy">
           </a>
           <div class="project-copy">
-            <p class="project-number">06 / Open-source 3D model generators</p>
-            <h2>Gridfinity Generator</h2>
-            <p class="description">Design custom storage bins and matching baseplates in Gridfinity Studio. Preview locally in 3D, download STL or 3MF, or keep the model, preview and settings together in a MeshVault package.</p>
+            <p class="project-number">Installation utility</p>
+            <h3>HAOS USB Creator</h3>
+            <p class="description">An unofficial tool for creating an all-in-one Home Assistant OS installer USB for dedicated x86-64 PCs. Available as a Windows app, Linux AppImage, or ISO.</p>
             <dl class="facts">
-              <div class="fact"><dt>Price</dt><dd>Free</dd></div>
-              <div class="fact"><dt>Source</dt><dd>Open source / GPL-2.0 + MIT</dd></div>
+              <div class="fact">
+                <dt>Price</dt>
+                <dd>Free</dd>
+              </div>
+              <div class="fact">
+                <dt>Source</dt>
+                <dd>Open source / AGPL-3.0</dd>
+              </div>
             </dl>
-            <div class="project-links">
-              <a class="project-link" href="generators/gridfinity/">Open generator →</a>
-              <a class="project-link" href="https://github.com/Xalies/xalies.github.io/tree/main/generators/gridfinity">View source →</a>
-            </div>
+            <a class="project-link" href="https://github.com/Xalies/HAOS-USB-Creator">View on GitHub →</a>
           </div>
-        </article>
+        </article><article class="project">
+          <a class="thumbnail pulse-thumbnail" href="https://play.google.com/store/apps/details?id=com.xalies.pulseaod" aria-label="Get PulseAOD on Google Play">
+            <img src="images/pulseaod-graphic.png" alt="PulseAOD notification LED and edge lighting effects on Android phones" loading="lazy">
+          </a>
+          <div class="project-copy">
+            <p class="project-number">Android app</p>
+            <h3>PulseAOD</h3>
+            <p class="description">Custom notification LEDs and edge lighting for Android, with individual app profiles and live previews. The app uses a hybrid free/ad-supported model. New effect sets unlock weekly for free, or you can enable ads to unlock them all. You can switch between the two at any time.</p>
+            <dl class="facts">
+              <div class="fact">
+                <dt>Price</dt>
+                <dd>Free / optional purchases</dd>
+              </div>
+              <div class="fact">
+                <dt>Source</dt>
+                <dd>Closed source</dd>
+              </div>
+            </dl>
+            <a class="project-link" href="https://play.google.com/store/apps/details?id=com.xalies.pulseaod">Google Play →</a>
+          </div>
+        </article></div>
       </section>
     </main>
 
