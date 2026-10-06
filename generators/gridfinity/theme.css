@@ -1,0 +1,20 @@
+/* Precision workshop: compact instrument panels and a cool, technical palette. */
+:root { background:#0d121b; color:#e5edf6; --accent:#66d9ef; --line:#2a3b4e; --muted:#9bacc0; font-family:"Segoe UI",sans-serif; }
+body { padding:0 28px; }
+header { padding:16px 0; border-bottom:2px solid var(--accent); }
+.site-brand { font:800 1.65rem/1 ui-monospace,monospace; letter-spacing:-.06em; text-decoration:none; color:var(--accent); }
+.site-brand small { display:block; font:500 .6rem/1.8 ui-monospace,monospace; letter-spacing:.17em; color:var(--muted); }
+header nav, .step, legend, .eyebrow, .dimension, output { font-family:ui-monospace,monospace; }
+.gridfinity-studio h1 { font-weight:750; letter-spacing:-.05em; }
+.workspace { background:#101925; gap:24px; padding:0 20px; border-top:1px solid var(--line); }
+input[type=number], input[type=text], select { background:#0b1420; border-radius:0; font-family:ui-monospace,monospace; }
+button, #download { border-radius:0; font-family:ui-monospace,monospace; }
+#settings .actions { background:#101925; }
+#cell-layout button { background:#142337; }
+#cell-layout button[aria-pressed=true] { background:var(--accent); color:#0d121b; }
+#viewer { background:#111e2c; border:1px solid var(--line); }
+.preview-toolbar { font-family:ui-monospace,monospace; }
+.integration pre { background:#101925; border-left-color:var(--accent); }
+.set-panel h2 { font-size:1.2rem; font-weight:700; }
+:focus-visible { outline-color:var(--accent); }
+@media(max-width:850px) { body { padding:0 16px; } .workspace { padding:0; background:transparent; } header { flex-wrap:wrap; } }

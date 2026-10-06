@@ -78,7 +78,7 @@ part.addEventListener('change', () => {
 
 try {
   viewer = new StlViewer(document.querySelector('#viewer'), {
-    auto_rotate: false, auto_resize: true, bg_color: '#19231f',
+    auto_rotate: false, auto_resize: true, bg_color: '#111e2c',
     model_loaded_callback: id => {
       viewer.set_color(id, '#639783');
       const { dims } = viewer.get_model_info(id);
@@ -258,7 +258,7 @@ function updatePlates() {
       canvas.width = Math.round(bed.width * scale); canvas.height = Math.round(bed.depth * scale);
       canvas.setAttribute('role', 'img'); canvas.setAttribute('aria-label', `Plate ${i+1}: ${plate.placements.length} parts on a ${bed.width} by ${bed.depth} mm bed`);
       const context = canvas.getContext('2d');
-      context.fillStyle = '#19231f'; context.fillRect(0,0,canvas.width,canvas.height);
+      context.fillStyle = '#111e2c'; context.fillRect(0,0,canvas.width,canvas.height);
       for (const item of plate.placements) {
         context.fillStyle = item.part.settings.part === 'baseplate' ? '#285e4b' : '#bf785b';
         for (const rect of item.footprint) context.fillRect((item.x+rect.x)*scale, canvas.height-(item.y+rect.y+rect.depth)*scale, rect.width*scale, rect.depth*scale);

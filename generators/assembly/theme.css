@@ -1,0 +1,44 @@
+/* Illustrated build manual: ink blue, yellow tabs and ruled construction notes. */
+:root { background:#162438; color:#eef2f6; --accent:#f4cc68; --line:#3c526b; --muted:#b5c4d5; font-family:"Segoe UI",sans-serif; }
+body { padding:0 36px; }
+header { align-items:center; border-bottom:0; padding:20px 0; }
+.site-brand { font:800 1.7rem/1 "Segoe UI",sans-serif; letter-spacing:-.055em; text-decoration:none; }
+.site-brand small { display:block; font:500 .6rem/1.8 ui-monospace,monospace; letter-spacing:.2em; color:var(--accent); }
+header nav { font-family:ui-monospace,monospace; font-size:.72rem; }
+main { border-top:1px solid var(--line); }
+.assembly-studio h1 { font-size:clamp(3rem,4vw,4.6rem); font-weight:800; letter-spacing:-.055em; }
+.eyebrow, .step, legend { font-family:ui-monospace,monospace; letter-spacing:.1em; }
+.workspace { border-top:2px solid var(--accent); }
+input[type=number], input[type=text], select { background:#1d3048; border-radius:0; }
+button { border-radius:0; }
+.presets button { background:#263b51; color:#eef2f6; border:0; border-bottom:2px solid var(--accent); }
+#viewer { background:#203550; border:1px solid var(--line); }
+.preview-toolbar { font-family:ui-monospace,monospace; }
+.assembly-notes ol { list-style:none; padding:0; counter-reset:build-step; }
+.assembly-notes li { position:relative; padding:0 0 14px 37px; border-bottom:1px dashed var(--line); counter-increment:build-step; }
+.assembly-notes li::before { content:counter(build-step,decimal-leading-zero); position:absolute; left:0; top:0; font:700 .85rem ui-monospace,monospace; color:var(--accent); }
+.assembly-notes strong { color:#eef2f6; }
+.integration pre, .assembly-notes pre { background:#1b2e45; padding:16px; border-left:2px solid var(--accent); }
+.rich-description { max-width:none; display:flow-root; background:#1b2d43; padding:32px; border-top:2px solid var(--accent); }
+.rich-description h2 { font-size:2.3rem; font-weight:750; }
+.rich-description figure { max-width:1100px; }
+.rich-description th { color:var(--accent); font-family:ui-monospace,monospace; }
+:focus-visible { outline-color:var(--accent); }
+@media(min-width:1300px) {
+  .assembly-studio h1 { font-size:3.4rem; }
+  .assembly-studio .workspace { grid-template-columns:minmax(0,1fr) 310px; gap:0 28px; }
+  .assembly-studio #settings { grid-column:1 / -1; display:grid; grid-template-columns:210px minmax(300px,1fr) 300px minmax(180px,.65fr); column-gap:28px; align-items:start; padding:16px 0; border-right:0; border-bottom:1px solid var(--line); max-height:none; overflow:visible; }
+  #settings > .step { grid-column:1; grid-row:1; margin-bottom:6px; }
+  #settings .fields { gap:10px; }
+  #settings .fields label { margin-bottom:0; }
+  #settings > .presets { grid-column:1; grid-row:2; margin:0 0 12px; }
+  #settings > label { grid-column:1; grid-row:3; }
+  #settings > fieldset { grid-row:1 / span 3; margin:0; padding-top:10px; }
+  #settings > fieldset:nth-of-type(1) { grid-column:2; }
+  #settings > fieldset:nth-of-type(2) { grid-column:3; }
+  #settings > .small { grid-column:4; grid-row:1 / span 3; margin-top:0; padding-left:20px; border-left:1px dashed var(--line); }
+  .assembly-studio .preview { grid-column:1; }
+  .assembly-notes { grid-column:2; max-height:690px; }
+  .assembly-studio #viewer { height:clamp(300px,34vh,560px); }
+}
+@media(max-width:850px) { body { padding:0 16px; } header { flex-wrap:wrap; } .rich-description { padding:20px 14px; } .assembly-studio h1 { font-size:3rem; } }

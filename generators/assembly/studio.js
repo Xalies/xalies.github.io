@@ -71,7 +71,7 @@ async function update() {
   } catch(error) { status.textContent=`Could not prepare the kit: ${error.message}`; }
 }
 try {
-  renderer = new THREE.WebGLRenderer({antialias:true,preserveDrawingBuffer:true}); renderer.setPixelRatio(Math.min(devicePixelRatio,2)); renderer.setClearColor('#19231f'); host.append(renderer.domElement);
+  renderer = new THREE.WebGLRenderer({antialias:true,preserveDrawingBuffer:true}); renderer.setPixelRatio(Math.min(devicePixelRatio,2)); renderer.setClearColor('#203550'); host.append(renderer.domElement);
   scene = new THREE.Scene(); camera = new THREE.PerspectiveCamera(35,1,.1,5000); controls = new THREE.OrbitControls(camera,renderer.domElement);
   renderer.setSize(host.clientWidth,host.clientHeight);camera.aspect=host.clientWidth/host.clientHeight;camera.updateProjectionMatrix();
   scene.add(new THREE.HemisphereLight(0xffffff,0x566c5d,.9));

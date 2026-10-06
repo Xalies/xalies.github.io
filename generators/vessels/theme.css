@@ -1,0 +1,32 @@
+/* Ceramics atelier: warm charcoal, serif headlines and an object-first layout. */
+:root { background:#211b19; color:#f3e8da; --accent:#e7ab89; --line:#51413a; --muted:#c5b1a5; font-family:"Segoe UI",sans-serif; }
+body { padding:0 48px; }
+header { padding:24px 0; }
+.site-brand { font:italic 2rem/1 Georgia,serif; text-decoration:none; }
+.site-brand small { display:block; margin-top:8px; font:400 .65rem/1.4 system-ui,sans-serif; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); }
+header nav { gap:20px; }
+.vessel-studio h1 { font:400 clamp(3rem,4.4vw,5.5rem)/1.05 Georgia,serif; letter-spacing:-.055em; }
+h2 { font-family:Georgia,serif; font-weight:400; }
+.intro { max-width:880px; font-size:1rem; line-height:1.7; }
+.workspace { border-top:0; gap:36px; }
+input[type=number], input[type=text], select, input[type=color] { background:#2b221e; border-radius:0; border-color:#695044; }
+button, #download { border-radius:24px; padding:10px 19px; }
+.presets { gap:8px; }
+.presets button { border-radius:0; border:0; border-bottom:1px solid var(--line); padding:7px 0; margin-right:12px; }
+#viewer { background:#30251f; border-radius:48% 48% 0 0 / 12% 12% 0 0; }
+.preview-toolbar { color:var(--muted); }
+.integration { gap:80px; }
+.integration pre { background:#2b221e; border-left:1px solid var(--accent); }
+#print-settings dd { font-family:Georgia,serif; font-size:1.25rem; margin:4px 0 0; }
+:focus-visible { outline-color:var(--accent); }
+@media(min-width:1150px) {
+  .workspace { grid-template-columns:minmax(0,1fr) 300px; }
+  #settings { grid-column:2; grid-row:1; border-right:0; border-left:1px solid var(--line); padding:20px 0 20px 26px; max-height:calc(100vh - 290px); }
+  .preview { grid-column:1; grid-row:1; }
+  #viewer { height:clamp(420px,54vh,780px); }
+}
+@media(min-width:1500px) {
+  .vessel-studio .preview { grid-template-columns:minmax(0,1fr) 300px; gap:24px; }
+  .vessel-studio .preview > section.export-panel { padding-left:24px; }
+}
+@media(max-width:850px) { body { padding:0 20px; } header { flex-wrap:wrap; } .vessel-studio h1 { font-size:3rem; } #viewer { border-radius:30% 30% 0 0 / 8% 8% 0 0; } }

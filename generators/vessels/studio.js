@@ -43,16 +43,16 @@ function resetView() {
 }
 try {
   renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
-  renderer.setPixelRatio(Math.min(devicePixelRatio, 2)); renderer.setClearColor('#19231f');
+  renderer.setPixelRatio(Math.min(devicePixelRatio, 2)); renderer.setClearColor('#30251f');
   host.append(renderer.domElement);
   scene = new THREE.Scene(); camera = new THREE.PerspectiveCamera(35, 1, .1, 5000);
   controls = new THREE.OrbitControls(camera, renderer.domElement);
   scene.add(new THREE.HemisphereLight(0xffffff, 0x677562, .85));
   const key = new THREE.DirectionalLight(0xfff1e3, .85); key.position.set(150, 250, 200); scene.add(key);
   const fill = new THREE.DirectionalLight(0xffffff, .35); fill.position.set(-150, 100, -100); scene.add(fill);
-  const ground = new THREE.Mesh(new THREE.PlaneGeometry(2000, 2000), new THREE.MeshLambertMaterial({ color: '#19231f' }));
+  const ground = new THREE.Mesh(new THREE.PlaneGeometry(2000, 2000), new THREE.MeshLambertMaterial({ color: '#30251f' }));
   ground.rotation.x = -Math.PI / 2; ground.position.y = -.1; scene.add(ground);
-  const grid = new THREE.GridHelper(400, 20, 0x3d5549, 0x2b3c33); grid.position.y = -.05; scene.add(grid);
+  const grid = new THREE.GridHelper(400, 20, 0x655044, 0x45362d); grid.position.y = -.05; scene.add(grid);
   new ResizeObserver(() => {
     renderer.setSize(host.clientWidth, host.clientHeight);
     camera.aspect = host.clientWidth / host.clientHeight; camera.updateProjectionMatrix();
