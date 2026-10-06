@@ -498,6 +498,12 @@ An implementation is complete when all applicable checks pass:
 - A foldered model preserves its package folder from the MeshVault library root.
 - MeshVault restores the available title, source, tags, description, settings,
   thumbnail, gallery images, generator credits and attachments.
+- Multi-model exports declare `packType` as `project` or `collection`.
+- A project imports as one retained archive with accessible parts and shared metadata.
+- Project placement follows `project.relativePath`; internal part folders do not
+  change its library location. A project without a declared folder enters review.
+- Import options cannot override declared identity; collections import separately.
+- Project re-export preserves its identity without nesting another `.mvpack`.
 - Missing optional information does not block export.
 - Packaging errors do not replace or break the generator's normal export.
 
@@ -515,6 +521,17 @@ Create a standard unencrypted ZIP and give it a .mvpack extension. For one model
 put exactly one supported model file and a UTF-8 meshvault.model.json at the ZIP
 root. The minimum JSON is:
 {"schema":"meshvault.model","version":1,"title":"<available title>"}
+
+For multiple model files, use meshvault.models.json with schema meshvault.models,
+version 1 and an authoritative packType. Use "project" for one retained .mvpack
+library item with accessible parts; put shared descriptive metadata in a root
+project object with a title. Use "collection" for separate library items.
+Declare every model once in models, with fileName and its exact relativePath.
+Users cannot override this identity. Unmarked packages retain legacy behaviour;
+unknown types fail. Project support requires an updated MeshVault build.
+A project without a declared folder enters Imports to Review. Set optional
+project.relativePath to a safe path ending in .mvpack to declare its library
+folder. Internal part paths never determine the project's library placement.
 
 Include only metadata the project already knows. Optional supported properties
 are exportedUtc, author, authorUrl, generatorName, exportDonationUrl, sourceUrl,
