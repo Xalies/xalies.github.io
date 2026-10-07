@@ -11,8 +11,9 @@ containing their generated model plus MeshVault metadata.
 Working examples are available in [Vessel Studio](../generators/vessels/),
 [Gridfinity Studio](../generators/gridfinity/),
 [Assembly Studio](../generators/assembly/),
-[Bracket Works](../generators/brackets/) and
-[Pocket Eden](../generators/pocket-eden/). All preserve their STL/3MF exports
+[Bracket Works](../generators/brackets/),
+[Pocket Eden](../generators/pocket-eden/) and
+[Brick Foundry](../generators/brick-foundry/). All preserve their STL/3MF exports
 and add a separate `.mvpack` action, using only fields useful to each generator.
 
 The ready-to-import vase example is published as
@@ -30,3 +31,7 @@ scene preview, an HTML assembly guide and editable world settings. Download the
 
 Bracket Works demonstrates editable author/profile details, separate author and
 generator support links, and a YouTube embed with a watch-link fallback.
+
+Brick Foundry demonstrates a kit of distinct construction pieces with per-part
+copy counts, a UI-free scene thumbnail, shared layer instructions, a CSV inventory,
+the placement plan and a colourable assembled 3MF reference in a project package.

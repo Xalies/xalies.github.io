@@ -37,12 +37,14 @@ export function vesselMesh(s) {
   return { positions, indices };
 }
 
-export function binarySTL({ positions, indices }) {
+export function binarySTL({ positions, indices }, up = 'y') {
   const bytes = new Uint8Array(84 + indices.length / 3 * 50);
   const view = new DataView(bytes.buffer);
   view.setUint32(80, indices.length / 3, true);
   for (let i = 0; i < indices.length; i += 3) {
-    const vertices = indices.slice(i, i + 3).map(index => [positions[index * 3], -positions[index * 3 + 2], positions[index * 3 + 1]]);
+    const vertices = Array.from(indices.slice(i, i + 3), index => up === 'z'
+      ? [positions[index * 3], positions[index * 3 + 1], positions[index * 3 + 2]]
+      : [positions[index * 3], -positions[index * 3 + 2], positions[index * 3 + 1]]);
     const u = vertices[1].map((v, a) => v - vertices[0][a]), v = vertices[2].map((v, a) => v - vertices[0][a]);
     const n = [u[1]*v[2]-u[2]*v[1], u[2]*v[0]-u[0]*v[2], u[0]*v[1]-u[1]*v[0]];
     const length = Math.hypot(...n);
