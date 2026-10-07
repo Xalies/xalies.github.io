@@ -1800,13 +1800,13 @@
           <p class="lead">Turn folders of models and creator packs into a visual, searchable library. Keep files, previews and creator details together on your own computer.</p>
           <div class="hero-download-prompt" id="downloads">
             <h2 id="hero-download-title">Download MeshVault</h2>
-            <p class="hero-download-note" id="hero-download-note">MeshVault 2.3 is free for desktop and server. No trial, licence key or subscription.</p>
+            <p class="hero-download-note" id="hero-download-note" hidden></p>
             <div class="hero-downloads" aria-label="Downloads for your device">
               <a class="button primary" id="hero-download-primary" href="#other-downloads">View downloads</a>
               <a class="button ghost" id="hero-download-secondary" href="#other-downloads" hidden></a>
               <a class="button ghost" id="hero-download-tertiary" href="#other-downloads" hidden></a>
             </div>
-            <p class="hero-download-note">Optional filament affiliate links help keep MeshVault free. Turn them off in Options to use standard links.</p>
+            <p class="hero-download-note">Donations and affiliate links help keep MeshVault free. Turning affiliate links off will still use store links.</p>
             <a class="hero-other-download" href="#other-downloads">Other platforms and downloads</a>
           </div>
         </div>
@@ -2185,9 +2185,9 @@
 
       var platform = isWindows ? "windows" : isMac ? "macos" : isLinux ? "linux" : isAndroid ? "android" : isIos ? "ios" : "";
       var recommendation = {
-        windows: { title: "Download MeshVault for Windows", note: "MeshVault 2.3 is free. No licence key or subscription.", buttons: [["Microsoft Store", "https://apps.microsoft.com/detail/9pnr2sp2br02"], ["Direct Installer", "https://github.com/Xalies/xalies.github.io/releases/download/v2.3.0.0/MeshVault-win-x64-setup.exe"]] },
+        windows: { title: "Download MeshVault for Windows", note: "", buttons: [["Microsoft Store", "https://apps.microsoft.com/detail/9pnr2sp2br02"], ["Direct Installer", "https://github.com/Xalies/xalies.github.io/releases/download/v2.3.0.0/MeshVault-win-x64-setup.exe"]] },
         macos: { title: "Download MeshVault for macOS", note: "MeshVault 2.3 is free. Choose the build for your Mac.", buttons: [["Mac App Store", "https://apps.apple.com/au/app/meshvault/id6787004756?mt=12"], ["Apple silicon direct", "https://github.com/Xalies/xalies.github.io/releases/download/v2.3.0.0/MeshVault-macOS.dmg"], ["Intel direct", "https://github.com/Xalies/xalies.github.io/releases/download/v2.3.0.0/MeshVault-macOS-Intel.dmg"]] },
-        linux: { title: "Download MeshVault for Linux", note: "MeshVault 2.3 is free. No licence key or subscription.", buttons: [["Download .deb", "https://github.com/Xalies/xalies.github.io/releases/download/v2.3.0.0/MeshVault-linux-x64-setup.deb"]] },
+        linux: { title: "Download MeshVault for Linux", note: "", buttons: [["Download .deb", "https://github.com/Xalies/xalies.github.io/releases/download/v2.3.0.0/MeshVault-linux-x64-setup.deb"]] },
         android: { title: "Download MeshVault Mobile for Android", note: "Free on Google Play.", buttons: [["Google Play", "https://play.google.com/store/apps/details?id=com.xalies.meshvault"]] },
         ios: { title: "Try MeshVault Mobile for iOS", note: "Free while in beta.", buttons: [["TestFlight beta", "https://testflight.apple.com/join/NAaS8nbh"]] }
       }[platform];
@@ -2198,6 +2198,7 @@
       if (recommendation) {
         heroDownloadTitle.textContent = recommendation.title;
         heroDownloadNote.textContent = recommendation.note;
+        heroDownloadNote.hidden = !recommendation.note;
         recommendation.buttons.forEach(function (button, index) {
           heroDownloadButtons[index].textContent = button[0];
           heroDownloadButtons[index].href = button[1];
