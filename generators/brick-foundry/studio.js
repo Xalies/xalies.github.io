@@ -18,12 +18,13 @@ function geometry(data){const g=new T.BufferGeometry();g.setAttribute('position'
 function clear(group){const geometries=new Set(),materials=new Set();group.traverse(o=>{if(o.geometry)geometries.add(o.geometry);if(o.material)materials.add(o.material);});while(group.children.length)group.remove(group.children[0]);for(const g of geometries)g.dispose();for(const m of materials)m.dispose();}
 function fitView(){const d=Math.max(...dimensions),z=dimensions[2]*.38;orbit.target.set(0,0,z);camera.position.set(d*1.4,-d*1.9,z+d*1.35);camera.near=.1;camera.far=Math.max(1500,d*15);camera.updateProjectionMatrix();orbit.update();inverted=false;$('underside').setAttribute('aria-pressed','false');}
 function showPiece(){
-  if(!mesh)return;clear(modelGroup);clear(ghostGroup);variants.clear();const box=bounds(mesh);dimensions=box.size;modelGroup.position.set(-w*4,-l*4,0);
+  if(!mesh)return;$('preview-title').textContent=`${type.toUpperCase()} / ${w} × ${l}`;clear(modelGroup);clear(ghostGroup);variants.clear();const box=bounds(mesh);dimensions=box.size;modelGroup.position.set(-w*4,-l*4,0);
   const g=geometry(mesh),body=new T.Mesh(g,new T.MeshStandardMaterial({color:new T.Color(colour).convertSRGBToLinear(),roughness:.4,metalness:.03,flatShading:true}));body.castShadow=true;body.receiveShadow=true;modelGroup.add(body);
   const edges=new T.LineSegments(new T.EdgesGeometry(g,35),new T.LineBasicMaterial({color:'#1a2d54',transparent:true,opacity:.22}));modelGroup.add(edges);floor.visible=grid.visible=true;fitView();
 }
 function showSet(){
   if(!set){clear(modelGroup);clear(ghostGroup);floor.visible=grid.visible=true;$('preview-title').textContent='MODEL / WAITING FOR A SHAPE';return;}
+  $('preview-title').textContent=`${sourceName.toUpperCase()} / ${set.dimensions[0]} × ${set.dimensions[1]} STUDS`;
   clear(modelGroup);clear(ghostGroup);variants.clear();dimensions=set.dimensions.map((n,i)=>n*(i===2?3.2:8));modelGroup.position.set(-dimensions[0]/2,-dimensions[1]/2,0);ghostGroup.position.copy(modelGroup.position);
   for(const v of set.variants){const placements=set.pieces.filter(p=>p.part.id===v.id),body=new T.InstancedMesh(geometry(v.mesh),new T.MeshStandardMaterial({color:new T.Color(palette[v.id]||colours[v.type]).convertSRGBToLinear(),roughness:.4,metalness:.02,flatShading:true}),placements.length);body.castShadow=true;body.receiveShadow=true;body.frustumCulled=false;variants.set(v.id,{body,placements});modelGroup.add(body);}
   for(const m of set.source){const ghost=new T.Mesh(geometry(m),new T.MeshBasicMaterial({color:'#6a7890',wireframe:true,transparent:true,opacity:.08,depthWrite:false}));ghostGroup.add(ghost);}
