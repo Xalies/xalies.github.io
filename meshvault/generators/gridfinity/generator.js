@@ -224,7 +224,7 @@ pack.addEventListener('click', async () => {
       thumbnail = await canvasThumbnail(viewer.renderer.domElement);
     }
     const file = await modelFile(snapshot, format);
-    const blob = await createPackage({ file, title: snapshot.title, author: demoAccount.name, settings: snapshot.settings, generatorName: 'Xalies Gridfinity Studio', sourceUrl: 'https://xalies.github.io/generators/gridfinity/', summary: 'Custom Gridfinity storage on a 42 mm grid.', tags: ['gridfinity', snapshot.settings.part, 'generated'], printNotes: 'Print flat on the base. Check clearances and your material profile in the slicer; no printer-specific settings are supplied.', thumbnail });
+    const blob = await createPackage({ file, title: snapshot.title, author: demoAccount.name, settings: snapshot.settings, generatorName: 'Xalies Gridfinity Studio', sourceUrl: 'https://www.meshvault.app/generators/gridfinity/', summary: 'Custom Gridfinity storage on a 42 mm grid.', tags: ['gridfinity', snapshot.settings.part, 'generated'], printNotes: 'Print flat on the base. Check clearances and your material profile in the slicer; no printer-specific settings are supplied.', thumbnail });
     saveFile(blob, file.name.replace(/\.(stl|3mf)$/, '.mvpack'));
     status.textContent = 'MeshVault package exported.';
     if (current === snapshot) packageContents();
@@ -312,7 +312,7 @@ async function exportSet(meshvault) {
     for (let i = 0; i < plan.length; i++) {
       const mesh = plateMesh(plan[i].placements), content = format === '3mf' ? create3MF(mesh) : new Blob([plateSTL(mesh)], { type: 'model/stl' });
       const file = new File([content], `gridfinity-plate-${String(i+1).padStart(2,'0')}.${format}`, { type: content.type });
-      models.push({ file, title: `Gridfinity set · Plate ${i+1}`, generatorName: 'Xalies Gridfinity Studio', author: demoAccount.name, sourceUrl: 'https://xalies.github.io/generators/gridfinity/', summary: `${plan[i].placements.length} arranged parts for a ${bed.width} × ${bed.depth} mm bed.`, tags: ['gridfinity', 'print-plate', 'generated'], printNotes: 'Print all parts flat on their bases. Verify bed size, clearances and supports in your slicer. This is an arranged model, not a printer-specific sliced project.', settings: { bed, plate: i+1, parts: plan[i].placements.map(item => ({ design: item.part.id, title: item.part.title, copy: item.copy, xMm: item.x, yMm: item.y, rotationDegrees: item.rotated ? 90 : 0, settings: item.part.settings })) }, thumbnail: meshvault ? await canvasThumbnail(canvases[i]) : undefined });
+      models.push({ file, title: `Gridfinity set · Plate ${i+1}`, generatorName: 'Xalies Gridfinity Studio', author: demoAccount.name, sourceUrl: 'https://www.meshvault.app/generators/gridfinity/', summary: `${plan[i].placements.length} arranged parts for a ${bed.width} × ${bed.depth} mm bed.`, tags: ['gridfinity', 'print-plate', 'generated'], printNotes: 'Print all parts flat on their bases. Verify bed size, clearances and supports in your slicer. This is an arranged model, not a printer-specific sliced project.', settings: { bed, plate: i+1, parts: plan[i].placements.map(item => ({ design: item.part.id, title: item.part.title, copy: item.copy, xMm: item.x, yMm: item.y, rotationDegrees: item.rotated ? 90 : 0, settings: item.part.settings })) }, thumbnail: meshvault ? await canvasThumbnail(canvases[i]) : undefined });
     }
     const blob = await createSetPackage(models, meshvault);
     saveFile(blob, `gridfinity-set.${meshvault ? 'mvpack' : 'zip'}`);

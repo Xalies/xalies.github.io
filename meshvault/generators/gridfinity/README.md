@@ -57,10 +57,10 @@ item with its layout preview and an attached JSON containing bed dimensions,
 placements, quantities (as individual copy entries), and original design settings.
 The normal single-part STL/3MF and `.mvpack` exports remain available.
 
-Run `node generators/gridfinity/test.cjs --set-only` to check real bin/baseplate
+Run `node meshvault/generators/gridfinity/test.cjs --set-only` to check real bin/baseplate
 generation, saved snapshots, quantities, rotation, bed bounds, spacing, multi-plate
 STL/3MF exports, the multi-model manifest and attachments, removal and mobile.
-Run `node generators/gridfinity/test.cjs --vessels-only` for the vessel demo.
+Run `node meshvault/generators/gridfinity/test.cjs --vessels-only` for the vessel demo.
 
 ## Source and licenses
 
@@ -83,7 +83,7 @@ Run `node generators/gridfinity/test.cjs --vessels-only` for the vessel demo.
 All runtime assets are served locally. The generator makes no requests to a
 model-generation service. Attribution links lead to their respective projects.
 
-Run the browser check with `node generators/gridfinity/test.cjs` with Playwright
+Run the browser check with `node meshvault/generators/gridfinity/test.cjs` with Playwright
 available through `NODE_PATH` and Chrome installed (or set `BROWSER_CHANNEL`).
 It serves the repository temporarily and checks
 real STL generation, preview loading, settings changes, cancellation and mobile layout.

@@ -1,4 +1,4 @@
-// Run: node generators/pocket-eden/test.cjs. No installation required.
+// Run: node meshvault/generators/pocket-eden/test.cjs. No installation required.
 const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict'),path=require('node:path');
 const html=fs.readFileSync(path.join(__dirname,'index.html'),'utf8');
 const context=vm.createContext({TextEncoder,TextDecoder,Blob,File,console,setTimeout,clearTimeout});

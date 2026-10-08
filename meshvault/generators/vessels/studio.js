@@ -105,7 +105,7 @@ pack.addEventListener('click', async () => {
   try {
     if (renderer && mesh) renderer.render(scene, camera);
     const thumbnail = renderer && mesh ? await canvasThumbnail(renderer.domElement) : null;
-    const blob = await createPackage({ ...snapshot, author: demoAccount.name, title: snapshot.settings.title.trim(), generatorName: 'Xalies Vessel Studio', exportDonationUrl: 'https://buymeacoffee.com/xalies', sourceUrl: 'https://xalies.github.io/generators/vessels/', summary: 'A custom hollow vessel designed in Vessel Studio.', tags: ['vessel', 'generated'], printNotes, thumbnail });
+    const blob = await createPackage({ ...snapshot, author: demoAccount.name, title: snapshot.settings.title.trim(), generatorName: 'Xalies Vessel Studio', exportDonationUrl: 'https://buymeacoffee.com/xalies', sourceUrl: 'https://www.meshvault.app/generators/vessels/', summary: 'A custom hollow vessel designed in Vessel Studio.', tags: ['vessel', 'generated'], printNotes, thumbnail });
     saveFile(blob, snapshot.file.name.replace(/\.(stl|3mf)$/, '.mvpack'));
     status.textContent = 'MeshVault package exported.';
   } catch (error) { status.textContent = `Package export failed: ${error.message}`; }

@@ -29,7 +29,7 @@ advice is serialised into the metadata's `printSettingsJson` string; it is not a
 slicer preset embedded in the 3MF. Packages also include
 `exportDonationUrl: https://buymeacoffee.com/xalies` for generator support.
 
-Run `node generators/gridfinity/test.cjs` with Playwright in `NODE_PATH` and Chrome
+Run `node meshvault/generators/gridfinity/test.cjs` with Playwright in `NODE_PATH` and Chrome
 installed. This checks both demos, actual downloads, ZIP metadata, thumbnails,
 byte-identical model entries, STL/3MF structure, vessel mesh topology, mobile
 layout, cancellation and error recovery. Physical printing and import into the

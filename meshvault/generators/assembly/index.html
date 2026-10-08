@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Assembly Studio · Display Riser Generator</title>
+  <meta name="description" content="Generate a five-piece display riser with illustrated assembly instructions. Explore rich HTML descriptions, gallery images, attachments and multi-model MeshVault packages.">
+  <link rel="stylesheet" href="../shared/studio.css">
+  <link rel="stylesheet" href="theme.css">
+  <script src="../gridfinity/vendor/deps/three.min.js" defer></script>
+  <script src="../gridfinity/vendor/deps/OrbitControls.js" defer></script>
+  <script type="module" src="studio.js"></script>
+</head>
+<body class="assembly-studio">
+  <header><a class="site-brand" href="./">ASSEMBLY / LAB<small>DESIGN · PRINT · BUILD</small></a><nav><a href="../../creator-tools/">Creator tools</a><a href="../brackets/">Brackets</a><a href="../vessels/">Vessel Studio</a><a href="../gridfinity/">Gridfinity</a><a href="../../generator/">.mvpack guide ↗</a><span class="demo-account" title="Simulated sign-in; no real account is connected">Xalies <small>· Demo account</small></span></nav></header>
+  <main>
+    <p class="eyebrow">Assembly Studio / A richer MeshVault integration demo</p>
+    <h1>Parts with a plan.</h1>
+    <p class="intro">Build a small display riser, from five flat-printing parts to one finished object. Take the models, illustrated instructions, links and printing notes together in one .mvpack.</p>
+    <div class="workspace">
+      <form id="settings">
+        <p class="step">01 / Design your riser</p>
+        <div class="presets" aria-label="Riser presets"><button type="button" data-preset="small">Small display</button><button type="button" data-preset="wide">Wide shelf</button></div>
+        <label>Design name<input name="title" type="text" value="My display riser" maxlength="80" required></label>
+        <fieldset><legend>Size · millimetres</legend><div class="fields">
+          <label>Clear width<input name="width" type="number" min="80" max="200" value="120" step="1" required></label>
+          <label>Depth<input name="depth" type="number" min="70" max="160" value="100" step="1" required></label>
+          <label>Frame height<input name="height" type="number" min="40" max="100" value="65" step="1" required></label>
+          <label>Frame thickness<input name="thickness" type="number" min="4" max="10" value="6" step="0.5" required></label>
+        </div></fieldset>
+        <fieldset><legend>Assembly fit</legend><label>Total slot clearance · mm<input name="clearance" type="number" min="0.1" max="0.8" step="0.05" value="0.3" required><small>Added across each slot’s width and height, not per side. Test the fit on your printer.</small></label><p class="small">Two rails slide through the side frames. A 4 mm deck rests on top. Use suitable adhesive after checking alignment if you want a permanent assembly.</p></fieldset>
+        <p class="small">A light-duty display prototype. No tested load rating; keep heavy, hot or valuable objects off it until you have verified the printed assembly.</p>
+      </form>
+      <section class="preview" aria-label="Riser preview and exports">
+        <div class="preview-toolbar"><span id="status" role="status" aria-live="polite">Preparing your kit…</span><div class="export-actions"><select id="view" aria-label="Preview arrangement"><option value="assembled">Assembled</option><option value="exploded">Exploded assembly</option><option value="print">Print orientations</option></select><button id="reset-view" class="secondary" type="button">Reset view</button></div></div>
+        <div id="viewer" tabindex="0" aria-label="3D riser preview; drag to orbit and scroll to zoom"></div>
+        <div class="preview-toolbar"><span id="dimensions" class="dimension"></span><span class="small">Drag to orbit · scroll to zoom</span></div>
+        <div class="export-panel"><div class="export-actions"><select id="format" aria-label="Model download format"><option value="3mf">3MF · millimetres</option><option value="stl">STL</option></select><button id="download-kit" class="secondary" disabled>Download five-part ZIP ↓</button><button id="mvpack" disabled>Export assembly for MeshVault ↓</button></div><p class="small" style="margin-top:12px">Five separate model files in their print orientations. MeshVault exports also include rich HTML, an image gallery and an offline assembly guide.</p></div>
+      </section>
+      <aside class="assembly-notes" aria-label="Assembly overview"><p class="step">02 / Five parts, one object</p><h2>Print. Fit. Assemble.</h2><ol><li><strong>Print flat.</strong> Two frames, two rails and one deck. Start with 0.2 mm layers and 3 perimeters; inspect the slicer preview.</li><li><strong>Fit the rails.</strong> Slide both rails through the left frame. Align the right frame and slide it onto both rails.</li><li><strong>Square the frame.</strong> Rails protrude about 2 mm beyond each outer face. Check that both frames stand parallel.</li><li><strong>Place the deck.</strong> Centre it on the flat frame tops. Dry-fit first; optionally glue the joints and deck with an adhesive suitable for your material.</li></ol><p class="small">If slots bind, remove burrs or increase clearance and reprint the frames. If loose, reduce clearance or secure the joints after alignment.</p><a href="#description">See the illustrated guide ↓</a><p class="step" style="margin-top:28px">Inside your .mvpack</p><pre id="package-contents"></pre></aside>
+    </div>
+    <section class="integration" aria-label="Rich description preview"><div><p class="step">03 / The description travels too</p><h2>A model with its instructions.</h2><p>The guide below is the actual HTML saved in the project’s <code>descriptionHtml</code>. It includes headings, a parts table, numbered steps, pictures and links. Gallery pictures are also included as PNG files; an offline HTML guide and parts list are attached as documents.</p><p>The .mvpack imports as one project in Imports to Review. Its five parts stay inside, alongside the shared instructions and gallery. The package declares its project identity; it is not an import preference.</p><a href="../../generator/">Integrate .mvpack into your site →</a> · <a href="README.md">How this demo works</a></div><div><p class="step">Real package fields used here</p><pre>meshvault.models.json
+  packType: project
+  project: shared details
+  models: five contained parts
+    author · generatorName · sourceUrl
+    descriptionHtml · printSettingsJson
+    thumbnailFile · extraImageFiles
+    documentFiles · packageInfo
+
+No API or account backend required.</pre></div></section>
+    <article id="description" class="rich-description" aria-label="Illustrated assembly guide"></article>
+  </main>
+  <footer>Assembly Studio by Xalies · <a href="https://buymeacoffee.com/xalies">Support this generator</a> · <a href="README.md">Source &amp; licences</a> · <a href="../../">Meet MeshVault</a>. Generated meshes use millimetres. Physical printing and load testing are still required.</footer>
+</body>
+</html>

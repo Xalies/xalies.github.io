@@ -17,7 +17,7 @@ Normal STL/3MF and mvpack exports contain the same geometry. Packages add a 16:9
 thumbnail, description, print notes and attached design settings. Root-level
 single models enter Imports to Review. See the [format guide](../../generator/).
 
-Run `node generators/brackets/test.cjs` with Playwright available via NODE_PATH.
+Run `node meshvault/generators/brackets/test.cjs` with Playwright available via NODE_PATH.
 New code is MIT, copyright 2026 Xalies. See LICENSE and
 `../gridfinity/vendor/three-MIT.txt` for Three.js / OrbitControls licensing.
 

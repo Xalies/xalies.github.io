@@ -36,6 +36,6 @@ HTML fragment. Rich rendering varies by MeshVault client. Gallery files and the
 attached guide preserve pictures independently of the description renderer.
 Design names are HTML-escaped. All generation and packaging happens locally.
 
-Run `node generators/assembly/test.cjs` with Playwright available through NODE_PATH.
+Run `node meshvault/generators/assembly/test.cjs` with Playwright available through NODE_PATH.
 Checks cover topology, volumes, joints, dimension ranges, STL / 3MF files,
 metadata, gallery / attachments, offline HTML, escaping, previews and mobile.

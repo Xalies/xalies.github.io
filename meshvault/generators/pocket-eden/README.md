@@ -33,7 +33,7 @@ physical printing and connector fit have not been validated.
 - [Lanternbrook 3MF tiles](examples/lanternbrook-3mf-tiles.zip): a ZIP for a slicer.
 - [Editable Lanternbrook world](examples/lanternbrook.eden.json).
 
-Run `node generators/pocket-eden/test.cjs` with Node.js 22 or newer. The existing
+Run `node meshvault/generators/pocket-eden/test.cjs` with Node.js 22 or newer. The existing
 standalone check exercises closed mesh edges and winding, STL/3MF structures,
 scenery crossing seams, connector dimensions, project round-trips, terrain
 strength and expansion, input validation, and terminating audio sources.
