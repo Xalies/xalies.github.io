@@ -1,5 +1,5 @@
-import { vesselMesh, BASE_RECESS_MM, binarySTL, profileRadius, profilePoint } from './geometry.js?v=20261009-recess';
-import { initProfileEditor } from './profile.js?v=20261009-recess';
+import { vesselMesh, BASE_RECESS_MM, binarySTL, profileRadius, profilePoint } from './geometry.js?v=20261009-recess-2';
+import { initProfileEditor } from './profile.js?v=20261009-recess-2';
 import { createPackage, create3MF, saveFile, canvasThumbnail } from '../shared/mvpack.js';
 const form = document.querySelector('#settings'), status = document.querySelector('#status');
 const stl = document.querySelector('#stl'), pack = document.querySelector('#mvpack');

@@ -118,7 +118,7 @@ const server = http.createServer((req, res) => {
     assert.match(await handle.getAttribute('aria-valuetext'),/140 millimetres high/,'Original belly point moves vertically');
     const baseHandle=page.locator('[data-size=base]'),baseBefore=await baseHandle.getAttribute('transform');await baseHandle.press('ArrowUp');assert.equal(await baseHandle.getAttribute('transform'),baseBefore,'Bottom stays fixed vertically');
     const linePoint=await page.evaluate(async()=>{
-      const {profileRadius}=await import('/generators/vessels/geometry.js?v=20261009-recess'),svg=document.querySelector('#profile-editor'),form=document.querySelector('#settings');
+      const {profileRadius}=await import('/generators/vessels/geometry.js?v=20261009-recess-2'),svg=document.querySelector('#profile-editor'),form=document.querySelector('#settings');
       const s=Object.fromEntries(['height','base','belly','mouth'].map(n=>[n,Number(form.elements[n].value)]));
       s.bellyPosition=.7;const d=svg.dataset,p=new DOMPoint(Number(d.centre)+profileRadius(s,.25)*Number(d.scale),Number(d.floor)-s.height*.25*Number(d.scale)).matrixTransform(svg.getScreenCTM());return {x:p.x,y:p.y};
     });
@@ -133,6 +133,7 @@ const server = http.createServer((req, res) => {
     const editedModel=await downloaded('#stl'),editedPack=await inspectPackage((await downloaded('#mvpack')).bytes,editedModel.bytes,'3mf');
     assert(Math.abs(editedPack.parameters.mouth-120)<=2);assert(Math.abs(editedPack.parameters.height-200)<=2,'Dragged dimensions reach the exported package');
     assert(Math.abs(editedPack.parameters.bellyPosition-.7)<.01,'Belly height reaches the exported mesh settings');
+    assert.equal(editedPack.parameters.baseRecessMm,2,'Recess depth reaches the exported package');
     assert(editedPack.parameters.topOffset>0,'Top point above the reference exports its offset');
     const topHandle=page.locator('[data-size=mouth]');for(let i=0;i<6;i++)await topHandle.press('Shift+ArrowDown');
     await page.waitForFunction(()=>!document.querySelector('#stl').disabled);
@@ -190,7 +191,7 @@ const server = http.createServer((req, res) => {
         const footRadius = settings.base/2-Math.min(3,settings.base/10);
         if (contact.length !== (settings.quality==='fine'?384:192)*2 || contact.some(p=>Math.hypot(p[0],p[2])<footRadius-1e-8)) return false;
         const [underside,inside] = vertices.slice(-2);
-        if (Math.abs(underside[1]-.6)>1e-8 || Math.abs(inside[1]-underside[1]-settings.floor)>1e-8 || vertices.some(p=>p[1]<-1e-8)) return false;
+        if (Math.abs(underside[1]-2)>1e-8 || Math.abs(inside[1]-underside[1]-settings.floor)>1e-8 || vertices.some(p=>p[1]<-1e-8)) return false;
         let volume = 0;
         for (let i = 0; i < indices.length; i += 3) {
           const tri = indices.slice(i, i + 3);
