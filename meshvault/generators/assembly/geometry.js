@@ -52,3 +52,42 @@ export function riserParts(s) {
     { id:'top-deck', label:'Top deck', mesh:deck, colour:'#d6c9a3', assembled:p=>[p[0]-(s.width+2*s.thickness)/2,p[1]-s.depth/2,p[2]+s.height], explode:[0,0,35] }
   ];
 }
+
+function openTray(width, depth, height, wall) {
+  const outer=rectangle(0,0,width,depth),inner=rectangle(wall,wall,width-2*wall,depth-2*wall);
+  const positions=[...outer.map(p=>[...p,0]),...outer.map(p=>[...p,height]),...inner.map(p=>[...p,height]),...inner.map(p=>[...p,wall])].flat();
+  const indices=[0,2,1,0,3,2,12,13,14,12,14,15];
+  for(let ring=0;ring<3;ring++)for(let j=0;j<4;j++) {
+    const k=(j+1)%4,a=ring*4+j,b=a+4,c=ring*4+k,d=c+4;
+    indices.push(a,c,b,b,c,d);
+  }
+  return {positions,indices};
+}
+
+export function organiserParts(s) {
+  if (![s.width,s.depth,s.height,s.thickness,s.clearance,s.trays].every(Number.isFinite) || s.width<120 || s.width>240 || s.depth<70 || s.depth>180 || s.height<25 || s.height>70 || s.thickness<1.6 || s.thickness>4 || s.clearance<.2 || s.clearance>1.2 || !Number.isInteger(s.trays) || s.trays<2 || s.trays>4) throw new Error('Choose organiser dimensions within the supported ranges.');
+  const bay=(s.width-2*s.thickness)/s.trays, trayWidth=bay-s.clearance, trayDepth=s.depth-2*s.thickness-s.clearance;
+  if(s.gridfinity && (!Number.isInteger((s.width+.5)/42)||!Number.isInteger((s.depth+.5)/42))) throw new Error('Gridfinity dimensions must follow the 42 mm grid, minus 0.5 mm overall clearance.');
+  const tray=openTray(trayWidth,trayDepth,s.height-s.thickness+3,s.thickness);
+  return [
+    {id:'carrier',label:'Tray carrier',mesh:openTray(s.width,s.depth,s.height,s.thickness),colour:'#b7a0e5',assembled:p=>[p[0]-s.width/2,p[1]-s.depth/2,p[2]],explode:[0,0,0]},
+    ...Array.from({length:s.trays},(_,i)=>({id:`tray-${i+1}`,label:`Removable tray ${i+1}`,mesh:tray,colour:['#f4cc68','#8cd6b6','#bf785b','#9ab9e6'][i],assembled:p=>[p[0]-s.width/2+s.thickness+i*bay+s.clearance/2,p[1]-s.depth/2+s.thickness+s.clearance/2,p[2]+s.thickness+(s.gridfinity?5:0)],explode:[0,0,35+i*14]}))
+  ];
+}
+
+export function organiserBaseSource(s) {
+  organiserParts(s);
+  return `include <gridfinity_bins/gridfinity_modules.scad>
+union() {
+  intersection() {
+    translate([20.75,20.75,0]) pad_grid(${(s.width+.5)/42},${(s.depth+.5)/42});
+    linear_extrude(height=5.1) offset(r=3.75,$fn=32) offset(delta=-3.75)
+      square([${s.width},${s.depth}]);
+  }
+  translate([0,0,5]) difference() {
+    cube([${s.width},${s.depth},${s.height}]);
+    translate([${s.thickness},${s.thickness},${s.thickness}])
+      cube([${s.width-2*s.thickness},${s.depth-2*s.thickness},${s.height}]);
+  }
+}`;
+}

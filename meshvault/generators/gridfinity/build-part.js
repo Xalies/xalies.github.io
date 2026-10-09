@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-2.0-only
 import { baseplateSource } from './layout.js?v=20261009-plates';
-export function buildPart(settings, signal) {
+export function buildPart(settings, signal, source) {
   return new Promise((resolve,reject)=>{
     const worker=new Worker(new URL('./vendor/openscad-worker-inlined.js?v=20261009-magnets',import.meta.url));
     const done=(error,result)=>{worker.terminate();signal?.removeEventListener('abort',abort);error?reject(error):resolve(result);};
@@ -15,6 +15,6 @@ export function buildPart(settings, signal) {
     const args=['input.scad','-o','bin.stl'];
     if(settings.part==='bin')for(const [key,value] of Object.entries(settings))if(!['part'].includes(key))args.push('-D',`${key}=${JSON.stringify(value)}`);
     args.push('-D','hole_overhang_remedy=true');
-    try{worker.postMessage({inputs:[['input.scad',settings.part==='baseplate'?baseplateSource(settings.cells,{magnets:settings.base_magnets,screwCells:settings.screw_cells,magnetDiameter:settings.magnet_diameter,magnetDepth:settings.magnet_thickness}):'include <gridfinity_bins/gridfinity_basic_cup.scad>']],args,outputPaths:['bin.stl'],zipArchives:['gridfinity_bins']});}catch(error){done(error);}
+    try{worker.postMessage({inputs:[['input.scad',source??(settings.part==='baseplate'?baseplateSource(settings.cells,{magnets:settings.base_magnets,screwCells:settings.screw_cells,magnetDiameter:settings.magnet_diameter,magnetDepth:settings.magnet_thickness}):'include <gridfinity_bins/gridfinity_basic_cup.scad>')]],args,outputPaths:['bin.stl'],zipArchives:['gridfinity_bins']});}catch(error){done(error);}
   });
 }
