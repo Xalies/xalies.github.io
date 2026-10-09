@@ -1,5 +1,5 @@
-import { vesselMesh, binarySTL, profileRadius } from './geometry.js?v=20261009-profile';
-import { initProfileEditor } from './profile.js?v=20261009-profile';
+import { vesselMesh, binarySTL, profileRadius } from './geometry.js?v=20261009-points';
+import { initProfileEditor } from './profile.js?v=20261009-points';
 import { createPackage, create3MF, saveFile, canvasThumbnail } from '../shared/mvpack.js';
 const form = document.querySelector('#settings'), status = document.querySelector('#status');
 const stl = document.querySelector('#stl'), pack = document.querySelector('#mvpack');
@@ -50,7 +50,7 @@ const presets = {
 function resetView() {
   const s = current?.settings;
   if (!s || !camera) return;
-  const size = Math.max(s.height, s.belly, s.mouth, s.base);
+  const size = Math.max(s.height, s.belly, s.mouth, s.base, ...(s.profilePoints||[]).map(p=>p.diameter));
   const distance = size * 1.7 / Math.min(1, camera.aspect);
   camera.position.set(distance, s.height * .5 + distance * .55, distance);
   controls.target.set(0, s.height * .45, 0); controls.update();
@@ -75,9 +75,9 @@ try {
   controls.addEventListener('change', () => renderer.render(scene, camera));
 } catch { status.textContent = '3D preview unavailable. You can still export your model.'; }
 
-const renderProfile = initProfileEditor(form, profileRadius, () => update());
+const profileEditor = initProfileEditor(form, profileRadius, () => update());
 function update() {
-  renderProfile();
+  profileEditor.render();
   showPrintSettings();
   cancelAnimationFrame(frame);
   current = null; stl.disabled = pack.disabled = true;
@@ -85,6 +85,7 @@ function update() {
     for (const name of ['flutes', 'amplitude', 'twist']) document.querySelector(`#${name}-value`).textContent = form.elements[name].value;
     if (!form.checkValidity() || !form.elements.title.value.trim()) { status.textContent = 'Enter valid dimensions and a design name to continue.'; return; }
     const settings = Object.fromEntries([...new FormData(form)].map(([name, value]) => [name, ['title', 'quality'].includes(name) ? value : Number(value)]));
+    settings.profilePoints=profileEditor.points();
     const geometry = vesselMesh(settings);
     const stem = settings.title.normalize('NFKD').replace(/[^a-zA-Z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 70) || 'vessel';
     const format = document.querySelector('#format').value;
@@ -108,6 +109,7 @@ function update() {
 }
 form.addEventListener('input', update);
 document.querySelectorAll('[data-preset]').forEach(button => button.addEventListener('click', () => {
+  profileEditor.reset();
   for (const [key, value] of Object.entries(presets[button.dataset.preset])) form.elements[key].value = value;
   update();
 }));

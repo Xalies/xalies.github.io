@@ -56,3 +56,10 @@ mesh radius function (belly at 55% height); flutes are shown in the 3D preview.
 Arrow keys change a focused handle by 1 mm, Shift by 10 mm, Home/End select its
 limits. Exact dimensions remain available in an expandable section; wall and
 base thickness stay separate. All dimensions retain their existing bounds.
+
+The profile editor shows one half of the vessel, measured from its centreline.
+Click the outline or use Add point to insert extra control points; drag them
+horizontally for diameter and vertically for height. Added points cannot cross
+their neighbours. Delete/Backspace or Remove point removes the selected extra
+point. Presets clear extra points. Exported parameters include `profilePoints`
+(normalised height `t` and diameter in mm), shared by the preview and mesh.

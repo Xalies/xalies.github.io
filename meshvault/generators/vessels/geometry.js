@@ -1,16 +1,19 @@
 const smooth = t => t * t * (3 - 2 * t);
-export function profileRadius(s, t) {
-  return t < .55 ? s.base / 2 + (s.belly - s.base) / 2 * smooth(t / .55)
-    : s.belly / 2 + (s.mouth - s.belly) / 2 * smooth((t - .55) / .45);
+export function profileNodes(s) {
+  return [{t:0,diameter:s.base},{t:.55,diameter:s.belly},{t:1,diameter:s.mouth},...(s.profilePoints||[])].sort((a,b)=>a.t-b.t);
+}
+export function profileRadius(s, t, points=profileNodes(s)) {
+  const i=Math.max(1,points.findIndex(p=>p.t>=t)), a=points[i-1], b=points[i];
+  return (a.diameter+(b.diameter-a.diameter)*smooth(Math.max(0,Math.min(1,(t-a.t)/(b.t-a.t)))))/2;
 }
 // A closed, hollow mesh: underside → outer wall → rim → inner wall → floor.
 export function vesselMesh(s) {
   const segments = s.quality === 'fine' ? 384 : 192;
   const levels = s.quality === 'fine' ? 128 : 64;
-  const positions = [], indices = [], rings = [];
+  const positions = [], indices = [], rings = [], profile=profileNodes(s);
   function radius(y, angle) {
     const t = y / s.height;
-    const r = profileRadius(s, t);
+    const r = profileRadius(s, t, profile);
     return r + (s.flutes ? s.amplitude * Math.cos(s.flutes * (angle - t * s.twist * Math.PI / 180)) * smooth(Math.min(1, t * 8)) : 0);
   }
   function ring(y, inner = false) {

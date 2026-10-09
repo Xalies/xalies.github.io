@@ -77,3 +77,10 @@ button { border-radius:4px; padding:10px 14px; }
 .profile-caption { font:8px system-ui,sans-serif; fill:var(--muted); }
 .profile-help { margin:10px 0 0; }
 .wall-settings { margin-top:12px; }
+
+#profile-line { fill:none; stroke:transparent; stroke-width:18; cursor:crosshair; }
+.profile-handle[data-point] { cursor:move; }
+.profile-handle[data-selected=true] circle { stroke:#f4edf5; }
+.profile-actions { margin-top:12px; }
+#settings .profile-actions { position:static; padding:0; border:0; background:none; }
+.profile-actions button { font-size:.72rem; padding:7px 10px; }
