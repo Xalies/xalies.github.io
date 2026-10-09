@@ -84,3 +84,5 @@ button { border-radius:4px; padding:10px 14px; }
 .profile-actions { margin-top:12px; }
 #settings .profile-actions { position:static; padding:0; border:0; background:none; }
 .profile-actions button { font-size:.72rem; padding:7px 10px; }
+
+.profile-handle[data-size=mouth], .profile-handle[data-size=belly] { cursor:move; }

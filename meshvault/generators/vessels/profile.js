@@ -3,20 +3,26 @@ export function initProfileEditor(form, radius, update) {
   const svg=document.querySelector('#profile-editor'), handles=[...svg.querySelectorAll('[data-size]')], layer=svg.querySelector('#profile-points');
   const scale=.65, centre=54, floor=236, points=[];
   const remove=document.querySelector('#remove-profile-point');
-  let drag=null, selected=null, nextId=0;
+  let drag=null, selected=null, nextId=0, bellyPosition=.55;
   const height=()=>Number(form.elements.height.value);
-  const settings=()=>({...Object.fromEntries(['height','base','belly','mouth'].map(name=>[name,Number(form.elements[name].value)])),profilePoints:points});
+  const settings=()=>({...Object.fromEntries(['height','base','belly','mouth'].map(name=>[name,Number(form.elements[name].value)])),profilePoints:points,bellyPosition});
   function select(id) {
     selected=id;remove.disabled=id===null;
     for(const node of layer.children)node.dataset.selected=String(Number(node.dataset.point)===id);
   }
-  function setSize(name,value) {
+  function setSize(name,value,render=true) {
     const input=form.elements[name];
     input.value=Math.max(Number(input.min),Math.min(Number(input.max),Math.round(value)));
+    if(render)update();
+  }
+  function moveBelly(t) {
+    const neighbours=[0,1,...points.map(p=>p.t)].sort((a,b)=>a-b);
+    const lower=neighbours.filter(n=>n<bellyPosition).at(-1),upper=neighbours.find(n=>n>bellyPosition);
+    bellyPosition=Math.max(lower+.02,Math.min(upper-.02,t));
     update();
   }
   function movePoint(id,t,diameter) {
-    const point=points.find(p=>p.id===id), neighbours=[0,.55,1,...points.filter(p=>p.id!==id).map(p=>p.t)].sort((a,b)=>a-b);
+    const point=points.find(p=>p.id===id), neighbours=[0,bellyPosition,1,...points.filter(p=>p.id!==id).map(p=>p.t)].sort((a,b)=>a-b);
     const lower=neighbours.filter(n=>n<point.t).at(-1),upper=neighbours.find(n=>n>point.t);
     point.t=Math.max(lower+.02,Math.min(upper-.02,t));
     point.diameter=Math.max(25,Math.min(260,Math.round(diameter)));
@@ -29,7 +35,7 @@ export function initProfileEditor(form, radius, update) {
     document.querySelector('#add-profile-point').focus();
   }
   function addPoint(t) {
-    if(!Number.isFinite(t)||![0,.55,1,...points.map(p=>p.t)].every(n=>Math.abs(n-t)>=.04))return;
+    if(!Number.isFinite(t)||![0,bellyPosition,1,...points.map(p=>p.t)].every(n=>Math.abs(n-t)>=.04))return;
     const point={id:++nextId,t,diameter:Math.round(radius(settings(),t)*2)};
     points.push(point);
     const node=document.createElementNS(svg.namespaceURI,'g');
@@ -46,7 +52,7 @@ export function initProfileEditor(form, radius, update) {
     select(point.id);update();node.focus();return point;
   }
   document.querySelector('#add-profile-point').addEventListener('click',()=>{
-    const stops=[0,.55,1,...points.map(p=>p.t)].sort((a,b)=>a-b);
+    const stops=[0,bellyPosition,1,...points.map(p=>p.t)].sort((a,b)=>a-b);
     const gaps=stops.slice(1).map((end,i)=>({t:(stops[i]+end)/2,size:end-stops[i]}));
     addPoint(gaps.sort((a,b)=>b.size-a.size)[0].t);
   });
@@ -68,16 +74,24 @@ export function initProfileEditor(form, radius, update) {
   svg.addEventListener('pointermove',event=>{
     if(!drag)return;
     const point=coordinates(event);
-    if(drag.size)setSize(drag.size,drag.size==='height'?(floor-point.y)/scale:(point.x-centre)*2/scale);
+    if(drag.size==='mouth') {setSize('mouth',(point.x-centre)*2/scale,false);setSize('height',(floor-point.y)/scale);}
+    else if(drag.size==='belly') {setSize('belly',(point.x-centre)*2/scale,false);moveBelly((floor-point.y)/(height()*scale));}
+    else if(drag.size)setSize(drag.size,drag.size==='height'?(floor-point.y)/scale:(point.x-centre)*2/scale);
     else movePoint(drag.id,(floor-point.y)/(height()*scale),(point.x-centre)*2/scale);
   });
   for(const event of ['pointerup','lostpointercapture','pointercancel'])svg.addEventListener(event,()=>{drag=null;});
   for(const handle of handles) {
     handle.addEventListener('focus',()=>select(null));
     handle.addEventListener('keydown',event=>{
-      const input=form.elements[handle.dataset.size];
+      const name=handle.dataset.size,input=form.elements[name];
       if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Home','End'].includes(event.key))return;
       event.preventDefault();
+      if(['ArrowUp','ArrowDown'].includes(event.key)&&name!=='height') {
+        const step=(event.key==='ArrowUp'?1:-1)*(event.shiftKey?10:1);
+        if(name==='belly')moveBelly(bellyPosition+step/height());
+        if(name==='mouth')setSize('height',height()+step);
+        return;
+      }
       const value=event.key==='Home'?Number(input.min):event.key==='End'?Number(input.max):Number(input.value)+(['ArrowRight','ArrowUp'].includes(event.key)?1:-1)*(event.shiftKey?10:1);
       setSize(handle.dataset.size,value);
     });
@@ -95,8 +109,8 @@ export function initProfileEditor(form, radius, update) {
     svg.querySelector('#profile-shape').setAttribute('d',`${line}L${centre},${floor-s.height*scale}L${centre},${floor}Z`);
     svg.querySelector('#profile-height-line').setAttribute('d',`M18 ${floor}V${floor-s.height*scale}H${centre}`);
     for(const handle of handles) {
-      const name=handle.dataset.size,input=form.elements[name],t=name==='base'?0:name==='belly'?.55:1;
-      position(handle,name==='height'?18:centre+s[name]/2*scale,floor-s.height*t*scale,input.value,input.min,input.max,`${input.value} millimetres`);
+      const name=handle.dataset.size,input=form.elements[name],t=name==='base'?0:name==='belly'?bellyPosition:1;
+      position(handle,name==='height'?18:centre+s[name]/2*scale,floor-s.height*t*scale,input.value,input.min,input.max,`${input.value} millimetres${name==='height'?' tall':` diameter at ${Math.round(s.height*t)} millimetres high`}`);
       handle.querySelector('text').textContent=`${input.value}${name==='height'?' h':' Ø'}`;
     }
     for(const point of points) {
@@ -105,5 +119,5 @@ export function initProfileEditor(form, radius, update) {
       node.querySelector('text').textContent=`${point.diameter} Ø`;
     }
   }
-  return {render,points:()=>points.map(({t,diameter})=>({t,diameter})),reset:()=>{drag=null;points.length=0;layer.replaceChildren();select(null);}};
+  return {render,bellyPosition:()=>bellyPosition,points:()=>points.map(({t,diameter})=>({t,diameter})),reset:()=>{drag=null;bellyPosition=.55;points.length=0;layer.replaceChildren();select(null);}};
 }

@@ -1,6 +1,6 @@
 const smooth = t => t * t * (3 - 2 * t);
 export function profileNodes(s) {
-  return [{t:0,diameter:s.base},{t:.55,diameter:s.belly},{t:1,diameter:s.mouth},...(s.profilePoints||[])].sort((a,b)=>a.t-b.t);
+  return [{t:0,diameter:s.base},{t:s.bellyPosition??.55,diameter:s.belly},{t:1,diameter:s.mouth},...(s.profilePoints||[])].sort((a,b)=>a.t-b.t);
 }
 export function profileRadius(s, t, points=profileNodes(s)) {
   const i=Math.max(1,points.findIndex(p=>p.t>=t)), a=points[i-1], b=points[i];

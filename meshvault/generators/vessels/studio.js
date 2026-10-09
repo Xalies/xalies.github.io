@@ -1,5 +1,5 @@
-import { vesselMesh, binarySTL, profileRadius } from './geometry.js?v=20261009-points';
-import { initProfileEditor } from './profile.js?v=20261009-points';
+import { vesselMesh, binarySTL, profileRadius } from './geometry.js?v=20261009-movable';
+import { initProfileEditor } from './profile.js?v=20261009-movable';
 import { createPackage, create3MF, saveFile, canvasThumbnail } from '../shared/mvpack.js';
 const form = document.querySelector('#settings'), status = document.querySelector('#status');
 const stl = document.querySelector('#stl'), pack = document.querySelector('#mvpack');
@@ -86,6 +86,7 @@ function update() {
     if (!form.checkValidity() || !form.elements.title.value.trim()) { status.textContent = 'Enter valid dimensions and a design name to continue.'; return; }
     const settings = Object.fromEntries([...new FormData(form)].map(([name, value]) => [name, ['title', 'quality'].includes(name) ? value : Number(value)]));
     settings.profilePoints=profileEditor.points();
+    settings.bellyPosition=profileEditor.bellyPosition();
     const geometry = vesselMesh(settings);
     const stem = settings.title.normalize('NFKD').replace(/[^a-zA-Z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 70) || 'vessel';
     const format = document.querySelector('#format').value;

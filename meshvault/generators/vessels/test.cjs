@@ -94,14 +94,22 @@ const server = http.createServer((req, res) => {
     await page.mouse.move(mouth.x+mouth.width/2,mouth.y+mouth.height/2);await page.mouse.down();
     await page.mouse.move(svg.x+(54+120/2*.65)*svg.width/260,svg.y+100,{steps:4});await page.mouse.up();
     assert(Math.abs(Number(await page.locator('[name=mouth]').inputValue())-120)<=2,'Dragging changes the exported mouth diameter');
+    const mouthHeight=Number(await page.locator('[name=height]').inputValue());
+    await page.locator('[data-size=mouth]').press('ArrowDown');assert.equal(Number(await page.locator('[name=height]').inputValue()),mouthHeight-1);
     const height=await page.locator('#profile-editor [data-size=height] circle').boundingBox();
     await page.mouse.move(height.x+height.width/2,height.y+height.height/2);await page.mouse.down();
     await page.mouse.move(height.x+height.width/2,svg.y+(236-200*.65)*svg.height/270,{steps:4});await page.mouse.up();
     assert(Math.abs(Number(await page.locator('[name=height]').inputValue())-200)<=2,'Height handle adjusts vessel height');
+    await handle.press('Shift+ArrowUp');assert.match(await handle.getAttribute('aria-valuetext'),/120 millimetres high/);
+    const bellyCircle=await handle.locator('circle').boundingBox();
+    await page.mouse.move(bellyCircle.x+bellyCircle.width/2,bellyCircle.y+bellyCircle.height/2);await page.mouse.down();
+    await page.mouse.move(bellyCircle.x+bellyCircle.width/2,svg.y+(236-140*.65)*svg.height/270,{steps:4});await page.mouse.up();
+    assert.match(await handle.getAttribute('aria-valuetext'),/140 millimetres high/,'Original belly point moves vertically');
+    const baseHandle=page.locator('[data-size=base]'),baseBefore=await baseHandle.getAttribute('transform');await baseHandle.press('ArrowUp');assert.equal(await baseHandle.getAttribute('transform'),baseBefore,'Bottom stays fixed vertically');
     const linePoint=await page.evaluate(async()=>{
-      const {profileRadius}=await import('/generators/vessels/geometry.js?v=20261009-points'),svg=document.querySelector('#profile-editor'),form=document.querySelector('#settings');
+      const {profileRadius}=await import('/generators/vessels/geometry.js?v=20261009-movable'),svg=document.querySelector('#profile-editor'),form=document.querySelector('#settings');
       const s=Object.fromEntries(['height','base','belly','mouth'].map(n=>[n,Number(form.elements[n].value)]));
-      const p=new DOMPoint(54+profileRadius(s,.25)*.65,236-s.height*.25*.65).matrixTransform(svg.getScreenCTM());return {x:p.x,y:p.y};
+      s.bellyPosition=.7;const p=new DOMPoint(54+profileRadius(s,.25)*.65,236-s.height*.25*.65).matrixTransform(svg.getScreenCTM());return {x:p.x,y:p.y};
     });
     await page.mouse.click(linePoint.x,linePoint.y);assert.equal(await page.locator('[data-point]').count(),1,'Clicking the profile adds a point');
     const extra=page.locator('[data-point]');await extra.press('Shift+ArrowRight');
@@ -113,6 +121,7 @@ const server = http.createServer((req, res) => {
     await page.waitForFunction(()=>!document.querySelector('#stl').disabled);
     const editedModel=await downloaded('#stl'),editedPack=await inspectPackage((await downloaded('#mvpack')).bytes,editedModel.bytes,'3mf');
     assert(Math.abs(editedPack.parameters.mouth-120)<=2);assert(Math.abs(editedPack.parameters.height-200)<=2,'Dragged dimensions reach the exported package');
+    assert(Math.abs(editedPack.parameters.bellyPosition-.7)<.01,'Belly height reaches the exported mesh settings');
     assert.equal(editedPack.parameters.profilePoints.length,1);assert.equal(editedPack.parameters.profilePoints[0].diameter,Number(await extra.getAttribute('aria-valuenow')));
     await extra.press('Delete');assert.equal(await page.locator('[data-point]').count(),0);
     await page.locator('#add-profile-point').click();assert.equal(await page.locator('[data-point]').count(),1);
@@ -156,7 +165,7 @@ const server = http.createServer((req, res) => {
       const { vesselMesh } = await import('/generators/vessels/geometry.js');
       for (const settings of [
         { height: 160, base: 65, belly: 100, mouth: 60, wall: 1.6, floor: 2, flutes: 24, amplitude: 2, twist: 60 },
-        { height: 25, base: 25, belly: 25, mouth: 25, wall: 5, floor: 6, flutes: 48, amplitude: 5, twist: -180, quality: 'fine', profilePoints:[{t:.25,diameter:50},{t:.8,diameter:35}] }
+        { height: 25, base: 25, belly: 25, mouth: 25, wall: 5, floor: 6, flutes: 48, amplitude: 5, twist: -180, quality: 'fine', bellyPosition:.65, profilePoints:[{t:.25,diameter:50},{t:.8,diameter:35}] }
       ]) {
         const { positions, indices } = vesselMesh(settings), edges = new Map();
         let volume = 0;

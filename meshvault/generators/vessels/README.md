@@ -52,7 +52,7 @@ author details in an expandable section directly above the downloads.
 
 Shape dimensions can be edited on the SVG profile: drag base, belly and mouth
 diameter handles horizontally, and height vertically. The silhouette shares the
-mesh radius function (belly at 55% height); flutes are shown in the 3D preview.
+mesh radius function (belly starts at 55% height); flutes are shown in the 3D preview.
 Arrow keys change a focused handle by 1 mm, Shift by 10 mm, Home/End select its
 limits. Exact dimensions remain available in an expandable section; wall and
 base thickness stay separate. All dimensions retain their existing bounds.
@@ -63,3 +63,8 @@ horizontally for diameter and vertically for height. Added points cannot cross
 their neighbours. Delete/Backspace or Remove point removes the selected extra
 point. Presets clear extra points. Exported parameters include `profilePoints`
 (normalised height `t` and diameter in mm), shared by the preview and mesh.
+
+The original belly point also moves vertically, with its normalised position saved
+as `bellyPosition` (default 0.55 for older settings). Moving the mouth vertically
+changes overall vessel height. Up/Down arrows adjust these heights; Left/Right
+adjust diameter. The original bottom point stays at zero height.
