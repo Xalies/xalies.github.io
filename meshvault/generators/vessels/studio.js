@@ -1,5 +1,5 @@
-import { vesselMesh, binarySTL, profileRadius } from './geometry.js?v=20261009-movable';
-import { initProfileEditor } from './profile.js?v=20261009-movable';
+import { vesselMesh, binarySTL, profileRadius } from './geometry.js?v=20261009-rim';
+import { initProfileEditor } from './profile.js?v=20261009-rim';
 import { createPackage, create3MF, saveFile, canvasThumbnail } from '../shared/mvpack.js';
 const form = document.querySelector('#settings'), status = document.querySelector('#status');
 const stl = document.querySelector('#stl'), pack = document.querySelector('#mvpack');
@@ -50,7 +50,7 @@ const presets = {
 function resetView() {
   const s = current?.settings;
   if (!s || !camera) return;
-  const size = Math.max(s.height, s.belly, s.mouth, s.base, ...(s.profilePoints||[]).map(p=>p.diameter));
+  const size = Math.max(s.height, s.belly, s.mouth, s.rim??s.mouth, s.base, ...(s.profilePoints||[]).map(p=>p.diameter));
   const distance = size * 1.7 / Math.min(1, camera.aspect);
   camera.position.set(distance, s.height * .5 + distance * .55, distance);
   controls.target.set(0, s.height * .45, 0); controls.update();
@@ -87,6 +87,7 @@ function update() {
     const settings = Object.fromEntries([...new FormData(form)].map(([name, value]) => [name, ['title', 'quality'].includes(name) ? value : Number(value)]));
     settings.profilePoints=profileEditor.points();
     settings.bellyPosition=profileEditor.bellyPosition();
+    settings.mouthPosition=profileEditor.mouthPosition();
     const geometry = vesselMesh(settings);
     const stem = settings.title.normalize('NFKD').replace(/[^a-zA-Z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 70) || 'vessel';
     const format = document.querySelector('#format').value;
@@ -110,8 +111,9 @@ function update() {
 }
 form.addEventListener('input', update);
 document.querySelectorAll('[data-preset]').forEach(button => button.addEventListener('click', () => {
-  profileEditor.reset();
   for (const [key, value] of Object.entries(presets[button.dataset.preset])) form.elements[key].value = value;
+  form.elements.rim.value=presets[button.dataset.preset].mouth;
+  profileEditor.reset();
   update();
 }));
 form.addEventListener('submit', event => event.preventDefault());
