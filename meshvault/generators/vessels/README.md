@@ -65,6 +65,18 @@ point. Presets clear extra points. Exported parameters include `profilePoints`
 (normalised height `t` and diameter in mm), shared by the preview and mesh.
 
 The original belly point also moves vertically, with its normalised position saved
-as `bellyPosition` (default 0.55 for older settings). Moving the mouth vertically
-changes overall vessel height. Up/Down arrows adjust these heights; Left/Right
+as `bellyPosition` (default 0.55 for older settings). The top point moves above or below the height reference independently. Up/Down arrows adjust these heights; Left/Right
 adjust diameter. The original bottom point stays at zero height.
+
+The top point now sets the opening height independently of the profile height
+reference. A quadratic upper curve can rise toward that reference and turn down
+to a lower opening, or rise to an opening above it. `topOffset` stores the opening
+height minus the reference height in mm. There is no additional rim handle.
+The 3D preview and exports use the same curve; the displayed model height is its
+actual bounding height. Upper inner walls follow the profile normal to maintain
+wall thickness around the bend. Settings without `topOffset` retain the previous
+straight-height interpolation. The top stays above the last body point.
+
+Profiles with intersecting wall sections are rejected before download. Tight
+rolled tops may require a thinner wall or less flute depth/twist. This geometric
+check does not establish printability or physical watertightness.

@@ -95,11 +95,13 @@ const server = http.createServer((req, res) => {
     await page.mouse.move(svg.x+(54+120/2*.65)*svg.width/260,svg.y+100,{steps:4});await page.mouse.up();
     assert(Math.abs(Number(await page.locator('[name=mouth]').inputValue())-120)<=2,'Dragging changes the exported mouth diameter');
     const mouthHeight=Number(await page.locator('[name=height]').inputValue());
-    await page.locator('[data-size=mouth]').press('ArrowDown');assert.equal(Number(await page.locator('[name=height]').inputValue()),mouthHeight-1);
+    await page.locator('[data-size=mouth]').press('ArrowDown');assert.equal(Number(await page.locator('[name=height]').inputValue()),mouthHeight,'Top point leaves the height reference unchanged');
+    const topBeforeHeight=await page.locator('[data-size=mouth]').getAttribute('aria-valuetext');
     const height=await page.locator('#profile-editor [data-size=height] circle').boundingBox();
     await page.mouse.move(height.x+height.width/2,height.y+height.height/2);await page.mouse.down();
     await page.mouse.move(height.x+height.width/2,svg.y+(236-200*.65)*svg.height/270,{steps:4});await page.mouse.up();
     assert(Math.abs(Number(await page.locator('[name=height]').inputValue())-200)<=2,'Height handle adjusts vessel height');
+    assert.equal(await page.locator('[data-size=mouth]').getAttribute('aria-valuetext'),topBeforeHeight,'Height reference leaves the top point in place');
     await handle.press('Shift+ArrowUp');assert.match(await handle.getAttribute('aria-valuetext'),/120 millimetres high/);
     const bellyCircle=await handle.locator('circle').boundingBox();
     await page.mouse.move(bellyCircle.x+bellyCircle.width/2,bellyCircle.y+bellyCircle.height/2);await page.mouse.down();
@@ -107,7 +109,7 @@ const server = http.createServer((req, res) => {
     assert.match(await handle.getAttribute('aria-valuetext'),/140 millimetres high/,'Original belly point moves vertically');
     const baseHandle=page.locator('[data-size=base]'),baseBefore=await baseHandle.getAttribute('transform');await baseHandle.press('ArrowUp');assert.equal(await baseHandle.getAttribute('transform'),baseBefore,'Bottom stays fixed vertically');
     const linePoint=await page.evaluate(async()=>{
-      const {profileRadius}=await import('/generators/vessels/geometry.js?v=20261009-movable'),svg=document.querySelector('#profile-editor'),form=document.querySelector('#settings');
+      const {profileRadius}=await import('/generators/vessels/geometry.js?v=20261009-arched-top'),svg=document.querySelector('#profile-editor'),form=document.querySelector('#settings');
       const s=Object.fromEntries(['height','base','belly','mouth'].map(n=>[n,Number(form.elements[n].value)]));
       s.bellyPosition=.7;const p=new DOMPoint(54+profileRadius(s,.25)*.65,236-s.height*.25*.65).matrixTransform(svg.getScreenCTM());return {x:p.x,y:p.y};
     });
@@ -122,6 +124,11 @@ const server = http.createServer((req, res) => {
     const editedModel=await downloaded('#stl'),editedPack=await inspectPackage((await downloaded('#mvpack')).bytes,editedModel.bytes,'3mf');
     assert(Math.abs(editedPack.parameters.mouth-120)<=2);assert(Math.abs(editedPack.parameters.height-200)<=2,'Dragged dimensions reach the exported package');
     assert(Math.abs(editedPack.parameters.bellyPosition-.7)<.01,'Belly height reaches the exported mesh settings');
+    assert(editedPack.parameters.topOffset>0,'Top point above the reference exports its offset');
+    const topHandle=page.locator('[data-size=mouth]');for(let i=0;i<6;i++)await topHandle.press('Shift+ArrowDown');
+    await page.waitForFunction(()=>!document.querySelector('#stl').disabled);
+    const lowerModel=await downloaded('#stl'),lowerPack=await inspectPackage((await downloaded('#mvpack')).bytes,lowerModel.bytes,'3mf');
+    assert(lowerPack.parameters.topOffset<0,'Top point below the reference exports its offset');assert.equal(lowerPack.parameters.height,200);
     assert.equal(editedPack.parameters.profilePoints.length,1);assert.equal(editedPack.parameters.profilePoints[0].diameter,Number(await extra.getAttribute('aria-valuenow')));
     await extra.press('Delete');assert.equal(await page.locator('[data-point]').count(),0);
     await page.locator('#add-profile-point').click();assert.equal(await page.locator('[data-point]').count(),1);
@@ -164,7 +171,7 @@ const server = http.createServer((req, res) => {
     const topology = await page.evaluate(async () => {
       const { vesselMesh } = await import('/generators/vessels/geometry.js');
       for (const settings of [
-        { height: 160, base: 65, belly: 100, mouth: 60, wall: 1.6, floor: 2, flutes: 24, amplitude: 2, twist: 60 },
+        ...[undefined,0,-30,30].map(topOffset=>({ height:160,base:65,belly:100,mouth:topOffset<0?40:60,wall:1.6,floor:2,flutes:topOffset<0?0:24,amplitude:2,twist:60,topOffset })),
         { height: 25, base: 25, belly: 25, mouth: 25, wall: 5, floor: 6, flutes: 48, amplitude: 5, twist: -180, quality: 'fine', bellyPosition:.65, profilePoints:[{t:.25,diameter:50},{t:.8,diameter:35}] }
       ]) {
         const { positions, indices } = vesselMesh(settings), edges = new Map();
@@ -183,6 +190,9 @@ const server = http.createServer((req, res) => {
       return true;
     });
     assert(topology, 'Watertight mesh edges and outward winding, including extreme controls');
+    const arcHeights=await page.evaluate(async()=>{const {profilePoint}=await import('/generators/vessels/geometry.js');return [-30,30].map(topOffset=>{const s={height:160,base:65,belly:100,mouth:40,wall:1.6,topOffset};return {end:profilePoint(s,1).y,max:Math.max(...Array.from({length:1025},(_,i)=>profilePoint(s,i/1024).y))};});});
+    assert.equal(arcHeights[0].end,130);assert(Math.abs(arcHeights[0].max-160)<.01,'Lower opening arcs over the fixed height');assert.equal(arcHeights[1].end,190);
+    const tightCurve=await page.evaluate(async()=>{const {vesselMesh}=await import('/generators/vessels/geometry.js');try{vesselMesh({height:160,base:65,belly:100,mouth:60,wall:5,floor:2,flutes:0,amplitude:0,twist:0,topOffset:-30});return '';}catch(e){return e.message;}});assert.match(tightCurve,/top curve is too tight/);
     await page.locator('#exact-dimensions summary').click();
     await page.locator('#settings [name=height]').fill('0');
     assert(await page.locator('#stl').isDisabled());

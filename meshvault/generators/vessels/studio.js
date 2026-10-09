@@ -1,5 +1,5 @@
-import { vesselMesh, binarySTL, profileRadius } from './geometry.js?v=20261009-movable';
-import { initProfileEditor } from './profile.js?v=20261009-movable';
+import { vesselMesh, binarySTL, profileRadius, profilePoint } from './geometry.js?v=20261009-arched-top';
+import { initProfileEditor } from './profile.js?v=20261009-arched-top';
 import { createPackage, create3MF, saveFile, canvasThumbnail } from '../shared/mvpack.js';
 const form = document.querySelector('#settings'), status = document.querySelector('#status');
 const stl = document.querySelector('#stl'), pack = document.querySelector('#mvpack');
@@ -50,7 +50,7 @@ const presets = {
 function resetView() {
   const s = current?.settings;
   if (!s || !camera) return;
-  const size = Math.max(s.height, s.belly, s.mouth, s.base, ...(s.profilePoints||[]).map(p=>p.diameter));
+  const size = Math.max(s.height+Math.max(0,s.topOffset??0), s.belly, s.mouth, s.base, ...(s.profilePoints||[]).map(p=>p.diameter));
   const distance = size * 1.7 / Math.min(1, camera.aspect);
   camera.position.set(distance, s.height * .5 + distance * .55, distance);
   controls.target.set(0, s.height * .45, 0); controls.update();
@@ -75,7 +75,7 @@ try {
   controls.addEventListener('change', () => renderer.render(scene, camera));
 } catch { status.textContent = '3D preview unavailable. You can still export your model.'; }
 
-const profileEditor = initProfileEditor(form, profileRadius, () => update());
+const profileEditor = initProfileEditor(form, profileRadius, profilePoint, () => update());
 function update() {
   profileEditor.render();
   showPrintSettings();
@@ -87,7 +87,10 @@ function update() {
     const settings = Object.fromEntries([...new FormData(form)].map(([name, value]) => [name, ['title', 'quality'].includes(name) ? value : Number(value)]));
     settings.profilePoints=profileEditor.points();
     settings.bellyPosition=profileEditor.bellyPosition();
-    const geometry = vesselMesh(settings);
+    settings.topOffset=profileEditor.topOffset();
+    let geometry;
+    try { geometry=vesselMesh(settings); } catch(error) {status.textContent=error.message;return;}
+    let modelHeight=0;for(let i=1;i<geometry.positions.length;i+=3)modelHeight=Math.max(modelHeight,geometry.positions[i]);
     const stem = settings.title.normalize('NFKD').replace(/[^a-zA-Z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 70) || 'vessel';
     const format = document.querySelector('#format').value;
     const printGeometry = { indices: geometry.indices, positions: [] };
@@ -102,7 +105,7 @@ function update() {
       mesh = new THREE.Mesh(g, new THREE.MeshStandardMaterial({ color: document.querySelector('#colour').value, roughness: .78, metalness: 0 }));
       scene.add(mesh); resetView(); renderer.render(scene, camera); host.dataset.loaded = 'true';
     }
-    document.querySelector('#dimensions').textContent = `${settings.height} mm tall · ${geometry.indices.length / 3} triangles · ${(file.size / 1024).toFixed(0)} KB`;
+    document.querySelector('#dimensions').textContent = `${modelHeight.toFixed(1)} mm tall · ${geometry.indices.length / 3} triangles · ${(file.size / 1024).toFixed(0)} KB`;
     document.querySelector('#package-contents').textContent = `${stem}.mvpack\n├── ${file.name}\n├── meshvault.model.json\n${renderer && mesh ? '├── images/thumbnail.png\n' : ''}└── documents/generator-settings.json`;
     status.textContent = renderer && mesh ? 'Your design is ready.' : 'Model ready. 3D preview unavailable.';
     stl.disabled = pack.disabled = false;
@@ -110,8 +113,8 @@ function update() {
 }
 form.addEventListener('input', update);
 document.querySelectorAll('[data-preset]').forEach(button => button.addEventListener('click', () => {
-  profileEditor.reset();
   for (const [key, value] of Object.entries(presets[button.dataset.preset])) form.elements[key].value = value;
+  profileEditor.reset();
   update();
 }));
 form.addEventListener('submit', event => event.preventDefault());

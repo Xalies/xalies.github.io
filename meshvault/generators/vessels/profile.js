@@ -1,11 +1,11 @@
 // The same smooth radius function drives the outline and exported mesh.
-export function initProfileEditor(form, radius, update) {
+export function initProfileEditor(form, radius, curve, update) {
   const svg=document.querySelector('#profile-editor'), handles=[...svg.querySelectorAll('[data-size]')], layer=svg.querySelector('#profile-points');
   const scale=.65, centre=54, floor=236, points=[];
   const remove=document.querySelector('#remove-profile-point');
-  let drag=null, selected=null, nextId=0, bellyPosition=.55;
+  let drag=null, selected=null, nextId=0, bellyPosition=.55, topHeight=Number(form.elements.height.value);
   const height=()=>Number(form.elements.height.value);
-  const settings=()=>({...Object.fromEntries(['height','base','belly','mouth'].map(name=>[name,Number(form.elements[name].value)])),profilePoints:points,bellyPosition});
+  const settings=()=>({...Object.fromEntries(['height','base','belly','mouth','wall'].map(name=>[name,Number(form.elements[name].value)])),profilePoints:points,bellyPosition,topOffset:topHeight-height()});
   function select(id) {
     selected=id;remove.disabled=id===null;
     for(const node of layer.children)node.dataset.selected=String(Number(node.dataset.point)===id);
@@ -14,6 +14,11 @@ export function initProfileEditor(form, radius, update) {
     const input=form.elements[name];
     input.value=Math.max(Number(input.min),Math.min(Number(input.max),Math.round(value)));
     if(render)update();
+  }
+  function moveTop(y) {
+    const last=Math.max(bellyPosition,...points.map(p=>p.t))*height();
+    topHeight=Math.max(Math.min(300,last+Math.max(2,Number(form.elements.wall.value)*2)),Math.min(300,Math.round(y)));
+    update();
   }
   function moveBelly(t) {
     const neighbours=[0,1,...points.map(p=>p.t)].sort((a,b)=>a-b);
@@ -62,7 +67,9 @@ export function initProfileEditor(form, radius, update) {
     if(event.button!==0)return;
     let handle=event.target.closest('[data-size],[data-point]');
     if(!handle&&event.target.id==='profile-line') {
-      const point=addPoint((floor-coordinates(event).y)/(height()*scale));
+      const p=coordinates(event),s=settings();
+      const samples=Array.from({length:257},(_,i)=>{const t=i/256,q=curve(s,t);return {t,d:Math.hypot(centre+q.radius*scale-p.x,floor-q.y*scale-p.y)};});
+      const point=addPoint(samples.sort((a,b)=>a.d-b.d)[0].t);
       if(point)handle=layer.querySelector(`[data-point="${point.id}"]`);
     }
     if(!handle)return;
@@ -74,7 +81,7 @@ export function initProfileEditor(form, radius, update) {
   svg.addEventListener('pointermove',event=>{
     if(!drag)return;
     const point=coordinates(event);
-    if(drag.size==='mouth') {setSize('mouth',(point.x-centre)*2/scale,false);setSize('height',(floor-point.y)/scale);}
+    if(drag.size==='mouth') {setSize('mouth',(point.x-centre)*2/scale,false);moveTop((floor-point.y)/scale);}
     else if(drag.size==='belly') {setSize('belly',(point.x-centre)*2/scale,false);moveBelly((floor-point.y)/(height()*scale));}
     else if(drag.size)setSize(drag.size,drag.size==='height'?(floor-point.y)/scale:(point.x-centre)*2/scale);
     else movePoint(drag.id,(floor-point.y)/(height()*scale),(point.x-centre)*2/scale);
@@ -89,7 +96,7 @@ export function initProfileEditor(form, radius, update) {
       if(['ArrowUp','ArrowDown'].includes(event.key)&&name!=='height') {
         const step=(event.key==='ArrowUp'?1:-1)*(event.shiftKey?10:1);
         if(name==='belly')moveBelly(bellyPosition+step/height());
-        if(name==='mouth')setSize('height',height()+step);
+        if(name==='mouth')moveTop(topHeight+step);
         return;
       }
       const value=event.key==='Home'?Number(input.min):event.key==='End'?Number(input.max):Number(input.value)+(['ArrowRight','ArrowUp'].includes(event.key)?1:-1)*(event.shiftKey?10:1);
@@ -101,17 +108,19 @@ export function initProfileEditor(form, radius, update) {
     for(const [key,val] of Object.entries({min,max,now:value,text}))node.setAttribute(`aria-value${key}`,val);
   }
   function render() {
-    const s=settings();
-    if(!['height','base','belly','mouth'].every(name=>form.elements[name].validity.valid))return;
-    const right=Array.from({length:65},(_,i)=>{const t=i/64;return [centre+radius(s,t)*scale,floor-s.height*t*scale];});
+    let s=settings();
+    if(!['height','base','belly','mouth','wall'].every(name=>form.elements[name].validity.valid))return;
+    const minimum=Math.max(bellyPosition,...points.map(p=>p.t))*s.height+Math.max(2,s.wall*2);
+    topHeight=Math.max(Math.min(300,minimum),Math.min(300,topHeight));s=settings();
+    const right=Array.from({length:129},(_,i)=>{const p=curve(s,i/128);return [centre+p.radius*scale,floor-p.y*scale];});
     const line=`M${right.map(p=>p.join(',')).join('L')}`;
     svg.querySelector('#profile-line').setAttribute('d',line);
-    svg.querySelector('#profile-shape').setAttribute('d',`${line}L${centre},${floor-s.height*scale}L${centre},${floor}Z`);
-    svg.querySelector('#profile-height-line').setAttribute('d',`M18 ${floor}V${floor-s.height*scale}H${centre}`);
+    svg.querySelector('#profile-shape').setAttribute('d',`${line}L${centre},${floor-topHeight*scale}L${centre},${floor}Z`);
+    svg.querySelector('#profile-height-line').setAttribute('d',`M18 ${floor}V${floor-s.height*scale}H220`);
     for(const handle of handles) {
       const name=handle.dataset.size,input=form.elements[name],t=name==='base'?0:name==='belly'?bellyPosition:1;
-      position(handle,name==='height'?18:centre+s[name]/2*scale,floor-s.height*t*scale,input.value,input.min,input.max,`${input.value} millimetres${name==='height'?' tall':` diameter at ${Math.round(s.height*t)} millimetres high`}`);
-      handle.querySelector('text').textContent=`${input.value}${name==='height'?' h':' Ø'}`;
+      position(handle,name==='height'?18:centre+s[name]/2*scale,floor-(name==='mouth'?topHeight:s.height*t)*scale,input.value,input.min,input.max,`${input.value} millimetres${name==='height'?' tall':` diameter at ${Math.round(name==='mouth'?topHeight:s.height*t)} millimetres high`}`);
+      handle.querySelector('text').textContent=`${input.value}${name==='height'?' ref':' Ø'}`;
     }
     for(const point of points) {
       const node=layer.querySelector(`[data-point="${point.id}"]`);
@@ -119,5 +128,5 @@ export function initProfileEditor(form, radius, update) {
       node.querySelector('text').textContent=`${point.diameter} Ø`;
     }
   }
-  return {render,bellyPosition:()=>bellyPosition,points:()=>points.map(({t,diameter})=>({t,diameter})),reset:()=>{drag=null;bellyPosition=.55;points.length=0;layer.replaceChildren();select(null);}};
+  return {render,topOffset:()=>topHeight-height(),bellyPosition:()=>bellyPosition,points:()=>points.map(({t,diameter})=>({t,diameter})),reset:()=>{drag=null;bellyPosition=.55;topHeight=height();points.length=0;layer.replaceChildren();select(null);}};
 }
