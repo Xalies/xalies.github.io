@@ -21,16 +21,24 @@ Bins expose independent magnet and screw toggles. Magnet diameter is adjustable
 (default 6.5 mm); pocket depth is fixed at 2.4 mm by the upstream model. Screw
 holes are 3 mm diameter with adjustable depth (default 6 mm). Disabling either
 toggle passes zero to the model and records zero in the exported parameters.
-Baseplates offer the upstream reinforced/weighted design with both 6.5 × 2.4 mm
-magnet pockets and 3.5 mm screw holes with 8.5 mm countersinks. Its height is
-10.8 mm; the unmounted open frame remains 5 mm. Reinforced baseplate hardware
-dimensions are fixed by the upstream model.
+Baseplates stay open underneath. Optional corner bosses hold four 6.5 x 2.4 mm
+blind magnet pockets per cell, with 1.2 mm of material beneath each pocket.
+Switch the footprint grid to Centre screw positions and select individual cells.
+Only selected cells receive a centre boss and two 3 mm-wide crossing support ribs,
+with a 3.5 mm through-hole and a 7 mm top countersink (1.75 mm deep).
+These mounts add 3.6 mm below the standard socket, for 8.6 mm total height;
+unmounted frames are 5 mm. All baseplates start at Z=0. Removing a footprint cell
+also removes its screw mount. Magnet and screw options are independent and are
+saved as `base_magnets` and `screw_cells` in exported settings. Check hardware
+fit and magnet polarity before assembly; printer tolerances require a test print.
+Run `node meshvault/generators/gridfinity/test.cjs --mounting-only` for actual
+geometry, open centres, magnet pocket floors, screw selection and package checks.
 
 Baseplate footprints can be rectangles, L-shapes, T-shapes, staircases or custom
 cell selections. Click the cell grid to add or remove cells. At least one cell
 is required, and all selected cells must connect along an edge to create one
 piece. Width/depth set the editing area, up to 6 × 6 cells. Custom shapes build
-only the selected footprint and sockets, using the upstream reinforced mounting
+only the selected footprint and sockets, using the selected mounting
 dimensions. Outer footprint corners are rounded. An elapsed-time indicator stays
 visible during generation. The selected
 cell coordinates are saved with the parameters in `.mvpack`; STL and 3MF both

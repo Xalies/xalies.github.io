@@ -24,29 +24,41 @@ export function connectedCells(cells) {
   return remaining.size === 0;
 }
 
-// Build only selected cells, using the upstream socket and reinforced mounting dimensions.
-export function baseplateSource(cells) {
+// Preserve the standard socket; mounting features sit below its seating plane.
+export function baseplateSource(cells, { magnets = false, screwCells = [] } = {}) {
   return `include <gridfinity_bins/gridfinity_modules.scad>
 cells = ${JSON.stringify(cells)};
-difference() {
-  translate([0, 0, weighted ? -6.4 : 0])
-    linear_extrude(height=weighted ? 10.8 : 5)
-      offset(r=3.75, $fn=44) offset(delta=-3.75)
-        union() for (cell = cells)
-          translate([cell[0]*42-21, cell[1]*42-21]) square([42,42]);
-  translate([0, 0, -0.01]) render()
-    union() for (cell = cells)
-      translate([cell[0]*42, cell[1]*42, 0]) pad_oversize(margins=1);
-  if (weighted) for (cell = cells) translate([cell[0]*42, cell[1]*42, 0]) {
-    cornercopy(13) {
-      translate([0, 0, -2.4]) cylinder(d=6.5, h=2.5, $fn=48);
-      translate([0, 0, -6.4]) cylinder(d=3.5, h=6.4, $fn=24);
-      translate([0, 0, -6.41]) cylinder(d1=8.5, d2=3.5, h=2.5, $fn=24);
+screw_cells = ${JSON.stringify(screwCells)};
+base_magnets = ${magnets};
+extra = (base_magnets || len(screw_cells)>0) ? 3.6 : 0;
+translate([0,0,extra]) difference() {
+  union() {
+    difference() {
+      translate([0,0,-extra]) linear_extrude(height=5+extra)
+        offset(r=3.75, $fn=44) offset(delta=-3.75)
+          union() for (cell=cells)
+            translate([cell[0]*42-21,cell[1]*42-21]) square([42,42]);
+      for (cell=cells) translate([cell[0]*42-17,cell[1]*42-17,-extra-0.01])
+        cube([34,34,extra+0.02]);
     }
-    translate([-10.7, -10.7, -6.41]) cube([21.4,21.4,4.01]);
-    for (a2=[0,90]) rotate([0,0,a2]) hull()
-      for (a=[0,180]) rotate([0,0,a])
-        translate([-14.9519,0,-6.41]) cylinder(d=8.5, h=2.01, $fn=24);
+    if (base_magnets) for (cell=cells) translate([cell[0]*42,cell[1]*42,0])
+      for (x=[-1,1], y=[-1,1]) hull() {
+        translate([x*13,y*13,-extra]) cylinder(d=10,h=extra,$fn=48);
+        translate([x*18,y*18,-extra]) cylinder(d=4,h=extra,$fn=32);
+      }
+    for (cell=screw_cells) translate([cell[0]*42,cell[1]*42,-extra]) {
+      cylinder(d=10,h=extra,$fn=48);
+      translate([-19,-1.5,0]) cube([38,3,extra]);
+      translate([-1.5,-19,0]) cube([3,38,extra]);
+    }
+  }
+  translate([0,0,-0.01]) render() union() for (cell=cells)
+    translate([cell[0]*42,cell[1]*42,0]) pad_oversize(margins=1);
+  if (base_magnets) for (cell=cells) translate([cell[0]*42,cell[1]*42,0])
+    cornercopy(13) translate([0,0,-2.4]) cylinder(d=6.5,h=2.5,$fn=48);
+  for (cell=screw_cells) translate([cell[0]*42,cell[1]*42,0]) {
+    translate([0,0,-extra-0.01]) cylinder(d=3.5,h=extra+0.02,$fn=32);
+    translate([0,0,-1.75]) cylinder(d1=3.5,d2=7,h=1.75,$fn=48);
   }
 }`;
 }

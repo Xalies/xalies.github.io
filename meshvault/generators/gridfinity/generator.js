@@ -10,7 +10,8 @@ const generate = document.querySelector('#generate');
 const log = document.querySelector('#log');
 const part = document.querySelector('#part');
 const shape = document.querySelector('#base-shape'), layout = document.querySelector('#cell-layout');
-let cells = [];
+const cellMode = document.querySelector('#cell-mode');
+let cells = [], screwCells = [];
 function updateLayout() {
   const width = Number(form.elements.width.value), depth = Number(form.elements.depth.value);
   shape.setCustomValidity('');
@@ -21,25 +22,34 @@ function updateLayout() {
   }
   cells = shape.value === 'custom' ? cells.filter(([x, y]) => x < width && y < depth) : layoutCells(width, depth, shape.value);
   const selected = new Set(cells.map(cell => cell.join(',')));
+  screwCells = screwCells.filter(cell => selected.has(cell.join(',')));
+  const screws = new Set(screwCells.map(cell => cell.join(',')));
   layout.style.gridTemplateColumns = `repeat(${width}, 1fr)`;
   layout.style.maxWidth = `${width * 40 + (width - 1) * 5}px`;
   for (let y = 0; y < depth; y++) for (let x = 0; x < width; x++) {
     const button = document.createElement('button');
     button.type = 'button'; button.dataset.cell = `${x},${y}`;
-    button.setAttribute('aria-label', `Column ${x + 1}, row ${y + 1}`);
-    button.setAttribute('aria-pressed', String(selected.has(`${x},${y}`)));
-    button.textContent = selected.has(`${x},${y}`) ? '●' : '+';
+    const key = `${x},${y}`, screwMode = cellMode.value === 'screws';
+    button.setAttribute('aria-label', `${screwMode ? 'Screw at c' : 'C'}olumn ${x + 1}, row ${y + 1}`);
+    button.setAttribute('aria-pressed', String((screwMode ? screws : selected).has(key)));
+    button.disabled = screwMode && !selected.has(key);
+    button.textContent = screws.has(key) ? 'S' : selected.has(key) ? '●' : '+';
     layout.append(button);
   }
   const error = !cells.length ? 'Select at least one cell.' : !connectedCells(cells) ? 'Connect all selected cells along their edges to make one piece.' : '';
   if (part.value === 'baseplate') shape.setCustomValidity(error);
-  document.querySelector('#layout-status').textContent = error || `${cells.length} connected ${cells.length === 1 ? 'cell' : 'cells'} · one baseplate`;
+  document.querySelector('#layout-status').textContent = error || `${cells.length} connected ${cells.length === 1 ? 'cell' : 'cells'} · ${screwCells.length} centre screw ${screwCells.length === 1 ? 'mount' : 'mounts'}`;
 }
 shape.addEventListener('change', updateLayout);
+cellMode.addEventListener('change', updateLayout);
 for (const key of ['width', 'depth']) form.elements[key].addEventListener('input', updateLayout);
 layout.addEventListener('click', event => {
   const button = event.target.closest('[data-cell]'); if (!button) return;
   const [x, y] = button.dataset.cell.split(',').map(Number);
+  if (cellMode.value === 'screws') {
+    screwCells = button.getAttribute('aria-pressed') === 'true' ? screwCells.filter(cell => cell[0] !== x || cell[1] !== y) : [...screwCells, [x, y]];
+    updateLayout(); form.dispatchEvent(new Event('input')); return;
+  }
   shape.value = 'custom';
   cells = button.getAttribute('aria-pressed') === 'true' ? cells.filter(cell => cell[0] !== x || cell[1] !== y) : [...cells, [x, y]];
   updateLayout(); form.dispatchEvent(new Event('input'));
@@ -122,7 +132,8 @@ form.addEventListener('submit', event => {
     values.magnet_diameter = document.querySelector('#magnets').checked ? Number(form.elements.magnet_diameter.value) : 0;
     values.screw_depth = document.querySelector('#screws').checked ? Number(form.elements.screw_depth.value) : 0;
   } else {
-    values.weighted = form.elements.weighted.value === 'true';
+    values.base_magnets = form.elements.base_magnets.checked;
+    values.screw_cells = screwCells.map(cell => [...cell]);
     values.cells = cells.map(cell => [...cell]);
   }
   chamberInput.setCustomValidity(!base && Number(values.chambers) > Number(values.width) * 3 ? 'Use at most 3 compartments per width unit.' : '');
@@ -130,7 +141,7 @@ form.addEventListener('submit', event => {
   const args = ['input.scad', '-o', 'bin.stl'];
   for (const input of form.querySelectorAll('[name]')) {
     if (input.disabled || input.name === 'base_shape') continue;
-    const value = input.name === 'weighted' ? values.weighted : input.type === 'checkbox' ? input.checked : input.type === 'number' ? Number(input.value) : input.value;
+    const value = input.type === 'checkbox' ? input.checked : input.type === 'number' ? Number(input.value) : input.value;
     args.push('-D', `${input.name}=${JSON.stringify(value)}`);
   }
   args.push('-D', 'hole_overhang_remedy=true');
@@ -182,7 +193,7 @@ form.addEventListener('submit', event => {
       }
     };
     worker.postMessage({
-      inputs: [['input.scad', base && values.base_shape !== 'rectangle' ? baseplateSource(values.cells) : `include <gridfinity_bins/${base ? 'gridfinity_baseplate' : 'gridfinity_basic_cup'}.scad>`]],
+      inputs: [['input.scad', base ? baseplateSource(values.cells, { magnets: values.base_magnets, screwCells: values.screw_cells }) : 'include <gridfinity_bins/gridfinity_basic_cup.scad>']],
       args, outputPaths: ['bin.stl'], zipArchives: ['gridfinity_bins']
     });
   } catch (error) {

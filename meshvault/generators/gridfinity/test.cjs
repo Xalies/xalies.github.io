@@ -175,12 +175,68 @@ const server = http.createServer((req, res) => {
       assert.equal(errors.length,0,errors.join('\n')); console.log('PASS: saved bins and baseplate, quantities, bed bounds, rotation, multiple plates, STL/3MF set ZIPs and multi-model mvpack, removal, clear and mobile.');
       return;
     }
+    if (process.argv.includes('--mounting-only')) {
+      await page.goto(`http://127.0.0.1:${server.address().port}/generators/gridfinity/`);
+      await page.locator('#part').selectOption('baseplate');
+      await page.locator('[name=width]').fill('2'); await page.locator('[name=depth]').fill('2');
+      await page.locator('#base-shape').selectOption('l');
+      for (const [magnets, screws] of [[false,false],[true,false],[false,true],[true,true]]) {
+        await page.locator('#base-magnets').setChecked(magnets);
+        await page.locator('#cell-mode').selectOption('screws');
+        assert(await page.locator('#cell-layout [data-cell="1,1"]').isDisabled(), 'Excluded footprint cells cannot receive screws');
+        const selected = page.locator('#cell-layout [data-cell="0,0"]');
+        if ((await selected.getAttribute('aria-pressed') === 'true') !== screws) await selected.click();
+        assert.equal(await page.locator('#cell-layout [aria-pressed=true]').count(), screws ? 1 : 0);
+        await page.locator('#generate').click();
+        await page.locator('#download').waitFor({state:'visible',timeout:180000});
+        const stl = await page.locator('#download').evaluate(async a => (await fetch(a.href)).text());
+        const check = await page.evaluate(async ({stl,magnets,screws}) => {
+          const {asciiSTLMesh} = await import('/generators/shared/mvpack.js');
+          const {positions:p,indices:t} = asciiSTLMesh(stl), edges=new Map(), neighbours=new Map();
+          const v=i=>p.slice(i*3,i*3+3), sub=(a,b)=>a.map((n,i)=>n-b[i]);
+          const dot=(a,b)=>a.reduce((n,x,i)=>n+x*b[i],0), cross=(a,b)=>[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]];
+          function inside(point) {
+            const ray=[1,.173,.291],hits=[];
+            for(let i=0;i<t.length;i+=3){const a=v(t[i]),e1=sub(v(t[i+1]),a),e2=sub(v(t[i+2]),a),h=cross(ray,e2),det=dot(e1,h);if(Math.abs(det)<1e-8)continue;
+              const f=1/det,s=sub(point,a),u=f*dot(s,h);if(u<0||u>1)continue;const q=cross(s,e1),w=f*dot(ray,q);if(w<0||u+w>1)continue;const d=f*dot(e2,q);if(d>1e-7&&!hits.some(x=>Math.abs(x-d)<1e-5))hits.push(d);
+            } return hits.length%2===1;
+          }
+          for(let i=0;i<t.length;i+=3)for(const [a,b] of [[t[i],t[i+1]],[t[i+1],t[i+2]],[t[i+2],t[i]]]){
+            const k=[a,b].sort((a,b)=>a-b).join(',');edges.set(k,(edges.get(k)||0)+1);
+            if(!neighbours.has(a))neighbours.set(a,new Set());if(!neighbours.has(b))neighbours.set(b,new Set());neighbours.get(a).add(b);neighbours.get(b).add(a);
+          }
+          const seen=new Set([t[0]]),queue=[t[0]];for(let i=0;i<queue.length;i++)for(const n of neighbours.get(queue[i]))if(!seen.has(n)){seen.add(n);queue.push(n);}
+          const zs=p.filter((_,i)=>i%3===2);
+          return {closed:[...edges.values()].every(n=>n===2),connected:seen.size===p.length/3,minZ:Math.min(...zs),height:Math.max(...zs),open:!inside([8,8,1]),centreHole:!inside([0,0,1]),screwBoss:inside([3,0,1]),countersink:!inside([2.8,.2,3.5]),unselectedOpen:!inside([45,0,1]),missingEmpty:!inside([42,42,1]),magnetFloors:[-13,13].every(x=>[-13,13].every(y=>inside([x,y,.6])===magnets)),magnetPockets:[-13,13].every(x=>[-13,13].every(y=>!inside([x,y,2])))};
+        },{stl,magnets,screws});
+        assert(check.closed && check.connected, JSON.stringify(check));
+        assert(Math.abs(check.minZ)<.001 && Math.abs(check.height-(magnets||screws?8.6:5))<.01);
+        assert(check.open && check.centreHole && check.countersink && check.unselectedOpen && check.missingEmpty && check.magnetFloors && check.magnetPockets, JSON.stringify(check));
+        assert.equal(check.screwBoss,screws);
+        await page.waitForFunction(()=>document.querySelector('#viewer').dataset.loaded==='true');
+        const model = await downloaded('#download-3mf');
+        await page.locator('#format').selectOption('3mf');
+        const pack = await inspectPackage((await downloaded('#mvpack')).bytes,model.bytes,'3mf');
+        assert.equal(pack.parameters.base_magnets,magnets);
+        assert.deepEqual(pack.parameters.screw_cells,screws?[[0,0]]:[]);
+        if(process.env.MOUNTING_SCREENSHOT && magnets && screws)await page.screenshot({path:process.env.MOUNTING_SCREENSHOT,fullPage:true});
+      }
+      await page.locator('#cell-mode').selectOption('footprint');
+      await page.locator('#cell-layout [data-cell="0,0"]').click();
+      await page.locator('#cell-mode').selectOption('screws');
+      assert.equal(await page.locator('#cell-layout [aria-pressed=true]').count(),0,'Removed cells discard their screw mounts');
+      assert(await page.locator('#download').isHidden());
+      await page.setViewportSize({width:390,height:844});assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
+      assert.deepEqual(errors,[]);
+      console.log('PASS: open frames, four blind corner magnet pockets, selected centre screw bosses/countersinks, closed connected meshes, STL/3MF/packages, removed-cell pruning and mobile.');
+      return;
+    }
     if (!process.argv.includes('--vessels-only')) {
     await page.goto(`http://127.0.0.1:${server.address().port}/generators/gridfinity/`);
-    // Regression: a sparse reinforced custom layout must not render the full editing area.
+    // Regression: a sparse magnet custom layout must not render the full editing area.
     await page.locator('#part').selectOption('baseplate');
     await page.locator('[name=width]').fill('6'); await page.locator('[name=depth]').fill('6');
-    await page.locator('[name=weighted]').selectOption('true');
+    await page.locator('#base-magnets').check();
     const customCells = ['0,0','1,0','2,0','0,1','1,1','2,1','0,2','1,2','0,3','1,3','2,3','3,3','4,3'];
     for (let y = 0; y < 6; y++) for (let x = 0; x < 6; x++) if (!customCells.includes(`${x},${y}`)) await page.locator(`#cell-layout [data-cell="${x},${y}"]`).click();
     const customStarted = Date.now();
@@ -197,7 +253,7 @@ const server = http.createServer((req, res) => {
     const customPackage = await inspectPackage((await downloaded('#mvpack')).bytes, custom3mf.bytes, '3mf');
     assert.equal(customPackage.parameters.cells.length, 13);
     if (process.env.LAYOUT_SCREENSHOT) await page.locator('.workspace').screenshot({ path: process.env.LAYOUT_SCREENSHOT });
-    console.log(`Sparse custom reinforced baseplate: ${customSeconds.toFixed(1)} seconds, 13 cells, STL/3MF/package verified.`);
+    console.log(`Sparse custom magnet baseplate: ${customSeconds.toFixed(1)} seconds, 13 cells, STL/3MF/package verified.`);
     await page.goto(`http://127.0.0.1:${server.address().port}/generators/gridfinity/`);
     await page.locator('[name=chambers]').fill('4');
     await page.locator('#generate').click();
@@ -259,20 +315,20 @@ const server = http.createServer((req, res) => {
     assert(Math.abs(spans[0] - 84) < .1 && Math.abs(spans[1] - 42) < .1 && Math.abs(spans[2] - 5) < .1, 'Baseplate must match the 42 mm bin grid');
     await page.waitForFunction(() => document.querySelector('#viewer').dataset.loaded === 'true');
     await page.setViewportSize({ width: 390, height: 844 });
-    await page.locator('[name=weighted]').selectOption('true');
+    await page.locator('#base-magnets').check();
     await page.locator('#generate').click();
     await page.locator('#download').waitFor({ state: 'visible', timeout: 180000 });
     const reinforced = await page.locator('#download').evaluate(async link => (await fetch(link.href)).text());
     const zs = [...reinforced.matchAll(/vertex\s+[\d.e+-]+\s+[\d.e+-]+\s+([\d.e+-]+)/g)].map(m => Number(m[1]));
-    assert(Math.abs(Math.max(...zs) - Math.min(...zs) - 10.8) < .01, 'Mounted baseplate must use reinforced geometry');
+    assert(Math.abs(Math.max(...zs) - Math.min(...zs) - 8.6) < .01, 'Mounted baseplate must include the 3.6 mm mounting layer');
     await page.waitForFunction(() => document.querySelector('#viewer').dataset.loaded === 'true');
     const reinforcedPack = await inspectPackage((await downloaded('#mvpack')).bytes, [...Buffer.from(reinforced)], 'stl');
-    assert.equal(reinforcedPack.parameters.weighted, true, 'Export must preserve the baseplate mounting choice');
+    assert.equal(reinforcedPack.parameters.base_magnets, true, 'Export must preserve the baseplate mounting choice');
     await page.locator('[name=depth]').fill('2');
     await page.locator('#base-shape').selectOption('l');
     assert.equal(await page.locator('#cell-layout [aria-pressed=true]').count(), 3);
-    for (const weighted of ['false', 'true']) {
-      await page.locator('[name=weighted]').selectOption(weighted);
+    for (const magnets of [false, true]) {
+      await page.locator('#base-magnets').setChecked(magnets);
       await page.locator('#generate').click();
       await page.locator('#download').waitFor({ state: 'visible', timeout: 180000 });
       assert.equal(await page.locator('#download').getAttribute('download'), 'gridfinity-baseplate-2x2-l-3cells.stl');
@@ -302,7 +358,7 @@ const server = http.createServer((req, res) => {
       const shapePack = await inspectPackage((await downloaded('#mvpack')).bytes, shape3mf.bytes, '3mf');
       assert.equal(shapePack.parameters.cells.length, 3);
       assert.equal(shapePack.parameters.base_shape, 'l');
-      assert.equal(shapePack.parameters.weighted, weighted === 'true');
+      assert.equal(shapePack.parameters.base_magnets, magnets);
       if (process.env.LAYOUT_SCREENSHOT) await page.locator('.workspace').screenshot({ path: process.env.LAYOUT_SCREENSHOT });
     }
     await page.locator('#cell-layout [data-cell="0,0"]').click();

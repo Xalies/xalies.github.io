@@ -49,21 +49,24 @@
           <label>Screw hole depth · mm<input name="screw_depth" type="number" min="1" max="10" step="0.5" value="6" required disabled><small>3 mm diameter holes in the underside of the bin.</small></label>
           <p class="small">Choose either or both. Mounting points sit at the four corners of each grid cell. Match magnet polarity to your baseplate before fitting.</p>
         </fieldset>
+        <fieldset data-base hidden><legend>Baseplate mounting</legend>
+          <label class="check"><input id="base-magnets" name="base_magnets" type="checkbox" disabled>Add corner magnet pockets</label>
+          <details><summary>Mount dimensions &amp; fit</summary><p class="small">Four 6.5 × 2.4 mm magnet pockets per cell, with an open centre. To add screws, switch the grid to Centre screw positions and select only the cells you need. Each selected cell gets a 3.5 mm through-hole with a 7 mm countersink on top and support ribs.</p>
+          <p class="small">Standard frame: 5 mm high. Magnets or screw mounts add 3.6 mm underneath the sockets. Check screw-head fit and magnet polarity before assembly.</p></details>
+        </fieldset>
         <fieldset data-base hidden><legend>Baseplate footprint</legend>
           <label>Shape<select id="base-shape" name="base_shape" disabled><option value="rectangle">Rectangle</option><option value="l">L-shape</option><option value="t">T-shape</option><option value="steps">Staircase</option><option value="custom">Custom cells</option></select></label>
-          <div id="cell-layout" role="group" aria-label="Baseplate cells; toggle a cell to include or remove it"></div>
+          <label>Edit grid<select id="cell-mode" disabled><option value="footprint">Baseplate footprint</option><option value="screws">Centre screw positions</option></select></label>
+          <div id="cell-layout" role="group" aria-label="Baseplate grid; edit the footprint or select centre screw mounts"></div>
           <p id="layout-status" class="small" role="status"></p>
-          <p class="small">Each square is one 42 mm cell. Click squares to combine them into your own footprint. Cells must connect along an edge to make one piece. Width and depth set the editing area.</p>
+          <p class="small">Toggle cells to shape one connected baseplate. In screw mode, click included cells to add or remove centre mounts, marked S. Each cell is 42 mm.</p>
         </fieldset>
-        <fieldset data-base hidden><legend>Baseplate mounting</legend>
-          <label>Base style<select name="weighted" disabled><option value="false">Open frame · no mounting holes</option><option value="true">Reinforced · magnets &amp; screws</option></select></label>
-          <p class="small">Reinforced base: 6.5 × 2.4 mm magnet pockets, 3.5 mm screw clearance holes and 8.5 mm countersinks underneath. Both are included at each cell’s corners. Total height: 10.8 mm.</p>
-        </fieldset>
+
         <details data-bin><summary>Wall &amp; floor thickness</summary><div class="fields">
           <label>Wall thickness · mm<input name="wall_thickness" type="number" min="0.8" max="3" step="0.05" value="0.95" required></label>
           <label>Floor thickness · mm<input name="floor_thickness" type="number" min="0.7" max="3" step="0.1" value="0.7" required></label>
         </div></details>
-        <p id="base-note" class="small" hidden>Width and depth stay the same when you switch parts, so the base matches your bin footprint. Choose the reinforced base to secure it with magnets or screws.</p>
+        <p id="base-note" class="small" hidden>Width and depth stay the same when you switch parts, so the base matches your bin footprint. Add corner magnets or select individual centre screw mounts to secure the baseplate.</p>
         <p class="small">Grid pitch: 42 × 42 mm. Actual bin width and depth include fitting clearance. Compartments divide along the width only.</p>
         <div class="actions"><button id="generate" type="submit">Generate model</button><button id="cancel" type="button" disabled>Cancel</button></div>
       </form>
