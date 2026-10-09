@@ -69,6 +69,7 @@ const server = http.createServer((req, res) => {
       assert.equal(result.schema, 'meshvault.model'); assert.equal(result.version, 1);
       assert(result.title && result.sameBytes && result.thumbnail && result.settings && result.valid3mf && result.safePaths);
       assert.equal(result.printedStatus, false); assert.equal(result.count, 1); assert.equal(result.format, extension.toUpperCase());
+      if (result.parameters.part === 'bin') assert.equal(result.parameters.screw_depth, 0, 'Bin screw holes must be disabled in generated geometry and settings');
       return result;
     }
     if (process.argv.includes('--set-only')) {
@@ -277,24 +278,22 @@ const server = http.createServer((req, res) => {
     assert.equal(errors.length, 0, errors.join('\n'));
     assert(requests.every(url => url.startsWith('http://127.0.0.1:') || url.startsWith('blob:')), 'Runtime must stay local');
     if (process.env.UPDATE_THUMBNAIL) await page.locator('.workspace').screenshot({ path: path.join(root, 'images/gridfinity-generator.png') });
-    for (const [magnets, screws] of [[true, false], [false, true], [true, true]]) {
+    for (const magnets of [true, false]) {
       await page.locator('#magnets').setChecked(magnets);
-      await page.locator('#screws').setChecked(screws);
       assert.equal(await page.locator('[name=magnet_diameter]').isDisabled(), !magnets);
-      assert.equal(await page.locator('[name=screw_depth]').isDisabled(), !screws);
       await page.locator('#generate').click();
       await page.locator('#download').waitFor({ state: 'visible', timeout: 180000 });
       const mounted = await page.locator('#download').evaluate(async link => (await fetch(link.href)).text());
       const points = [...mounted.matchAll(/vertex\s+([\d.e+-]+)\s+([\d.e+-]+)\s+([\d.e+-]+)/g)].map(m => m.slice(1).map(Number));
       const hasPoint = target => points.some(p => p.every((v, i) => Math.abs(v - target[i]) < .001));
       assert.equal(hasPoint([16.25, 13, 2.4]), magnets, 'Magnet cavity must appear only when enabled');
-      assert.equal(hasPoint([14.5, 13, 6]), screws, 'Screw cavity must appear only when enabled');
+      assert.equal(hasPoint([14.5, 13, 6]), false, 'Bins must have no screw cavities');
       await page.waitForFunction(() => document.querySelector('#viewer').dataset.loaded === 'true');
       const result = await inspectPackage((await downloaded('#mvpack')).bytes, [...Buffer.from(mounted)], 'stl');
       assert.equal(result.parameters.magnet_diameter, magnets ? 6.5 : 0);
-      assert.equal(result.parameters.screw_depth, screws ? 6 : 0);
+      assert.equal(result.parameters.screw_depth, 0);
     }
-    await page.locator('#magnets').uncheck(); await page.locator('#screws').uncheck();
+    await page.locator('#magnets').uncheck();
     await page.locator('[name=width]').fill('2');
     assert(await page.locator('#download').isHidden(), 'Changing settings hides stale downloads');
     assert(await page.locator('#mvpack').isDisabled(), 'Changing settings disables stale packages');

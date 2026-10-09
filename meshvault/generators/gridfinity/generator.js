@@ -66,10 +66,8 @@ function packageContents() {
 function mountingControls() {
   const base = part.value === 'baseplate';
   form.elements.magnet_diameter.disabled = base || !document.querySelector('#magnets').checked;
-  form.elements.screw_depth.disabled = base || !document.querySelector('#screws').checked;
 }
 document.querySelector('#magnets').addEventListener('change', mountingControls);
-document.querySelector('#screws').addEventListener('change', mountingControls);
 part.addEventListener('change', () => {
   const base = part.value === 'baseplate';
   form.querySelectorAll('[data-bin]').forEach(section => {
@@ -130,7 +128,7 @@ form.addEventListener('submit', event => {
   const base = part.value === 'baseplate';
   if (!base) {
     values.magnet_diameter = document.querySelector('#magnets').checked ? Number(form.elements.magnet_diameter.value) : 0;
-    values.screw_depth = document.querySelector('#screws').checked ? Number(form.elements.screw_depth.value) : 0;
+    values.screw_depth = 0;
   } else {
     values.base_magnets = form.elements.base_magnets.checked;
     values.screw_cells = screwCells.map(cell => [...cell]);

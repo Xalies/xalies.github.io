@@ -17,13 +17,14 @@ OpenSCAD runs in a cancellable
 worker. Dimensions are limited to 6 × 6 grid units and 12 height units to keep
 browser rendering practical. Dividers run across the width only.
 
-Bins expose independent magnet and screw toggles. Magnet diameter is adjustable
-(default 6.5 mm); pocket depth is fixed at 2.4 mm by the upstream model. Screw
-holes are 3 mm diameter with adjustable depth (default 6 mm). Disabling either
-toggle passes zero to the model and records zero in the exported parameters.
+Bins offer optional magnet pockets with an adjustable diameter (default 6.5 mm)
+and fixed 2.4 mm depth. Turning magnets off passes zero to the model. Bin screw
+holes are always disabled (`screw_depth: 0`); screws are a baseplate feature.
 Baseplates stay open underneath. Optional corner bosses hold four 6.5 x 2.4 mm
 blind magnet pockets per cell, with 1.2 mm of material beneath each pocket.
-Switch the footprint grid to Centre screw positions and select individual cells.
+To fasten the baseplate to the inside floor of a drawer, switch the footprint
+grid to Centre screw positions and select individual cells. Use countersunk
+screws with a length suited to the drawer-floor thickness; bins remain removable.
 Only selected cells receive a centre boss and two 3 mm-wide crossing support ribs,
 with a 3.5 mm through-hole and a 7 mm top countersink (1.75 mm deep).
 These mounts add 3.6 mm below the standard socket, for 8.6 mm total height;
