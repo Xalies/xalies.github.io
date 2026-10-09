@@ -93,6 +93,13 @@ const server = http.createServer((req, res) => {
     assert.equal(await page.locator('#author').inputValue(),'Avery <Maker>');assert.equal(await page.locator('#author-url').inputValue(),'https://example.org/avery');
     const handle=page.locator('#profile-editor [data-size=belly]');
     assert(await page.locator('#profile-shape').evaluate(n=>n.getBBox().height>document.querySelector('#profile-editor').viewBox.baseVal.height*.75),'Default profile fills the editor height');
+    assert(await page.locator('#profile-shape').evaluate(n=>{
+      const d=document.querySelector('#profile-editor').dataset,base=Number(document.querySelector('[name=base]').value);
+      const underside=n.getAttribute('d').split('L').slice(-9).map(p=>p.replace('Z','').split(',').map(Number));
+      const scale=Number(d.scale),floor=Number(d.floor),centre=Number(d.centre),radius=base/2-Math.min(3,base/10);
+      return underside.every(([x,y],i)=>Math.abs(x-(centre+radius*i/8*scale))<1e-8&&Math.abs(y-(floor-2*(1-(i/8)**2)*scale))<1e-8);
+    }),'Profile displays the same curved 2 mm underside and flat support ring as the mesh');
+    assert.equal(await page.locator('#profile-base-label').textContent(),'2 mm recessed underside');
     await handle.focus();await handle.press('ArrowRight');assert.equal(await page.locator('[name=belly]').inputValue(),'101');
     await handle.press('Shift+ArrowLeft');assert.equal(await page.locator('[name=belly]').inputValue(),'91');
     await handle.press('Home');assert.equal(await page.locator('[name=belly]').inputValue(),'25');
@@ -118,7 +125,7 @@ const server = http.createServer((req, res) => {
     assert.match(await handle.getAttribute('aria-valuetext'),/140 millimetres high/,'Original belly point moves vertically');
     const baseHandle=page.locator('[data-size=base]'),baseBefore=await baseHandle.getAttribute('transform');await baseHandle.press('ArrowUp');assert.equal(await baseHandle.getAttribute('transform'),baseBefore,'Bottom stays fixed vertically');
     const linePoint=await page.evaluate(async()=>{
-      const {profileRadius}=await import('/generators/vessels/geometry.js?v=20261009-recess-2'),svg=document.querySelector('#profile-editor'),form=document.querySelector('#settings');
+      const {profileRadius}=await import('/generators/vessels/geometry.js?v=20261009-recess-profile'),svg=document.querySelector('#profile-editor'),form=document.querySelector('#settings');
       const s=Object.fromEntries(['height','base','belly','mouth'].map(n=>[n,Number(form.elements[n].value)]));
       s.bellyPosition=.7;const d=svg.dataset,p=new DOMPoint(Number(d.centre)+profileRadius(s,.25)*Number(d.scale),Number(d.floor)-s.height*.25*Number(d.scale)).matrixTransform(svg.getScreenCTM());return {x:p.x,y:p.y};
     });

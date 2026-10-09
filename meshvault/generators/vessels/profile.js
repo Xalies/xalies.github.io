@@ -1,3 +1,4 @@
+import { BASE_RECESS_MM } from './geometry.js?v=20261009-recess-profile';
 // The same smooth radius function drives the outline and exported mesh.
 export function initProfileEditor(form, radius, curve, update) {
   const svg=document.querySelector('#profile-editor'), handles=[...svg.querySelectorAll('[data-size]')], layer=svg.querySelector('#profile-points');
@@ -122,12 +123,17 @@ export function initProfileEditor(form, radius, curve, update) {
     const step=[5,10,20,25,50,100].find(mm=>mm*scale>=30)||100,spacing=step*scale;
     const grid=svg.querySelector('#profile-grid');grid.setAttribute('width',spacing);grid.setAttribute('height',spacing);grid.setAttribute('x',centre);grid.setAttribute('y',floor);
     grid.querySelector('path').setAttribute('d',`M${spacing} 0H0V${spacing}`);
-    svg.querySelector('.profile-caption').textContent=`${step} mm grid · surface texture shown in 3D`;
+    svg.querySelector('#profile-grid-label').textContent=`${step} mm grid · surface texture shown in 3D`;
     svg.querySelector('.profile-axis').setAttribute('d',`M${centre} 20V${floor}H326`);
     const right=samples.map(p=>[centre+p.radius*scale,floor-p.y*scale]);
     const line=`M${right.map(p=>p.join(',')).join('L')}`;
     svg.querySelector('#profile-line').setAttribute('d',line);
-    svg.querySelector('#profile-shape').setAttribute('d',`${line}L${centre},${floor-topHeight*scale}L${centre},${floor}Z`);
+    const recessRadius=s.base/2-Math.min(3,s.base/10);
+    const underside=Array.from({length:9},(_,i)=>[centre+recessRadius*i/8*scale,floor-BASE_RECESS_MM*(1-(i/8)**2)*scale]);
+    svg.querySelector('#profile-shape').setAttribute('d',`${line}L${centre},${floor-topHeight*scale}L${underside.map(p=>p.join(',')).join('L')}Z`);
+    const baseLabel=svg.querySelector('#profile-base-label');
+    baseLabel.setAttribute('x',centre+14);baseLabel.setAttribute('y',floor+20);
+    baseLabel.textContent=`${BASE_RECESS_MM} mm recessed underside`;
     svg.querySelector('#profile-height-line').setAttribute('d',`M20 ${floor}V${floor-s.height*scale}H326`);
     for(const handle of handles) {
       const name=handle.dataset.size,input=form.elements[name],t=name==='base'?0:name==='belly'?bellyPosition:1;
