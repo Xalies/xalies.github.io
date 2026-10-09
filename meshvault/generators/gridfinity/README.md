@@ -1,9 +1,9 @@
 # MeshVault Gridfinity Generator
 
-Static, browser-only Gridfinity bin and baseplate generator at `/generators/gridfinity/`.
+Static, browser-only Gridfinity drawer planner and part generator at `/generators/gridfinity/`.
 Switch Part to Baseplate to generate an open-frame base using the same width
 and depth as the bin. Both models use the original 42 mm grid and pad profile.
-The interface uses the MeshVault logo, plum palette and IBM Plex typography, with cyan workshop accents. It is a creator tool without an account requirement; an optional author field credits your name in single-part and set packages, or Anonymous when blank.
+The interface uses the MeshVault logo, plum palette and system typography, with cyan workshop accents. It is a creator tool without an account requirement; an optional author field credits your name in single-part and set packages, or Anonymous when blank.
 Serve the repository over HTTP; no build or backend is required. Open the page,
 choose settings, generate, and download an STL.
 The studio also downloads 3MF and packages either format as `.mvpack`, with model
@@ -14,8 +14,48 @@ The shared packaging code uses local fflate 0.8.3 (MIT); licence in
 `../shared/vendor/fflate-LICENSE.txt`.
 
 OpenSCAD runs in a cancellable
-worker. Dimensions are limited to 6 × 6 grid units and 12 height units to keep
+worker. Individual part dimensions are limited to 6 × 6 grid units and 12 height units to keep
 browser rendering practical. Dividers run across the width only.
+
+## Drawer planner
+
+The default workspace plans a drawer in millimetres on a 42 mm grid. Set its
+inside width, depth, height and edge clearance. Add named, coloured bins, drag
+them between cells, edit their dimensions or rotate their footprints. Arrow keys
+move the selected bin, R rotates and Delete removes it; Undo restores edits.
+Bins cannot overlap, extend beyond selected baseplate cells or exceed the drawer
+height. Compartments divide across width, up to three per cell. The 3D layout is
+an approximate assembled preview, not the generated CAD geometry.
+
+Baseplate mode includes/excludes cells. Drawer screws mode selects centre
+fixings independently of magnet pockets. Magnets apply to both bins and their
+baseplates; screws attach baseplates to the drawer floor. Generation splits the
+footprint into connected sections of at most 6 by 6 cells, within the selected
+bed's 5 mm edge clearance. Split sections are separate pieces, without joining
+hardware. Matching bins generate once and retain their quantities. Generation
+runs in cancellable local WASM workers; a cancelled or failed build preserves
+existing print-set models. A successful build replaces its previous drawer
+models and keeps manually added designs.
+
+Layouts autosave in localStorage and can be saved/reopened as validated JSON.
+No accounts, backend, remote fonts or generation services are required; static
+GitHub Pages hosting is sufficient. Generated meshes remain in memory only.
+A drawer `.mvpack` uses `packType: "project"`, with print plates, author credit,
+previews, parameters and `documents/project-drawer-layout.json`. Open that JSON
+in this planner to edit the original plan. Print-set quantity/removal edits do
+not alter the original drawer plan; regenerate after editing the drawer itself.
+Manually assembled sets retain `packType: "collection"` behavior.
+
+This is an original implementation of the drawer-planning workflow. The public
+[andymai/gridfinity-layout-tool](https://github.com/andymai/gridfinity-layout-tool)
+overview was a product reference; its source and assets were not used.
+
+Run `node meshvault/generators/gridfinity/drawer.test.mjs` for planning assertions
+and `node meshvault/generators/gridfinity/planner.test.cjs` for browser interaction,
+local persistence, real WASM generation, split sections, multi-plate STL/3MF and
+project-package checks. Playwright must be available through `NODE_PATH`.
+
+## Individual parts
 
 Bins offer optional magnet pockets with an adjustable diameter (default 6.5 mm)
 and fixed 2.4 mm depth. Turning magnets off passes zero to the model. Bin screw
@@ -53,16 +93,16 @@ baseplates, then set quantities (1–20 copies per design), bed width/depth and
 spacing. Saved designs keep their generated settings when the main controls
 change. The set is kept in memory on the page; refresh or close clears it.
 
-A first-fit shelf layout uses actual model bounding rectangles, optionally
-rotating parts 90°. Spacing also applies at the bed edges. Oversized parts and
-invalid quantities block export. Custom baseplates use their bounding footprint;
-this planner does not nest parts inside irregular cutouts or guarantee the fewest
-possible plates. Check the actual printable region in the slicer.
+A first-fit layout uses the actual selected cells of custom baseplates and
+bounding rectangles for bins, optionally rotating parts 90 degrees. Spacing
+applies between parts and at bed edges. Oversized parts and invalid quantities
+block export. The layout can nest parts around irregular cell footprints but
+does not guarantee the fewest plates. Check printable regions in your slicer.
 
 **Download plate ZIP** contains numbered STL or 3MF plates. Each plate contains
 the requested copies, placed on the bed with their bases at Z=0. These are model
 layouts, not sliced printer projects. **Export set for MeshVault** packages the
-same plate geometry with `meshvault.models.json` and `packType: "collection"`;
+same plate geometry with `meshvault.models.json`. Manual sets use `packType: "collection"`;
 each plate becomes one library
 item with its layout preview and an attached JSON containing bed dimensions,
 placements, quantities (as individual copy entries), and original design settings.
@@ -99,6 +139,6 @@ available through `NODE_PATH` and Chrome installed (or set `BROWSER_CHANNEL`).
 It serves the repository temporarily and checks
 real STL generation, preview loading, settings changes, cancellation and mobile layout.
 
-Both demos show a simulated signed-in Xalies account; `.mvpack` author metadata
-uses that demo name. Upstream model credits remain in the footer. All exported
-preview PNGs are 1280 � 720 (16:9), fitted without cropping.
+Gridfinity has no signed-in account. The optional author fields credit the
+entered name, or Anonymous when blank. Upstream model credits remain in the
+footer. Exported preview PNGs are 1280 x 720 (16:9), fitted without cropping.

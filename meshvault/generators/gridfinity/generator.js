@@ -245,7 +245,7 @@ updateLayout();
 const parts = [], bedForm = document.querySelector('#bed-settings'), setStatus = document.querySelector('#set-status');
 const setExport = document.querySelector('#export-set'), zipExport = document.querySelector('#export-set-zip');
 const plateLayouts = document.querySelector('#plate-layouts');
-let nextPart = 1, exportingSet = false, platePlan = [];
+let nextPart = 1, exportingSet = false, platePlan = [], drawerProject = null;
 function bedSettings() {
   return { width: Number(bedForm.elements.bedWidth.value), depth: Number(bedForm.elements.bedDepth.value), gap: Number(bedForm.elements.spacing.value), rotate: bedForm.elements.rotate.checked };
 }
@@ -304,7 +304,7 @@ addToSet.addEventListener('click', async () => {
 });
 bedForm.addEventListener('input', updatePlates);
 bedForm.addEventListener('submit', event => event.preventDefault());
-document.querySelector('#clear-set').addEventListener('click', () => { parts.length = 0; showSet(); });
+document.querySelector('#clear-set').addEventListener('click', () => { parts.length = 0; drawerProject = null; showSet(); });
 async function exportSet(meshvault) {
   if (exportingSet || !platePlan.length || setExport.disabled) return;
   const plan = platePlan, bed = bedSettings(), format = document.querySelector('#set-format').value;
@@ -317,7 +317,10 @@ async function exportSet(meshvault) {
       const file = new File([content], `gridfinity-plate-${String(i+1).padStart(2,'0')}.${format}`, { type: content.type });
       models.push({ file, title: `Gridfinity set · Plate ${i+1}`, generatorName: 'MeshVault Gridfinity Generator', author: author.value.trim() || 'Anonymous', sourceUrl: 'https://www.meshvault.app/generators/gridfinity/', summary: `${plan[i].placements.length} arranged parts for a ${bed.width} × ${bed.depth} mm bed.`, tags: ['gridfinity', 'print-plate', 'generated'], printNotes: 'Print all parts flat on their bases. Verify bed size, clearances and supports in your slicer. This is an arranged model, not a printer-specific sliced project.', settings: { bed, plate: i+1, parts: plan[i].placements.map(item => ({ design: item.part.id, title: item.part.title, copy: item.copy, xMm: item.x, yMm: item.y, rotationDegrees: item.rotated ? 90 : 0, settings: item.part.settings })) }, thumbnail: meshvault ? await canvasThumbnail(canvases[i]) : undefined });
     }
-    const blob = await createSetPackage(models, meshvault);
+    const project = drawerProject && parts.some(p => p.origin === 'drawer') ? {
+      title: drawerProject.title, author: author.value.trim() || 'Anonymous', generatorName:'MeshVault Gridfinity Planner', sourceUrl:'https://www.meshvault.app/generators/gridfinity/', summary:'A planned drawer with its arranged print plates and editable layout.', settings:drawerProject, tags:['gridfinity','drawer-layout'], documents:[{name:'drawer-layout.json',blob:new Blob([JSON.stringify(drawerProject,null,2)],{type:'application/json'})}], thumbnail: meshvault ? await canvasThumbnail(canvases[0]) : undefined
+    } : undefined;
+    const blob = await createSetPackage(models, meshvault, project);
     saveFile(blob, `gridfinity-set.${meshvault ? 'mvpack' : 'zip'}`);
     setStatus.textContent = `Exported ${plan.length} print ${plan.length === 1 ? 'plate' : 'plates'} in one ${meshvault ? 'MeshVault package' : 'ZIP'}.`;
   } catch (error) { setStatus.textContent = `Set export failed: ${error.message}`; }
@@ -325,3 +328,25 @@ async function exportSet(meshvault) {
 }
 setExport.addEventListener('click', () => exportSet(true));
 zipExport.addEventListener('click', () => exportSet(false));
+
+// Replace only the previous drawer build; preserve manually added parts.
+export async function setDrawerParts(snapshots, project, bed) {
+  const ready = await Promise.all(snapshots.map(async snapshot => {
+    const mesh=asciiSTLMesh(await snapshot.stl.text());
+    return {...snapshot,mesh,bounds:meshBounds(mesh),origin:'drawer'};
+  }));
+  arrangePlates([...parts.filter(p=>p.origin!=='drawer'),...ready],{...bed,gap:5,rotate:true});
+  for(let i=parts.length-1;i>=0;i--)if(parts[i].origin==='drawer')parts.splice(i,1);
+  ready.forEach(p=>parts.push({...p,id:nextPart++}));drawerProject=structuredClone(project);
+  bedForm.elements.bedWidth.value=bed.width;bedForm.elements.bedDepth.value=bed.depth;bedForm.elements.spacing.value=5;bedForm.elements.rotate.checked=true;
+  author.value=project.author;showSet();
+}
+export function showWorkspace(mode) {
+  document.querySelector('#drawer-planner').hidden=mode!=='planner';
+  document.querySelector('#workspace').hidden=mode!=='parts';
+  document.querySelector('#mode-planner').setAttribute('aria-pressed',String(mode==='planner'));
+  document.querySelector('#mode-parts').setAttribute('aria-pressed',String(mode==='parts'));
+  if(mode==='parts')window.dispatchEvent(new Event('resize'));
+}
+document.querySelector('#mode-planner').addEventListener('click',()=>showWorkspace('planner'));
+document.querySelector('#mode-parts').addEventListener('click',()=>showWorkspace('parts'));

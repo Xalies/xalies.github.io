@@ -74,6 +74,7 @@ const server = http.createServer((req, res) => {
     }
     if (process.argv.includes('--set-only')) {
       await page.goto(`http://127.0.0.1:${server.address().port}/generators/gridfinity/`);
+      await page.locator('#mode-parts').click();
       await page.locator('#generate').click();
       await page.locator('#download').waitFor({ state: 'visible', timeout: 180000 });
       await page.waitForFunction(() => document.querySelector('#viewer').dataset.loaded === 'true');
@@ -87,7 +88,7 @@ const server = http.createServer((req, res) => {
       await page.locator('#add-to-set').click();
       await page.locator('#set-items li').waitFor();
       await page.locator('[aria-label="Quantity of design 1"]').fill('6');
-      await page.locator('#part').selectOption('baseplate'); await page.locator('[name=width]').fill('2');
+      await page.locator('#part').selectOption('baseplate'); await page.locator('#settings [name=width]').fill('2');
       assert(await page.locator('#add-to-set').isDisabled(), 'Stale models cannot enter the set');
       assert.equal(await page.locator('#set-items li').count(), 1, 'Changing generation settings preserves saved models');
       await page.locator('#generate').click();
@@ -178,8 +179,9 @@ const server = http.createServer((req, res) => {
     }
     if (process.argv.includes('--mounting-only')) {
       await page.goto(`http://127.0.0.1:${server.address().port}/generators/gridfinity/`);
+      await page.locator('#mode-parts').click();
       await page.locator('#part').selectOption('baseplate');
-      await page.locator('[name=width]').fill('2'); await page.locator('[name=depth]').fill('2');
+      await page.locator('#settings [name=width]').fill('2'); await page.locator('#settings [name=depth]').fill('2');
       await page.locator('#base-shape').selectOption('l');
       for (const [magnets, screws] of [[false,false],[true,false],[false,true],[true,true]]) {
         await page.locator('#base-magnets').setChecked(magnets);
@@ -234,9 +236,10 @@ const server = http.createServer((req, res) => {
     }
     if (!process.argv.includes('--vessels-only')) {
     await page.goto(`http://127.0.0.1:${server.address().port}/generators/gridfinity/`);
+      await page.locator('#mode-parts').click();
     // Regression: a sparse magnet custom layout must not render the full editing area.
     await page.locator('#part').selectOption('baseplate');
-    await page.locator('[name=width]').fill('6'); await page.locator('[name=depth]').fill('6');
+    await page.locator('#settings [name=width]').fill('6'); await page.locator('#settings [name=depth]').fill('6');
     await page.locator('#base-magnets').check();
     const customCells = ['0,0','1,0','2,0','0,1','1,1','2,1','0,2','1,2','0,3','1,3','2,3','3,3','4,3'];
     for (let y = 0; y < 6; y++) for (let x = 0; x < 6; x++) if (!customCells.includes(`${x},${y}`)) await page.locator(`#cell-layout [data-cell="${x},${y}"]`).click();
@@ -256,6 +259,7 @@ const server = http.createServer((req, res) => {
     if (process.env.LAYOUT_SCREENSHOT) await page.locator('.workspace').screenshot({ path: process.env.LAYOUT_SCREENSHOT });
     console.log(`Sparse custom magnet baseplate: ${customSeconds.toFixed(1)} seconds, 13 cells, STL/3MF/package verified.`);
     await page.goto(`http://127.0.0.1:${server.address().port}/generators/gridfinity/`);
+      await page.locator('#mode-parts').click();
     await page.locator('[name=chambers]').fill('4');
     await page.locator('#generate').click();
     assert.equal(await page.locator('#cancel').isDisabled(), true, 'Invalid chamber count must not render');
@@ -294,7 +298,7 @@ const server = http.createServer((req, res) => {
       assert.equal(result.parameters.screw_depth, 0);
     }
     await page.locator('#magnets').uncheck();
-    await page.locator('[name=width]').fill('2');
+    await page.locator('#settings [name=width]').fill('2');
     assert(await page.locator('#download').isHidden(), 'Changing settings hides stale downloads');
     assert(await page.locator('#mvpack').isDisabled(), 'Changing settings disables stale packages');
     await page.locator('#generate').click();
@@ -302,8 +306,8 @@ const server = http.createServer((req, res) => {
     assert.match(await page.locator('#status').textContent(), /cancelled/);
     assert(await page.locator('#generate').isEnabled());
     await page.locator('#part').selectOption('baseplate');
-    assert.equal(await page.locator('[name=width]').inputValue(), '2');
-    assert(await page.locator('[name=height]').isDisabled());
+    assert.equal(await page.locator('#settings [name=width]').inputValue(), '2');
+    assert(await page.locator('#settings [name=height]').isDisabled());
     await page.locator('#generate').click();
     await page.locator('#download').waitFor({ state: 'visible', timeout: 180000 });
     assert.equal(await page.locator('#download').getAttribute('download'), 'gridfinity-baseplate-2x1.stl');
@@ -323,7 +327,7 @@ const server = http.createServer((req, res) => {
     await page.waitForFunction(() => document.querySelector('#viewer').dataset.loaded === 'true');
     const reinforcedPack = await inspectPackage((await downloaded('#mvpack')).bytes, [...Buffer.from(reinforced)], 'stl');
     assert.equal(reinforcedPack.parameters.base_magnets, true, 'Export must preserve the baseplate mounting choice');
-    await page.locator('[name=depth]').fill('2');
+    await page.locator('#settings [name=depth]').fill('2');
     await page.locator('#base-shape').selectOption('l');
     assert.equal(await page.locator('#cell-layout [aria-pressed=true]').count(), 3);
     for (const magnets of [false, true]) {
@@ -376,7 +380,7 @@ const server = http.createServer((req, res) => {
       return !connectedCells([]) && !connectedCells([[0,0],[1,1]]) && connectedCells([[0,0],[1,0],[1,1]]);
     }), 'All preset sizes must be connected; diagonal-only layouts must fail');
     await page.locator('#base-shape').selectOption('rectangle');
-    await page.locator('[name=depth]').fill('1');
+    await page.locator('#settings [name=depth]').fill('1');
     await page.locator('#part').selectOption('bin');
     assert(await page.locator('[name=magnet_diameter]').isDisabled(), 'Switching back preserves disabled magnet choice');
     await page.locator('#part').selectOption('baseplate');
@@ -449,9 +453,9 @@ const server = http.createServer((req, res) => {
       return true;
     });
     assert(topology, 'Watertight mesh edges and outward winding, including extreme controls');
-    await page.locator('[name=height]').fill('0');
+    await page.locator('#settings [name=height]').fill('0');
     assert(await page.locator('#stl').isDisabled());
-    await page.locator('[name=height]').fill('80');
+    await page.locator('#settings [name=height]').fill('80');
     await page.waitForFunction(() => !document.querySelector('#stl').disabled);
     await page.setViewportSize({ width: 1440, height: 1000 });
     await page.locator('[data-preset=vase]').click();
