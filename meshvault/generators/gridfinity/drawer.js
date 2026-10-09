@@ -4,12 +4,12 @@ export function gridSize(drawer) {
 }
 export function newDrawer() {
   const drawer = { width:336, depth:252, height:70, clearance:0 };
-  return { schema:'meshvault.gridfinity-layout', version:1, title:'My workshop drawer', author:'', donation:'https://buymeacoffee.com/xalies', drawer, magnets:false, magnetDiameter:6.5, magnetDepth:2.4, cells:Array.from({length:48},(_,i)=>[i%8,Math.floor(i/8)]), screws:[], bins:[] };
+  return { schema:'meshvault.gridfinity-layout', version:1, title:'My workshop drawer', author:'', authorUrl:'', donation:'', drawer, magnets:false, magnetDiameter:6.5, magnetDepth:2.4, cells:Array.from({length:48},(_,i)=>[i%8,Math.floor(i/8)]), screws:[], bins:[] };
 }
 export function donationError(value) {
   if(!value)return '';
   try{const url=new URL(value);if(value.length<=2048&&/^https:\/\//i.test(value)&&url.protocol==='https:'&&!url.username&&!url.password)return '';}catch{}
-  return 'Use an HTTPS donation URL without a username or password, or leave it blank.';
+  return 'Use an HTTPS URL without a username or password, or leave it blank.';
 }
 export function mountHeight(plan) {
   return Math.max(plan.magnets?(plan.magnetDepth ?? 2.4)+1.2:0,plan.screws.length?3.6:0);
@@ -29,7 +29,8 @@ export function validateDrawer(value) {
   const integer = (n,min,max) => Number.isInteger(n) && number(n,min,max);
   if (!value || value.schema!=='meshvault.gridfinity-layout' || value.version!==1) fail('Choose a MeshVault Gridfinity layout file (version 1).');
   if (typeof value.title!=='string' || !value.title.trim() || value.title.length>100 || typeof value.author!=='string' || value.author.length>100 || typeof value.magnets!=='boolean') fail('Invalid layout details.');
-  const donation=value.donation ?? '',magnetDiameter=value.magnetDiameter ?? 6.5,magnetDepth=value.magnetDepth ?? 2.4;
+  const donation=value.donation ?? '',authorUrl=value.authorUrl ?? '',magnetDiameter=value.magnetDiameter ?? 6.5,magnetDepth=value.magnetDepth ?? 2.4;
+  if(typeof authorUrl!=='string'||donationError(authorUrl))fail('Invalid author URL. Use HTTPS without credentials.');
   if(typeof donation!=='string'||donationError(donation))fail('Invalid donation URL. Use HTTPS without credentials.');
   if(!number(magnetDiameter,3,10)||!number(magnetDepth,1,5))fail('Magnet pockets need a diameter of 3-10 mm and depth of 1-5 mm.');
   const d=value.drawer;
@@ -53,7 +54,7 @@ export function validateDrawer(value) {
     ids.add(b.id); const error=binError(value,b); if(error) fail(`${b.name}: ${error}`);
   }
   // Copy only the supported data so imported objects cannot supply extra state.
-  return {schema:value.schema,version:1,title:value.title,author:value.author,donation,magnetDiameter,magnetDepth,drawer:{width:d.width,depth:d.depth,height:d.height,clearance:d.clearance},magnets:value.magnets,cells:value.cells.map(c=>[...c]),screws:value.screws.map(c=>[...c]),bins:value.bins.map(b=>Object.fromEntries(['id','name','colour','scoop','label','x','y','w','d','h','compartments'].map(k=>[k,b[k]])))};
+  return {schema:value.schema,version:1,title:value.title,author:value.author,authorUrl,donation,magnetDiameter,magnetDepth,drawer:{width:d.width,depth:d.depth,height:d.height,clearance:d.clearance},magnets:value.magnets,cells:value.cells.map(c=>[...c]),screws:value.screws.map(c=>[...c]),bins:value.bins.map(b=>Object.fromEntries(['id','name','colour','scoop','label','x','y','w','d','h','compartments'].map(k=>[k,b[k]])))};
 }
 export function splitBaseplate(plan, bed, gap=5) {
   const width=Math.min(6,Math.floor((bed.width-gap*2)/42)), depth=Math.min(6,Math.floor((bed.depth-gap*2)/42));

@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-2.0-only
-import { newDrawer, gridSize, binError, validateDrawer, splitBaseplate, mountHeight, donationError } from './drawer.js?v=20261009-plates';
-import { buildPart } from './build-part.js?v=20261009-plates';
-import { setDrawerParts, showWorkspace, bedSettings, beginDrawerBuild, previewDrawerParts, finishDrawerBuild, markDrawerChanged } from './generator.js?v=20261009-plates';
+import { newDrawer, gridSize, binError, validateDrawer, splitBaseplate, mountHeight, donationError } from './drawer.js?v=20261009-author-links';
+import { buildPart } from './build-part.js?v=20261009-author-links';
+import { setDrawerParts, showWorkspace, bedSettings, beginDrawerBuild, previewDrawerParts, finishDrawerBuild, markDrawerChanged } from './generator.js?v=20261009-author-links';
 import { saveFile } from '../shared/mvpack.js';
 const $ = id => document.getElementById(id);
 const drawerForm=$('drawer-settings'), binForm=$('bin-settings'), svg=$('drawer-grid'), status=$('planner-status');
@@ -19,7 +19,7 @@ function commit(next, message='Layout updated.') {
 }
 function sync() {
   for(const key of ['width','depth','height','clearance'])drawerForm.elements[key].value=plan.drawer[key];
-  drawerForm.elements.title.value=plan.title;$('author').value=plan.author;$('donation').value=plan.donation;$('donation').setCustomValidity('');drawerForm.elements.magnetDiameter.value=plan.magnetDiameter;drawerForm.elements.magnetDepth.value=plan.magnetDepth;drawerForm.elements.magnetDiameter.disabled=drawerForm.elements.magnetDepth.disabled=!plan.magnets;drawerForm.elements.magnets.checked=plan.magnets;
+  drawerForm.elements.title.value=plan.title;$('author').value=plan.author;$('author-url').value=plan.authorUrl;$('author-url').setCustomValidity('');$('donation').value=plan.donation;$('donation').setCustomValidity('');drawerForm.elements.magnetDiameter.value=plan.magnetDiameter;drawerForm.elements.magnetDepth.value=plan.magnetDepth;drawerForm.elements.magnetDiameter.disabled=drawerForm.elements.magnetDepth.disabled=!plan.magnets;drawerForm.elements.magnets.checked=plan.magnets;
   const bin=plan.bins.find(b=>b.id===selected);
   if(bin)for(const key of ['name','w','d','h','compartments','colour','scoop','label']){
     const input=binForm.elements[key];if(input.type==='checkbox')input.checked=bin[key];else input.value=bin[key];
@@ -139,10 +139,10 @@ function render3D(){
   renderer.setSize(host.clientWidth,host.clientHeight);camera.aspect=host.clientWidth/host.clientHeight;camera.updateProjectionMatrix();const distance=Math.max(plan.drawer.width,plan.drawer.depth)*1.6;camera.position.set(distance,distance*.9,distance);controls.target.set(0,0,0);controls.update();renderer.render(scene,camera);
 }
 $('export-details').addEventListener('submit',e=>e.preventDefault());
-$('donation').addEventListener('input',()=>{$('donation').setCustomValidity(donationError($('donation').value.trim()));});
+for(const id of ['author-url','donation'])$(id).addEventListener('input',()=>{$(id).setCustomValidity(donationError($(id).value.trim()));});
 $('export-details').addEventListener('change',()=>{
   if(!$('export-details').reportValidity())return;
-  const next=clone(plan);next.author=$('author').value.trim();next.donation=$('donation').value.trim();commit(next,'Export details saved.');
+  const next=clone(plan);next.author=$('author').value.trim();next.authorUrl=$('author-url').value.trim();next.donation=$('donation').value.trim();commit(next,'Export details saved.');
 });
 $('retry-layout').addEventListener('click',()=>$('build-layout').click());
 $('cancel-layout').addEventListener('click',()=>controller?.abort());

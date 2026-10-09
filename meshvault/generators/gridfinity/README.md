@@ -29,7 +29,7 @@ length against drawer-floor thickness and magnet polarity before fitting.
 
 Layouts autosave in localStorage and can be saved/reopened as validated JSON.
 Older version-1 layouts without magnet sizes load with the defaults; absent
-donation links remain blank. Invalid imports preserve the existing layout.
+author profile and donation links remain blank. Invalid imports preserve the existing layout.
 
 ## 2. Generate and print
 
@@ -47,9 +47,11 @@ once with quantities preserved. Individual bins are not split. The first-fit
 plate layout respects custom cell footprints and spacing but does not guarantee
 the fewest plates.
 
-Author and optional HTTPS generator donation URL live on this page. They save
-with the layout and become `author` and `exportDonationUrl` in MeshVault metadata.
-Unknown authors export as Anonymous; a blank donation field omits the link.
+Author, optional author URL and author donation URL live on this page and save
+with the layout. Name and profile become `author` and `authorUrl` in MeshVault
+metadata; the author donation link appears in `descriptionHtml`, separately from
+generator support (`exportDonationUrl`). Unknown authors export as Anonymous;
+blank URL fields omit their links. Credit changes do not require regeneration.
 URLs with credentials or non-HTTPS schemes are rejected.
 
 Choose STL or 3MF and download numbered print plates in a ZIP, or export one

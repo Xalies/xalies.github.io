@@ -8,11 +8,11 @@
   <link rel="canonical" href="https://www.meshvault.app/generators/gridfinity/">
   <link rel="icon" href="../../images/meshvault_512x512.png">
   <link rel="stylesheet" href="../shared/studio.css">
-  <link rel="stylesheet" href="theme.css?v=20261009-plates">
+  <link rel="stylesheet" href="theme.css?v=20261009-author-links">
   <script src="vendor/deps/three.min.js" defer></script>
   <script src="vendor/deps/OrbitControls.js" defer></script>
-  <script type="module" src="generator.js?v=20261009-plates"></script>
-  <script type="module" src="planner.js?v=20261009-plates"></script>
+  <script type="module" src="generator.js?v=20261009-author-links"></script>
+  <script type="module" src="planner.js?v=20261009-author-links"></script>
 </head>
 <body class="gridfinity-studio">
   <a class="skip-link" href="#drawer-planner">Skip to planner</a>
@@ -38,7 +38,8 @@
         <button type="button" id="retry-layout">Regenerate plates</button>
         <form id="export-details"><fieldset><legend>Your export</legend>
           <label>Author · optional<input id="author" name="author" type="text" maxlength="100" placeholder="Your name" autocomplete="name"><small>Credited in MeshVault. Leave blank for Anonymous.</small></label>
-          <label>Generator donation URL · optional<input id="donation" name="donation" type="url" maxlength="2048" placeholder="https://buymeacoffee.com/your-name"><small>HTTPS support link included in the MeshVault project. Leave blank to omit it.</small></label>
+          <label>Author URL · optional<input id="author-url" name="authorUrl" type="url" maxlength="2048" placeholder="https://your-site.com"><small>Your HTTPS website or creator profile.</small></label>
+          <label>Author donation URL · optional<input id="donation" name="donation" type="url" maxlength="2048" placeholder="https://buymeacoffee.com/your-name"><small>Support the author through this HTTPS link in the project description. Leave blank to omit it.</small></label>
         </fieldset></form>
         </div><div class="set-export"><p class="step">Download your project</p><label>Export format<select id="set-format"><option value="3mf">3MF</option><option value="stl">STL</option></select></label><div class="export-actions"><button id="export-set" type="button" disabled>MeshVault ↓</button><button id="export-set-zip" class="secondary" type="button" disabled>Plate ZIP ↓</button></div><p class="small">STL and 3MF contain unsliced models. MeshVault keeps all plates together as one project, with your editable drawer layout.</p></div>
       </aside>

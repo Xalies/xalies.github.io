@@ -30,10 +30,14 @@ const islands=splitBaseplate({...plan,cells:[[0,0],[2,0]],screws:[]},{width:220,
 assert.equal(islands.length,2);
 
 
-const legacy={...plan};delete legacy.magnetDiameter;delete legacy.magnetDepth;delete legacy.donation;
+const legacy={...plan};delete legacy.magnetDiameter;delete legacy.magnetDepth;delete legacy.donation;delete legacy.authorUrl;
 assert.equal(validateDrawer(legacy).magnetDepth,2.4);
 assert.equal(validateDrawer(legacy).magnetDiameter,6.5);
 assert.equal(validateDrawer(legacy).donation,'');
+assert.equal(validateDrawer(legacy).authorUrl,'');
+assert.equal(newDrawer().donation,'');
+assert.equal(validateDrawer({...plan,authorUrl:'https://example.org/maker'}).authorUrl,'https://example.org/maker');
+for(const authorUrl of ['http://example.org','https://user:pass@example.org',7])assert.throws(()=>validateDrawer({...plan,authorUrl}),/Invalid author URL/);
 assert.equal(donationError('https://example.org/support'),'');
 assert(donationError('http://example.org/support'));
 assert(donationError('https:example.org/support'));

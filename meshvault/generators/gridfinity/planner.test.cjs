@@ -67,9 +67,15 @@ const server=http.createServer((req,res)=>{
     assert(await page.locator('#plate-layouts canvas').count()>0,'Completed designs appear on plates while later designs generate');
     if(await page.locator('#generation-panel').getAttribute('data-state')==='building')assert(await page.locator('#export-set').isDisabled());
     await page.waitForFunction(()=>document.querySelector('#generation-panel').dataset.state==='ready',{},{timeout:240000});
-    await change('#author','Bolt Maker');
+    await change('#author','Bolt <Maker>');
+    await page.locator('#author-url').fill('http://example.org/maker');assert.equal(await page.locator('#author-url').evaluate(n=>n.checkValidity()),false);
+    await change('#author-url','https://example.org/maker');
     await page.locator('#donation').fill('http://example.org/support');assert.equal(await page.locator('#donation').evaluate(n=>n.checkValidity()),false);
-    await change('#donation','https://example.org/support');
+    await change('#donation','https://example.org/support?via=grid&maker=bolt');
+    assert(await page.locator('#export-set').isEnabled(),'Credit changes do not require regeneration');
+    await page.locator('#mode-planner').click();
+    const credited=JSON.parse(Buffer.from(await download('#save-layout')).toString());assert.deepEqual(credited,await state());assert.equal(credited.authorUrl,'https://example.org/maker');
+    await page.locator('#mode-parts').click();
     if(process.env.PLANNER_PROOF_DIR){
       await page.screenshot({path:path.join(process.env.PLANNER_PROOF_DIR,'plates-ready.png')});
       await page.setViewportSize({width:1440,height:900});await page.screenshot({path:path.join(process.env.PLANNER_PROOF_DIR,'plates-1440.png')});
@@ -85,9 +91,9 @@ const server=http.createServer((req,res)=>{
       const settings=manifest.models.map(m=>JSON.parse(strFromU8(files[m.documentFiles[0]])));
       const parts=settings.flatMap(s=>s.parts);
       const models=manifest.models.map(m=>{const xml=new DOMParser().parseFromString(strFromU8(unzipSync(files[m.relativePath])['3D/3dmodel.model']),'application/xml');return {valid:!xml.querySelector('parsererror')&&xml.documentElement.getAttribute('unit')==='millimeter',triangles:xml.getElementsByTagName('triangle').length};});
-      return {packType:manifest.packType,author:manifest.project.author,donation:manifest.project.exportDonationUrl,modelDonations:manifest.models.map(m=>m.exportDonationUrl),layout,parts,models,thumbnail:[...files[manifest.project.thumbnailFile].slice(0,8)]};
+      return {packType:manifest.packType,author:manifest.project.author,authorUrl:manifest.project.authorUrl,description:manifest.project.descriptionHtml,donation:manifest.project.exportDonationUrl,modelCredits:manifest.models.map(m=>({author:m.author,authorUrl:m.authorUrl,description:m.descriptionHtml,donation:m.exportDonationUrl})),layout,parts,models,thumbnail:[...files[manifest.project.thumbnailFile].slice(0,8)]};
     },pack);
-    assert.equal(result.packType,'project');assert.equal(result.author,'Bolt Maker');assert.equal(result.donation,'https://example.org/support');assert(result.modelDonations.every(url=>url===result.donation));assert.deepEqual(result.layout,await state());
+    assert.equal(result.packType,'project');assert.equal(result.author,'Bolt <Maker>');assert.equal(result.authorUrl,'https://example.org/maker');assert.equal(result.donation,undefined);assert.match(result.description,/Support Bolt &lt;Maker&gt;/);assert.match(result.description,/href="https:\/\/example.org\/support\?via=grid&amp;maker=bolt"/);assert(result.modelCredits.every(m=>m.author===result.author&&m.authorUrl===result.authorUrl&&m.description===result.description&&m.donation===undefined));assert.deepEqual(result.layout,await state());
     assert(result.models.length>=2&&result.models.every(m=>m.valid&&m.triangles>100));
     assert.deepEqual(result.thumbnail,[137,80,78,71,13,10,26,10]);
     const base=result.parts.filter(p=>p.settings.part==='baseplate'),bins=result.parts.filter(p=>p.settings.part==='bin');

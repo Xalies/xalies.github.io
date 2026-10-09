@@ -4,7 +4,7 @@ import { arrangePlates, meshBounds, plateMesh, plateSTL } from './plates.js';
 const parts = [], bedForm = document.querySelector('#bed-settings'), setStatus = document.querySelector('#set-status');
 const setExport = document.querySelector('#export-set'), zipExport = document.querySelector('#export-set-zip');
 const plateLayouts = document.querySelector('#plate-layouts');
-const author=document.querySelector('#author'), donation=document.querySelector('#donation');
+const author=document.querySelector('#author'), authorUrl=document.querySelector('#author-url'), donation=document.querySelector('#donation');
 let exportingSet=false, building=false, dirty=false, platePlan=[], drawerProject=null;
 export function bedSettings() {
   return { width: Number(bedForm.elements.bedWidth.value), depth: Number(bedForm.elements.bedDepth.value), gap: Number(bedForm.elements.spacing.value), rotate: bedForm.elements.rotate.checked };
@@ -42,8 +42,10 @@ async function exportSet(meshvault) {
   if (building || dirty || exportingSet || !platePlan.length || setExport.disabled || !document.querySelector('#export-details').reportValidity()) return;
   const plan = platePlan, bed = bedSettings(), format = document.querySelector('#set-format').value;
   const canvases = [...plateLayouts.querySelectorAll('canvas')];
-  const credit={author:author.value.trim()||'Anonymous',exportDonationUrl:donation.value.trim()||undefined};
-  const layout={...drawerProject,author:author.value.trim(),donation:donation.value.trim()};
+  const escape=value=>value.replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+  const credit={author:author.value.trim()||'Anonymous',authorUrl:authorUrl.value.trim()||undefined};
+  credit.descriptionHtml=`<p>Gridfinity drawer designed by <strong>${escape(credit.author)}</strong>.</p>${donation.value.trim()?`<p><a href="${escape(donation.value.trim())}">Support ${escape(credit.author)}</a></p>`:''}`;
+  const layout={...drawerProject,author:author.value.trim(),authorUrl:authorUrl.value.trim(),donation:donation.value.trim()};
   exportingSet = true;document.querySelector('#retry-layout').disabled=document.querySelector('#build-layout').disabled=true; setExport.disabled = zipExport.disabled = true; setStatus.textContent = 'Packaging your print plates…';
   try {
     const models = [];
@@ -103,7 +105,7 @@ function renderPlates(plan,bed) {
 }
 export function markDrawerChanged(layout) {
   if(!drawerProject)return;
-  const design=value=>JSON.stringify({...value,author:'',donation:''});
+  const design=value=>JSON.stringify({...value,author:'',authorUrl:'',donation:''});
   dirty=design(layout)!==design(drawerProject);
   if(!building)updatePlates();
 }
