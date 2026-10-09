@@ -1,4 +1,5 @@
 const smooth = t => t * t * (3 - 2 * t);
+export const BASE_RECESS_MM = .6;
 export function profileNodes(s) {
   return [{t:0,diameter:s.base},{t:s.bellyPosition??.55,diameter:s.belly},{t:1,diameter:s.mouth},...(s.profilePoints||[])].sort((a,b)=>a.t-b.t);
 }
@@ -45,18 +46,35 @@ export function vesselMesh(s) {
     rings.push(start);
   }
   for (let i = 0; i <= levels; i++) ring(i / levels);
-  for (let i = 0; i <= levels; i++) ring(1 - (1-s.floor/s.height) * i / levels, true);
+  const floorHeight = s.floor + BASE_RECESS_MM;
+  for (let i = 0; i <= levels; i++) ring(1 - (1-floorHeight/s.height) * i / levels, true);
   for (let i = 0; i < rings.length - 1; i++) {
     for (let j = 0; j < segments; j++) {
       const k = (j + 1) % segments, a = rings[i] + j, b = rings[i + 1] + j, c = rings[i] + k, d = rings[i + 1] + k;
       indices.push(a, b, c, c, b, d);
     }
   }
-  const bottom = positions.length / 3; positions.push(0, 0, 0);
-  const floor = positions.length / 3; positions.push(0, s.floor, 0);
+  // Keep the selected floor thickness above a shallow recess and a flat contact ring.
+  const recessRadius = s.base / 2 - Math.min(3, s.base / 10);
+  let underside = rings[0];
+  for (let i = 8; i >= 1; i--) {
+    const start = positions.length / 3, r = recessRadius * i / 8;
+    const y = BASE_RECESS_MM * (1 - (r / recessRadius) ** 2);
+    for (let j = 0; j < segments; j++) {
+      const angle = j * Math.PI * 2 / segments;
+      positions.push(r * Math.cos(angle), y, r * Math.sin(angle));
+    }
+    for (let j = 0; j < segments; j++) {
+      const k = (j + 1) % segments;
+      indices.push(start+j, underside+j, underside+k, start+j, underside+k, start+k);
+    }
+    underside = start;
+  }
+  const bottom = positions.length / 3; positions.push(0, BASE_RECESS_MM, 0);
+  const floor = positions.length / 3; positions.push(0, floorHeight, 0);
   for (let j = 0; j < segments; j++) {
     const k = (j + 1) % segments;
-    indices.push(bottom, rings[0] + j, rings[0] + k);
+    indices.push(bottom, underside + j, underside + k);
     indices.push(floor, rings.at(-1) + k, rings.at(-1) + j);
   }
   if(s.topOffset!==undefined) {

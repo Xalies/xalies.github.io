@@ -118,7 +118,7 @@ const server = http.createServer((req, res) => {
     assert.match(await handle.getAttribute('aria-valuetext'),/140 millimetres high/,'Original belly point moves vertically');
     const baseHandle=page.locator('[data-size=base]'),baseBefore=await baseHandle.getAttribute('transform');await baseHandle.press('ArrowUp');assert.equal(await baseHandle.getAttribute('transform'),baseBefore,'Bottom stays fixed vertically');
     const linePoint=await page.evaluate(async()=>{
-      const {profileRadius}=await import('/generators/vessels/geometry.js?v=20261009-profile-fit'),svg=document.querySelector('#profile-editor'),form=document.querySelector('#settings');
+      const {profileRadius}=await import('/generators/vessels/geometry.js?v=20261009-recess'),svg=document.querySelector('#profile-editor'),form=document.querySelector('#settings');
       const s=Object.fromEntries(['height','base','belly','mouth'].map(n=>[n,Number(form.elements[n].value)]));
       s.bellyPosition=.7;const d=svg.dataset,p=new DOMPoint(Number(d.centre)+profileRadius(s,.25)*Number(d.scale),Number(d.floor)-s.height*.25*Number(d.scale)).matrixTransform(svg.getScreenCTM());return {x:p.x,y:p.y};
     });
@@ -185,6 +185,12 @@ const server = http.createServer((req, res) => {
         { height: 25, base: 25, belly: 25, mouth: 25, wall: 5, floor: 6, flutes: 48, amplitude: 5, twist: -180, quality: 'fine', bellyPosition:.65, profilePoints:[{t:.25,diameter:50},{t:.8,diameter:35}] }
       ]) {
         const { positions, indices } = vesselMesh(settings), edges = new Map();
+        const vertices = Array.from({length:positions.length/3},(_,i)=>positions.slice(i*3,i*3+3));
+        const contact = vertices.filter(p=>Math.abs(p[1])<1e-8);
+        const footRadius = settings.base/2-Math.min(3,settings.base/10);
+        if (contact.length !== (settings.quality==='fine'?384:192)*2 || contact.some(p=>Math.hypot(p[0],p[2])<footRadius-1e-8)) return false;
+        const [underside,inside] = vertices.slice(-2);
+        if (Math.abs(underside[1]-.6)>1e-8 || Math.abs(inside[1]-underside[1]-settings.floor)>1e-8 || vertices.some(p=>p[1]<-1e-8)) return false;
         let volume = 0;
         for (let i = 0; i < indices.length; i += 3) {
           const tri = indices.slice(i, i + 3);
@@ -199,7 +205,7 @@ const server = http.createServer((req, res) => {
       }
       return true;
     });
-    assert(topology, 'Watertight mesh edges and outward winding, including extreme controls');
+    assert(topology, 'Closed outward mesh, flat contact ring, recessed centre and preserved base thickness, including extreme controls');
     const arcHeights=await page.evaluate(async()=>{const {profilePoint}=await import('/generators/vessels/geometry.js');return [-30,30].map(topOffset=>{const s={height:160,base:65,belly:100,mouth:40,wall:1.6,topOffset};return {end:profilePoint(s,1).y,max:Math.max(...Array.from({length:1025},(_,i)=>profilePoint(s,i/1024).y))};});});
     assert.equal(arcHeights[0].end,130);assert(Math.abs(arcHeights[0].max-160)<.01,'Lower opening arcs over the fixed height');assert.equal(arcHeights[1].end,190);
     const tightCurve=await page.evaluate(async()=>{const {vesselMesh}=await import('/generators/vessels/geometry.js');try{vesselMesh({height:160,base:65,belly:100,mouth:60,wall:5,floor:2,flutes:0,amplitude:0,twist:0,topOffset:-30});return '';}catch(e){return e.message;}});assert.match(tightCurve,/top curve is too tight/);
