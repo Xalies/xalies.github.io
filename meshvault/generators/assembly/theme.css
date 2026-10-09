@@ -67,3 +67,23 @@ button { border-radius:4px; }
 
 .skip-link { position:absolute; top:-60px; left:16px; z-index:10; background:var(--accent); color:#120f19; padding:8px 12px; }
 .skip-link:focus { top:8px; }
+
+#cabinet-planner { padding:12px 0 16px; border-bottom:1px solid var(--line); }
+.planner-heading { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:10px; }
+.planner-heading p { margin:0; } #cabinet-size { font-size:.75rem; color:var(--muted); }
+#bay-plan { display:grid; gap:6px; height:180px; }
+.bay { position:relative; overflow:hidden; min-height:0; text-align:left; background:#211b2c; border:1px solid #5f536e; color:#f4f1fa; padding:10px 12px; }
+.bay[aria-pressed=true] { border:2px solid var(--assembly); background:#332d3c; }
+.bay strong,.bay>span:not(.bay-face) { position:relative; display:block; z-index:1; font-size:.75rem; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.bay>span:not(.bay-face) { font-size:.65rem; color:#ddd4e9; }
+.bay-face { position:absolute; inset:5px; display:grid; gap:4px; opacity:.18; } .bay-face i { background:#f4cc68; border:1px solid #f4cc68; }
+.bay.shelf .bay-face i { background:transparent; border-bottom:3px solid #b49bff; }
+.bay.gridfinity .bay-face i { background:#8cd6b6; border-radius:6px; }
+.planner-actions { display:flex; flex-wrap:wrap; gap:6px; margin-top:10px; }.planner-actions button { padding:5px 10px; font-size:.7rem; }
+.cabinet-presets { display:flex; flex-wrap:wrap; gap:6px; }.cabinet-presets button { padding:7px 9px; font-size:.7rem; }
+body:has(select[name=assembly] option[value=cabinet]:checked) #viewer { height:clamp(280px,calc(100vh - 600px),600px); }
+@media(max-width:850px){#bay-plan{height:210px}.planner-heading{flex-wrap:wrap}body:has(select[name=assembly] option[value=cabinet]:checked) #viewer{height:340px}}
+
+#printer { margin-top:12px; } #printer label { font-size:.7rem; margin-bottom:8px; } #printer input[type=number] { padding:6px 8px; } #printer .fields { gap:8px; } .assembly-notes #printer label { display:grid; } .assembly-notes #printer .toggle { display:flex; } #plate-summary { margin:6px 0 12px; }
+
+.assembly-notes #printer .toggle { justify-content:flex-start; gap:8px; }

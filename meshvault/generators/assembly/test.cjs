@@ -17,6 +17,7 @@ const server = http.createServer((req,res)=>{
     page.on('pageerror',e=>errors.push(e.message));
     await page.goto(`http://127.0.0.1:${server.address().port}/generators/assembly/`);
     await page.waitForFunction(()=>!document.querySelector('#mvpack').disabled);
+    await page.locator('[name=assembly]').selectOption('drawer');await page.waitForFunction(()=>!document.querySelector('#mvpack').disabled);
     assert.equal(await page.locator('.demo-account').count(),0);
     assert.equal(await page.locator('#author').inputValue(),'');
     await page.locator('.author-details summary').click();
