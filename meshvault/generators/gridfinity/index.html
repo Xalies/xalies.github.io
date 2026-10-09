@@ -16,7 +16,7 @@
   <script src="vendor/deps/OrbitControls.js" defer></script>
   <script src="vendor/deps/webgl_detector.js" defer></script>
   <script src="vendor/deps/stl_viewer.min.js" defer></script>
-  <script type="module" src="generator.js"></script>
+  <script type="module" src="generator.js?v=20261009-mounts"></script>
 </head>
 <body class="gridfinity-studio">
   <a class="skip-link" href="#workspace">Skip to generator</a>
@@ -47,9 +47,9 @@
           <label>Magnet pocket diameter · mm<input name="magnet_diameter" type="number" min="3" max="10" step="0.1" value="6.5" required disabled><small>Pockets are 2.4 mm deep. Adjust diameter for your magnets and printer fit.</small></label>
           <p class="small">Magnet pockets sit at the four corners of each grid cell. Match magnet polarity to your baseplate before fitting.</p>
         </fieldset>
-        <fieldset data-base hidden><legend>Drawer mounting</legend>
-          <label class="check"><input id="base-magnets" name="base_magnets" type="checkbox" disabled>Add corner magnet pockets</label>
-          <details><summary>Mount dimensions &amp; fit</summary><p class="small">Four 6.5 × 2.4 mm magnet pockets per cell, with an open centre. To fasten the baseplate to your drawer floor, switch the grid to Centre screw positions and select only the cells you need. Each selected cell gets a 3.5 mm through-hole with a 7 mm countersink on top and support ribs.</p>
+        <fieldset data-base hidden><legend>Bin retention &amp; drawer fixing</legend>
+          <label class="check"><input id="base-magnets" name="base_magnets" type="checkbox" disabled>Add magnet pockets to hold bins</label>
+          <details><summary>Mount dimensions &amp; fit</summary><p class="small">Four 6.5 × 2.4 mm magnet pockets per cell hold matching magnet-equipped bins to the baseplate, with an open centre. To fasten the baseplate to your drawer floor, switch the grid to Centre screw positions and select only the cells you need. Each selected cell gets a 3.5 mm through-hole with a 7 mm countersink on top and support ribs.</p>
           <p class="small">Standard frame: 5 mm high. Magnets or screw mounts add 3.6 mm underneath the sockets. Use countersunk screws with a length suited to your drawer-floor thickness. Check screw-head fit and magnet polarity before assembly.</p></details>
         </fieldset>
         <fieldset data-base hidden><legend>Baseplate footprint</legend>
@@ -64,7 +64,7 @@
           <label>Wall thickness · mm<input name="wall_thickness" type="number" min="0.8" max="3" step="0.05" value="0.95" required></label>
           <label>Floor thickness · mm<input name="floor_thickness" type="number" min="0.7" max="3" step="0.1" value="0.7" required></label>
         </div></details>
-        <p id="base-note" class="small" hidden>Width and depth stay the same when you switch parts, so the base matches your bin footprint. Add corner magnets or select individual centre screw mounts to secure the baseplate.</p>
+        <p id="base-note" class="small" hidden>Width and depth stay the same when you switch parts, so the base matches your bin footprint. Magnets hold removable bins to the baseplate. Selected centre screws fasten the baseplate to your drawer floor.</p>
         <p class="small">Grid pitch: 42 × 42 mm. Actual bin width and depth include fitting clearance. Compartments divide along the width only.</p>
         <div class="actions"><button id="generate" type="submit">Generate model</button><button id="cancel" type="button" disabled>Cancel</button></div>
       </form>

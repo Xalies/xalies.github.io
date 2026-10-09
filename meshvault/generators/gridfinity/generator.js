@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-2.0-only
 import { createPackage, createSetPackage, create3MF, asciiSTLMesh, saveFile, canvasThumbnail } from '../shared/mvpack.js';
-import { layoutCells, connectedCells, baseplateSource } from './layout.js';
+import { layoutCells, connectedCells, baseplateSource } from './layout.js?v=20261009-mounts';
 import { arrangePlates, meshBounds, plateMesh, plateSTL } from './plates.js';
 const form = document.querySelector('#settings');
 const status = document.querySelector('#status');

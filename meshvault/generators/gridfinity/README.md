@@ -20,7 +20,8 @@ browser rendering practical. Dividers run across the width only.
 Bins offer optional magnet pockets with an adjustable diameter (default 6.5 mm)
 and fixed 2.4 mm depth. Turning magnets off passes zero to the model. Bin screw
 holes are always disabled (`screw_depth: 0`); screws are a baseplate feature.
-Baseplates stay open underneath. Optional corner bosses hold four 6.5 x 2.4 mm
+Baseplates stay open underneath. Their corner magnets retain magnet-equipped
+bins; selected centre screws attach only the baseplate to the drawer floor. Optional corner bosses hold four 6.5 x 2.4 mm
 blind magnet pockets per cell, with 1.2 mm of material beneath each pocket.
 To fasten the baseplate to the inside floor of a drawer, switch the footprint
 grid to Centre screw positions and select individual cells. Use countersunk
