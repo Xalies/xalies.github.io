@@ -2,8 +2,8 @@ import { create3MF, createSetPackage, canvasThumbnail, saveFile, asciiSTLMesh } 
 import { plateSTL, arrangePlates, meshBounds, plateMesh } from '../gridfinity/plates.js';
 import { buildPart } from '../gridfinity/build-part.js?v=20261009-custom-source';
 import { drawerParts, drawerFit, organiserParts, organiserBaseSource } from './geometry.js?v=20261009-drawer-bay-1';
-import { cabinetParts, cabinetHardware, insertNames } from './cabinet.js?v=20261009-cabinet-2';
-import { initCabinet } from './cabinet-ui.js?v=20261009-cabinet-2';
+import { cabinetParts, cabinetHardware, insertNames } from './cabinet.js?v=20261009-cabinet-3';
+import { initCabinet } from './cabinet-ui.js?v=20261009-cabinet-3';
 const form=document.querySelector('#settings'),creator=document.querySelector('#creator'),host=document.querySelector('#viewer'),status=document.querySelector('#status');
 const view=document.querySelector('#view'),format=document.querySelector('#format'),pack=document.querySelector('#mvpack'),download=document.querySelector('#download-kit');
 const sourceUrl='https://www.meshvault.app/generators/assembly/';
@@ -129,7 +129,7 @@ async function update(){
     if(settings.assembly==='cabinet'){
       design.bed={width:Number(document.querySelector('#bed-width').value),depth:Number(document.querySelector('#bed-depth').value),gap:5,rotate:true};
       const plan=arrangePlates(design.items.map(p=>({...p,title:p.label,quantity:1,bounds:meshBounds(p.mesh)})),design.bed);
-      design.plates=plan.map((plate,i)=>({id:`plate-${i+1}`,label:`Print plate ${i+1}`,mesh:plateMesh(plate.placements),placements:plate.placements.map(p=>({part:p.part.id,x:p.x,y:p.y,rotated:p.rotated}))}));
+      design.plates=plan.map((plate,i)=>({id:`plate-${i+1}`,label:`Print plate ${i+1}`,colour:['#b7a0e5','#f4cc68','#8cd6b6','#9ab9e6'][i%4],mesh:plateMesh(plate.placements),placements:plate.placements.map(p=>({part:p.part.id,x:p.x,y:p.y,rotated:p.rotated}))}));
       settings.printer=design.bed;document.querySelector('#plate-summary').textContent=`${design.items.length} parts · ${plan.length} plates · frames print ${settings.depth} mm tall`;
     }
     showView(view.value,design);

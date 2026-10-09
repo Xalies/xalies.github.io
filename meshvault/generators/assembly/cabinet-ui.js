@@ -1,4 +1,4 @@
-import { newCabinet, validateCabinet, insertNames } from './cabinet.js?v=20261009-cabinet-2';
+import { newCabinet, validateCabinet, insertNames } from './cabinet.js?v=20261009-cabinet-3';
 export function initCabinet(form,changed) {
   let plan=newCabinet(),selected=0;
   const grid=document.querySelector('#bay-plan'),options=document.querySelector('#cabinet-options');

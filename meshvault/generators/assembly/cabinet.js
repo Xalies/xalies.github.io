@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-2.0-only
 // Cabinet layout and printable parts; all dimensions are millimetres.
-import { drawerParts, drawerFit } from './geometry.js';
+import { drawerParts, drawerFit } from './geometry.js?v=20261009-drawer-bay-1';
 import { baseplateSource } from '../gridfinity/layout.js?v=20261009-plates';
 export const insertNames={drawer:'Drawer',divided:'Divided drawer',tray:'Open tray',shelf:'Open shelf',gridfinity:'Gridfinity tray'};
 export function newCabinet(preset='parts') {
