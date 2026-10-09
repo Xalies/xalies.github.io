@@ -46,7 +46,7 @@ export function vesselMesh(s) {
     rings.push(start);
   }
   for (let i = 0; i <= levels; i++) ring(i / levels);
-  const floorHeight = s.floor + BASE_RECESS_MM;
+  const recess = s.baseRecessMm ?? BASE_RECESS_MM, floorHeight = s.floor + recess;
   for (let i = 0; i <= levels; i++) ring(1 - (1-floorHeight/s.height) * i / levels, true);
   for (let i = 0; i < rings.length - 1; i++) {
     for (let j = 0; j < segments; j++) {
@@ -59,7 +59,7 @@ export function vesselMesh(s) {
   let underside = rings[0];
   for (let i = 8; i >= 1; i--) {
     const start = positions.length / 3, r = recessRadius * i / 8;
-    const y = BASE_RECESS_MM * (1 - (r / recessRadius) ** 2);
+    const y = recess * (1 - (r / recessRadius) ** 2);
     for (let j = 0; j < segments; j++) {
       const angle = j * Math.PI * 2 / segments;
       positions.push(r * Math.cos(angle), y, r * Math.sin(angle));
@@ -70,7 +70,7 @@ export function vesselMesh(s) {
     }
     underside = start;
   }
-  const bottom = positions.length / 3; positions.push(0, BASE_RECESS_MM, 0);
+  const bottom = positions.length / 3; positions.push(0, recess, 0);
   const floor = positions.length / 3; positions.push(0, floorHeight, 0);
   for (let j = 0; j < segments; j++) {
     const k = (j + 1) % segments;

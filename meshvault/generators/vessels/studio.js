@@ -1,5 +1,5 @@
-import { vesselMesh, BASE_RECESS_MM, binarySTL, profileRadius, profilePoint } from './geometry.js?v=20261009-recess-profile';
-import { initProfileEditor } from './profile.js?v=20261009-recess-profile';
+import { vesselMesh, BASE_RECESS_MM, binarySTL, profileRadius, profilePoint } from './geometry.js?v=20261009-base-toggle';
+import { initProfileEditor } from './profile.js?v=20261009-base-toggle';
 import { createPackage, create3MF, saveFile, canvasThumbnail } from '../shared/mvpack.js';
 const form = document.querySelector('#settings'), status = document.querySelector('#status');
 const stl = document.querySelector('#stl'), pack = document.querySelector('#mvpack');
@@ -88,7 +88,7 @@ function update() {
     settings.profilePoints=profileEditor.points();
     settings.bellyPosition=profileEditor.bellyPosition();
     settings.topOffset=profileEditor.topOffset();
-    settings.baseRecessMm=BASE_RECESS_MM;
+    settings.baseRecessMm=form.elements.baseRecessMm.checked?BASE_RECESS_MM:0;
     let geometry;
     try { geometry=vesselMesh(settings); } catch(error) {status.textContent=error.message;return;}
     let modelHeight=0;for(let i=1;i<geometry.positions.length;i+=3)modelHeight=Math.max(modelHeight,geometry.positions[i]);
@@ -126,7 +126,7 @@ pack.addEventListener('click', async () => {
   const author=creator.elements.author.value.trim()||'Anonymous',authorUrl=creator.elements.authorUrl.value.trim()||undefined,donation=creator.elements.donation.value.trim();
   const escape=value=>value.replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
   const descriptionHtml=`<p>A custom vessel designed by <strong>${escape(author)}</strong> in Vessel Studio.</p>${donation?`<p><a href="${escape(donation)}">Support ${escape(author)}</a></p>`:''}`;
-  const printNotes = JSON.stringify({ ...printProfiles[printProfile.value], orientation: 'Upright, flat support ring on the bed', spiralVaseMode: false, temperaturesAndFlow: 'Use a calibrated filament profile.', supports: 'Inspect overhangs in the slicer.', watertightGuaranteed: false, safety: 'Leak-test before holding water; not certified food-safe.', guidanceSource: 'https://blog.prusa3d.com/watertight-3d-printing-pt1-vases-cups-and-other-open-models_48949/' });
+  const printNotes = JSON.stringify({ ...printProfiles[printProfile.value], orientation: snapshot.settings.baseRecessMm?'Upright, flat support ring on the bed':'Upright, flat base on the bed', spiralVaseMode: false, temperaturesAndFlow: 'Use a calibrated filament profile.', supports: 'Inspect overhangs in the slicer.', watertightGuaranteed: false, safety: 'Leak-test before holding water; not certified food-safe.', guidanceSource: 'https://blog.prusa3d.com/watertight-3d-printing-pt1-vases-cups-and-other-open-models_48949/' });
   pack.disabled = true;
   try {
     if (renderer && mesh) renderer.render(scene, camera);

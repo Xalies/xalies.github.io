@@ -100,6 +100,16 @@ const server = http.createServer((req, res) => {
       return underside.every(([x,y],i)=>Math.abs(x-(centre+radius*i/8*scale))<1e-8&&Math.abs(y-(floor-2*(1-(i/8)**2)*scale))<1e-8);
     }),'Profile displays the same curved 2 mm underside and flat support ring as the mesh');
     assert.equal(await page.locator('#profile-base-label').textContent(),'2 mm recessed underside');
+    const baseToggle=page.locator('[name=baseRecessMm]');
+    assert(await baseToggle.isChecked());await baseToggle.uncheck();
+    await page.waitForFunction(()=>!document.querySelector('#stl').disabled);
+    assert.equal(await page.locator('#profile-base-label').textContent(),'Flat underside');
+    assert(await page.locator('#profile-shape').evaluate(n=>n.getAttribute('d').split('L').slice(-9).every(p=>Number(p.replace('Z','').split(',')[1])===Number(document.querySelector('#profile-editor').dataset.floor))),'Disabling recess flattens the profile');
+    const flatFormat=await page.locator('#format').inputValue(),flatModel=await downloaded('#stl');
+    const flatPack=await inspectPackage((await downloaded('#mvpack')).bytes,flatModel.bytes,flatFormat);
+    assert.equal(flatPack.parameters.baseRecessMm,0);assert.equal(JSON.parse(flatPack.printNotes).orientation,'Upright, flat base on the bed');
+    await baseToggle.check();await page.waitForFunction(()=>!document.querySelector('#stl').disabled);
+    assert.equal(await page.locator('#profile-base-label').textContent(),'2 mm recessed underside');
     await handle.focus();await handle.press('ArrowRight');assert.equal(await page.locator('[name=belly]').inputValue(),'101');
     await handle.press('Shift+ArrowLeft');assert.equal(await page.locator('[name=belly]').inputValue(),'91');
     await handle.press('Home');assert.equal(await page.locator('[name=belly]').inputValue(),'25');
@@ -125,7 +135,7 @@ const server = http.createServer((req, res) => {
     assert.match(await handle.getAttribute('aria-valuetext'),/140 millimetres high/,'Original belly point moves vertically');
     const baseHandle=page.locator('[data-size=base]'),baseBefore=await baseHandle.getAttribute('transform');await baseHandle.press('ArrowUp');assert.equal(await baseHandle.getAttribute('transform'),baseBefore,'Bottom stays fixed vertically');
     const linePoint=await page.evaluate(async()=>{
-      const {profileRadius}=await import('/generators/vessels/geometry.js?v=20261009-recess-profile'),svg=document.querySelector('#profile-editor'),form=document.querySelector('#settings');
+      const {profileRadius}=await import('/generators/vessels/geometry.js?v=20261009-base-toggle'),svg=document.querySelector('#profile-editor'),form=document.querySelector('#settings');
       const s=Object.fromEntries(['height','base','belly','mouth'].map(n=>[n,Number(form.elements[n].value)]));
       s.bellyPosition=.7;const d=svg.dataset,p=new DOMPoint(Number(d.centre)+profileRadius(s,.25)*Number(d.scale),Number(d.floor)-s.height*.25*Number(d.scale)).matrixTransform(svg.getScreenCTM());return {x:p.x,y:p.y};
     });
@@ -190,15 +200,18 @@ const server = http.createServer((req, res) => {
       const { vesselMesh } = await import('/generators/vessels/geometry.js');
       for (const settings of [
         ...[undefined,0,-30,30].map(topOffset=>({ height:160,base:65,belly:100,mouth:topOffset<0?40:60,wall:1.6,floor:2,flutes:topOffset<0?0:24,amplitude:2,twist:60,topOffset })),
+        {height:160,base:65,belly:100,mouth:60,wall:1.6,floor:1,flutes:24,amplitude:2,twist:60,topOffset:0,baseRecessMm:0},
         { height: 25, base: 25, belly: 25, mouth: 25, wall: 5, floor: 6, flutes: 48, amplitude: 5, twist: -180, quality: 'fine', bellyPosition:.65, profilePoints:[{t:.25,diameter:50},{t:.8,diameter:35}] }
       ]) {
         const { positions, indices } = vesselMesh(settings), edges = new Map();
         const vertices = Array.from({length:positions.length/3},(_,i)=>positions.slice(i*3,i*3+3));
         const contact = vertices.filter(p=>Math.abs(p[1])<1e-8);
         const footRadius = settings.base/2-Math.min(3,settings.base/10);
-        if (contact.length !== (settings.quality==='fine'?384:192)*2 || contact.some(p=>Math.hypot(p[0],p[2])<footRadius-1e-8)) return false;
+        const recess=settings.baseRecessMm??2;
+        if (recess && (contact.length !== (settings.quality==='fine'?384:192)*2 || contact.some(p=>Math.hypot(p[0],p[2])<footRadius-1e-8))) return false;
         const [underside,inside] = vertices.slice(-2);
-        if (Math.abs(underside[1]-2)>1e-8 || Math.abs(inside[1]-underside[1]-settings.floor)>1e-8 || vertices.some(p=>p[1]<-1e-8)) return false;
+        if (Math.abs(underside[1]-recess)>1e-8 || Math.abs(inside[1]-underside[1]-settings.floor)>1e-8 || vertices.some(p=>p[1]<-1e-8)) return false;
+        if (!recess && vertices.slice(-((settings.quality==='fine'?384:192)*8+2),-1).some(p=>Math.abs(p[1])>1e-8)) return false;
         let volume = 0;
         for (let i = 0; i < indices.length; i += 3) {
           const tri = indices.slice(i, i + 3);
