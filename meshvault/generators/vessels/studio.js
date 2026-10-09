@@ -1,4 +1,5 @@
-import { vesselMesh, binarySTL } from './geometry.js';
+import { vesselMesh, binarySTL, profileRadius } from './geometry.js?v=20261009-profile';
+import { initProfileEditor } from './profile.js?v=20261009-profile';
 import { createPackage, create3MF, saveFile, canvasThumbnail } from '../shared/mvpack.js';
 const form = document.querySelector('#settings'), status = document.querySelector('#status');
 const stl = document.querySelector('#stl'), pack = document.querySelector('#mvpack');
@@ -74,7 +75,9 @@ try {
   controls.addEventListener('change', () => renderer.render(scene, camera));
 } catch { status.textContent = '3D preview unavailable. You can still export your model.'; }
 
+const renderProfile = initProfileEditor(form, profileRadius, () => update());
 function update() {
+  renderProfile();
   showPrintSettings();
   cancelAnimationFrame(frame);
   current = null; stl.disabled = pack.disabled = true;

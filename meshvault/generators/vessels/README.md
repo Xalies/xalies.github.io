@@ -49,3 +49,10 @@ controls side by side. MeshVault plum branding and navigation are shared with th
 ecosystem; serif headings, clay accents and the curved preview retain the studio
 identity. Printing guidance scrolls independently of the download area, with
 author details in an expandable section directly above the downloads.
+
+Shape dimensions can be edited on the SVG profile: drag base, belly and mouth
+diameter handles horizontally, and height vertically. The silhouette shares the
+mesh radius function (belly at 55% height); flutes are shown in the 3D preview.
+Arrow keys change a focused handle by 1 mm, Shift by 10 mm, Home/End select its
+limits. Exact dimensions remain available in an expandable section; wall and
+base thickness stay separate. All dimensions retain their existing bounds.

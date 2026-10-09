@@ -7,10 +7,10 @@
   <link rel="stylesheet" href="../shared/studio.css">
   <link rel="canonical" href="https://www.meshvault.app/generators/vessels/">
   <link rel="icon" href="../../images/meshvault_512x512.png">
-  <link rel="stylesheet" href="theme.css?v=20261009-studio">
+  <link rel="stylesheet" href="theme.css?v=20261009-profile">
   <script src="../gridfinity/vendor/deps/three.min.js" defer></script>
   <script src="../gridfinity/vendor/deps/OrbitControls.js" defer></script>
-  <script type="module" src="studio.js?v=20261009-studio"></script>
+  <script type="module" src="studio.js?v=20261009-profile"></script>
 </head>
 <body class="vessel-studio">
   <a class="skip-link" href="#settings">Skip to shape controls</a>
@@ -24,11 +24,25 @@
         <p class="step">01 / Choose a starting point</p>
         <div class="presets" aria-label="Shape presets"><button type="button" data-preset="vase">Fluted vase</button><button type="button" data-preset="bowl">Serving bowl</button><button type="button" data-preset="urn">Soft urn</button><button type="button" data-preset="cup">Little pot</button></div>
         <label>Design name<input name="title" type="text" maxlength="80" value="Twisted fluted vase" required></label>
-        <fieldset><legend>02 / Shape · millimetres</legend><div class="fields">
+        <fieldset><legend>02 / Shape your profile</legend>
+          <svg id="profile-editor" viewBox="0 0 260 270" aria-label="Vessel profile editor">
+            <defs><pattern id="profile-grid" width="32.5" height="32.5" patternUnits="userSpaceOnUse"><path d="M 32.5 0 L 0 0 0 32.5" fill="none" stroke="currentColor" stroke-width="0.5"/></pattern></defs>
+            <rect width="260" height="270" fill="url(#profile-grid)" class="profile-grid"/>
+            <path id="profile-shape"/><path d="M94 16V236H220" class="profile-axis"/>
+            <path id="profile-height-line" class="profile-guide"/>
+            <g class="profile-handle" data-size="height" role="slider" tabindex="0" aria-label="Height" aria-orientation="vertical"><circle r="9"/><text x="14" y="4"></text></g>
+            <g class="profile-handle" data-size="mouth" role="slider" tabindex="0" aria-label="Mouth diameter" aria-orientation="horizontal"><circle r="9"/><text x="14" y="-12"></text></g>
+            <g class="profile-handle" data-size="belly" role="slider" tabindex="0" aria-label="Belly diameter" aria-orientation="horizontal"><circle r="9"/><text x="14" y="4"></text></g>
+            <g class="profile-handle" data-size="base" role="slider" tabindex="0" aria-label="Base diameter" aria-orientation="horizontal"><circle r="9"/><text x="14" y="14"></text></g>
+            <text x="10" y="262" class="profile-caption">50 mm grid · surface texture shown in 3D</text>
+          </svg>
+          <p class="small profile-help">Drag the dots to shape your vessel. Arrow keys adjust by 1 mm; Shift adjusts by 10 mm.</p>
+          <details id="exact-dimensions"><summary>Exact dimensions</summary><div class="fields">
           <label>Height<input name="height" type="number" min="25" max="300" step="1" value="160" required></label>
           <label>Base diameter<input name="base" type="number" min="25" max="240" step="1" value="65" required></label>
           <label>Belly diameter<input name="belly" type="number" min="25" max="260" step="1" value="100" required></label>
           <label>Mouth diameter<input name="mouth" type="number" min="25" max="260" step="1" value="60" required></label>
+        </div></details><div class="fields wall-settings">
           <label>Radial wall<input name="wall" type="number" min="0.8" max="5" step="0.1" value="1.6" required></label>
           <label>Base thickness<input name="floor" type="number" min="1" max="6" step="0.2" value="2" required></label>
         </div></fieldset>

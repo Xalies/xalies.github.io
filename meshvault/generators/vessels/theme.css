@@ -64,3 +64,16 @@ button { border-radius:4px; padding:10px 14px; }
   .vessel-studio h1 { font-size:3rem; } #viewer { height:390px; border-radius:30% 30% 0 0 / 8% 8% 0 0; }
   #settings { padding:20px 0 0; border-right:0; max-height:none; }
 }
+
+#profile-editor { display:block; width:100%; background:#191420; border:1px solid var(--line); border-radius:4px; touch-action:none; user-select:none; }
+.profile-grid { color:#594760; opacity:.5; }
+#profile-shape { fill:#e7ab8920; stroke:var(--accent); stroke-width:1.5; }
+.profile-axis, .profile-guide { fill:none; stroke:#6c5b75; stroke-width:1; stroke-dasharray:3 4; pointer-events:none; }
+.profile-handle { cursor:ew-resize; outline:none; }
+.profile-handle[data-size=height] { cursor:ns-resize; }
+.profile-handle circle { fill:var(--accent); stroke:#191420; stroke-width:3; }
+.profile-handle:hover circle, .profile-handle:focus-visible circle { stroke:#f4edf5; stroke-width:3; }
+.profile-handle text { font:10px system-ui,sans-serif; fill:#f4edf5; pointer-events:none; }
+.profile-caption { font:8px system-ui,sans-serif; fill:var(--muted); }
+.profile-help { margin:10px 0 0; }
+.wall-settings { margin-top:12px; }

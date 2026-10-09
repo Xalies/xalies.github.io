@@ -1,13 +1,16 @@
+const smooth = t => t * t * (3 - 2 * t);
+export function profileRadius(s, t) {
+  return t < .55 ? s.base / 2 + (s.belly - s.base) / 2 * smooth(t / .55)
+    : s.belly / 2 + (s.mouth - s.belly) / 2 * smooth((t - .55) / .45);
+}
 // A closed, hollow mesh: underside → outer wall → rim → inner wall → floor.
 export function vesselMesh(s) {
   const segments = s.quality === 'fine' ? 384 : 192;
   const levels = s.quality === 'fine' ? 128 : 64;
   const positions = [], indices = [], rings = [];
-  const smooth = t => t * t * (3 - 2 * t);
   function radius(y, angle) {
     const t = y / s.height;
-    const r = t < .55 ? s.base / 2 + (s.belly - s.base) / 2 * smooth(t / .55)
-      : s.belly / 2 + (s.mouth - s.belly) / 2 * smooth((t - .55) / .45);
+    const r = profileRadius(s, t);
     return r + (s.flutes ? s.amplitude * Math.cos(s.flutes * (angle - t * s.twist * Math.PI / 180)) * smooth(Math.min(1, t * 8)) : 0);
   }
   function ring(y, inner = false) {
