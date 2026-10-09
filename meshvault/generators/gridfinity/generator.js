@@ -231,12 +231,6 @@ pack.addEventListener('click', async () => {
   } catch (error) { status.textContent = `Package export failed: ${error.message}`; }
   finally { pack.disabled = !current; }
 });
-document.querySelectorAll('[data-preset]').forEach(button => button.addEventListener('click', () => {
-  const presets = { small: [1, 1, 6, 1], tools: [3, 1, 4, 3], base: [3, 2, 6, 1] };
-  ['width', 'depth', 'height', 'chambers'].forEach((key, i) => form.elements[key].value = presets[button.dataset.preset][i]);
-  part.value = button.dataset.preset === 'base' ? 'baseplate' : 'bin';
-  part.dispatchEvent(new Event('change')); form.dispatchEvent(new Event('input'));
-}));
 updateLayout();
 
 const parts = [], bedForm = document.querySelector('#bed-settings'), setStatus = document.querySelector('#set-status');
