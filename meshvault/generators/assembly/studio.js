@@ -1,13 +1,13 @@
 import { create3MF, createSetPackage, canvasThumbnail, saveFile, asciiSTLMesh } from '../shared/mvpack.js';
 import { plateSTL } from '../gridfinity/plates.js';
 import { buildPart } from '../gridfinity/build-part.js?v=20261009-custom-source';
-import { riserParts, organiserParts, organiserBaseSource } from './geometry.js?v=20261009-ecosystem-2';
+import { drawerParts, drawerFit, organiserParts, organiserBaseSource } from './geometry.js?v=20261009-drawer-bay-1';
 const form=document.querySelector('#settings'),creator=document.querySelector('#creator'),host=document.querySelector('#viewer'),status=document.querySelector('#status');
 const view=document.querySelector('#view'),format=document.querySelector('#format'),pack=document.querySelector('#mvpack'),download=document.querySelector('#download-kit');
 const sourceUrl='https://www.meshvault.app/generators/assembly/';
 const escape=value=>String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 let renderer,scene,camera,controls,group,current,revision=0,timer,exporting=false,controller;
-let cachedBase;
+const cachedParts=new Map();
 function linkError(value) {
   if(!value)return '';
   try {const u=new URL(value);if(value.length<=2048&&/^https:\/\//i.test(value)&&u.protocol==='https:'&&!u.username&&!u.password)return '';}catch{}
@@ -16,23 +16,31 @@ function linkError(value) {
 try {const saved=JSON.parse(localStorage.getItem('meshvault-assembly-author')||'{}');for(const name of ['author','authorUrl','donation'])if(typeof saved[name]==='string'&&saved[name].length<=(name==='author'?100:2048)&&(name==='author'||!linkError(saved[name])))creator.elements[name].value=saved[name];}catch{}
 const authorDetails=()=>({author:creator.elements.author.value.trim()||'Anonymous',authorUrl:creator.elements.authorUrl.value.trim()||undefined,donation:creator.elements.donation.value.trim()});
 function kitInfo(s) {
-  const organiser=s.assembly==='organiser';
+  if(s.assembly==='drawer') {
+    const f=drawerFit(s),tray=s.insert==='tray';
+    return {
+      id:tray?'drawer-bay-open-tray':'drawer-bay',name:tray?'drawer bay with an open tray':'drawer bay',dimensions:[s.width,s.depth,s.height],
+      summary:tray?'A storage bay with a shallow, removable open tray. It shares the same side guides and rear stop as the full-height drawer.':'A practical storage bay with a removable finger-pull drawer. Integrated side guides leave the middle of the storage space clear; there are no cross-beams through the drawer.',
+      before:'Print the frame with its closed rear panel flat on the bed and its front opening pointing up. Print the insert upright on its closed base. These are the supplied print orientations; inspect the sliced models before printing.',
+      fit:`Drawer Bay v1 interface for this ${s.width} × ${s.depth} × ${s.height} mm frame: insert footprint ${f.width.toFixed(2)} × ${f.depth.toFixed(2)} mm, ${s.thickness} mm walls and floor. Total width clearance is ${s.clearance} mm (${(s.clearance/2).toFixed(2)} mm per side). The full-height drawer has ${s.clearance} mm clearance beneath the roof. Both inserts rest on the same 2 mm-high side guides and stop at the rear wall. Choose the same frame dimensions and wall thickness when making another insert; tune clearance for your printer. This fit has not been physically tested.`,
+      steps:[
+        '<strong>Print in the shown orientations.</strong> Put the frame’s rear panel on the bed and the insert’s floor on the bed. Start with 0.2 mm layers and 3 perimeters.',
+        '<strong>Prepare the sliding surfaces.</strong> Remove brim and first-layer burrs. Check the guides and insert edges before assembly; do not force a tight fit.',
+        '<strong>Slide in the insert.</strong> Feed the insert through the front opening so its bottom rests on both side guides. Slide gently until it meets the rear wall.',
+        '<strong>Use or swap.</strong> Pull the drawer out by its finger notch, or lift and pull the shallow tray. Both are intentionally removable. If tight, increase clearance and reprint only the insert using the same frame size.'
+      ]
+    };
+  }
   return {
-    id:organiser?'desk-organiser':'display-riser',name:organiser?'desk organiser':'display riser',
-    dimensions:organiser?[s.width,s.depth,s.height+3+(s.gridfinity?5:0)]:[s.width+2*s.thickness,s.depth,s.height+4],
-    summary:organiser?'A desk organiser with a carrier and individually removable, open-top trays. The exposed tray rims sit 3 mm above the carrier for lifting.':'A five-piece display riser with two slotted side frames, two cross rails and a removable deck.',
-    before:organiser?'Print the carrier and every tray upright on their closed bases, with the openings facing up. The print preview shows orientations only; arrange parts on your printer bed.':'Print frames on their broad faces, rails on their 12 mm-wide bases and the deck flat. Rail section: 12 × 16 mm; deck thickness: 4 mm.',
-    fit:organiser?`Total clearance is ${s.clearance} mm across each tray’s width and depth (${s.clearance/2} mm per side within its bay). Tray wall and floor thickness: ${s.thickness} mm. Dry-fit a tray before printing the full set. Increase clearance if tight; do not glue removable trays.${s.gridfinity?' The carrier has a built-in '+((s.width+.5)/42)+' × '+((s.depth+.5)/42)+' Gridfinity underside on a 42 mm pitch. Test its fit on your baseplate; this does not include a stacking lip.':''}`:`Slot clearance is ${s.clearance} mm across the width and height, not per side. Remove burrs or increase clearance if tight. If loose, reduce clearance or secure the joints after alignment. Dry-fit before gluing.`,
-    steps:organiser?[
+    id:'desk-organiser',name:'desk organiser',dimensions:[s.width,s.depth,s.height+3+(s.gridfinity?5:0)],
+    summary:'A desk organiser with a carrier and individually removable, open-top trays. The exposed tray rims sit 3 mm above the carrier for lifting.',
+    before:'Print the carrier and every tray upright on their closed bases, with the openings facing up. The print preview shows orientations only; arrange parts on your printer bed.',
+    fit:`Total clearance is ${s.clearance} mm across each tray’s width and depth (${s.clearance/2} mm per side within its bay). Tray wall and floor thickness: ${s.thickness} mm. Dry-fit a tray before printing the full set. Increase clearance if tight; do not glue removable trays.${s.gridfinity?' The carrier has a built-in '+((s.width+.5)/42)+' × '+((s.depth+.5)/42)+' Gridfinity underside on a 42 mm pitch. Test its fit on your baseplate; this does not include a stacking lip.':''}`,
+    steps:[
       '<strong>Print upright.</strong> Print one carrier and one of every tray. Start with 0.2 mm layers and 3 perimeters; check the sliced walls and floors.',
       '<strong>Check the fit.</strong> Remove any brim and first-layer burrs. Dry-fit one tray in the carrier without forcing it.',
       '<strong>Place the trays.</strong> Lower the trays side by side into the carrier, with their openings facing up. Their rims remain exposed for lifting.',
       '<strong>Make it yours.</strong> Lift trays out to sort or carry small parts. Keep the trays removable; do not glue them into the carrier.'
-    ]:[
-      '<strong>Print flat.</strong> Two frames, two rails and one deck. Start with 0.2 mm layers and 3 perimeters; inspect the sliced models.',
-      '<strong>Fit the rails.</strong> Slide both rails through the left frame. Align the right frame and slide it onto both rails.',
-      '<strong>Square the frame.</strong> Centre the rails so they protrude approximately 2 mm beyond each outer frame face. Check the frames are parallel.',
-      '<strong>Place the deck.</strong> Centre it on the flat frame tops. Dry-fit first; optionally bond the joints and deck with an adhesive suitable for your material.'
     ]
   };
 }
@@ -64,15 +72,15 @@ function showView(mode,design,reset=true){
 const dataURL=blob=>new Promise((resolve,reject)=>{const reader=new FileReader();reader.onload=()=>resolve(reader.result);reader.onerror=()=>reject(Error('Could not prepare guide pictures.'));reader.readAsDataURL(blob);});
 function guide(design,pictures){
   const {settings:s,items,credit}=design,k=kitInfo(s);
-  return `<h2>${escape(s.title)} · Assembly guide</h2><p>${escape(k.summary)} Designed by <strong>${escape(credit.author)}</strong> using <a href="${sourceUrl}">Assembly Studio</a>.</p>
+  return `<h2>${escape(s.title)} · Assembly guide</h2><p>${escape(k.summary)} Designed by <strong>${escape(credit.author)}</strong> using <a href="${sourceUrl}">Modular Storage Designer</a>.</p>
 <figure><img src="${pictures.assembled}" alt="Assembled ${k.name}" width="1280" height="720"><figcaption>Finished arrangement · ${k.dimensions.join(' × ')} mm overall.</figcaption></figure>
-<h3>Your customised kit</h3><p>${escape(k.fit)}</p><table><thead><tr><th>Part</th><th>Quantity</th><th>Print orientation</th></tr></thead><tbody>${items.map(p=>`<tr><td>${escape(p.label)}</td><td>1</td><td>${s.assembly==='organiser'?'Upright, open side up':p.id.includes('frame')?'Broad face on bed':'Flat base on bed'}</td></tr>`).join('')}</tbody></table>
+<h3>Your customised kit</h3><p>${escape(k.fit)}</p><table><thead><tr><th>Part</th><th>Quantity</th><th>Print orientation</th></tr></thead><tbody>${items.map(p=>`<tr><td>${escape(p.label)}</td><td>1</td><td>${p.id==='drawer-frame'?'Rear panel on bed, front opening up':'Upright, open side up'}</td></tr>`).join('')}</tbody></table>
 <h3>Before assembly</h3><p>${escape(k.before)} Start with <strong>0.2 mm layers, 3 perimeters and 20% infill</strong>, using a calibrated filament profile. Check every part in your slicer. These files are models, not sliced printer projects.</p>
 <figure><img src="${pictures.print}" alt="Separate pieces in their print orientations" width="1280" height="720"><figcaption>Print orientations only, not a packed printer-bed layout. Arrange pieces on your own printer’s bed.</figcaption></figure>
 <h3>Put it together</h3><ol>${k.steps.map(step=>`<li>${step}</li>`).join('')}</ol>
 <figure><img src="${pictures.exploded}" alt="Exploded ${k.name} showing the separate parts" width="1280" height="720"><figcaption>Exploded view · coloured parts show how the kit fits together.</figcaption></figure>
 <h3>Fit and use</h3><p>${escape(k.fit)} This is an untested light-duty design without a rated load. Verify the printed assembly before placing anything heavy, hot or valuable on it.</p>
-<h3>Keep the context</h3><p>Your <a href="https://www.meshvault.app/generator/">MeshVault .mvpack</a> keeps all ${items.length} parts in one project with this illustrated description, a three-image gallery, an offline guide, a parts list and the generation settings.</p><p>${credit.authorUrl?`<a href="${escape(credit.authorUrl)}">About ${escape(credit.author)}</a> · `:''}${credit.donation?`<a href="${escape(credit.donation)}">Support ${escape(credit.author)}</a> · `:''}<a href="https://www.meshvault.app/">Learn about MeshVault</a> · <a href="https://buymeacoffee.com/xalies">Support Assembly Studio</a></p>`;
+<h3>Keep the context</h3><p>Your <a href="https://www.meshvault.app/generator/">MeshVault .mvpack</a> keeps all ${items.length} parts in one project with this illustrated description, a three-image gallery, an offline guide, a parts list and the generation settings.</p><p>${credit.authorUrl?`<a href="${escape(credit.authorUrl)}">About ${escape(credit.author)}</a> · `:''}${credit.donation?`<a href="${escape(credit.donation)}">Support ${escape(credit.author)}</a> · `:''}<a href="https://www.meshvault.app/">Learn about MeshVault</a> · <a href="https://buymeacoffee.com/xalies">Support this designer</a></p>`;
 }
 function printNotes(s){const k=kitInfo(s);return {material:'Use a calibrated PLA or PETG profile',layerHeightMm:.2,perimeters:3,infillPercent:20,supports:k.before,assembly:k.steps.map(step=>step.replace(/<[^>]*>/g,'')).join(' '),loadRating:'Untested light-duty design; no rated load.'};}
 function packageContents(design){return `${kitInfo(design.settings).id}.mvpack\n${design.items.map(p=>'├── '+p.id+'.'+format.value).join('\n')}\n├── meshvault.models.json\n├── images/ (16:9 PNGs)\n└── documents/ (guide, parts, settings)`;}
@@ -80,14 +88,19 @@ async function update(){
   const version=++revision;controller?.abort();controller=new AbortController();const signal=controller.signal;current=null;pack.disabled=download.disabled=true;
   if(!form.checkValidity()||!creator.checkValidity()||!form.elements.title.value.trim()){status.textContent='Enter valid dimensions, a design name and optional HTTPS author links.';document.querySelector('#description').replaceChildren();return;}
   try {
-    const settings=Object.fromEntries([...new FormData(form)].map(([k,v])=>[k,['title','assembly'].includes(k)?v.trim():Number(v)]));
+    const settings=Object.fromEntries([...new FormData(form)].map(([k,v])=>[k,['title','assembly','insert'].includes(k)?v.trim():Number(v)]));
     settings.gridfinity=settings.assembly==='organiser'&&form.elements.gridfinity.checked;
-    const design={settings,items:settings.assembly==='organiser'?organiserParts(settings):riserParts(settings),credit:authorDetails()};
-    status.textContent=settings.gridfinity?'Building the Gridfinity carrier in your browser…':'Preparing your illustrated kit…';
-    if(settings.gridfinity){
-      const source=organiserBaseSource(settings);
-      if(cachedBase?.source!==source){const result=await buildPart({part:'assembly'},signal,source);if(version!==revision)return;cachedBase={source,mesh:asciiSTLMesh(await result.stl.text())};}
-      if(version!==revision)return;design.items[0].mesh=cachedBase.mesh;
+    if(settings.assembly==='drawer')settings.moduleInterface=drawerFit(settings).interface;
+    const design={settings,items:settings.assembly==='organiser'?organiserParts(settings):drawerParts(settings),credit:authorDetails()};
+    if(settings.gridfinity)design.items[0].source=organiserBaseSource(settings);
+    for(const part of design.items.filter(p=>p.source)) {
+      status.textContent=`Building ${part.label.toLowerCase()} in your browser…`;
+      if(cachedParts.get(part.id)?.source!==part.source) {
+        const result=await buildPart({part:'assembly'},signal,part.source);if(version!==revision)return;
+        const mesh=asciiSTLMesh(await result.stl.text());if(version!==revision)return;
+        cachedParts.set(part.id,{source:part.source,mesh});
+      }
+      part.mesh=cachedParts.get(part.id).mesh;
     }
     showView(view.value,design);
     const position=camera.position.clone(),target=controls.target.clone(),pictures={},gallery=[];
@@ -111,14 +124,16 @@ function syncGrid(){
 }
 function configureAssembly(){
   const organiser=form.elements.assembly.value==='organiser';
-  const ranges=organiser?{width:[120,240,.5,180],depth:[70,180,.5,120],height:[25,70,1,35],thickness:[1.6,4,.1,2.4],clearance:[.2,1.2,.05,.4]}:{width:[80,200,1,120],depth:[70,160,1,100],height:[40,100,1,65],thickness:[4,10,.5,6],clearance:[.1,.8,.05,.3]};
+  const ranges=organiser?{width:[120,240,.5,180],depth:[70,180,.5,120],height:[25,70,1,35],thickness:[1.6,4,.1,2.4],clearance:[.2,1.2,.05,.4]}:{width:[100,240,1,150],depth:[80,220,1,140],height:[40,100,1,65],thickness:[2,5,.1,3],clearance:[.2,1.2,.05,.6]};
   for(const [name,values] of Object.entries(ranges))['min','max','step','value'].forEach((key,i)=>form.elements[name][key]=values[i]);
-  form.elements.title.value=organiser?'My desk organiser':'My display riser';
+  form.elements.title.value=organiser?'My desk organiser':'My drawer bay';
+  form.elements.insert.disabled=organiser;document.querySelector('#drawer-options').hidden=organiser;
   form.elements.trays.disabled=form.elements.gridfinity.disabled=!organiser;form.elements.gridfinity.checked=false;
   document.querySelector('#organiser-options').hidden=!organiser;
-  document.querySelector('#width-label').textContent=organiser?'Overall width':'Clear width';document.querySelector('#height-label').textContent=organiser?'Carrier height':'Frame height';document.querySelector('#thickness-label').textContent=organiser?'Wall & floor':'Frame thickness';
-  document.querySelector('#clearance-help').textContent=organiser?'Extra space across each tray’s width and depth, not per side.':'Added across each slot’s width and height, not per side.';
-  document.querySelector('#fit-help').textContent=organiser?'Rims sit 3 mm above the carrier so each tray can be lifted out. Test one tray before printing a full kit.':'Two rails slide through the side frames. The deck rests on top. Dry-fit before optional gluing.';
+  document.querySelector('#width-label').textContent='Overall width';document.querySelector('#height-label').textContent=organiser?'Carrier height':'Bay height';document.querySelector('#thickness-label').textContent='Wall & floor';
+  document.querySelector('#clearance-help').textContent=organiser?'Extra space across each tray’s width and depth, not per side.':'Extra space across the insert width and above a full-height drawer, not per side.';
+  document.querySelector('#fit-help').textContent=organiser?'Rims sit 3 mm above the carrier so each tray can be lifted out. Test one tray before printing a full kit.':'Guides run along the side walls, leaving the storage space clear. The rear wall stops the insert. Dry-fit before printing a full set.';
+  document.querySelector('[data-preset=small]').textContent=organiser?'Compact':'Desk drawer';document.querySelector('[data-preset=wide]').textContent=organiser?'Wide':'Wide parts tray';
   syncGrid();clearTimeout(timer);update();
 }
 function scheduleUpdate(){revision++;controller?.abort();current=null;pack.disabled=download.disabled=true;clearTimeout(timer);timer=setTimeout(update,180);}
@@ -134,7 +149,8 @@ form.addEventListener('input',()=>{syncGrid();scheduleUpdate();});form.elements.
 creator.addEventListener('input',()=>{for(const name of ['authorUrl','donation'])creator.elements[name].setCustomValidity(linkError(creator.elements[name].value.trim()));if(creator.checkValidity())try{localStorage.setItem('meshvault-assembly-author',JSON.stringify(Object.fromEntries(new FormData(creator))));}catch{}scheduleUpdate();});
 view.addEventListener('change',()=>{if(current)showView(view.value,current);});document.querySelector('#reset-view').addEventListener('click',()=>{if(current)resetView();});format.addEventListener('change',()=>{if(current)document.querySelector('#package-contents').textContent=packageContents(current);});
 document.querySelectorAll('[data-preset]').forEach(button=>button.addEventListener('click',()=>{
-  const wide=button.dataset.preset==='wide',organiser=form.elements.assembly.value==='organiser',values=organiser?(wide?[220,150,45]:[180,120,35]):(wide?[180,140,80]:[120,100,65]);
+  const wide=button.dataset.preset==='wide',organiser=form.elements.assembly.value==='organiser',values=organiser?(wide?[220,150,45]:[180,120,35]):(wide?[210,160,50]:[150,140,65]);
+  if(!organiser)form.elements.insert.value=wide?'tray':'drawer';
   ['width','depth','height'].forEach((name,i)=>form.elements[name].value=values[i]);document.querySelector('#grid-width').value=wide?'5':'4';document.querySelector('#grid-depth').value=wide?'4':'3';syncGrid();clearTimeout(timer);update();
 }));
 async function exportKit(meshvault){
@@ -144,7 +160,7 @@ async function exportKit(meshvault){
     const offline=`<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${escape(snapshot.settings.title)} · Assembly guide</title><style>body{font:16px/1.6 system-ui;max-width:1000px;margin:32px auto;padding:0 20px}img{max-width:100%;height:auto}figure{margin:24px 0}table{border-collapse:collapse;width:100%}th,td{padding:10px;border:1px solid #ccc;text-align:left}</style><body>${snapshot.descriptionHtml}</body></html>`;
     const documents=[{name:'assembly-guide.html',blob:new Blob([offline],{type:'text/html'})},{name:'parts-list.csv',blob:new Blob(['Part,Quantity\n'+snapshot.items.map(p=>`${p.label},1\n`).join('')],{type:'text/csv'})}];
     const selectedFormat=format.value;snapshot.files??={};snapshot.files[selectedFormat]??=snapshot.items.map(part=>{const content=selectedFormat==='3mf'?create3MF(part.mesh):new Blob([plateSTL(part.mesh)],{type:'model/stl'});return new File([content],`${part.id}.${selectedFormat}`,{type:content.type});});
-    const shared={author:credit.author,authorUrl:credit.authorUrl,generatorName:'MeshVault Assembly Studio',exportDonationUrl:'https://buymeacoffee.com/xalies',sourceUrl,tags:['assembly',k.id,'generated'],packageInfo:`One ${k.name} project containing ${snapshot.items.length} parts. Print one of each included file.`};
+    const shared={author:credit.author,authorUrl:credit.authorUrl,generatorName:'MeshVault Modular Storage Designer',exportDonationUrl:'https://buymeacoffee.com/xalies',sourceUrl,tags:['assembly',k.id,'generated'],packageInfo:`One ${k.name} project containing ${snapshot.items.length} parts. Print one of each included file.`};
     const models=snapshot.items.map((part,i)=>({...shared,file:snapshot.files[selectedFormat][i],title:`${snapshot.settings.title} · ${part.label}`,summary:`${part.label} from a ${k.name} kit.`,printNotes:JSON.stringify({...notes,part:part.label,quantity:1}),settings:{...snapshot.settings,part:part.id}}));
     const project={...shared,title:snapshot.settings.title,summary:k.summary,descriptionHtml:snapshot.descriptionHtml,printNotes:JSON.stringify(notes),settings:snapshot.settings,thumbnail:snapshot.gallery[0].blob,gallery:snapshot.gallery,documents};
     saveFile(await createSetPackage(models,meshvault,project),`${k.id}.${meshvault?'mvpack':'zip'}`);status.textContent=meshvault?`One assembly project exported with ${snapshot.items.length} parts, an illustrated guide and a gallery.`:`${snapshot.items.length} print-ready model files exported.`;
