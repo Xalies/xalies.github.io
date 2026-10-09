@@ -86,5 +86,3 @@ button { border-radius:4px; padding:10px 14px; }
 .profile-actions button { font-size:.72rem; padding:7px 10px; }
 
 .profile-handle[data-size=mouth], .profile-handle[data-size=belly] { cursor:move; }
-
-.profile-handle[data-size=rim] circle { fill:#b59aff; }

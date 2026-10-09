@@ -7,10 +7,10 @@
   <link rel="stylesheet" href="../shared/studio.css">
   <link rel="canonical" href="https://www.meshvault.app/generators/vessels/">
   <link rel="icon" href="../../images/meshvault_512x512.png">
-  <link rel="stylesheet" href="theme.css?v=20261009-rim">
+  <link rel="stylesheet" href="theme.css?v=20261009-movable">
   <script src="../gridfinity/vendor/deps/three.min.js" defer></script>
   <script src="../gridfinity/vendor/deps/OrbitControls.js" defer></script>
-  <script type="module" src="studio.js?v=20261009-rim"></script>
+  <script type="module" src="studio.js?v=20261009-movable"></script>
 </head>
 <body class="vessel-studio">
   <a class="skip-link" href="#settings">Skip to shape controls</a>
@@ -31,21 +31,19 @@
             <path id="profile-shape"/><path id="profile-line"/><path d="M54 16V236H220" class="profile-axis"/>
             <path id="profile-height-line" class="profile-guide"/>
             <g class="profile-handle" data-size="height" role="slider" tabindex="0" aria-label="Height" aria-orientation="vertical"><circle r="9"/><text x="14" y="4"></text></g>
-            <g class="profile-handle" data-size="mouth" role="slider" tabindex="0" aria-label="Top shaping point diameter; up and down adjust its height" aria-orientation="horizontal"><circle r="9"/><text x="14" y="-12"></text></g>
-            <g class="profile-handle" data-size="rim" role="slider" tabindex="0" aria-label="Rim opening diameter" aria-orientation="horizontal"><circle r="9"/><text x="14" y="-12"></text></g>
+            <g class="profile-handle" data-size="mouth" role="slider" tabindex="0" aria-label="Mouth diameter; up and down adjust vessel height" aria-orientation="horizontal"><circle r="9"/><text x="14" y="-12"></text></g>
             <g class="profile-handle" data-size="belly" role="slider" tabindex="0" aria-label="Belly diameter; up and down adjust belly height" aria-orientation="horizontal"><circle r="9"/><text x="14" y="4"></text></g>
             <g class="profile-handle" data-size="base" role="slider" tabindex="0" aria-label="Base diameter" aria-orientation="horizontal"><circle r="9"/><text x="14" y="14"></text></g>
             <g id="profile-points"></g>
             <text x="10" y="262" class="profile-caption">50 mm grid · surface texture shown in 3D</text>
           </svg>
-          <p class="small profile-help">Click the outline to add a point, then drag it to shape the vessel. Height and the top shaping point move independently. The rim sets the opening; the bottom stays fixed. Arrow keys adjust; Shift moves by 10 mm. Delete removes an added point.</p>
+          <p class="small profile-help">Click the outline to add a point, then drag it to shape the vessel. Belly and mouth move vertically too; the bottom stays fixed. Arrow keys adjust; Shift moves by 10 mm. Delete removes an added point.</p>
           <div class="actions profile-actions"><button type="button" id="add-profile-point" class="secondary">Add point +</button><button type="button" id="remove-profile-point" class="secondary" disabled>Remove point</button></div>
           <details id="exact-dimensions"><summary>Exact dimensions</summary><div class="fields">
           <label>Height<input name="height" type="number" min="25" max="300" step="1" value="160" required></label>
           <label>Base diameter<input name="base" type="number" min="25" max="240" step="1" value="65" required></label>
           <label>Belly diameter<input name="belly" type="number" min="25" max="260" step="1" value="100" required></label>
-          <label>Top shaping diameter<input name="mouth" type="number" min="25" max="260" step="1" value="60" required></label>
-          <label>Rim opening diameter<input name="rim" type="number" min="25" max="260" step="1" value="60" required></label>
+          <label>Mouth diameter<input name="mouth" type="number" min="25" max="260" step="1" value="60" required></label>
         </div></details><div class="fields wall-settings">
           <label>Radial wall<input name="wall" type="number" min="0.8" max="5" step="0.1" value="1.6" required></label>
           <label>Base thickness<input name="floor" type="number" min="1" max="6" step="0.2" value="2" required></label>

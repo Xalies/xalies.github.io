@@ -65,14 +65,6 @@ point. Presets clear extra points. Exported parameters include `profilePoints`
 (normalised height `t` and diameter in mm), shared by the preview and mesh.
 
 The original belly point also moves vertically, with its normalised position saved
-as `bellyPosition` (default 0.55 for older settings). The top shaping point moves independently
-of overall height. Up/Down arrows adjust these heights; Left/Right
+as `bellyPosition` (default 0.55 for older settings). Moving the mouth vertically
+changes overall vessel height. Up/Down arrows adjust these heights; Left/Right
 adjust diameter. The original bottom point stays at zero height.
-
-A separate rim handle defines the opening diameter at overall height. The top
-shaping point starts at 85% height and is stored as `mouthPosition`; `mouth` is
-its diameter, while `rim` is the opening diameter. Older settings without these
-fields retain their original mouth at full height. Changing overall height keeps
-other control points at their current physical heights and stops above them.
-This allows a neck, flared lip or narrowing upper section without scaling the
-whole profile. Presets reset all point positions.
