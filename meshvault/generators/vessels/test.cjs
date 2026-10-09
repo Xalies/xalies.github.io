@@ -24,6 +24,13 @@ const server = http.createServer((req, res) => {
     page.on('pageerror', error => errors.push(error.message));
     const requests = [];
     page.on('request', request => requests.push(request.url()));
+    async function choosePreset(name) {
+      const details=page.locator('.starting-shape');if(await details.getAttribute('open')===null)await details.locator('summary').click();
+      await page.locator(`[data-preset=${name}]`).click();await details.locator('summary').click();
+    }
+    async function profilePosition(radius,y) {
+      return page.evaluate(({radius,y})=>{const svg=document.querySelector('#profile-editor'),d=svg.dataset;const p=new DOMPoint(Number(d.centre)+radius*Number(d.scale),Number(d.floor)-y*Number(d.scale)).matrixTransform(svg.getScreenCTM());return {x:p.x,y:p.y};},{radius,y});
+    }
     async function downloaded(button) {
       const waiting = page.waitForEvent('download');
       await page.locator(button).click();
@@ -85,33 +92,35 @@ const server = http.createServer((req, res) => {
     await page.reload();await page.waitForFunction(()=>document.querySelector('#viewer').dataset.loaded==='true');
     assert.equal(await page.locator('#author').inputValue(),'Avery <Maker>');assert.equal(await page.locator('#author-url').inputValue(),'https://example.org/avery');
     const handle=page.locator('#profile-editor [data-size=belly]');
+    assert(await page.locator('#profile-shape').evaluate(n=>n.getBBox().height>document.querySelector('#profile-editor').viewBox.baseVal.height*.75),'Default profile fills the editor height');
     await handle.focus();await handle.press('ArrowRight');assert.equal(await page.locator('[name=belly]').inputValue(),'101');
     await handle.press('Shift+ArrowLeft');assert.equal(await page.locator('[name=belly]').inputValue(),'91');
     await handle.press('Home');assert.equal(await page.locator('[name=belly]').inputValue(),'25');
     await handle.press('End');assert.equal(await page.locator('[name=belly]').inputValue(),'260');
-    const svg=await page.locator('#profile-editor').boundingBox();
+
     const mouth=await page.locator('#profile-editor [data-size=mouth] circle').boundingBox();
     await page.mouse.move(mouth.x+mouth.width/2,mouth.y+mouth.height/2);await page.mouse.down();
-    await page.mouse.move(svg.x+(54+120/2*.65)*svg.width/260,svg.y+100,{steps:4});await page.mouse.up();
+    const dragScale=await page.locator('#profile-editor').getAttribute('data-scale'),mouthTarget=await profilePosition(60,210);
+    await page.mouse.move(mouthTarget.x,mouthTarget.y,{steps:4});assert.equal(await page.locator('#profile-editor').getAttribute('data-scale'),dragScale,'Auto-fit freezes during dragging');await page.mouse.up();
     assert(Math.abs(Number(await page.locator('[name=mouth]').inputValue())-120)<=2,'Dragging changes the exported mouth diameter');
     const mouthHeight=Number(await page.locator('[name=height]').inputValue());
     await page.locator('[data-size=mouth]').press('ArrowDown');assert.equal(Number(await page.locator('[name=height]').inputValue()),mouthHeight,'Top point leaves the height reference unchanged');
     const topBeforeHeight=await page.locator('[data-size=mouth]').getAttribute('aria-valuetext');
     const height=await page.locator('#profile-editor [data-size=height] circle').boundingBox();
     await page.mouse.move(height.x+height.width/2,height.y+height.height/2);await page.mouse.down();
-    await page.mouse.move(height.x+height.width/2,svg.y+(236-200*.65)*svg.height/270,{steps:4});await page.mouse.up();
+    const heightTarget=await profilePosition(0,200);await page.mouse.move(height.x+height.width/2,heightTarget.y,{steps:4});await page.mouse.up();
     assert(Math.abs(Number(await page.locator('[name=height]').inputValue())-200)<=2,'Height handle adjusts vessel height');
     assert.equal(await page.locator('[data-size=mouth]').getAttribute('aria-valuetext'),topBeforeHeight,'Height reference leaves the top point in place');
     await handle.press('Shift+ArrowUp');assert.match(await handle.getAttribute('aria-valuetext'),/120 millimetres high/);
     const bellyCircle=await handle.locator('circle').boundingBox();
     await page.mouse.move(bellyCircle.x+bellyCircle.width/2,bellyCircle.y+bellyCircle.height/2);await page.mouse.down();
-    await page.mouse.move(bellyCircle.x+bellyCircle.width/2,svg.y+(236-140*.65)*svg.height/270,{steps:4});await page.mouse.up();
+    const bellyTarget=await profilePosition(130,140);await page.mouse.move(bellyCircle.x+bellyCircle.width/2,bellyTarget.y,{steps:4});await page.mouse.up();
     assert.match(await handle.getAttribute('aria-valuetext'),/140 millimetres high/,'Original belly point moves vertically');
     const baseHandle=page.locator('[data-size=base]'),baseBefore=await baseHandle.getAttribute('transform');await baseHandle.press('ArrowUp');assert.equal(await baseHandle.getAttribute('transform'),baseBefore,'Bottom stays fixed vertically');
     const linePoint=await page.evaluate(async()=>{
-      const {profileRadius}=await import('/generators/vessels/geometry.js?v=20261009-arched-top'),svg=document.querySelector('#profile-editor'),form=document.querySelector('#settings');
+      const {profileRadius}=await import('/generators/vessels/geometry.js?v=20261009-profile-fit'),svg=document.querySelector('#profile-editor'),form=document.querySelector('#settings');
       const s=Object.fromEntries(['height','base','belly','mouth'].map(n=>[n,Number(form.elements[n].value)]));
-      s.bellyPosition=.7;const p=new DOMPoint(54+profileRadius(s,.25)*.65,236-s.height*.25*.65).matrixTransform(svg.getScreenCTM());return {x:p.x,y:p.y};
+      s.bellyPosition=.7;const d=svg.dataset,p=new DOMPoint(Number(d.centre)+profileRadius(s,.25)*Number(d.scale),Number(d.floor)-s.height*.25*Number(d.scale)).matrixTransform(svg.getScreenCTM());return {x:p.x,y:p.y};
     });
     await page.mouse.click(linePoint.x,linePoint.y);assert.equal(await page.locator('[data-point]').count(),1,'Clicking the profile adds a point');
     const extra=page.locator('[data-point]');await extra.press('Shift+ArrowRight');
@@ -134,7 +143,7 @@ const server = http.createServer((req, res) => {
     await page.locator('#add-profile-point').click();assert.equal(await page.locator('[data-point]').count(),1);
     await page.locator('#remove-profile-point').click();assert.equal(await page.locator('[data-point]').count(),0);
     await page.locator('#add-profile-point').click();
-    await page.locator('[data-preset=vase]').click();await page.waitForFunction(()=>!document.querySelector('#stl').disabled);
+    await choosePreset('vase');await page.waitForFunction(()=>!document.querySelector('#stl').disabled);
     assert.equal(await handle.getAttribute('aria-valuenow'),'100','Presets refresh the profile');assert.equal(await page.locator('[data-point]').count(),0,'Presets clear extra points');
     const vessel3mf = await downloaded('#stl');
     const generalVessel = await inspectPackage((await downloaded('#mvpack')).bytes, vessel3mf.bytes, '3mf');
@@ -165,8 +174,9 @@ const server = http.createServer((req, res) => {
     assert.equal(buffer.length, 84 + buffer.readUInt32LE(80) * 50, 'Complete binary STL');
     await inspectPackage((await downloaded('#mvpack')).bytes, vesselSTL.bytes, 'stl');
     for (const preset of ['vase', 'bowl', 'urn', 'cup']) {
-      await page.locator(`[data-preset=${preset}]`).click();
+      await choosePreset(preset);
       await page.waitForFunction(() => !document.querySelector('#stl').disabled);
+      assert(await page.locator('#profile-editor').evaluate(svg=>{return [...svg.querySelectorAll('.profile-handle circle')].every(n=>{const r=n.getBoundingClientRect(),s=svg.getBoundingClientRect();return r.left>=s.left&&r.right<=s.right&&r.top>=s.top&&r.bottom<=s.bottom;});}),'Auto-fit keeps preset handles in view');
     }
     const topology = await page.evaluate(async () => {
       const { vesselMesh } = await import('/generators/vessels/geometry.js');
@@ -199,7 +209,7 @@ const server = http.createServer((req, res) => {
     await page.locator('#settings [name=height]').fill('80');
     await page.waitForFunction(() => !document.querySelector('#stl').disabled);
     await page.setViewportSize({ width: 1440, height: 1000 });
-    await page.locator('[data-preset=vase]').click();
+    await choosePreset('vase');
     await page.locator('#exact-dimensions summary').click();
     await page.locator('#format').selectOption('3mf');
     await page.waitForTimeout(300);

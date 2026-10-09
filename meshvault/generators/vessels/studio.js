@@ -1,5 +1,5 @@
-import { vesselMesh, binarySTL, profileRadius, profilePoint } from './geometry.js?v=20261009-arched-top';
-import { initProfileEditor } from './profile.js?v=20261009-arched-top';
+import { vesselMesh, binarySTL, profileRadius, profilePoint } from './geometry.js?v=20261009-profile-fit';
+import { initProfileEditor } from './profile.js?v=20261009-profile-fit';
 import { createPackage, create3MF, saveFile, canvasThumbnail } from '../shared/mvpack.js';
 const form = document.querySelector('#settings'), status = document.querySelector('#status');
 const stl = document.querySelector('#stl'), pack = document.querySelector('#mvpack');

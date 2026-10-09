@@ -1,7 +1,8 @@
 // The same smooth radius function drives the outline and exported mesh.
 export function initProfileEditor(form, radius, curve, update) {
   const svg=document.querySelector('#profile-editor'), handles=[...svg.querySelectorAll('[data-size]')], layer=svg.querySelector('#profile-points');
-  const scale=.65, centre=54, floor=236, points=[];
+  const centre=60, points=[];
+  let scale=1, floor=378;
   const remove=document.querySelector('#remove-profile-point');
   let drag=null, selected=null, nextId=0, bellyPosition=.55, topHeight=Number(form.elements.height.value);
   const height=()=>Number(form.elements.height.value);
@@ -86,7 +87,7 @@ export function initProfileEditor(form, radius, curve, update) {
     else if(drag.size)setSize(drag.size,drag.size==='height'?(floor-point.y)/scale:(point.x-centre)*2/scale);
     else movePoint(drag.id,(floor-point.y)/(height()*scale),(point.x-centre)*2/scale);
   });
-  for(const event of ['pointerup','lostpointercapture','pointercancel'])svg.addEventListener(event,()=>{drag=null;});
+  for(const event of ['pointerup','lostpointercapture','pointercancel'])svg.addEventListener(event,()=>{if(!drag)return;drag=null;render();});
   for(const handle of handles) {
     handle.addEventListener('focus',()=>select(null));
     handle.addEventListener('keydown',event=>{
@@ -112,14 +113,25 @@ export function initProfileEditor(form, radius, curve, update) {
     if(!['height','base','belly','mouth','wall'].every(name=>form.elements[name].validity.valid))return;
     const minimum=Math.max(bellyPosition,...points.map(p=>p.t))*s.height+Math.max(2,s.wall*2);
     topHeight=Math.max(Math.min(300,minimum),Math.min(300,topHeight));s=settings();
-    const right=Array.from({length:129},(_,i)=>{const p=curve(s,i/128);return [centre+p.radius*scale,floor-p.y*scale];});
+    const samples=Array.from({length:129},(_,i)=>curve(s,i/128));
+    if(!drag) {
+      const maxY=Math.max(s.height,topHeight,...samples.map(p=>p.y)),maxR=Math.max(...samples.map(p=>p.radius));
+      scale=Math.min(236/maxR,346/maxY);floor=32+(346+maxY*scale)/2;
+    }
+    svg.dataset.scale=scale;svg.dataset.centre=centre;svg.dataset.floor=floor;
+    const step=[5,10,20,25,50,100].find(mm=>mm*scale>=30)||100,spacing=step*scale;
+    const grid=svg.querySelector('#profile-grid');grid.setAttribute('width',spacing);grid.setAttribute('height',spacing);grid.setAttribute('x',centre);grid.setAttribute('y',floor);
+    grid.querySelector('path').setAttribute('d',`M${spacing} 0H0V${spacing}`);
+    svg.querySelector('.profile-caption').textContent=`${step} mm grid · surface texture shown in 3D`;
+    svg.querySelector('.profile-axis').setAttribute('d',`M${centre} 20V${floor}H326`);
+    const right=samples.map(p=>[centre+p.radius*scale,floor-p.y*scale]);
     const line=`M${right.map(p=>p.join(',')).join('L')}`;
     svg.querySelector('#profile-line').setAttribute('d',line);
     svg.querySelector('#profile-shape').setAttribute('d',`${line}L${centre},${floor-topHeight*scale}L${centre},${floor}Z`);
-    svg.querySelector('#profile-height-line').setAttribute('d',`M18 ${floor}V${floor-s.height*scale}H220`);
+    svg.querySelector('#profile-height-line').setAttribute('d',`M20 ${floor}V${floor-s.height*scale}H326`);
     for(const handle of handles) {
       const name=handle.dataset.size,input=form.elements[name],t=name==='base'?0:name==='belly'?bellyPosition:1;
-      position(handle,name==='height'?18:centre+s[name]/2*scale,floor-(name==='mouth'?topHeight:s.height*t)*scale,input.value,input.min,input.max,`${input.value} millimetres${name==='height'?' tall':` diameter at ${Math.round(name==='mouth'?topHeight:s.height*t)} millimetres high`}`);
+      position(handle,name==='height'?20:centre+s[name]/2*scale,floor-(name==='mouth'?topHeight:s.height*t)*scale,input.value,input.min,input.max,`${input.value} millimetres${name==='height'?' tall':` diameter at ${Math.round(name==='mouth'?topHeight:s.height*t)} millimetres high`}`);
       handle.querySelector('text').textContent=`${input.value}${name==='height'?' ref':' Ø'}`;
     }
     for(const point of points) {

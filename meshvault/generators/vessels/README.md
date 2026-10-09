@@ -80,3 +80,9 @@ straight-height interpolation. The top stays above the last body point.
 Profiles with intersecting wall sections are rejected before download. Tight
 rolled tops may require a thinner wall or less flute depth/twist. This geometric
 check does not establish printability or physical watertightness.
+
+The profile is the primary desktop editing surface, in a wider column with a
+larger canvas. Its equal-axis scale fits the current shape and height reference;
+the grid updates its millimetre spacing accordingly. Scale stays fixed throughout
+a drag and fits again on release. Presets/name and keyboard help are expandable
+to keep the editor visible.
