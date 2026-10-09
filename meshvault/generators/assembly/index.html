@@ -6,9 +6,9 @@
   <meta name="description" content="Design display risers and desk organisers with removable trays. Generate STL, 3MF and illustrated MeshVault assembly projects entirely in your browser.">
   <link rel="canonical" href="https://www.meshvault.app/generators/assembly/">
   <link rel="icon" href="../../images/meshvault_512x512.png">
-  <link rel="stylesheet" href="../shared/studio.css"><link rel="stylesheet" href="theme.css?v=20261009-organiser">
+  <link rel="stylesheet" href="../shared/studio.css"><link rel="stylesheet" href="theme.css?v=20261009-ecosystem-2">
   <script src="../gridfinity/vendor/deps/three.min.js" defer></script><script src="../gridfinity/vendor/deps/OrbitControls.js" defer></script>
-  <script type="module" src="studio.js?v=20261009-organiser"></script>
+  <script type="module" src="studio.js?v=20261009-ecosystem-2"></script>
 </head>
 <body class="assembly-studio">
   <a class="skip-link" href="#settings">Skip to design controls</a>
@@ -34,11 +34,11 @@
         <div class="preview-toolbar"><span id="status" role="status" aria-live="polite">Preparing your kit…</span><div class="export-actions"><select id="view" aria-label="Preview arrangement"><option value="assembled">Assembled</option><option value="exploded">Exploded assembly</option><option value="print">Print orientations</option></select><button id="reset-view" class="secondary" type="button">Reset view</button></div></div>
         <div id="viewer" tabindex="0" aria-label="3D assembly preview. Drag to orbit and scroll to zoom."></div>
         <div class="preview-toolbar"><span id="dimensions" class="dimension"></span><span class="small">Drag to orbit · scroll to zoom</span></div>
-        <div class="export-panel"><div class="export-actions"><select id="format" aria-label="Model download format"><option value="3mf">3MF · millimetres</option><option value="stl">STL</option></select><button id="download-kit" class="secondary" disabled>Download parts ZIP ↓</button><button id="mvpack" disabled>Export MeshVault project ↓</button></div><p class="small" style="margin-top:12px">Separate printable parts, kept together as one MeshVault project with a gallery and an offline illustrated guide.</p></div>
+
       </section>
-      <aside class="assembly-notes" aria-label="Assembly overview"><p class="step">02 / Build notes</p><h2>Print. Fit. Assemble.</h2><ol id="assembly-steps"></ol><p id="assembly-fit" class="small"></p>
-        <details class="author-details"><summary>Author &amp; support links</summary><form id="creator"><label>Author · optional<input name="author" id="author" type="text" maxlength="100" placeholder="Your name" autocomplete="name"></label><label>Author URL · optional<input name="authorUrl" id="author-url" type="url" maxlength="2048" placeholder="https://your-site.com"></label><label>Author donation URL · optional<input name="donation" id="donation" type="url" maxlength="2048" placeholder="https://buymeacoffee.com/your-name"></label><p class="small">Saved on this device. Blank author names export as Anonymous.</p></form></details>
-        <a href="#description">Illustrated assembly guide ↓</a><p class="small">Dry-fit and check the sliced models before printing a full kit. Physical fit and load capacity have not been tested.</p>
+      <aside class="assembly-notes" aria-label="Assembly overview"><div class="build-notes"><p class="step">02 / Build notes</p><h2>Print. Fit. Assemble.</h2><ol id="assembly-steps"></ol><p id="assembly-fit" class="small"></p>
+        <a href="#description">Illustrated assembly guide ↓</a><p class="small">Dry-fit and inspect the sliced models before printing a full kit.</p></div><details class="author-details"><summary>Author &amp; support links</summary><form id="creator"><label>Author · optional<input name="author" id="author" type="text" maxlength="100" placeholder="Your name" autocomplete="name"></label><label>Author URL · optional<input name="authorUrl" id="author-url" type="url" maxlength="2048" placeholder="https://your-site.com"></label><label>Author donation URL · optional<input name="donation" id="donation" type="url" maxlength="2048" placeholder="https://buymeacoffee.com/your-name"></label><p class="small">Saved on this device. Blank author names export as Anonymous.</p></form></details>
+        <div class="export-panel"><p class="step">Take it to your slicer</p><label>Model format<select id="format" aria-label="Model download format"><option value="3mf">3MF · millimetres</option><option value="stl">STL</option></select></label><div class="export-actions"><button id="download-kit" class="secondary" disabled>Parts ZIP ↓</button><button id="mvpack" disabled>MeshVault ↓</button></div><p class="small" style="margin-top:12px">Keep every part and the illustrated guide in one MeshVault project.</p></div>
       </aside>
     </div>
     <details class="project-details"><summary>What’s in your MeshVault project?</summary><div class="integration"><div><h2>Keep the build together.</h2><p>Your .mvpack contains every part, the design settings, your author links, three generated pictures, a parts list and an offline assembly guide. It imports as one project into Imports to Review, with the individual parts inside.</p><p>All modelling, previews and packaging run locally in your browser.</p><a href="../../generator/">About the .mvpack format →</a> · <a href="README.md">Source &amp; licences</a></div><pre id="package-contents"></pre></div></details>

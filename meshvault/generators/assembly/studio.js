@@ -1,7 +1,7 @@
 import { create3MF, createSetPackage, canvasThumbnail, saveFile, asciiSTLMesh } from '../shared/mvpack.js';
 import { plateSTL } from '../gridfinity/plates.js';
-import { buildPart } from '../gridfinity/build-part.js';
-import { riserParts, organiserParts, organiserBaseSource } from './geometry.js?v=20261009-organiser';
+import { buildPart } from '../gridfinity/build-part.js?v=20261009-custom-source';
+import { riserParts, organiserParts, organiserBaseSource } from './geometry.js?v=20261009-ecosystem-2';
 const form=document.querySelector('#settings'),creator=document.querySelector('#creator'),host=document.querySelector('#viewer'),status=document.querySelector('#status');
 const view=document.querySelector('#view'),format=document.querySelector('#format'),pack=document.querySelector('#mvpack'),download=document.querySelector('#download-kit');
 const sourceUrl='https://www.meshvault.app/generators/assembly/';
@@ -123,7 +123,7 @@ function configureAssembly(){
 }
 function scheduleUpdate(){revision++;controller?.abort();current=null;pack.disabled=download.disabled=true;clearTimeout(timer);timer=setTimeout(update,180);}
 try {
-  renderer=new THREE.WebGLRenderer({antialias:true,preserveDrawingBuffer:true});renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.setClearColor('#211b2c');host.append(renderer.domElement);
+  renderer=new THREE.WebGLRenderer({antialias:true,preserveDrawingBuffer:true});renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.setClearColor('#191420');host.append(renderer.domElement);
   scene=new THREE.Scene();camera=new THREE.PerspectiveCamera(35,1,.1,5000);controls=new THREE.OrbitControls(camera,renderer.domElement);
   renderer.setSize(host.clientWidth,host.clientHeight);camera.aspect=host.clientWidth/host.clientHeight;camera.updateProjectionMatrix();
   scene.add(new THREE.HemisphereLight(0xffffff,0x655372,.9));const key=new THREE.DirectionalLight(0xfff1e3,.8);key.position.set(150,300,200);scene.add(key);const fill=new THREE.DirectionalLight(0xffffff,.35);fill.position.set(-200,150,-100);scene.add(fill);
