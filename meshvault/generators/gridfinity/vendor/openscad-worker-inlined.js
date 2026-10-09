@@ -23,7 +23,7 @@ var Module=typeof OpenSCAD!=="undefined"?OpenSCAD:{};var readyPromiseResolve,rea
 
 
 importScripts("browserfs.min.js");
-importScripts('filesystem.js');
+importScripts('filesystem.js?v=20261009-magnets');
 
 addEventListener('message', async (e) => {
 

@@ -8,15 +8,11 @@
   <link rel="canonical" href="https://www.meshvault.app/generators/gridfinity/">
   <link rel="icon" href="../../images/meshvault_512x512.png">
   <link rel="stylesheet" href="../shared/studio.css">
-  <link rel="stylesheet" href="theme.css?v=20261009-planner">
+  <link rel="stylesheet" href="theme.css?v=20261009-plates">
   <script src="vendor/deps/three.min.js" defer></script>
-  <script src="vendor/deps/Projector.js" defer></script>
-  <script src="vendor/deps/CanvasRenderer.js" defer></script>
   <script src="vendor/deps/OrbitControls.js" defer></script>
-  <script src="vendor/deps/webgl_detector.js" defer></script>
-  <script src="vendor/deps/stl_viewer.min.js" defer></script>
-  <script type="module" src="generator.js?v=20261009-planner"></script>
-  <script type="module" src="planner.js?v=20261009-planner"></script>
+  <script type="module" src="generator.js?v=20261009-plates"></script>
+  <script type="module" src="planner.js?v=20261009-plates"></script>
 </head>
 <body class="gridfinity-studio">
   <a class="skip-link" href="#drawer-planner">Skip to planner</a>
@@ -25,87 +21,41 @@
     <p class="eyebrow">Storage / 42 mm system</p>
     <h1>Your drawer. In order.</h1>
     <p class="intro">Plan your drawer, place named bins and generate a complete print set. Download STL, 3MF or one MeshVault project. Free, local and account-free.</p>
-    <nav class="work-modes" aria-label="Workspace mode"><button type="button" id="mode-planner" aria-pressed="true">01 / Plan your drawer</button><button type="button" id="mode-parts" aria-pressed="false">02 / Parts &amp; print plates</button><span>42 mm grid · Runs entirely on your device</span></nav>
+    <nav class="work-modes" aria-label="Workspace mode"><button type="button" id="mode-planner" aria-pressed="true">01 / Plan your drawer</button><button type="button" id="mode-parts" aria-pressed="false">02 / Generate &amp; print</button><span>42 mm grid · Runs entirely on your device</span></nav>
     <section id="drawer-planner" class="drawer-planner" aria-label="Drawer planner">
-      <form id="drawer-settings" class="planner-sidebar"><p class="step">Your space</p><label>Layout name<input name="title" type="text" maxlength="100" value="My workshop drawer" required></label><div class="fields"><label>Drawer width · mm<input name="width" type="number" min="42" max="1000" value="336" required></label><label>Drawer depth · mm<input name="depth" type="number" min="42" max="1000" value="252" required></label><label>Inside height · mm<input name="height" type="number" min="20" max="200" value="70" required></label><label>Edge clearance · mm<input name="clearance" type="number" min="0" max="20" step="0.5" value="0" required></label></div><p id="drawer-size" class="small"></p><label>Author · optional<input name="author" type="text" maxlength="100" placeholder="Your name" autocomplete="name"></label><fieldset><legend>Baseplate</legend><label class="check"><input name="magnets" type="checkbox">Magnets to hold removable bins</label><p class="small">Edit the grid to exclude cells or choose centre screws for fastening the plate to your drawer floor.</p></fieldset><fieldset><legend>Save your workspace</legend><div class="actions"><button type="button" id="save-layout" class="secondary">Save layout ↓</button><button type="button" id="open-layout" class="secondary">Open layout</button></div><input id="layout-file" type="file" accept=".json" hidden><p id="save-status" class="small" role="status">Saved in this browser as you work.</p><button type="button" id="new-layout" class="secondary">New layout</button></fieldset></form>
+      <form id="drawer-settings" class="planner-sidebar"><p class="step">Your space</p><label>Layout name<input name="title" type="text" maxlength="100" value="My workshop drawer" required></label><div class="fields"><label>Drawer width · mm<input name="width" type="number" min="42" max="1000" value="336" required></label><label>Drawer depth · mm<input name="depth" type="number" min="42" max="1000" value="252" required></label><label>Inside height · mm<input name="height" type="number" min="20" max="200" value="70" required></label><label>Edge clearance · mm<input name="clearance" type="number" min="0" max="20" step="0.5" value="0" required></label></div><p id="drawer-size" class="small"></p><fieldset><legend>Baseplate</legend><label class="check"><input name="magnets" type="checkbox">Magnets to hold removable bins</label><div class="fields"><label>Pocket diameter · mm<input name="magnetDiameter" type="number" min="3" max="10" step="0.1" value="6.5" required disabled></label><label>Pocket depth · mm<input name="magnetDepth" type="number" min="1" max="5" step="0.1" value="2.4" required disabled></label></div><p class="small">The same pockets on bins and baseplates. Allow clearance for your magnets and printer fit.</p><p class="small">Edit the grid to exclude cells or choose centre screws for fastening the plate to your drawer floor.</p></fieldset><fieldset><legend>Save your workspace</legend><div class="actions"><button type="button" id="save-layout" class="secondary">Save layout ↓</button><button type="button" id="open-layout" class="secondary">Open layout</button></div><input id="layout-file" type="file" accept=".json" hidden><p id="save-status" class="small" role="status">Saved in this browser as you work.</p><button type="button" id="new-layout" class="secondary">New layout</button></fieldset></form>
       <div class="planner-stage"><div class="planner-toolbar"><div class="grid-tools" role="group" aria-label="Drawer grid tools"><button type="button" data-tool="select" aria-pressed="true">Move / select</button><button type="button" data-tool="place" aria-pressed="false">Place bin</button><button type="button" data-tool="footprint" aria-pressed="false">Baseplate</button><button type="button" data-tool="screws" aria-pressed="false">Drawer screws</button></div><div class="actions"><button type="button" id="undo-layout" class="secondary" disabled>Undo</button><button type="button" id="toggle-layout-view" class="secondary" aria-pressed="false">3D layout</button></div></div><div class="drawer-canvas"><svg id="drawer-grid" role="application" aria-label="Drawer layout; select bins and use arrow keys to move, R to rotate, Delete to remove" tabindex="0"></svg><div id="drawer-3d" hidden aria-label="Approximate assembled drawer preview"></div></div><div class="planner-caption"><span id="drawer-summary"></span><span>Drag bins · Arrow keys move · R rotates</span></div><p id="planner-status" role="status" aria-live="polite">Add a bin or click Place bin, then choose a grid cell.</p></div>
-      <div class="planner-inspector"><form id="bin-settings"><p class="step">Bin design</p><label>Bin name<input name="name" type="text" maxlength="80" value="Small components" required></label><div class="fields"><label>Width · cells<input name="w" type="number" min="1" max="6" value="1" required></label><label>Depth · cells<input name="d" type="number" min="1" max="6" value="1" required></label><label>Height · 7 mm units<input name="h" type="number" min="2" max="12" value="6" required></label><label>Compartments<input name="compartments" type="number" min="1" max="18" value="1" required></label></div><details class="bin-options"><summary>Colour &amp; bin features</summary><label>Colour<input name="colour" type="color" value="#72cbd2"></label><label class="check"><input name="scoop" type="checkbox" checked>Finger scoop</label><label class="check"><input name="label" type="checkbox">Label ledge</label><p class="small">Colours identify bins in the plan; generated plates use one mesh.</p></details><div class="actions"><button type="button" id="add-layout-bin">Add bin +</button><button type="button" id="rotate-layout-bin" class="secondary" disabled>Rotate</button><button type="button" id="delete-layout-bin" class="secondary" disabled>Remove</button></div><p class="small">Select a bin to edit; click an empty cell to deselect.</p></form><details class="layout-inventory"><summary>Your bins <span id="layout-bin-count">0</span></summary><ul id="layout-bins" aria-label="Bins in drawer"></ul></details><div class="planner-build"><p class="step">Make it real</p><p class="small">Baseplates split into separate sections to fit the bed below. Matching bin designs are generated once, with quantities preserved.</p><form id="planner-bed"><div class="fields"><label>Bed width · mm<input name="width" type="number" min="50" max="1000" value="220" required></label><label>Bed depth · mm<input name="depth" type="number" min="50" max="1000" value="220" required></label></div></form><div class="actions"><button type="button" id="build-layout">Generate print set →</button><button type="button" id="cancel-layout" class="secondary" disabled>Cancel</button></div><p id="build-status" class="small" role="status">STL / 3MF / MeshVault project</p></div></div>
+      <div class="planner-inspector"><form id="bin-settings"><p class="step">Bin design</p><label>Bin name<input name="name" type="text" maxlength="80" value="Small components" required></label><div class="fields"><label>Width · cells<input name="w" type="number" min="1" max="6" value="1" required></label><label>Depth · cells<input name="d" type="number" min="1" max="6" value="1" required></label><label>Height · 7 mm units<input name="h" type="number" min="2" max="12" value="6" required></label><label>Compartments<input name="compartments" type="number" min="1" max="18" value="1" required></label></div><details class="bin-options"><summary>Colour &amp; bin features</summary><label>Colour<input name="colour" type="color" value="#72cbd2"></label><label class="check"><input name="scoop" type="checkbox" checked>Finger scoop</label><label class="check"><input name="label" type="checkbox">Label ledge</label><p class="small">Colours identify bins in the plan; generated plates use one mesh.</p></details><div class="actions"><button type="button" id="add-layout-bin">Add bin +</button><button type="button" id="rotate-layout-bin" class="secondary" disabled>Rotate</button><button type="button" id="delete-layout-bin" class="secondary" disabled>Remove</button></div><p class="small">Select a bin to edit; click an empty cell to deselect.</p></form><details class="layout-inventory"><summary>Your bins <span id="layout-bin-count">0</span></summary><ul id="layout-bins" aria-label="Bins in drawer"></ul></details><div class="planner-build"><p class="step">Make it real</p><p class="small">Finish your layout, then generate and review its print plates. Choose your printer bed and export details in the next step.</p><button type="button" id="build-layout">Generate print plates →</button></div></div>
     </section>
-    <div class="workspace" hidden id="workspace" tabindex="-1">
-      <form id="settings">
-        <p class="step">01 / Your workspace, your layout</p>
-        <label>Part<select id="part"><option value="baseplate">Baseplate</option><option value="bin" selected>Bin</option></select></label>
-        <fieldset><legend>Dimensions</legend>
-          <div class="fields">
-            <label>Width · 42 mm units<input name="width" type="number" min="1" max="6" step="1" value="1" required></label>
-            <label>Depth · 42 mm units<input name="depth" type="number" min="1" max="6" step="1" value="1" required></label>
-            <label data-bin>Height · 7 mm units<input name="height" type="number" min="2" max="12" step="1" value="6" required></label>
-            <label data-bin>Compartments across width<input name="chambers" type="number" min="1" max="12" step="1" value="1" required></label>
-          </div>
-        </fieldset>
-        <fieldset data-bin><legend>Features</legend>
-          <label>Label ledge<select name="withLabel"><option value="disabled">None</option><option value="left">Left</option><option value="center">Centre</option><option value="right">Right</option><option value="centerchamber">Each compartment</option></select></label>
-          <label>Stacking lip<select name="lip_style"><option value="normal">Standard</option><option value="reduced">Reduced</option><option value="none">None</option></select></label>
-          <label class="check"><input name="fingerslide" type="checkbox" checked>Finger scoop</label>
-        </fieldset>
-        <fieldset data-bin><legend>Magnet pockets</legend>
-          <label class="check"><input id="magnets" type="checkbox">Add magnet pockets</label>
-          <label>Magnet pocket diameter · mm<input name="magnet_diameter" type="number" min="3" max="10" step="0.1" value="6.5" required disabled><small>Pockets are 2.4 mm deep. Adjust diameter for your magnets and printer fit.</small></label>
-          <p class="small">Magnet pockets sit at the four corners of each grid cell. Match magnet polarity to your baseplate before fitting.</p>
-        </fieldset>
-        <fieldset data-base hidden><legend>Bin retention &amp; drawer fixing</legend>
-          <label class="check"><input id="base-magnets" name="base_magnets" type="checkbox" disabled>Add magnet pockets to hold bins</label>
-          <details><summary>Mount dimensions &amp; fit</summary><p class="small">Four 6.5 × 2.4 mm magnet pockets per cell hold matching magnet-equipped bins to the baseplate, with an open centre. To fasten the baseplate to your drawer floor, switch the grid to Centre screw positions and select only the cells you need. Each selected cell gets a 3.5 mm through-hole with a 7 mm countersink on top and support ribs.</p>
-          <p class="small">Standard frame: 5 mm high. Magnets or screw mounts add 3.6 mm underneath the sockets. Use countersunk screws with a length suited to your drawer-floor thickness. Check screw-head fit and magnet polarity before assembly.</p></details>
-        </fieldset>
-        <fieldset data-base hidden><legend>Baseplate footprint</legend>
-          <label>Shape<select id="base-shape" name="base_shape" disabled><option value="rectangle">Rectangle</option><option value="l">L-shape</option><option value="t">T-shape</option><option value="steps">Staircase</option><option value="custom">Custom cells</option></select></label>
-          <label>Edit grid<select id="cell-mode" disabled><option value="footprint">Baseplate footprint</option><option value="screws">Centre screw positions</option></select></label>
-          <div id="cell-layout" role="group" aria-label="Baseplate grid; edit the footprint or select centre screw mounts"></div>
-          <p id="layout-status" class="small" role="status"></p>
-          <p class="small">Toggle cells to shape one connected baseplate. In screw mode, click included cells to choose drawer fixing points, marked S. Each cell is 42 mm.</p>
-        </fieldset>
-
-        <details data-bin><summary>Wall &amp; floor thickness</summary><div class="fields">
-          <label>Wall thickness · mm<input name="wall_thickness" type="number" min="0.8" max="3" step="0.05" value="0.95" required></label>
-          <label>Floor thickness · mm<input name="floor_thickness" type="number" min="0.7" max="3" step="0.1" value="0.7" required></label>
-        </div></details>
-        <p id="base-note" class="small" hidden>Width and depth stay the same when you switch parts, so the base matches your bin footprint. Magnets hold removable bins to the baseplate. Selected centre screws fasten the baseplate to your drawer floor.</p>
-        <p class="small">Grid pitch: 42 × 42 mm. Actual bin width and depth include fitting clearance. Compartments divide along the width only.</p>
-        <div class="actions"><button id="generate" type="submit">Generate model</button><button id="cancel" type="button" disabled>Cancel</button></div>
-      </form>
-      <section class="preview" aria-label="Generated model">
-        <div class="preview-toolbar"><span id="status" role="status" aria-live="polite">Ready to generate.</span><div class="export-actions"><button id="add-to-set" class="secondary" type="button" disabled>Add to set +</button><a id="download" hidden>Download STL ↓</a></div></div>
-        <div id="viewer" tabindex="0" aria-label="3D bin preview; drag to orbit, scroll to zoom"></div>
-        <p class="small">Drag to orbit · scroll or pinch to zoom. Large bins can take a few minutes to generate.</p>
-        <div class="export-panel"><p class="small">The same geometry in two formats. 3MF includes millimetre units. A .mvpack adds source credit, print notes and your design parameters.</p><div class="export-actions"><button id="download-3mf" class="secondary" type="button" disabled>Download 3MF ↓</button><button id="mvpack" type="button" disabled>Export for MeshVault ↓</button></div><label style="margin-top:16px">Author · optional<input id="author" type="text" maxlength="100" placeholder="Your name" autocomplete="name" aria-describedby="author-note"><small id="author-note">Credited in single-part and set MeshVault packages. Leave blank for Anonymous.</small></label><label>Model inside MeshVault package<select id="format"><option value="3mf">3MF · recommended</option><option value="stl">STL</option></select></label></div>
-        <details><summary>Generation log</summary><pre id="log"></pre></details>
-      </section>
-      <section class="set-panel" aria-label="Your Gridfinity set">
-        <p class="step">02 / Set &amp; print plates</p>
-        <h2>A set that fits your printer.</h2>
-        <p class="small">Add each generated bin or baseplate, then choose quantities and your printer’s bed size.</p>
+    <section class="print-workspace" hidden id="workspace" tabindex="-1" aria-label="Generate and review print plates">
+      <aside class="print-sidebar"><div class="print-controls">
+        <p class="step">Your printer</p>
         <form id="bed-settings"><div class="fields">
-          <label>Bed width · mm<input name="bedWidth" type="number" min="50" max="1000" step="1" value="220" required></label>
-          <label>Bed depth · mm<input name="bedDepth" type="number" min="50" max="1000" step="1" value="220" required></label>
-          <label>Spacing / edge · mm<input name="spacing" type="number" min="2" max="20" step="1" value="5" required></label>
-          <label>Plate model format<select id="set-format"><option value="3mf">3MF</option><option value="stl">STL</option></select></label>
-        </div><label class="check"><input name="rotate" type="checkbox" checked>Allow 90° rotation</label></form>
-        <div class="set-plan">
-          <p class="step">Saved designs &amp; planned plates</p>
-          <ul id="set-items" class="set-items" aria-label="Parts in your set"></ul>
-          <p id="set-empty" class="small">Add your first generated model to start.</p>
-          <button id="clear-set" class="secondary" type="button" disabled>Clear set</button>
-          <div id="plate-layouts" aria-label="Planned print plates"></div>
-        </div>
-        <div class="set-export">
-          <p id="set-status" class="small" role="status" aria-live="polite">Your set is empty.</p>
-          <div class="export-actions"><button id="export-set" type="button" disabled>Export set for MeshVault ↓</button><button id="export-set-zip" class="secondary" type="button" disabled>Download plate ZIP ↓</button></div>
-          <details><summary>About plate exports</summary><p class="small">Each numbered plate contains its arranged parts. Drawer layouts import as one MeshVault project with their editable layout attached. Manually assembled sets import plates as separate library items, with the original part settings attached. Plans follow selected baseplate cells, keeping clearance between parts. Check placement and printable area in your slicer. These are model layouts, not sliced printer projects. Your set stays on this page until refresh or close.</p></details>
-        </div>
-      </section>
-    </div>
-    <section class="integration" aria-label="Printing and saving your designs"><div><p class="step">From workspace to print bed</p><h2>Build once. Keep the details.</h2><p>Download STL or 3MF for your slicer, or export a MeshVault package to keep the models, previews, print notes and design settings together. Add bins and baseplates to your set to plan multiple print plates.</p><p class="small">Check fit, orientation and your printer’s usable bed area in the slicer. Generate a small test part before printing a full set. Drawer plans save in this browser and can be downloaded and reopened. Generated meshes and print plates are cleared when you refresh or close the page.</p><a href="../../#downloads">Keep your designs in MeshVault →</a></div><div><p class="step">Your download</p><h2>Ready for your workflow.</h2><p>3MF keeps explicit millimetre units. STL provides the same geometry. Both are unsliced models; choose your own printer and material profile.</p><details><summary>What’s inside a MeshVault package?</summary><pre id="package-contents">Generate a model to see your package contents.</pre><p class="small">Set packages also keep bed dimensions, part quantities and plate placements.</p></details></div></section>
+          <label>Bed width · mm<input name="bedWidth" type="number" min="50" max="1000" value="220" required></label>
+          <label>Bed depth · mm<input name="bedDepth" type="number" min="50" max="1000" value="220" required></label>
+        </div><details><summary>Spacing &amp; rotation</summary><label>Spacing / edge · mm<input name="spacing" type="number" min="2" max="20" value="5" required></label><label class="check"><input name="rotate" type="checkbox" checked>Allow 90° rotation</label></details></form>
+        <p class="small">Baseplates split to fit this bed. After changing the bed or spacing, regenerate to update their sections.</p>
+        <button type="button" id="retry-layout">Regenerate plates</button>
+        <form id="export-details"><fieldset><legend>Your export</legend>
+          <label>Author · optional<input id="author" name="author" type="text" maxlength="100" placeholder="Your name" autocomplete="name"><small>Credited in MeshVault. Leave blank for Anonymous.</small></label>
+          <label>Generator donation URL · optional<input id="donation" name="donation" type="url" maxlength="2048" placeholder="https://buymeacoffee.com/your-name"><small>HTTPS support link included in the MeshVault project. Leave blank to omit it.</small></label>
+        </fieldset></form>
+        </div><div class="set-export"><p class="step">Download your project</p><label>Export format<select id="set-format"><option value="3mf">3MF</option><option value="stl">STL</option></select></label><div class="export-actions"><button id="export-set" type="button" disabled>MeshVault ↓</button><button id="export-set-zip" class="secondary" type="button" disabled>Plate ZIP ↓</button></div><p class="small">STL and 3MF contain unsliced models. MeshVault keeps all plates together as one project, with your editable drawer layout.</p></div>
+      </aside>
+      <div class="print-stage">
+        <section id="generation-panel" class="generation-panel" data-state="idle" aria-label="Generation progress" aria-busy="false">
+          <div class="generation-icon" aria-hidden="true"><span></span><span></span><span></span></div>
+          <div class="generation-copy"><p class="step">From drawer to printer</p><h2 id="generation-title">Your print plates</h2><p id="build-status" role="status" aria-live="polite">Design your drawer, then choose Generate print plates.</p><progress id="build-progress" max="1" value="0" aria-label="Completed designs" hidden></progress></div>
+          <button type="button" id="cancel-layout" class="secondary" disabled>Cancel generation</button>
+        </section>
+        <div class="plate-heading"><h2>Printer plates</h2><p id="set-status" class="small" role="status">No generated plates yet.</p></div>
+        <div id="plates-empty"><div class="empty-bed" aria-hidden="true"></div><p id="empty-message">Your printer plates will appear here as each design finishes.</p></div>
+        <div id="plate-layouts" aria-label="Planned print plates"></div>
+        <details class="print-inventory"><summary>Parts in this print set</summary><ul id="set-items" class="set-items" aria-label="Parts in your set"></ul></details>
+        <p class="small">Purple: baseplates · Cyan: bins · Numbers match the parts list. Check placement, clearances and the usable bed area in your slicer.</p>
+      </div>
+    </section>
+    <section class="integration" aria-label="Printing and saving your designs"><div><p class="step">From workspace to print bed</p><h2>Build once. Keep the details.</h2><p>Download STL or 3MF for your slicer, or export a MeshVault package to keep the models, previews, print notes and design settings together. Generate your drawer to arrange its bins and baseplate sections across print plates.</p><p class="small">Check fit, orientation and your printer’s usable bed area in the slicer. Generate a small test part before printing a full set. Drawer plans save in this browser and can be downloaded and reopened. Generated meshes and print plates are cleared when you refresh or close the page.</p><a href="../../#downloads">Keep your designs in MeshVault →</a></div><div><p class="step">Your download</p><h2>Ready for your workflow.</h2><p>3MF keeps explicit millimetre units. STL provides the same geometry. Both are unsliced models; choose your own printer and material profile.</p><details><summary>What’s inside a MeshVault package?</summary><p class="small">Numbered print-plate models, 16:9 previews, bed dimensions, part settings and an editable drawer-layout JSON file. Your author and optional support link travel with the project.</p><p class="small">Set packages also keep bed dimensions, part quantities and plate placements.</p></details></div></section>
   </main>
   <footer><div class="footer-brand"><a href="../../">MeshVault</a><span>Gridfinity Generator · by Xalies</span><a href="../../generator/">Developer integration guide</a></div><p>Models by <a href="https://github.com/vector76/gridfinity_openscad">vector76 / MIT</a>, based on Zack Freedman’s Gridfinity. Powered by <a href="https://github.com/vector76/Web_OpenSCAD_Customizer">Web OpenSCAD Customizer / GPL-2.0</a>. <a href="README.md">Credits &amp; licenses</a>.</p></footer>
 </body>

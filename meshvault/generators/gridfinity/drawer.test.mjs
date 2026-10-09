@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { newDrawer, gridSize, validateDrawer, binError, splitBaseplate } from './drawer.js';
+import { newDrawer, gridSize, validateDrawer, binError, splitBaseplate, donationError, mountHeight } from './drawer.js';
 
 const plan=newDrawer();
 assert.deepEqual(gridSize(plan.drawer),{width:8,depth:6});
@@ -28,4 +28,19 @@ assert.equal(sections.reduce((n,s)=>n+s.screw_cells.length,0),2);
 assert(sections.every(s=>s.base_magnets && s.width*42+10<=220 && s.depth*42+10<=220));
 const islands=splitBaseplate({...plan,cells:[[0,0],[2,0]],screws:[]},{width:220,depth:220});
 assert.equal(islands.length,2);
+
+
+const legacy={...plan};delete legacy.magnetDiameter;delete legacy.magnetDepth;delete legacy.donation;
+assert.equal(validateDrawer(legacy).magnetDepth,2.4);
+assert.equal(validateDrawer(legacy).magnetDiameter,6.5);
+assert.equal(validateDrawer(legacy).donation,'');
+assert.equal(donationError('https://example.org/support'),'');
+assert(donationError('http://example.org/support'));
+assert(donationError('https:example.org/support'));
+assert(donationError('https://user:pass@example.org'));
+assert.throws(()=>validateDrawer({...plan,magnetDepth:0}),/Magnet pockets/);
+assert.throws(()=>validateDrawer({...plan,magnetDiameter:11}),/Magnet pockets/);
+assert.equal(mountHeight({...plan,magnetDepth:4}),5.2);
+assert.throws(()=>validateDrawer({...plan,magnetDepth:4,drawer:{...plan.drawer,height:49}}),/too tall/);
+
 console.log('PASS: drawer validation, fit, overlap, height, exact baseplate coverage, bed limits, screw mapping and disconnected sections.');

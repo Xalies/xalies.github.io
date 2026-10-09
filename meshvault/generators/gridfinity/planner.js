@@ -1,12 +1,12 @@
 // SPDX-License-Identifier: GPL-2.0-only
-import { newDrawer, gridSize, binError, validateDrawer, splitBaseplate } from './drawer.js?v=20261009-planner';
-import { buildPart } from './build-part.js?v=20261009-planner';
-import { setDrawerParts, showWorkspace } from './generator.js?v=20261009-planner';
+import { newDrawer, gridSize, binError, validateDrawer, splitBaseplate, mountHeight, donationError } from './drawer.js?v=20261009-plates';
+import { buildPart } from './build-part.js?v=20261009-plates';
+import { setDrawerParts, showWorkspace, bedSettings, beginDrawerBuild, previewDrawerParts, finishDrawerBuild, markDrawerChanged } from './generator.js?v=20261009-plates';
 import { saveFile } from '../shared/mvpack.js';
 const $ = id => document.getElementById(id);
 const drawerForm=$('drawer-settings'), binForm=$('bin-settings'), svg=$('drawer-grid'), status=$('planner-status');
 const storageKey='meshvault-gridfinity-drawer-v1', history=[];
-let plan=newDrawer(), selected=null, tool='select', drag=null, three=null, controller=null;
+let plan=validateDrawer(newDrawer()), selected=null, tool='select', drag=null, three=null, controller=null;
 try {const stored=localStorage.getItem(storageKey);if(stored)plan=validateDrawer(JSON.parse(stored));} catch { $('save-status').textContent='The saved layout could not be loaded. Open a saved file or start a new layout.'; }
 const clone=value=>structuredClone(value);
 function save() {
@@ -14,12 +14,12 @@ function save() {
   catch{$('save-status').textContent='Browser storage is unavailable. Use Save layout to keep your work.';}
 }
 function commit(next, message='Layout updated.') {
-  try{const valid=validateDrawer(next);history.push(clone(plan));if(history.length>50)history.shift();plan=valid;save();status.textContent=message;sync();render();return true;}
+  try{const valid=validateDrawer(next);if(JSON.stringify(valid)===JSON.stringify(plan)){sync();render();return true;}history.push(clone(plan));if(history.length>50)history.shift();plan=valid;markDrawerChanged(plan);save();status.textContent=message;sync();render();return true;}
   catch(error){status.textContent=error.message;sync();render();return false;}
 }
 function sync() {
   for(const key of ['width','depth','height','clearance'])drawerForm.elements[key].value=plan.drawer[key];
-  drawerForm.elements.title.value=plan.title;drawerForm.elements.author.value=plan.author;drawerForm.elements.magnets.checked=plan.magnets;
+  drawerForm.elements.title.value=plan.title;$('author').value=plan.author;$('donation').value=plan.donation;$('donation').setCustomValidity('');drawerForm.elements.magnetDiameter.value=plan.magnetDiameter;drawerForm.elements.magnetDepth.value=plan.magnetDepth;drawerForm.elements.magnetDiameter.disabled=drawerForm.elements.magnetDepth.disabled=!plan.magnets;drawerForm.elements.magnets.checked=plan.magnets;
   const bin=plan.bins.find(b=>b.id===selected);
   if(bin)for(const key of ['name','w','d','h','compartments','colour','scoop','label']){
     const input=binForm.elements[key];if(input.type==='checkbox')input.checked=bin[key];else input.value=bin[key];
@@ -66,7 +66,7 @@ function render() {
   const list=$('layout-bins');list.replaceChildren();
   for(const bin of plan.bins){const li=document.createElement('li'),button=document.createElement('button');button.type='button';button.className='inventory-bin';button.setAttribute('aria-pressed',String(bin.id===selected));button.style.setProperty('--bin-colour',bin.colour);button.textContent=`${bin.name} · ${bin.w} × ${bin.d} × ${bin.h}u`;button.addEventListener('click',()=>select(bin.id));li.append(button);list.append(li);}
   if(!plan.bins.length){const li=document.createElement('li');li.textContent='Your drawer is empty. Add your first bin.';li.className='small';list.append(li);}
-  if(!$('drawer-3d').hidden)render3D();
+  if(!$('drawer-3d').hidden&&!$('drawer-planner').hidden)render3D();
 }
 function select(id){selected=id;tool='select';sync();render();toolButtons();}
 function toolButtons(){document.querySelectorAll('[data-tool]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.tool===tool)));}
@@ -84,7 +84,7 @@ drawerForm.addEventListener('change',()=>{
   if(!drawerForm.reportValidity())return;
   const next=clone(plan),old=gridSize(plan.drawer);
   for(const key of ['width','depth','height','clearance'])next.drawer[key]=Number(drawerForm.elements[key].value);
-  next.title=drawerForm.elements.title.value.trim();next.author=drawerForm.elements.author.value.trim();next.magnets=drawerForm.elements.magnets.checked;
+  next.title=drawerForm.elements.title.value.trim();next.magnetDiameter=Number(drawerForm.elements.magnetDiameter.value);next.magnetDepth=Number(drawerForm.elements.magnetDepth.value);next.magnets=drawerForm.elements.magnets.checked;
   const grid=gridSize(next.drawer);next.cells=next.cells.filter(c=>c[0]<grid.width&&c[1]<grid.depth);next.screws=next.screws.filter(c=>c[0]<grid.width&&c[1]<grid.depth);
   for(let y=0;y<grid.depth;y++)for(let x=0;x<grid.width;x++)if(x>=old.width||y>=old.depth)next.cells.push([x,y]);
   commit(next);
@@ -115,7 +115,7 @@ svg.addEventListener('keydown',event=>{
   if(controller)return;
   if(event.key==='Enter'||event.key===' '){const target=event.target.closest('[data-bin],[data-cell]');if(target){event.preventDefault();if(target.dataset.bin){select(Number(target.dataset.bin));svg.focus();}else{const rect=target.getBoundingClientRect(),key=target.dataset.cell;svg.dispatchEvent(new PointerEvent('pointerdown',{clientX:rect.x+rect.width/2,clientY:rect.y+rect.height/2,button:0}));svg.querySelector(`[data-cell="${key}"]`)?.focus();}return;}}
   if(!selected)return;const delta={ArrowLeft:[-1,0],ArrowRight:[1,0],ArrowUp:[0,-1],ArrowDown:[0,1]}[event.key];if(delta){event.preventDefault();const next=clone(plan),b=next.bins.find(b=>b.id===selected);b.x+=delta[0];b.y+=delta[1];commit(next,'Bin moved.');}else if(event.key==='Delete'){event.preventDefault();$('delete-layout-bin').click();}else if(event.key.toLowerCase()==='r'){event.preventDefault();rotate();}});
-$('undo-layout').addEventListener('click',()=>{if(!history.length)return;plan=history.pop();selected=null;save();sync();render();status.textContent='Undone.';});
+$('undo-layout').addEventListener('click',()=>{if(!history.length)return;plan=history.pop();markDrawerChanged(plan);selected=null;save();sync();render();status.textContent='Undone.';});
 $('save-layout').addEventListener('click',()=>saveFile(new Blob([JSON.stringify(plan,null,2)],{type:'application/json'}),'drawer-layout.gridfinity.json'));
 $('open-layout').addEventListener('click',()=>$('layout-file').click());
 $('layout-file').addEventListener('change',async()=>{const file=$('layout-file').files[0];if(!file)return;try{if(file.size>2*1024*1024)throw new Error('Choose a layout file smaller than 2 MB.');const next=validateDrawer(JSON.parse(await file.text()));selected=null;commit(next,'Layout opened.');}catch(error){status.textContent=`Could not open layout: ${error.message}`;}finally{$('layout-file').value='';}});
@@ -124,7 +124,7 @@ $('toggle-layout-view').addEventListener('click',()=>{const show=$('drawer-3d').
 // shortcut: the assembled preview uses simple walls; use generated meshes if precise fit previews are needed.
 function render3D(){
   const host=$('drawer-3d');
-  if(!three){const renderer=new THREE.WebGLRenderer({antialias:true,preserveDrawingBuffer:true});renderer.setClearColor('#181522');renderer.setPixelRatio(Math.min(devicePixelRatio,2));host.append(renderer.domElement);const scene=new THREE.Scene(),camera=new THREE.PerspectiveCamera(35,1,1,5000),controls=new THREE.OrbitControls(camera,renderer.domElement);scene.add(new THREE.HemisphereLight(0xffffff,0x48405a,1));const light=new THREE.DirectionalLight(0xffffff,.8);light.position.set(100,500,200);scene.add(light);three={renderer,scene,camera,controls,group:null};controls.addEventListener('change',()=>renderer.render(scene,camera));new ResizeObserver(()=>{if(host.hidden)return;renderer.setSize(host.clientWidth,host.clientHeight);camera.aspect=host.clientWidth/host.clientHeight;camera.updateProjectionMatrix();renderer.render(scene,camera);}).observe(host);}
+  if(!three){const renderer=new THREE.WebGLRenderer({antialias:true,preserveDrawingBuffer:true});renderer.setClearColor('#181522');renderer.setPixelRatio(Math.min(devicePixelRatio,2));host.append(renderer.domElement);const scene=new THREE.Scene(),camera=new THREE.PerspectiveCamera(35,1,1,5000),controls=new THREE.OrbitControls(camera,renderer.domElement);scene.add(new THREE.HemisphereLight(0xffffff,0x48405a,1));const light=new THREE.DirectionalLight(0xffffff,.8);light.position.set(100,500,200);scene.add(light);three={renderer,scene,camera,controls,group:null};controls.addEventListener('change',()=>renderer.render(scene,camera));new ResizeObserver(()=>{if(host.hidden||$('drawer-planner').hidden)return;renderer.setSize(host.clientWidth,host.clientHeight);camera.aspect=host.clientWidth/host.clientHeight;camera.updateProjectionMatrix();renderer.render(scene,camera);}).observe(host);}
   const {scene,camera,controls,renderer}=three;
   if(three.group){scene.remove(three.group);three.group.traverse(o=>{o.geometry?.dispose();o.material?.dispose();});}
   const group=new THREE.Object3D();three.group=group;scene.add(group);
@@ -133,39 +133,49 @@ function render3D(){
   box(plan.drawer.width,2,plan.drawer.depth,0,-2,0,'#30283c');
   for(const [x,y] of plan.cells)box(41,2,41,ox+grid.x-20+x*42+21,0,oz+grid.y-20+y*42+21,'#65517f');
   box(plan.drawer.width,plan.drawer.height,2,0,plan.drawer.height/2,oz,'#77678d',.22);box(2,plan.drawer.height,plan.drawer.depth,ox,plan.drawer.height/2,0,'#77678d',.22);
-  for(const b of plan.bins){const w=b.w*42-1,d=b.d*42-1,h=b.h*7+3.75,x=ox+grid.x-20+(b.x+b.w/2)*42,z=oz+grid.y-20+(b.y+b.d/2)*42,base=plan.magnets||plan.screws.length?3.6:0;
+  for(const b of plan.bins){const w=b.w*42-1,d=b.d*42-1,h=b.h*7+3.75,x=ox+grid.x-20+(b.x+b.w/2)*42,z=oz+grid.y-20+(b.y+b.d/2)*42,base=mountHeight(plan);
     box(w,2,d,x,base+1,z,b.colour);box(w,h,1.5,x,base+h/2,z-d/2,b.colour);box(w,h,1.5,x,base+h/2,z+d/2,b.colour);box(1.5,h,d,x-w/2,base+h/2,z,b.colour);box(1.5,h,d,x+w/2,base+h/2,z,b.colour);for(let i=1;i<b.compartments;i++)box(1.5,h,d,x-w/2+w*i/b.compartments,base+h/2,z,b.colour);
   }
   renderer.setSize(host.clientWidth,host.clientHeight);camera.aspect=host.clientWidth/host.clientHeight;camera.updateProjectionMatrix();const distance=Math.max(plan.drawer.width,plan.drawer.depth)*1.6;camera.position.set(distance,distance*.9,distance);controls.target.set(0,0,0);controls.update();renderer.render(scene,camera);
 }
-$('planner-bed').addEventListener('submit',e=>e.preventDefault());
+$('export-details').addEventListener('submit',e=>e.preventDefault());
+$('donation').addEventListener('input',()=>{$('donation').setCustomValidity(donationError($('donation').value.trim()));});
+$('export-details').addEventListener('change',()=>{
+  if(!$('export-details').reportValidity())return;
+  const next=clone(plan);next.author=$('author').value.trim();next.donation=$('donation').value.trim();commit(next,'Export details saved.');
+});
+$('retry-layout').addEventListener('click',()=>$('build-layout').click());
 $('cancel-layout').addEventListener('click',()=>controller?.abort());
 $('build-layout').addEventListener('click',async()=>{
-  if(controller||!$('planner-bed').reportValidity())return;
-  const snapshot=clone(plan),bed={width:Number($('planner-bed').elements.width.value),depth:Number($('planner-bed').elements.depth.value)};
+  if(controller)return;
+  showWorkspace('parts');
+  if(!$('bed-settings').reportValidity())return;
+  const snapshot=clone(plan),bed=bedSettings();
   let sections;
   try{
     validateDrawer(snapshot);
     for(const bin of snapshot.bins){
       const w=bin.w*42-0.5,d=bin.d*42-0.5;
-      if(!((w+10<=bed.width&&d+10<=bed.depth)||(d+10<=bed.width&&w+10<=bed.depth)))throw new Error(`${bin.name} does not fit this bed with 5 mm edge clearance. Reduce its size or use a larger bed.`);
+      if(!((w+bed.gap*2<=bed.width&&d+bed.gap*2<=bed.depth)||(bed.rotate&&d+bed.gap*2<=bed.width&&w+bed.gap*2<=bed.depth)))throw new Error(`${bin.name} does not fit this bed with ${bed.gap} mm edge clearance. Reduce its size or use a larger bed.`);
     }
-    sections=splitBaseplate(snapshot,bed);
+    sections=splitBaseplate(snapshot,bed,bed.gap);
   }catch(error){$('build-status').textContent=error.message;return;}
   const jobs=sections.map((settings,i)=>({settings,title:`${snapshot.title} · Baseplate ${i+1}`,quantity:1})),groups=new Map();
-  for(const bin of snapshot.bins){const settings={part:'bin',width:bin.w,depth:bin.d,height:bin.h,chambers:bin.compartments,withLabel:bin.label?'center':'disabled',lip_style:'normal',fingerslide:bin.scoop,wall_thickness:.95,floor_thickness:.7,magnet_diameter:snapshot.magnets?6.5:0,screw_depth:0},key=JSON.stringify(settings);
+  for(const bin of snapshot.bins){const settings={part:'bin',width:bin.w,depth:bin.d,height:bin.h,chambers:bin.compartments,withLabel:bin.label?'center':'disabled',lip_style:'normal',fingerslide:bin.scoop,wall_thickness:.95,floor_thickness:.7,magnet_diameter:snapshot.magnets?snapshot.magnetDiameter:0,magnet_thickness:snapshot.magnetDepth,screw_depth:0},key=JSON.stringify(settings);
     if(!groups.has(key))groups.set(key,{settings,title:bin.name,quantity:0});const item=groups.get(key);item.quantity++;if(item.title!==bin.name&&!item.title.includes(' / '))item.title+=' / '+bin.name;
   }
   for(const item of groups.values()){for(let n=item.quantity;n>0;n-=20)jobs.push({...item,quantity:Math.min(n,20)});}
+  // Small designs reach the plate preview sooner.
+  jobs.sort((a,b)=>a.settings.width*a.settings.depth-b.settings.width*b.settings.depth);
   if(!jobs.length)return;
-  controller=new AbortController();$('cancel-layout').disabled=false;
+  controller=new AbortController();$('cancel-layout').disabled=false;beginDrawerBuild(jobs.length);
   const controls=[...$('drawer-planner').querySelectorAll('input,select,button')].filter(n=>n.id!=='cancel-layout'),disabled=controls.map(n=>n.disabled);controls.forEach(n=>n.disabled=true);
   const results=[],cache=new Map(),started=performance.now();let index=0;
-  const tick=()=>{$('build-status').textContent=`Generating ${index+1} / ${jobs.length} · ${Math.floor((performance.now()-started)/1000)} seconds · stays on your device`;};
+  const tick=()=>{$('build-status').textContent=`Design ${index+1} / ${jobs.length} · ${jobs[index]?.title || 'Arranging plates'} · ${Math.floor((performance.now()-started)/1000)} seconds · stays on your device`;};
   const timer=setInterval(tick,1000);
-  try{for(index=0;index<jobs.length;index++){tick();const job=jobs[index],key=JSON.stringify({...job.settings,layoutOrigin:undefined});if(!cache.has(key))cache.set(key,await buildPart(job.settings,controller.signal));if(controller.signal.aborted)throw new Error('Layout generation cancelled.');results.push({...cache.get(key),settings:job.settings,title:job.title,quantity:job.quantity});}
-    await setDrawerParts(results,snapshot,bed);showWorkspace('parts');$('build-status').textContent=`Ready: ${jobs.length} designs. Choose STL or 3MF and export the print plates.`;
-  }catch(error){$('build-status').textContent=error.message;}
+  try{for(index=0;index<jobs.length;index++){tick();const job=jobs[index],key=JSON.stringify({...job.settings,layoutOrigin:undefined});if(!cache.has(key))cache.set(key,await buildPart(job.settings,controller.signal));if(controller.signal.aborted)throw new Error('Layout generation cancelled.');results.push({...cache.get(key),settings:job.settings,title:job.title,quantity:job.quantity});await previewDrawerParts(results,bed);}
+    await setDrawerParts(results,snapshot,bed);finishDrawerBuild(`Ready: ${jobs.length} designs. Choose STL or 3MF and download your print plates.`,true);
+  }catch(error){finishDrawerBuild(error.message);}
   finally{clearInterval(timer);controls.forEach((n,i)=>n.disabled=disabled[i]);$('cancel-layout').disabled=true;controller=null;}
 });
 sync();render();

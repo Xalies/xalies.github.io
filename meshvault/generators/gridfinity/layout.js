@@ -25,12 +25,15 @@ export function connectedCells(cells) {
 }
 
 // Preserve the standard socket; mounting features sit below its seating plane.
-export function baseplateSource(cells, { magnets = false, screwCells = [] } = {}) {
+export function baseplateSource(cells, { magnets = false, screwCells = [], magnetDiameter = 6.5, magnetDepth = 2.4 } = {}) {
   return `include <gridfinity_bins/gridfinity_modules.scad>
 cells = ${JSON.stringify(cells)};
 screw_cells = ${JSON.stringify(screwCells)};
 base_magnets = ${magnets};
-extra = (base_magnets || len(screw_cells)>0) ? 3.6 : 0;
+magnet_diameter = ${magnetDiameter};
+magnet_depth = ${magnetDepth};
+magnet_position = min(13,17-magnet_diameter/2);
+extra = max(base_magnets ? magnet_depth+1.2 : 0,len(screw_cells)>0 ? 3.6 : 0);
 translate([0,0,extra]) difference() {
   union() {
     difference() {
@@ -43,7 +46,7 @@ translate([0,0,extra]) difference() {
     }
     if (base_magnets) for (cell=cells) translate([cell[0]*42,cell[1]*42,0])
       for (x=[-1,1], y=[-1,1]) hull() {
-        translate([x*13,y*13,-extra]) cylinder(d=10,h=extra,$fn=48);
+        translate([x*magnet_position,y*magnet_position,-extra]) cylinder(d=magnet_diameter+3.5,h=extra,$fn=48);
         translate([x*18,y*18,-extra]) cylinder(d=4,h=extra,$fn=32);
       }
     for (cell=screw_cells) translate([cell[0]*42,cell[1]*42,-extra]) {
@@ -55,7 +58,7 @@ translate([0,0,extra]) difference() {
   translate([0,0,-0.01]) render() union() for (cell=cells)
     translate([cell[0]*42,cell[1]*42,0]) pad_oversize(margins=1);
   if (base_magnets) for (cell=cells) translate([cell[0]*42,cell[1]*42,0])
-    cornercopy(13) translate([0,0,-2.4]) cylinder(d=6.5,h=2.5,$fn=48);
+    cornercopy(magnet_position) translate([0,0,-magnet_depth]) cylinder(d=magnet_diameter,h=magnet_depth+0.1,$fn=48);
   for (cell=screw_cells) translate([cell[0]*42,cell[1]*42,0]) {
     translate([0,0,-extra-0.01]) cylinder(d=3.5,h=extra+0.02,$fn=32);
     translate([0,0,-1.75]) cylinder(d1=3.5,d2=7,h=1.75,$fn=48);

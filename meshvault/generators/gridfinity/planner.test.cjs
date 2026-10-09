@@ -19,7 +19,10 @@ const server=http.createServer((req,res)=>{
     const change=async(selector,value)=>{await page.locator(selector).fill(String(value));await page.locator(selector).dispatchEvent('change');};
     async function cell(x,y){const point=await page.locator(`#drawer-grid [data-cell="${x},${y}"] rect`).boundingBox();return {x:point.x+point.width/2,y:point.y+point.height/2};}
     async function open(plan){await page.locator('#layout-file').setInputFiles({name:'layout.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify(plan))});}
+    async function generate(){await page.locator(await page.locator('#drawer-planner').isVisible()?'#build-layout':'#retry-layout').click();}
     async function download(selector){const pending=page.waitForEvent('download');await page.locator(selector).click();return [...fs.readFileSync(await(await pending).path())];}
+    assert.equal(await page.locator('#settings').count(),0,'The old part editor has been removed');
+    assert(await page.locator('#drawer-settings [name=magnetDiameter]').isDisabled());
     assert(await page.locator('#drawer-planner').isVisible());assert(await page.locator('#workspace').isHidden());
     await change('#bin-settings [name=name]','Bolts');await page.locator('#add-layout-bin').click();
     assert.equal((await state()).bins[0].name,'Bolts');
@@ -35,7 +38,7 @@ const server=http.createServer((req,res)=>{
     assert.deepEqual(await state(),saved,'A rejected import must preserve the layout');
     await change('#drawer-settings [name=height]',30);
     assert.match(await page.locator('#planner-status').textContent(),/too tall/);assert.equal((await state()).drawer.height,70);
-    const plan={...saved,title:'Fastener drawer',author:'Workshop Maker',drawer:{width:126,depth:84,height:60,clearance:0},magnets:true,cells:[[0,0],[1,0],[2,0],[0,1],[1,1],[2,1]],screws:[],bins:[{...saved.bins[0],x:0,y:0,h:3},{...saved.bins[0],id:2,name:'Washers',x:2,y:1,h:3}]};
+    const plan={...saved,title:'Fastener drawer',author:'Workshop Maker',drawer:{width:126,depth:84,height:60,clearance:0},magnets:true,magnetDiameter:8,magnetDepth:3.2,cells:[[0,0],[1,0],[2,0],[0,1],[1,1],[2,1]],screws:[],bins:[{...saved.bins[0],x:0,y:0,h:3},{...saved.bins[0],id:2,name:'Washers',x:2,y:1,h:3}]};
     await open(plan);await page.waitForFunction(()=>document.querySelector('#drawer-settings [name=title]').value==='Fastener drawer');
     await page.locator('[data-tool=footprint]').click();let p=await cell(0,0);await page.mouse.click(p.x,p.y);
     assert.match(await page.locator('#planner-status').textContent(),/underneath/);assert.equal((await state()).cells.length,6);
@@ -44,20 +47,35 @@ const server=http.createServer((req,res)=>{
     await page.locator('#toggle-layout-view').click();assert(await page.locator('#drawer-grid').isHidden());assert(await page.locator('#drawer-3d canvas').isVisible());
     assert(await page.locator('#drawer-3d canvas').evaluate(canvas=>{const copy=document.createElement('canvas');copy.width=copy.height=64;const ctx=copy.getContext('2d');ctx.drawImage(canvas,0,0,64,64);const data=ctx.getImageData(0,0,64,64).data,colours=new Set();for(let i=0;i<data.length;i+=4)colours.add(`${data[i]},${data[i+1]},${data[i+2]}`);return colours.size>20;}));
     await page.locator('#toggle-layout-view').click();
-    await page.locator('#build-layout').click();await page.locator('#cancel-layout').click();
+    await generate();await page.locator('#cancel-layout').click();
     await page.waitForFunction(()=>document.querySelector('#build-status').textContent.includes('cancelled'));
     assert.equal(await page.locator('#set-items li').count(),0);
-    await change('#planner-bed [name=width]',50);await page.locator('#build-layout').click();assert.match(await page.locator('#build-status').textContent(),/does not fit/);
-    await change('#planner-bed [name=width]',100);await change('#planner-bed [name=depth]',100);
+    await change('#bed-settings [name=bedWidth]',50);await generate();assert.match(await page.locator('#build-status').textContent(),/does not fit/);
+    await change('#bed-settings [name=bedWidth]',100);await change('#bed-settings [name=bedDepth]',100);
     const validPlan=await state();
     await open({...validPlan,bins:[{...validPlan.bins[0],w:3}]});
-    await page.locator('#build-layout').click();assert.match(await page.locator('#build-status').textContent(),/does not fit/);
+    await generate();assert.match(await page.locator('#build-status').textContent(),/does not fit/);
     await open(validPlan);
-    await page.locator('[data-tool=screws]').click();await page.locator('#drawer-grid [data-cell=\"0,1\"]').press('Enter');assert.equal((await state()).screws.length,0);
+    await page.locator('#mode-planner').click();await page.locator('[data-tool=screws]').click();await page.locator('#drawer-grid [data-cell=\"0,1\"]').press('Enter');assert.equal((await state()).screws.length,0);
     await page.locator('#drawer-grid [data-cell=\"0,1\"]').press('Enter');assert.equal((await state()).screws.length,1);
     console.log('PASS: drag, keyboard move, undo, reload, portable JSON, invalid import, height/footprint checks, screws, visible 3D and cancellation. Generating real models…');
-    await page.locator('#build-layout').click();
-    await page.waitForFunction(()=>!document.querySelector('#workspace').hidden,{},{timeout:240000});
+    await generate();
+    assert(await page.locator('#workspace').isVisible());assert(await page.locator('#drawer-planner').isHidden());assert(await page.locator('#export-set').isDisabled());
+    assert.equal(await page.locator('#generation-panel').getAttribute('aria-busy'),'true');
+    if(process.env.PLANNER_PROOF_DIR)await page.screenshot({path:path.join(process.env.PLANNER_PROOF_DIR,'plates-generating.png')});
+    await page.waitForFunction(()=>document.querySelector('#build-progress').value>0,{},{timeout:180000});
+    assert(await page.locator('#plate-layouts canvas').count()>0,'Completed designs appear on plates while later designs generate');
+    if(await page.locator('#generation-panel').getAttribute('data-state')==='building')assert(await page.locator('#export-set').isDisabled());
+    await page.waitForFunction(()=>document.querySelector('#generation-panel').dataset.state==='ready',{},{timeout:240000});
+    await change('#author','Bolt Maker');
+    await page.locator('#donation').fill('http://example.org/support');assert.equal(await page.locator('#donation').evaluate(n=>n.checkValidity()),false);
+    await change('#donation','https://example.org/support');
+    if(process.env.PLANNER_PROOF_DIR){
+      await page.screenshot({path:path.join(process.env.PLANNER_PROOF_DIR,'plates-ready.png')});
+      await page.setViewportSize({width:1440,height:900});await page.screenshot({path:path.join(process.env.PLANNER_PROOF_DIR,'plates-1440.png')});
+      assert((await page.locator('#export-set').boundingBox()).y+(await page.locator('#export-set').boundingBox()).height<900,'Export controls stay within the desktop viewport');
+      await page.setViewportSize({width:1920,height:1080});
+    }
     assert.equal(await page.locator('#set-items li').count(),3,'Two baseplate sections and one shared bin design');
     assert.equal(await page.locator('[name=bedWidth]').inputValue(),'100');
     const pack=await download('#export-set');
@@ -67,17 +85,28 @@ const server=http.createServer((req,res)=>{
       const settings=manifest.models.map(m=>JSON.parse(strFromU8(files[m.documentFiles[0]])));
       const parts=settings.flatMap(s=>s.parts);
       const models=manifest.models.map(m=>{const xml=new DOMParser().parseFromString(strFromU8(unzipSync(files[m.relativePath])['3D/3dmodel.model']),'application/xml');return {valid:!xml.querySelector('parsererror')&&xml.documentElement.getAttribute('unit')==='millimeter',triangles:xml.getElementsByTagName('triangle').length};});
-      return {packType:manifest.packType,author:manifest.project.author,layout,parts,models,thumbnail:[...files[manifest.project.thumbnailFile].slice(0,8)]};
+      return {packType:manifest.packType,author:manifest.project.author,donation:manifest.project.exportDonationUrl,modelDonations:manifest.models.map(m=>m.exportDonationUrl),layout,parts,models,thumbnail:[...files[manifest.project.thumbnailFile].slice(0,8)]};
     },pack);
-    assert.equal(result.packType,'project');assert.equal(result.author,'Workshop Maker');assert.deepEqual(result.layout,await state());
+    assert.equal(result.packType,'project');assert.equal(result.author,'Bolt Maker');assert.equal(result.donation,'https://example.org/support');assert(result.modelDonations.every(url=>url===result.donation));assert.deepEqual(result.layout,await state());
     assert(result.models.length>=2&&result.models.every(m=>m.valid&&m.triangles>100));
     assert.deepEqual(result.thumbnail,[137,80,78,71,13,10,26,10]);
     const base=result.parts.filter(p=>p.settings.part==='baseplate'),bins=result.parts.filter(p=>p.settings.part==='bin');
-    assert.equal(base.reduce((n,p)=>n+p.settings.cells.length,0),5);assert.equal(base.reduce((n,p)=>n+p.settings.screw_cells.length,0),1);assert(base.every(p=>p.settings.base_magnets));
-    assert.equal(bins.length,2);assert(bins.every(p=>p.settings.screw_depth===0&&p.settings.magnet_diameter===6.5));
+    assert.equal(base.reduce((n,p)=>n+p.settings.cells.length,0),5);assert.equal(base.reduce((n,p)=>n+p.settings.screw_cells.length,0),1);assert(base.every(p=>p.settings.base_magnets&&p.settings.magnet_diameter===8&&p.settings.magnet_thickness===3.2));
+    assert.equal(bins.length,2);assert(bins.every(p=>p.settings.screw_depth===0&&p.settings.magnet_diameter===8&&p.settings.magnet_thickness===3.2));
     await page.locator('#set-format').selectOption('stl');const zip=await download('#export-set-zip');
     const stls=await page.evaluate(async bytes=>{const {unzipSync,strFromU8}=await import('/generators/shared/vendor/fflate.js');return Object.entries(unzipSync(new Uint8Array(bytes))).map(([name,bytes])=>({name,triangles:new DataView(bytes.buffer,bytes.byteOffset,bytes.byteLength).getUint32(80,true),valid:bytes.length===84+new DataView(bytes.buffer,bytes.byteOffset,bytes.byteLength).getUint32(80,true)*50}));},zip);
     assert.equal(stls.length,result.models.length);assert(stls.every(s=>s.name.endsWith('.stl')&&s.valid&&s.triangles>100));
+    await page.locator('#mode-planner').click();await change('#drawer-settings [name=title]','Revised drawer');
+    await page.locator('#mode-parts').click();assert(await page.locator('#export-set').isDisabled(),'Changed designs cannot export a stale build');
+    await page.locator('#mode-planner').click();await page.locator('#undo-layout').click();await page.locator('#mode-parts').click();assert(await page.locator('#export-set').isEnabled(),'Undo back to the generated design restores exports');
+    await page.route('**/vendor/openscad-worker-inlined.js*',route=>route.abort());await generate();
+    await page.waitForFunction(()=>document.querySelector('#generation-panel').dataset.state==='stopped');
+    assert.equal(await page.locator('#set-items li').count(),3,'A worker failure preserves the previous set');
+    await page.unroute('**/vendor/openscad-worker-inlined.js*');
+    await generate();await page.locator('#cancel-layout').click();
+    await page.waitForFunction(()=>document.querySelector('#build-status').textContent.includes('cancelled'));
+    assert.equal(await page.locator('#set-items li').count(),3,'Cancelled regeneration preserves the previous complete print set');
+    await page.setViewportSize({width:390,height:844});assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
     await page.locator('#mode-planner').click();await page.setViewportSize({width:390,height:844});assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
     assert.deepEqual(errors,[]);assert(requests.every(url=>/^(http:\/\/127\.0\.0\.1:|blob:|data:)/.test(url)),requests.filter(url=>!url.startsWith('http://127.0.0.1:')).join('\n'));
     console.log(`PASS: real local WASM generation, shaped baseplate splitting, magnet/screw settings, quantities, ${result.models.length} bed-sized plates, project/layout/author/thumbnail, valid 3MF, STL ZIP, no remote requests and mobile.`);

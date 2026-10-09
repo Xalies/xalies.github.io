@@ -6,7 +6,7 @@ async function getBrowserFSLibrariesMounts(archiveNames) {
     if (!response.ok) throw new Error(`Could not load ${url}: ${response.status}`);
     return response.arrayBuffer();
   };
-  const results = await Promise.all(archiveNames.map(async n => [n, await fetchData(`./${n}.zip`)]));
+  const results = await Promise.all(archiveNames.map(async n => [n, await fetchData(`./${n}.zip?v=20261009-magnets`)]));
   
   const zipMounts = {};
   for (const [n, zipData] of results) {
