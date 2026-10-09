@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-2.0-only
-import { demoAccount, createPackage, createSetPackage, create3MF, asciiSTLMesh, saveFile, canvasThumbnail } from '../shared/mvpack.js';
+import { createPackage, createSetPackage, create3MF, asciiSTLMesh, saveFile, canvasThumbnail } from '../shared/mvpack.js';
 import { layoutCells, connectedCells, baseplateSource } from './layout.js';
 import { arrangePlates, meshBounds, plateMesh, plateSTL } from './plates.js';
 const form = document.querySelector('#settings');
@@ -46,7 +46,7 @@ layout.addEventListener('click', event => {
 });
 let worker, url, viewer, current, generationTimer;
 const pack = document.querySelector('#mvpack'), download3mf = document.querySelector('#download-3mf');
-const addToSet = document.querySelector('#add-to-set');
+const addToSet = document.querySelector('#add-to-set'), author = document.querySelector('#author');
 function packageContents() {
   const format = document.querySelector('#format').value;
   const name = current?.stl.name.replace(/\.stl$/, `.${format}`);
@@ -78,9 +78,9 @@ part.addEventListener('change', () => {
 
 try {
   viewer = new StlViewer(document.querySelector('#viewer'), {
-    auto_rotate: false, auto_resize: true, bg_color: '#111e2c',
+    auto_rotate: false, auto_resize: true, bg_color: '#181522',
     model_loaded_callback: id => {
-      viewer.set_color(id, '#639783');
+      viewer.set_color(id, '#72cbd2');
       const { dims } = viewer.get_model_info(id);
       const distance = Math.max(dims.x, dims.y, dims.z) * 1.8 / Math.min(1, viewer.camera.aspect);
       viewer.set_camera_state({ position: { x: distance, y: distance * .8, z: distance }, target: { x: 0, y: 0, z: 0 } });
@@ -224,7 +224,7 @@ pack.addEventListener('click', async () => {
       thumbnail = await canvasThumbnail(viewer.renderer.domElement);
     }
     const file = await modelFile(snapshot, format);
-    const blob = await createPackage({ file, title: snapshot.title, author: demoAccount.name, settings: snapshot.settings, generatorName: 'Xalies Gridfinity Studio', sourceUrl: 'https://www.meshvault.app/generators/gridfinity/', summary: 'Custom Gridfinity storage on a 42 mm grid.', tags: ['gridfinity', snapshot.settings.part, 'generated'], printNotes: 'Print flat on the base. Check clearances and your material profile in the slicer; no printer-specific settings are supplied.', thumbnail });
+    const blob = await createPackage({ file, title: snapshot.title, author: author.value.trim() || 'Anonymous', settings: snapshot.settings, generatorName: 'MeshVault Gridfinity Generator', sourceUrl: 'https://www.meshvault.app/generators/gridfinity/', summary: 'Custom Gridfinity storage on a 42 mm grid.', tags: ['gridfinity', snapshot.settings.part, 'generated'], printNotes: 'Print flat on the base. Check clearances and your material profile in the slicer; no printer-specific settings are supplied.', thumbnail });
     saveFile(blob, file.name.replace(/\.(stl|3mf)$/, '.mvpack'));
     status.textContent = 'MeshVault package exported.';
     if (current === snapshot) packageContents();
@@ -258,9 +258,9 @@ function updatePlates() {
       canvas.width = Math.round(bed.width * scale); canvas.height = Math.round(bed.depth * scale);
       canvas.setAttribute('role', 'img'); canvas.setAttribute('aria-label', `Plate ${i+1}: ${plate.placements.length} parts on a ${bed.width} by ${bed.depth} mm bed`);
       const context = canvas.getContext('2d');
-      context.fillStyle = '#111e2c'; context.fillRect(0,0,canvas.width,canvas.height);
+      context.fillStyle = '#181522'; context.fillRect(0,0,canvas.width,canvas.height);
       for (const item of plate.placements) {
-        context.fillStyle = item.part.settings.part === 'baseplate' ? '#285e4b' : '#bf785b';
+        context.fillStyle = item.part.settings.part === 'baseplate' ? '#6d54ae' : '#267b86';
         for (const rect of item.footprint) context.fillRect((item.x+rect.x)*scale, canvas.height-(item.y+rect.y+rect.depth)*scale, rect.width*scale, rect.depth*scale);
         context.fillStyle = '#fff'; context.font = '32px system-ui'; context.textAlign = 'center';
         const label = item.footprint[0];
@@ -312,7 +312,7 @@ async function exportSet(meshvault) {
     for (let i = 0; i < plan.length; i++) {
       const mesh = plateMesh(plan[i].placements), content = format === '3mf' ? create3MF(mesh) : new Blob([plateSTL(mesh)], { type: 'model/stl' });
       const file = new File([content], `gridfinity-plate-${String(i+1).padStart(2,'0')}.${format}`, { type: content.type });
-      models.push({ file, title: `Gridfinity set · Plate ${i+1}`, generatorName: 'Xalies Gridfinity Studio', author: demoAccount.name, sourceUrl: 'https://www.meshvault.app/generators/gridfinity/', summary: `${plan[i].placements.length} arranged parts for a ${bed.width} × ${bed.depth} mm bed.`, tags: ['gridfinity', 'print-plate', 'generated'], printNotes: 'Print all parts flat on their bases. Verify bed size, clearances and supports in your slicer. This is an arranged model, not a printer-specific sliced project.', settings: { bed, plate: i+1, parts: plan[i].placements.map(item => ({ design: item.part.id, title: item.part.title, copy: item.copy, xMm: item.x, yMm: item.y, rotationDegrees: item.rotated ? 90 : 0, settings: item.part.settings })) }, thumbnail: meshvault ? await canvasThumbnail(canvases[i]) : undefined });
+      models.push({ file, title: `Gridfinity set · Plate ${i+1}`, generatorName: 'MeshVault Gridfinity Generator', author: author.value.trim() || 'Anonymous', sourceUrl: 'https://www.meshvault.app/generators/gridfinity/', summary: `${plan[i].placements.length} arranged parts for a ${bed.width} × ${bed.depth} mm bed.`, tags: ['gridfinity', 'print-plate', 'generated'], printNotes: 'Print all parts flat on their bases. Verify bed size, clearances and supports in your slicer. This is an arranged model, not a printer-specific sliced project.', settings: { bed, plate: i+1, parts: plan[i].placements.map(item => ({ design: item.part.id, title: item.part.title, copy: item.copy, xMm: item.x, yMm: item.y, rotationDegrees: item.rotated ? 90 : 0, settings: item.part.settings })) }, thumbnail: meshvault ? await canvasThumbnail(canvases[i]) : undefined });
     }
     const blob = await createSetPackage(models, meshvault);
     saveFile(blob, `gridfinity-set.${meshvault ? 'mvpack' : 'zip'}`);

@@ -1,8 +1,9 @@
-# Gridfinity Generator
+# MeshVault Gridfinity Generator
 
 Static, browser-only Gridfinity bin and baseplate generator at `/generators/gridfinity/`.
 Switch Part to Baseplate to generate an open-frame base using the same width
 and depth as the bin. Both models use the original 42 mm grid and pad profile.
+The interface uses the MeshVault logo, plum palette and IBM Plex typography, with cyan workshop accents. It is a creator tool without an account requirement; an optional author field credits your name in single-part and set packages, or Anonymous when blank.
 Serve the repository over HTTP; no build or backend is required. Open the page,
 choose settings, generate, and download an STL.
 The studio also downloads 3MF and packages either format as `.mvpack`, with model

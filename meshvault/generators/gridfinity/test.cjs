@@ -40,13 +40,14 @@ const server = http.createServer((req, res) => {
       }), 'Preview must render visible geometry, including after resizing');
     }
     async function inspectPackage(bytes, modelBytes, extension) {
-      const result = await page.evaluate(async ({ bytes, modelBytes, extension }) => {
+      const expectedAuthor = await page.evaluate(() => document.querySelector('#author') ? document.querySelector('#author').value.trim() || 'Anonymous' : 'Xalies');
+      const result = await page.evaluate(async ({ bytes, modelBytes, extension, expectedAuthor }) => {
         const { unzipSync, strFromU8 } = await import('/generators/shared/vendor/fflate.js');
         const entries = unzipSync(new Uint8Array(bytes));
         const meta = JSON.parse(strFromU8(entries['meshvault.model.json']));
         const model = entries[meta.relativePath];
         const png = entries[meta.thumbnailFile];
-        if (meta.author !== 'Xalies') throw new Error('Demo account author missing');
+        if (meta.author !== expectedAuthor) throw new Error('Export author does not match');
         if (png) { const size = new DataView(png.buffer, png.byteOffset, png.byteLength); if (size.getUint32(16) !== 1280 || size.getUint32(20) !== 720) throw new Error('Thumbnail must be 1280 × 720'); }
         const settings = JSON.parse(strFromU8(entries[meta.documentFiles[0]]));
         let valid3mf = true;
@@ -64,7 +65,7 @@ const server = http.createServer((req, res) => {
           safePaths: Object.keys(entries).every(name => !name.startsWith('/') && !name.split('/').some(p => p === '.' || p === '..')),
           format: meta.fileType, printNotes: meta.printSettingsJson, supportUrl: meta.exportDonationUrl
         };
-      }, { bytes, modelBytes, extension });
+      }, { bytes, modelBytes, extension, expectedAuthor });
       assert.equal(result.schema, 'meshvault.model'); assert.equal(result.version, 1);
       assert(result.title && result.sameBytes && result.thumbnail && result.settings && result.valid3mf && result.safePaths);
       assert.equal(result.printedStatus, false); assert.equal(result.count, 1); assert.equal(result.format, extension.toUpperCase());
@@ -77,6 +78,11 @@ const server = http.createServer((req, res) => {
       await page.waitForFunction(() => document.querySelector('#viewer').dataset.loaded === 'true');
       const bin = await page.locator('#download').evaluate(async link => (await fetch(link.href)).text());
       const binTriangles = [...bin.matchAll(/facet normal/g)].length;
+      await page.locator('#format').selectOption('stl');
+      await inspectPackage((await downloaded('#mvpack')).bytes, [...Buffer.from(bin)], 'stl');
+      await page.locator('#author').fill('  Workshop Maker  ');
+      assert(await page.locator('#mvpack').isEnabled(), 'Author changes do not invalidate generated geometry');
+      await inspectPackage((await downloaded('#mvpack')).bytes, [...Buffer.from(bin)], 'stl');
       await page.locator('#add-to-set').click();
       await page.locator('#set-items li').waitFor();
       await page.locator('[aria-label="Quantity of design 1"]').fill('6');
@@ -101,8 +107,10 @@ const server = http.createServer((req, res) => {
       await page.locator('[name=bedWidth]').fill('100'); await page.locator('[name=bedDepth]').fill('100');
       for (const format of ['3mf', 'stl']) {
         await page.locator('#set-format').selectOption(format);
+        await page.locator('#author').fill(format === '3mf' ? '  Workshop Maker  ' : '   ');
+        const expectedAuthor = format === '3mf' ? 'Workshop Maker' : 'Anonymous';
         const result = await downloaded('#export-set'); assert.equal(result.name, 'gridfinity-set.mvpack');
-        const check = await page.evaluate(async ({bytes, format}) => {
+        const check = await page.evaluate(async ({bytes, format, expectedAuthor}) => {
           const {unzipSync, strFromU8} = await import('/generators/shared/vendor/fflate.js');
           const entries = unzipSync(new Uint8Array(bytes)), manifest = JSON.parse(strFromU8(entries['meshvault.models.json']));
           let triangles = 0, copies = 0, valid = !entries['meshvault.model.json'];
@@ -110,7 +118,7 @@ const server = http.createServer((req, res) => {
             valid &&= model.schema === 'meshvault.model' && model.version === 1 && model.fileType === format.toUpperCase() && !('printedStatus' in model) && !!entries[model.relativePath] && !!entries[model.thumbnailFile];
             const settings = JSON.parse(strFromU8(entries[model.documentFiles[0]]));
             const png = entries[model.thumbnailFile], size = new DataView(png.buffer, png.byteOffset, png.byteLength);
-            valid &&= model.author === 'Xalies' && size.getUint32(16) === 1280 && size.getUint32(20) === 720;
+            valid &&= model.author === expectedAuthor && size.getUint32(16) === 1280 && size.getUint32(20) === 720;
             valid &&= settings.bed.width === 100 && settings.bed.depth === 100 && settings.parts.every(p => p.settings.part === 'bin' || p.settings.part === 'baseplate');
             copies += settings.parts.length;
             const file = entries[model.relativePath], points = [];
@@ -128,7 +136,7 @@ const server = http.createServer((req, res) => {
             valid &&= new Set(manifest.models.map(m=>m.relativePath)).size === manifest.models.length;
           }
           return { valid, packType: manifest.packType, schema: manifest.schema, version: manifest.version, plates: manifest.models.length, triangles, copies };
-        }, {bytes:result.bytes,format});
+        }, {bytes:result.bytes,format,expectedAuthor});
         assert(check.valid); assert.equal(check.packType,'collection'); assert.equal(check.schema,'meshvault.models'); assert.equal(check.version,1); assert.equal(check.plates,2); assert.equal(check.copies,7);
         assert.equal(check.triangles,binTriangles*6+baseTriangles,'Every requested part must appear, without changing its triangles');
         const zip = await downloaded('#export-set-zip'); assert.equal(zip.name,'gridfinity-set.zip');
