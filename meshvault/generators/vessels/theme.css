@@ -1,32 +1,66 @@
-/* Ceramics atelier: warm charcoal, serif headlines and an object-first layout. */
-:root { background:#211b19; color:#f3e8da; --accent:#e7ab89; --line:#51413a; --muted:#c5b1a5; font-family:"Segoe UI",sans-serif; }
-body { padding:0 48px; }
-header { padding:24px 0; }
-.site-brand { font:italic 2rem/1 Georgia,serif; text-decoration:none; }
-.site-brand small { display:block; margin-top:8px; font:400 .65rem/1.4 system-ui,sans-serif; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); }
-header nav { gap:20px; }
-.vessel-studio h1 { font:400 clamp(3rem,4.4vw,5.5rem)/1.05 Georgia,serif; letter-spacing:-.055em; }
+/* MeshVault plum, with a quieter ceramics atelier character. */
+:root { background:#100d16; color:#f4edf5; --accent:#e7ab89; --line:#3a3041; --muted:#bcb0c3; font-family:"Segoe UI",sans-serif; }
+body { padding:0 32px; }
+header { align-items:center; padding:18px 0; }
+.identity { display:flex; align-items:center; gap:28px; }
+.ecosystem-brand { display:flex; align-items:center; gap:10px; text-decoration:none; font-size:1.25rem; font-weight:700; line-height:1.3; }
+.ecosystem-brand img { width:36px; height:36px; }
+.ecosystem-brand small { display:block; font-size:.58rem; letter-spacing:.14em; color:var(--muted); }
+.site-brand { border-left:1px solid var(--line); padding-left:28px; font:italic 1.5rem/1 Georgia,serif; text-decoration:none; color:var(--accent); }
+.site-brand small { display:block; margin-top:8px; font:400 .58rem/1.4 system-ui,sans-serif; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); }
+header nav { gap:22px; }
+.vessel-studio h1 { font:400 clamp(2.6rem,3.5vw,4.5rem)/1.05 Georgia,serif; letter-spacing:-.045em; }
 h2 { font-family:Georgia,serif; font-weight:400; }
-.intro { max-width:880px; font-size:1rem; line-height:1.7; }
-.workspace { border-top:0; gap:36px; }
-input[type=number], input[type=text], select, input[type=color] { background:#2b221e; border-radius:0; border-color:#695044; }
-button, #download { border-radius:24px; padding:10px 19px; }
+.intro { max-width:1100px; font-size:.9rem; line-height:1.6; }
+.workspace { gap:26px; border-top:1px solid var(--line); }
+input[type=number], input[type=text], input[type=url], select, input[type=color] { min-width:0; width:100%; padding:9px 10px; color:inherit; background:#191420; border:1px solid var(--line); border-radius:3px; }
+button { border-radius:4px; padding:10px 14px; }
 .presets { gap:8px; }
-.presets button { border-radius:0; border:0; border-bottom:1px solid var(--line); padding:7px 0; margin-right:12px; }
-#viewer { background:#30251f; border-radius:48% 48% 0 0 / 12% 12% 0 0; }
+.presets button { border-radius:0; border:0; border-bottom:1px solid var(--line); padding:7px 0; margin-right:8px; }
+#viewer { background:#191420; border-radius:48% 48% 0 0 / 12% 12% 0 0; }
 .preview-toolbar { color:var(--muted); }
-.integration { gap:80px; }
-.integration pre { background:#2b221e; border-left:1px solid var(--accent); }
-#print-settings dd { font-family:Georgia,serif; font-size:1.25rem; margin:4px 0 0; }
+.vessel-studio .preview { display:block; }
+.vessel-studio .preview > * { grid-column:auto; }
+.print-sidebar { min-width:0; padding-top:20px; }
+.print-controls { scrollbar-width:thin; scrollbar-color:var(--line) transparent; }
+.print-guidance h2 { font-size:1.6rem; }
+.print-guidance > .step { margin-top:0; }
+.print-guidance p { margin:12px 0; }
+#print-settings { gap:12px 16px; }
+#print-settings dd { font-family:Georgia,serif; font-size:1.1rem; }
+.print-guidance details p { line-height:1.6; }
+#creator fieldset { margin-top:0; border-top:0; padding-top:4px; }
+.author-details { flex-shrink:0; border-top:1px solid var(--line); margin-top:12px; }
+.author-details[open] { max-height:65%; overflow-y:auto; scrollbar-width:thin; }
+.author-details summary { color:var(--accent); }
+#creator label { margin-bottom:12px; }
+.print-sidebar .export-panel { flex-shrink:0; padding:16px 0 0; margin-top:16px; }
+.print-sidebar .export-panel label { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+#print-profile { width:100%; }
+#format { width:180px; }
+.export-actions { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+.export-actions button { padding:10px 8px; font-size:.76rem; }
+.project-details { margin-top:26px; border-top:1px solid var(--line); }
+.integration { margin-top:0; border-top:0; gap:60px; }
+.integration pre { background:#191420; border-left:1px solid var(--accent); }
 :focus-visible { outline-color:var(--accent); }
+.skip-link { position:absolute; top:-80px; background:var(--accent); color:#100d16; padding:10px; z-index:2; }
+.skip-link:focus { top:10px; }
 @media(min-width:1150px) {
-  .workspace { grid-template-columns:minmax(0,1fr) 300px; }
-  #settings { grid-column:2; grid-row:1; border-right:0; border-left:1px solid var(--line); padding:20px 0 20px 26px; max-height:calc(100vh - 290px); }
-  .preview { grid-column:1; grid-row:1; }
-  #viewer { height:clamp(420px,54vh,780px); }
+  .workspace { grid-template-columns:280px minmax(0,1fr) 310px; }
+  #settings { grid-column:1; grid-row:1; padding:20px 22px 20px 0; max-height:calc(100vh - 320px); }
+  .preview { grid-column:2; grid-row:1; }
+  #viewer { height:clamp(340px,calc(100vh - 395px),780px); }
+  .print-sidebar { grid-column:3; grid-row:1; border-left:1px solid var(--line); padding-left:24px; display:flex; flex-direction:column; height:calc(100vh - 320px); min-height:450px; }
+  .print-controls { overflow-y:auto; min-height:0; flex:1; padding-right:6px; }
 }
-@media(min-width:1500px) {
-  .vessel-studio .preview { grid-template-columns:minmax(0,1fr) 300px; gap:24px; }
-  .vessel-studio .preview > section.export-panel { padding-left:24px; }
+@media(min-width:851px) and (max-width:1149px) {
+  .workspace { grid-template-columns:270px minmax(0,1fr); }
+  .print-sidebar { grid-column:1 / -1; display:grid; grid-template-columns:minmax(0,1fr) 300px; gap:32px; border-top:1px solid var(--line); }
+  #settings { max-height:none; }
 }
-@media(max-width:850px) { body { padding:0 20px; } header { flex-wrap:wrap; } .vessel-studio h1 { font-size:3rem; } #viewer { border-radius:30% 30% 0 0 / 8% 8% 0 0; } }
+@media(max-width:850px) {
+  body { padding:0 20px; } header { flex-wrap:wrap; } .identity { gap:16px; } .site-brand { padding-left:16px; font-size:1.2rem; }
+  .vessel-studio h1 { font-size:3rem; } #viewer { height:390px; border-radius:30% 30% 0 0 / 8% 8% 0 0; }
+  #settings { padding:20px 0 0; border-right:0; max-height:none; }
+}

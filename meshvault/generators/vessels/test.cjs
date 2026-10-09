@@ -63,7 +63,7 @@ const server = http.createServer((req, res) => {
           settings: !!settings, parameters: settings, printedStatus: 'printedStatus' in meta,
           count: Object.keys(entries).filter(name => /\.(stl|3mf)$/i.test(name)).length,
           safePaths: Object.keys(entries).every(name => !name.startsWith('/') && !name.split('/').some(p => p === '.' || p === '..')),
-          format: meta.fileType, printNotes: meta.printSettingsJson, supportUrl: meta.exportDonationUrl
+          format: meta.fileType, printNotes: meta.printSettingsJson, supportUrl: meta.exportDonationUrl, authorUrl: meta.authorUrl, descriptionHtml: meta.descriptionHtml
         };
       }, { bytes, modelBytes, extension, expectedAuthor });
       assert.equal(result.schema, 'meshvault.model'); assert.equal(result.version, 1);
@@ -74,9 +74,20 @@ const server = http.createServer((req, res) => {
     }
     await page.goto(`http://127.0.0.1:${server.address().port}/generators/vessels/`);
     await page.waitForFunction(() => document.querySelector('#viewer').dataset.loaded === 'true');
+    assert.equal(await page.locator('.demo-account').count(),0);
+    assert.equal(await page.locator('#author').inputValue(),'');
+    await page.locator('.author-details summary').click();
+    await page.locator('#author').fill('Avery <Maker>');
+    await page.locator('#author-url').fill('http://example.org/avery');assert.equal(await page.locator('#author-url').evaluate(n=>n.checkValidity()),false);
+    await page.locator('#author-url').fill('https://example.org/avery');
+    await page.locator('#donation').fill('https://user:pass@example.org');assert.equal(await page.locator('#donation').evaluate(n=>n.checkValidity()),false);
+    await page.locator('#donation').fill('https://example.org/support?via=vessels&author=avery');
+    await page.reload();await page.waitForFunction(()=>document.querySelector('#viewer').dataset.loaded==='true');
+    assert.equal(await page.locator('#author').inputValue(),'Avery <Maker>');assert.equal(await page.locator('#author-url').inputValue(),'https://example.org/avery');
     const vessel3mf = await downloaded('#stl');
     const generalVessel = await inspectPackage((await downloaded('#mvpack')).bytes, vessel3mf.bytes, '3mf');
     assert.equal(generalVessel.supportUrl, 'https://buymeacoffee.com/xalies');
+    assert.equal(generalVessel.authorUrl,'https://example.org/avery');assert.match(generalVessel.descriptionHtml,/Support Avery &lt;Maker&gt;/);assert.match(generalVessel.descriptionHtml,/via=vessels&amp;author=avery/);
     assert.equal(typeof generalVessel.printNotes, 'string');
     assert.equal(JSON.parse(generalVessel.printNotes).perimeters, 3);
     assert.equal(JSON.parse(generalVessel.printNotes).layerHeightMm, 0.2);
@@ -137,11 +148,13 @@ const server = http.createServer((req, res) => {
     await page.waitForTimeout(300);
     await visiblePreview();
     await page.evaluate(() => document.activeElement.blur());
+    if(process.env.VESSEL_PROOF_DIR){for(const [width,height] of [[1920,1080],[1440,900],[1280,800]]){await page.setViewportSize({width,height});await page.waitForTimeout(150);assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));const box=await page.locator('#mvpack').boundingBox();assert(box.y+box.height<=height,'Downloads visible in desktop workspace');await visiblePreview();await page.screenshot({path:path.join(process.env.VESSEL_PROOF_DIR,`vessel-${width}.png`)});}}
     if (process.env.UPDATE_THUMBNAIL) await page.locator('.workspace').screenshot({ path: path.join(root, 'images/vessel-studio.png') });
     await page.setViewportSize({ width: 390, height: 844 });
     await page.waitForTimeout(300);
     await visiblePreview();
     assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), 'Vessel mobile layout must not overflow');
+    assert(requests.every(url=>/^(http:\/\/127\.0\.0\.1:|blob:|data:)/.test(url)),'Runtime stays local');
     assert.equal(errors.length, 0, errors.join('\n'));
     console.log('PASS: vessel print profiles, geometry minimums, donation URL, STL/3MF packages, preview and mobile.');
   } finally { await browser.close(); server.close(); }

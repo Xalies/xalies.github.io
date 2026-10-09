@@ -8,10 +8,14 @@ geometry; 3MF uses explicit millimetre units and has no slicer-specific settings
 The separate **Export for MeshVault** action reuses the selected model bytes and
 adds a small, relevant metadata subset, a preview PNG when available, and design
 parameters in `documents/generator-settings.json`. It does not regenerate designs
-on import. The visibly simulated signed-in account supplies Xalies as the author.
-Preview PNGs are 1280 × 720 (16:9), fitted without cropping. Colour is preview-only.
+on import. No account is needed. Optional author name, author profile URL and
+author donation URL are saved on this device. Blank names export as Anonymous;
+links must use HTTPS without credentials. The profile uses `authorUrl` and the
+author support link appears in the escaped HTML description. Generator support
+remains separate in `exportDonationUrl`.
+Preview PNGs are 1280 x 720 (16:9), fitted without cropping. Colour is preview-only.
 
-`../shared/mvpack.js` contains the packaging example used by both demos. Read the
+`../shared/mvpack.js` contains the packaging example used by the creator tools. Read the
 [integration guide](../../generator/mvpack-integration.md) for the format contract.
 The vendored ZIP implementation is [fflate 0.8.3](https://github.com/101arrowz/fflate),
 MIT, with its licence in `../shared/vendor/fflate-LICENSE.txt`. Three.js and orbit
@@ -30,12 +34,18 @@ slicer preset embedded in the 3MF. Packages also include
 `exportDonationUrl: https://buymeacoffee.com/xalies` for generator support.
 
 Run `node meshvault/generators/vessels/test.cjs --vessels-only` with Playwright in `NODE_PATH` and Chrome
-installed. This checks both demos, actual downloads, ZIP metadata, thumbnails,
+installed. This checks actual vessel downloads, ZIP metadata, thumbnails,
 byte-identical model entries, STL/3MF structure, vessel mesh topology, mobile
-layout, cancellation and error recovery. Physical printing and import into the
+layout and author metadata validation. Physical printing and import into the
 MeshVault desktop application still need manual verification.
 
 The watertight profile includes an optional 105% flow / 1.05 extrusion multiplier
 test after filament calibration. Use one equivalent slicer setting; added flow
 can affect dimensions and surface quality. The suggestion is retained in exported
 printing advice, without changing the mesh.
+
+The desktop workspace keeps shape controls, a large live preview and print/export
+controls side by side. MeshVault plum branding and navigation are shared with the
+ecosystem; serif headings, clay accents and the curved preview retain the studio
+identity. Printing guidance scrolls independently of the download area, with
+author details in an expandable section directly above the downloads.

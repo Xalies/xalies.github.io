@@ -2,20 +2,23 @@
 <html lang="en-AU">
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Vessel Studio · Vase & Bowl Generator</title>
-  <meta name="description" content="Design sculptural vases and bowls in your browser. Live 3D preview, STL downloads and a working MeshVault .mvpack integration demo.">
+  <title>Vessel Studio | MeshVault</title>
+  <meta name="description" content="Design sculptural vases and bowls in your browser. Live 3D preview, print guidance, STL and 3MF downloads, and MeshVault project exports.">
   <link rel="stylesheet" href="../shared/studio.css">
-  <link rel="stylesheet" href="theme.css">
+  <link rel="canonical" href="https://www.meshvault.app/generators/vessels/">
+  <link rel="icon" href="../../images/meshvault_512x512.png">
+  <link rel="stylesheet" href="theme.css?v=20261009-studio">
   <script src="../gridfinity/vendor/deps/three.min.js" defer></script>
   <script src="../gridfinity/vendor/deps/OrbitControls.js" defer></script>
-  <script type="module" src="studio.js"></script>
+  <script type="module" src="studio.js?v=20261009-studio"></script>
 </head>
 <body class="vessel-studio">
-  <header><a class="site-brand" href="./">Vessel atelier<small>Objects, made by you</small></a><nav><a href="../../creator-tools/">Creator tools</a><a href="../brackets/">Brackets</a><a href="../assembly/">Assembly Studio</a><a href="../gridfinity/">Gridfinity</a><a href="../../generator/">.mvpack guide ↗</a><span class="demo-account" title="Simulated sign-in for this demo; no real account is connected">Xalies <small>· Demo account</small></span></nav></header>
+  <a class="skip-link" href="#settings">Skip to shape controls</a>
+  <header><div class="identity"><a class="ecosystem-brand" href="../../"><img src="../../images/meshvault_512x512.png" alt=""><span>MeshVault<small>CREATOR TOOLS</small></span></a><a class="site-brand" href="./">Vessel Studio<small>A digital atelier</small></a></div><nav aria-label="Main navigation"><a href="../../creator-tools/">All creator tools</a><a href="../../#downloads">Get MeshVault</a><a href="https://buymeacoffee.com/xalies">Support the tools ↗</a></nav></header>
   <main>
-    <p class="eyebrow">Vessel Studio / A MeshVault integration demo</p>
+    <p class="eyebrow">Vessel Studio / Form, texture &amp; light</p>
     <h1>A shape of your own.</h1>
-    <p class="intro">Turn a simple profile into a sculptural vase or a useful bowl. Shape it, add a twist, and take your design from the browser to your slicer — with its story and settings attached.</p>
+    <p class="intro">Turn a simple profile into a sculptural vase or a useful bowl. Shape it, add a twist, and take your design from the browser to your slicer — with its settings and your name attached. Free, local and account-free.</p>
     <div class="workspace">
       <form id="settings">
         <p class="step">01 / Choose a starting point</p>
@@ -41,25 +44,26 @@
         <div class="preview-toolbar"><span id="status" role="status" aria-live="polite">Preparing your design…</span><button class="secondary" id="reset-view" type="button">Reset view</button></div>
         <div id="viewer" tabindex="0" aria-label="3D vessel preview. Drag to orbit; scroll or pinch to zoom."></div>
         <div class="preview-toolbar"><span id="dimensions" class="dimension"></span><span class="small">Drag to orbit · scroll to zoom</span></div>
-        <section class="export-panel" aria-label="Suggested print settings">
-          <p class="step">04 / From shape to print</p>
-          <h2>A starting point for your slicer.</h2>
+      </section>
+      <aside class="print-sidebar" aria-label="Print settings and downloads"><div class="print-controls">
+        <section class="print-guidance" aria-label="Suggested print settings">
+          <p class="step">Print your vessel</p>
+          <h2>Make it printable.</h2>
           <label>Print goal<select id="print-profile"><option value="general">General · decorative vessel</option><option value="watertight">Watertight-focused · test before use</option></select></label>
           <dl id="print-settings" class="fields"></dl>
-          <p id="print-advice" class="small"></p>
-          <p id="print-fit" class="small" role="status"></p>
-          <button id="apply-print-dimensions" class="secondary" type="button">Apply suggested wall &amp; base minimums</button>
+          <details><summary>Printing advice &amp; limitations</summary><p id="print-advice" class="small"></p>
           <p class="small" style="margin-top:14px">Use a calibrated filament profile for temperatures, cooling and flow. Print upright on the flat base using normal slicing; check overhangs for supports. These are suggestions, not an embedded slicer preset. The selected advice is saved in the MeshVault package.</p>
           <p class="small">Based on <a href="https://blog.prusa3d.com/watertight-3d-printing-pt1-vases-cups-and-other-open-models_48949/">Prusa’s watertight printing guidance</a>. Settings cannot guarantee a leak-free print: inspect the sliced walls and base for gaps, then leak-test over a tray. Watertight does not mean food-safe.</p>
+          </details><p id="print-fit" class="small" role="status"></p><button id="apply-print-dimensions" class="secondary" type="button">Apply suggested wall &amp; base minimums</button>
         </section>
-        <div class="export-panel"><p class="small">Choose a model format for your slicer or MeshVault package. 3MF stores explicit millimetre units; both formats contain the same shape.</p><label>Model format<select id="format"><option value="3mf">3MF · recommended</option><option value="stl">STL · universal</option></select></label><div class="export-actions"><button class="secondary" id="stl" type="button" disabled>Download 3MF ↓</button><button id="mvpack" type="button" disabled>Export for MeshVault ↓</button></div></div>
-      </section>
+      </div><details class="author-details"><summary>Author &amp; support links</summary>
+        <form id="creator"><fieldset><legend>Your design, your credit</legend><label>Author · optional<input id="author" name="author" type="text" maxlength="100" placeholder="Your name" autocomplete="name"></label><label>Author URL · optional<input id="author-url" name="authorUrl" type="url" maxlength="2048" placeholder="https://your-site.com"></label><label>Author donation URL · optional<input id="donation" name="donation" type="url" maxlength="2048" placeholder="https://buymeacoffee.com/your-name"></label><p class="small">Saved on this device. Your profile and support link travel with the MeshVault export. Leave your name blank for Anonymous.</p></fieldset></form>
+      </details>
+        <div class="export-panel"><p class="step">Take it to your slicer</p><label>Model format<select id="format"><option value="3mf">3MF · recommended</option><option value="stl">STL · universal</option></select></label><div class="export-actions"><button class="secondary" id="stl" type="button" disabled>Download 3MF ↓</button><button id="mvpack" type="button" disabled>MeshVault ↓</button></div></div>
+      </aside>
     </div>
-    <section class="integration" aria-label="MeshVault integration example">
-      <div><p class="step">One export. A little more context.</p><h2>The design travels with its details.</h2><p>This demo includes a title, source link, generator credit, support link, tags, preview and selected printing advice. The shape parameters are attached as a JSON document, so you can refer to them later.</p><p>Printing advice uses <code>printSettingsJson</code>; the generator support link uses <code>exportDonationUrl</code>. These stay separate from the attached design parameters.</p><p>An .mvpack is a standard ZIP. All packaging happens on your device. No account or MeshVault API is needed.</p><a href="../../generator/">Build this into your own site →</a> · <a href="studio.js">View demo source</a></div>
-      <div><p class="step">Inside your download</p><pre id="package-contents"></pre><p class="small">Import the package into MeshVault. The root-level model goes into Imports to Review. Parameters are reference data; MeshVault does not regenerate the design.</p></div>
-    </section>
+    <details class="project-details"><summary>What’s in your MeshVault download?</summary><div class="integration"><div><h2>Keep the shape with its story.</h2><p>Your package contains the selected STL or 3MF, a 16:9 preview, your author details, printing advice and the design parameters as JSON. Everything is packaged on your device.</p><p>Import into MeshVault to review and organise the model. The parameters are reference data; MeshVault does not regenerate the design.</p><a href="../../generator/">About the .mvpack format →</a></div><div><pre id="package-contents"></pre></div></div></details>
   </main>
-  <footer>Vessel Studio by Xalies · Generated models are yours to use. <a href="https://buymeacoffee.com/xalies">Support Vessel Studio</a> · <a href="README.md">Source & licences</a> · <a href="../../">Meet MeshVault</a>. Test your slicer settings and print suitability; vessels are not certified watertight or food-safe.</footer>
+  <footer>Vessel Studio · A MeshVault creator tool. Generated models are yours to use. <a href="https://buymeacoffee.com/xalies">Support Vessel Studio</a> · <a href="README.md">Licences & technical notes</a> · <a href="../../">Meet MeshVault</a>. Test your slicer settings and print suitability; vessels are not certified watertight or food-safe.</footer>
 </body>
 </html>
