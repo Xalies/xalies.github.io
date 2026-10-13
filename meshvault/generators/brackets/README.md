@@ -17,7 +17,7 @@ visibly. Attribution is read at export time so edits do not require regeneration
 
 Normal STL/3MF and mvpack exports contain the same geometry. Packages add a 16:9
 thumbnail, description, print notes and attached design settings. Root-level
-single models enter Imports to Review. See the [format guide](../../generator/).
+single models enter Imports to Review. See the [format guide](../../mvpack/).
 
 Run `node meshvault/generators/brackets/test.cjs` with Playwright available via NODE_PATH.
 With the local site running at port 4173, also run `node meshvault/generators/brackets/shapes.test.cjs`

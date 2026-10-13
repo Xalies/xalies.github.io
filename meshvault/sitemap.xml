@@ -31,7 +31,7 @@
     <priority>0.5</priority>
   </url>
   <url><loc>https://www.meshvault.app/creator-tools/</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://www.meshvault.app/generator/</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.meshvault.app/mvpack/</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.meshvault.app/generators/gridfinity/</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.meshvault.app/generators/vessels/</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.meshvault.app/generators/assembly/</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>

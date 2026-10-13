@@ -16,7 +16,7 @@ remains separate in `exportDonationUrl`.
 Preview PNGs are 1280 x 720 (16:9), fitted without cropping. Colour is preview-only.
 
 `../shared/mvpack.js` contains the packaging example used by the creator tools. Read the
-[integration guide](../../generator/mvpack-integration.md) for the format contract.
+[integration guide](../../mvpack/mvpack-integration.md) for the format contract.
 The vendored ZIP implementation is [fflate 0.8.3](https://github.com/101arrowz/fflate),
 MIT, with its licence in `../shared/vendor/fflate-LICENSE.txt`. Three.js and orbit
 controls reuse Gridfinity's local MIT assets and `../gridfinity/vendor/three-MIT.txt`.

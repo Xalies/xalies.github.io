@@ -1,6 +1,6 @@
 # MeshVault Creator Tools
 
-The six generators live in `meshvault/generators/`; the integration guide lives in `meshvault/generator/`. This page links them from the MeshVault site.
+The six generators live in `meshvault/generators/`; the integration guide lives in `meshvault/mvpack/`. This page links them from the MeshVault site.
 
 The existing `publish-meshvault-site.yml` workflow copies the complete `meshvault/` tree to the MeshVault publishing repository after a push to main. Canonical URLs use `https://www.meshvault.app/`.
 

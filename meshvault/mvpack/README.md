@@ -1,7 +1,7 @@
-# MeshVault generator integration guide
+# MeshVault .mvpack integration guide
 
 This folder publishes the framework-independent `.mvpack` integration guide at
-`/generator/`. The complete machine-readable instructions are in
+`/mvpack/`. The complete machine-readable instructions are in
 [`mvpack-integration.md`](mvpack-integration.md).
 
 The page intentionally contains no model generator or packaging SDK. Generator
@@ -10,7 +10,7 @@ containing their generated model plus MeshVault metadata.
 
 Working examples are available in [Vessel Studio](../generators/vessels/),
 [Gridfinity Studio](../generators/gridfinity/),
-[Assembly Studio](../generators/assembly/),
+[Modular Storage Designer](../generators/assembly/),
 [Bracket Works](../generators/brackets/),
 [Pocket Eden](../generators/pocket-eden/) and
 [Brick Foundry](../generators/brick-foundry/). All preserve their STL/3MF exports
