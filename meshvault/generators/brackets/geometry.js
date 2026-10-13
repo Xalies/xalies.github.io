@@ -1,5 +1,7 @@
+import {profileMesh} from './profiles.js?v=20261010-saddles';
 // MIT · Copyright 2026 Xalies. A closed boundary mesh, with no overlapping solids.
 export function bracketMesh(s) {
+  if(s.faceHoles||(s.type&&s.type!=='l'))return profileMesh(s);
   const C=s.edgeChamfer??0, B=s.holeChamfer??0;
   const {length:L,height:H,width:W,thickness:T,diameter:D,edge:E,holes:N}=s;
   if (![L,H,W,T,D,E,N].every(Number.isFinite) || L<30 || L>180 || H<30 || H>160 || W<18 || W>80 || T<3 || T>12 || D<3 || D>10 || (N===2&&(E<D/2+3 || E>40)) || ![1,2].includes(N) || Math.min(L,H)<T+(N===2?2*E+D+3:D+6) || W<D+6)

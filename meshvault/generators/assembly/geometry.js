@@ -18,8 +18,8 @@ export function organiserParts(s) {
   if(s.gridfinity && (!Number.isInteger((s.width+.5)/42)||!Number.isInteger((s.depth+.5)/42))) throw new Error('Gridfinity dimensions must follow the 42 mm grid, minus 0.5 mm overall clearance.');
   const tray=openTray(trayWidth,trayDepth,s.height-s.thickness+3,s.thickness);
   return [
-    {id:'carrier',label:'Tray carrier',mesh:openTray(s.width,s.depth,s.height,s.thickness),colour:'#b7a0e5',assembled:p=>[p[0]-s.width/2,p[1]-s.depth/2,p[2]],explode:[0,0,0]},
-    ...Array.from({length:s.trays},(_,i)=>({id:`tray-${i+1}`,label:`Removable tray ${i+1}`,mesh:tray,colour:['#f4cc68','#8cd6b6','#bf785b','#9ab9e6'][i],assembled:p=>[p[0]-s.width/2+s.thickness+i*bay+s.clearance/2,p[1]-s.depth/2+s.thickness+s.clearance/2,p[2]+s.thickness+(s.gridfinity?5:0)],explode:[0,0,35+i*14]}))
+    {id:'carrier',label:'Tray carrier',mesh:openTray(s.width,s.depth,s.height,s.thickness),colour:'#50565e',assembled:p=>[p[0]-s.width/2,p[1]-s.depth/2,p[2]],explode:[0,0,0]},
+    ...Array.from({length:s.trays},(_,i)=>({id:`tray-${i+1}`,label:`Removable tray ${i+1}`,mesh:tray,colour:['#c5c1b8','#a9adae','#8b9297','#b0a79b'][i],assembled:p=>[p[0]-s.width/2+s.thickness+i*bay+s.clearance/2,p[1]-s.depth/2+s.thickness+s.clearance/2,p[2]+s.thickness+(s.gridfinity?5:0)],explode:[0,0,35+i*14]}))
   ];
 }
 
@@ -63,7 +63,7 @@ export function drawerParts(s) {
     ${s.insert==='drawer'?`translate([${f.width/2},-0.1,${h}]) rotate([-90,0,0]) cylinder(r=8,h=${t+.2},$fn=32);`:''}
   }`;
   return [
-    {id:'drawer-frame',label:'Drawer bay frame',source:frame,colour:'#b7a0e5',assembled:p=>[p[0]-s.width/2,s.depth/2-p[2],p[1]],explode:[0,0,0]},
-    {id:s.insert==='tray'?'open-tray':'drawer',label:s.insert==='tray'?'Interchangeable open tray':'Finger-pull drawer',source:insert,colour:s.insert==='tray'?'#8cd6b6':'#f4cc68',assembled:p=>[p[0]-s.width/2+t+s.clearance/2,p[1]-s.depth/2+s.clearance,p[2]+f.bottom],explode:[0,-s.depth*.65,0]}
+    {id:'drawer-frame',label:'Drawer bay frame',source:frame,colour:'#50565e',assembled:p=>[p[0]-s.width/2,s.depth/2-p[2],p[1]],explode:[0,0,0]},
+    {id:s.insert==='tray'?'open-tray':'drawer',label:s.insert==='tray'?'Interchangeable open tray':'Finger-pull drawer',source:insert,colour:'#c5c1b8',assembled:p=>[p[0]-s.width/2+t+s.clearance/2,p[1]-s.depth/2+s.clearance,p[2]+f.bottom],explode:[0,-s.depth*.65,0]}
   ];
 }

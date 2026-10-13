@@ -16,16 +16,20 @@ const server = http.createServer((req,res)=>{
     page.on('request',r=>requests.push(r.url()));
     page.on('pageerror',e=>errors.push(e.message));
     await page.goto(`http://127.0.0.1:${server.address().port}/generators/assembly/`);
-    await page.waitForFunction(()=>!document.querySelector('#mvpack').disabled);
-    await page.locator('[name=assembly]').selectOption('drawer');await page.waitForFunction(()=>!document.querySelector('#mvpack').disabled);
+    await page.waitForFunction(()=>['preview','ready'].includes(document.querySelector('#viewer').dataset.state),{},{timeout:180000});
+    const ready=async()=>{await page.waitForFunction(()=>['preview','ready'].includes(document.querySelector('#viewer').dataset.state),{},{timeout:180000});};
+
+ const design=async()=>{if(await page.locator('#back-design').isVisible()){await page.locator('#back-design').click();await ready();}};
+ const printing=async()=>{if(await page.locator('#generate-plates').isVisible()){await page.locator('#generate-plates').click();await ready();}};
+    await design();await page.locator('[name=assembly]').selectOption('drawer');await page.waitForFunction(()=>['preview','ready'].includes(document.querySelector('#viewer').dataset.state));
     assert.equal(await page.locator('.demo-account').count(),0);
     assert.equal(await page.locator('#author').inputValue(),'');
-    await page.locator('.author-details summary').click();
-    await page.locator('#author').fill('Casey <Builder>');
-    await page.locator('#author-url').fill('http://example.org');assert.equal(await page.locator('#author-url').evaluate(n=>n.checkValidity()),false);
-    await page.locator('#author-url').fill('https://example.org/casey');
-    await page.locator('#donation').fill('https://example.org/support?name=casey&via=assembly');
-    await page.waitForFunction(()=>!document.querySelector('#mvpack').disabled);
+    await printing();await page.locator('.author-details summary').click();
+    await printing();await page.locator('#author').fill('Casey <Builder>');
+    await printing();await page.locator('#author-url').fill('http://example.org');assert.equal(await page.locator('#author-url').evaluate(n=>n.checkValidity()),false);
+    await printing();await page.locator('#author-url').fill('https://example.org/casey');
+    await printing();await page.locator('#donation').fill('https://example.org/support?name=casey&via=assembly');
+    await page.waitForFunction(()=>['preview','ready'].includes(document.querySelector('#viewer').dataset.state));
     assert.equal(await page.locator('#description img').count(),3);
     assert(await page.locator('#description img').evaluateAll(images=>images.every(i=>i.complete&&i.naturalWidth===1280&&i.naturalHeight===720)));
     assert(await page.evaluate(async()=>{
@@ -65,15 +69,15 @@ const server = http.createServer((req,res)=>{
       for(const invalid of [{trays:1},{trays:2.5},{thickness:0},{clearance:0},{gridfinity:true}]){try{organiserParts({width:180,depth:120,height:35,thickness:2.4,clearance:.4,trays:3,...invalid});return false;}catch{}}
       return true;
     }),'Organiser meshes are closed, have the expected material volume and fit side by side with the selected clearance');
-    async function downloaded(selector){const event=page.waitForEvent('download');await page.locator(selector).click();return fs.readFileSync(await (await event).path());}
+    async function downloaded(selector){await printing();await ready();const event=page.waitForEvent('download');await page.locator(selector).click();return fs.readFileSync(await (await event).path());}
     const frameSignatures=[];
     for(const assembly of ['drawer','tray','organiser','gridfinity']){
-      if(assembly==='tray') {await page.locator('[name=insert]').selectOption('tray');await page.waitForFunction(()=>!document.querySelector('#mvpack').disabled);}
-      if(assembly==='organiser') {await page.locator('[name=assembly]').selectOption('organiser');await page.waitForFunction(()=>!document.querySelector('#mvpack').disabled);}
-      if(assembly==='gridfinity') {await page.locator('[name=gridfinity]').check();await page.waitForFunction(()=>!document.querySelector('#mvpack').disabled,{},{timeout:180000});}
+      if(assembly==='tray') {await design();await page.locator('[name=insert]').selectOption('tray');await page.waitForFunction(()=>['preview','ready'].includes(document.querySelector('#viewer').dataset.state));}
+      if(assembly==='organiser') {await design();await page.locator('[name=assembly]').selectOption('organiser');await page.waitForFunction(()=>['preview','ready'].includes(document.querySelector('#viewer').dataset.state));}
+      if(assembly==='gridfinity') {await design();await page.locator('[name=gridfinity]').check();await page.waitForFunction(()=>['preview','ready'].includes(document.querySelector('#viewer').dataset.state),{},{timeout:180000});}
       const count=['drawer','tray'].includes(assembly)?2:4;
     for(const format of ['3mf','stl']){
-      await page.locator('#format').selectOption(format);
+      await printing();await page.locator('#format').selectOption(format);
       const zip=await downloaded('#download-kit'),pack=await downloaded('#mvpack');
       if(assembly==='drawer'&&format==='3mf'&&process.env.PROJECT_FIXTURE)fs.writeFileSync(process.env.PROJECT_FIXTURE,pack);
       const result=await page.evaluate(async({zip,pack,format,count,assembly})=>{
@@ -122,14 +126,14 @@ const server = http.createServer((req,res)=>{
     }
     }
     assert.equal(frameSignatures.length,2);assert.equal(frameSignatures[0],frameSignatures[1],'Drawer and tray exports reuse exactly the same frame geometry');
-    await page.locator('[name=assembly]').selectOption('drawer');await page.waitForFunction(()=>!document.querySelector('#mvpack').disabled);
-    for(const mode of ['exploded','print','assembled']){await page.locator('#view').selectOption(mode);assert(await page.locator('#viewer canvas').evaluate(canvas=>{const c=document.createElement('canvas');c.width=c.height=64;const ctx=c.getContext('2d');ctx.drawImage(canvas,0,0,64,64);const d=ctx.getImageData(0,0,64,64).data,colours=new Set();for(let i=0;i<d.length;i+=4)colours.add(d.slice(i,i+3).join(','));return colours.size>20;}));}
-    await page.locator('[name=title]').fill('<img src=x onerror="alert(1)">');await page.waitForFunction(()=>!document.querySelector('#mvpack').disabled);
-    assert.equal(await page.locator('#description img').count(),3);assert.match(await page.locator('#description h2').textContent(),/<img/);
-    await page.locator('[name=clearance]').fill('0');assert(await page.locator('#mvpack').isDisabled());
-    await page.locator('[name=clearance]').fill('0.3');await page.locator('[name=title]').fill('My drawer bay');await page.waitForFunction(()=>!document.querySelector('#mvpack').disabled);
-    await page.locator('[data-preset=wide]').click();await page.waitForFunction(()=>!document.querySelector('#mvpack').disabled);assert.match(await page.locator('#dimensions').textContent(),/210 × 160 × 50/);
-    await page.locator('[data-preset=small]').click();await page.waitForFunction(()=>!document.querySelector('#mvpack').disabled);
+    await design();await page.locator('[name=assembly]').selectOption('drawer');await page.waitForFunction(()=>['preview','ready'].includes(document.querySelector('#viewer').dataset.state));
+    for(const mode of ['exploded','print','assembled']){if(mode==='print')await printing();else await design();await page.locator('#view').selectOption(mode);assert(await page.locator('#viewer canvas').evaluate(canvas=>{const c=document.createElement('canvas');c.width=c.height=64;const ctx=c.getContext('2d');ctx.drawImage(canvas,0,0,64,64);const d=ctx.getImageData(0,0,64,64).data,colours=new Set();for(let i=0;i<d.length;i+=4)colours.add(d.slice(i,i+3).join(','));return colours.size>20;}));}
+    await design();await page.locator('[name=title]').fill('<img src=x onerror="alert(1)">');await page.waitForFunction(()=>['preview','ready'].includes(document.querySelector('#viewer').dataset.state));
+    await printing();assert.equal(await page.locator('#description img').count(),3);assert.match(await page.locator('#description h2').textContent(),/<img/);
+    await design();await page.locator('[name=clearance]').fill('0');assert(await page.locator('#mvpack').isDisabled());
+    await design();await page.locator('[name=clearance]').fill('0.3');await design();await page.locator('[name=title]').fill('My drawer bay');await page.waitForFunction(()=>['preview','ready'].includes(document.querySelector('#viewer').dataset.state));
+    await design();await page.locator('[data-preset=wide]').click();await page.waitForFunction(()=>['preview','ready'].includes(document.querySelector('#viewer').dataset.state));assert.match(await page.locator('#dimensions').textContent(),/210 × 160 × 50/);
+    await design();await page.locator('[data-preset=small]').click();await page.waitForFunction(()=>['preview','ready'].includes(document.querySelector('#viewer').dataset.state));
     if(process.env.UPDATE_THUMBNAIL)await page.locator('#viewer').screenshot({path:path.join(root,'images/assembly-studio.png')});
     for(const viewport of [{width:1920,height:1200},{width:1366,height:768},{width:390,height:844}]){await page.setViewportSize(viewport);assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'No horizontal overflow');}
     assert(requests.every(url=>/^(http:\/\/127\.0\.0\.1:|blob:|data:)/.test(url)),'Generation and exports stay local');

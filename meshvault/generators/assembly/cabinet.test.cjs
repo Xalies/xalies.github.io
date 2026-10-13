@@ -8,7 +8,11 @@ const server=http.createServer((req,res)=>{const url=new URL(req.url,'http://loc
  try{
  const page=await browser.newPage({viewport:{width:1440,height:1000}}),errors=[],requests=[];page.on('pageerror',e=>errors.push(e.message));page.on('request',r=>requests.push(r.url()));
  await page.goto(`http://127.0.0.1:${server.address().port}/generators/assembly/`);
- const ready=async()=>{await page.waitForFunction(()=>!document.querySelector('#mvpack').disabled||document.querySelector('#status').textContent.startsWith('Could not'),{},{timeout:180000});assert(await page.locator('#mvpack').isEnabled(),await page.locator('#status').textContent());};await ready();
+ await page.locator('[name=assembly]').selectOption('cabinet');
+
+ const design=async()=>{if(await page.locator('#back-design').isVisible()){await page.locator('#back-design').click();await ready();}};
+ const printing=async()=>{if(await page.locator('#generate-plates').isVisible()){await page.locator('#generate-plates').click();await ready();}};
+ const ready=async()=>{await page.waitForFunction(()=>['preview','ready'].includes(document.querySelector('#viewer').dataset.state)||document.querySelector('#status').textContent.startsWith('Could not'),{},{timeout:180000});assert(await page.evaluate(()=>document.querySelector('#viewer').dataset.state==='preview'||!document.querySelector('#mvpack').disabled),await page.locator('#status').textContent());};await ready();
  assert.equal(await page.locator('#bay-plan button').count(),4);assert.match(await page.locator('#dimensions').textContent(),/300 × 156.4 × 145/);
  assert.match(await page.locator('#assembly-fit').textContent(),/8 M3 × 8 mm/);
  assert(await page.evaluate(async()=>{
@@ -19,17 +23,18 @@ const server=http.createServer((req,res)=>{const url=new URL(req.url,'http://loc
    const a=parts.find(p=>p.id==='bay-1-drawer-frame'),b=parts.find(p=>p.id==='bay-2-drawer-frame'),c=parts.find(p=>p.id==='bay-3-drawer-frame');
    if(JSON.stringify(a.assembled([150,32.5,52.5]))!==JSON.stringify(b.assembled([0,32.5,52.5])))return false;
    if(JSON.stringify(a.assembled([75,65,52.5]))!==JSON.stringify(c.assembled([75,0,52.5])))return false;
-   for(const invalid of [{columns:4},{heights:[NaN]},{thickness:3},{bays:[]},{bays:s.bays.map(b=>({...b,type:'<script>'}))}]){try{cabinetParts({...s,...invalid});return false;}catch{}}
+   for(const invalid of [{output:'oops'},{selectedBay:-1},{gridTop:'true'},{columns:4},{heights:[NaN]},{thickness:3},{bays:[]},{bays:s.bays.map(b=>({...b,type:'<script>'}))}]){try{cabinetParts({...s,...invalid});return false;}catch{}}
    return true;
  }),'Layout validation and joint axes');
- const download=async selector=>{const event=page.waitForEvent('download');await page.locator(selector).click();return [...fs.readFileSync(await (await event).path())];};
- async function inspect(bytes,packed,grid=false){return page.evaluate(async({bytes,packed,grid})=>{
+ const download=async selector=>{await printing();await ready();const event=page.waitForEvent('download');await page.locator(selector).click();return [...fs.readFileSync(await (await event).path())];};
+ async function inspect(bytes,packed,grid=false,variant=null){return page.evaluate(async({bytes,packed,grid,variant})=>{
    const {unzipSync,strFromU8}=await import('../shared/vendor/fflate.js');const files=unzipSync(new Uint8Array(bytes)),meta=JSON.parse(strFromU8(files['meshvault.models.json']));
    if(meta.packType!=='project'||meta.project.settings===null)return false;
-   const settings=JSON.parse(strFromU8(files[meta.project.documentFiles.find(n=>n.endsWith('generator-settings.json'))]));if(settings.assembly!=='cabinet'||settings.moduleInterface!=='cabinet-bay-v1'||settings.bays.length!==4)return false;
+   const settings=JSON.parse(strFromU8(files[meta.project.documentFiles.find(n=>n.endsWith('generator-settings.json'))]));if(settings.assembly!=='cabinet'||settings.moduleInterface!=='cabinet-bay-v1'||settings.bays.length!==(variant?2:4))return false;
    const layout=JSON.parse(strFromU8(files[meta.project.documentFiles.find(n=>n.endsWith('printer-layout.json'))]));
-   const ids=layout.plates.flatMap(p=>p.placements.map(p=>p.part));if(ids.length!==(grid?8:7)||new Set(ids).size!==ids.length)return false;
-   if(meta.models.length!==(packed?layout.plates.length:grid?8:7))return false;
+   const count=variant?variant.parts:grid?8:7;
+   const ids=layout.plates.flatMap(p=>p.placements.map(p=>p.part));if(ids.length!==count||new Set(ids).size!==ids.length)return false;
+   if(meta.models.length!==(packed?layout.plates.length:count))return false;
    for(const m of meta.models){
      const doc=new DOMParser().parseFromString(strFromU8(unzipSync(files[m.relativePath])['3D/3dmodel.model']),'application/xml');
      const p=Array.from(doc.getElementsByTagName('vertex'),v=>['x','y','z'].map(a=>Number(v.getAttribute(a)))),edges=new Map(),parent=p.map((_,i)=>i),root=i=>parent[i]===i?i:(parent[i]=root(parent[i]));let volume=0;
@@ -37,31 +42,41 @@ const server=http.createServer((req,res)=>{const url=new URL(req.url,'http://loc
      if(volume<=0||p.some(v=>v.some(n=>!Number.isFinite(n))||v[2]<-1e-5)||[...edges.values()].some(([n,b])=>n!==2||b!==0))return false;
      if(!packed&&new Set(parent.map((_,i)=>root(i))).size!==1)return false;
      if(packed&&p.some(v=>v[0]<5-1e-4||v[1]<5-1e-4||v[0]>layout.bed.width-5+1e-4||v[1]>layout.bed.depth-5+1e-4))return false;
-     if(!packed&&m.fileName.endsWith('bay-1-insert.3mf')){
+     if(!variant&&!packed&&m.fileName.endsWith('bay-1-insert.3mf')){
        // Dividers, handle and label rails add vertices away from the simple box shell.
        if(settings.bays[0].handle==='bar'&&!p.some(v=>v[1]<-6.9))return false;
        if(settings.bays[0].handle==='notch'&&!settings.bays[0].labelHolder&&(p.some(v=>v[1]<-1e-5)||!p.some(v=>Math.abs(v[0]-70.7)<.001&&Math.abs(v[1])<.001&&Math.abs(v[2]-46.4)<.001)))return false;
      }
    }
-   const csv=strFromU8(files[meta.project.documentFiles.find(n=>n.endsWith('.csv'))]);if(!csv.includes('M3 x 8 mm countersunk screw,8')||!csv.includes('M3 hex nut,8'))return false;
+   const csv=strFromU8(files[meta.project.documentFiles.find(n=>n.endsWith('.csv'))]);
+   if(variant?.parts===1){if(csv.includes('M3'))return false;}else{const screws=variant?2:8;if(!csv.includes(`M3 x 8 mm countersunk screw,${screws}`)||!csv.includes(`M3 hex nut,${screws}`))return false;}
+   if(variant?.base&&!settings.gridBase)return false;
    return true;
- },{bytes,packed,grid});}
- await page.locator('#arranged-export').uncheck();await ready();assert(await inspect(await download('#mvpack'),false),'Closed connected individual parts with hardware BOM');
- await page.locator('#arranged-export').check();await ready();assert(await inspect(await download('#mvpack'),true),'Packed plates inside bed with complete unique inventory');
- await page.locator('#bay-plan button[data-bay="3"]').click();await page.locator('#bay-type').selectOption('gridfinity');await ready();
+ },{bytes,packed,grid,variant});}
+ await printing();await page.locator('#arranged-export').uncheck();await ready();assert(await inspect(await download('#mvpack'),false),'Closed connected individual parts with hardware BOM');
+ await printing();await page.locator('#arranged-export').check();await ready();assert(await inspect(await download('#mvpack'),true),'Packed plates inside bed with complete unique inventory');
+ await design();await page.locator('#bay-plan button[data-bay="3"]').click();await design();await page.locator('#bay-type').selectOption('gridfinity');await ready();
  assert(await inspect(await download('#mvpack'),true,true),'Gridfinity tray export');
- await page.locator('#arranged-export').uncheck();await ready();assert(await inspect(await download('#mvpack'),false,true),'Connected Gridfinity socket tray');
- await page.locator('#bay-plan button[data-bay="0"]').click();await page.locator('#bay-across').selectOption('4');await page.locator('#bay-deep').selectOption('3');await page.locator('#bay-handle').selectOption('notch');await page.locator('#bay-label-holder').uncheck();await ready();assert(await inspect(await download('#mvpack'),false,true),'Custom divider counts, finger notch and disabled label holder');
- await page.locator('#format').selectOption('stl');const stl=await download('#download-kit');assert(await page.evaluate(async bytes=>{const {unzipSync}=await import('../shared/vendor/fflate.js');return Object.values(unzipSync(new Uint8Array(bytes))).every(b=>{const v=new DataView(b.buffer,b.byteOffset,b.byteLength);return b.length===84+v.getUint32(80,true)*50;});},stl),'Binary STL exports');await page.locator('#format').selectOption('3mf');
- await page.locator('#bay-plan button[data-bay="3"]').click();await page.locator('#bay-label').fill('<svg onload=alert(1)>');await ready();assert.equal(await page.locator('#bay-plan svg,#description svg').count(),0);assert.match(await page.locator('#bay-plan button[data-bay="3"] strong').textContent(),/<svg/);
- await page.locator('#bay-plan button[data-bay="0"]').click();await page.locator('[name=height]').fill('72');await ready();assert.match(await page.locator('#bay-plan button[data-bay="1"]').textContent(),/72 mm/);
- await page.locator('#add-column').click();await ready();assert.equal(await page.locator('#bay-plan button').count(),6);await page.locator('#remove-column').click();await ready();
- await page.locator('#add-row').click();await ready();assert.equal(await page.locator('#bay-plan button').count(),6);await page.locator('#remove-row').click();await ready();
- await page.locator('#bed-width').fill('60');await page.waitForFunction(()=>document.querySelector('#status').textContent.includes('does not fit'));assert(await page.locator('#mvpack').isDisabled());await page.locator('#bed-width').fill('220');await ready();
+ await printing();await page.locator('#arranged-export').uncheck();await ready();assert(await inspect(await download('#mvpack'),false,true),'Connected Gridfinity socket tray');
+ await design();await page.locator('#bay-plan button[data-bay="0"]').click();await design();await page.locator('#bay-across').selectOption('4');await design();await page.locator('#bay-deep').selectOption('3');await design();await page.locator('#bay-handle').selectOption('notch');await design();await page.locator('#bay-label-holder').uncheck();await ready();assert(await inspect(await download('#mvpack'),false,true),'Custom divider counts, finger notch and disabled label holder');
+ await printing();await page.locator('#format').selectOption('stl');const stl=await download('#download-kit');assert(await page.evaluate(async bytes=>{const {unzipSync}=await import('../shared/vendor/fflate.js');return Object.values(unzipSync(new Uint8Array(bytes))).every(b=>{const v=new DataView(b.buffer,b.byteOffset,b.byteLength);return b.length===84+v.getUint32(80,true)*50;});},stl),'Binary STL exports');await printing();await page.locator('#format').selectOption('3mf');
+ await design();await page.locator('#bay-plan button[data-bay="3"]').click();await design();await page.locator('#bay-label').fill('<svg onload=alert(1)>');await ready();assert.equal(await page.locator('#bay-plan svg,#description svg').count(),0);assert.match(await page.locator('#bay-plan button[data-bay="3"] strong').textContent(),/<svg/);
+ await design();await page.locator('#bay-plan button[data-bay="0"]').click();await design();await page.locator('[name=height]').fill('72');await ready();assert.match(await page.locator('#bay-plan button[data-bay="1"]').textContent(),/72 mm/);
+ await design();await page.locator('#add-column').click();await ready();assert.equal(await page.locator('#bay-plan button').count(),6);await design();await page.locator('#remove-column').click();await ready();
+ await design();await page.locator('#add-row').click();await ready();assert.equal(await page.locator('#bay-plan button').count(),6);await design();await page.locator('#remove-row').click();await ready();
+ await printing();await page.locator('#bed-width').fill('60');await page.waitForFunction(()=>document.querySelector('#status').textContent.includes('does not fit'));assert(await page.locator('#mvpack').isDisabled());await printing();await page.locator('#bed-width').fill('220');await ready();
  for(const mode of ['print','exploded','assembled']){await page.locator('#view').selectOption(mode);assert(await page.locator('#viewer canvas').evaluate(c=>c.width>0));}
- for(const preset of ['desk','tools','parts']){await page.locator(`[data-cabinet-preset=${preset}]`).click();await ready();assert.equal(await page.locator('#bay-plan button').count(),preset==='desk'?3:4);}
- if(process.env.CABINET_PROOF){await page.locator('#arranged-export').check();await ready();await page.screenshot({path:process.env.CABINET_PROOF});await page.locator('#viewer').screenshot({path:path.join(root,'images/assembly-studio.png')});}
+ for(const preset of ['desk','tools','parts']){await design();await page.locator(`[data-cabinet-preset=${preset}]`).click();await ready();assert.equal(await page.locator('#bay-plan button').count(),preset==='desk'?3:4);}
+ await design();await page.locator('[data-cabinet-preset=stacked]').click();await design();await page.locator('#grid-top').check();await ready();
+ assert.equal(await page.locator('#bay-plan button').count(),2);
+ await printing();await page.locator('#arranged-export').uncheck();await ready();assert(await inspect(await download('#mvpack'),false,false,{parts:5}),'Stacked cabinet and connected lift-off socket top');
+ await design();await page.locator('#cabinet-output').selectOption('insert');await ready();assert(await page.locator('#grid-top').isDisabled());assert(await inspect(await download('#mvpack'),false,false,{parts:1}),'Standalone matching drawer with no hardware');
+ await design();await page.locator('#bay-plan button[data-bay="1"]').click();await ready();await printing();assert.match(await page.locator('#description').textContent(),/bay 2, exported separately/);
+ await design();await page.locator('#grid-base').check();await ready();assert(await inspect(await download('#mvpack'),false,false,{parts:1,base:true}),'Closed connected standalone Gridfinity drawer');
+ assert.match(await page.locator('#dimensions').textContent(),/125.5 × 125.5 × 74.4/);
+ await design();await page.locator('#cabinet-output').selectOption('cabinet');await ready();assert(await page.locator('#grid-base').isDisabled());assert(await page.locator('#grid-top').isChecked());
+ if(process.env.CABINET_PROOF){await printing();await page.locator('#arranged-export').check();await ready();await page.screenshot({path:process.env.CABINET_PROOF});await page.locator('#viewer').screenshot({path:path.join(root,'images/assembly-studio.png')});}
  for(const viewport of [{width:1920,height:1080},{width:1366,height:768},{width:390,height:844}]){await page.setViewportSize(viewport);assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'No horizontal overflow');}
- assert.equal(errors.length,0,errors.join('\n'));assert(requests.every(u=>/^(http:\/\/127\.0\.0\.1:|blob:|data:)/.test(u)),'No external requests');console.log('PASS: visual bay planner, joint alignment, closed connected printable meshes, Gridfinity tray, plate bounds/inventory, STL/3MF/project exports, hardware BOM, presets, invalid bed handling, escaped labels and responsive layout.');
+ assert.equal(errors.length,0,errors.join('\n'));assert(requests.every(u=>/^(http:\/\/127\.0\.0\.1:|blob:|data:)/.test(u)),'No external requests');console.log('PASS: visual bay planner, joint alignment, closed connected printable meshes, Gridfinity tray, plate bounds/inventory, STL/3MF/project exports, hardware BOM, presets, stacked cabinets, standalone drawers, optional top and underside, invalid bed handling, escaped labels and responsive layout.');
  }finally{await browser.close();server.close();}
 })().catch(e=>{console.error(e);process.exitCode=1;server.close();});

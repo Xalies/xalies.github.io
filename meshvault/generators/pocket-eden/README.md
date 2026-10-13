@@ -42,3 +42,8 @@ New app code is MIT, copyright 2026 Xalies; see LICENSE. Three.js and fflate MIT
 notices are retained in the HTML. The package writer reuses this site's
 `generators/shared/mvpack.js` implementation. Generated worlds stay on the
 visitor's device.
+
+
+Pocket Eden retains its original teal and green palette, rounded controls and
+immersive landscape layout, with a subtle MeshVault Creator Tools link. Styling
+stays embedded in the standalone HTML for offline use.
