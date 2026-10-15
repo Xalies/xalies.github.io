@@ -72,6 +72,17 @@ class CatalogueTests(unittest.TestCase):
         self.assertEqual(identities.affiliate_url("https://store.sunlu.com/products/resin", rules["SUNLU"]),
                          "https://store.sunlu.com/products/resin?sca_ref=12477616.r65NSOHEnL")
 
+    def test_polymaker_affiliates_keep_clean_standard_destinations(self):
+        brand = next(b for b in builder.build(ROOT)["brands"] if b["brand"] == "Polymaker")
+        self.assertEqual(brand["affiliateUrl"], "https://shop.polymaker.com/MESHVAULT")
+        self.assertEqual(brand["purchaseUrl"], "https://shop.polymaker.com/collections/polymaker-3d-printer-filament")
+        self.assertEqual(brand["cartUrl"], "https://shop.polymaker.com/cart")
+        self.assertEqual(brand["affiliateCartUrl"], "https://shop.polymaker.com/cart?utm_campaign=MESHVAULT")
+        for product in brand["products"]:
+            for option in product["purchaseOptions"]:
+                self.assertNotIn("utm_campaign", option["purchaseUrl"])
+                self.assertEqual(option["affiliateUrl"], option["purchaseUrl"] + "&utm_campaign=MESHVAULT")
+
     def test_variants_become_options_and_reviewed_preferences_survive_refresh(self):
         rows = [{"range": "PLA", "name": "White", "hexes": ["#FFFFFF"], "code": str(i), "profileId": None,
                  "variant": label, "purchaseUrl": "https://shop.example.test/products/pla?variant=" + str(i)}
