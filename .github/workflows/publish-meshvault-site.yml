@@ -27,6 +27,7 @@ jobs:
           test -f meshvault/index.html
           test -f meshvault/CNAME
           grep -Fxq "www.meshvault.app" meshvault/CNAME
+          node meshvault/downloads.test.cjs
 
       - name: Checkout publishing repository
         uses: actions/checkout@v6
