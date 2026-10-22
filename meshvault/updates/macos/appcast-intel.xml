@@ -4,6 +4,16 @@
         <title>MeshVault</title>
         <item>
             <title>2.5.0</title>
+            <pubDate>Thu, 22 Oct 2026 18:10:04 +0000</pubDate>
+            <link>https://www.meshvault.app</link>
+            <sparkle:version>1228</sparkle:version>
+            <sparkle:shortVersionString>2.5.0</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <sparkle:releaseNotesLink>https://www.meshvault.app/updates/macos/MeshVault-macOS-Intel-2.5.0.1228.md</sparkle:releaseNotesLink>
+            <enclosure url="https://github.com/Xalies/xalies.github.io/releases/download/v2.5.0.1/MeshVault-macOS-Intel-2.5.0.1228.dmg" length="72248266" type="application/octet-stream" sparkle:edSignature="/J3IHVHNYvrDo1X+VldONN5zFXK2AJAlCaYD3MqW0J8BROVgsCVK6V17/QDxGR0HHy/eaovoO5WPYu8K2oEzDw=="/>
+        </item>
+        <item>
+            <title>2.5.0</title>
             <pubDate>Thu, 22 Oct 2026 17:34:26 +0000</pubDate>
             <link>https://www.meshvault.app</link>
             <sparkle:version>1227</sparkle:version>
@@ -91,16 +101,6 @@
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
             <sparkle:releaseNotesLink>https://www.meshvault.app/updates/macos/MeshVault-macOS-Intel-2.3.0.1202.md</sparkle:releaseNotesLink>
             <enclosure url="https://github.com/Xalies/xalies.github.io/releases/download/v2.3.0.1/MeshVault-macOS-Intel-2.3.0.1202.dmg" length="64009046" type="application/octet-stream" sparkle:edSignature="WlfAIa7ZHsKoOEvoqV7EygaK2sss6eV7uMaEeGyx6l9Vy9He/HFun2lxEMBtug/3C21Hi4IvW1mWFaFlMSyJDw=="/>
-        </item>
-        <item>
-            <title>2.3.0</title>
-            <pubDate>Tue, 06 Oct 2026 17:05:52 +0000</pubDate>
-            <link>https://www.meshvault.app</link>
-            <sparkle:version>1201</sparkle:version>
-            <sparkle:shortVersionString>2.3.0</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <sparkle:releaseNotesLink>https://www.meshvault.app/updates/macos/MeshVault-macOS-Intel-2.3.0.1201.md</sparkle:releaseNotesLink>
-            <enclosure url="https://github.com/Xalies/xalies.github.io/releases/download/v2.3.0.0/MeshVault-macOS-Intel-2.3.0.1201.dmg" length="64608622" type="application/octet-stream" sparkle:edSignature="uhQwp4H3+rBJkBbl3hzAnHiFL4VtEkDuJ+XD5T+MWP7uajyKtIHV5Xi4yhLHdk3tR6fVXEZhH65yEQOqLyJSAg=="/>
         </item>
     </channel>
 </rss>
