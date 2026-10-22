@@ -6,6 +6,17 @@
         <description>MeshVault Direct updates for macOS.</description>
         <language>en-au</language>
         <item>
+            <title>2.5.0</title>
+            <pubDate>Thu, 22 Oct 2026 17:18:11 +0000</pubDate>
+            <link>https://www.meshvault.app</link>
+            <sparkle:version>1226</sparkle:version>
+            <sparkle:shortVersionString>2.5.0</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <sparkle:releaseNotesLink>https://www.meshvault.app/updates/macos/MeshVault-macOS-Apple-Silicon-2.5.0.1226.md</sparkle:releaseNotesLink>
+            <enclosure url="https://github.com/Xalies/xalies.github.io/releases/download/v2.5.0.0/MeshVault-macOS-Apple-Silicon-2.5.0.1226.dmg" length="67536064" type="application/octet-stream" sparkle:edSignature="qe63vy8mMvPVAWa4kkjE5n/nQcw+GnVtWKE8YRFahLu1Z+f+W61TD9jDhwUxwlVlILE6E51fKdWrRfy82rSOAw=="/>
+        </item>
+        <item>
             <title>2.4.3</title>
             <pubDate>Tue, 20 Oct 2026 21:49:31 +0000</pubDate>
             <link>https://www.meshvault.app</link>
@@ -103,17 +114,6 @@
             <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
             <sparkle:releaseNotesLink>https://www.meshvault.app/updates/macos/MeshVault-macOS-Apple-Silicon-2.3.0.1201.md</sparkle:releaseNotesLink>
             <enclosure url="https://github.com/Xalies/xalies.github.io/releases/download/v2.3.0.0/MeshVault-macOS-Apple-Silicon-2.3.0.1201.dmg" length="60288826" type="application/octet-stream" sparkle:edSignature="1bT96eMbSVLnVNy9JYOfEgZv10SHCcFRRWXC2bLazzUjHTq8OOlzjr4ak/eB5jRKCFDBBiIo/I9JcCOVf0ymDQ=="/>
-        </item>
-        <item>
-            <title>2.2.0</title>
-            <pubDate>Sun, 20 Sep 2026 08:18:55 +0000</pubDate>
-            <link>https://www.meshvault.app</link>
-            <sparkle:version>1172</sparkle:version>
-            <sparkle:shortVersionString>2.2.0</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <sparkle:releaseNotesLink>https://www.meshvault.app/updates/macos/MeshVault-macOS-Apple-Silicon-2.2.0.1172.md</sparkle:releaseNotesLink>
-            <enclosure url="https://github.com/Xalies/xalies.github.io/releases/download/v2.2.0.0/MeshVault-macOS-Apple-Silicon-2.2.0.1172.dmg" length="59213919" type="application/octet-stream" sparkle:edSignature="+f1HJ4o9oWk0kwpXjCnFOC3rQeHbXqTPManHFMt3OXwO+7MBIGlp/X6eDXd3QxidJEX5Z7FTjuXYUNrNotGjDQ=="/>
         </item>
         <item>
             <title>1.5.0</title>
