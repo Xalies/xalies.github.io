@@ -175,6 +175,7 @@
     }
     @media (max-width: 680px) {
       .container { padding-inline: 20px; }
+      th:first-child, td:first-child { width: 118px; }
       .nav .button { display: none; }
       h1 { font-size: clamp(44px, 13vw, 64px); }
       .tradeoffs, .source-list { grid-template-columns: 1fr; }
@@ -207,7 +208,7 @@
     <section class="hero">
       <div class="container hero-grid">
         <div>
-          <p class="eyebrow">Comparison guide · features checked 13 October · licence notes updated 24 October 2026</p>
+          <p class="eyebrow">Comparison guide · features and licences checked 24 October 2026</p>
           <h1>Choose the model library that fits how you collect.</h1>
           <p class="lead">MeshVault is not automatically the right choice for everyone. This page compares the current tools, names where each one is stronger, and explains the trade-offs without awarding a winner.</p>
           <div class="actions">
@@ -237,7 +238,7 @@
             <span>01</span><h3>Collect</h3><p>Import files, folders and archives with choices for keeping a pack intact, virtually indexing its contents, splitting models, or extracting its folder structure. MeshVault Connect handles supported repository downloads plus Google Drive and Dropbox packs.</p>
           </div>
           <div class="snapshot-row">
-            <span>02</span><h3>Understand</h3><p>Search titles, creators, sources, tags and descriptions; use thumbnails, collections, favourites and duplicate filtering. Attach shared PDF guides, or let an authorised MCP assistant browse and organise library metadata.</p>
+            <span>02</span><h3>Understand</h3><p>Search titles, creators, sources, tags and descriptions; use thumbnails, Smart Collections, favourites and duplicate filtering. Keep model notes with optional surface pins, attach PDF guides, or let an authorised MCP assistant browse and organise library metadata.</p>
           </div>
           <div class="snapshot-row">
             <span>03</span><h3>Inspect and make</h3><p>Preview common mesh, CAD and G-code formats, switch multi-plate projects, measure against a bed reference, capture renders, open files in FDM, resin or CNC tools, and retain useful slicer-output metrics.</p>
@@ -278,7 +279,7 @@
                 <td>Platforms</td>
                 <td>Windows, Apple-silicon and Intel macOS direct builds, universal <a href="https://apps.apple.com/au/app/meshvault/id6787004756?mt=12">Mac App Store app</a>, and Linux; MeshVault Mobile for Android and iOS beta</td>
                 <td>Windows, universal macOS and Linux</td>
-                <td>Windows, macOS and Linux desktop; Docker/server and browser access</td>
+                <td>Windows, universal macOS and experimental Linux AppImage; server/browser access, with an experimental Docker distribution</td>
                 <td>Self-hosted web app, normally through Docker</td>
                 <td>Windows, Intel/Apple-silicon macOS and Linux</td>
                 <td>Windows, Intel/Apple-silicon macOS and Linux; mobile web share</td>
@@ -300,16 +301,16 @@
                 <td>STL, 3MF, OBJ, FBX, STEP/STP, 3DM, GLB, glTF, PLY, F3D/F3Z and LYS; archives, laser and companion files; optional video indexing</td>
                 <td>STL, 3MF, OBJ, STEP/STP, PLY, IGES and LYS/LTY; ZIP bundles; F3D, ChiTuBox and VOXL embedded-image support</td>
                 <td>Broad model, image, document, PCB and archive support</td>
-                <td>STL, OBJ and 3MF viewer; archive handling and import rules</td>
+                <td>Folder-based models can include mesh, image and slicer/support files; STL, OBJ and 3MF viewing is documented</td>
                 <td>STL, 3MF, OBJ, STEP and SCAD plus ZIP, RAR, 7Z and TAR variants</td>
                 <td>STL, 3MF and OBJ plus ZIP and RAR</td>
               </tr>
               <tr>
                 <td>Existing folders</td>
                 <td>Portable main library plus additional folders indexed in place; staged large-library scans with folder selection and exclusions</td>
-                <td>Multiple folders, drives and NAS mounts watched in place</td>
+                <td>Multiple folders, drives and NAS mounts indexed in place; live local watching and configurable network checks</td>
                 <td>Indexes multiple paths in place; optional Organize Library copies files into a chosen structure and removes originals after verification</td>
-                <td>Scans storage attached to the self-hosted server</td>
+                <td>Scans local or S3-compatible storage configured on the self-hosted server</td>
                 <td>Local, network and removable storage with import rules</td>
                 <td>Multiple watched folders indexed in place</td>
                 <td>Live local index that follows changes on disk</td>
@@ -317,12 +318,12 @@
               <tr>
                 <td>Web and repository imports</td>
                 <td>Connect captures downloads with available source links, creators, descriptions, tags and images; Google Drive and Dropbox pack imports</td>
-                <td><span class="quiet">No browser importer documented</span></td>
+                <td>Browser import from Patreon, Printables and MakerWorld is planned</td>
                 <td>Printventory Watcher browser-extension inbox queues pages/downloads; supported source-URL metadata enrichment</td>
                 <td>Metadata from Cults3D, MyMiniFactory and Thingiverse; file import from Thingiverse; service setup required</td>
                 <td><span class="quiet">No browser importer documented</span></td>
                 <td>Automatically detects or accepts source URLs, then adds images, descriptions and metadata; optional phone-to-desktop inbox</td>
-                <td>Cults3D discovery and download queue; other repository sources remain roadmap items</td>
+                <td>Cults3D discovery and download queue; Printables and MakerWorld are announced as next</td>
               </tr>
               <tr>
                 <td>Creator packs and archives</td>
@@ -330,33 +331,33 @@
                 <td>Browse ZIP, RAR, 7Z and TAR/TGZ in place, including split RAR sets</td>
                 <td>ZIP search plus grouped folder/ZIP bundles and combined multi-part preview</td>
                 <td>Upload or sync archives, then extract and index their models; existing archives can also be extracted in place</td>
-                <td>Archive handling shaped by custom, inheritable import rules</td>
+                <td>Browse archives and manually group their contents through Imported Sources; inheritable import rules organise scanned folders</td>
                 <td>Browse six archive families in place as locked groups</td>
                 <td>ZIP/RAR contents searchable and extracted when previewed</td>
               </tr>
               <tr>
                 <td>Thumbnails</td>
-                <td>Generated previews for supported mesh/CAD and toolpath files; embedded or matching local images; supported archive entries</td>
+                <td>Generated mesh/CAD and toolpath previews, embedded or matching images and archive entries; Windows Explorer, macOS Finder and Linux file-manager integration, with format/package limits</td>
                 <td>Rendered or embedded previews; archive entries and companion images; format-specific limitations apply</td>
-                <td>Rendered mesh/CAD previews, embedded images and custom images; F3D, ChiTuBox and VOXL use embedded pictures</td>
-                <td>Automatic rendered or static previews across many formats, including STEP, FreeCAD, images and video</td>
-                <td>Captured manually from the model viewer</td>
+                <td>Rendered mesh/CAD previews and custom images; F3D, ChiTuBox and VOXL use embedded pictures when present</td>
+                <td>Rendered mesh/CAD thumbnails, embedded FreeCAD/G-code images and image thumbnails; separate image/video display</td>
+                <td>Uses existing cover images or manual viewer captures; custom image selection and cropping</td>
                 <td>Rendered and embedded previews; custom images; SCAD rendering requires an installed OpenSCAD</td>
                 <td>Captured manually from the 3D viewer</td>
               </tr>
               <tr>
                 <td>3D preview</td>
-                <td>Mesh and CAD previews including Rhino 3DM, IGES, STEP, USDZ and CNC toolpaths; multi-plate 3MF, measurements, bed reference and render capture</td>
-                <td>STL, 3MF, OBJ, FBX, STEP, GLB, PLY, LYS and F3D/F3Z; 3DM uses saved render meshes; multi-plate 3MF and screenshot capture</td>
+                <td>Mesh/CAD previews including Rhino 3DM, IGES, STEP and USDZ; G-code/CNC toolpaths; Fusion F3D/F3Z saved display meshes and LYS stored geometry only; multi-plate 3MF, measurements, bed reference and render capture</td>
+                <td>STL, 3MF, OBJ, FBX, STEP, GLB and PLY; 3DM saved render meshes, partial F3D/F3Z and experimental loose-file LYS previews; multi-plate 3MF and screenshots</td>
                 <td>STL, 3MF, OBJ, STEP, PLY, IGES and LYS; bundle previews and Preview Studio. F3D, ChiTuBox and VOXL show images, not interactive geometry</td>
-                <td>Interactive preview for many model formats, including G-code</td>
+                <td>Interactive mesh, G-code and CAD previews, including STEP and IGES</td>
                 <td>STL, OBJ and 3MF</td>
-                <td>STL, OBJ and 3MF, including multi-colour/multi-plate projects and configurable printer-bed references</td>
+                <td>STL, OBJ and multi-colour/multi-plate 3MF; dimensions, configurable printer beds, millimetre rulers and fit checks</td>
                 <td>Interactive STL viewer and thumbnail capture</td>
               </tr>
               <tr>
                 <td>Organisation</td>
-                <td>Folders, collections, favourites, tags, rich descriptions, printed status, batch editing, shared PDF guides, filament colours and complete .mvpack packages</td>
+                <td>Folders and folder projects, manual/Smart Collections, favourites, tags, rich descriptions, optional model notes with surface pins, batch editing, PDF guides and .mvpack packages</td>
                 <td>Sources, collections, tags, notes and search; per-printer print queues, history, PDF/CSV checklists and backup/restore</td>
                 <td>Tags, designers, licences, notes, relationships and batch editing; print history, printer maintenance, parts stock and filament catalogue</td>
                 <td>Tags, creators, collections, private lists, likes, comments, remix/format relationships and multi-user permissions</td>
@@ -376,19 +377,19 @@
               </tr>
               <tr>
                 <td>Slicer and print workflow</td>
-                <td>FDM, resin and CNC hand-off, including FBX and PLY via STL conversion (results can vary); captures print time, filament, layers, material, printer and object metrics from supported slicer output</td>
-                <td>16+ detected slicers; beta 3MF conversion now includes PrusaSlicer; PLY-to-STL hand-off; per-plate time and filament metrics</td>
-                <td>Model/bundle hand-off; server-to-desktop slicer opening via a local helper; print history, filament tracking and optional Spoolman sync</td>
-                <td>Sends sliced files to OctoPrint, Moonraker and other printer APIs</td>
+                <td>FDM, resin and CNC hand-off; slicer-output metrics; optional queues track quantities and completed copies; experimental OrcaBridge plugin for OrcaSlicer 2.5</td>
+                <td>16+ detected slicers; beta 3MF conversion includes PrusaSlicer single-plate export; PLY mesh-to-STL hand-off; per-plate time and filament metrics</td>
+                <td>Model/bundle hand-off; server-to-desktop slicer opening via a local helper; print history, filament tracking and pull-only Spoolman catalogue sync</td>
+                <td>Opens supported files in desktop slicers; sends sliced files to OctoPrint, Moonraker and Duet printer APIs</td>
                 <td>Opens files in a configurable external application</td>
                 <td>Configurable Open With; reads printer, material and weight data from supported 3MF projects</td>
                 <td>Slicer hand-off, kanban print planning and spool tracking with Open Filament Database integration</td>
               </tr>
               <tr>
                 <td>Shared/network library</td>
-                <td>Windows, Linux and Docker servers; browser UI; native clients combine local and remote models; Connect can target the server</td>
-                <td>Indexes NAS/network mounts; <span class="quiet">no shared server UI documented</span></td>
-                <td>Docker/server browser access, with configurable HTTPS and listen port</td>
+                <td>Windows, Linux and Docker servers with browser UI; optional named-user roles (experimental); native clients combine local/remote models; Connect can target servers</td>
+                <td>Indexes NAS/network mounts; Docker/Linux ARM64 server with browser access is planned</td>
+                <td>Server browser access with configurable HTTPS and listen port; Docker distribution labelled experimental</td>
                 <td>Self-hosted, multi-user, roles/OIDC, REST API, federation and optional plugins</td>
                 <td>Network shares supported; server listed as coming soon</td>
                 <td>Optional user-to-user sharing; <span class="quiet">no shared library server documented</span></td>
@@ -398,17 +399,17 @@
                 <td>Mobile access</td>
                 <td>Free <a href="https://play.google.com/store/apps/details?id=com.xalies.meshvault">Android app</a> and <a href="https://testflight.apple.com/join/NAaS8nbh">iOS TestFlight beta</a>; local libraries, repository browsing and transfers; platform differences apply</td>
                 <td><span class="quiet">Not documented</span></td>
-                <td>Responsive server interface, installable as a PWA</td>
+                <td>Server interface with compact phone layout; installable as a PWA over HTTPS</td>
                 <td>Browser access to the self-hosted instance</td>
                 <td><span class="quiet">Not documented</span></td>
-                <td>Phone-to-desktop web sharing; no browsable mobile library</td>
+                <td>Phone-to-desktop web sharing; mobile library browsing not documented</td>
                 <td><span class="quiet">Not documented</span></td>
               </tr>
               <tr>
                 <td>Account and cloud</td>
-                <td>No account needed to catalogue local files; local library and optional LAN server</td>
+                <td>No account for local files; optional LAN server uses a PIN or named users managed by its owner</td>
                 <td>Local library; licence-key activation; optional AI connects to cloud or local providers</td>
-                <td>No account for the library; optional AI providers may require their own account or key</td>
+                <td>Local library; optional AI providers may require their own account or key</td>
                 <td>Self-managed user accounts on your own server; no required vendor cloud</td>
                 <td>Local desktop app; no remote access</td>
                 <td>No account for the core app; phone and user-to-user sharing are opt-in</td>
@@ -447,8 +448,8 @@
               <p>Best suited to makers whose collection mixes creator packs, repository downloads, CAD and slicer files—and who want a portable local library that can later extend to a server or mobile device.</p>
             </div>
             <div class="tradeoffs">
-              <div class="tradeoff"><h4>Choose MeshVault when</h4><ul><li>You want repository downloads to arrive with useful page metadata and images.</li><li>You need deliberate choices for large creator packs and nested archives.</li><li>You work with CAD, G-code, slicer results, local clients and optional server libraries.</li></ul></div>
-              <div class="tradeoff"><h4>Consider another tool when</h4><ul><li>You need an open-source desktop app.</li><li>You need multi-user permissions, public sharing or federation in a web-first system.</li><li>You need built-in semantic search, geometry-aware duplicate review or a full print-planning board. MCP assistant access is a different capability.</li></ul></div>
+              <div class="tradeoff"><h4>Choose MeshVault when</h4><ul><li>You want repository downloads to arrive with useful page metadata and images.</li><li>You need deliberate choices for large creator packs and nested archives.</li><li>You want model notes, optional print queues and native clients that combine local and server libraries.</li></ul></div>
+              <div class="tradeoff"><h4>Consider another tool when</h4><ul><li>You need an open-source desktop app.</li><li>You need public publishing, federation or OIDC in a web-first system.</li><li>You need built-in semantic search, geometry-aware duplicate review or printer and filament stock management. MCP assistant access is a different capability.</li></ul></div>
             </div>
             <div class="licence-note" id="meshvault-licence">
               <p><strong>Licence and update coverage:</strong> MeshVault licence keys are managed through Lemon Squeezy and are valid for life. They include lifetime updates, including future major versions. Your licence key will never be limited to a particular product version, so a new major release does not require another licence purchase.</p>
@@ -464,7 +465,7 @@
             </div>
             <div class="tradeoffs">
               <div class="tradeoff"><h4>Choose Meshory when</h4><ul><li>Your main problem is scanning and rendering a very large folder or NAS library in place.</li><li>You want optional cloud or local AI tagging, with OpenRouter-backed semantic search.</li><li>Geometry and folder-pack duplicate review, broad slicer detection or the beta 3MF converter matter.</li></ul></div>
-              <div class="tradeoff"><h4>Consider another tool when</h4><ul><li>You collect through repository pages or structured creator-pack imports.</li><li>You need G-code inspection or a workflow that manages and moves your source files.</li><li>You want a dedicated local server, native mobile app, or a lower one-time price.</li></ul></div>
+              <div class="tradeoff"><h4>Consider another tool when</h4><ul><li>You want browser repository imports or choices for extracting creator packs.</li><li>You need G-code layer inspection or in-app moves between library folders; these are respectively in progress and planned.</li><li>You want a dedicated local server, native mobile app, or a lower one-time price.</li></ul></div>
             </div>
             <div class="licence-note" id="meshory-licence">
               <p><strong>* Licence and update coverage:</strong> the purchase includes continued use of the app and every v1 update. Meshory currently plans v2 for August–September 2027, with an optional upgrade estimated at USD $10–15. Timing and pricing are not final.</p>
@@ -477,10 +478,10 @@
           <article class="product">
             <div class="product-heading">
               <div><span class="product-kicker">Free · open source</span><h3>Printventory</h3></div>
-              <p>A free, open-source organiser with mesh and CAD previews, print history, printer maintenance, optional AI tagging and a browser-accessible server.</p>
+              <p>A free, open-source organiser with mesh and CAD previews, print history, printer maintenance and optional AI tagging. Its Linux and Docker options are labelled experimental.</p>
             </div>
             <div class="tradeoffs">
-              <div class="tradeoff"><h4>Choose Printventory when</h4><ul><li>Free and open source is a firm requirement.</li><li>You want bundle previews, CAD viewing, print history, printer maintenance and parts tracking.</li><li>You want a browser-extension inbox, optional AI tools or a Docker/PWA workflow.</li></ul></div>
+              <div class="tradeoff"><h4>Choose Printventory when</h4><ul><li>Free and open source is a firm requirement.</li><li>You want bundle previews, CAD viewing, print history, printer maintenance and parts tracking.</li><li>You want a browser-extension inbox, optional AI tools or server/PWA access; Docker is experimental.</li></ul></div>
               <div class="tradeoff"><h4>Consider another tool when</h4><ul><li>You need interactive Fusion or ChiTuBox geometry; their embedded pictures are not 3D previews.</li><li>You need the guided creator-pack and archive-placement choices described for MeshVault.</li><li>You want a portable database inside the library or native clients combining local and remote models.</li></ul></div>
             </div>
             <a class="source-link" href="https://github.com/TechJeeper/Printventory">Printventory documentation and changelog →</a>
@@ -489,7 +490,7 @@
           <article class="product">
             <div class="product-heading">
               <div><span class="product-kicker">Free · open source · self-hosted</span><h3>Manyfold</h3></div>
-              <p>A strong choice for a web-first, genuinely multi-user model library, with access controls, external-service integrations, APIs, optional plugins, model relationships, social features and federation.</p>
+              <p>A strong choice for a web-first, multi-user model library, with interactive mesh/CAD viewing, access controls, external-service integrations, APIs, optional plugins, model relationships and federation.</p>
             </div>
             <div class="tradeoffs">
               <div class="tradeoff"><h4>Choose Manyfold when</h4><ul><li>You want a shared browser-based library hosted on your own server.</li><li>Multiple users, permissions, OIDC, public/private sharing or federation matter.</li><li>You want plugins, an open API, model/remix relationships or direct printer integrations.</li></ul></div>
@@ -504,8 +505,8 @@
               <p>A free desktop organiser focused on configurable imports, inherited tags and boolean or saved searches. Its official site still lists the browser-based server as coming soon.</p>
             </div>
             <div class="tradeoffs">
-              <div class="tradeoff"><h4>Choose Orynt3D when</h4><ul><li>You want a free native desktop app across Windows, macOS and Linux.</li><li>Custom import configurations, inheritable tags and boolean search fit your way of organising.</li><li>You are comfortable capturing preview thumbnails manually.</li></ul></div>
-              <div class="tradeoff"><h4>Consider another tool when</h4><ul><li>You want automatic thumbnails across a wider range of mesh, CAD and G-code formats.</li><li>You need repository and creator-pack capture, duplicate filtering or slicer-result tracking.</li><li>You need a released browser server or native mobile library.</li></ul></div>
+              <div class="tradeoff"><h4>Choose Orynt3D when</h4><ul><li>You want a free native desktop app across Windows, macOS and Linux.</li><li>Custom import configurations, inheritable tags and boolean search fit your way of organising.</li><li>Your packs contain useful cover images, with manual viewer captures available when needed.</li></ul></div>
+              <div class="tradeoff"><h4>Consider another tool when</h4><ul><li>You want generated thumbnails across a wider range of mesh, CAD and G-code formats.</li><li>You need browser repository capture, a documented duplicate finder or slicer-result tracking.</li><li>You need a released browser server or native mobile library.</li></ul></div>
             </div>
             <a class="source-link" href="https://www.orynt3d.com/features/">Orynt3D features →</a>
           </article>
@@ -513,11 +514,11 @@
           <article class="product">
             <div class="product-heading">
               <div><span class="product-kicker">Free to 100 files · €20 v1 · €60 lifetime (€45 with SAVE25)</span><h3>Modelist</h3></div>
-              <p>A desktop organiser with smart collections, source enrichment, duplicate review, multi-colour/multi-plate 3MF previews and OpenSCAD thumbnails. Phone sharing delivers links to the desktop inbox rather than providing a mobile library.</p>
+              <p>A desktop organiser with smart collections, source enrichment, duplicate review, multi-colour/multi-plate 3MF previews and OpenSCAD thumbnails. Its documented phone workflow delivers links to the desktop inbox; mobile library browsing is not documented.</p>
             </div>
             <div class="tradeoffs">
               <div class="tradeoff"><h4>Choose Modelist when</h4><ul><li>You want an unlimited-time trial library of up to 100 files, or qualify for educational use.</li><li>Smart collections, fuzzy search and exact/heuristic/perceptual duplicate review are priorities.</li><li>You value OpenSCAD thumbnails, printer/material metadata or opt-in phone sharing.</li></ul></div>
-              <div class="tradeoff"><h4>Consider another tool when</h4><ul><li>You need more CAD/project formats, measurements or G-code layer inspection.</li><li>You prefer a browser-extension capture workflow to source enrichment and shared links.</li><li>You need a shared library server or a native phone app with its own browsable library.</li></ul></div>
+              <div class="tradeoff"><h4>Consider another tool when</h4><ul><li>You need CAD/project formats beyond its indexed STEP and SCAD files, or G-code layer inspection.</li><li>You prefer a browser-extension capture workflow to source enrichment and shared links.</li><li>You need a shared library server or a native phone app with its own browsable library.</li></ul></div>
             </div>
             <div class="licence-note"><p><strong>Licence and update coverage:</strong> the €20 licence includes v1.x updates. The Lifetime licence includes future major versions. Both let you keep using the purchased app. <a href="https://modelist.app/">Current pricing and terms →</a></p></div>
             <a class="source-link" href="https://modelist.app/help">Modelist features and limitations →</a>
@@ -530,7 +531,7 @@
             </div>
             <div class="tradeoffs">
               <div class="tradeoff"><h4>Choose STLOrganizer when</h4><ul><li>You use Windows and want a free print-planning workspace rather than only a library.</li><li>Node-based folder templates, bulk file moves and commercial-licence tracking matter.</li><li>A kanban print queue and filament spool inventory are central to your workflow.</li></ul></div>
-              <div class="tradeoff"><h4>Consider another tool when</h4><ul><li>You need macOS/Linux clients or a portable library across operating systems.</li><li>You collect CAD, G-code and creator packs beyond STL/3MF/OBJ.</li><li>You want general repository capture, server-hosted libraries or native mobile browsing and transfers.</li></ul></div>
+              <div class="tradeoff"><h4>Consider another tool when</h4><ul><li>You need macOS/Linux clients or a portable library across operating systems.</li><li>You need CAD/G-code formats or archive formats beyond ZIP/RAR.</li><li>You want general repository capture, server-hosted libraries or native mobile browsing and transfers.</li></ul></div>
             </div>
             <a class="source-link" href="https://stlorganizer.com/">STLOrganizer features and roadmap →</a>
           </article>
@@ -545,27 +546,36 @@
           <h2>Sources, scope and ownership.</h2>
         </div>
         <div>
-          <p>This page is published by MeshVault. The comparison was generated using AI from the official documentation linked below. It is not a hands-on benchmark or an independent product review.</p>
-          <p>Detailed feature entries were last checked on <time datetime="2026-10-13">13 October 2026</time>, when MeshVault's direct release was <a href="https://github.com/Xalies/xalies.github.io/releases/tag/v2.3.1.0">2.3.1.0</a>; Store versions can differ. Connect and Mobile are separate products. The Mac desktop app is on the App Store; the iOS mobile app is a TestFlight beta.</p>
-          <p>Release notes used for that feature snapshot: <a href="https://meshory.com/changelog/v1.11.0">Meshory 1.11.0</a>, <a href="https://github.com/TechJeeper/Printventory/blob/main/CHANGELOG.md">Printventory changelog through 2.2.16</a>, <a href="https://manyfold.app/news.html">Manyfold 0.150.0</a> and <a href="https://github.com/PeteMinus/modelist.app/releases/tag/v1.12.1">Modelist 1.12.1</a>. STLOrganizer advertises 0.1.30. Orynt3D's feature and pricing pages were checked; a current release version was not verified.</p>
-          <p>Indexing, thumbnail generation and interactive preview are different capabilities. Beta features are labelled; roadmap items are not counted as available. “Not documented” means the reviewed sources did not establish a capability, not that it cannot exist. Meshory's newer release notes take precedence over older roadmap labels. Printventory's newer formats are documented in its changelog; individual builds may differ.</p>
+          <p>This page is published by MeshVault. The comparison was generated using AI from official documentation and targeted source checks. It is not a hands-on benchmark or an independent product review.</p>
+          <p>All seven products’ feature entries were rechecked on <time datetime="2026-10-24">24 October 2026</time>. MeshVault’s direct release was <a href="https://github.com/Xalies/xalies.github.io/releases/tag/v2.5.0.1">2.5.0.1</a>, with its entries checked against release-tag source; Store versions can differ. Connect and Mobile are separate products. The Mac desktop app is on the App Store; the iOS mobile app is a TestFlight beta.</p>
+          <p>Other version references: <a href="https://meshory.com/changelog/v1.11.0">Meshory 1.11.0</a>; <a href="https://printventory.com/">Printventory public download 3.0.0</a> and <a href="https://github.com/TechJeeper/Printventory/blob/main/CHANGELOG.md">source/changelog through 3.0.1</a>; <a href="https://manyfold.app/news/2026/10/21/release-v0-153-0.html">Manyfold 0.153.0</a>; <a href="https://www.orynt3d.com/docs/history/main-0.15.3">Orynt3D 0.15.3</a>; and <a href="https://github.com/PeteMinus/modelist.app/releases/tag/v1.12.1">Modelist 1.12.1</a>. STLOrganizer advertises 0.1.30. These references establish the documentation reviewed, not that every binary was tested.</p>
+          <p>Indexing, thumbnail generation and interactive preview are different capabilities. Beta and experimental features are labelled; roadmap items are not counted as available. “Not documented” means the reviewed sources did not establish a capability, not that it cannot exist. Meshory’s release notes take precedence over older roadmap labels. Printventory’s source can be ahead of its public downloads. Manyfold’s available viewers depend on the instance’s installed version and configuration.</p>
+          <p>MeshVault’s Notes and print queue start disabled and can be enabled in Library options. Fusion previews require usable saved display meshes; LYS previews omit procedural supports, hollowing and hole cuts. File-manager thumbnail formats and provider behaviour vary by platform and package; the Linux AppImage publishes library artwork. OrcaBridge is installed separately for compatible OrcaSlicer 2.5 builds. Experimental Create tools are excluded from this comparison.</p>
           <p>Pricing and licence notes were updated on <time datetime="2026-10-24">24 October 2026</time>. Prices use the vendor's stated currency; taxes and regional pricing may differ. MeshVault licence keys are USD $19.99 and include lifetime updates across future major versions. Store editions use their native activation flow; check their listings for published prices. Meshory's announced price increase takes effect on 28 October at 18:00 UTC; its planned v2 timing and upgrade fee remain estimates. Modelist advertises a 100-file free allowance, v1 and Lifetime licence options, and a Lifetime discount with SAVE25.</p>
           <p>Sources can change. If a fact is outdated, please <a href="https://github.com/Xalies/xalies.github.io/issues">report a correction</a>.</p>
           <div class="source-list" aria-label="Comparison sources">
             <a href="../features/">What you can do with MeshVault</a>
+            <a href="https://github.com/Xalies/xalies.github.io/releases/tag/v2.5.0.1">MeshVault 2.5.0.1 release</a>
             <a href="https://meshory.com/features">Meshory features and format limits</a>
             <a href="https://meshory.com/pricing">Meshory pricing</a>
             <a href="https://meshory.com/changelog">Meshory release notes</a>
+            <a href="https://meshory.com/roadmap">Meshory planned features</a>
+            <a href="https://printventory.com/">Printventory downloads and platform status</a>
+            <a href="https://printventory.com/faq.html">Printventory capabilities and limits</a>
             <a href="https://github.com/TechJeeper/Printventory">Printventory README</a>
             <a href="https://github.com/TechJeeper/Printventory/blob/main/GUIDE.md">Printventory guide</a>
             <a href="https://github.com/TechJeeper/Printventory/blob/main/CHANGELOG.md">Printventory changelog</a>
             <a href="https://manyfold.app/features.html">Manyfold features and roadmap</a>
             <a href="https://manyfold.app/manual/supported_formats.html">Manyfold format support</a>
+            <a href="https://3dprint.social/about">Manyfold current instance format table</a>
+            <a href="https://manyfold.app/get-started/libraries.html">Manyfold local and S3 storage</a>
             <a href="https://manyfold.app/manual/integrations.html">Manyfold service integrations</a>
             <a href="https://www.orynt3d.com/features/">Orynt3D features</a>
             <a href="https://www.orynt3d.com/pricing/">Orynt3D pricing</a>
+            <a href="https://www.orynt3d.com/docs/quickstart/quickstart/">Orynt3D covers and import workflow</a>
             <a href="https://modelist.app/">Modelist pricing and free allowance</a>
             <a href="https://modelist.app/help">Modelist feature guide</a>
+            <a href="https://github.com/PeteMinus/modelist.app/releases/tag/v1.12.0">Modelist rulers and fit checks</a>
             <a href="https://stlorganizer.com/">STLOrganizer features</a>
           </div>
         </div>
