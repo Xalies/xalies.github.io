@@ -115,22 +115,6 @@
     .snapshot-row h3 { font-size: 24px; }
     .snapshot-row p { margin: 1px 0 0; }
 
-    .table-note { margin: -52px 0 24px; color: var(--faint); font-family: "IBM Plex Mono", Consolas, monospace; font-size: 12px; }
-    .table-wrap { overflow-x: auto; border-top: 2px solid var(--text); border-bottom: 1px solid var(--line); scrollbar-color: var(--accent) var(--panel); }
-    table { width: 100%; min-width: 1500px; border-collapse: collapse; table-layout: fixed; }
-    th, td { padding: 17px 15px; border-right: 1px solid var(--soft-line); border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
-    th:last-child, td:last-child { border-right: 0; }
-    thead th { position: sticky; top: 0; z-index: 2; background: var(--bg-2); color: var(--text); font-size: 14px; }
-    th:first-child, td:first-child { position: sticky; left: 0; z-index: 1; width: 178px; background: var(--bg); }
-    thead th:first-child { z-index: 3; background: var(--bg-2); }
-    th:not(:first-child), td:not(:first-child) { width: 190px; }
-    th:nth-child(2), td:nth-child(2) { background: rgba(53, 45, 76, .56); }
-    td { color: var(--muted); font-size: 13px; line-height: 1.45; }
-    td:first-child { color: var(--text); font-weight: 600; }
-    thead a { text-decoration-color: var(--control-line); text-underline-offset: 3px; }
-    .quiet { color: var(--faint); }
-    #pricing { scroll-margin-top: 96px; }
-
     .product-list { border-top: 2px solid var(--text); }
     .product { padding: clamp(42px, 5vw, 72px) 0; border-bottom: 1px solid var(--line); }
     .product-heading { display: grid; grid-template-columns: minmax(220px, .55fr) minmax(420px, 1.45fr); gap: clamp(36px, 7vw, 110px); align-items: start; }
@@ -171,11 +155,9 @@
       .cta .actions { justify-content: flex-start; }
       .snapshot-row { grid-template-columns: 55px 1fr; }
       .snapshot-row p { grid-column: 2; }
-      .table-note { margin-top: -30px; }
     }
     @media (max-width: 680px) {
       .container { padding-inline: 20px; }
-      th:first-child, td:first-child { width: 118px; }
       .nav .button { display: none; }
       h1 { font-size: clamp(44px, 13vw, 64px); }
       .tradeoffs, .source-list { grid-template-columns: 1fr; }
@@ -212,8 +194,7 @@
           <h1>Choose the model library that fits how you collect.</h1>
           <p class="lead">MeshVault is not automatically the right choice for everyone. This page compares the current tools, names where each one is stronger, and explains the trade-offs without awarding a winner.</p>
           <div class="actions">
-            <a class="button primary" href="#matrix">See the comparison</a>
-            <a class="button" href="#head-to-head">Read the trade-offs</a>
+            <a class="button primary" href="#head-to-head">Read the trade-offs</a>
           </div>
         </div>
         <div class="hero-facts" aria-label="MeshVault summary">
@@ -246,187 +227,6 @@
           <div class="snapshot-row">
             <span>04</span><h3>Expand</h3><p>Move the portable library between supported desktop clients, add in-place watched folders, host a shared local-network library with Windows, Linux or Docker server builds, or use MeshVault Mobile on Android and iOS.</p>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="matrix">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <p class="eyebrow">The matrix</p>
-            <h2>Seven approaches, side by side.</h2>
-          </div>
-          <p>Short cells cannot capture every edge case, so the detailed guidance below matters as much as the table. “Not documented” means we could not verify the feature in the product’s current official material; it does not prove the feature is absent.</p>
-        </div>
-        <p class="table-note">Scroll horizontally to compare every product →</p>
-        <div class="table-wrap" tabindex="0" aria-label="Scrollable comparison table">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col">Capability</th>
-                <th scope="col"><a href="https://www.meshvault.app/">MeshVault</a></th>
-                <th scope="col"><a href="https://meshory.com/features">Meshory</a></th>
-                <th scope="col"><a href="https://github.com/TechJeeper/Printventory">Printventory</a></th>
-                <th scope="col"><a href="https://manyfold.app/features.html">Manyfold</a></th>
-                <th scope="col"><a href="https://www.orynt3d.com/features/">Orynt3D</a></th>
-                <th scope="col"><a href="https://modelist.app/help">Modelist</a></th>
-                <th scope="col"><a href="https://stlorganizer.com/">STLOrganizer</a></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Platforms</td>
-                <td>Windows, Apple-silicon and Intel macOS direct builds, universal <a href="https://apps.apple.com/au/app/meshvault/id6787004756?mt=12">Mac App Store app</a>, and Linux; MeshVault Mobile for Android and iOS beta</td>
-                <td>Windows, universal macOS and Linux</td>
-                <td>Windows, universal macOS and experimental Linux AppImage; server/browser access, with an experimental Docker distribution</td>
-                <td>Self-hosted web app, normally through Docker</td>
-                <td>Windows, Intel/Apple-silicon macOS and Linux</td>
-                <td>Windows, Intel/Apple-silicon macOS and Linux; mobile web share</td>
-                <td>Windows 10/11 only</td>
-              </tr>
-              <tr id="pricing">
-                <td>Price</td>
-                <td><a href="https://meshvault.lemonsqueezy.com/checkout/buy/55a16f70-5c0a-4fd8-a808-5b0108fd6d71">USD $19.99 lifetime licence</a>, with lifetime updates including future major versions. Licence keys are managed through Lemon Squeezy and never limited to a product version. Store editions use native activation; check their regional pricing. <a href="#meshvault-licence">Lifetime update coverage →</a></td>
-                <td>USD $34.99 once*, with all v1 updates; USD $39.99 for new licences from 28 October, 18:00 UTC. A v2 upgrade is currently estimated at USD $10–15. <a href="#meshory-licence">Purchase timing and update coverage →</a></td>
-                <td>Free and open source</td>
-                <td>Free and open source; self-hosting costs are yours</td>
-                <td>Free; donation-supported</td>
-                <td>100 files free; €20 for v1 or €60 lifetime (€45 with SAVE25); free eligible educational use</td>
-                <td>Free public Windows demo/beta</td>
-              </tr>
-              <tr>
-                <td>Indexed files</td>
-                <td>Mesh, CAD, slicer projects and G-code; ZIP, RAR, 7Z, TAR variants and .mvpack packages</td>
-                <td>STL, 3MF, OBJ, FBX, STEP/STP, 3DM, GLB, glTF, PLY, F3D/F3Z and LYS; archives, laser and companion files; optional video indexing</td>
-                <td>STL, 3MF, OBJ, STEP/STP, PLY, IGES and LYS/LTY; ZIP bundles; F3D, ChiTuBox and VOXL embedded-image support</td>
-                <td>Broad model, image, document, PCB and archive support</td>
-                <td>Folder-based models can include mesh, image and slicer/support files; STL, OBJ and 3MF viewing is documented</td>
-                <td>STL, 3MF, OBJ, STEP and SCAD plus ZIP, RAR, 7Z and TAR variants</td>
-                <td>STL, 3MF and OBJ plus ZIP and RAR</td>
-              </tr>
-              <tr>
-                <td>Existing folders</td>
-                <td>Portable main library plus additional folders indexed in place; staged large-library scans with folder selection and exclusions</td>
-                <td>Multiple folders, drives and NAS mounts indexed in place; live local watching and configurable network checks</td>
-                <td>Indexes multiple paths in place; optional Organize Library copies files into a chosen structure and removes originals after verification</td>
-                <td>Scans local or S3-compatible storage configured on the self-hosted server</td>
-                <td>Local, network and removable storage with import rules</td>
-                <td>Multiple watched folders indexed in place</td>
-                <td>Live local index that follows changes on disk</td>
-              </tr>
-              <tr>
-                <td>Web and repository imports</td>
-                <td>Connect captures downloads with available source links, creators, descriptions, tags and images; Google Drive and Dropbox pack imports</td>
-                <td>Browser import from Patreon, Printables and MakerWorld is planned</td>
-                <td>Printventory Watcher browser-extension inbox queues pages/downloads; supported source-URL metadata enrichment</td>
-                <td>Metadata from Cults3D, MyMiniFactory and Thingiverse; file import from Thingiverse; service setup required</td>
-                <td><span class="quiet">No browser importer documented</span></td>
-                <td>Automatically detects or accepts source URLs, then adds images, descriptions and metadata; optional phone-to-desktop inbox</td>
-                <td>Cults3D discovery and download queue; Printables and MakerWorld are announced as next</td>
-              </tr>
-              <tr>
-                <td>Creator packs and archives</td>
-                <td>Keep one pack, index contents virtually, split models, or extract while preserving folders; imports-to-review workflow</td>
-                <td>Browse ZIP, RAR, 7Z and TAR/TGZ in place, including split RAR sets</td>
-                <td>ZIP search plus grouped folder/ZIP bundles and combined multi-part preview</td>
-                <td>Upload or sync archives, then extract and index their models; existing archives can also be extracted in place</td>
-                <td>Browse archives and manually group their contents through Imported Sources; inheritable import rules organise scanned folders</td>
-                <td>Browse six archive families in place as locked groups</td>
-                <td>ZIP/RAR contents searchable and extracted when previewed</td>
-              </tr>
-              <tr>
-                <td>Thumbnails</td>
-                <td>Generated mesh/CAD and toolpath previews, embedded or matching images and archive entries; Windows Explorer, macOS Finder and Linux file-manager integration, with format/package limits</td>
-                <td>Rendered or embedded previews; archive entries and companion images; format-specific limitations apply</td>
-                <td>Rendered mesh/CAD previews and custom images; F3D, ChiTuBox and VOXL use embedded pictures when present</td>
-                <td>Rendered mesh/CAD thumbnails, embedded FreeCAD/G-code images and image thumbnails; separate image/video display</td>
-                <td>Uses existing cover images or manual viewer captures; custom image selection and cropping</td>
-                <td>Rendered and embedded previews; custom images; SCAD rendering requires an installed OpenSCAD</td>
-                <td>Captured manually from the 3D viewer</td>
-              </tr>
-              <tr>
-                <td>3D preview</td>
-                <td>Mesh/CAD previews including Rhino 3DM, IGES, STEP and USDZ; G-code/CNC toolpaths; Fusion F3D/F3Z saved display meshes and LYS stored geometry only; multi-plate 3MF, measurements, bed reference and render capture</td>
-                <td>STL, 3MF, OBJ, FBX, STEP, GLB and PLY; 3DM saved render meshes, partial F3D/F3Z and experimental loose-file LYS previews; multi-plate 3MF and screenshots</td>
-                <td>STL, 3MF, OBJ, STEP, PLY, IGES and LYS; bundle previews and Preview Studio. F3D, ChiTuBox and VOXL show images, not interactive geometry</td>
-                <td>Interactive mesh, G-code and CAD previews, including STEP and IGES</td>
-                <td>STL, OBJ and 3MF</td>
-                <td>STL, OBJ and multi-colour/multi-plate 3MF; dimensions, configurable printer beds, millimetre rulers and fit checks</td>
-                <td>Interactive STL viewer and thumbnail capture</td>
-              </tr>
-              <tr>
-                <td>Organisation</td>
-                <td>Folders and folder projects, manual/Smart Collections, favourites, tags, rich descriptions, optional model notes with surface pins, batch editing, PDF guides and .mvpack packages</td>
-                <td>Sources, collections, tags, notes and search; per-printer print queues, history, PDF/CSV checklists and backup/restore</td>
-                <td>Tags, designers, licences, notes, relationships and batch editing; print history, printer maintenance, parts stock and filament catalogue</td>
-                <td>Tags, creators, collections, private lists, likes, comments, remix/format relationships and multi-user permissions</td>
-                <td>Tags, attributes, collections, boolean search and custom import rules</td>
-                <td>Tags, nested and smart collections, groups, ratings, notes, workshop metadata, bulk actions and backup/restore</td>
-                <td>Tags, metadata, node-based conditional folder templates, favourites and a print planner</td>
-              </tr>
-              <tr>
-                <td>Duplicate tools</td>
-                <td>Content-hash detection during scans and imports, with a duplicate library filter</td>
-                <td>Content and supported geometry matching; folder-pack duplicates and overlap review</td>
-                <td>Content-hash deduplication with comparison thumbnails</td>
-                <td>Exact-checksum duplicate problem detection</td>
-                <td><span class="quiet">No duplicate finder documented</span></td>
-                <td>Exact, filename/size and perceptual matching; whole-archive comparisons and review tools</td>
-                <td>Hash-based matching, including archive contents</td>
-              </tr>
-              <tr>
-                <td>Slicer and print workflow</td>
-                <td>FDM, resin and CNC hand-off; slicer-output metrics; optional queues track quantities and completed copies; experimental OrcaBridge plugin for OrcaSlicer 2.5</td>
-                <td>16+ detected slicers; beta 3MF conversion includes PrusaSlicer single-plate export; PLY mesh-to-STL hand-off; per-plate time and filament metrics</td>
-                <td>Model/bundle hand-off; server-to-desktop slicer opening via a local helper; print history, filament tracking and pull-only Spoolman catalogue sync</td>
-                <td>Opens supported files in desktop slicers; sends sliced files to OctoPrint, Moonraker and Duet printer APIs</td>
-                <td>Opens files in a configurable external application</td>
-                <td>Configurable Open With; reads printer, material and weight data from supported 3MF projects</td>
-                <td>Slicer hand-off, kanban print planning and spool tracking with Open Filament Database integration</td>
-              </tr>
-              <tr>
-                <td>Shared/network library</td>
-                <td>Windows, Linux and Docker servers with browser UI; optional named-user roles (experimental); native clients combine local/remote models; Connect can target servers</td>
-                <td>Indexes NAS/network mounts; Docker/Linux ARM64 server with browser access is planned</td>
-                <td>Server browser access with configurable HTTPS and listen port; Docker distribution labelled experimental</td>
-                <td>Self-hosted, multi-user, roles/OIDC, REST API, federation and optional plugins</td>
-                <td>Network shares supported; server listed as coming soon</td>
-                <td>Optional user-to-user sharing; <span class="quiet">no shared library server documented</span></td>
-                <td><span class="quiet">No shared library server documented</span></td>
-              </tr>
-              <tr>
-                <td>Mobile access</td>
-                <td>Free <a href="https://play.google.com/store/apps/details?id=com.xalies.meshvault">Android app</a> and <a href="https://testflight.apple.com/join/NAaS8nbh">iOS TestFlight beta</a>; local libraries, repository browsing and transfers; platform differences apply</td>
-                <td><span class="quiet">Not documented</span></td>
-                <td>Server interface with compact phone layout; installable as a PWA over HTTPS</td>
-                <td>Browser access to the self-hosted instance</td>
-                <td><span class="quiet">Not documented</span></td>
-                <td>Phone-to-desktop web sharing; mobile library browsing not documented</td>
-                <td><span class="quiet">Not documented</span></td>
-              </tr>
-              <tr>
-                <td>Account and cloud</td>
-                <td>No account for local files; optional LAN server uses a PIN or named users managed by its owner</td>
-                <td>Local library; licence-key activation; optional AI connects to cloud or local providers</td>
-                <td>Local library; optional AI providers may require their own account or key</td>
-                <td>Self-managed user accounts on your own server; no required vendor cloud</td>
-                <td>Local desktop app; no remote access</td>
-                <td>No account for the core app; phone and user-to-user sharing are opt-in</td>
-                <td>No account for the core app; Discover and Community are optional network features</td>
-              </tr>
-              <tr>
-                <td>AI and automation</td>
-                <td>MCP assistants can browse and organise library metadata with per-client permissions in supported builds; unavailable in the Microsoft Store edition</td>
-                <td>Optional tagging through OpenRouter, direct providers, Ollama or Codex CLI; semantic search uses OpenRouter</td>
-                <td>Optional AI tagging, including compatible local providers; experimental MCP tools</td>
-                <td>REST API and plugins; built-in AI search not documented</td>
-                <td>Boolean and saved searches; AI tools not documented</td>
-                <td>Fuzzy search and smart collections; AI tools not documented</td>
-                <td>Rule-based templates and optional community suggestions; AI tools not documented</td>
-              </tr>
-            </tbody>
-          </table>
         </div>
       </div>
     </section>
