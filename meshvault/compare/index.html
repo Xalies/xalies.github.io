@@ -1,590 +1,207 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-AU">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Compare 3D Model Library Software | MeshVault</title>
-  <meta name="description" content="A source-linked comparison of MeshVault, Meshory, Printventory, Manyfold, Orynt3D, Modelist, and STLOrganizer for organising 3D model libraries.">
+  <title>Compare 3D Model Libraries and Licence Terms | MeshVault</title>
+  <meta name="description" content="Find a 3D model library that fits how you collect. Compare MeshVault and six alternatives by workflow, setup, price and licence update coverage.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.meshvault.app/compare/">
-  <meta property="og:title" content="MeshVault and the alternatives">
-  <meta property="og:description" content="Compare platforms, pricing, formats, archive workflows, browser imports, preview tools, slicer workflows, servers, and mobile access.">
+  <meta property="og:title" content="Find the right home for your models | MeshVault">
+  <meta property="og:description" content="A practical guide to MeshVault and the alternatives, with clear pricing and major-version upgrade terms.">
+  <meta property="og:image" content="https://www.meshvault.app/images/meshvault-windows-library.png">
   <link rel="canonical" href="https://www.meshvault.app/compare/">
   <link rel="icon" type="image/png" href="../images/meshvault_512x512.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
   <style>
-    :root {
-      color-scheme: dark;
-      --bg: #111016;
-      --bg-2: #17131c;
-      --panel: #1f1c25;
-      --panel-2: #2b2733;
-      --line: #403847;
-      --soft-line: #2b2733;
-      --control-line: #564d63;
-      --text: #f4f1fa;
-      --muted: #b8afc5;
-      --faint: #887f94;
-      --accent: #9a7cff;
-      --accent-soft: #352d4c;
-      --accent-hover: #cdbdff;
-      --max: 1520px;
-    }
-
+    :root { color-scheme: dark; --bg: #111016; --panel: #1b1722; --line: #3d3549; --text: #f4f1fa; --muted: #bdb4cc; --accent: #a58aff; --max: 1280px; }
     * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--text);
-      font-family: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
-      line-height: 1.58;
-    }
-    a { color: inherit; }
-    img { display: block; max-width: 100%; }
-    .container { width: min(var(--max), 100%); margin: 0 auto; padding-inline: clamp(22px, 4vw, 62px); }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      border-bottom: 1px solid var(--soft-line);
-      background: rgba(17, 16, 22, .9);
-      backdrop-filter: blur(16px);
-    }
-    .nav { min-height: 72px; display: flex; align-items: center; gap: 26px; }
-    .brand { display: inline-flex; align-items: center; gap: 11px; margin-right: auto; text-decoration: none; font-weight: 700; }
-    .brand img { width: 38px; height: 38px; border-radius: 6px; }
-    .nav-links { display: flex; align-items: center; gap: 22px; color: var(--muted); font-size: 14px; font-weight: 600; }
-    .nav-links a { text-decoration: none; }
-    .nav-links a:hover, .nav-links a[aria-current="page"] { color: var(--text); }
-
-    .button {
-      min-height: 38px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 7px 14px;
-      border: 1px solid var(--control-line);
-      border-radius: 6px;
-      background: var(--panel-2);
-      color: var(--text);
-      text-decoration: none;
-      font-size: 13px;
-      font-weight: 600;
-      white-space: nowrap;
-    }
-    .button:hover { border-color: var(--accent); background: #322f34; }
-    .button.primary { min-height: 40px; border-color: var(--accent); background: var(--accent); color: #100d16; }
-    .button.primary:hover { background: var(--accent-hover); }
-
-    main > section { padding: clamp(68px, 8vw, 120px) 0; border-bottom: 1px solid var(--soft-line); }
-    .hero { background: linear-gradient(180deg, var(--bg-2), var(--bg)); }
-    .hero-grid { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(280px, .7fr); gap: clamp(48px, 9vw, 150px); align-items: end; }
-    .eyebrow {
-      margin: 0 0 16px;
-      color: var(--accent-hover);
-      font-family: "IBM Plex Mono", Consolas, monospace;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-    }
-    h1, h2, h3 { margin: 0; letter-spacing: -.025em; line-height: 1.05; }
-    h1 { max-width: 900px; font-size: clamp(48px, 6.4vw, 96px); font-weight: 600; }
-    h2 { font-size: clamp(34px, 4.2vw, 62px); font-weight: 600; }
-    h3 { font-size: clamp(23px, 2.1vw, 32px); font-weight: 600; }
+    html { scroll-behavior: smooth; scroll-padding-top: 104px; }
+    body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.65 "IBM Plex Sans", "Segoe UI", system-ui, sans-serif; }
+    a { color: inherit; text-underline-offset: .23em; }
+    a:hover { color: #d6c9ff; }
+    a:focus-visible, .table-wrap:focus-visible { outline: 3px solid #d6c9ff; outline-offset: 5px; border-radius: 3px; }
+    img { display: block; max-width: 100%; height: auto; }
+    h1, h2, h3, p { margin: 0; }
+    h1, h2, h3 { line-height: 1.1; }
+    h1 { max-width: 900px; font-size: clamp(46px, 6vw, 80px); letter-spacing: -.05em; }
+    h2 { font-size: clamp(30px, 3.5vw, 46px); letter-spacing: -.035em; }
+    h3 { font-size: 22px; letter-spacing: -.02em; }
     p { color: var(--muted); }
-    .lead { max-width: 780px; margin: 28px 0 0; font-size: clamp(18px, 1.7vw, 23px); }
-    .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; }
-
-    .hero-facts { border-top: 2px solid var(--text); }
-    .hero-fact { padding: 18px 0; border-bottom: 1px solid var(--line); }
-    .hero-fact strong { display: block; font-size: 18px; }
-    .hero-fact span { display: block; margin-top: 3px; color: var(--muted); font-size: 14px; }
-
-    .section-head { display: grid; grid-template-columns: minmax(260px, .7fr) minmax(420px, 1.3fr); gap: clamp(42px, 8vw, 130px); margin-bottom: clamp(44px, 6vw, 80px); }
-    .section-head p { max-width: 720px; margin: 5px 0 0; font-size: 18px; }
-    .section-head .eyebrow { margin-bottom: 13px; }
-
-    .snapshot { border-top: 2px solid var(--text); }
-    .snapshot-row { display: grid; grid-template-columns: 80px minmax(230px, 360px) 1fr; gap: 26px; padding: 27px 0; border-bottom: 1px solid var(--line); }
-    .snapshot-row > span { color: var(--accent-hover); font-family: "IBM Plex Mono", Consolas, monospace; font-size: 13px; }
-    .snapshot-row h3 { font-size: 24px; }
-    .snapshot-row p { margin: 1px 0 0; }
-
-    .table-note { margin: -52px 0 24px; color: var(--faint); font-family: "IBM Plex Mono", Consolas, monospace; font-size: 12px; }
-    .table-wrap { overflow-x: auto; border-top: 2px solid var(--text); border-bottom: 1px solid var(--line); scrollbar-color: var(--accent) var(--panel); }
-    table { width: 100%; min-width: 1500px; border-collapse: collapse; table-layout: fixed; }
-    th, td { padding: 17px 15px; border-right: 1px solid var(--soft-line); border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
-    th:last-child, td:last-child { border-right: 0; }
-    thead th { position: sticky; top: 0; z-index: 2; background: var(--bg-2); color: var(--text); font-size: 14px; }
-    th:first-child, td:first-child { position: sticky; left: 0; z-index: 1; width: 178px; background: var(--bg); }
-    thead th:first-child { z-index: 3; background: var(--bg-2); }
-    th:not(:first-child), td:not(:first-child) { width: 190px; }
-    th:nth-child(2), td:nth-child(2) { background: rgba(53, 45, 76, .56); }
-    td { color: var(--muted); font-size: 13px; line-height: 1.45; }
-    td:first-child { color: var(--text); font-weight: 600; }
-    thead a { text-decoration-color: var(--control-line); text-underline-offset: 3px; }
-    .quiet { color: var(--faint); }
-
-    .product-list { border-top: 2px solid var(--text); }
-    .product { padding: clamp(42px, 5vw, 72px) 0; border-bottom: 1px solid var(--line); }
-    .product-heading { display: grid; grid-template-columns: minmax(220px, .55fr) minmax(420px, 1.45fr); gap: clamp(36px, 7vw, 110px); align-items: start; }
-    .product-kicker { color: var(--faint); font-family: "IBM Plex Mono", Consolas, monospace; font-size: 12px; }
-    .product-heading p { max-width: 780px; margin: 12px 0 0; font-size: 17px; }
-    .tradeoffs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; margin-top: 34px; border-top: 1px solid var(--line); }
-    .tradeoff { padding: 24px 28px 0 0; }
-    .tradeoff + .tradeoff { padding-left: 28px; border-left: 1px solid var(--line); }
-    .tradeoff h4 { margin: 0; color: var(--text); font-size: 15px; }
-    .tradeoff ul { margin: 14px 0 0; padding: 0; list-style: none; }
-    .tradeoff li { position: relative; margin: 9px 0; padding-left: 17px; color: var(--muted); }
-    .tradeoff li::before { content: ""; position: absolute; left: 0; top: .76em; width: 6px; height: 1px; background: var(--accent); }
-    .source-link { display: inline-block; margin-top: 20px; color: var(--accent-hover); font-size: 13px; text-underline-offset: 3px; }
-
-    .method { display: grid; grid-template-columns: minmax(260px, .7fr) minmax(420px, 1.3fr); gap: clamp(42px, 8vw, 130px); }
-    .method p { margin: 0 0 18px; }
-    .source-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid var(--line); }
-    .source-list a { padding: 14px 12px 14px 0; border-bottom: 1px solid var(--line); color: var(--muted); text-underline-offset: 3px; }
-
-    .cta { padding: 38px 0; background: var(--bg-2); }
-    .cta-grid { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(260px, .7fr); gap: 32px; align-items: center; }
-    .cta .eyebrow { margin-bottom: 8px; }
-    .cta h2 { max-width: 700px; font-size: clamp(28px, 3vw, 42px); }
-    .cta p { margin: 10px 0 0; font-size: 16px; }
-    .cta .actions { justify-content: flex-end; margin-top: 0; }
-
-    footer { padding: 38px 0; background: #0c0a0f; }
-    .footer-grid { display: flex; justify-content: space-between; gap: 30px; }
-    .footer-links { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 15px; }
-    .footer-links a { color: var(--muted); font-size: 13px; text-decoration: none; }
-
-    @media (max-width: 980px) {
-      .nav-links { display: none; }
-      .hero-grid, .section-head, .product-heading, .method, .cta-grid { grid-template-columns: 1fr; }
-      .cta .actions { justify-content: flex-start; }
-      .snapshot-row { grid-template-columns: 55px 1fr; }
-      .snapshot-row p { grid-column: 2; }
-      .table-note { margin-top: -30px; }
+    .container { width: min(var(--max), 100%); padding-inline: clamp(22px, 5vw, 64px); margin-inline: auto; }
+    .skip-link { position: absolute; left: 20px; top: -100px; z-index: 100; padding: 10px 16px; background: var(--text); color: var(--bg); }
+    .skip-link:focus { top: 10px; }
+    header { position: sticky; top: 0; z-index: 10; background: rgba(17,16,22,.96); border-bottom: 1px solid var(--line); }
+    .nav { display: flex; align-items: center; gap: 24px; min-height: 76px; }
+    .brand { display: flex; align-items: center; gap: 10px; margin-right: auto; font-weight: 700; text-decoration: none; }
+    .brand img { width: 34px; height: 34px; }
+    .nav-links { display: flex; align-items: center; gap: 24px; font-size: 14px; }
+    .nav-links a { color: var(--muted); text-decoration: none; }
+    .nav-links a[aria-current] { color: var(--text); }
+    .button { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 10px 18px; border: 1px solid #60536f; border-radius: 6px; text-decoration: none; font-size: 14px; font-weight: 600; }
+    .button:hover { color: var(--text); border-color: var(--accent); background: #282031; }
+    .button.primary { color: #14101d; border-color: var(--accent); background: var(--accent); }
+    .button.primary:hover { background: #c2adff; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
+    .eyebrow { margin-bottom: 20px; color: #c3afff; font: 500 11px/1.5 "IBM Plex Mono", Consolas, monospace; letter-spacing: .12em; text-transform: uppercase; }
+    .hero { padding-block: clamp(54px, 7vw, 92px); background: linear-gradient(180deg, #1c1527, var(--bg)); }
+    .lead { max-width: 740px; margin-top: 24px; font-size: clamp(18px, 1.8vw, 21px); }
+    .checked { margin-top: 26px; font-size: 13px; }
+    .section { padding-block: clamp(50px, 6vw, 76px); border-bottom: 1px solid var(--line); }
+    .section-head { max-width: 780px; margin-bottom: 34px; }
+    .section-head p { margin-top: 20px; }
+    .fit { background: var(--panel); }
+    .fit-grid { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(28px, 6vw, 76px); }
+    .fit-copy p + p { margin-top: 18px; }
+    .fit-copy a { display: inline-block; margin-top: 22px; font-size: 14px; font-weight: 600; }
+    .table-wrap { overflow-x: auto; border-block: 1px solid var(--line); scrollbar-color: var(--accent) var(--panel); }
+    table { width: 100%; min-width: 660px; border-collapse: collapse; }
+    caption { text-align: left; padding: 0 0 18px; color: var(--muted); font-size: 14px; }
+    th, td { padding: 20px 18px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+    thead { background: var(--panel); }
+    th { font-size: 15px; font-weight: 600; }
+    td { color: var(--muted); font-size: 15px; }
+    tbody th { width: 155px; }
+    td:last-child { width: 260px; }
+    tbody tr:last-child th, tbody tr:last-child td { border-bottom: 0; }
+    .table-hint { display: none; margin-bottom: 16px; font-size: 13px; }
+    .pricing-list { border-top: 1px solid var(--line); }
+    .price-row { display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: clamp(28px, 5vw, 64px); padding-block: 28px; border-bottom: 1px solid var(--line); }
+    .price-row h3 { font-size: 20px; }
+    .price { display: block; margin-top: 10px; color: #d1c1ff; font-size: 15px; font-weight: 600; }
+    .price-row p { font-size: 15px; }
+    .price-row p + p { margin-top: 12px; }
+    .price-row .source { margin-top: 12px; font-size: 13px; }
+    .method { background: var(--panel); }
+    .method p { max-width: 850px; margin-top: 20px; font-size: 15px; }
+    .cta { padding-block: 52px; }
+    .cta-grid { display: flex; align-items: center; justify-content: space-between; gap: 32px; }
+    .cta h2 { font-size: clamp(28px, 3vw, 40px); }
+    .cta p { margin-top: 16px; }
+    .cta .actions { flex-shrink: 0; margin-top: 0; }
+    footer { padding-block: 30px; border-top: 1px solid var(--line); }
+    .footer-grid { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px; }
+    .footer-grid p { font-size: 12px; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 12px 22px; font-size: 13px; }
+    @media (max-width: 800px) {
+      .nav { flex-wrap: wrap; gap: 12px 18px; padding-block: 14px; }
+      .nav-links { order: 3; width: 100%; gap: 24px; }
+      .fit-grid { grid-template-columns: 1fr; }
+      .cta-grid { display: block; }
+      .cta .actions { margin-top: 26px; }
+      html { scroll-padding-top: 132px; }
     }
-    @media (max-width: 680px) {
-      .container { padding-inline: 20px; }
-      .nav .button { display: none; }
-      h1 { font-size: clamp(44px, 13vw, 64px); }
-      .tradeoffs, .source-list { grid-template-columns: 1fr; }
-      .tradeoff + .tradeoff { margin-top: 25px; padding-left: 0; border-left: 0; border-top: 1px solid var(--line); }
-      .snapshot-row { grid-template-columns: 38px 1fr; gap: 18px; }
-      .footer-grid { display: block; }
-      .footer-links { justify-content: flex-start; margin-top: 18px; }
+    @media (max-width: 700px) {
+      .table-hint { display: block; }
+      .price-row { grid-template-columns: 1fr; gap: 16px; }
     }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
   </style>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
   <header>
     <div class="container nav">
-      <a class="brand" href="../index.html" aria-label="MeshVault home">
-        <img src="../images/meshvault_512x512.png" alt="MeshVault logo">
-        <span>MeshVault</span>
-      </a>
-      <nav class="nav-links" aria-label="Main navigation">
-        <a href="../index.html#workflow">How it works</a>
-        <a href="../features/">What you can do</a>
-        <a href="../index.html#downloads">Downloads</a>
-        <a href="../extension/connect.html">Connect</a>
-        <a href="../compare/" aria-current="page">Compare</a>
-      </nav>
+      <a class="brand" href="../index.html" aria-label="MeshVault home"><img src="../images/meshvault_512x512.png" width="34" height="34" alt=""><span>MeshVault</span></a>
+      <nav class="nav-links" aria-label="Main navigation"><a href="../features/">What you can do</a><a href="../compare/" aria-current="page">Compare</a><a href="../index.html#downloads">Downloads</a></nav>
       <a class="button primary" href="../index.html#downloads">Get MeshVault</a>
     </div>
   </header>
-
-  <main>
+  <main id="main">
     <section class="hero">
-      <div class="container hero-grid">
-        <div>
-          <p class="eyebrow">Comparison guide · checked 13 October 2026</p>
-          <h1>Choose the model library that fits how you collect.</h1>
-          <p class="lead">MeshVault is not automatically the right choice for everyone. This page compares the current tools, names where each one is stronger, and explains the trade-offs without awarding a winner.</p>
-          <div class="actions">
-            <a class="button primary" href="#matrix">See the comparison</a>
-            <a class="button" href="#head-to-head">Read the trade-offs</a>
-          </div>
-        </div>
-        <div class="hero-facts" aria-label="MeshVault summary">
-          <div class="hero-fact"><strong>USD $19.99</strong><span>MeshVault licence. Store and regional pricing may differ.</span></div>
-          <div class="hero-fact"><strong>Models, CAD and archives</strong><span>Mesh, project and toolpath files, creator packs and portable .mvpack libraries.</span></div>
-          <div class="hero-fact"><strong>Desktop, server and mobile</strong><span>Windows, macOS and Linux; local servers; free Android app and iOS beta.</span></div>
+      <div class="container">
+        <p class="eyebrow">Choosing a model library</p>
+        <h1>Find the right home<br>for your models.</h1>
+        <p class="lead">Start with how you collect, where you want your library to live, and what you need when it is time to make something. These apps take different approaches to the same growing pile of files.</p>
+        <div class="actions"><a class="button primary" href="#matrix">Compare the approaches</a><a class="button" href="#pricing">Prices and licences</a></div>
+        <p class="checked">Written by MeshVault’s developer. Official product information checked <time datetime="2026-10-23">23 October 2026</time>.</p>
+      </div>
+    </section>
+    <section class="section fit" id="head-to-head">
+      <div class="container fit-grid">
+        <div><p class="eyebrow">Where MeshVault fits</p><h2>For the models<br>you collect.</h2></div>
+        <div class="fit-copy">
+          <p>MeshVault suits a collection built from model-site downloads, creator packs and files you already own. Keep the images, creator details and instructions with the model, then find it again and open it in your slicer.</p>
+          <p>Start with a local library on Windows, macOS or Linux. Add Connect for supported web downloads, or an optional server for a shared library on your local network.</p>
+          <a href="../features/">See the workflow in MeshVault →</a>
         </div>
       </div>
     </section>
-
-    <section>
+    <section class="section" id="matrix">
       <div class="container">
-        <div class="section-head">
-          <div>
-            <p class="eyebrow">MeshVault 2.3</p>
-            <h2>More than a folder scanner.</h2>
-          </div>
-          <p>MeshVault is built around two real collection paths: importing creator packs and existing folders, or capturing repository downloads with their page details attached. The same portable library can then stay local, include watched folders, or connect to a dedicated server.</p>
-        </div>
-        <div class="snapshot">
-          <div class="snapshot-row">
-            <span>01</span><h3>Collect</h3><p>Import files, folders and archives with choices for keeping a pack intact, virtually indexing its contents, splitting models, or extracting its folder structure. MeshVault Connect handles supported repository downloads plus Google Drive and Dropbox packs.</p>
-          </div>
-          <div class="snapshot-row">
-            <span>02</span><h3>Understand</h3><p>Search titles, creators, sources, tags and descriptions; use thumbnails, collections, favourites and duplicate filtering. Attach shared PDF guides, or let an authorised MCP assistant browse and organise library metadata.</p>
-          </div>
-          <div class="snapshot-row">
-            <span>03</span><h3>Inspect and make</h3><p>Preview common mesh, CAD and G-code formats, switch multi-plate projects, measure against a bed reference, capture renders, open files in FDM, resin or CNC tools, and retain useful slicer-output metrics.</p>
-          </div>
-          <div class="snapshot-row">
-            <span>04</span><h3>Expand</h3><p>Move the portable library between supported desktop clients, add in-place watched folders, host a shared local-network library with Windows, Linux or Docker server builds, or use MeshVault Mobile on Android and iOS.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="matrix">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <p class="eyebrow">The matrix</p>
-            <h2>Seven approaches, side by side.</h2>
-          </div>
-          <p>Short cells cannot capture every edge case, so the detailed guidance below matters as much as the table. “Not documented” means we could not verify the feature in the product’s current official material; it does not prove the feature is absent.</p>
-        </div>
-        <p class="table-note">Scroll horizontally to compare every product →</p>
-        <div class="table-wrap" tabindex="0" aria-label="Scrollable comparison table">
+        <div class="section-head"><p class="eyebrow">Compare the approaches</p><h2>What matters to your collection?</h2><p>Use this as a starting point, then check each app against your own files and preferred setup. Product names link to the official documentation.</p></div>
+        <p class="table-hint">Scroll the table sideways to see the setup column →</p>
+        <div class="table-wrap" tabindex="0" role="region" aria-label="Comparison of model library approaches; scroll horizontally on smaller screens">
           <table>
-            <thead>
-              <tr>
-                <th scope="col">Capability</th>
-                <th scope="col"><a href="https://www.meshvault.app/">MeshVault</a></th>
-                <th scope="col"><a href="https://meshory.com/features">Meshory</a></th>
-                <th scope="col"><a href="https://github.com/TechJeeper/Printventory">Printventory</a></th>
-                <th scope="col"><a href="https://manyfold.app/features.html">Manyfold</a></th>
-                <th scope="col"><a href="https://www.orynt3d.com/features/">Orynt3D</a></th>
-                <th scope="col"><a href="https://modelist.app/help">Modelist</a></th>
-                <th scope="col"><a href="https://stlorganizer.com/">STLOrganizer</a></th>
-              </tr>
-            </thead>
+            <caption>Seven model libraries, grouped by the workflow they emphasise.</caption>
+            <thead><tr><th scope="col">App</th><th scope="col">A good fit when…</th><th scope="col">How you use it</th></tr></thead>
             <tbody>
-              <tr>
-                <td>Platforms</td>
-                <td>Windows, Apple-silicon and Intel macOS direct builds, universal <a href="https://apps.apple.com/au/app/meshvault/id6787004756?mt=12">Mac App Store app</a>, and Linux; MeshVault Mobile for Android and iOS beta</td>
-                <td>Windows, universal macOS and Linux</td>
-                <td>Windows, macOS and Linux desktop; Docker/server and browser access</td>
-                <td>Self-hosted web app, normally through Docker</td>
-                <td>Windows, Intel/Apple-silicon macOS and Linux</td>
-                <td>Windows, Intel/Apple-silicon macOS and Linux; mobile web share</td>
-                <td>Windows 10/11 only</td>
-              </tr>
-              <tr>
-                <td>Price</td>
-                <td><a href="https://meshvault.lemonsqueezy.com/checkout/buy/55a16f70-5c0a-4fd8-a808-5b0108fd6d71">USD $19.99 licence</a>; Store editions use native activation. Check Store listings for their regional price and version</td>
-                <td>USD $34.99 once, with v1 updates; USD $39.99 for new licences from 28 October, 18:00 UTC</td>
-                <td>Free and open source</td>
-                <td>Free and open source; self-hosting costs are yours</td>
-                <td>Free; donation-supported</td>
-                <td>100 files free; €20 for v1 or €60 lifetime (€45 with SAVE25); free eligible educational use</td>
-                <td>Free public Windows demo/beta</td>
-              </tr>
-              <tr>
-                <td>Indexed files</td>
-                <td>Mesh, CAD, slicer projects and G-code; ZIP, RAR, 7Z, TAR variants and .mvpack packages</td>
-                <td>STL, 3MF, OBJ, FBX, STEP/STP, 3DM, GLB, glTF, PLY, F3D/F3Z and LYS; archives, laser and companion files; optional video indexing</td>
-                <td>STL, 3MF, OBJ, STEP/STP, PLY, IGES and LYS/LTY; ZIP bundles; F3D, ChiTuBox and VOXL embedded-image support</td>
-                <td>Broad model, image, document, PCB and archive support</td>
-                <td>STL, OBJ and 3MF viewer; archive handling and import rules</td>
-                <td>STL, 3MF, OBJ, STEP and SCAD plus ZIP, RAR, 7Z and TAR variants</td>
-                <td>STL, 3MF and OBJ plus ZIP and RAR</td>
-              </tr>
-              <tr>
-                <td>Existing folders</td>
-                <td>Portable main library plus additional folders indexed in place; staged large-library scans with folder selection and exclusions</td>
-                <td>Multiple folders, drives and NAS mounts watched in place</td>
-                <td>Indexes multiple paths in place; optional Organize Library copies files into a chosen structure and removes originals after verification</td>
-                <td>Scans storage attached to the self-hosted server</td>
-                <td>Local, network and removable storage with import rules</td>
-                <td>Multiple watched folders indexed in place</td>
-                <td>Live local index that follows changes on disk</td>
-              </tr>
-              <tr>
-                <td>Web and repository imports</td>
-                <td>Connect captures downloads with available source links, creators, descriptions, tags and images; Google Drive and Dropbox pack imports</td>
-                <td><span class="quiet">No browser importer documented</span></td>
-                <td>Printventory Watcher browser-extension inbox queues pages/downloads; supported source-URL metadata enrichment</td>
-                <td>Metadata from Cults3D, MyMiniFactory and Thingiverse; file import from Thingiverse; service setup required</td>
-                <td><span class="quiet">No browser importer documented</span></td>
-                <td>Automatically detects or accepts source URLs, then adds images, descriptions and metadata; optional phone-to-desktop inbox</td>
-                <td>Cults3D discovery and download queue; other repository sources remain roadmap items</td>
-              </tr>
-              <tr>
-                <td>Creator packs and archives</td>
-                <td>Keep one pack, index contents virtually, split models, or extract while preserving folders; imports-to-review workflow</td>
-                <td>Browse ZIP, RAR, 7Z and TAR/TGZ in place, including split RAR sets</td>
-                <td>ZIP search plus grouped folder/ZIP bundles and combined multi-part preview</td>
-                <td>Upload or sync archives, then extract and index their models; existing archives can also be extracted in place</td>
-                <td>Archive handling shaped by custom, inheritable import rules</td>
-                <td>Browse six archive families in place as locked groups</td>
-                <td>ZIP/RAR contents searchable and extracted when previewed</td>
-              </tr>
-              <tr>
-                <td>Thumbnails</td>
-                <td>Generated previews for supported mesh/CAD and toolpath files; embedded or matching local images; supported archive entries</td>
-                <td>Rendered or embedded previews; archive entries and companion images; format-specific limitations apply</td>
-                <td>Rendered mesh/CAD previews, embedded images and custom images; F3D, ChiTuBox and VOXL use embedded pictures</td>
-                <td>Automatic rendered or static previews across many formats, including STEP, FreeCAD, images and video</td>
-                <td>Captured manually from the model viewer</td>
-                <td>Rendered and embedded previews; custom images; SCAD rendering requires an installed OpenSCAD</td>
-                <td>Captured manually from the 3D viewer</td>
-              </tr>
-              <tr>
-                <td>3D preview</td>
-                <td>Mesh and CAD previews including Rhino 3DM, IGES, STEP, USDZ and CNC toolpaths; multi-plate 3MF, measurements, bed reference and render capture</td>
-                <td>STL, 3MF, OBJ, FBX, STEP, GLB, PLY, LYS and F3D/F3Z; 3DM uses saved render meshes; multi-plate 3MF and screenshot capture</td>
-                <td>STL, 3MF, OBJ, STEP, PLY, IGES and LYS; bundle previews and Preview Studio. F3D, ChiTuBox and VOXL show images, not interactive geometry</td>
-                <td>Interactive preview for many model formats, including G-code</td>
-                <td>STL, OBJ and 3MF</td>
-                <td>STL, OBJ and 3MF, including multi-colour/multi-plate projects and configurable printer-bed references</td>
-                <td>Interactive STL viewer and thumbnail capture</td>
-              </tr>
-              <tr>
-                <td>Organisation</td>
-                <td>Folders, collections, favourites, tags, rich descriptions, printed status, batch editing, shared PDF guides, filament colours and complete .mvpack packages</td>
-                <td>Sources, collections, tags, notes and search; per-printer print queues, history, PDF/CSV checklists and backup/restore</td>
-                <td>Tags, designers, licences, notes, relationships and batch editing; print history, printer maintenance, parts stock and filament catalogue</td>
-                <td>Tags, creators, collections, private lists, likes, comments, remix/format relationships and multi-user permissions</td>
-                <td>Tags, attributes, collections, boolean search and custom import rules</td>
-                <td>Tags, nested and smart collections, groups, ratings, notes, workshop metadata, bulk actions and backup/restore</td>
-                <td>Tags, metadata, node-based conditional folder templates, favourites and a print planner</td>
-              </tr>
-              <tr>
-                <td>Duplicate tools</td>
-                <td>Content-hash detection during scans and imports, with a duplicate library filter</td>
-                <td>Content and supported geometry matching; folder-pack duplicates and overlap review</td>
-                <td>Content-hash deduplication with comparison thumbnails</td>
-                <td>Exact-checksum duplicate problem detection</td>
-                <td><span class="quiet">No duplicate finder documented</span></td>
-                <td>Exact, filename/size and perceptual matching; whole-archive comparisons and review tools</td>
-                <td>Hash-based matching, including archive contents</td>
-              </tr>
-              <tr>
-                <td>Slicer and print workflow</td>
-                <td>FDM, resin and CNC hand-off, including FBX and PLY via STL conversion (results can vary); captures print time, filament, layers, material, printer and object metrics from supported slicer output</td>
-                <td>16+ detected slicers; beta 3MF conversion now includes PrusaSlicer; PLY-to-STL hand-off; per-plate time and filament metrics</td>
-                <td>Model/bundle hand-off; server-to-desktop slicer opening via a local helper; print history, filament tracking and optional Spoolman sync</td>
-                <td>Sends sliced files to OctoPrint, Moonraker and other printer APIs</td>
-                <td>Opens files in a configurable external application</td>
-                <td>Configurable Open With; reads printer, material and weight data from supported 3MF projects</td>
-                <td>Slicer hand-off, kanban print planning and spool tracking with Open Filament Database integration</td>
-              </tr>
-              <tr>
-                <td>Shared/network library</td>
-                <td>Windows, Linux and Docker servers; browser UI; native clients combine local and remote models; Connect can target the server</td>
-                <td>Indexes NAS/network mounts; <span class="quiet">no shared server UI documented</span></td>
-                <td>Docker/server browser access, with configurable HTTPS and listen port</td>
-                <td>Self-hosted, multi-user, roles/OIDC, REST API, federation and optional plugins</td>
-                <td>Network shares supported; server listed as coming soon</td>
-                <td>Optional user-to-user sharing; <span class="quiet">no shared library server documented</span></td>
-                <td><span class="quiet">No shared library server documented</span></td>
-              </tr>
-              <tr>
-                <td>Mobile access</td>
-                <td>Free <a href="https://play.google.com/store/apps/details?id=com.xalies.meshvault">Android app</a> and <a href="https://testflight.apple.com/join/NAaS8nbh">iOS TestFlight beta</a>; local libraries, repository browsing and transfers; platform differences apply</td>
-                <td><span class="quiet">Not documented</span></td>
-                <td>Responsive server interface, installable as a PWA</td>
-                <td>Browser access to the self-hosted instance</td>
-                <td><span class="quiet">Not documented</span></td>
-                <td>Phone-to-desktop web sharing; no browsable mobile library</td>
-                <td><span class="quiet">Not documented</span></td>
-              </tr>
-              <tr>
-                <td>Account and cloud</td>
-                <td>No account needed to catalogue local files; local library and optional LAN server</td>
-                <td>Local library; licence-key activation; optional AI connects to cloud or local providers</td>
-                <td>No account for the library; optional AI providers may require their own account or key</td>
-                <td>Self-managed user accounts on your own server; no required vendor cloud</td>
-                <td>Local desktop app; no remote access</td>
-                <td>No account for the core app; phone and user-to-user sharing are opt-in</td>
-                <td>No account for the core app; Discover and Community are optional network features</td>
-              </tr>
-              <tr>
-                <td>AI and automation</td>
-                <td>MCP assistants can browse and organise library metadata with per-client permissions in supported builds; unavailable in the Microsoft Store edition</td>
-                <td>Optional tagging through OpenRouter, direct providers, Ollama or Codex CLI; semantic search uses OpenRouter</td>
-                <td>Optional AI tagging, including compatible local providers; experimental MCP tools</td>
-                <td>REST API and plugins; built-in AI search not documented</td>
-                <td>Boolean and saved searches; AI tools not documented</td>
-                <td>Fuzzy search and smart collections; AI tools not documented</td>
-                <td>Rule-based templates and optional community suggestions; AI tools not documented</td>
-              </tr>
+              <tr><th scope="row"><a href="../features/">MeshVault</a></th><td>You want web downloads and creator packs to keep their context, from collecting through to opening a model in your slicer.</td><td>Desktop, with optional LAN server and mobile apps.</td></tr>
+              <tr><th scope="row"><a href="https://meshory.com/features">Meshory</a></th><td>You want to browse existing folders and NAS collections in place, with rendered previews, duplicate review and optional AI tools.</td><td>Windows, macOS and Linux desktop.</td></tr>
+              <tr><th scope="row"><a href="https://github.com/TechJeeper/Printventory#readme">Printventory</a></th><td>You prefer an open source organiser with desktop and self-hosted options that you can customise.</td><td>Desktop apps, browser/server mode and Docker.</td></tr>
+              <tr><th scope="row"><a href="https://manyfold.app/">Manyfold</a></th><td>You want to host a browser-based model library with private or public sharing and connections to other libraries.</td><td>Self-hosted web app, usually through Docker.</td></tr>
+              <tr><th scope="row"><a href="https://www.orynt3d.com/features/">Orynt3D</a></th><td>You want to organise a local or NAS collection around configurable imports, tags, collections and detailed search.</td><td>Windows, macOS and Linux desktop.</td></tr>
+              <tr><th scope="row"><a href="https://modelist.app/">Modelist</a></th><td>You want to catalogue existing folders and archives in place, with smart collections and duplicate review.</td><td>Windows, macOS and Linux desktop.</td></tr>
+              <tr><th scope="row"><a href="https://stlorganizer.com/">STLOrganizer</a></th><td>You want model organisation, configurable folder structures and a print planner in a Windows workspace.</td><td>Windows desktop; public release labelled demo/beta.</td></tr>
             </tbody>
           </table>
         </div>
       </div>
     </section>
-
-    <section id="head-to-head">
+    <section class="section" id="pricing">
       <div class="container">
-        <div class="section-head">
-          <div>
-            <p class="eyebrow">The honest version</p>
-            <h2>Reasons for—and reasons to look elsewhere.</h2>
-          </div>
-          <p>These are not verdicts. They are practical reasons one product may suit a particular library better than another. Open-source and self-hosted tools offer different ways to manage and share a library.</p>
-        </div>
-
-        <div class="product-list">
-          <article class="product">
-            <div class="product-heading">
-              <div><span class="product-kicker">USD $19.99 licence</span><h3>MeshVault</h3></div>
-              <p>Best suited to makers whose collection mixes creator packs, repository downloads, CAD and slicer files—and who want a portable local library that can later extend to a server or mobile device.</p>
-            </div>
-            <div class="tradeoffs">
-              <div class="tradeoff"><h4>Choose MeshVault when</h4><ul><li>You want repository downloads to arrive with useful page metadata and images.</li><li>You need deliberate choices for large creator packs and nested archives.</li><li>You work with CAD, G-code, slicer results, local clients and optional server libraries.</li></ul></div>
-              <div class="tradeoff"><h4>Consider another tool when</h4><ul><li>You need an open-source desktop app.</li><li>You need multi-user permissions, public sharing or federation in a web-first system.</li><li>You need built-in semantic search, geometry-aware duplicate review or a full print-planning board. MCP assistant access is a different capability.</li></ul></div>
-            </div>
-            <a class="source-link" href="../features/">Explore MeshVault →</a>
+        <div class="section-head"><p class="eyebrow">Price and update coverage</p><h2>What does the purchase include?</h2><p>A one-off payment can cover a particular major version or include future major releases. Check the update entitlement as well as the price.</p></div>
+        <div class="pricing-list">
+          <article class="price-row">
+            <div><h3>MeshVault</h3><span class="price">USD $19.99</span></div>
+            <div><p>MeshVault licence through our checkout. Store editions use their own purchase and activation process; regional pricing and taxes may vary. MeshVault Mobile is free to download, with optional Pro features on Android.</p><p class="source"><a href="https://meshvault.lemonsqueezy.com/checkout/buy/55a16f70-5c0a-4fd8-a808-5b0108fd6d71">MeshVault checkout</a> · <a href="../index.html#other-downloads">Platform listings</a></p></div>
           </article>
-
-          <article class="product">
-            <div class="product-heading">
-              <div><span class="product-kicker">USD $34.99 once · early access</span><h3>Meshory</h3></div>
-              <p>A strong scan-in-place desktop organiser built for very large existing libraries, with automatic rendering, optional AI search, geometry matching and folder-pack duplicate review.</p>
-            </div>
-            <div class="tradeoffs">
-              <div class="tradeoff"><h4>Choose Meshory when</h4><ul><li>Your main problem is scanning and rendering a very large folder or NAS library in place.</li><li>You want optional cloud or local AI tagging, with OpenRouter-backed semantic search.</li><li>Geometry and folder-pack duplicate review, broad slicer detection or the beta 3MF converter matter.</li></ul></div>
-              <div class="tradeoff"><h4>Consider another tool when</h4><ul><li>You collect through repository pages or structured creator-pack imports.</li><li>You need G-code inspection or a workflow that manages and moves your source files.</li><li>You want a dedicated local server, native mobile app, or a lower one-time price.</li></ul></div>
-            </div>
-            <a class="source-link" href="https://meshory.com/features">Meshory features →</a>
+          <article class="price-row" id="meshory-licence">
+            <div><h3>Meshory</h3><span class="price">USD $34.99 once</span></div>
+            <div><p>Includes continued use of the purchased app and all v1 updates. New licences rise to USD $39.99 on <time datetime="2026-10-28T18:00:00Z">28 October 2026 at 18:00 UTC</time>.</p><p>Meshory currently plans v2 for August–September 2027, with an optional upgrade estimated at USD $10–15. For an October 2026 purchase, that puts the next planned paid major upgrade less than a year away. Timing and pricing are not final.</p><p>The version you own keeps working without upgrading. Original USD $29 founding licences include future versions, including v2, at no extra cost.</p><p class="source"><a href="https://meshory.com/pricing">Meshory pricing and v2 plans</a> · <a href="https://meshory.com/terms">Licence purchase terms</a></p></div>
           </article>
-
-          <article class="product">
-            <div class="product-heading">
-              <div><span class="product-kicker">Free · open source</span><h3>Printventory</h3></div>
-              <p>A free, open-source organiser with mesh and CAD previews, print history, printer maintenance, optional AI tagging and a browser-accessible server.</p>
-            </div>
-            <div class="tradeoffs">
-              <div class="tradeoff"><h4>Choose Printventory when</h4><ul><li>Free and open source is a firm requirement.</li><li>You want bundle previews, CAD viewing, print history, printer maintenance and parts tracking.</li><li>You want a browser-extension inbox, optional AI tools or a Docker/PWA workflow.</li></ul></div>
-              <div class="tradeoff"><h4>Consider another tool when</h4><ul><li>You need interactive Fusion or ChiTuBox geometry; their embedded pictures are not 3D previews.</li><li>You need the guided creator-pack and archive-placement choices described for MeshVault.</li><li>You want a portable database inside the library or native clients combining local and remote models.</li></ul></div>
-            </div>
-            <a class="source-link" href="https://github.com/TechJeeper/Printventory">Printventory documentation and changelog →</a>
+          <article class="price-row">
+            <div><h3>Printventory</h3><span class="price">Free · open source</span></div>
+            <div><p>Available from its public repository. Running your own server or choosing external services can add costs.</p><p class="source"><a href="https://github.com/TechJeeper/Printventory#readme">Printventory project and downloads</a></p></div>
           </article>
-
-          <article class="product">
-            <div class="product-heading">
-              <div><span class="product-kicker">Free · open source · self-hosted</span><h3>Manyfold</h3></div>
-              <p>A strong choice for a web-first, genuinely multi-user model library, with access controls, external-service integrations, APIs, optional plugins, model relationships, social features and federation.</p>
-            </div>
-            <div class="tradeoffs">
-              <div class="tradeoff"><h4>Choose Manyfold when</h4><ul><li>You want a shared browser-based library hosted on your own server.</li><li>Multiple users, permissions, OIDC, public/private sharing or federation matter.</li><li>You want plugins, an open API, model/remix relationships or direct printer integrations.</li></ul></div>
-              <div class="tradeoff"><h4>Consider another tool when</h4><ul><li>You prefer native desktop clients and a library that moves with its own database.</li><li>You want repository capture from the browser into the native app.</li><li>You need desktop preview measurements, slicer-result capture or more guided creator-pack imports.</li></ul></div>
-            </div>
-            <a class="source-link" href="https://manyfold.app/features.html">Manyfold features →</a>
+          <article class="price-row">
+            <div><h3>Manyfold</h3><span class="price">Free · open source</span></div>
+            <div><p>The software is free. You provide and maintain the server or hosting it runs on.</p><p class="source"><a href="https://manyfold.app/get-started/installation">Manyfold installation options</a></p></div>
           </article>
-
-          <article class="product">
-            <div class="product-heading">
-              <div><span class="product-kicker">Free · donation-supported</span><h3>Orynt3D</h3></div>
-              <p>A free desktop organiser focused on configurable imports, inherited tags and boolean or saved searches. Its official site still lists the browser-based server as coming soon.</p>
-            </div>
-            <div class="tradeoffs">
-              <div class="tradeoff"><h4>Choose Orynt3D when</h4><ul><li>You want a free native desktop app across Windows, macOS and Linux.</li><li>Custom import configurations, inheritable tags and boolean search fit your way of organising.</li><li>You are comfortable capturing preview thumbnails manually.</li></ul></div>
-              <div class="tradeoff"><h4>Consider another tool when</h4><ul><li>You want automatic thumbnails across a wider range of mesh, CAD and G-code formats.</li><li>You need repository and creator-pack capture, duplicate filtering or slicer-result tracking.</li><li>You need a released browser server or native mobile library.</li></ul></div>
-            </div>
-            <a class="source-link" href="https://www.orynt3d.com/features/">Orynt3D features →</a>
+          <article class="price-row">
+            <div><h3>Orynt3D</h3><span class="price">Listed as free</span></div>
+            <div><p>Its official pricing page lists the app as free and invites optional financial support.</p><p class="source"><a href="https://www.orynt3d.com/pricing/">Orynt3D pricing</a></p></div>
           </article>
-
-          <article class="product">
-            <div class="product-heading">
-              <div><span class="product-kicker">Free to 100 files · €20 v1 · €60 lifetime (€45 with SAVE25)</span><h3>Modelist</h3></div>
-              <p>A desktop organiser with smart collections, source enrichment, duplicate review, multi-colour/multi-plate 3MF previews and OpenSCAD thumbnails. Phone sharing delivers links to the desktop inbox rather than providing a mobile library.</p>
-            </div>
-            <div class="tradeoffs">
-              <div class="tradeoff"><h4>Choose Modelist when</h4><ul><li>You want an unlimited-time trial library of up to 100 files, or qualify for educational use.</li><li>Smart collections, fuzzy search and exact/heuristic/perceptual duplicate review are priorities.</li><li>You value OpenSCAD thumbnails, printer/material metadata or opt-in phone sharing.</li></ul></div>
-              <div class="tradeoff"><h4>Consider another tool when</h4><ul><li>You need more CAD/project formats, measurements or G-code layer inspection.</li><li>You prefer a browser-extension capture workflow to source enrichment and shared links.</li><li>You need a shared library server or a native phone app with its own browsable library.</li></ul></div>
-            </div>
-            <a class="source-link" href="https://modelist.app/help">Modelist features and limitations →</a>
+          <article class="price-row">
+            <div><h3>Modelist</h3><span class="price">€20 v1 / €60 Lifetime</span></div>
+            <div><p>Free for up to 100 files with no time limit. The €20 licence includes all v1.x updates; Lifetime includes future major releases. Both licences let you keep using the purchased app.</p><p>Lifetime is currently advertised at €45 with the SAVE25 promotion, reduced from €60. Educational use is available under separate terms.</p><p class="source"><a href="https://modelist.app/">Modelist pricing and licence options</a></p></div>
           </article>
-
-          <article class="product">
-            <div class="product-heading">
-              <div><span class="product-kicker">Free · Windows</span><h3>STLOrganizer</h3></div>
-              <p>A free Windows workshop organiser with conditional folder templates, a print-planning board, spool tracking and Cults3D discovery. The public Windows release is labelled a demo/beta.</p>
-            </div>
-            <div class="tradeoffs">
-              <div class="tradeoff"><h4>Choose STLOrganizer when</h4><ul><li>You use Windows and want a free print-planning workspace rather than only a library.</li><li>Node-based folder templates, bulk file moves and commercial-licence tracking matter.</li><li>A kanban print queue and filament spool inventory are central to your workflow.</li></ul></div>
-              <div class="tradeoff"><h4>Consider another tool when</h4><ul><li>You need macOS/Linux clients or a portable library across operating systems.</li><li>You collect CAD, G-code and creator packs beyond STL/3MF/OBJ.</li><li>You want general repository capture, server-hosted libraries or native mobile browsing and transfers.</li></ul></div>
-            </div>
-            <a class="source-link" href="https://stlorganizer.com/">STLOrganizer features and roadmap →</a>
+          <article class="price-row">
+            <div><h3>STLOrganizer</h3><span class="price">Free public demo/beta</span></div>
+            <div><p>The current Windows download is advertised as free, with no account required. Check its site for release status and future plans.</p><p class="source"><a href="https://stlorganizer.com/">STLOrganizer download and FAQ</a></p></div>
           </article>
         </div>
       </div>
     </section>
-
-    <section id="methodology">
-      <div class="container method">
-        <div>
-          <p class="eyebrow">Methodology and disclosure</p>
-          <h2>Sources, scope and ownership.</h2>
-        </div>
-        <div>
-          <p>This page is published by MeshVault and was prepared with AI assistance. It summarises official documentation, not a hands-on benchmark or an independent product review. The reasons to choose another product are part of the comparison.</p>
-          <p>Checked on <time datetime="2026-10-13">13 October 2026</time>. MeshVault's current direct release is <a href="https://github.com/Xalies/xalies.github.io/releases/tag/v2.3.1.0">2.3.1.0</a>; Store versions can differ. Connect and Mobile are separate products. The Mac desktop app is on the App Store; the iOS mobile app is a TestFlight beta.</p>
-          <p>Release notes checked: <a href="https://meshory.com/changelog/v1.11.0">Meshory 1.11.0</a>, <a href="https://github.com/TechJeeper/Printventory/blob/main/CHANGELOG.md">Printventory changelog through 2.2.16</a>, <a href="https://manyfold.app/news.html">Manyfold 0.150.0</a> and <a href="https://github.com/PeteMinus/modelist.app/releases/tag/v1.12.1">Modelist 1.12.1</a>. STLOrganizer advertises 0.1.30. Orynt3D's feature and pricing pages were checked; a current release version was not verified.</p>
-          <p>Indexing, thumbnail generation and interactive preview are different capabilities. Beta features are labelled; roadmap items are not counted as available. “Not documented” means the reviewed sources did not establish a capability, not that it cannot exist. Meshory's newer release notes take precedence over older roadmap labels. Printventory's newer formats are documented in its changelog; individual builds may differ.</p>
-          <p>Prices use the vendor's stated currency; taxes and regional pricing may differ. MeshVault licences are USD $19.99, updated here on <time datetime="2026-10-23">23 October 2026</time>. Store editions use their native activation flow; check their listings for published prices. Meshory's announced increase takes effect on 28 October at 18:00 UTC. Modelist advertises a 100-file free allowance and a lifetime discount with SAVE25.</p>
-          <p>Sources can change. If a fact is outdated, please <a href="https://github.com/Xalies/xalies.github.io/issues">report a correction</a>.</p>
-          <div class="source-list" aria-label="Comparison sources">
-            <a href="../features/">What you can do with MeshVault</a>
-            <a href="https://meshory.com/features">Meshory features and format limits</a>
-            <a href="https://meshory.com/pricing">Meshory pricing</a>
-            <a href="https://meshory.com/changelog">Meshory release notes</a>
-            <a href="https://github.com/TechJeeper/Printventory">Printventory README</a>
-            <a href="https://github.com/TechJeeper/Printventory/blob/main/GUIDE.md">Printventory guide</a>
-            <a href="https://github.com/TechJeeper/Printventory/blob/main/CHANGELOG.md">Printventory changelog</a>
-            <a href="https://manyfold.app/features.html">Manyfold features and roadmap</a>
-            <a href="https://manyfold.app/manual/supported_formats.html">Manyfold format support</a>
-            <a href="https://manyfold.app/manual/integrations.html">Manyfold service integrations</a>
-            <a href="https://www.orynt3d.com/features/">Orynt3D features</a>
-            <a href="https://www.orynt3d.com/pricing/">Orynt3D pricing</a>
-            <a href="https://modelist.app/">Modelist pricing and free allowance</a>
-            <a href="https://modelist.app/help">Modelist feature guide</a>
-            <a href="https://stlorganizer.com/">STLOrganizer features</a>
-          </div>
-        </div>
+    <section class="section method" id="methodology">
+      <div class="container">
+        <p class="eyebrow">Sources and scope</p><h2>A starting point for your decision.</h2>
+        <p>This guide is written by MeshVault’s developer using the official product pages and documentation linked above, checked on <time datetime="2026-10-23">23 October 2026</time>. The descriptions summarise each app’s advertised approach; they are not a complete capability list or a performance ranking.</p>
+        <p>Prices use each vendor’s stated currency. Taxes, promotions and regional Store pricing can change. Planned release dates and upgrade fees are estimates from the vendor. Check the linked terms before buying and try your own files where a trial or free download is available.</p>
+        <p>If something is out of date, <a href="https://github.com/Xalies/xalies.github.io/issues">report a correction</a>.</p>
       </div>
     </section>
-
     <section class="cta">
       <div class="container cta-grid">
-        <div>
-          <p class="eyebrow">Try MeshVault</p>
-          <h2>See if MeshVault fits your library.</h2>
-          <p>A MeshVault licence costs USD $19.99. Store and regional pricing may differ. MeshVault Mobile is free to download.</p>
-        </div>
-        <div class="actions">
-          <a class="button primary" href="../index.html#downloads">Download MeshVault</a>
-          <a class="button" href="https://meshvault.lemonsqueezy.com/checkout/buy/55a16f70-5c0a-4fd8-a808-5b0108fd6d71">Buy a licence</a>
-        </div>
+        <div><p class="eyebrow">Explore MeshVault</p><h2>See it with your own collection.</h2><p>MeshVault licences are USD $19.99. Store pricing and taxes may vary.</p></div>
+        <div class="actions"><a class="button primary" href="../index.html#downloads">Choose your download</a><a class="button" href="https://meshvault.lemonsqueezy.com/checkout/buy/55a16f70-5c0a-4fd8-a808-5b0108fd6d71">Buy a licence</a></div>
       </div>
     </section>
   </main>
-
   <footer>
-    <div class="container footer-grid">
-      <div><strong>MeshVault</strong><div style="margin-top:6px;color:var(--faint);font-size:13px">Copyright 2026 MeshVault</div></div>
-      <nav class="footer-links" aria-label="Footer navigation">
-        <a href="../index.html">Home</a>
-        <a href="../features/">What you can do</a>
-        <a href="../index.html#downloads">Downloads</a>
-        <a href="../extension/connect.html">MeshVault Connect</a>
-        <a href="../compare/">Compare</a>
-        <a href="../privacy/">Privacy</a>
-      </nav>
-    </div>
+    <div class="container footer-grid"><p>© 2026 MeshVault</p><nav class="footer-links" aria-label="Footer navigation"><a href="../index.html">Home</a><a href="../features/">What you can do</a><a href="../index.html#downloads">Downloads</a><a href="../support/">Support</a><a href="../privacy/">Privacy</a></nav></div>
   </footer>
 </body>
 </html>
