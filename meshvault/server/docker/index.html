@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MeshVault Server Docker Setup Guide</title>
+  <meta name="description" content="Set up MeshVault Server with Docker Compose on your computer or NAS. Get working configuration files, connect your devices, keep your data, and update safely.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://www.meshvault.app/server/docker/">
+  <meta property="og:title" content="MeshVault Server Docker Setup Guide">
+  <meta property="og:description" content="From your first container to a shared model library: Docker Desktop and Linux NAS setup, PINs, licensing, backups and troubleshooting.">
+  <meta property="og:image" content="https://www.meshvault.app/images/meshvault_512x512.png">
+  <link rel="canonical" href="https://www.meshvault.app/server/docker/">
+  <link rel="icon" type="image/png" href="../../images/meshvault_512x512.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    :root { color-scheme: dark; --bg: #111016; --panel: #1b1722; --line: #3d3549; --text: #f4f1fa; --muted: #bdb4cc; --accent: #b09aff; }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 100px; }
+    body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.7 "IBM Plex Sans", "Segoe UI", system-ui, sans-serif; }
+    a { color: var(--accent); text-underline-offset: .23em; }
+    a:hover { color: #e2d8ff; }
+    a:focus-visible, button:focus-visible, summary:focus-visible, pre:focus-visible { outline: 3px solid #d6c9ff; outline-offset: 4px; }
+    h1, h2, h3 { line-height: 1.15; letter-spacing: -.025em; }
+    h1 { max-width: 850px; margin: 16px 0 22px; font-size: clamp(42px, 6vw, 72px); letter-spacing: -.045em; }
+    h2 { margin: 0 0 24px; font-size: clamp(28px, 3.5vw, 36px); }
+    h3 { margin: 30px 0 12px; font-size: 21px; }
+    p { margin: 0 0 18px; color: var(--muted); }
+    strong { color: var(--text); }
+    ul, ol { padding-left: 24px; color: var(--muted); }
+    li { padding-left: 4px; margin-bottom: 10px; }
+    code { font: .85em/1.65 "IBM Plex Mono", Consolas, monospace; overflow-wrap: anywhere; color: #e1d5ff; }
+    p code, li code, td code { padding: 2px 4px; background: #241d30; border-radius: 3px; }
+    .container { width: min(1260px, 100%); margin-inline: auto; padding-inline: clamp(20px, 5vw, 60px); }
+    .skip-link { position: absolute; top: -100px; left: 20px; padding: 10px 16px; background: var(--text); color: var(--bg); z-index: 30; }
+    .skip-link:focus { top: 10px; }
+    header { position: sticky; top: 0; z-index: 20; background: rgba(17,16,22,.97); border-bottom: 1px solid var(--line); }
+    .nav { display: flex; align-items: center; gap: 24px; min-height: 76px; }
+    .brand { display: inline-flex; align-items: center; gap: 10px; margin-right: auto; color: var(--text); font-weight: 700; text-decoration: none; }
+    .brand img { width: 34px; height: 34px; }
+    .nav-links { display: flex; flex-wrap: wrap; gap: 24px; font-size: 14px; }
+    .nav-links a { color: var(--muted); text-decoration: none; }
+    .hero { padding-block: clamp(42px, 6vw, 76px); background: linear-gradient(180deg, #21162e, var(--bg)); border-bottom: 1px solid var(--line); }
+    .eyebrow { color: #c3afff; font: 500 11px/1.6 "IBM Plex Mono", Consolas, monospace; letter-spacing: .12em; text-transform: uppercase; }
+    .intro { max-width: 740px; font-size: 20px; }
+    .meta { margin: 24px 0 0; font-size: 13px; }
+    .guide-layout { display: grid; grid-template-columns: 205px minmax(0, 1fr); gap: clamp(30px, 5vw, 70px); padding-block: 48px 72px; }
+    .contents { align-self: start; position: sticky; top: 108px; font-size: 14px; }
+    .contents p { margin-bottom: 14px; color: var(--text); font-weight: 600; }
+    .contents a { display: block; padding: 7px 0; color: var(--muted); text-decoration: none; }
+    .contents a:hover { color: var(--accent); }
+    .guide { min-width: 0; }
+    .guide section { padding-block: 44px; border-bottom: 1px solid var(--line); }
+    .guide section:first-child { padding-top: 0; }
+    .guide section:last-child { border-bottom: 0; padding-bottom: 0; }
+    .step { display: block; margin-bottom: 12px; font: 500 11px/1.5 "IBM Plex Mono", Consolas, monospace; color: var(--accent); letter-spacing: .1em; text-transform: uppercase; }
+    .choices { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-block: 26px; }
+    .choice { padding: 22px; background: var(--panel); border: 1px solid var(--line); border-radius: 8px; }
+    .choice h3 { margin: 0 0 12px; font-size: 19px; }
+    .choice p { font-size: 14px; }
+    .choice a { font-weight: 600; font-size: 14px; }
+    .note { padding: 20px 22px; margin-block: 24px; background: var(--panel); border-left: 3px solid var(--accent); }
+    .note p:last-child { margin-bottom: 0; }
+    .code-block { margin: 20px 0 24px; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: #0c0b10; }
+    .code-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 48px; padding: 8px 16px; border-bottom: 1px solid var(--line); color: var(--muted); font-size: 12px; }
+    .copy { border: 1px solid #615073; border-radius: 4px; padding: 6px 11px; background: #251d30; color: var(--text); cursor: pointer; font: inherit; }
+    .copy:hover { border-color: var(--accent); }
+    pre { margin: 0; padding: 20px; overflow-x: auto; max-width: 100%; tab-size: 2; }
+    pre code { overflow-wrap: normal; white-space: pre; font-size: 12px; }
+    .table-wrap { overflow-x: auto; margin-block: 22px; }
+    table { width: 100%; border-collapse: collapse; text-align: left; font-size: 14px; }
+    caption { text-align: left; margin-bottom: 12px; color: var(--muted); }
+    th, td { border-bottom: 1px solid var(--line); padding: 14px 12px; vertical-align: top; }
+    th { color: var(--text); }
+    td { color: var(--muted); }
+    td:first-child { min-width: 110px; }
+    details { border-top: 1px solid var(--line); }
+    details:last-child { border-bottom: 1px solid var(--line); }
+    summary { cursor: pointer; padding: 18px 4px; font-weight: 600; }
+    details > div { padding: 0 4px 12px; }
+    .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+    footer { padding-block: 28px; border-top: 1px solid var(--line); }
+    .footer-inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; }
+    footer p { margin: 0; font-size: 12px; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 20px; font-size: 13px; }
+    @media (max-width: 850px) {
+      .guide-layout { grid-template-columns: 1fr; gap: 36px; padding-top: 28px; }
+      .contents { position: static; padding-bottom: 24px; border-bottom: 1px solid var(--line); }
+      .contents nav { display: grid; grid-template-columns: 1fr 1fr; gap: 0 18px; }
+    }
+    @media (max-width: 560px) {
+      .nav { flex-wrap: wrap; gap: 12px; padding-block: 14px; }
+      .nav-links { width: 100%; gap: 22px; }
+      html { scroll-padding-top: 130px; }
+      .choices { grid-template-columns: 1fr; }
+      .hero { padding-top: 34px; }
+      .intro { font-size: 18px; }
+      .guide section { padding-block: 34px; }
+      pre { padding: 16px; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="../../index.html" aria-label="MeshVault home"><img src="../../images/meshvault_512x512.png" width="34" height="34" alt=""><span>MeshVault</span></a>
+      <nav class="nav-links" aria-label="Main navigation"><a href="../../features/">What you can do</a><a href="../../index.html#downloads">Downloads</a><a href="../../support/">Support</a></nav>
+    </div>
+  </header>
+  <main id="main">
+    <div class="hero">
+      <div class="container">
+        <p class="eyebrow">MeshVault Server / Docker guide</p>
+        <h1>Run MeshVault Server<br>with Docker.</h1>
+        <p class="intro">Run MeshVault Server on your computer or NAS, keep your models in a folder you control, and connect from a browser or MeshVault client on your local network.</p>
+        <p class="meta">Linux container · x86-64 / AMD64 image · Last reviewed 25 October 2026</p>
+      </div>
+    </div>
+    <div class="container guide-layout">
+      <aside class="contents" aria-label="Guide contents">
+        <p>In this guide</p>
+        <nav aria-label="On this page">
+          <a href="#before-you-start">Before you start</a>
+          <a href="#quick-start">Docker Desktop / bridge</a>
+          <a href="#nas">Linux / NAS setup</a>
+          <a href="#connect">Connect and unlock</a>
+          <a href="#using-your-library">Add files and thumbnails</a>
+          <a href="#users">Optional user accounts</a>
+          <a href="#storage">Storage and backups</a>
+          <a href="#updates">Update or stop</a>
+          <a href="#troubleshooting">Troubleshooting</a>
+          <a href="#reference">Configuration reference</a>
+        </nav>
+      </aside>
+      <div class="guide">
+        <section id="before-you-start">
+          <span class="step">Start here</span>
+          <h2>Choose the setup for your host.</h2>
+          <p>You need a running Docker installation with Docker Compose, a persistent folder for your models, and enough free space for your library and previews. On Windows or macOS, use Docker Desktop with Linux containers. On a Linux server or compatible NAS, use its Docker/Compose tools.</p>
+          <p>The published image is <code>ghcr.io/xalies/meshvault-server-amd64:latest</code>, for Intel/AMD x86-64 hosts. There is currently no native ARM64 Docker image. The container includes its .NET runtime; you do not need to install .NET on the host.</p>
+          <div class="choices">
+            <article class="choice"><h3>Docker Desktop or a simple setup</h3><p>Use bridge networking and connect by the host's IP address. Includes a host-local administration port.</p><a href="#quick-start">Follow the quick start →</a></article>
+            <article class="choice"><h3>Linux server or NAS</h3><p>Use host networking when you want automatic LAN discovery. Choose a persistent NAS dataset or share for the library.</p><a href="#nas">Follow the NAS setup →</a></article>
+          </div>
+          <p>Choose one configuration for your server. The examples use the same container name, so run one at a time. Use these examples on a trusted local network and keep port <code>5225</code> within that network.</p>
+        </section>
+        <section id="quick-start">
+          <span class="step">01 / Bridge networking</span>
+          <h2>Start with Docker Compose.</h2>
+          <ol>
+            <li>Create a folder for this Docker setup, such as <code>meshvault-server</code>.</li>
+            <li><a href="docker-compose.server.yml" download>Download docker-compose.server.yml</a> into that folder. You can also copy the configuration below into a file with that exact name.</li>
+            <li>Create a <code>MeshVaultLibrary</code> folder beside it, or replace <code>./MeshVaultLibrary</code> with the host path to your existing library. Keep the destination <code>/library</code> unchanged.</li>
+            <li>Open a terminal in the setup folder and run the start commands below.</li>
+          </ol>
+          <div class="code-block">
+            <div class="code-heading"><span>docker-compose.server.yml</span><button class="copy" type="button" data-copy="bridge-config" aria-label="Copy bridge Compose configuration" hidden>Copy</button></div>
+            <pre tabindex="0" aria-label="Bridge Compose configuration"><code id="bridge-config">services:
+  meshvault-server:
+    image: ghcr.io/xalies/meshvault-server-amd64:latest
+    container_name: meshvault-server
+    restart: unless-stopped
+    ports:
+      - "5225:5225"
+      - "127.0.0.1:5226:5226"
+    environment:
+      MESHVAULT_LIBRARY: /library
+      MESHVAULT_SERVER_CONFIG: /data/meshvault-server.json
+      XDG_DATA_HOME: /data
+      MESHVAULT_SERVER_URLS: http://0.0.0.0:5225;http://0.0.0.0:5226
+      MESHVAULT_DOCKER_ADMIN_PORT: "5226"
+      # Optional: set this to a 6-digit PIN if you do not want the server to generate one.
+      # MESHVAULT_SERVER_PIN: "123456"
+    volumes:
+      - ./MeshVaultLibrary:/library
+      - meshvault-server-data:/data
+
+volumes:
+  meshvault-server-data:
+</code></pre>
+          </div>
+          <p>The PIN example is commented out so the server generates one for you. If you enable it, replace <code>123456</code> with your own six-digit PIN before starting.</p>
+          <div class="code-block"><div class="code-heading"><span>Start and check the server</span><button class="copy" type="button" data-copy="bridge-start" aria-label="Copy bridge start commands" hidden>Copy</button></div><pre tabindex="0"><code id="bridge-start">docker compose -f docker-compose.server.yml pull
+docker compose -f docker-compose.server.yml up -d
+docker compose -f docker-compose.server.yml logs --tail=100 meshvault-server</code></pre></div>
+          <p>Look for <strong>Server PIN:</strong> in the logs, then <a href="#connect">open the library and sign in</a>.</p>
+          <div class="note"><p><strong>Keep the administration port local.</strong> Port <code>5225</code> is for your LAN clients. The <code>127.0.0.1:5226:5226</code> mapping is for administration on the Docker host only. Keep the <code>127.0.0.1</code> binding; do not expose port <code>5226</code> to your network.</p></div>
+        </section>
+        <section id="nas">
+          <span class="step">02 / Native Linux hosts</span>
+          <h2>Use a persistent NAS folder.</h2>
+          <p>For a Linux Docker host, including compatible TrueNAS SCALE and Unraid setups, <a href="docker-compose.host-network.yml" download>download docker-compose.host-network.yml</a>. Use this file instead of the bridge file.</p>
+          <p>Replace <code>./MeshVaultLibrary</code> in the service's <code>volumes</code> list with your real dataset or share path. For example:</p>
+          <div class="code-block"><div class="code-heading"><span>Example service mounts — replace the host path</span><button class="copy" type="button" data-copy="nas-mounts" aria-label="Copy example NAS service mounts" hidden>Copy</button></div><pre tabindex="0"><code id="nas-mounts">    volumes:
+      - "/mnt/tank/models/MeshVault:/library"
+      - meshvault-server-data:/data</code></pre></div>
+          <p>On Unraid, the library might be a share such as <code>/mnt/user/3D Models/MeshVault</code>. Keep the quotes around paths containing spaces. The host folder must be writable by the container: MeshVault stores its database and images alongside your models.</p>
+          <div class="code-block"><div class="code-heading"><span>Start on the Linux host</span><button class="copy" type="button" data-copy="nas-start" aria-label="Copy NAS start commands" hidden>Copy</button></div><pre tabindex="0"><code id="nas-start">docker compose -f docker-compose.host-network.yml pull
+docker compose -f docker-compose.host-network.yml up -d
+docker compose -f docker-compose.host-network.yml logs --tail=100 meshvault-server</code></pre></div>
+          <p>If your NAS provides a container dashboard, use its Compose/custom-app support with this configuration and read the PIN from the container logs.</p>
+          <p>Host networking uses port <code>5225</code> directly and allows mDNS discovery on the LAN. Leave out <code>ports:</code> mappings and make sure another service is not using that port. Docker Desktop users should keep the bridge setup and use a manual IP connection.</p>
+        </section>
+        <section id="connect">
+          <span class="step">03 / First connection</span>
+          <h2>Open your library and unlock the server.</h2>
+          <ol>
+            <li>Find the generated <strong>Server PIN</strong> in the container logs. For a bridge setup, you can also view it at <code>http://localhost:5225/config</code> on the Docker host; this redirects to the local administration port.</li>
+            <li>On that host, open <code>http://localhost:5225</code>. From another device, open the host's LAN address, for example <code>http://192.168.1.20:5225</code>. Replace the example IP with your server's address.</li>
+            <li>Enter the PIN when prompted. The browser library is now available.</li>
+            <li>Open <strong>Options → Licence</strong>, paste your MeshVault licence key and select <strong>Unlock server</strong>. The direct address is <code>http://HOST-IP:5225/config#licence</code>.</li>
+          </ol>
+          <p>Current Server builds start with a seven-day trial. After the trial, browsing remains available; importing, scanning, editing and generating thumbnails require an activated Pro licence. Keep the <code>/data</code> storage when updating so the server retains its activation.</p>
+          <p><a href="https://meshvault.lemonsqueezy.com/checkout/buy/55a16f70-5c0a-4fd8-a808-5b0108fd6d71">Get a MeshVault licence</a> if you need one. The licence is USD $19.99, includes lifetime updates and is not limited to a product version. Store pricing and taxes may vary.</p>
+          <div class="note"><p><strong>Connecting from another device?</strong> <code>localhost</code> always means the device you are using. A phone or laptop must use the Docker host's IP address. In a MeshVault client or Connect, use that same server address and the PIN; automatic discovery is optional.</p></div>
+        </section>
+        <section id="using-your-library">
+          <span class="step">04 / Everyday use</span>
+          <h2>Add files, then refresh.</h2>
+          <p>Upload through the browser library or send downloads with <a href="../../extension/connect.html">MeshVault Connect</a>. You can also copy models and creator packs directly into the host folder mapped to <code>/library</code>.</p>
+          <p>After copying files outside MeshVault, click <strong>Refresh</strong> in the browser library. This scans the folder and generates missing thumbnails. Allow time for larger libraries and complex models; restarting the container is not a substitute for generating missing thumbnails.</p>
+          <p>The server reuses available artwork and embedded previews before rendering a fallback. A file being listed in the library does not guarantee an interactive preview or a generated thumbnail for every format.</p>
+          <p>The Docker server's thumbnail generation uses the CPU. You do not need to configure GPU passthrough. Interactive browser previews run in the connecting browser, so their performance also depends on that device.</p>
+          <p>For simultaneous access from several computers, connect the desktop clients to the server. Keep one server responsible for the library rather than opening the same database as separate local libraries on multiple devices.</p>
+        </section>
+        <section id="users">
+          <span class="step">05 / Optional sharing</span>
+          <h2>Use a PIN or individual accounts.</h2>
+          <p>Single-user mode uses the server PIN. If you want separate sign-ins, open <strong>Options → Mode &amp; users</strong> from trusted local administration, create the Owner account and enable named-user mode. You can then add <strong>Browse</strong>, <strong>Manage</strong> or <strong>Owner</strong> accounts for the same library.</p>
+          <p>Initial account setup requires host-local administration; an ordinary LAN PIN session cannot enable it. Once enabled, sign in with a username and password. Owners manage server settings and licensing. The local administration port does not bypass account sign-in.</p>
+          <details><summary>How do I reach local administration on a headless NAS?</summary><div>
+            <p>Use a browser on the server itself. If you already administer a host-network Linux server over SSH, you can instead forward its loopback connection to your computer:</p>
+            <div class="code-block"><div class="code-heading"><span>Replace user and NAS-IP with your SSH details</span><button class="copy" type="button" data-copy="ssh-admin" aria-label="Copy example SSH administration tunnel" hidden>Copy</button></div><pre tabindex="0"><code id="ssh-admin">ssh -L 15225:127.0.0.1:5225 user@NAS-IP</code></pre></div>
+            <p>Keep that SSH session open, then visit <code>http://localhost:15225/config#access</code> on your computer. This example is for the host-network configuration. For a bridge setup, forward host port <code>5226</code> instead, using the loopback-only mapping in the supplied file.</p>
+          </div></details>
+          <p style="margin-top:20px">Accounts, sessions and personal user data are stored in <code>/data</code>. Preserve that storage alongside the library. Each client must support the server's chosen sign-in mode.</p>
+        </section>
+        <section id="storage">
+          <span class="step">06 / Keep your data</span>
+          <h2>Back up both storage locations.</h2>
+          <div class="table-wrap"><table><caption>What the supplied Compose files persist</caption><thead><tr><th scope="col">Container path</th><th scope="col">Stored here</th><th scope="col">Host storage</th></tr></thead><tbody>
+            <tr><td><code>/library</code></td><td>Your models and the hidden <code>.meshvault</code> folder containing the library database, metadata and images.</td><td><code>./MeshVaultLibrary</code>, or the existing folder/dataset you choose.</td></tr>
+            <tr><td><code>/data</code></td><td>Server settings, PIN, accounts, browser session keys, licence activation and the container's persistent machine key.</td><td>The Compose-managed <code>meshvault-server-data</code> volume. Its actual name normally includes your Compose project name.</td></tr>
+          </tbody></table></div>
+          <p><strong>Before a backup, finish active imports and stop the server.</strong> Back up the entire library, including hidden files, plus the contents of the data volume using your Docker/NAS backup tools. A models-only backup does not include your library organisation; a library-only backup does not include the host's accounts and activation.</p>
+          <div class="code-block"><div class="code-heading"><span>Stop before taking the backup</span><button class="copy" type="button" data-copy="backup-stop" aria-label="Copy command to stop for backup" hidden>Copy</button></div><pre tabindex="0"><code id="backup-stop">docker compose -f docker-compose.server.yml stop</code></pre></div>
+          <p>Once the backup of both storage locations is complete, start the server again:</p>
+          <div class="code-block"><div class="code-heading"><span>Start after the backup is complete</span><button class="copy" type="button" data-copy="backup-start" aria-label="Copy command to start after backup" hidden>Copy</button></div><pre tabindex="0"><code id="backup-start">docker compose -f docker-compose.server.yml start</code></pre></div>
+          <p>Use <code>docker-compose.host-network.yml</code> in those commands if that is your configuration. Restore both storage locations before starting a replacement server. Keep the same mappings; selecting a new empty folder or volume will not restore the old data.</p>
+          <p>For Docker's volume backup and restore procedure, see <a href="https://docs.docker.com/engine/storage/volumes/#back-up-restore-or-migrate-data-volumes">Back up, restore or migrate data volumes</a>.</p>
+        </section>
+        <section id="updates">
+          <span class="step">07 / Maintenance</span>
+          <h2>Update the image. Keep the mounts.</h2>
+          <p>Take a current backup, finish active work, and run these commands from the same setup folder:</p>
+          <div class="code-block"><div class="code-heading"><span>Update a bridge installation</span><button class="copy" type="button" data-copy="update-server" aria-label="Copy server update commands" hidden>Copy</button></div><pre tabindex="0"><code id="update-server">docker compose -f docker-compose.server.yml pull
+docker compose -f docker-compose.server.yml up -d
+docker compose -f docker-compose.server.yml logs --tail=100 meshvault-server</code></pre></div>
+          <p>For host networking, use <code>docker-compose.host-network.yml</code> instead. Pull downloads the image; <code>up -d</code> recreates the container with the existing mounts. Restarting an old container alone does not install a new image.</p>
+          <p>Keep the Compose project name, setup directory and storage mappings consistent. Changing them can select a different data volume. For a fixed version, replace <code>:latest</code> with an available numeric release tag, without a leading <code>v</code>.</p>
+          <p>To stop without removing data, use <code>docker compose -f docker-compose.server.yml stop</code>. <strong>Avoid <code>down -v</code> when you want to retain the server:</strong> it removes the named data volume and its saved settings, accounts and activation.</p>
+          <details><summary>Installing from the downloadable Docker image archive</summary><div><p>If you downloaded the Docker server package from a MeshVault release, extract the outer archive first. Inside it are the Compose files and <code>meshvault-server-image.tar.gz</code>. Load that inner image archive:</p>
+            <div class="code-block"><div class="code-heading"><span>Load an image supplied with a release</span><button class="copy" type="button" data-copy="load-image" aria-label="Copy Docker image load command" hidden>Copy</button></div><pre tabindex="0"><code id="load-image">docker load -i meshvault-server-image.tar.gz</code></pre></div>
+            <p>Then use the matching Compose file with <code>up -d</code>. Keep its image tag matched to the loaded image; a later <code>pull</code> updates it from the registry.</p>
+          </div></details>
+        </section>
+        <section id="troubleshooting">
+          <span class="step">08 / Troubleshooting</span>
+          <h2>Check the connection, path and logs.</h2>
+          <details><summary>The container will not start</summary><div><p>Check the container logs and confirm Docker is running Linux containers. Make sure the library folder exists, is writable, and ports <code>5225</code> and, for bridge mode, <code>5226</code> are available. An architecture or “exec format” error can mean the AMD64 image does not match the host.</p><p>For an older container reporting <code>AppStoragePaths.GetRootFolderPath</code> with an empty path, add <code>XDG_DATA_HOME=/data</code>, persist <code>/data</code>, and recreate the container.</p></div></details>
+          <details><summary>It opens on the host but not on my phone or another computer</summary><div><p>Use <code>http://HOST-IP:5225</code>, not <code>localhost</code>. Check that both devices are on the same reachable LAN, that the host firewall permits the connection, and that bridge mode publishes <code>5225:5225</code>. Guest Wi-Fi and client isolation can prevent devices from reaching each other.</p></div></details>
+          <details><summary>The server is not discovered automatically</summary><div><p>Enter the server's LAN IP and port manually. Bridge networking can prevent mDNS discovery. Native Linux host networking supports the discovery path; Docker Desktop users should use the bridge setup and a manual address.</p></div></details>
+          <details><summary>I cannot find the PIN, or my old PIN no longer works</summary><div><p>Read <code>Server PIN:</code> in the container logs, or use the local administration page on the Docker host. If <code>MESHVAULT_SERVER_PIN</code> is set, that value overrides the saved PIN. A new empty <code>/data</code> volume can also create a new identity and PIN.</p></div></details>
+          <details><summary>The library is empty even though the NAS has models</summary><div><p>Check the host path on the left side of the <code>:/library</code> mount. The server sees container paths, so a NAS path entered in the browser does not create a mount. Keep <code>MESHVAULT_LIBRARY=/library</code>, verify the mapped folder, then click <strong>Refresh</strong>. The trial or Pro licence must permit scanning.</p></div></details>
+          <details><summary>Models appear, but their thumbnails are missing</summary><div><p>Click <strong>Refresh</strong> in the browser library to scan and generate missing thumbnails. Confirm the library is writable and the trial or Pro licence is active. Thumbnail support depends on the format, available embedded artwork and model contents; complex renders may take time. Check the logs if generation fails.</p></div></details>
+          <details><summary>Browsing works, but imports or changes are blocked</summary><div><p>Open <strong>Options → Licence</strong> and check trial/activation status. In named-user mode, also check the account's role: Browse accounts cannot manage library content, and only Owners manage host settings and licensing.</p></div></details>
+          <p style="margin-top:24px">Still stuck? <a href="../../support/">Contact MeshVault support</a> with your server version, host/NAS type, network mode, mount layout and the relevant error. Remove PINs, licence keys and other credentials from logs or screenshots before sharing them.</p>
+        </section>
+        <section id="reference">
+          <span class="step">Configuration reference</span>
+          <h2>The settings in your Compose file.</h2>
+          <div class="table-wrap"><table><caption>Environment variables used by the supplied configurations</caption><thead><tr><th scope="col">Variable</th><th scope="col">Purpose</th></tr></thead><tbody>
+            <tr><td><code>MESHVAULT_LIBRARY</code></td><td><code>/library</code>: the path inside the container. Overrides the saved library path.</td></tr>
+            <tr><td><code>MESHVAULT_SERVER_CONFIG</code></td><td><code>/data/meshvault-server.json</code>: persistent server configuration.</td></tr>
+            <tr><td><code>XDG_DATA_HOME</code></td><td><code>/data</code>: the persistent application-data location.</td></tr>
+            <tr><td><code>MESHVAULT_SERVER_URLS</code></td><td>Listen on <code>5225</code>; bridge mode also listens on the local-admin port <code>5226</code>.</td></tr>
+            <tr><td><code>MESHVAULT_DOCKER_ADMIN_PORT</code></td><td><code>5226</code> in the bridge file, with its host-loopback mapping. Empty in the host-network file.</td></tr>
+            <tr><td><code>MESHVAULT_SERVER_PIN</code></td><td>Optional six-digit PIN. Omit it to generate and persist one automatically.</td></tr>
+          </tbody></table></div>
+          <p>Further Docker help: <a href="https://docs.docker.com/engine/storage/bind-mounts/">bind mounts</a>, <a href="https://docs.docker.com/compose/how-tos/networking/">Compose networking</a> and <a href="https://docs.docker.com/engine/network/drivers/host/">host networking</a>.</p>
+        </section>
+      </div>
+    </div>
+  </main>
+  <p id="copy-status" class="visually-hidden" role="status" aria-live="polite"></p>
+  <footer><div class="container footer-inner"><p>© 2026 MeshVault</p><nav class="footer-links" aria-label="Footer navigation"><a href="../../index.html">Home</a><a href="../../index.html#downloads">Downloads</a><a href="../../support/">Support</a><a href="../../privacy/">Privacy</a></nav></div></footer>
+  <script>
+    if (window.isSecureContext && navigator.clipboard) {
+      document.querySelectorAll('[data-copy]').forEach(function (button) {
+        button.hidden = false;
+        button.addEventListener('click', async function () {
+          var status = document.getElementById('copy-status');
+          try {
+            await navigator.clipboard.writeText(document.getElementById(button.dataset.copy).textContent);
+            button.textContent = 'Copied';
+            status.textContent = 'Copied to clipboard.';
+          } catch (error) {
+            status.textContent = 'Copy failed. Select the text in the code block and copy it manually.';
+          }
+          window.setTimeout(function () { button.textContent = 'Copy'; }, 2000);
+        });
+      });
+    }
+  </script>
+</body>
+</html>
