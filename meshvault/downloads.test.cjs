@@ -4,6 +4,13 @@ const path = require("node:path");
 const vm = require("node:vm");
 
 const html = fs.readFileSync(path.join(__dirname, "index.html"), "utf8");
+const viewerDownloads = html.match(/<article\b[^>]*id="viewer-downloads"[\s\S]*?<\/article>/)?.[0];
+assert.ok(viewerDownloads, "The standalone Viewer needs its own download options");
+const viewerLinks = [...viewerDownloads.matchAll(/href="([^"]+)"/g)].map(match => match[1]);
+for (const asset of ["MeshVault-Viewer-win-x64-setup.exe", "MeshVault-Viewer-linux-x64-setup.deb", "MeshVault-Viewer-linux-x64.AppImage"]) {
+    assert.ok(viewerLinks.some(url => /^https:\/\/github.com\/Xalies\/xalies\.github\.io\/releases\/download\/v\d+\.\d+\.\d+\.\d+\//.test(url)
+        && url.endsWith(`/${asset}`)), `Missing published Viewer download: ${asset}`);
+}
 const appImageLink = html.match(/<a\b[^>]*id="linux-appimage-download"[^>]*href="([^"]+)"[^>]*>([^<]+)<\/a>/);
 assert.ok(appImageLink, "The Linux download card needs an AppImage link");
 assert.equal(appImageLink[2], "Linux .AppImage");
