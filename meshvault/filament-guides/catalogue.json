@@ -1484,7 +1484,7 @@
                 },
                 {
                   "name": "Dark Gray",
-                  "hex": null,
+                  "hex": "#4F504B",
                   "group": "recommended",
                   "material": "PLA+",
                   "filamentCode": "filament-f45138256b54f47ad44f",
