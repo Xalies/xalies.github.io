@@ -1,6 +1,6 @@
 # MeshVault Privacy Policy
 
-**Last updated: 23 October 2026**
+**Last updated: 8 November 2026**
 
 MeshVault is a local-first set of applications for organising and transferring 3D-model files. This policy covers:
 
@@ -86,7 +86,9 @@ Feedback reports are retained only while reasonably necessary for those purposes
 
 Not every MeshVault product offers paid features. Where a version offers an App Store or Google Play purchase, trial or optional donation, Apple or Google processes the transaction under its own privacy policy. MeshVault receives the purchase or entitlement information needed to provide the feature or acknowledge the donation, but does not receive your complete payment-card details.
 
-Direct MeshVault licence purchases and activation use Lemon Squeezy. Opening the checkout takes you to Lemon Squeezy's website. Where a build uses licence activation, it sends the licence key and the information required to validate and register that activation. Lemon Squeezy processes this information under its [Privacy Policy](https://www.lemonsqueezy.com/privacy).
+New direct MeshVault licence purchases are processed by [Stripe](https://stripe.com/privacy). Stripe shares the checkout reference and email address with MeshVault so we can issue a licence and email the key using [Resend](https://resend.com/legal/privacy-policy). MeshVault does not receive your complete payment-card details.
+
+When activating a Stripe licence, MeshVault sends the licence key and a hashed device identifier to its activation service hosted by [Cloudflare](https://www.cloudflare.com/privacypolicy/). The service records that device identifier against the purchase to enforce the activation limit. Existing Lemon Squeezy keys continue to use Lemon Squeezy for activation under its [Privacy Policy](https://www.lemonsqueezy.com/privacy).
 
 ## Updates and external links
 
@@ -103,7 +105,7 @@ MeshVault products and the website contain links to external websites. Some webs
 MeshVault does not sell personal information, build advertising profiles or track people across apps and websites. Information is shared only:
 
 - When you deliberately submit support or feedback, with Google Firebase and Cloud Firestore as the processor
-- With Apple, Google or Lemon Squeezy when needed for a purchase, donation, trial or licence action you request
+- With Apple, Google, Stripe, Resend, Cloudflare or Lemon Squeezy as needed for a purchase, donation, trial, licence delivery or activation you request
 - With a model repository, Google Drive, Dropbox or another external service when you use that service
 - With the MeshVault application, device or server destination you select for a transfer
 - When required to comply with law, enforce rights or protect users and services from abuse

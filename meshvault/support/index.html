@@ -15,12 +15,12 @@
   <style>
     :root {
       --primary: #9A7CFF;
-      --surface: #1E1B1F;
-      --on-surface: #F2E7FE;
-      --on-surface-variant: #CAC4D0;
-      --background: #121212;
-      --border: #2F2C33;
-      --max: 880px;
+      --surface: #1f1c25;
+      --on-surface: #f4f1fa;
+      --on-surface-variant: #c7bed3;
+      --background: #111016;
+      --border: #403847;
+      --max: 1000px;
     }
 
     * { box-sizing: border-box; }
@@ -46,13 +46,14 @@
     }
 
     h1 { font-size: clamp(2rem, 6vw, 2.75rem); margin: 0 0 8px; line-height: 1.15; }
-    h2 { color: var(--primary); margin: 0 0 16px; font-size: 1.45rem; line-height: 1.25; }
+    h2 { margin: 0; font-size: 1.25rem; line-height: 1.3; }
     p, li { color: var(--on-surface-variant); }
     p { margin: 0 0 14px; }
-    ul { margin: 0; padding-left: 24px; }
+    ul, ol { margin: 0; padding-left: 24px; }
     li { margin-bottom: 8px; }
     strong { color: var(--on-surface); }
-    a { color: var(--primary); }
+    a { color: #cdbdff; }
+    a:focus-visible { outline: 2px solid var(--primary); outline-offset: 4px; }
 
     .back-link {
       display: inline-block;
@@ -64,13 +65,25 @@
     .back-link:hover, .back-link:focus-visible { text-decoration: underline; }
     .summary { font-size: 1.05rem; max-width: 72ch; }
 
-    .support-section {
+    .support-layout {
       background: var(--surface);
-      padding: 30px;
-      border-radius: 18px;
       border: 1px solid var(--border);
-      margin-bottom: 24px;
+      border-radius: 4px;
     }
+
+    .support-section {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 2.5fr);
+      gap: 24px;
+      padding: 24px;
+      scroll-margin-top: 16px;
+    }
+
+    .support-section + .support-section { border-top: 1px solid var(--border); }
+    #activate { border-left: 3px solid var(--primary); padding-left: 21px; }
+    #connected-licences { scroll-margin-top: 24px; }
+    .support-copy > :last-child { margin-bottom: 0; }
+    .support-copy ol { margin-bottom: 14px; }
 
     footer {
       border-top: 1px solid var(--border);
@@ -82,7 +95,8 @@
 
     @media (max-width: 600px) {
       .container { padding: 28px 16px; }
-      .support-section { padding: 22px 18px; border-radius: 14px; }
+      .support-section { grid-template-columns: 1fr; gap: 12px; padding: 20px 16px; }
+      #activate { padding-left: 13px; }
     }
   </style>
 </head>
@@ -96,28 +110,55 @@
     <p class="summary">Get help with MeshVault, MeshVault Server, MeshVault Mobile or MeshVault Connect.</p>
   </header>
 
-  <section class="support-section">
-    <h2>Setup guides</h2>
-    <p><a href="../server/docker/">MeshVault Server with Docker</a> — Docker Desktop and NAS setup, PINs and licences, persistent storage, updates and troubleshooting.</p>
-    <p><a href="../extension/connect.html">MeshVault Connect</a> — connect your browser to MeshVault and save models with their source details.</p>
-  </section>
-
-  <section class="support-section">
-    <h2>Contact support</h2>
-    <p>For questions, technical support, feedback or feature requests, email <a href="mailto:xalies1983@gmail.com">xalies1983@gmail.com</a>.</p>
-    <p>When requesting help, please include:</p>
-    <ul>
-      <li>The MeshVault product and version you are using</li>
-      <li>Your operating system and version</li>
-      <li>What you were trying to do</li>
-      <li>Any error message you received</li>
-    </ul>
-  </section>
-
-  <section class="support-section">
-    <h2>MeshVault community</h2>
-    <p>Visit the <a href="https://www.reddit.com/r/MeshVault/">MeshVault subreddit</a> to ask questions, share feedback and talk with other MeshVault users.</p>
-  </section>
+  <div class="support-layout">
+    <section class="support-section" id="activate" aria-labelledby="activate-title">
+      <h2 id="activate-title">Activate your licence</h2>
+      <div class="support-copy">
+        <p>After a Stripe purchase, look for <strong>Your MeshVault Pro licence</strong> from <strong>support@meshvault.app</strong> at the email address you used at checkout.</p>
+        <ol>
+          <li>Install the <a href="../#other-downloads">direct download</a> for your computer.</li>
+          <li>Copy the full licence key from your purchase email.</li>
+          <li>While connected to the internet, open <strong>Options</strong> in MeshVault, find the licence settings and paste your key. Choose <strong>Unlock with licence key</strong> if shown.</li>
+        </ol>
+        <p>For MeshVault Server, open <strong>Options → Licence</strong> in the server’s browser interface, paste your key and choose <strong>Unlock server</strong>.</p>
+        <p>If the email hasn’t arrived, check your spam folder. If you still need help, send your receipt number to <a href="mailto:support@meshvault.app">support@meshvault.app</a>.</p>
+        <p>Existing Lemon Squeezy licence keys still work.</p>
+      </div>
+    </section>
+    <section class="support-section" aria-labelledby="connected-licences">
+      <h2 id="connected-licences">How connected devices count</h2>
+      <div class="support-copy">
+        <p>A Stripe licence can be activated on up to 10 devices. When you connect to a library hosted by an activated MeshVault app or Server, you use the host’s licence status and library permissions without using another activation slot. Activate the licence on another device when you want to unlock its own local libraries.</p>
+        <p>The Apple App Store edition uses its own purchase and activation.</p>
+      </div>
+    </section>
+    <section class="support-section">
+      <h2>Setup guides</h2>
+      <div class="support-copy">
+        <p><a href="../server/docker/">MeshVault Server with Docker</a> — Docker Desktop and NAS setup, PINs and licences, persistent storage, updates and troubleshooting.</p>
+        <p><a href="../extension/connect.html">MeshVault Connect</a> — connect your browser to MeshVault and save models with their source details.</p>
+      </div>
+    </section>
+    <section class="support-section">
+      <h2>Contact support</h2>
+      <div class="support-copy">
+        <p>For questions, technical support, feedback or feature requests, email <a href="mailto:support@meshvault.app">support@meshvault.app</a>.</p>
+        <p>When requesting help, please include:</p>
+        <ul>
+          <li>The MeshVault product and version you are using</li>
+          <li>Your operating system and version</li>
+          <li>What you were trying to do</li>
+          <li>Any error message you received</li>
+        </ul>
+      </div>
+    </section>
+    <section class="support-section">
+      <h2>MeshVault community</h2>
+      <div class="support-copy">
+        <p>Visit the <a href="https://www.reddit.com/r/MeshVault/">MeshVault subreddit</a> to ask questions, share feedback and talk with other MeshVault users.</p>
+      </div>
+    </section>
+  </div>
 
   <footer>
     <p><a href="../privacy/">Privacy Policy</a></p>

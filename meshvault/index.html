@@ -5,12 +5,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MeshVault | 3D Model Library Manager for Windows, macOS, Linux, Android, and iOS</title>
-  <meta name="description" content="Find the 3D model you want to print. MeshVault keeps your files, previews and creator details together in a visual library on your own computer. MeshVault licences are USD $19.99.">
+  <meta name="description" content="Find the 3D model you want to print. MeshVault keeps your files, previews and creator details together in a visual library on your own computer. MeshVault licences are A$19.99.">
 <meta name="generator" content="Google Web Designer 16.4.1.0219">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.meshvault.app/">
   <meta property="og:title" content="MeshVault | 3D Model Library Manager">
-  <meta property="og:description" content="Find the model you want to print. Keep files, previews and creator details together in your own local library. MeshVault licences are USD $19.99.">
+  <meta property="og:description" content="Find the model you want to print. Keep files, previews and creator details together in your own local library. MeshVault licences are A$19.99.">
   <meta property="og:image" content="https://www.meshvault.app/images/cover.png">
 
   <meta name="twitter:card" content="summary_large_image">
@@ -38,9 +38,9 @@
     "downloadUrl": "https://github.com/Xalies/xalies.github.io/releases/download/v2.5.6.0/MeshVault-win-x64-setup.exe",
     "offers": {
       "@type": "Offer",
-      "priceCurrency": "USD",
+      "priceCurrency": "AUD",
       "price": "19.99",
-      "url": "https://meshvault.lemonsqueezy.com/checkout/buy/55a16f70-5c0a-4fd8-a808-5b0108fd6d71",
+      "url": "https://buy.stripe.com/3cI4gAd5Z9d0bJFbLscbC00",
       "description": "MeshVault licence. Store and regional pricing may differ."
     }
   }
@@ -1604,10 +1604,28 @@
     a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid var(--accent-hover); outline-offset: 5px; }
     .hero-downloads { gap: 8px; }
     .hero-downloads .button { min-width: 0; }
-    .hero-download-prompt { margin-top: 30px; padding-top: 22px; border-top: 1px solid var(--soft-line); }
+    .hero-download-prompt {
+      margin-top: 28px;
+      background: #1f1c25;
+      border: 1px solid #403847;
+      border-left: 3px solid var(--accent);
+      border-radius: 4px;
+    }
+    .hero-download-row, .hero-purchase { padding: 16px; }
     .hero-download-prompt h2 { margin: 0; font-size: 20px; line-height: 1.3; }
     .hero-download-note { margin: 7px 0 0; color: var(--muted); font-size: 14px; }
     .hero-download-prompt .hero-downloads { margin-top: 14px; }
+    .hero-purchase {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px 18px;
+      border-top: 1px solid #403847;
+    }
+    .hero-purchase .button { min-height: 44px; }
+    .hero-purchase p { flex: 1 1 225px; margin: 0; font-size: 14px; line-height: 1.45; }
+    .hero-purchase strong { display: block; color: var(--text); font-weight: 600; }
+    .hero-purchase p a { color: var(--accent-hover); }
     .hero-other-download { display: inline-block; margin-top: 12px; color: var(--accent-hover); font-size: 14px; font-weight: 600; }
     .hero-downloads [hidden], .download-platform[hidden], .download-option[hidden] { display: none; }
     .hero-shot .app-frame-content img { filter: saturate(.88) contrast(1.04); }
@@ -1708,15 +1726,12 @@
     .faq-trigger { color: var(--text); }
 
     .cta {
-      padding: clamp(34px, 5vw, 70px);
-      border: 0;
-      background: var(--accent);
+      padding: clamp(24px, 4vw, 48px);
+      border: 1px solid #403847;
+      border-left: 3px solid var(--accent);
+      border-radius: 4px;
+      background: #1f1c25;
     }
-    .cta h2 { color: #100d16; }
-    .cta p { color: #2b2038; }
-    .cta .eyebrow { color: #100d16; }
-    .cta .button { background: #100d16; color: var(--text); }
-    .cta .button.primary { background: #100d16; color: var(--text); }
 
     footer { background: #0c0a0f; color: var(--text); }
     .footer-grid { border-top-color: rgba(244,241,250,.2); }
@@ -1742,6 +1757,7 @@
       section { padding: 68px 0; }
       .hero { padding-top: 52px; }
       .hero-downloads { display: grid; grid-template-columns: 1fr; }
+      .hero-purchase .button { width: 100%; }
       .feature-story, #workflow .feature-story:nth-of-type(even) { display: flex; flex-direction: column; }
       #workflow .feature-story:nth-of-type(even) > div:first-child,
       #workflow .feature-story:nth-of-type(even) > .app-frame { order: initial; }
@@ -1796,22 +1812,23 @@
     <section class="hero">
       <div class="container hero-grid">
         <div class="reveal">
-          <p class="eyebrow">MeshVault · USD $19.99</p>
           <h1>Find the model you want to print.</h1>
           <p class="lead">Turn folders of models and creator packs into a visual, searchable library. Keep files, previews and creator details together on your own computer.</p>
           <div class="hero-download-prompt" id="downloads">
-            <h2 id="hero-download-title">Download MeshVault</h2>
-            <p class="hero-download-note" id="hero-download-note" hidden></p>
-            <div class="hero-downloads" aria-label="Downloads for your device">
-              <a class="button primary" id="hero-download-primary" href="#other-downloads">View downloads</a>
-              <a class="button ghost" id="hero-download-secondary" href="#other-downloads" hidden></a>
-              <a class="button ghost" id="hero-download-tertiary" href="#other-downloads" hidden></a>
+            <div class="hero-download-row">
+              <h2 id="hero-download-title">Download MeshVault</h2>
+              <p class="hero-download-note" id="hero-download-note" hidden></p>
+              <div class="hero-downloads" aria-label="Downloads for your device">
+                <a class="button primary" id="hero-download-primary" href="#other-downloads">View downloads</a>
+                <a class="button ghost" id="hero-download-secondary" href="#other-downloads" hidden></a>
+                <a class="button ghost" id="hero-download-tertiary" href="#other-downloads" hidden></a>
+              </div>
+              <a class="hero-other-download" href="#other-downloads">Other platforms and downloads</a>
             </div>
-            <div class="hero-downloads" aria-label="MeshVault licence">
-              <a class="button" href="https://meshvault.lemonsqueezy.com/checkout/buy/55a16f70-5c0a-4fd8-a808-5b0108fd6d71">Buy a licence</a>
+            <div class="hero-purchase">
+              <a class="button" href="https://buy.stripe.com/3cI4gAd5Z9d0bJFbLscbC00" aria-describedby="hero-purchase-details">Buy MeshVault Pro · A$19.99</a>
+              <p id="hero-purchase-details"><strong>One-time payment with lifetime updates.</strong> Activate up to 10 devices. <a href="support/#connected-licences">Using a licensed host’s library takes no slot.</a></p>
             </div>
-            <p class="hero-download-note">Store and regional pricing may differ. MeshVault Mobile is free to download.</p>
-            <a class="hero-other-download" href="#other-downloads">Other platforms and downloads</a>
           </div>
         </div>
         <div class="app-frame hero-shot reveal">
@@ -1898,7 +1915,7 @@
           <p>Start with the app for your device. Add the browser extension or a shared server when you need them.</p>
         </div>
 
-        <p class="download-license reveal">A <a href="https://meshvault.lemonsqueezy.com/checkout/buy/55a16f70-5c0a-4fd8-a808-5b0108fd6d71">MeshVault licence is USD $19.99</a>. Store and regional pricing may differ. MeshVault Mobile is free to download.</p>
+        <p class="download-license reveal">A <a href="https://buy.stripe.com/3cI4gAd5Z9d0bJFbLscbC00">MeshVault licence is A$19.99</a>. One payment includes future updates and activation on up to 10 devices. Store editions are sold separately. MeshVault Mobile is free to download.</p>
 
         <details class="download-drawer reveal" id="other-downloads" open>
           <summary>Other download options</summary>
@@ -2110,7 +2127,9 @@
             </button>
             <div class="faq-panel">
               <div class="faq-content">
-                <p>A <a href="https://meshvault.lemonsqueezy.com/checkout/buy/55a16f70-5c0a-4fd8-a808-5b0108fd6d71">MeshVault licence costs USD $19.99</a> through our checkout. Store and regional pricing may differ, so check the listing for your platform. MeshVault Mobile remains free to download, with optional Pro features on Android.</p>
+                <p>A <a href="https://buy.stripe.com/3cI4gAd5Z9d0bJFbLscbC00">MeshVault Pro licence costs A$19.99</a> as a one-off payment through Stripe. It covers the direct downloads for Windows, macOS, Linux and MeshVault Server, including future updates. App store editions are purchased separately. MeshVault Mobile remains free to download, with optional Pro features on Android.</p>
+                <p>Connecting to a library hosted by an activated MeshVault app or Server uses that host’s licence status and does not use an activation slot. <a href="support/#connected-licences">See how connected devices count</a>.</p>
+                <p>Already have a key? <a href="support/#activate">See how to activate your licence</a>.</p>
               </div>
             </div>
           </div>
@@ -2170,13 +2189,12 @@
       <div class="container">
         <div class="cta reveal">
           <div>
-            <p class="eyebrow">Get started</p>
-            <h2>Put your model library back in order.</h2>
-            <p>Choose the build for your main device. Connect, MeshVault Mobile, and Server are there when your workflow grows.</p>
+            <h2>Get MeshVault.</h2>
+            <p>Try the direct download for your device or buy MeshVault Pro. One payment includes future updates and activation on up to 10 devices.</p>
           </div>
           <div class="hero-downloads" aria-label="Get MeshVault">
             <a class="button primary" href="#downloads">Choose a download</a>
-            <a class="button" href="https://meshvault.lemonsqueezy.com/checkout/buy/55a16f70-5c0a-4fd8-a808-5b0108fd6d71">Buy a licence</a>
+            <a class="button" href="https://buy.stripe.com/3cI4gAd5Z9d0bJFbLscbC00">Buy MeshVault Pro · A$19.99</a>
           </div>
         </div>
       </div>
