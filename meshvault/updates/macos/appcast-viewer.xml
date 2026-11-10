@@ -1,0 +1,17 @@
+<?xml version="1.0" standalone="yes"?>
+<rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
+    <channel>
+        <title>MeshVault Viewer</title>
+        <item>
+            <title>2.6.0</title>
+            <pubDate>Tue, 10 Nov 2026 06:18:06 +0000</pubDate>
+            <link>https://www.meshvault.app</link>
+            <sparkle:version>1232</sparkle:version>
+            <sparkle:shortVersionString>2.6.0</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>11.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <sparkle:releaseNotesLink>https://www.meshvault.app/updates/macos/MeshVault-Viewer-macOS.md</sparkle:releaseNotesLink>
+            <enclosure url="https://github.com/Xalies/xalies.github.io/releases/download/v2.6.0.0/MeshVault-Viewer-macOS.dmg" length="118714600" type="application/octet-stream" sparkle:edSignature="V639H+rUxglai9yiqN3lHYqHu+If6XlACchBljQWlw2kj4u/3KRNfb8a3JLKK0Kc96KTHbF/0Beam/+zg0PwCg=="/>
+        </item>
+    </channel>
+</rss>
