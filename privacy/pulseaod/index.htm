@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="How PulseAOD handles notifications, optional ads, purchases and feedback.">
+  <link rel="canonical" href="https://xalies.github.io/privacy/pulseaod/index.htm">
+  <title>PulseAOD Privacy Policy</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #141a1c;
+      color: #edf0ec;
+    }
+
+    body { margin: 0; font-size: 1rem; line-height: 1.65; }
+    main { width: min(38rem, calc(100% - 2rem)); margin: 0 auto; padding: 2rem 0 3rem; }
+    header { margin: 0 0 2.5rem; }
+    h1 { margin: 0 0 0.75rem; font-size: clamp(2rem, 7vw, 5rem); line-height: 1.1; text-wrap: balance; }
+    h2 { margin: 0 0 0.5rem; font-size: 1.4rem; line-height: 1.25; }
+    p { max-width: 66ch; margin: 0 0 0.75rem; color: #bdc8c2; }
+    section + section { margin-top: 1.75rem; }
+    footer { margin-top: 2.5rem; }
+    .intro { font-size: 1.15rem; color: #edf0ec; }
+    a { color: #92e4b1; text-underline-offset: 0.2em; overflow-wrap: anywhere; }
+    a:hover { color: #edf0ec; }
+    a:focus-visible { outline: 2px solid #92e4b1; outline-offset: 4px; }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>PulseAOD Privacy Policy</h1>
+      <p>Effective <time datetime="2026-11-14">14 November 2026</time></p>
+      <p class="intro">PulseAOD is an Android app developed by Sonny Gilbert (Xalies) that turns notifications into on-screen LED and edge-lighting effects. You can use PulseAOD without creating an account. Features vary by version and by the settings you choose.
+</p>
+    </header>
+
+    <section>
+      <h2>Notification access and information stored on your device</h2>
+      <p>When you grant Android notification access, PulseAOD can read information about notifications from other apps, including the sending app, notification channel, title, message, time and status. PulseAOD uses this information to decide when to display or stop an effect, show text in an optional notification bubble, and dismiss notifications that match your block rules. PulseAOD processes notification content on your device and does not send it to the developer, Firebase or advertising providers.</p>
+      <p>PulseAOD uses Android's list of launchable apps to show app names and icons in the profile picker. Profiles, app and channel block rules, effect preferences, mode selection and unlock progress are stored on your device. You can revoke notification access in Android settings. Depending on your setup, PulseAOD can also ask Android to let it post notifications, show full-screen alerts, draw over other apps, wake the display or run without battery optimisation.
+</p>
+    </section>
+
+    <section>
+      <h2>Notification History</h2>
+      <p>Notification History is off by default. When you turn it on, PulseAOD can store the sending app, notification title and text, channel, time and status on your device. Depending on the version, this can include whether a notification was blocked or whether an LED effect was shown.</p>
+      <p>History is limited to the 500 most recent entries. Entries expire after seven days. PulseAOD removes expired entries when history is opened and also schedules background cleanup, which Android can delay. Turning off history stops new entries from being recorded. Use <strong>Clear</strong> in <strong>Notification History</strong> to delete saved entries. You can also remove local app data by clearing PulseAOD's storage in Android settings or uninstalling it.
+</p>
+    </section>
+
+    <section>
+      <h2>Advertising and privacy choices</h2>
+      <p>In <strong>No ads</strong> mode, PulseAOD does not request or display ads. If you choose <strong>Ad-supported</strong> mode in a version that offers it, PulseAOD uses Google AdMob to display ads and Google's User Messaging Platform to manage ad consent. Google may collect or receive your IP address, infer your approximate location, and process device or account identifiers such as the Android advertising ID where available, app and ad interactions, and diagnostic information. Google uses this information to deliver and measure ads, prevent fraud, and personalise ads where permitted by your choices and applicable requirements. <a href="https://policies.google.com/technologies/partner-sites">How Google uses information from apps that use its services</a>.</p>
+      <p>You can change your ad consent through <strong>Privacy choices</strong> when that option appears in <strong>App mode</strong>. You can switch to <strong>No ads</strong> to stop future ad requests from PulseAOD. Google manages information it has already received under its own privacy policy and retention practices. <a href="https://policies.google.com/privacy">Google Privacy Policy</a>.
+</p>
+    </section>
+
+    <section>
+      <h2>Google Play purchases</h2>
+      <p>Google Play handles optional in-app purchases. PulseAOD checks purchase status to unlock and restore the effects you own. Google processes the payment and manages purchase records. PulseAOD does not receive your payment card details. <a href="https://policies.google.com/privacy">Google Privacy Policy</a>.
+</p>
+    </section>
+
+    <section>
+      <h2>Bug reports, suggestions and feedback</h2>
+      <p>When you submit an in-app report, PulseAOD sends the category, title and message you enter, any email address you provide, the app version and the submission time to Google Cloud Firestore. The developer uses this information to investigate issues, respond to you and improve the app.</p>
+      <p>You can turn off <strong>Include diagnostics</strong> before sending a report. If you leave it on, the report may include your device make and model, Android version, language, permission status, selected app settings, and counts of profiles and configured effects. The diagnostic attachment does not include notification history or a list of the apps in your profiles.
+</p>
+    </section>
+
+    <section>
+      <h2>Optional beta usage reporting</h2>
+      <p>Some beta versions let you opt in to sending a summary to Google Cloud Firestore. If you opted in, the app can send one summary after the beta ends. It contains the app version, aggregate counts of the LED and edge effects you selected, and counts of your configured effects, combinations and profiles. The summary is used to understand which effects people use. The report payload does not include notification content, app package names from your profiles, contact details or a device identifier. PulseAOD clears its local selection counters after a successful upload.
+</p>
+    </section>
+
+    <section>
+      <h2>Security, retention and deletion</h2>
+      <p>PulseAOD keeps notification history and settings in the app's private storage. Google Cloud Firestore encrypts submitted reports and beta summaries in transit and at rest. The app's Firestore rules prevent app users from reading submitted reports. Google may process information outside your country when providing its services. <a href="https://firebase.google.com/support/privacy">Privacy and security in Firebase</a>.</p>
+      <p>We retain reports and support correspondence for as long as needed to respond, investigate issues, improve PulseAOD or meet legal obligations. Beta summaries are retained for as long as needed to evaluate effect usage. To request access to, correction of, or deletion of a report, email the address below with enough information to locate it, such as the approximate date, report title and any email address you supplied. We may be unable to identify a report or beta summary that contains no information linking it to you.
+</p>
+    </section>
+
+    <section>
+      <h2>This website</h2>
+      <p>GitHub Pages hosts this policy. GitHub may process standard web request information, such as your IP address, when you visit. <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub Privacy Statement</a>.
+</p>
+    </section>
+
+    <section>
+      <h2>Contact and updates</h2>
+      <p>For privacy questions or requests, contact Sonny Gilbert (Xalies) at <a href="mailto:xalies1983@gmail.com">xalies1983@gmail.com</a>. Any changes to this policy will be posted on this page with a new effective date.</p>
+    </section>
+    <footer><a href="../../">Projects by Xalies</a></footer>
+  </main>
+</body>
+</html>
