@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>MeshVault Server Docker Setup Guide</title>
-  <meta name="description" content="Set up MeshVault Server with Docker Compose on your computer or NAS. Get working configuration files, connect your devices, keep your data, and update safely.">
+  <meta name="description" content="Set up MeshVault Server on AMD64 and ARM64 Docker hosts. Choose a Compose configuration, mount read-only watched folders on supported builds, and keep your server data.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://www.meshvault.app/server/docker/">
   <meta property="og:title" content="MeshVault Server Docker Setup Guide">
@@ -117,7 +117,7 @@
         <p class="eyebrow">MeshVault Server / Docker guide</p>
         <h1>Run MeshVault Server<br>with Docker.</h1>
         <p class="intro">Run MeshVault Server on your computer or NAS, keep your models in a folder you control, and connect from a browser or MeshVault client on your local network.</p>
-        <p class="meta">Linux container · x86-64 / AMD64 image · Last reviewed 25 October 2026</p>
+        <p class="meta">Linux containers for AMD64 and ARM64 · Last reviewed 14 November 2026</p>
       </div>
     </div>
     <div class="container guide-layout">
@@ -125,10 +125,12 @@
         <p>In this guide</p>
         <nav aria-label="On this page">
           <a href="#before-you-start">Before you start</a>
+          <a href="#load-archive">Install a release archive</a>
           <a href="#quick-start">Docker Desktop / bridge</a>
           <a href="#nas">Linux / NAS setup</a>
           <a href="#connect">Connect and unlock</a>
           <a href="#using-your-library">Add files and thumbnails</a>
+          <a href="#watched-folders">Watched folders</a>
           <a href="#users">Optional user accounts</a>
           <a href="#storage">Storage and backups</a>
           <a href="#updates">Update or stop</a>
@@ -141,16 +143,30 @@
           <span class="step">Start here</span>
           <h2>Choose the setup for your host.</h2>
           <p>You need a running Docker installation with Docker Compose, a persistent folder for your models, and enough free space for your library and previews. On Windows or macOS, use Docker Desktop with Linux containers. On a Linux server or compatible NAS, use its Docker/Compose tools.</p>
-          <p>The published image is <code>ghcr.io/xalies/meshvault-server-amd64:latest</code>, for Intel/AMD x86-64 hosts. There is currently no native ARM64 Docker image. The container includes its .NET runtime; you do not need to install .NET on the host.</p>
+          <ul>
+            <li><strong>AMD64</strong> for Intel and AMD x86-64 hosts. Use <code>ghcr.io/xalies/meshvault-server-amd64:latest</code> with the Compose files below, or <a href="https://github.com/Xalies/xalies.github.io/releases/download/v2.6.0.0/MeshVault-dockerserver-amd64-image.tar.gz">download the AMD64 archive</a>.</li>
+            <li><strong>ARM64</strong> for Apple silicon Macs, Raspberry Pi 4 with a 64-bit OS and ARM64 NAS devices that support Linux containers. <a href="https://github.com/Xalies/xalies.github.io/releases/download/v2.6.0.0/MeshVault-dockerserver-arm64-image.tar.gz">Download the ARM64 archive</a> and <a href="#load-archive">use the Compose files supplied with it</a>. You can also use <code>ghcr.io/xalies/meshvault-server-arm64:latest</code> if you have registry access.</li>
+          </ul>
+          <p>Both images include the .NET runtime. Check the <a href="https://github.com/Xalies/xalies.github.io/releases">MeshVault releases</a> for newer Docker archives.</p>
           <div class="choices">
             <article class="choice"><h3>Docker Desktop or a simple setup</h3><p>Use bridge networking and connect by the host's IP address. Includes a host-local administration port.</p><a href="#quick-start">Follow the quick start →</a></article>
             <article class="choice"><h3>Linux server or NAS</h3><p>Use host networking when you want automatic LAN discovery. Choose a persistent NAS dataset or share for the library.</p><a href="#nas">Follow the NAS setup →</a></article>
           </div>
           <p>Choose one configuration for your server. The examples use the same container name, so run one at a time. Use these examples on a trusted local network and keep port <code>5225</code> within that network.</p>
         </section>
+        <section id="load-archive">
+          <h2>Install from a release archive.</h2>
+          <p>Extract the AMD64 or ARM64 archive for your host. For a new installation, create a <code>MeshVaultLibrary</code> folder beside the extracted Compose files or point the <code>/library</code> mount at your existing library. From the extracted directory, load the image and start the bridge configuration:</p>
+          <div class="code-block"><div class="code-heading"><span>Load the image and start MeshVault</span><button class="copy" type="button" data-copy="load-image" aria-label="Copy archive install commands" hidden>Copy</button></div><pre tabindex="0" aria-label="Archive install commands"><code id="load-image">docker load -i meshvault-server-image.tar.gz
+docker compose -f docker-compose.bridge.yml up -d --pull never
+docker compose -f docker-compose.bridge.yml logs --tail=100 meshvault-server</code></pre></div>
+          <p>On a native Linux or NAS host, use <code>docker-compose.host-network.yml</code> in those commands if you need LAN discovery. Look for <strong>Server PIN:</strong> in the logs, then <a href="#connect">open the library and sign in</a>.</p>
+          <p>The archive's Compose files point to the included versioned image. To update an existing installation from an archive, keep your current Compose project and storage mappings. Change its <code>image</code> to the tag in the archive's Compose file after loading the image, then run <code>up -d --pull never</code> with your current Compose file.</p>
+        </section>
         <section id="quick-start">
           <span class="step">01 / Bridge networking</span>
           <h2>Start with Docker Compose.</h2>
+          <p>This example pulls the AMD64 registry image. For ARM64, <a href="#load-archive">use the bridge configuration in the release archive</a>.</p>
           <ol>
             <li>Create a folder for this Docker setup, such as <code>meshvault-server</code>.</li>
             <li><a href="docker-compose.server.yml" download>Download docker-compose.server.yml</a> into that folder. You can also copy the configuration below into a file with that exact name.</li>
@@ -194,6 +210,7 @@ docker compose -f docker-compose.server.yml logs --tail=100 meshvault-server</co
           <span class="step">02 / Native Linux hosts</span>
           <h2>Use a persistent NAS folder.</h2>
           <p>For a Linux Docker host, including compatible TrueNAS SCALE and Unraid setups, <a href="docker-compose.host-network.yml" download>download docker-compose.host-network.yml</a>. Use this file instead of the bridge file.</p>
+          <p>The website's Compose download pulls the AMD64 registry image. For an ARM64 NAS, <a href="#load-archive">use the host-network configuration in the ARM64 archive</a>.</p>
           <p>Replace <code>./MeshVaultLibrary</code> in the service's <code>volumes</code> list with your real dataset or share path. For example:</p>
           <div class="code-block"><div class="code-heading"><span>Example service mounts — replace the host path</span><button class="copy" type="button" data-copy="nas-mounts" aria-label="Copy example NAS service mounts" hidden>Copy</button></div><pre tabindex="0"><code id="nas-mounts">    volumes:
       - "/mnt/tank/models/MeshVault:/library"
@@ -227,15 +244,28 @@ docker compose -f docker-compose.host-network.yml logs --tail=100 meshvault-serv
           <p>The Docker server's thumbnail generation uses the CPU. You do not need to configure GPU passthrough. Interactive browser previews run in the connecting browser, so their performance also depends on that device.</p>
           <p>For simultaneous access from several computers, connect the desktop clients to the server. Keep one server responsible for the library rather than opening the same database as separate local libraries on multiple devices.</p>
         </section>
+        <section id="watched-folders">
+          <h2>Set up watched folders.</h2>
+          <p>Watched folders require a Docker build that includes the feature. The <a href="https://github.com/Xalies/xalies.github.io/releases/tag/v2.6.0.0">v2.6.0.0 images</a> were built before watched folders were added.</p>
+          <ol>
+            <li>In your Compose file, add a read-only bind mount in the <code>meshvault-server</code> service's <code>volumes</code> list. Replace <code>/mnt/nas/models</code> with an existing folder on your Docker host.
+              <div class="code-block"><div class="code-heading"><span>Watched-folder mount</span><button class="copy" type="button" data-copy="watch-mount" aria-label="Copy watched-folder mount" hidden>Copy</button></div><pre tabindex="0" aria-label="Watched-folder mount"><code id="watch-mount">      - "/mnt/nas/models:/watch/NAS:ro"</code></pre></div>
+            </li>
+            <li>Run <code>docker compose -f &lt;your-compose-file&gt; up -d</code> again to apply the mount. If you loaded the image from an archive, add <code>--pull never</code>.</li>
+            <li>On the Docker host, open <code>http://localhost:5226/config#watchedFolders</code>. For host networking, use the address shown on the <strong>Admin:</strong> line in the logs if the port differs. On a headless server, <a href="#ssh-admin-help">forward the administration port over SSH</a>. If accounts are enabled, sign in as an Owner.</li>
+            <li>Enter <code>NAS</code> or a subfolder such as <code>NAS/Downloads</code>, then select <strong>Add folder</strong>. Use the relative path under <code>/watch</code>.</li>
+          </ol>
+          <p>Signed-in users can open <strong>Watched folders</strong> from the library to search, preview supported single-file formats and download originals. MeshVault indexes the files in place and checks for changes about every five minutes if the mount doesn't send change notifications. The watch list and indexes are stored in <code>/data</code>. <strong>Stop watching</strong> leaves the source files intact.</p>
+        </section>
         <section id="users">
           <span class="step">05 / Optional sharing</span>
           <h2>Use a PIN or individual accounts.</h2>
           <p>Single-user mode uses the server PIN. If you want separate sign-ins, open <strong>Options → Mode &amp; users</strong> from trusted local administration, create the Owner account and enable named-user mode. You can then add <strong>Browse</strong>, <strong>Manage</strong> or <strong>Owner</strong> accounts for the same library.</p>
           <p>Initial account setup requires host-local administration; an ordinary LAN PIN session cannot enable it. Once enabled, sign in with a username and password. Owners manage server settings and licensing. The local administration port does not bypass account sign-in.</p>
-          <details><summary>How do I reach local administration on a headless NAS?</summary><div>
-            <p>Use a browser on the server itself. If you already administer a host-network Linux server over SSH, you can instead forward its loopback connection to your computer:</p>
-            <div class="code-block"><div class="code-heading"><span>Replace user and NAS-IP with your SSH details</span><button class="copy" type="button" data-copy="ssh-admin" aria-label="Copy example SSH administration tunnel" hidden>Copy</button></div><pre tabindex="0"><code id="ssh-admin">ssh -L 15225:127.0.0.1:5225 user@NAS-IP</code></pre></div>
-            <p>Keep that SSH session open, then visit <code>http://localhost:15225/config#access</code> on your computer. This example is for the host-network configuration. For a bridge setup, forward host port <code>5226</code> instead, using the loopback-only mapping in the supplied file.</p>
+          <details><summary>How do I reach local administration on a headless NAS?</summary><div id="ssh-admin-help">
+            <p>Use a browser on the server itself, or forward the server's loopback administration port to your computer over SSH:</p>
+            <div class="code-block"><div class="code-heading"><span>Replace user and NAS-IP with your SSH details</span><button class="copy" type="button" data-copy="ssh-admin" aria-label="Copy example SSH administration tunnel" hidden>Copy</button></div><pre tabindex="0"><code id="ssh-admin">ssh -L 127.0.0.1:15226:127.0.0.1:5226 user@NAS-IP</code></pre></div>
+            <p>Keep the SSH session open and visit <code>http://localhost:15226/config</code> on your computer. In host-network mode, replace the destination port <code>5226</code> with the port shown on the server's <strong>Admin:</strong> log line if it differs.</p>
           </div></details>
           <p style="margin-top:20px">Accounts, sessions and personal user data are stored in <code>/data</code>. Preserve that storage alongside the library. Each client must support the server's chosen sign-in mode.</p>
         </section>
@@ -244,34 +274,30 @@ docker compose -f docker-compose.host-network.yml logs --tail=100 meshvault-serv
           <h2>Back up both storage locations.</h2>
           <div class="table-wrap"><table><caption>What the supplied Compose files persist</caption><thead><tr><th scope="col">Container path</th><th scope="col">Stored here</th><th scope="col">Host storage</th></tr></thead><tbody>
             <tr><td><code>/library</code></td><td>Your models and the hidden <code>.meshvault</code> folder containing the library database, metadata and images.</td><td><code>./MeshVaultLibrary</code>, or the existing folder/dataset you choose.</td></tr>
-            <tr><td><code>/data</code></td><td>Server settings, PIN, accounts, browser session keys, licence activation and the container's persistent machine key.</td><td>The Compose-managed <code>meshvault-server-data</code> volume. Its actual name normally includes your Compose project name.</td></tr>
+            <tr><td><code>/data</code></td><td>Server settings, PIN, accounts, browser session keys, licence activation, the persistent machine key and any watched-folder settings and indexes.</td><td>The Compose-managed <code>meshvault-server-data</code> volume. Its actual name normally includes your Compose project name.</td></tr>
           </tbody></table></div>
           <p><strong>Before a backup, finish active imports and stop the server.</strong> Back up the entire library, including hidden files, plus the contents of the data volume using your Docker/NAS backup tools. A models-only backup does not include your library organisation; a library-only backup does not include the host's accounts and activation.</p>
           <div class="code-block"><div class="code-heading"><span>Stop before taking the backup</span><button class="copy" type="button" data-copy="backup-stop" aria-label="Copy command to stop for backup" hidden>Copy</button></div><pre tabindex="0"><code id="backup-stop">docker compose -f docker-compose.server.yml stop</code></pre></div>
           <p>Once the backup of both storage locations is complete, start the server again:</p>
           <div class="code-block"><div class="code-heading"><span>Start after the backup is complete</span><button class="copy" type="button" data-copy="backup-start" aria-label="Copy command to start after backup" hidden>Copy</button></div><pre tabindex="0"><code id="backup-start">docker compose -f docker-compose.server.yml start</code></pre></div>
-          <p>Use <code>docker-compose.host-network.yml</code> in those commands if that is your configuration. Restore both storage locations before starting a replacement server. Keep the same mappings; selecting a new empty folder or volume will not restore the old data.</p>
+          <p>Use the same Compose file you used to start the server. Restore both storage locations before starting a replacement server. Back up the original files of any watched folders separately.</p>
           <p>For Docker's volume backup and restore procedure, see <a href="https://docs.docker.com/engine/storage/volumes/#back-up-restore-or-migrate-data-volumes">Back up, restore or migrate data volumes</a>.</p>
         </section>
         <section id="updates">
           <span class="step">07 / Maintenance</span>
           <h2>Update the image. Keep the mounts.</h2>
-          <p>Take a current backup, finish active work, and run these commands from the same setup folder:</p>
+          <p><a href="#load-archive">Update from a release archive</a> if that is how you installed MeshVault. For a registry-based setup, take a current backup, finish active work, and run these commands from the same setup folder:</p>
           <div class="code-block"><div class="code-heading"><span>Update a bridge installation</span><button class="copy" type="button" data-copy="update-server" aria-label="Copy server update commands" hidden>Copy</button></div><pre tabindex="0"><code id="update-server">docker compose -f docker-compose.server.yml pull
 docker compose -f docker-compose.server.yml up -d
 docker compose -f docker-compose.server.yml logs --tail=100 meshvault-server</code></pre></div>
           <p>For host networking, use <code>docker-compose.host-network.yml</code> instead. Pull downloads the image; <code>up -d</code> recreates the container with the existing mounts. Restarting an old container alone does not install a new image.</p>
           <p>Keep the Compose project name, setup directory and storage mappings consistent. Changing them can select a different data volume. For a fixed version, replace <code>:latest</code> with an available numeric release tag, without a leading <code>v</code>.</p>
           <p>To stop without removing data, use <code>docker compose -f docker-compose.server.yml stop</code>. <strong>Avoid <code>down -v</code> when you want to retain the server:</strong> it removes the named data volume and its saved settings, accounts and activation.</p>
-          <details><summary>Installing from the downloadable Docker image archive</summary><div><p>If you downloaded the Docker server package from a MeshVault release, extract the outer archive first. Inside it are the Compose files and <code>meshvault-server-image.tar.gz</code>. Load that inner image archive:</p>
-            <div class="code-block"><div class="code-heading"><span>Load an image supplied with a release</span><button class="copy" type="button" data-copy="load-image" aria-label="Copy Docker image load command" hidden>Copy</button></div><pre tabindex="0"><code id="load-image">docker load -i meshvault-server-image.tar.gz</code></pre></div>
-            <p>Then use the matching Compose file with <code>up -d</code>. Keep its image tag matched to the loaded image; a later <code>pull</code> updates it from the registry.</p>
-          </div></details>
         </section>
         <section id="troubleshooting">
           <span class="step">08 / Troubleshooting</span>
           <h2>Check the connection, path and logs.</h2>
-          <details><summary>The container will not start</summary><div><p>Check the container logs and confirm Docker is running Linux containers. Make sure the library folder exists, is writable, and ports <code>5225</code> and, for bridge mode, <code>5226</code> are available. An architecture or “exec format” error can mean the AMD64 image does not match the host.</p><p>For an older container reporting <code>AppStoragePaths.GetRootFolderPath</code> with an empty path, add <code>XDG_DATA_HOME=/data</code>, persist <code>/data</code>, and recreate the container.</p></div></details>
+          <details><summary>The container will not start</summary><div><p>Check the container logs and confirm Docker is running Linux containers. Make sure the library folder exists, is writable, and ports <code>5225</code> and, for bridge mode, <code>5226</code> are available. If you see an “exec format” error, check that you chose the image for your host architecture.</p><p>For an older container reporting <code>AppStoragePaths.GetRootFolderPath</code> with an empty path, add <code>XDG_DATA_HOME=/data</code>, persist <code>/data</code>, and recreate the container.</p></div></details>
           <details><summary>It opens on the host but not on my phone or another computer</summary><div><p>Use <code>http://HOST-IP:5225</code>, not <code>localhost</code>. Check that both devices are on the same reachable LAN, that the host firewall permits the connection, and that bridge mode publishes <code>5225:5225</code>. Guest Wi-Fi and client isolation can prevent devices from reaching each other.</p></div></details>
           <details><summary>The server is not discovered automatically</summary><div><p>Enter the server's LAN IP and port manually. Bridge networking can prevent mDNS discovery. Native Linux host networking supports the discovery path; Docker Desktop users should use the bridge setup and a manual address.</p></div></details>
           <details><summary>I cannot find the PIN, or my old PIN no longer works</summary><div><p>Read <code>Server PIN:</code> in the container logs, or use the local administration page on the Docker host. If <code>MESHVAULT_SERVER_PIN</code> is set, that value overrides the saved PIN. A new empty <code>/data</code> volume can also create a new identity and PIN.</p></div></details>
