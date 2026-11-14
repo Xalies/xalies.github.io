@@ -142,8 +142,8 @@
           <h2>Choose the setup for your host.</h2>
           <p>You need a running Docker installation with Docker Compose, a persistent folder for your models, and enough free space for your library and previews. On Windows or macOS, use Docker Desktop with Linux containers. On a Linux server or compatible NAS, use its Docker/Compose tools.</p>
           <ul>
-            <li><strong>AMD64</strong> for Intel and AMD x86-64 hosts. Use <code>ghcr.io/xalies/meshvault-server-amd64:latest</code> with the Compose files below, or <a href="https://github.com/Xalies/xalies.github.io/releases/download/v2.6.0.1/MeshVault-dockerserver-amd64-image.tar.gz">download the AMD64 archive</a>.</li>
-            <li><strong>ARM64</strong> for Apple silicon Macs, Raspberry Pi 4 with a 64-bit OS and ARM64 NAS devices that support Linux containers. <a href="https://github.com/Xalies/xalies.github.io/releases/download/v2.6.0.1/MeshVault-dockerserver-arm64-image.tar.gz">Download the ARM64 archive</a> and <a href="#load-archive">use the Compose files supplied with it</a>. You can also use <code>ghcr.io/xalies/meshvault-server-arm64:latest</code> if you have registry access.</li>
+            <li><strong>AMD64</strong> for Intel and AMD x86-64 hosts. Use <code>ghcr.io/xalies/meshvault-server-amd64:latest</code> with the Compose files below, or <a href="https://github.com/Xalies/xalies.github.io/releases/download/v2.6.0.5/MeshVault-dockerserver-amd64-image.tar.gz">download the AMD64 archive</a>.</li>
+            <li><strong>ARM64</strong> for Apple silicon Macs, Raspberry Pi 4 with a 64-bit OS and ARM64 NAS devices that support Linux containers. <a href="https://github.com/Xalies/xalies.github.io/releases/download/v2.6.0.5/MeshVault-dockerserver-arm64-image.tar.gz">Download the ARM64 archive</a> and <a href="#load-archive">use the Compose files supplied with it</a>. You can also use <code>ghcr.io/xalies/meshvault-server-arm64:latest</code> if you have registry access.</li>
           </ul>
           <p>Both images include the .NET runtime. Check the <a href="https://github.com/Xalies/xalies.github.io/releases">MeshVault releases</a> for newer Docker archives.</p>
           <div class="choices">
@@ -255,7 +255,7 @@ docker compose -f docker-compose.host-network.yml logs --tail=100 meshvault-serv
             </li>
             <li>Run <code>docker compose -f &lt;your-compose-file&gt; up -d</code> again to apply the mount. If you loaded the image from an archive, add <code>--pull never</code>.</li>
             <li>On the Docker host, open <code>http://localhost:5226/config#watchedFolders</code>. For host networking, use the address shown on the <strong>Admin:</strong> line in the logs if the port differs. On a headless server, <a href="#ssh-admin-help">forward the administration port over SSH</a>. If accounts are enabled, sign in as an Owner.</li>
-            <li>Enter <code>NAS</code> or a subfolder such as <code>NAS/Downloads</code>, then select <strong>Add folder</strong>. Use the relative path under <code>/watch</code>.</li>
+            <li>If you see <strong>Browse mounted folders</strong>, open it, choose <code>NAS</code> or one of its subfolders, then select <strong>Add this folder</strong>. You can also type a path relative to <code>/watch</code>, such as <code>NAS/Downloads</code>, and select <strong>Add folder</strong>.</li>
           </ol>
           <p>Signed-in users can open <strong>Watched folders</strong> from the library to search, preview supported single-file formats and download originals. MeshVault indexes the files in place and checks for changes about every five minutes if the mount doesn't send change notifications. The watch list and indexes are stored in <code>/data</code>. <strong>Stop watching</strong> leaves the source files intact.</p>
         </section>
