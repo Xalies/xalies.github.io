@@ -127,7 +127,7 @@
           <a href="#quick-start">Docker Desktop / bridge</a>
           <a href="#nas">Host mode (Linux / NAS)</a>
           <a href="#connect">Connect and unlock</a>
-          <a href="#using-your-library">Add files and thumbnails</a>
+          <a href="#using-your-library">Main library</a>
           <a href="#watched-folders">Watched folders</a>
           <a href="#users">Optional user accounts</a>
           <a href="#storage">Storage and backups</a>
@@ -213,7 +213,7 @@ docker compose -f docker-compose.server.yml logs --tail=100 meshvault-server</co
           <div class="code-block"><div class="code-heading"><span>Example service mounts — replace the host path</span><button class="copy" type="button" data-copy="nas-mounts" aria-label="Copy example NAS service mounts" hidden>Copy</button></div><pre tabindex="0"><code id="nas-mounts">    volumes:
       - "/mnt/tank/models/MeshVault:/library"
       - meshvault-server-data:/data</code></pre></div>
-          <p>On Unraid, the library might be a share such as <code>/mnt/user/3D Models/MeshVault</code>. Keep the quotes around paths containing spaces. The host folder must be writable by the container: MeshVault stores its database and images alongside your models.</p>
+          <p>On Unraid, the library might be a share such as <code>/mnt/user/3D Models/MeshVault</code>. Keep the quotes around paths containing spaces. The container needs write access to the <a href="#using-your-library">main library folder</a>.</p>
           <div class="code-block"><div class="code-heading"><span>Start on the Linux host</span><button class="copy" type="button" data-copy="nas-start" aria-label="Copy NAS start commands" hidden>Copy</button></div><pre tabindex="0"><code id="nas-start">docker compose -f docker-compose.host-network.yml pull
 docker compose -f docker-compose.host-network.yml up -d
 docker compose -f docker-compose.host-network.yml logs --tail=100 meshvault-server</code></pre></div>
@@ -239,8 +239,9 @@ docker compose -f docker-compose.host-network.yml logs --tail=100 meshvault-serv
         </section>
         <section id="using-your-library">
           <span class="step">04 / Everyday use</span>
-          <h2>Add files, then refresh.</h2>
-          <p>Upload through the browser library or send downloads with <a href="../../extension/connect.html">MeshVault Connect</a>. You can also copy models and creator packs directly into the host folder mapped to <code>/library</code>.</p>
+          <h2>Use your portable main library.</h2>
+          <p>The host folder mapped to <code>/library</code> is your editable, portable library. Choose an empty folder, a folder that already contains models, or the root of an existing MeshVault library. When MeshVault scans it, it indexes supported files in their existing subfolders and can move loose models at the top level into <code>Unsorted</code>. Use <a href="#watched-folders">watched folders</a> when you want the original files to stay in place.</p>
+          <p>Import through the browser library or send downloads with <a href="../../extension/connect.html">MeshVault Connect</a>. You can also copy models and creator packs directly into the main library folder, and organise models into folders in the browser library.</p>
           <p>After copying files outside MeshVault, click <strong>Refresh</strong> in the browser library. This scans the folder and generates missing thumbnails. Allow time for larger libraries and complex models; restarting the container is not a substitute for generating missing thumbnails.</p>
           <p>The server reuses available artwork and embedded previews before rendering a fallback. A file being listed in the library does not guarantee an interactive preview or a generated thumbnail for every format.</p>
           <p>The Docker server's thumbnail generation uses the CPU. You do not need to configure GPU passthrough. Interactive browser previews run in the connecting browser, so their performance also depends on that device.</p>
@@ -248,7 +249,7 @@ docker compose -f docker-compose.host-network.yml logs --tail=100 meshvault-serv
         </section>
         <section id="watched-folders">
           <h2>Set up watched folders.</h2>
-          <p>Watched folders are available in <a href="https://github.com/Xalies/xalies.github.io/releases/tag/v2.6.0.1">MeshVault Server 2.6.0.1</a> and later.</p>
+          <p>MeshVault indexes watched folders in place and shares them read-only. The originals stay where they are. Watched folders are available in <a href="https://github.com/Xalies/xalies.github.io/releases/tag/v2.6.0.1">MeshVault Server 2.6.0.1</a> and later.</p>
           <ol>
             <li>In your Compose file, add a read-only bind mount in the <code>meshvault-server</code> service's <code>volumes</code> list. Replace <code>/mnt/nas/models</code> with an existing folder on your Docker host.
               <div class="code-block"><div class="code-heading"><span>Watched-folder mount</span><button class="copy" type="button" data-copy="watch-mount" aria-label="Copy watched-folder mount" hidden>Copy</button></div><pre tabindex="0" aria-label="Watched-folder mount"><code id="watch-mount">      - "/mnt/nas/models:/watch/NAS:ro"</code></pre></div>
@@ -257,7 +258,7 @@ docker compose -f docker-compose.host-network.yml logs --tail=100 meshvault-serv
             <li>On the Docker host, open <code>http://localhost:5226/config#watchedFolders</code>. For host networking, use the address shown on the <strong>Admin:</strong> line in the logs if the port differs. On a headless server, <a href="#ssh-admin-help">forward the administration port over SSH</a>. If accounts are enabled, sign in as an Owner.</li>
             <li>If you see <strong>Browse mounted folders</strong>, open it, choose <code>NAS</code> or one of its subfolders, then select <strong>Add this folder</strong>. You can also type a path relative to <code>/watch</code>, such as <code>NAS/Downloads</code>, and select <strong>Add folder</strong>.</li>
           </ol>
-          <p>Signed-in users can open <strong>Watched folders</strong> from the library to search, preview supported single-file formats and download originals. MeshVault indexes the files in place and checks for changes about every five minutes if the mount doesn't send change notifications. The watch list and indexes are stored in <code>/data</code>. <strong>Stop watching</strong> leaves the source files intact.</p>
+          <p>Signed-in users can open <strong>Watched folders</strong> from the library to search, preview supported single-file formats and download originals. MeshVault checks for changes about every five minutes if the mount doesn't send change notifications. The watch list and indexes are stored in <code>/data</code>. <strong>Stop watching</strong> leaves the source files intact.</p>
         </section>
         <section id="users">
           <span class="step">05 / Optional sharing</span>
@@ -279,6 +280,7 @@ docker compose -f docker-compose.host-network.yml logs --tail=100 meshvault-serv
             <tr><td><code>/data</code></td><td>Server settings, PIN, accounts, browser session keys, licence activation, the persistent machine key and any watched-folder settings and indexes.</td><td>The Compose-managed <code>meshvault-server-data</code> volume. Its actual name normally includes your Compose project name.</td></tr>
           </tbody></table></div>
           <p><strong>Before a backup, finish active imports and stop the server.</strong> Back up the entire library, including hidden files, plus the contents of the data volume using your Docker/NAS backup tools. A models-only backup does not include your library organisation; a library-only backup does not include the host's accounts and activation.</p>
+          <p>To move a library between MeshVault Desktop and Server, close the app or stop the server using it, then copy the entire library folder, including the hidden <code>.meshvault</code> folder. Select the copied folder in Desktop or map it to <code>/library</code> on the destination server.</p>
           <div class="code-block"><div class="code-heading"><span>Stop before taking the backup</span><button class="copy" type="button" data-copy="backup-stop" aria-label="Copy command to stop for backup" hidden>Copy</button></div><pre tabindex="0"><code id="backup-stop">docker compose -f docker-compose.server.yml stop</code></pre></div>
           <p>Once the backup of both storage locations is complete, start the server again:</p>
           <div class="code-block"><div class="code-heading"><span>Start after the backup is complete</span><button class="copy" type="button" data-copy="backup-start" aria-label="Copy command to start after backup" hidden>Copy</button></div><pre tabindex="0"><code id="backup-start">docker compose -f docker-compose.server.yml start</code></pre></div>
