@@ -1,0 +1,7 @@
+# MeshVault 2.6.1
+
+- Überwachte Ordner in allen Server-Versionen. Server für Windows, Linux und Docker können vorhandene Modellordner am ursprünglichen Speicherort indizieren. Angemeldete Nutzer können darin suchen, unterstützte Modelle in der Vorschau ansehen und Originaldateien herunterladen. Die Quelldateien bleiben an ihrem Speicherort.
+- Einfachere Docker-Einrichtung. Öffnen Sie Options → Watched folders → Browse mounted folders, um einen in Docker eingebundenen Ordner oder Unterordner auszuwählen.
+- Verständlichere Einrichtung der Hauptbibliothek. In den Server-Einstellungen steht jetzt, wohin Sie Modelle importieren und kopieren und wie Sie sie organisieren können. Sie erfahren auch, was passiert, wenn Sie einen vorhandenen Ordner auswählen. Bei einem Scan können Modelle, die direkt im Stammordner liegen, nach `Unsorted` verschoben werden. Wenn Sie die Bibliothek auf einen anderen Computer übertragen, nehmen Sie den gesamten Ordner einschließlich des ausgeblendeten Ordners `.meshvault` mit.
+- Docker-Downloads für AMD64 und ARM64, einschließlich kompatibler ARM64-NAS-Geräte.
+- Ihre Bibliothek kann jetzt SolidCraft-, Layerling- und TweakCAD-Projekte indizieren, auch in unterstützten Archiven. Für SolidCraft-Projekte mit gespeichertem Polygonnetz steht eine 3D-Vorschau zur Verfügung. Bei Layerling dient das gespeicherte Miniaturbild als statische Vorschau. TweakCAD-Dokumente und -Komponenten lassen sich indizieren und wiederfinden.

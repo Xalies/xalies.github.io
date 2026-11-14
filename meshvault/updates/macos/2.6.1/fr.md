@@ -1,0 +1,7 @@
+# MeshVault 2.6.1
+
+- Dossiers surveillés dans toutes les versions du serveur. Les serveurs pour Windows, Linux et Docker peuvent indexer les dossiers de modèles existants à leur emplacement d’origine. Les utilisateurs connectés peuvent y faire des recherches, prévisualiser les modèles compatibles et télécharger les originaux. Les fichiers sources restent à leur emplacement.
+- Configuration Docker simplifiée. Ouvrez Options → Watched folders → Browse mounted folders pour choisir un dossier ou sous-dossier que vous avez monté dans Docker.
+- Configuration plus claire de la bibliothèque principale. Les paramètres du serveur indiquent désormais où importer et copier des modèles et comment les organiser. Ils expliquent aussi ce qui se passe lorsque vous choisissez un dossier existant. Une analyse peut déplacer vers `Unsorted` les modèles placés directement à la racine. Pour transférer votre bibliothèque sur un autre ordinateur, emportez le dossier entier, y compris le dossier masqué `.meshvault`.
+- Téléchargements Docker pour AMD64 et ARM64, y compris pour les appareils NAS ARM64 compatibles.
+- Votre bibliothèque peut désormais indexer les projets SolidCraft, Layerling et TweakCAD, y compris dans les archives compatibles. Un aperçu 3D de SolidCraft est disponible si le projet contient un maillage enregistré. Layerling utilise sa miniature enregistrée comme aperçu fixe. Les documents et composants TweakCAD peuvent être indexés et retrouvés.

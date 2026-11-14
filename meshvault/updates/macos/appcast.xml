@@ -13,7 +13,23 @@
             <sparkle:shortVersionString>2.6.1</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
             <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <sparkle:releaseNotesLink>https://www.meshvault.app/updates/macos/MeshVault-macOS-Apple-Silicon-2.6.1.1234.md</sparkle:releaseNotesLink>
+            <sparkle:releaseNotesLink xml:lang="en">https://www.meshvault.app/updates/macos/MeshVault-macOS-Apple-Silicon-2.6.1.1234.md</sparkle:releaseNotesLink>
+            <sparkle:releaseNotesLink xml:lang="en-AU">https://www.meshvault.app/updates/macos/MeshVault-macOS-Apple-Silicon-2.6.1.1234.md</sparkle:releaseNotesLink>
+            <sparkle:releaseNotesLink xml:lang="en-GB">https://www.meshvault.app/updates/macos/MeshVault-macOS-Apple-Silicon-2.6.1.1234.md</sparkle:releaseNotesLink>
+            <sparkle:releaseNotesLink xml:lang="en-US">https://www.meshvault.app/updates/macos/2.6.1/en-US.md</sparkle:releaseNotesLink>
+            <sparkle:releaseNotesLink xml:lang="cs-CZ">https://www.meshvault.app/updates/macos/2.6.1/cs-CZ.md</sparkle:releaseNotesLink>
+            <sparkle:releaseNotesLink xml:lang="da-DK">https://www.meshvault.app/updates/macos/2.6.1/da-DK.md</sparkle:releaseNotesLink>
+            <sparkle:releaseNotesLink xml:lang="de">https://www.meshvault.app/updates/macos/2.6.1/de.md</sparkle:releaseNotesLink>
+            <sparkle:releaseNotesLink xml:lang="de-CH">https://www.meshvault.app/updates/macos/2.6.1/de-CH.md</sparkle:releaseNotesLink>
+            <sparkle:releaseNotesLink xml:lang="es-ES">https://www.meshvault.app/updates/macos/2.6.1/es-ES.md</sparkle:releaseNotesLink>
+            <sparkle:releaseNotesLink xml:lang="fi-FI">https://www.meshvault.app/updates/macos/2.6.1/fi-FI.md</sparkle:releaseNotesLink>
+            <sparkle:releaseNotesLink xml:lang="fr">https://www.meshvault.app/updates/macos/2.6.1/fr.md</sparkle:releaseNotesLink>
+            <sparkle:releaseNotesLink xml:lang="he-IL">https://www.meshvault.app/updates/macos/2.6.1/he-IL.md</sparkle:releaseNotesLink>
+            <sparkle:releaseNotesLink xml:lang="nb-NO">https://www.meshvault.app/updates/macos/2.6.1/nb-NO.md</sparkle:releaseNotesLink>
+            <sparkle:releaseNotesLink xml:lang="nl-NL">https://www.meshvault.app/updates/macos/2.6.1/nl-NL.md</sparkle:releaseNotesLink>
+            <sparkle:releaseNotesLink xml:lang="pt-BR">https://www.meshvault.app/updates/macos/2.6.1/pt-BR.md</sparkle:releaseNotesLink>
+            <sparkle:releaseNotesLink xml:lang="ru-RU">https://www.meshvault.app/updates/macos/2.6.1/ru-RU.md</sparkle:releaseNotesLink>
+            <sparkle:releaseNotesLink xml:lang="sv-SE">https://www.meshvault.app/updates/macos/2.6.1/sv-SE.md</sparkle:releaseNotesLink>
             <enclosure url="https://github.com/Xalies/xalies.github.io/releases/download/v2.6.1.0/MeshVault-macOS-Apple-Silicon-2.6.1.1234.dmg" length="173537734" type="application/octet-stream" sparkle:edSignature="XKfSHGbVCMkzoFS1vJDea43icTAyGH/YRoBMjO4HMwaZ1q5VAIzxZHiBKjZQzQbt7jGReLWSiX2uzrCU+IjyDg=="/>
         </item>
         <item>
