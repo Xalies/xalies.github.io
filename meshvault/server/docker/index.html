@@ -245,7 +245,8 @@ docker compose -f docker-compose.host-network.yml logs --tail=100 meshvault-serv
           <p>After copying files outside MeshVault, click <strong>Refresh</strong> in the browser library. This scans the folder and generates missing thumbnails. Allow time for larger libraries and complex models; restarting the container is not a substitute for generating missing thumbnails.</p>
           <p>The server reuses available artwork and embedded previews before rendering a fallback. A file being listed in the library does not guarantee an interactive preview or a generated thumbnail for every format.</p>
           <p>The Docker server's thumbnail generation uses the CPU. You do not need to configure GPU passthrough. Interactive browser previews run in the connecting browser, so their performance also depends on that device.</p>
-          <p>For simultaneous access from several computers, connect the desktop clients to the server. Keep one server responsible for the library rather than opening the same database as separate local libraries on multiple devices.</p>
+          <p>To share a library, connect each computer to the same MeshVault Server in a browser or the desktop app. If someone changes a model’s details while you’re editing them in the browser, MeshVault blocks the older edit from overwriting their changes and asks you to reload the model.</p>
+          <p>Choosing the NAS folder as a local library makes the desktop app open the database file directly over the network. For shared access, run MeshVault Server on the NAS so it can open the database locally.</p>
         </section>
         <section id="watched-folders">
           <h2>Set up watched folders.</h2>
