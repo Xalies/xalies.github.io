@@ -45,7 +45,6 @@
     .hero { padding-block: clamp(42px, 6vw, 76px); background: linear-gradient(180deg, #21162e, var(--bg)); border-bottom: 1px solid var(--line); }
     .eyebrow { color: #c3afff; font: 500 11px/1.6 "IBM Plex Mono", Consolas, monospace; letter-spacing: .12em; text-transform: uppercase; }
     .intro { max-width: 740px; font-size: 20px; }
-    .meta { margin: 24px 0 0; font-size: 13px; }
     .guide-layout { display: grid; grid-template-columns: 205px minmax(0, 1fr); gap: clamp(30px, 5vw, 70px); padding-block: 48px 72px; }
     .contents { align-self: start; position: sticky; top: 108px; font-size: 14px; }
     .contents p { margin-bottom: 14px; color: var(--text); font-weight: 600; }
@@ -117,7 +116,6 @@
         <p class="eyebrow">MeshVault Server / Docker guide</p>
         <h1>Run MeshVault Server<br>with Docker.</h1>
         <p class="intro">Run MeshVault Server on your computer or NAS, keep your models in a folder you control, and connect from a browser or MeshVault client on your local network.</p>
-        <p class="meta">Linux containers for AMD64 and ARM64 · Last reviewed 14 November 2026</p>
       </div>
     </div>
     <div class="container guide-layout">
@@ -127,7 +125,7 @@
           <a href="#before-you-start">Before you start</a>
           <a href="#load-archive">Install a release archive</a>
           <a href="#quick-start">Docker Desktop / bridge</a>
-          <a href="#nas">Linux / NAS setup</a>
+          <a href="#nas">Host mode (Linux / NAS)</a>
           <a href="#connect">Connect and unlock</a>
           <a href="#using-your-library">Add files and thumbnails</a>
           <a href="#watched-folders">Watched folders</a>
@@ -144,13 +142,13 @@
           <h2>Choose the setup for your host.</h2>
           <p>You need a running Docker installation with Docker Compose, a persistent folder for your models, and enough free space for your library and previews. On Windows or macOS, use Docker Desktop with Linux containers. On a Linux server or compatible NAS, use its Docker/Compose tools.</p>
           <ul>
-            <li><strong>AMD64</strong> for Intel and AMD x86-64 hosts. Use <code>ghcr.io/xalies/meshvault-server-amd64:latest</code> with the Compose files below, or <a href="https://github.com/Xalies/xalies.github.io/releases/download/v2.6.0.0/MeshVault-dockerserver-amd64-image.tar.gz">download the AMD64 archive</a>.</li>
-            <li><strong>ARM64</strong> for Apple silicon Macs, Raspberry Pi 4 with a 64-bit OS and ARM64 NAS devices that support Linux containers. <a href="https://github.com/Xalies/xalies.github.io/releases/download/v2.6.0.0/MeshVault-dockerserver-arm64-image.tar.gz">Download the ARM64 archive</a> and <a href="#load-archive">use the Compose files supplied with it</a>. You can also use <code>ghcr.io/xalies/meshvault-server-arm64:latest</code> if you have registry access.</li>
+            <li><strong>AMD64</strong> for Intel and AMD x86-64 hosts. Use <code>ghcr.io/xalies/meshvault-server-amd64:latest</code> with the Compose files below, or <a href="https://github.com/Xalies/xalies.github.io/releases/download/v2.6.0.1/MeshVault-dockerserver-amd64-image.tar.gz">download the AMD64 archive</a>.</li>
+            <li><strong>ARM64</strong> for Apple silicon Macs, Raspberry Pi 4 with a 64-bit OS and ARM64 NAS devices that support Linux containers. <a href="https://github.com/Xalies/xalies.github.io/releases/download/v2.6.0.1/MeshVault-dockerserver-arm64-image.tar.gz">Download the ARM64 archive</a> and <a href="#load-archive">use the Compose files supplied with it</a>. You can also use <code>ghcr.io/xalies/meshvault-server-arm64:latest</code> if you have registry access.</li>
           </ul>
           <p>Both images include the .NET runtime. Check the <a href="https://github.com/Xalies/xalies.github.io/releases">MeshVault releases</a> for newer Docker archives.</p>
           <div class="choices">
-            <article class="choice"><h3>Docker Desktop or a simple setup</h3><p>Use bridge networking and connect by the host's IP address. Includes a host-local administration port.</p><a href="#quick-start">Follow the quick start →</a></article>
-            <article class="choice"><h3>Linux server or NAS</h3><p>Use host networking when you want automatic LAN discovery. Choose a persistent NAS dataset or share for the library.</p><a href="#nas">Follow the NAS setup →</a></article>
+            <article class="choice"><h3>Bridge mode</h3><p>Use the bridge setup on Docker Desktop or a Linux host. Connect by the host's IP address.</p><a href="#quick-start">Set up bridge mode →</a></article>
+            <article class="choice"><h3>Host mode</h3><p>On Linux or a compatible NAS, MeshVault uses the host's network directly, so clients can discover the server on your LAN.</p><a href="#nas">Set up host mode →</a></article>
           </div>
           <p>Choose one configuration for your server. The examples use the same container name, so run one at a time. Use these examples on a trusted local network and keep port <code>5225</code> within that network.</p>
         </section>
@@ -207,9 +205,9 @@ docker compose -f docker-compose.server.yml logs --tail=100 meshvault-server</co
           <div class="note"><p><strong>Keep the administration port local.</strong> Port <code>5225</code> is for your LAN clients. The <code>127.0.0.1:5226:5226</code> mapping is for administration on the Docker host only. Keep the <code>127.0.0.1</code> binding; do not expose port <code>5226</code> to your network.</p></div>
         </section>
         <section id="nas">
-          <span class="step">02 / Native Linux hosts</span>
-          <h2>Use a persistent NAS folder.</h2>
-          <p>For a Linux Docker host, including compatible TrueNAS SCALE and Unraid setups, <a href="docker-compose.host-network.yml" download>download docker-compose.host-network.yml</a>. Use this file instead of the bridge file.</p>
+          <span class="step">02 / Linux and NAS</span>
+          <h2>Run MeshVault in host mode.</h2>
+          <p>The <a href="docker-compose.host-network.yml" download>host-mode Compose file</a> uses <code>network_mode: host</code>. On a native Linux Docker host, including compatible TrueNAS SCALE and Unraid setups, this lets MeshVault advertise itself on the LAN. Connect directly at <code>http://HOST-IP:5225</code>.</p>
           <p>The website's Compose download pulls the AMD64 registry image. For an ARM64 NAS, <a href="#load-archive">use the host-network configuration in the ARM64 archive</a>.</p>
           <p>Replace <code>./MeshVaultLibrary</code> in the service's <code>volumes</code> list with your real dataset or share path. For example:</p>
           <div class="code-block"><div class="code-heading"><span>Example service mounts — replace the host path</span><button class="copy" type="button" data-copy="nas-mounts" aria-label="Copy example NAS service mounts" hidden>Copy</button></div><pre tabindex="0"><code id="nas-mounts">    volumes:
@@ -220,7 +218,10 @@ docker compose -f docker-compose.server.yml logs --tail=100 meshvault-server</co
 docker compose -f docker-compose.host-network.yml up -d
 docker compose -f docker-compose.host-network.yml logs --tail=100 meshvault-server</code></pre></div>
           <p>If your NAS provides a container dashboard, use its Compose/custom-app support with this configuration and read the PIN from the container logs.</p>
-          <p>Host networking uses port <code>5225</code> directly and allows mDNS discovery on the LAN. Leave out <code>ports:</code> mappings and make sure another service is not using that port. Docker Desktop users should keep the bridge setup and use a manual IP connection.</p>
+          <p>Keep port <code>5225</code> available on the host and leave out the Compose <code>ports:</code> section. For local administration, use the address on the server's <strong>Admin:</strong> log line. On Docker Desktop, use <a href="#quick-start">bridge mode</a> and connect by IP.</p>
+          <h3>Choose a local hostname</h3>
+          <p>For <code>http://meshvault.local:5225</code>, add <code>hostname: meshvault</code> to the <code>meshvault-server</code> service at the same level as <code>image</code> in your <a href="https://docs.docker.com/reference/compose-file/services/#hostname">Compose file</a>. Rerun the same start command to apply the change. Choose a name that's unique on your LAN, such as <code>workshop-vault</code>. MeshVault advertises the name with <code>.local</code> appended. Devices that support multicast DNS on that network can use the name.</p>
+          <p>With either network mode, you can also create a local DNS record for a name of your choice that points to the Docker host's LAN IP. Use that hostname with port <code>5225</code>.</p>
         </section>
         <section id="connect">
           <span class="step">03 / First connection</span>
@@ -233,7 +234,8 @@ docker compose -f docker-compose.host-network.yml logs --tail=100 meshvault-serv
           </ol>
           <p>Current Server builds start with a seven-day trial. After the trial, browsing remains available; importing, scanning, editing and generating thumbnails require an activated Pro licence. Keep the <code>/data</code> storage when updating so the server retains its activation.</p>
           <p><a href="https://buy.stripe.com/3cI4gAd5Z9d0bJFbLscbC00">Get a MeshVault licence</a> if you need one. The one-off payment of A$19.99 includes future updates and activation on up to 10 devices.</p>
-          <div class="note"><p><strong>Connecting from another device?</strong> <code>localhost</code> always means the device you are using. A phone or laptop must use the Docker host's IP address. In a MeshVault client or Connect, use that same server address and the PIN; automatic discovery is optional.</p></div>
+          <div class="note"><p><strong>Connecting from another device?</strong> Use the Docker host's LAN IP address or a hostname that resolves to it. In a MeshVault client or Connect, use that same server address and the PIN.</p></div>
+          <p>The supplied Compose files serve HTTP on port <code>5225</code>. A hostname can be used with HTTP. HTTPS requires a certificate for that hostname that your devices trust. If you configure an HTTPS reverse proxy, use the library port <code>5225</code> as its upstream and keep the administration listener local. Browser sign-in and write actions require MeshVault to see the original request scheme and hostname.</p>
         </section>
         <section id="using-your-library">
           <span class="step">04 / Everyday use</span>
@@ -246,7 +248,7 @@ docker compose -f docker-compose.host-network.yml logs --tail=100 meshvault-serv
         </section>
         <section id="watched-folders">
           <h2>Set up watched folders.</h2>
-          <p>Watched folders require a Docker build that includes the feature. The <a href="https://github.com/Xalies/xalies.github.io/releases/tag/v2.6.0.0">v2.6.0.0 images</a> were built before watched folders were added.</p>
+          <p>Watched folders are available in <a href="https://github.com/Xalies/xalies.github.io/releases/tag/v2.6.0.1">MeshVault Server 2.6.0.1</a> and later.</p>
           <ol>
             <li>In your Compose file, add a read-only bind mount in the <code>meshvault-server</code> service's <code>volumes</code> list. Replace <code>/mnt/nas/models</code> with an existing folder on your Docker host.
               <div class="code-block"><div class="code-heading"><span>Watched-folder mount</span><button class="copy" type="button" data-copy="watch-mount" aria-label="Copy watched-folder mount" hidden>Copy</button></div><pre tabindex="0" aria-label="Watched-folder mount"><code id="watch-mount">      - "/mnt/nas/models:/watch/NAS:ro"</code></pre></div>
