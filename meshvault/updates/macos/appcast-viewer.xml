@@ -3,15 +3,15 @@
     <channel>
         <title>MeshVault Viewer</title>
         <item>
-            <title>2.6.1</title>
-            <pubDate>Sat, 14 Nov 2026 06:09:25 +0000</pubDate>
+            <title>2.6.2</title>
+            <pubDate>Fri, 20 Nov 2026 21:08:43 +0000</pubDate>
             <link>https://www.meshvault.app</link>
-            <sparkle:version>1235</sparkle:version>
-            <sparkle:shortVersionString>2.6.1</sparkle:shortVersionString>
+            <sparkle:version>1236</sparkle:version>
+            <sparkle:shortVersionString>2.6.2</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>11.0</sparkle:minimumSystemVersion>
             <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
             <sparkle:releaseNotesLink>https://www.meshvault.app/updates/macos/MeshVault-Viewer-macOS.md</sparkle:releaseNotesLink>
-            <enclosure url="https://github.com/Xalies/xalies.github.io/releases/download/v2.6.1.0/MeshVault-Viewer-macOS.dmg" length="118746848" type="application/octet-stream" sparkle:edSignature="8bQrvACphXD2ljPKLnlFNqHcw7BJxsQMFJP+JvjXZYs3K3m/4Wv0TmkPJ8njqgyUs2Pp/jwu5axr5UZmmPOLAg=="/>
+            <enclosure url="https://github.com/Xalies/xalies.github.io/releases/download/v2.6.2.0/MeshVault-Viewer-macOS.dmg" length="118786128" type="application/octet-stream" sparkle:edSignature="CexmgVgAeJtiRiUGfYRZtIN7UyzvjmxyqPNygU5Mnc/eKP1oJsH2BXD969UU0QHm9CT6j4cBdW8ivfhflFSwAw=="/>
         </item>
     </channel>
 </rss>
