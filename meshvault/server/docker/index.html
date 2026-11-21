@@ -233,7 +233,7 @@ docker compose -f docker-compose.host-network.yml logs --tail=100 meshvault-serv
             <li>Open <strong>Options → Licence</strong>, paste your MeshVault licence key and select <strong>Unlock server</strong>. The direct address is <code>http://HOST-IP:5225/config#licence</code>.</li>
           </ol>
           <p>Current Server builds start with a seven-day trial. After the trial, browsing remains available; importing, scanning, editing and generating thumbnails require an activated Pro licence. Keep the <code>/data</code> storage when updating so the server retains its activation.</p>
-          <p><a href="https://buy.stripe.com/3cI4gAd5Z9d0bJFbLscbC00">Get a MeshVault licence</a> if you need one. The one-off payment of US$19.99 includes future updates and activation on up to 10 devices.</p>
+          <p><a href="https://buy.stripe.com/fZufZi5Dx88W2956r8cbC01">Get a MeshVault licence</a> if you need one. The one-off payment of US$19.99 includes future updates and activation on up to 10 devices.</p>
           <div class="note"><p><strong>Connecting from another device?</strong> Use the Docker host's LAN IP address or a hostname that resolves to it. In a MeshVault client or Connect, use that same server address and the PIN.</p></div>
           <p>The supplied Compose files serve HTTP on port <code>5225</code>. A hostname can be used with HTTP. HTTPS requires a certificate for that hostname that your devices trust. If you configure an HTTPS reverse proxy, use the library port <code>5225</code> as its upstream and keep the administration listener local. Browser sign-in and write actions require MeshVault to see the original request scheme and hostname.</p>
         </section>
